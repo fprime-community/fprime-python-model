@@ -1,0 +1,234 @@
+[
+    {
+      "members" : [
+        [
+          [
+          ],
+          {
+            "DefModule" : {
+              "node" : {
+                "AstNode" : {
+                  "data" : {
+                    "name" : "M",
+                    "members" : [
+                      [
+                        [
+                        ],
+                        {
+                          "DefModule" : {
+                            "node" : {
+                              "AstNode" : {
+                                "data" : {
+                                  "name" : "M2",
+                                  "members" : [
+                                    [
+                                      [
+                                      ],
+                                      {
+                                        "DefAliasType" : {
+                                          "node" : {
+                                            "AstNode" : {
+                                              "data" : {
+                                                "name" : "intAlias",
+                                                "typeName" : {
+                                                  "AstNode" : {
+                                                    "data" : {
+                                                      "TypeNameInt" : {
+                                                        "name" : {
+                                                          "U32" : {
+                                                            
+                                                          }
+                                                        }
+                                                      }
+                                                    },
+                                                    "id" : 38
+                                                  }
+                                                }
+                                              },
+                                              "id" : 39
+                                            }
+                                          }
+                                        }
+                                      },
+                                      [
+                                      ]
+                                    ],
+                                    [
+                                      [
+                                      ],
+                                      {
+                                        "DefAliasType" : {
+                                          "node" : {
+                                            "AstNode" : {
+                                              "data" : {
+                                                "name" : "floatAlias",
+                                                "typeName" : {
+                                                  "AstNode" : {
+                                                    "data" : {
+                                                      "TypeNameFloat" : {
+                                                        "name" : {
+                                                          "F32" : {
+                                                            
+                                                          }
+                                                        }
+                                                      }
+                                                    },
+                                                    "id" : 40
+                                                  }
+                                                }
+                                              },
+                                              "id" : 41
+                                            }
+                                          }
+                                        }
+                                      },
+                                      [
+                                      ]
+                                    ],
+                                    [
+                                      [
+                                      ],
+                                      {
+                                        "DefAliasType" : {
+                                          "node" : {
+                                            "AstNode" : {
+                                              "data" : {
+                                                "name" : "aliasOfAlias",
+                                                "typeName" : {
+                                                  "AstNode" : {
+                                                    "data" : {
+                                                      "TypeNameQualIdent" : {
+                                                        "name" : {
+                                                          "AstNode" : {
+                                                            "data" : {
+                                                              "Qualified" : {
+                                                                "qualifier" : {
+                                                                  "AstNode" : {
+                                                                    "data" : {
+                                                                      "Qualified" : {
+                                                                        "qualifier" : {
+                                                                          "AstNode" : {
+                                                                            "data" : {
+                                                                              "Unqualified" : {
+                                                                                "name" : "M"
+                                                                              }
+                                                                            },
+                                                                            "id" : 42
+                                                                          }
+                                                                        },
+                                                                        "name" : {
+                                                                          "AstNode" : {
+                                                                            "data" : "M2",
+                                                                            "id" : 43
+                                                                          }
+                                                                        }
+                                                                      }
+                                                                    },
+                                                                    "id" : 43
+                                                                  }
+                                                                },
+                                                                "name" : {
+                                                                  "AstNode" : {
+                                                                    "data" : "floatAlias",
+                                                                    "id" : 44
+                                                                  }
+                                                                }
+                                                              }
+                                                            },
+                                                            "id" : 45
+                                                          }
+                                                        }
+                                                      }
+                                                    },
+                                                    "id" : 46
+                                                  }
+                                                }
+                                              },
+                                              "id" : 47
+                                            }
+                                          }
+                                        }
+                                      },
+                                      [
+                                      ]
+                                    ],
+                                    [
+                                      [
+                                      ],
+                                      {
+                                        "DefAliasType" : {
+                                          "node" : {
+                                            "AstNode" : {
+                                              "data" : {
+                                                "name" : "boolAlias",
+                                                "typeName" : {
+                                                  "AstNode" : {
+                                                    "data" : {
+                                                      "TypeNameBool" : {
+                                                        
+                                                      }
+                                                    },
+                                                    "id" : 48
+                                                  }
+                                                }
+                                              },
+                                              "id" : 49
+                                            }
+                                          }
+                                        }
+                                      },
+                                      [
+                                      ]
+                                    ],
+                                    [
+                                      [
+                                      ],
+                                      {
+                                        "DefAliasType" : {
+                                          "node" : {
+                                            "AstNode" : {
+                                              "data" : {
+                                                "name" : "stringAlias",
+                                                "typeName" : {
+                                                  "AstNode" : {
+                                                    "data" : {
+                                                      "TypeNameString" : {
+                                                        "size" : "None"
+                                                      }
+                                                    },
+                                                    "id" : 54
+                                                  }
+                                                }
+                                              },
+                                              "id" : 55
+                                            }
+                                          }
+                                        }
+                                      },
+                                      [
+                                      ]
+                                    ]
+                                  ]
+                                },
+                                "id" : 56
+                              }
+                            }
+                          }
+                        },
+                        [
+                        ]
+                      ]
+                    ]
+                  },
+                  "id" : 57
+                }
+              }
+            }
+          },
+          [
+          ]
+        ]
+      ]
+    }
+  ]
+  
