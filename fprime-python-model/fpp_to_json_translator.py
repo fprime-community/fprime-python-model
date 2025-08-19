@@ -275,7 +275,7 @@ def translate_def_enum(data: dict, id: AstId) -> AstNode[DefEnum]:
             ),
             const_id,
         )
-    constants.append(annotate(c[0], node, c[2]))
+        constants.append(annotate(c[0], node, c[2]))
     return AstNode.create_with_id(
         DefEnum(
             data["name"],
@@ -1016,8 +1016,7 @@ def translate_ast_json(file: str):
         for d in data:
             if isinstance(d, dict):
                 for k, v in d.items():
-                    m = translate_module_members(v)
-                    print(m)
+                    translate_module_members(v)
 
 
 def translate_location_map_json(file: str) -> dict[AstId, Location]:
