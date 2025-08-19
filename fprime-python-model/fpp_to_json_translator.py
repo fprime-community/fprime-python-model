@@ -236,6 +236,77 @@ def translate_severity(d: dict) -> SpecEventSeverity:
     else:
         return SpecEventSeverity.WARNING_LOW
 
+def translate_def_abs_type(data: dict, id: AstId) -> AstNode[DefAbsType]:
+    return AstNode.create_with_id(DefAbsType(data["name"]), id)
+
+def translate_def_alias_type(data: dict, id: AstId) -> AstNode[DefAliasType]:
+    return AstNode.create_with_id(
+        DefAliasType(data["name"], translate_type_name(data["typeName"])),
+        id,
+    )
+
+def translate_def_array(data: dict, id: AstId) -> AstNode[DefArray]:
+    return AstNode.create_with_id(
+        DefArray(
+            data["name"],
+            translate_expr(data["size"]),
+            translate_type_name(data["eltType"]),
+            translate_optional(data["default"], translate_expr),
+            translate_optional(data["format"], translate_string),
+        ),
+        id
+    )
+
+def translate_def_constant(data: dict, id: AstId) -> AstNode[DefConstant]:
+    return AstNode.create_with_id(
+        DefConstant(data["name"], translate_expr(data["value"])),
+        id
+    )
+
+def translate_def_enum(data: dict, id: AstId) -> AstNode[DefEnum]:
+    constants = []
+    for c in data["constants"]:
+        const = c[1]
+        const_data, const_id = read_ast_node(const)
+        node = AstNode.create_with_id(
+            DefEnumConstant(
+                const_data["name"],
+                translate_optional(const_data["value"], translate_expr),
+            ),
+            const_id,
+        )
+    constants.append(annotate(c[0], node, c[2]))
+    return AstNode.create_with_id(
+        DefEnum(
+            data["name"],
+            translate_optional(data["typeName"], translate_type_name),
+            constants,
+        ),
+        id,
+    )
+
+def translate_def_struct(data: dict, id: AstId) -> AstNode[DefStruct]:
+    struct_members = []
+    for m in data["members"]:
+        member_data, member_id = read_ast_node(m[1])
+        node = AstNode.create_with_id(
+            StructTypeMember(
+                member_data["name"],
+                translate_optional(member_data["size"], translate_expr),
+                translate_type_name(member_data["typeName"]),
+                translate_optional(member_data["format"], translate_string),
+            ),
+            member_id,
+        )
+        struct_members.append(annotate(m[0], node, m[2]))
+    return AstNode.create_with_id(
+        DefStruct(
+            data["name"],
+            struct_members,
+            translate_optional(data["default"], translate_expr),
+        ),
+        id,
+    )
 
 def translate_component_members(l: list) -> List[ComponentMember]:
     members = []
@@ -246,66 +317,15 @@ def translate_component_members(l: list) -> List[ComponentMember]:
         data, id = read_ast_node(node["node"])
         match m_key:
             case "DefAbsType":
-                name = data["name"]
-                member = ComponentMemberDefAbsType(
-                    AstNode.create_with_id(DefAbsType(name), id)
-                )
+                member = ComponentMemberDefAbsType(translate_def_abs_type(data, id))
             case "DefAliasType":
-                name = data["name"]
-                member = ComponentMemberDefAliasType(
-                    AstNode.create_with_id(
-                        DefAliasType(
-                            name,
-                            translate_type_name(data["typeName"]),
-                        ),
-                        id,
-                    )
-                )
+                member = ComponentMemberDefAliasType(translate_def_alias_type(data, id))
             case "DefArray":
-                name = data["name"]
-                member = ComponentMemberDefArray(
-                    AstNode.create_with_id(
-                        DefArray(
-                            name,
-                            translate_expr(data["size"]),
-                            translate_type_name(data["eltType"]),
-                            translate_optional(data["default"], translate_expr),
-                            translate_optional(data["format"], translate_string),
-                        ),
-                        id,
-                    )
-                )
+                member = ComponentMemberDefArray(translate_def_array(data, id))
             case "DefConstant":
-                name = data["name"]
-                member = ComponentMemberDefConstant(
-                    AstNode.create_with_id(
-                        DefConstant(name, translate_expr(data["value"])),
-                        id,
-                    )
-                )
+                member = ComponentMemberDefConstant(translate_def_constant(data, id))
             case "DefEnum":
-                name = data["name"]
-                constants = []
-                for c in data["constants"]:
-                    const = c[1]
-                    value = None
-                    const_data, const_id = read_ast_node(const)
-                    if const_data["value"] != "None":
-                        value = translate_expr(const_data["value"]["Some"])
-                    node = AstNode.create_with_id(
-                        DefEnumConstant(const_data["name"], value), const_id
-                    )
-                    constants.append(annotate(c[0], node, c[2]))
-                member = ComponentMemberDefEnum(
-                    AstNode.create_with_id(
-                        DefEnum(
-                            name,
-                            translate_optional(data["typeName"], translate_type_name),
-                            constants,
-                        ),
-                        id,
-                    )
-                )
+                member = ComponentMemberDefEnum(translate_def_enum(data, id))
             case "SpecCommand":
                 member = ComponentMemberSpecCommand(
                     AstNode.create_with_id(
@@ -321,29 +341,7 @@ def translate_component_members(l: list) -> List[ComponentMember]:
                     )
                 )
             case "DefStruct":
-                struct_members = []
-                for m in data["members"]:
-                    member_data, member_id = read_ast_node(m[1])
-                    node = AstNode.create_with_id(
-                        StructTypeMember(
-                            member_data["name"],
-                            translate_optional(member_data["size"], translate_expr),
-                            translate_type_name(member_data["typeName"]),
-                            translate_optional(member_data["format"], translate_string),
-                        ),
-                        member_id,
-                    )
-                    struct_members.append(annotate(m[0], node, m[2]))
-                member = ComponentMemberDefStruct(
-                    AstNode.create_with_id(
-                        DefStruct(
-                            data["name"],
-                            struct_members,
-                            translate_optional(data["default"], translate_expr),
-                        ),
-                        id,
-                    )
-                )
+                member = ComponentMemberDefStruct(translate_def_struct(data, id))
             case "SpecTlmChannel":
                 member = ComponentMemberSpecTlmChannel(
                     AstNode.create_with_id(
@@ -823,29 +821,11 @@ def translate_module_members(l: List) -> List[ModuleMember]:
             member = None
             match k:
                 case "DefAbsType":
-                    member = ModuleMemberDefAbsType(
-                        AstNode.create_with_id(DefAbsType(name), id)
-                    )
+                    member = ModuleMemberDefAbsType(translate_def_abs_type(data, id))
                 case "DefAliasType":
-                    member = ModuleMemberDefAliasType(
-                        AstNode.create_with_id(
-                            DefAliasType(name, translate_type_name(data["typeName"])),
-                            id,
-                        )
-                    )
+                    member = ModuleMemberDefAliasType(translate_def_alias_type(data, id))
                 case "DefArray":
-                    member = ModuleMemberDefArray(
-                        AstNode.create_with_id(
-                            DefArray(
-                                name,
-                                translate_expr(data["size"]),
-                                translate_type_name(data["eltType"]),
-                                translate_optional(data["default"], translate_expr),
-                                translate_optional(data["format"], translate_string),
-                            ),
-                            id,
-                        )
-                    )
+                    member = ModuleMemberDefArray(translate_def_array(data, id))
                 case "DefComponent":
                     if "Active" in data["kind"]:
                         kind = ComponentKind.ACTIVE
@@ -884,37 +864,9 @@ def translate_module_members(l: List) -> List[ModuleMember]:
                         )
                     )
                 case "DefConstant":
-                    member = ModuleMemberDefConstant(
-                        AstNode.create_with_id(
-                            DefConstant(name, translate_expr(data["value"])),
-                            id,
-                        )
-                    )
+                    member = ModuleMemberDefConstant(translate_def_constant(data, id))
                 case "DefEnum":
-                    constants = []
-                    for c in data["constants"]:
-                        const = c[1]
-                        const_data, const_id = read_ast_node(const)
-                        node = AstNode.create_with_id(
-                            DefEnumConstant(
-                                const_data["name"],
-                                translate_optional(const_data["value"], translate_expr),
-                            ),
-                            const_id,
-                        )
-                        constants.append(annotate(c[0], node, c[2]))
-                    member = ModuleMemberDefEnum(
-                        AstNode.create_with_id(
-                            DefEnum(
-                                name,
-                                translate_optional(
-                                    data["typeName"], translate_type_name
-                                ),
-                                constants,
-                            ),
-                            id,
-                        )
-                    )
+                    member = ModuleMemberDefEnum(translate_def_enum(data, id))
                 case "DefInterface":
                     member = ModuleMemberDefInterface(
                         AstNode.create_with_id(
@@ -955,31 +907,7 @@ def translate_module_members(l: List) -> List[ModuleMember]:
                         )
                     )
                 case "DefStruct":
-                    struct_members = []
-                    for m in data["members"]:
-                        member_data, member_id = read_ast_node(m[1])
-                        node = AstNode.create_with_id(
-                            StructTypeMember(
-                                member_data["name"],
-                                translate_optional(member_data["size"], translate_expr),
-                                translate_type_name(member_data["typeName"]),
-                                translate_optional(
-                                    member_data["format"], translate_string
-                                ),
-                            ),
-                            member_id,
-                        )
-                        struct_members.append(annotate(m[0], node, m[2]))
-                    member = ModuleMemberDefStruct(
-                        AstNode.create_with_id(
-                            DefStruct(
-                                data["name"],
-                                struct_members,
-                                translate_optional(data["default"], translate_expr),
-                            ),
-                            id,
-                        )
-                    )
+                    member = ModuleMemberDefStruct(translate_def_struct(data, id))
                 case "DefTopology":
                     member = ModuleMemberDefTopology(
                         AstNode.create_with_id(
