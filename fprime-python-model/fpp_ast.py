@@ -235,23 +235,79 @@ class ComponentMember:
 
 @dataclass
 class ComponentMemberDefAbsType(ComponentMemberNode):
-    node: AstNode['DefAbsType']
+    node: AstNode[DefAbsType]
 
 @dataclass
 class ComponentMemberDefAliasType(ComponentMemberNode):
-    node: AstNode['DefAliasType']
+    node: AstNode[DefAliasType]
 
 @dataclass
 class ComponentMemberDefArray(ComponentMemberNode):
-    node: AstNode['DefArray']
+    node: AstNode[DefArray]
 
 @dataclass
 class ComponentMemberDefConstant(ComponentMemberNode):
-    node: AstNode['DefConstant']
+    node: AstNode[DefConstant]
 
 @dataclass
 class ComponentMemberDefEnum(ComponentMemberNode):
-    node: AstNode['DefEnum']
+    node: AstNode[DefEnum]
+
+@dataclass
+class ComponentMemberDefStateMachine(ComponentMemberNode):
+    node: AstNode[DefStateMachine]
+
+@dataclass
+class ComponentMemberDefStruct(ComponentMemberNode):
+    node: AstNode[DefStruct]
+
+@dataclass
+class ComponentMemberSpecCommand(ComponentMemberNode):
+    node: AstNode['SpecCommand']
+
+@dataclass
+class ComponentMemberSpecContainer(ComponentMemberNode):
+    node: AstNode['SpecContainer']
+
+@dataclass
+class ComponentMemberSpecEvent(ComponentMemberNode):
+    node: AstNode['SpecEvent']
+
+@dataclass
+class ComponentMemberSpecInclude(ComponentMemberNode):
+    node: AstNode['SpecInclude']
+
+@dataclass
+class ComponentMemberSpecInternalPort(ComponentMemberNode):
+    node: AstNode['SpecInternalPort']
+
+@dataclass
+class ComponentMemberSpecParam(ComponentMemberNode):
+    node: AstNode['SpecParam']
+
+@dataclass
+class ComponentMemberSpecPortInstance(ComponentMemberNode):
+    node: AstNode['SpecPortInstance']
+
+@dataclass
+class ComponentMemberSpecPortMatching(ComponentMemberNode):
+    node: AstNode['SpecPortMatching']
+
+@dataclass
+class ComponentMemberSpecRecord(ComponentMemberNode):
+    node: AstNode['SpecRecord']
+
+@dataclass
+class ComponentMemberSpecStateMachineInstance(ComponentMemberNode):
+    node: AstNode['SpecStateMachineInstance']
+
+@dataclass
+class ComponentMemberSpecTlmChannel(ComponentMemberNode):
+    node: AstNode['SpecTlmChannel']
+
+@dataclass
+class ComponentMemberSpecImportInterface(ComponentMemberNode):
+    node: AstNode['SpecImport']
 
 ##########################
 ### Module Member
@@ -597,7 +653,7 @@ class Pattern(SpecConnectionGraph):
 
 @dataclass
 class Connection:
-    isUnmatch: bool
+    isUnmatched: bool
     fromPort: AstNode['PortInstanceIdentifier']
     fromIndex: Optional[AstNode[Expr]]
     toPort: AstNode['PortInstanceIdentifier']
