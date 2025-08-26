@@ -1,11 +1,17 @@
 from fpp_locations import Locations, Location
 import json
-from typing import Dict, List, Callable, Any
+from typing import Dict, List, Callable, Any, Union
 import os
 from fpp_ast import *
 from fpp_ast_node import T, AstId
 from pathlib import Path
-from error import NotSupportedInFppToJsonException, InvalidFppToJsonField
+from error import (
+    NotSupportedInFppToJsonException,
+    InvalidFppToJsonField,
+    InvalidFppToJsonDictionary,
+)
+import fpp_ast_writer
+from line_utils import Line
 
 
 def read_ast_node(a_node: dict) -> Tuple[dict, AstId]:
@@ -70,7 +76,12 @@ def translate_type_name(tn: dict) -> AstNode[TypeName]:
     elif "TypeNameBool" in data:
         return AstNode.create_with_id(TypeNameBool(), id)
     elif "TypeNameString" in data:
-        return AstNode.create_with_id(TypeNameString(None), id)
+        return AstNode.create_with_id(
+            TypeNameString(
+                translate_optional(data["TypeNameString"]["size"], translate_expr)
+            ),
+            id,
+        )
     else:
         raise Exception(f"Invalid type name dictionary {data}")
 
@@ -115,9 +126,11 @@ def translate_expr(expr_dict: dict) -> AstNode[Expr]:
     elif "ExprIdent" in data:
         return AstNode.create_with_id(ExprIdent(data["ExprIdent"]["value"]), id)
     elif "ExprLiteralBool" in data:
-        return AstNode.create_with_id(
-            ExprLiteralBool(data["ExprLiteralBool"]["value"]), id
-        )
+        if "True" in data["ExprLiteralBool"]["value"]:
+            literal_bool = LiteralBool.TRUE
+        else:
+            literal_bool = LiteralBool.FALSE
+        return AstNode.create_with_id(ExprLiteralBool(literal_bool), id)
     elif "ExprLiteralInt" in data:
         return AstNode.create_with_id(
             ExprLiteralInt(data["ExprLiteralInt"]["value"]), id
@@ -131,7 +144,12 @@ def translate_expr(expr_dict: dict) -> AstNode[Expr]:
             ExprLiteralString(data["ExprLiteralString"]["value"]), id
         )
     elif "ExprParen" in data:
-        raise Exception("Translation for ExprParen not implemented.")
+        return AstNode.create_with_id(
+            ExprParen(
+                translate_expr(data["ExprParen"]["e"]),
+            ),
+            id,
+        )
     elif "ExprStruct" in data:
         members = []
         for m in data["ExprStruct"]["members"]:
@@ -150,28 +168,26 @@ def translate_expr(expr_dict: dict) -> AstNode[Expr]:
             ExprUnop(Unop.MINUS, translate_expr(data["ExprUnop"]["e"])), id
         )
     else:
-        raise Exception(f"Invalid expression dictionary {expr_dict}")
+        raise InvalidFppToJsonDictionary("expression", expr_dict)
 
 
 def translate_transition_expr(te: dict) -> AstNode[TransitionExpr]:
-    data, _ = read_ast_node(te)
-    return TransitionExpr(
-        translate_actions(data["actions"]), translate_qual_ident(data["target"])
+    data, id = read_ast_node(te)
+    return AstNode.create_with_id(
+        TransitionExpr(
+            translate_actions(data["actions"]), translate_qual_ident(data["target"])
+        ),
+        id,
     )
 
 
 def translate_transition_or_do(t: dict) -> AstNode[TransitionOrDo]:
     if "Transition" in t:
-        return Transition(
-            AstNode.create_with_id(
-                translate_transition_expr(t["Transition"]["transition"]),
-                t["Transition"]["transition"]["AstNode"]["id"],
-            )
-        )
+        return Transition(translate_transition_expr(t["Transition"]["transition"]))
     elif "Do" in t:
         return Do(translate_actions(t["Do"]["actions"]))
     else:
-        raise Exception(f"Invalid Transition or Do JSON {t}")
+        raise InvalidFppToJsonDictionary("Transition or Do", t)
 
 
 def translate_actions(l: List) -> List[AstNode[Ident]]:
@@ -182,7 +198,7 @@ def translate_actions(l: List) -> List[AstNode[Ident]]:
 
 
 def annotate(l1: List[str], d: T, l2: List[str]) -> Annotated:
-    return [(l1, d, l2)]
+    return (l1, d, l2)
 
 
 def translate_limit_kind(d: dict) -> AstNode[LimitKind]:
@@ -192,6 +208,10 @@ def translate_limit_kind(d: dict) -> AstNode[LimitKind]:
         limit_kind = LimitKind.YELLOW
     elif "Orange" in data:
         limit_kind = LimitKind.ORANGE
+    elif "Red" in data:
+        limit_kind = LimitKind.RED
+    else:
+        raise InvalidFppToJsonDictionary("limit kind", d)
     return AstNode.create_with_id(limit_kind, id)
 
 
@@ -201,7 +221,7 @@ def translate_spec_tlm_channel_update(d: dict) -> SpecTlmChannelUpdate:
     elif "OnChange" in d:
         return SpecTlmChannelUpdate.ON_CHANGE
     else:
-        raise InvalidFppToJsonField("")
+        raise InvalidFppToJsonDictionary("telemetry channel update", d)
 
 
 def translate_limits(l: List) -> List[Limit]:
@@ -211,13 +231,36 @@ def translate_limits(l: List) -> List[Limit]:
     return limits
 
 
+def translate_spec_loc_kind(d: dict) -> SpecLocKind:
+    if "Component" in d:
+        return SpecLocKind.COMPONENT
+    elif "ComponentInstance" in d:
+        return SpecLocKind.COMPONENT_INSTANCE
+    elif "Constant" in d:
+        return SpecLocKind.CONSTANT
+    elif "Port" in d:
+        return SpecLocKind.PORT
+    elif "StateMachine" in d:
+        return SpecLocKind.STATE_MACHINE
+    elif "Topology" in d:
+        return SpecLocKind.TOPOLOGY
+    elif "Type" in d:
+        return SpecLocKind.TYPE
+    elif "Interface" in d:
+        return SpecLocKind.INTERFACE
+    else:
+        raise InvalidFppToJsonDictionary("spec loc kind", d)
+
+
 def translate_spec_command_kind(d: dict) -> SpecCommandKind:
     if "Async" in d:
         return SpecCommandKind.ASYNC
     elif "Sync" in d:
         return SpecCommandKind.SYNC
-    else:
+    elif "Guarded" in d:
         return SpecCommandKind.GUARDED
+    else:
+        raise InvalidFppToJsonDictionary("command kind", d)
 
 
 def translate_severity(d: dict) -> SpecEventSeverity:
@@ -233,17 +276,22 @@ def translate_severity(d: dict) -> SpecEventSeverity:
         return SpecEventSeverity.FATAL
     elif "WarningHigh" in d:
         return SpecEventSeverity.WARNING_HIGH
-    else:
+    elif "WarningLow" in d:
         return SpecEventSeverity.WARNING_LOW
+    else:
+        raise InvalidFppToJsonDictionary("event severity", d)
+
 
 def translate_def_abs_type(data: dict, id: AstId) -> AstNode[DefAbsType]:
     return AstNode.create_with_id(DefAbsType(data["name"]), id)
+
 
 def translate_def_alias_type(data: dict, id: AstId) -> AstNode[DefAliasType]:
     return AstNode.create_with_id(
         DefAliasType(data["name"], translate_type_name(data["typeName"])),
         id,
     )
+
 
 def translate_def_array(data: dict, id: AstId) -> AstNode[DefArray]:
     return AstNode.create_with_id(
@@ -254,14 +302,15 @@ def translate_def_array(data: dict, id: AstId) -> AstNode[DefArray]:
             translate_optional(data["default"], translate_expr),
             translate_optional(data["format"], translate_string),
         ),
-        id
+        id,
     )
+
 
 def translate_def_constant(data: dict, id: AstId) -> AstNode[DefConstant]:
     return AstNode.create_with_id(
-        DefConstant(data["name"], translate_expr(data["value"])),
-        id
+        DefConstant(data["name"], translate_expr(data["value"])), id
     )
+
 
 def translate_def_enum(data: dict, id: AstId) -> AstNode[DefEnum]:
     constants = []
@@ -281,9 +330,11 @@ def translate_def_enum(data: dict, id: AstId) -> AstNode[DefEnum]:
             data["name"],
             translate_optional(data["typeName"], translate_type_name),
             constants,
+            translate_optional(data["default"], translate_expr),
         ),
         id,
     )
+
 
 def translate_def_struct(data: dict, id: AstId) -> AstNode[DefStruct]:
     struct_members = []
@@ -308,13 +359,14 @@ def translate_def_struct(data: dict, id: AstId) -> AstNode[DefStruct]:
         id,
     )
 
+
 def translate_component_members(l: list) -> List[ComponentMember]:
     members = []
     for m in l:
-        m_key = list(m[1].keys())[0]
+        m_dict: dict = m[1]
+        m_key = list(m_dict.keys())[0]
+        data, id = read_ast_node(m_dict[m_key]["node"])
         member = None
-        node = m[1][m_key]
-        data, id = read_ast_node(node["node"])
         match m_key:
             case "DefAbsType":
                 member = ComponentMemberDefAbsType(translate_def_abs_type(data, id))
@@ -326,6 +378,24 @@ def translate_component_members(l: list) -> List[ComponentMember]:
                 member = ComponentMemberDefConstant(translate_def_constant(data, id))
             case "DefEnum":
                 member = ComponentMemberDefEnum(translate_def_enum(data, id))
+            case "DefStruct":
+                member = ComponentMemberDefStruct(translate_def_struct(data, id))
+            case "DefStateMachine":
+                member = ComponentMemberDefStateMachine(
+                    translate_state_machine(data, id)
+                )
+            case "SpecStateMachineInstance":
+                member = ComponentMemberSpecStateMachineInstance(
+                    AstNode.create_with_id(
+                        SpecStateMachineInstance(
+                            data["name"],
+                            translate_qual_ident(data["stateMachine"]),
+                            translate_optional(data["priority"], translate_expr),
+                            translate_optional(data["queueFull"], get_queue_full),
+                        ),
+                        id,
+                    )
+                )
             case "SpecCommand":
                 member = ComponentMemberSpecCommand(
                     AstNode.create_with_id(
@@ -340,8 +410,6 @@ def translate_component_members(l: list) -> List[ComponentMember]:
                         id,
                     )
                 )
-            case "DefStruct":
-                member = ComponentMemberDefStruct(translate_def_struct(data, id))
             case "SpecTlmChannel":
                 member = ComponentMemberSpecTlmChannel(
                     AstNode.create_with_id(
@@ -366,6 +434,9 @@ def translate_component_members(l: list) -> List[ComponentMember]:
                             data["name"],
                             translate_formal_params(data["params"]),
                             translate_severity(data["severity"]),
+                            translate_optional(data["id"], translate_expr),
+                            translate_string(data["format"]),
+                            translate_optional(data["throttle"], translate_expr),
                         ),
                         id,
                     )
@@ -425,14 +496,14 @@ def translate_component_members(l: list) -> List[ComponentMember]:
                             data["name"],
                             translate_formal_params(data["params"]),
                             translate_optional(data["priority"], translate_expr),
-                            translate_optional(data["queueFull"], translate_queue_full),
+                            translate_optional(data["queueFull"], get_queue_full),
                         ),
                         id,
                     )
                 )
             case "SpecPortInstance":
                 member = ComponentMemberSpecPortInstance(
-                    AstNode.create_with_id(translate_port_instance(node["node"]), id)
+                    AstNode.create_with_id(translate_port_instance(data), id)
                 )
             case "SpecImportInterface":
                 member = ComponentMemberSpecImportInterface(
@@ -442,7 +513,7 @@ def translate_component_members(l: list) -> List[ComponentMember]:
                 )
             case _:
                 raise InvalidFppToJsonField(m_key)
-        members.append(annotate(m[0], member, m[2]))
+        members.append(ComponentMember(annotate(m[0], member, m[2])))
     return members
 
 
@@ -511,15 +582,18 @@ def translate_state_members(l: List) -> List[StateMember]:
                 )
             case _:
                 raise InvalidFppToJsonField(m_key)
-        members.append(annotate(m[0], member, m[2]))
+        members.append(StateMember(annotate(m[0], member, m[2])))
     return members
 
 
-def translate_port_instance_identifier(d: dict) -> PortInstanceIdentifier:
-    data, _ = read_ast_node(d)
-    return PortInstanceIdentifier(
-        translate_qual_ident(data["componentInstance"]),
-        translate_ident(data["portName"]),
+def translate_port_instance_identifier(d: dict) -> AstNode[PortInstanceIdentifier]:
+    data, id = read_ast_node(d)
+    return AstNode.create_with_id(
+        PortInstanceIdentifier(
+            translate_qual_ident(data["componentInstance"]),
+            translate_ident(data["portName"]),
+        ),
+        id,
     )
 
 
@@ -541,7 +615,7 @@ def translate_pattern_kind(d: dict) -> PatternKind:
         case "Time":
             return PatternKind.TIME
         case _:
-            raise InvalidFppToJsonField(kind)
+            raise InvalidFppToJsonDictionary("pattern kind", d)
 
 
 def translate_tlm_channel_identifier(d: dict) -> AstNode[TlmChannelIdentifier]:
@@ -563,7 +637,7 @@ def translate_special_input_kind(d: dict) -> SpecialInputKind:
     elif "Guarded" in d:
         return SpecialInputKind.GUARDED
     else:
-        raise Exception(f"Invalid special input kind dictionary {d}")
+        raise InvalidFppToJsonDictionary("special input kind", d)
 
 
 def translate_special_kind(d: dict) -> SpecialKind:
@@ -594,7 +668,7 @@ def translate_special_kind(d: dict) -> SpecialKind:
     elif "TimeGet" in d:
         return SpecialKind.TIME_GET
     else:
-        raise Exception(f"Invalid special kind dictionary {d}")
+        raise InvalidFppToJsonDictionary("special kind", d)
 
 
 def translate_general_kind(d: dict) -> GeneralKind:
@@ -607,7 +681,7 @@ def translate_general_kind(d: dict) -> GeneralKind:
     elif "SyncInput" in d:
         return GeneralKind.SYNC_INPUT
     else:
-        raise Exception(f"Invalid general kind dictionary {d}")
+        raise InvalidFppToJsonDictionary("general kind", d)
 
 
 def translate_optional(d: dict, func: Callable[[Any], T]) -> Optional[T]:
@@ -617,20 +691,27 @@ def translate_optional(d: dict, func: Callable[[Any], T]) -> Optional[T]:
         return None
 
 
-def translate_queue_full(d: dict) -> QueueFull:
+def get_queue_full(d: dict) -> QueueFull:
     if "Assert" in d:
         return QueueFull.ASSERT
     elif "Block" in d:
         return QueueFull.BLOCK
     elif "Drop" in d:
         return QueueFull.DROP
-    else:
+    elif "Hook" in d:
         return QueueFull.HOOK
+    else:
+        raise InvalidFppToJsonDictionary("queue full", d)
+
+
+def translate_queue_full(d: dict) -> AstNode[QueueFull]:
+    data, id = read_ast_node(d)
+    return AstNode.create_with_id(get_queue_full(data), id)
 
 
 def translate_port_instance(d: dict) -> SpecPortInstance:
-    if "Special" in d["AstNode"]["data"]:
-        special_node = d["AstNode"]["data"]["Special"]
+    if "Special" in d:
+        special_node = d["Special"]
         return Special(
             translate_optional(special_node["inputKind"], translate_special_input_kind),
             translate_special_kind(special_node["kind"]),
@@ -638,8 +719,8 @@ def translate_port_instance(d: dict) -> SpecPortInstance:
             translate_optional(special_node["priority"], translate_expr),
             translate_optional(special_node["queueFull"], translate_queue_full),
         )
-    elif "General" in d["AstNode"]["data"]:
-        general_node = d["AstNode"]["data"]["General"]
+    elif "General" in d:
+        general_node = d["General"]
         return General(
             translate_general_kind(general_node["kind"]),
             general_node["name"],
@@ -649,7 +730,7 @@ def translate_port_instance(d: dict) -> SpecPortInstance:
             translate_optional(general_node["queueFull"], translate_queue_full),
         )
     else:
-        raise Exception(f"Invalid port instance dictionary {d}")
+        raise InvalidFppToJsonDictionary("port instance", d)
 
 
 def translate_init_specs(l: list) -> List[Annotated[AstNode[SpecInit]]]:
@@ -665,6 +746,14 @@ def translate_init_specs(l: list) -> List[Annotated[AstNode[SpecInit]]]:
     return specs
 
 
+def translate_state_machine(data: dict, id: AstId) -> AstNode[DefStateMachine]:
+    if data["members"] == "None":
+        sm_members = []
+    else:
+        sm_members = translate_state_machine_members(data["members"])
+    return AstNode.create_with_id(DefStateMachine(data["name"], sm_members), id)
+
+
 def translate_interface_members(l: List) -> List[InterfaceMember]:
     members = []
     for m in l:
@@ -676,9 +765,7 @@ def translate_interface_members(l: List) -> List[InterfaceMember]:
         match m_key:
             case "SpecPortInstance":
                 member = InterfaceMemberSpecPortInstance(
-                    AstNode.create_with_id(
-                        translate_port_instance(m_dict[m_key]["node"]), id
-                    )
+                    AstNode.create_with_id(translate_port_instance(data), id)
                 )
             case "SpecImportInterface":
                 member = InterfaceMemberSpecImportInterface(
@@ -688,7 +775,7 @@ def translate_interface_members(l: List) -> List[InterfaceMember]:
                 )
             case _:
                 raise InvalidFppToJsonField(m_key)
-        members.append(annotate(m["node"][0], member, m["node"][2]))
+        members.append(InterfaceMember(annotate(m["node"][0], member, m["node"][2])))
     return members
 
 
@@ -706,10 +793,7 @@ def translate_tlm_packet_set_members(d: dict) -> List[TlmPacketSetMember]:
                     chan_ident_node = m["TlmChannelIdentifier"]["node"]
                     tlm_pkt_members.append(
                         TlmPacketMemberTlmChannelIdentifier(
-                            AstNode.create_with_id(
-                                translate_tlm_channel_identifier(chan_ident_node),
-                                chan_ident_node["AstNode"]["id"],
-                            )
+                            translate_tlm_channel_identifier(chan_ident_node)
                         )
                     )
             pkt = TlmPacketSetMemberSpecTlmPacket(
@@ -717,15 +801,18 @@ def translate_tlm_packet_set_members(d: dict) -> List[TlmPacketSetMember]:
                     SpecTlmPacket(
                         spec_tlm_pkt_data["name"],
                         translate_optional(spec_tlm_pkt_data["id"], translate_expr),
-                        spec_tlm_pkt_data["group"],
+                        translate_expr(spec_tlm_pkt_data["group"]),
                         tlm_pkt_members,
                     ),
                     spec_tlm_pkt_id,
                 )
             )
-            members.append(annotate(member["node"][0], pkt, member["node"][2]))
+            members.append(
+                TlmPacketSetMember(annotate(member["node"][0], pkt, member["node"][2]))
+            )
         elif "SpecInclude" in node:
             raise NotSupportedInFppToJsonException("SpecInclude")
+    return members
 
 
 def translate_topology_members(l: List) -> List[TopologyMember]:
@@ -753,19 +840,13 @@ def translate_topology_members(l: List) -> List[TopologyMember]:
                 if "Direct" in data:
                     connections = []
                     for c in data["Direct"]["connections"]:
-                        from_index = None
-                        if c["fromIndex"] != "None":
-                            from_index = translate_expr(c["fromIndex"]["Some"])
-                        to_index = None
-                        if c["toIndex"] != "None":
-                            to_index = translate_expr(c["toIndex"]["Some"])
                         connections.append(
                             Connection(
                                 c["isUnmatched"],
                                 translate_port_instance_identifier(c["fromPort"]),
-                                from_index,
+                                translate_optional(c["fromIndex"], translate_expr),
                                 translate_port_instance_identifier(c["toPort"]),
-                                to_index,
+                                translate_optional(c["toIndex"], translate_expr),
                             )
                         )
                     connection_graph = Direct(data["Direct"]["name"], connections)
@@ -779,13 +860,11 @@ def translate_topology_members(l: List) -> List[TopologyMember]:
                         targets,
                     )
                 else:
-                    raise Exception(f"Invalid SpecConnectionGraph dictionary {data}")
+                    raise InvalidFppToJsonDictionary("SpecConnectionGraph", data)
 
                 member = TopologyMemberSpecConnectionGraph(
                     AstNode.create_with_id(connection_graph, id)
                 )
-            case "SpecInclude":
-                raise Exception("SpecInclude translation not implemented")
             case "SpecTlmPacketSet":
                 omitted = []
                 for o in data["omitted"]:
@@ -806,124 +885,128 @@ def translate_topology_members(l: List) -> List[TopologyMember]:
                         SpecImport(translate_qual_ident(data["sym"])), id
                     )
                 )
+            case "SpecInclude":
+                raise NotSupportedInFppToJsonException(m_key)
             case _:
                 raise InvalidFppToJsonField(m_key)
-        members.append(member)
+        members.append(TopologyMember(annotate(m[0], member, m[2])))
     return members
 
 
 def translate_module_members(l: List) -> List[ModuleMember]:
     members = []
     for m in l:
-        for k, v in m[1].items():
-            data, id = read_ast_node(v["node"])
-            name = data["name"]
-            member = None
-            match k:
-                case "DefAbsType":
-                    member = ModuleMemberDefAbsType(translate_def_abs_type(data, id))
-                case "DefAliasType":
-                    member = ModuleMemberDefAliasType(translate_def_alias_type(data, id))
-                case "DefArray":
-                    member = ModuleMemberDefArray(translate_def_array(data, id))
-                case "DefComponent":
-                    if "Active" in data["kind"]:
-                        kind = ComponentKind.ACTIVE
-                    elif "Passive" in data["kind"]:
-                        kind = ComponentKind.PASSIVE
-                    elif "Queued" in data["kind"]:
-                        kind = ComponentKind.QUEUED
-                    else:
-                        raise Exception(f"Invalid component kind dictionary {data}")
-                    member = ModuleMemberDefComponent(
-                        AstNode.create_with_id(
-                            DefComponent(
-                                kind,
-                                name,
-                                translate_component_members(data["members"]),
-                            ),
-                            id,
-                        )
+        m_dict: dict = m[1]
+        m_key = list(m_dict.keys())[0]
+        data, id = read_ast_node(m_dict[m_key]["node"])
+        member = None
+        match m_key:
+            case "DefAbsType":
+                member = ModuleMemberDefAbsType(translate_def_abs_type(data, id))
+            case "DefAliasType":
+                member = ModuleMemberDefAliasType(translate_def_alias_type(data, id))
+            case "DefArray":
+                member = ModuleMemberDefArray(translate_def_array(data, id))
+            case "DefComponent":
+                if "Active" in data["kind"]:
+                    kind = ComponentKind.ACTIVE
+                elif "Passive" in data["kind"]:
+                    kind = ComponentKind.PASSIVE
+                elif "Queued" in data["kind"]:
+                    kind = ComponentKind.QUEUED
+                else:
+                    raise InvalidFppToJsonDictionary("component kind", data)
+                member = ModuleMemberDefComponent(
+                    AstNode.create_with_id(
+                        DefComponent(
+                            kind,
+                            data["name"],
+                            translate_component_members(data["members"]),
+                        ),
+                        id,
                     )
-                case "DefComponentInstance":
-                    member = ModuleMemberDefComponentInstance(
-                        AstNode.create_with_id(
-                            DefComponentInstance(
-                                name,
-                                translate_qual_ident(data["component"]),
-                                translate_expr(data["baseId"]),
-                                translate_optional(data["implType"], translate_string),
-                                translate_optional(data["file"], translate_string),
-                                translate_optional(data["queueSize"], translate_expr),
-                                translate_optional(data["stackSize"], translate_expr),
-                                translate_optional(data["priority"], translate_expr),
-                                translate_optional(data["cpu"], translate_expr),
-                                translate_init_specs(data["initSpecs"]),
-                            ),
-                            id,
-                        )
+                )
+            case "DefComponentInstance":
+                member = ModuleMemberDefComponentInstance(
+                    AstNode.create_with_id(
+                        DefComponentInstance(
+                            data["name"],
+                            translate_qual_ident(data["component"]),
+                            translate_expr(data["baseId"]),
+                            translate_optional(data["implType"], translate_string),
+                            translate_optional(data["file"], translate_string),
+                            translate_optional(data["queueSize"], translate_expr),
+                            translate_optional(data["stackSize"], translate_expr),
+                            translate_optional(data["priority"], translate_expr),
+                            translate_optional(data["cpu"], translate_expr),
+                            translate_init_specs(data["initSpecs"]),
+                        ),
+                        id,
                     )
-                case "DefConstant":
-                    member = ModuleMemberDefConstant(translate_def_constant(data, id))
-                case "DefEnum":
-                    member = ModuleMemberDefEnum(translate_def_enum(data, id))
-                case "DefInterface":
-                    member = ModuleMemberDefInterface(
-                        AstNode.create_with_id(
-                            DefInterface(
-                                name, translate_interface_members(data["members"])
-                            ),
-                            id,
-                        )
+                )
+            case "DefConstant":
+                member = ModuleMemberDefConstant(translate_def_constant(data, id))
+            case "DefEnum":
+                member = ModuleMemberDefEnum(translate_def_enum(data, id))
+            case "DefInterface":
+                member = ModuleMemberDefInterface(
+                    AstNode.create_with_id(
+                        DefInterface(
+                            data["name"], translate_interface_members(data["members"])
+                        ),
+                        id,
                     )
-                case "DefModule":
-                    member = ModuleMemberDefModule(
-                        AstNode.create_with_id(
-                            DefModule(name, translate_module_members(data["members"])),
-                            id,
-                        )
+                )
+            case "DefModule":
+                member = ModuleMemberDefModule(
+                    AstNode.create_with_id(
+                        DefModule(
+                            data["name"], translate_module_members(data["members"])
+                        ),
+                        id,
                     )
-                case "DefPort":
-                    params = translate_formal_params(data["params"])
-                    member = ModuleMemberDefPort(
-                        AstNode.create_with_id(
-                            DefPort(
-                                name,
-                                params,
-                                translate_optional(
-                                    data["returnType"], translate_type_name
-                                ),
-                            ),
-                            id,
-                        )
+                )
+            case "DefPort":
+                params = translate_formal_params(data["params"])
+                member = ModuleMemberDefPort(
+                    AstNode.create_with_id(
+                        DefPort(
+                            data["name"],
+                            params,
+                            translate_optional(data["returnType"], translate_type_name),
+                        ),
+                        id,
                     )
-                case "DefStateMachine":
-                    member = ModuleMemberDefStateMachine(
-                        AstNode.create_with_id(
-                            DefStateMachine(
-                                name, translate_state_machine_members(data["members"])
-                            ),
-                            id,
-                        )
+                )
+            case "DefStateMachine":
+                member = ModuleMemberDefStateMachine(translate_state_machine(data, id))
+            case "DefStruct":
+                member = ModuleMemberDefStruct(translate_def_struct(data, id))
+            case "DefTopology":
+                member = ModuleMemberDefTopology(
+                    AstNode.create_with_id(
+                        DefTopology(
+                            data["name"], translate_topology_members(data["members"])
+                        ),
+                        id,
                     )
-                case "DefStruct":
-                    member = ModuleMemberDefStruct(translate_def_struct(data, id))
-                case "DefTopology":
-                    member = ModuleMemberDefTopology(
-                        AstNode.create_with_id(
-                            DefTopology(
-                                name, translate_topology_members(data["members"])
-                            ),
-                            id,
-                        )
+                )
+            case "SpecInclude":
+                raise NotSupportedInFppToJsonException(m_key)
+            case "SpecLoc":
+                member = ModuleMemberSpecLoc(
+                    AstNode.create_with_id(
+                        SpecLoc(
+                            translate_spec_loc_kind(data["kind"]),
+                            translate_qual_ident(data["symbol"]),
+                            translate_string(data["file"]),
+                        ),
+                        id,
                     )
-                case "SpecInclude":
-                    raise NotSupportedInFppToJsonException(k)
-                case "SpecLoc":
-                    raise NotSupportedInFppToJsonException(k)
-                case _:
-                    raise InvalidFppToJsonField(k)
-            members.append(annotate(m[0], member, m[2]))
+                )
+            case _:
+                raise InvalidFppToJsonField(m_key)
+        members.append(ModuleMember(annotate(m[0], member, m[2])))
     return members
 
 
@@ -994,7 +1077,7 @@ def translate_state_machine_members(d: Dict[str, List]) -> List[StateMachineMemb
                             )
                         )
                     case "SpecInitialTransition":
-                        member = StateMachineMemberDefSpecInitialTransition(
+                        member = StateMachineMemberSpecInitialTransition(
                             AstNode.create_with_id(
                                 SpecInitialTransition(
                                     translate_transition_expr(data["transition"])
@@ -1004,8 +1087,23 @@ def translate_state_machine_members(d: Dict[str, List]) -> List[StateMachineMemb
                         )
                     case _:
                         raise InvalidFppToJsonField(k)
-                members.append(annotate(l[0], member, l[2]))
+                members.append(StateMachineMember(annotate(l[0], member, l[2])))
     return members
+
+
+def translate_trans_unit(l: List) -> TransUnit:
+    trans_unit_members = []
+    for m in l:
+        trans_unit_members = translate_module_members(m["members"])
+    return TransUnit(trans_unit_members)
+
+
+def print_lines(line_list: Union[List[Line], Line]):
+    for line in line_list:
+        if isinstance(line, List):
+            print_lines(line)
+        elif isinstance(line, Line):
+            print(str(line))
 
 
 def translate_ast_json(file: str):
@@ -1013,10 +1111,10 @@ def translate_ast_json(file: str):
         raise FileNotFoundError(f'File "{file}" not found')
     with open(file, "r") as f:
         data: List[Dict] = json.load(f)
-        for d in data:
-            if isinstance(d, dict):
-                for k, v in d.items():
-                    translate_module_members(v)
+        out = translate_trans_unit(data)
+        ast_writer = fpp_ast_writer.AstWriter()
+        lines = ast_writer.trans_unit(None, out)
+        print_lines(lines)
 
 
 def translate_location_map_json(file: str) -> dict[AstId, Location]:
@@ -1032,3 +1130,7 @@ def translate_location_map_json(file: str) -> dict[AstId, Location]:
             except KeyError as e:
                 raise KeyError(f"Location map for ID {k} is missing required field {e}")
     return Locations.get_map()
+
+
+# translate_ast_json("../syntax-fpp-ast.json")
+translate_ast_json("../ref-json-files/syntax-fpp-ast.json")

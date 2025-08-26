@@ -11,3 +11,8 @@ class NotSupportedInFppToJsonException(Exception):
 class InvalidFppToJsonField(Exception):
     def __init__(self, field: str):
         super().__init__(f"The {field} field is not valid")
+
+
+class InvalidFppToJsonDictionary(Exception):
+    def __init__(self, name: str, dict: dict):
+        super().__init__(f"The {name} dictionary is invalid: {dict}")

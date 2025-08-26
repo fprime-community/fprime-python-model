@@ -157,6 +157,7 @@ class DefEnum:
     name: Ident
     type_name: Optional[AstNode['TypeName']]
     constants: List[Annotated[AstNode['DefEnumConstant']]]
+    default: Optional[AstNode['Expr']]
 
 @dataclass
 class DefEnumConstant:
@@ -412,7 +413,7 @@ class StateMachineMemberDefState(StateMachineMemberNode):
     node: AstNode['DefState']
 
 @dataclass
-class StateMachineMemberDefSpecInitialTransition(StateMachineMemberNode):
+class StateMachineMemberSpecInitialTransition(StateMachineMemberNode):
     node: AstNode['SpecInitialTransition']
 
 ##########################
@@ -610,7 +611,7 @@ class SpecCommand:
     params: FormalParamList
     opcode: Optional[AstNode[Expr]]
     priority: Optional[AstNode[Expr]]
-    queueFull: Optional[AstNode[QueueFull]]
+    queue_full: Optional[AstNode[QueueFull]]
     
 class SpecCommandKind(Enum):
     ASYNC = "async"
@@ -653,11 +654,11 @@ class Pattern(SpecConnectionGraph):
 
 @dataclass
 class Connection:
-    isUnmatched: bool
-    fromPort: AstNode['PortInstanceIdentifier']
-    fromIndex: Optional[AstNode[Expr]]
-    toPort: AstNode['PortInstanceIdentifier']
-    toIndex: Optional[AstNode[Expr]]
+    is_unmatched: bool
+    from_port: AstNode['PortInstanceIdentifier']
+    from_index: Optional[AstNode[Expr]]
+    to_port: AstNode['PortInstanceIdentifier']
+    to_index: Optional[AstNode[Expr]]
 
 @dataclass
 class SpecContainer:
@@ -670,6 +671,9 @@ class SpecEvent:
     name: Ident
     params: FormalParamList
     severity: 'SpecEventSeverity'
+    id: Optional[AstNode[Expr]]
+    format: AstNode[str]
+    throttle: Optional[AstNode[Expr]]
 
 class SpecEventSeverity(Enum):
     ACTIVITY_HIGH = "activity high"
@@ -925,7 +929,7 @@ class Visibility(Enum):
 class FormalParam:
     kind: 'FormalParamKind'
     name: Ident
-    typeName: AstNode[TypeName]
+    type_name: AstNode[TypeName]
 
 class FormalParamKind(Enum):
     REF = "ref"
