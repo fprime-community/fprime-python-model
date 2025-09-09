@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, Any, List, Tuple
 from fpp_ast_node import AstNode
 import fpp_ast
+from error import InternalError
 
 In = TypeVar("In")
 Out = TypeVar("Out")
@@ -500,6 +501,8 @@ class AstVisitor(ABC, Generic[In, Out]):
                 return self.spec_tlm_packet_annotated_node(_in, (pre, node.node, post))
             case fpp_ast.TlmPacketSetMemberSpecInclude():
                 return self.spec_include_annotated_node(_in, (pre, node.node, post))
+            case _:
+                raise InternalError("Could not match TlmPacketSetMember")
 
     def match_topology_member(self, _in: In, member: fpp_ast.TopologyMember) -> Out:
         pre, node, post = member.node
@@ -514,7 +517,7 @@ class AstVisitor(ABC, Generic[In, Out]):
                     _in, (pre, node.node, post)
                 )
             case fpp_ast.TopologyMemberSpecInclude():
-                return self.spec_include_annotated_node(_in, (pre, node, node.node))
+                return self.spec_include_annotated_node(_in, (pre, node.node, post))
             case fpp_ast.TopologyMemberSpecTlmPacketSet():
                 return self.spec_tlm_packet_set_annotated_node(
                     _in, (pre, node.node, post)

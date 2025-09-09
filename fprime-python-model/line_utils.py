@@ -1,6 +1,7 @@
 from typing import List, Union, Callable
 from dataclasses import dataclass
 from enum import Enum
+from typing import Any
 
 
 @dataclass
@@ -55,7 +56,7 @@ def join(sep: str, l1: Line, l2: Line) -> Line:
 
 def flatten(sep: str, lines: List[Line]) -> Line:
     if not lines:
-        return Line()
+        return Line("")
     elif len(lines) == 1:
         return lines[0]
     else:
@@ -121,14 +122,14 @@ def flatten_with_prefix_line(prefix: Line, lll: List[List[Line]]) -> List[Line]:
 
 
 def blank() -> Line:
-    return Line()
+    return Line("")
 
 
 def write(line: Line):
     print(str(line) + "\n")
 
 
-def blank_separated(f: Callable[[any], List[Line]], ts: List[any]) -> List[Line]:
+def blank_separated(f: Callable[[Any], List[Line]], ts: List[Any]) -> List[Line]:
     if not ts:
         return []
     elif len(ts) == 1:
@@ -180,5 +181,5 @@ class LineUtils:
 
     def intersperse_blank_lines(self, l: list[list[Line]]) -> list[Line]:
         filtered = [lines for lines in l if lines]
-        interspersed = self.intersperse_list(filtered, [Line.blank])
+        interspersed = self.intersperse_list(filtered, [blank()])
         return [line for sublist in interspersed for line in sublist]

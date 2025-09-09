@@ -71,8 +71,10 @@ def qual_ident_from_node_list(node_list: 'NodeList') -> QualIdent:
         return Unqualified(split_node_list[1].data)
     elif split_node_list[0] and split_node_list[1]:
         qualifier_1 = qual_ident_from_node_list(split_node_list[0])
-        node = AstNode.create(qualifier_1, name(split_node_list[0])._id)
-        Qualified(node, split_node_list[1])
+        node = AstNode.create_with_id(qualifier_1, name(split_node_list[0])._id)
+        return Qualified(node, split_node_list[1])
+    else:
+        raise InternalError("Could not construct a qualified identifier from a node list")
 
 NodeList: TypeAlias = List[AstNode[Ident]]
 """
@@ -84,19 +86,19 @@ def split(node_list: NodeList) -> Tuple[List[AstNode[Ident]], AstNode[Ident]]:
     """
     Split a qualified identifier list into qualifier and name
     """
-    rev: List[NodeList] = node_list.reverse()
+    rev: NodeList = node_list[::-1]
     if not rev:
         raise InternalError("node list should not be empty")
     else:
-        return rev[1:].reverse(), rev[0]
+        return rev[1:][::-1], rev[0]
     
 def qualifier(node_list: NodeList) -> List[AstNode[Ident]]:
     """Get the qualifier"""
-    split(node_list)[0]
+    return split(node_list)[0]
 
 def name(node_list: NodeList) -> AstNode[Ident]:
     """Get the unqualified name"""
-    split(node_list)[1]
+    return split(node_list)[1]
     
 
 def node_from_node_list(node_list: NodeList) -> AstNode[QualIdent]:
@@ -216,7 +218,7 @@ class DefInterface:
 class DefStruct:
     name: Ident
     members: List[Annotated[AstNode['StructTypeMember']]]
-    default: Optional['InterfaceMember']
+    default: Optional[AstNode['Expr']]
 
 @dataclass
 class DefTopology:

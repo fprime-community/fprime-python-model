@@ -1,20 +1,16 @@
-from fpp_locations import Locations, Location
 import json
-from typing import Dict, List, Callable, Any, Union
+from typing import Dict, List, Callable, Any
 import os
 from fpp_ast import *
-from fpp_ast_node import T, AstId
-from pathlib import Path
+from fpp_ast_node import AstId
 from error import (
     NotSupportedInFppToJsonException,
     InvalidFppToJsonField,
     InvalidFppToJsonDictionary,
 )
-import fpp_ast_writer
-from line_utils import Line
 
 
-def read_ast_node(a_node: dict) -> Tuple[dict, AstId]:
+def read_ast_node(a_node: dict) -> Tuple[Any, AstId]:
     return a_node["AstNode"]["data"], a_node["AstNode"]["id"]
 
 
@@ -41,10 +37,11 @@ def translate_qual_ident(d: dict) -> AstNode[QualIdent]:
             ),
             id,
         )
-    # TODO: raise error
+    else:
+        raise InternalError("Could not translate qualified identifier")
 
 
-def translate_formal_params(params_list: List) -> List[Annotated[FormalParam]]:
+def translate_formal_params(params_list: List) -> FormalParamList:
     params = []
     for p in params_list:
         node = p[1]
@@ -181,7 +178,7 @@ def translate_transition_expr(te: dict) -> AstNode[TransitionExpr]:
     )
 
 
-def translate_transition_or_do(t: dict) -> AstNode[TransitionOrDo]:
+def translate_transition_or_do(t: dict) -> TransitionOrDo:
     if "Transition" in t:
         return Transition(translate_transition_expr(t["Transition"]["transition"]))
     elif "Do" in t:
@@ -366,7 +363,7 @@ def translate_component_members(l: list) -> List[ComponentMember]:
         m_dict: dict = m[1]
         m_key = list(m_dict.keys())[0]
         data, id = read_ast_node(m_dict[m_key]["node"])
-        member = None
+        member: Optional[ComponentMemberNode] = None
         match m_key:
             case "DefAbsType":
                 member = ComponentMemberDefAbsType(translate_def_abs_type(data, id))
@@ -523,7 +520,7 @@ def translate_state_members(l: List) -> List[StateMember]:
         m_dict: dict = m[1]
         m_key = list(m_dict.keys())[0]
         data, id = read_ast_node(m_dict[m_key]["node"])
-        member = None
+        member: Optional[StateMemberNode] = None
         match m_key:
             case "DefChoice":
                 member = StateMemberDefChoice(
@@ -761,7 +758,7 @@ def translate_interface_members(l: List) -> List[InterfaceMember]:
         m_key = list(m_dict.keys())[0]
         id = m_dict[m_key]["node"]["AstNode"]["id"]
         data: dict = m_dict[m_key]["node"]["AstNode"]["data"]
-        member = None
+        member: Optional[InterfaceMemberNode] = None
         match m_key:
             case "SpecPortInstance":
                 member = InterfaceMemberSpecPortInstance(
@@ -787,7 +784,7 @@ def translate_tlm_packet_set_members(d: dict) -> List[TlmPacketSetMember]:
             spec_tlm_pkt_data, spec_tlm_pkt_id = read_ast_node(
                 node["SpecTlmPacket"]["node"]
             )
-            tlm_pkt_members = []
+            tlm_pkt_members: List[TlmPacketMember] = []
             for m in spec_tlm_pkt_data["members"]:
                 if "TlmChannelIdentifier" in m:
                     chan_ident_node = m["TlmChannelIdentifier"]["node"]
@@ -822,7 +819,7 @@ def translate_topology_members(l: List) -> List[TopologyMember]:
         m_key = list(m_dict.keys())[0]
         id = m_dict[m_key]["node"]["AstNode"]["id"]
         data: dict = m_dict[m_key]["node"]["AstNode"]["data"]
-        member = None
+        member: Optional[TopologyMemberNode] = None
         match m_key:
             case "SpecCompInstance":
                 visibility = Visibility.PRIVATE
@@ -849,22 +846,24 @@ def translate_topology_members(l: List) -> List[TopologyMember]:
                                 translate_optional(c["toIndex"], translate_expr),
                             )
                         )
-                    connection_graph = Direct(data["Direct"]["name"], connections)
+                    member = TopologyMemberSpecConnectionGraph(
+                        AstNode.create_with_id(Direct(data["Direct"]["name"], connections), id)
+                    )
                 elif "Pattern" in data:
                     targets = []
                     for t in data["Pattern"]["targets"]:
                         targets.append(translate_qual_ident(t))
-                    connection_graph = Pattern(
+                    connection_graph: SpecConnectionGraph = Pattern(
                         translate_pattern_kind(data["Pattern"]["kind"]),
                         translate_qual_ident(data["Pattern"]["source"]),
                         targets,
                     )
+
+                    member = TopologyMemberSpecConnectionGraph(
+                        AstNode.create_with_id(connection_graph, id)
+                    )
                 else:
                     raise InvalidFppToJsonDictionary("SpecConnectionGraph", data)
-
-                member = TopologyMemberSpecConnectionGraph(
-                    AstNode.create_with_id(connection_graph, id)
-                )
             case "SpecTlmPacketSet":
                 omitted = []
                 for o in data["omitted"]:
@@ -899,7 +898,7 @@ def translate_module_members(l: List) -> List[ModuleMember]:
         m_dict: dict = m[1]
         m_key = list(m_dict.keys())[0]
         data, id = read_ast_node(m_dict[m_key]["node"])
-        member = None
+        member: Optional[ModuleMemberNode] = None
         match m_key:
             case "DefAbsType":
                 member = ModuleMemberDefAbsType(translate_def_abs_type(data, id))
@@ -967,12 +966,11 @@ def translate_module_members(l: List) -> List[ModuleMember]:
                     )
                 )
             case "DefPort":
-                params = translate_formal_params(data["params"])
                 member = ModuleMemberDefPort(
                     AstNode.create_with_id(
                         DefPort(
                             data["name"],
-                            params,
+                            translate_formal_params(data["params"]),
                             translate_optional(data["returnType"], translate_type_name),
                         ),
                         id,
@@ -1016,7 +1014,7 @@ def translate_state_machine_members(d: Dict[str, List]) -> List[StateMachineMemb
         for l in d["Some"]:
             for k, v in l[1].items():
                 data, id = read_ast_node(v["node"])
-                member = None
+                member: Optional[StateMachineMemberNode] = None
                 match k:
                     case "DefAction":
                         member = StateMachineMemberDefAction(
@@ -1097,40 +1095,9 @@ def translate_trans_unit(l: List) -> TransUnit:
         trans_unit_members = translate_module_members(m["members"])
     return TransUnit(trans_unit_members)
 
-
-def print_lines(line_list: Union[List[Line], Line]):
-    for line in line_list:
-        if isinstance(line, List):
-            print_lines(line)
-        elif isinstance(line, Line):
-            print(str(line))
-
-
-def translate_ast_json(file: str):
+def translate_ast_json(file: str) -> TransUnit:
     if not os.path.exists(file):
         raise FileNotFoundError(f'File "{file}" not found')
     with open(file, "r") as f:
         data: List[Dict] = json.load(f)
-        out = translate_trans_unit(data)
-        ast_writer = fpp_ast_writer.AstWriter()
-        lines = ast_writer.trans_unit(None, out)
-        print_lines(lines)
-
-
-def translate_location_map_json(file: str) -> dict[AstId, Location]:
-    if not os.path.exists(file):
-        raise FileNotFoundError(f'File "{file}" not found')
-    with open(file, "r") as f:
-        data: Dict[str, dict] = json.load(f)
-        for k, v in data.items():
-            try:
-                Locations.put(
-                    int(k), Location(Path(v["file"]), v["pos"], v["includingLoc"])
-                )
-            except KeyError as e:
-                raise KeyError(f"Location map for ID {k} is missing required field {e}")
-    return Locations.get_map()
-
-
-# translate_ast_json("../syntax-fpp-ast.json")
-translate_ast_json("../ref-json-files/syntax-fpp-ast.json")
+        return translate_trans_unit(data)
