@@ -4,7 +4,6 @@ from fpp_ast_node import AstId, T, AstNode
 import fpp_ast
 from error import InternalError
 
-In: TypeAlias = fpp_ast.Annotated[AstNode[T]]
 Out: TypeAlias = None
 
 class ConstructAstMap(AstVisitor):
@@ -41,7 +40,8 @@ class ConstructAstMap(AstVisitor):
         _, node, _ = a_node
         data = node.data
         self.add_annotated_node_to_map(a_node)
-        self.add_node_to_map(data.type_name)
+        if data.type_name:
+            self.add_node_to_map(data.type_name)
 
     def def_array_annotated_node(
         self, _in: In, a_node: fpp_ast.Annotated[AstNode[fpp_ast.DefArray]]
@@ -103,7 +103,8 @@ class ConstructAstMap(AstVisitor):
         _, node, _ = a_node
         data = node.data
         self.add_annotated_node_to_map(a_node)
-        self.add_node_to_map(data.type_name)
+        if data.type_name:
+            self.add_node_to_map(data.type_name)
 
     def def_module_annotated_node(
         self, _in: In, a_node: fpp_ast.Annotated[AstNode[fpp_ast.DefModule]]
@@ -130,7 +131,8 @@ class ConstructAstMap(AstVisitor):
         _, node, _ = a_node
         data = node.data
         self.add_annotated_node_to_map(a_node)
-        self.add_node_to_map(data.type_name)
+        if data.type_name:
+            self.add_node_to_map(data.type_name)
 
     def def_state_annotated_node(
         self, _in: In, a_node: fpp_ast.Annotated[AstNode[fpp_ast.DefState]]
@@ -147,8 +149,9 @@ class ConstructAstMap(AstVisitor):
         _, node, _ = a_node
         data = node.data
         self.add_annotated_node_to_map(a_node)
-        for m in data.members:
-            self.state_machine_member(m)
+        if data.members:
+            for m in data.members:
+                self.state_machine_member(m)
 
     def def_struct_annotated_node(
         self, _in: In, a_node: fpp_ast.Annotated[AstNode[fpp_ast.DefStruct]]
@@ -174,57 +177,57 @@ class ConstructAstMap(AstVisitor):
     def expr_array_node(
         self, _in: In, a_node: AstNode[fpp_ast.Expr], e: fpp_ast.ExprArray
     ) -> Out:
-        self.add_annotated_node_to_map(a_node)
+        self.add_node_to_map(a_node)
 
     def expr_binop_node(
         self, _in: In, a_node: AstNode[fpp_ast.Expr], e: fpp_ast.ExprBinop
     ) -> Out:
-        self.add_annotated_node_to_map(a_node)
+        self.add_node_to_map(a_node)
 
     def expr_dot_node(
         self, _in: In, a_node: AstNode[fpp_ast.Expr], e: fpp_ast.ExprDot
     ) -> Out:
-        self.add_annotated_node_to_map(a_node)
+        self.add_node_to_map(a_node)
 
     def expr_ident_node(
         self, _in: In, a_node: AstNode[fpp_ast.Expr], e: fpp_ast.ExprIdent
     ) -> Out:
-        self.add_annotated_node_to_map(a_node)
+        self.add_node_to_map(a_node)
 
     def expr_literal_bool_node(
         self, _in: In, a_node: AstNode[fpp_ast.Expr], e: fpp_ast.ExprLiteralBool
     ) -> Out:
-        self.add_annotated_node_to_map(a_node)
+        self.add_node_to_map(a_node)
 
     def expr_literal_float_node(
         self, _in: In, a_node: AstNode[fpp_ast.Expr], e: fpp_ast.ExprLiteralFloat
     ) -> Out:
-        self.add_annotated_node_to_map(a_node)
+        self.add_node_to_map(a_node)
 
     def expr_literal_int_node(
         self, _in: In, a_node: AstNode[fpp_ast.Expr], e: fpp_ast.ExprLiteralInt
     ) -> Out:
-        self.add_annotated_node_to_map(a_node)
+        self.add_node_to_map(a_node)
 
     def expr_literal_string_node(
         self, _in: In, a_node: AstNode[fpp_ast.Expr], e: fpp_ast.ExprLiteralString
     ) -> Out:
-        self.add_annotated_node_to_map(a_node)
+        self.add_node_to_map(a_node)
 
     def expr_paren_node(
         self, _in: In, a_node: AstNode[fpp_ast.Expr], e: fpp_ast.ExprParen
     ) -> Out:
-        self.add_annotated_node_to_map(a_node)
+        self.add_node_to_map(a_node)
 
     def expr_struct_node(
         self, _in: In, a_node: AstNode[fpp_ast.Expr], e: fpp_ast.ExprStruct
     ) -> Out:
-        self.add_annotated_node_to_map(a_node)
+        self.add_node_to_map(a_node)
 
     def expr_unop_node(
         self, _in: In, a_node: AstNode[fpp_ast.Expr], e: fpp_ast.ExprUnop
     ) -> Out:
-        self.add_annotated_node_to_map(a_node)
+        self.add_node_to_map(a_node)
 
     def spec_command_annotated_node(
         self, _in: In, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecCommand]]
@@ -394,7 +397,7 @@ class ConstructAstMap(AstVisitor):
     def tu_member(self, tum: fpp_ast.TUMember) -> Out:
         self.module_member(tum)
 
-    def trans_unit(self, in_, tu: fpp_ast.TransUnit) -> Dict[AstId, AstNode[T]]:
+    def trans_unit(self, in_, tu: fpp_ast.TransUnit) -> Dict[AstId, Union[fpp_ast.Annotated[AstNode[T]], AstNode[T]]]:
         for member in tu.members:
             self.tu_member(member)
         return self.ast_id_map
@@ -427,5 +430,4 @@ class ConstructAstMap(AstVisitor):
 
     def formal_param_list(self, params: fpp_ast.FormalParamList) -> Out:
         for param in params:
-            p: fpp_ast.FormalParam = param[1]
-            self.type_name_float_node(p.type_name)
+            self.type_name_node(param[1].data.type_name)
