@@ -20,11 +20,10 @@ class Analysis:
     # A map from (spec loc kind, qualified name) to spec locs
     location_specifier_map: Dict[Tuple[Any, Any], Any] = field(default_factory=dict)
 
-    # Mapping from symbols to their parent symbols
-    # TODO: update AstId to Symbol
+    # Mapping from Ast Ids to their parent symbols
     parent_symbol_map: Dict[AstId, Symbol] = field(default_factory=dict)
 
-    # Mapping from symbols with scopes to their scopes
+    # Mapping from Ast Ids with scopes to their scopes
     symbol_scope_map: Dict[AstId, Scope] = field(default_factory=dict)
 
     # Mapping from uses (by node ID) to their definitions
