@@ -2,23 +2,27 @@ from abc import ABC, abstractmethod
 from typing import List, TypeAlias, Optional, Tuple, override, TypeVar
 from dataclasses import dataclass
 from enum import Enum
-from fpp_ast_node import AstNode
-from error import InternalError
-from fpp_locations import Locations
+from fprime_python_model.fpp_ast.fpp_ast_node import AstNode
+from fprime_python_model.utils.error import InternalError
+from fprime_python_model.fpp_ast.fpp_locations import Locations
 
-T = TypeVar('T')
+T = TypeVar("T")
 Annotated: TypeAlias = Tuple[List[str], T, List[str]]
 Ident: TypeAlias = str
-type FormalParamList = List[Annotated[AstNode['FormalParam']]]
-TUMember: TypeAlias = 'ModuleMember'
+type FormalParamList = List[Annotated[AstNode["FormalParam"]]]
+TUMember: TypeAlias = "ModuleMember"
+
 
 @dataclass
 class TransUnit:
     """Translation unit"""
+
     members: List[TUMember]
+
 
 class Binop(Enum):
     """Binary operation"""
+
     ADD = "+"
     DIV = "/"
     MUL = "*"
@@ -27,8 +31,10 @@ class Binop(Enum):
     def __str__(self):
         return self.value
 
+
 class ComponentKind(Enum):
     """Component kind"""
+
     ACTIVE = "active"
     PASSIVE = "passive"
     QUEUED = "queued"
@@ -36,25 +42,34 @@ class ComponentKind(Enum):
     def __str__(self):
         return self.value
 
+
 class QualIdent(ABC):
     """A possibly-qualified identifier"""
+
     @abstractmethod
     def to_ident_list(self) -> List[Ident]:
         """Convert a qualified identifier to a list of identifiers"""
         pass
 
-@dataclass
+
+@dataclass(eq=True)
 class Unqualified(QualIdent):
     """An unqualified identifier"""
+
     name: Ident
 
     @override
     def to_ident_list(self):
         return [self.name]
 
+    def __hash__(self):
+        return hash(self.name)
+
+
 @dataclass
 class Qualified(QualIdent):
     """A qualified identifier"""
+
     qualifier: AstNode[QualIdent]
     name: AstNode[Ident]
 
@@ -62,7 +77,8 @@ class Qualified(QualIdent):
     def to_ident_list(self):
         return self.qualifier.data.to_ident_list + [self.name.data]
 
-def qual_ident_from_node_list(node_list: 'NodeList') -> QualIdent:
+
+def qual_ident_from_node_list(node_list: "NodeList") -> QualIdent:
     """
     Construct a qualified identifier from a node list
     """
@@ -74,13 +90,17 @@ def qual_ident_from_node_list(node_list: 'NodeList') -> QualIdent:
         node = AstNode.create_with_id(qualifier_1, name(split_node_list[0])._id)
         return Qualified(node, split_node_list[1])
     else:
-        raise InternalError("Could not construct a qualified identifier from a node list")
+        raise InternalError(
+            "Could not construct a qualified identifier from a node list"
+        )
+
 
 NodeList: TypeAlias = List[AstNode[Ident]]
 """
 A qualified identifier represented as a list of identifier nodes
 This is useful during parsing
 """
+
 
 def split(node_list: NodeList) -> Tuple[List[AstNode[Ident]], AstNode[Ident]]:
     """
@@ -91,15 +111,17 @@ def split(node_list: NodeList) -> Tuple[List[AstNode[Ident]], AstNode[Ident]]:
         raise InternalError("node list should not be empty")
     else:
         return rev[1:][::-1], rev[0]
-    
+
+
 def qualifier(node_list: NodeList) -> List[AstNode[Ident]]:
     """Get the qualifier"""
     return split(node_list)[0]
 
+
 def name(node_list: NodeList) -> AstNode[Ident]:
     """Get the unqualified name"""
     return split(node_list)[1]
-    
+
 
 def node_from_node_list(node_list: NodeList) -> AstNode[QualIdent]:
     """Create a QualIdent node from a node list"""
@@ -109,493 +131,607 @@ def node_from_node_list(node_list: NodeList) -> AstNode[QualIdent]:
     Locations.put(node._id, loc)
     return node
 
+
 ##########################
 ### Definitions
 ##########################
+
 
 @dataclass
 class DefAbsType:
     name: Ident
 
+
 @dataclass
 class DefAliasType:
     name: Ident
-    type_name: AstNode['TypeName']
+    type_name: AstNode["TypeName"]
+
 
 @dataclass
 class DefArray:
     name: Ident
-    size: AstNode['Expr']
-    elt_type: AstNode['TypeName']
-    default: Optional[AstNode['Expr']]
+    size: AstNode["Expr"]
+    elt_type: AstNode["TypeName"]
+    default: Optional[AstNode["Expr"]]
     format: Optional[AstNode[str]]
+
 
 @dataclass
 class DefComponent:
     kind: ComponentKind
     name: Ident
-    members: List['ComponentMember']
+    members: List["ComponentMember"]
+
 
 @dataclass
 class DefComponentInstance:
     name: Ident
     component: AstNode[QualIdent]
-    base_id: AstNode['Expr']
+    base_id: AstNode["Expr"]
     impl_type: Optional[AstNode[str]]
     file: Optional[AstNode[str]]
-    queue_size: Optional[AstNode['Expr']]
-    stack_size: Optional[AstNode['Expr']]
-    priority: Optional[AstNode['Expr']]
-    cpu: Optional[AstNode['Expr']]
-    init_specs: List[Annotated[AstNode['SpecInit']]]
+    queue_size: Optional[AstNode["Expr"]]
+    stack_size: Optional[AstNode["Expr"]]
+    priority: Optional[AstNode["Expr"]]
+    cpu: Optional[AstNode["Expr"]]
+    init_specs: List[Annotated[AstNode["SpecInit"]]]
+
 
 @dataclass
 class DefConstant:
     name: Ident
-    value: AstNode['Expr']
+    value: AstNode["Expr"]
+
 
 @dataclass
 class DefEnum:
     name: Ident
-    type_name: Optional[AstNode['TypeName']]
-    constants: List[Annotated[AstNode['DefEnumConstant']]]
-    default: Optional[AstNode['Expr']]
+    type_name: Optional[AstNode["TypeName"]]
+    constants: List[Annotated[AstNode["DefEnumConstant"]]]
+    default: Optional[AstNode["Expr"]]
+
 
 @dataclass
 class DefEnumConstant:
     name: Ident
-    value: Optional[AstNode['Expr']]
+    value: Optional[AstNode["Expr"]]
+
 
 @dataclass
 class DefModule:
     name: Ident
-    members: List['ModuleMember']
+    members: List["ModuleMember"]
+
 
 @dataclass
 class DefPort:
     name: Ident
     params: FormalParamList
-    return_type: Optional[AstNode['TypeName']]
+    return_type: Optional[AstNode["TypeName"]]
+
 
 @dataclass
 class DefStateMachine:
     name: Ident
-    members: Optional[List['StateMachineMember']]
+    members: Optional[List["StateMachineMember"]]
+
 
 @dataclass
 class DefAction:
     name: Ident
-    type_name: Optional[AstNode['TypeName']]
+    type_name: Optional[AstNode["TypeName"]]
+
 
 @dataclass
 class DefChoice:
     name: Ident
     guard: AstNode[Ident]
-    if_transition: AstNode['TransitionExpr']
-    else_transition: AstNode['TransitionExpr']
+    if_transition: AstNode["TransitionExpr"]
+    else_transition: AstNode["TransitionExpr"]
+
 
 @dataclass
 class DefGuard:
     name: Ident
-    type_name: Optional[AstNode['TypeName']]
+    type_name: Optional[AstNode["TypeName"]]
+
 
 @dataclass
 class DefSignal:
     name: Ident
-    type_name: Optional[AstNode['TypeName']]
+    type_name: Optional[AstNode["TypeName"]]
+
 
 @dataclass
 class DefState:
     name: Ident
-    members: List['StateMember']
+    members: List["StateMember"]
+
 
 @dataclass
 class DefInterface:
     name: Ident
-    members: List['InterfaceMember']
+    members: List["InterfaceMember"]
+
 
 @dataclass
 class DefStruct:
     name: Ident
-    members: List[Annotated[AstNode['StructTypeMember']]]
-    default: Optional[AstNode['Expr']]
+    members: List[Annotated[AstNode["StructTypeMember"]]]
+    default: Optional[AstNode["Expr"]]
+
 
 @dataclass
 class DefTopology:
     name: Ident
-    members: List['TopologyMember']
+    members: List["TopologyMember"]
+
 
 ##########################
 ### Component Member
 ##########################
 
+
 class ComponentMemberNode(ABC):
     pass
+
 
 @dataclass
 class ComponentMember:
     node: Annotated[ComponentMemberNode]
 
+
 @dataclass
 class ComponentMemberDefAbsType(ComponentMemberNode):
     node: AstNode[DefAbsType]
+
 
 @dataclass
 class ComponentMemberDefAliasType(ComponentMemberNode):
     node: AstNode[DefAliasType]
 
+
 @dataclass
 class ComponentMemberDefArray(ComponentMemberNode):
     node: AstNode[DefArray]
+
 
 @dataclass
 class ComponentMemberDefConstant(ComponentMemberNode):
     node: AstNode[DefConstant]
 
+
 @dataclass
 class ComponentMemberDefEnum(ComponentMemberNode):
     node: AstNode[DefEnum]
+
 
 @dataclass
 class ComponentMemberDefStateMachine(ComponentMemberNode):
     node: AstNode[DefStateMachine]
 
+
 @dataclass
 class ComponentMemberDefStruct(ComponentMemberNode):
     node: AstNode[DefStruct]
 
+
 @dataclass
 class ComponentMemberSpecCommand(ComponentMemberNode):
-    node: AstNode['SpecCommand']
+    node: AstNode["SpecCommand"]
+
 
 @dataclass
 class ComponentMemberSpecContainer(ComponentMemberNode):
-    node: AstNode['SpecContainer']
+    node: AstNode["SpecContainer"]
+
 
 @dataclass
 class ComponentMemberSpecEvent(ComponentMemberNode):
-    node: AstNode['SpecEvent']
+    node: AstNode["SpecEvent"]
+
 
 @dataclass
 class ComponentMemberSpecInclude(ComponentMemberNode):
-    node: AstNode['SpecInclude']
+    node: AstNode["SpecInclude"]
+
 
 @dataclass
 class ComponentMemberSpecInternalPort(ComponentMemberNode):
-    node: AstNode['SpecInternalPort']
+    node: AstNode["SpecInternalPort"]
+
 
 @dataclass
 class ComponentMemberSpecParam(ComponentMemberNode):
-    node: AstNode['SpecParam']
+    node: AstNode["SpecParam"]
+
 
 @dataclass
 class ComponentMemberSpecPortInstance(ComponentMemberNode):
-    node: AstNode['SpecPortInstance']
+    node: AstNode["SpecPortInstance"]
+
 
 @dataclass
 class ComponentMemberSpecPortMatching(ComponentMemberNode):
-    node: AstNode['SpecPortMatching']
+    node: AstNode["SpecPortMatching"]
+
 
 @dataclass
 class ComponentMemberSpecRecord(ComponentMemberNode):
-    node: AstNode['SpecRecord']
+    node: AstNode["SpecRecord"]
+
 
 @dataclass
 class ComponentMemberSpecStateMachineInstance(ComponentMemberNode):
-    node: AstNode['SpecStateMachineInstance']
+    node: AstNode["SpecStateMachineInstance"]
+
 
 @dataclass
 class ComponentMemberSpecTlmChannel(ComponentMemberNode):
-    node: AstNode['SpecTlmChannel']
+    node: AstNode["SpecTlmChannel"]
+
 
 @dataclass
 class ComponentMemberSpecImportInterface(ComponentMemberNode):
-    node: AstNode['SpecImport']
+    node: AstNode["SpecImport"]
+
 
 ##########################
 ### Module Member
 ##########################
 
+
 class ModuleMemberNode(ABC):
     pass
+
 
 @dataclass
 class ModuleMember:
     node: Annotated[ModuleMemberNode]
 
+
 @dataclass
 class ModuleMemberDefAbsType(ModuleMemberNode):
     node: AstNode[DefAbsType]
+
 
 @dataclass
 class ModuleMemberDefAliasType(ModuleMemberNode):
     node: AstNode[DefAliasType]
 
+
 @dataclass
 class ModuleMemberDefArray(ModuleMemberNode):
     node: AstNode[DefArray]
+
 
 @dataclass
 class ModuleMemberDefComponent(ModuleMemberNode):
     node: AstNode[DefComponent]
 
+
 @dataclass
 class ModuleMemberDefComponentInstance(ModuleMemberNode):
     node: AstNode[DefComponentInstance]
+
 
 @dataclass
 class ModuleMemberDefConstant(ModuleMemberNode):
     node: AstNode[DefConstant]
 
+
 @dataclass
 class ModuleMemberDefEnum(ModuleMemberNode):
     node: AstNode[DefEnum]
 
+
 @dataclass
 class ModuleMemberDefInterface(ModuleMemberNode):
-    node: AstNode['DefInterface']
+    node: AstNode["DefInterface"]
+
 
 @dataclass
 class ModuleMemberDefModule(ModuleMemberNode):
     node: AstNode[DefModule]
 
+
 @dataclass
 class ModuleMemberDefPort(ModuleMemberNode):
-    node: AstNode['DefPort']
+    node: AstNode["DefPort"]
+
 
 @dataclass
 class ModuleMemberDefStateMachine(ModuleMemberNode):
-    node: AstNode['DefStateMachine']
+    node: AstNode["DefStateMachine"]
+
 
 @dataclass
 class ModuleMemberDefStruct(ModuleMemberNode):
-    node: AstNode['DefStruct']
+    node: AstNode["DefStruct"]
+
 
 @dataclass
 class ModuleMemberDefTopology(ModuleMemberNode):
-    node: AstNode['DefTopology']
+    node: AstNode["DefTopology"]
+
 
 @dataclass
 class ModuleMemberSpecInclude(ModuleMemberNode):
-    node: AstNode['SpecInclude']
+    node: AstNode["SpecInclude"]
+
 
 @dataclass
 class ModuleMemberSpecLoc(ModuleMemberNode):
-    node: AstNode['SpecLoc']
+    node: AstNode["SpecLoc"]
+
 
 ##########################
 ### State Machine Member
 ##########################
 
+
 @dataclass
 class StateMachineMember:
-    node: Annotated['StateMachineMemberNode']
+    node: Annotated["StateMachineMemberNode"]
+
 
 class StateMachineMemberNode(ABC):
     pass
 
+
 @dataclass
 class StateMachineMemberDefAction(StateMachineMemberNode):
-    node: AstNode['DefAction']
+    node: AstNode["DefAction"]
+
 
 @dataclass
 class StateMachineMemberDefChoice(StateMachineMemberNode):
-    node: AstNode['DefChoice']
+    node: AstNode["DefChoice"]
+
 
 @dataclass
 class StateMachineMemberDefGuard(StateMachineMemberNode):
-    node: AstNode['DefGuard']
+    node: AstNode["DefGuard"]
+
 
 @dataclass
 class StateMachineMemberDefSignal(StateMachineMemberNode):
-    node: AstNode['DefSignal']
+    node: AstNode["DefSignal"]
+
 
 @dataclass
 class StateMachineMemberDefState(StateMachineMemberNode):
-    node: AstNode['DefState']
+    node: AstNode["DefState"]
+
 
 @dataclass
 class StateMachineMemberSpecInitialTransition(StateMachineMemberNode):
-    node: AstNode['SpecInitialTransition']
+    node: AstNode["SpecInitialTransition"]
+
 
 ##########################
 ### State Member
 ##########################
 
+
 @dataclass
 class StateMember:
-    node: Annotated['StateMemberNode']
+    node: Annotated["StateMemberNode"]
+
 
 class StateMemberNode(ABC):
     pass
+
 
 @dataclass
 class StateMemberDefChoice(StateMemberNode):
     node: AstNode[DefChoice]
 
+
 @dataclass
 class StateMemberDefState(StateMemberNode):
     node: AstNode[DefState]
 
+
 @dataclass
 class StateMemberSpecStateEntry(StateMemberNode):
-    node: AstNode['SpecStateEntry']
+    node: AstNode["SpecStateEntry"]
+
 
 @dataclass
 class StateMemberSpecStateExit(StateMemberNode):
-    node: AstNode['SpecStateExit']
+    node: AstNode["SpecStateExit"]
+
 
 @dataclass
 class StateMemberSpecInitialTransition(StateMemberNode):
-    node: AstNode['SpecInitialTransition']
+    node: AstNode["SpecInitialTransition"]
+
 
 @dataclass
 class StateMemberSpecStateTransition(StateMemberNode):
-    node: AstNode['SpecStateTransition']
+    node: AstNode["SpecStateTransition"]
+
 
 ##########################
 ### Expressions
 ##########################
 
+
 class Expr(ABC):
     pass
+
 
 @dataclass
 class ExprArray(Expr):
     elts: List[AstNode[Expr]]
 
+
 @dataclass
 class ExprBinop(Expr):
     e1: AstNode[Expr]
-    op: 'Binop'
+    op: "Binop"
     e2: AstNode[Expr]
+
 
 @dataclass
 class ExprDot(Expr):
     e: AstNode[Expr]
     id: AstNode[Ident]
 
+
 @dataclass
 class ExprIdent(Expr):
     value: Ident
 
+
 @dataclass
 class ExprLiteralBool(Expr):
-    value: 'LiteralBool'
+    value: "LiteralBool"
+
 
 @dataclass
 class ExprLiteralInt(Expr):
     value: str
 
+
 @dataclass
 class ExprLiteralFloat(Expr):
     value: str
+
 
 @dataclass
 class ExprLiteralString(Expr):
     value: str
 
+
 @dataclass
 class ExprParen(Expr):
     e: AstNode[Expr]
 
+
 @dataclass
 class ExprStruct(Expr):
-    members: List[AstNode['StructMember']]
+    members: List[AstNode["StructMember"]]
+
 
 @dataclass
 class ExprUnop(Expr):
-    op: 'Unop'
+    op: "Unop"
     e: AstNode[Expr]
+
 
 ##########################
 ### Topology Member
 ##########################
 
+
 class TopologyMemberNode(ABC):
     pass
+
 
 @dataclass
 class TopologyMember:
     node: Annotated[TopologyMemberNode]
 
+
 @dataclass
 class TopologyMemberSpecCompInstance(TopologyMemberNode):
-    node: AstNode['SpecCompInstance']
+    node: AstNode["SpecCompInstance"]
+
 
 @dataclass
 class TopologyMemberSpecConnectionGraph(TopologyMemberNode):
-    node: AstNode['SpecConnectionGraph']
+    node: AstNode["SpecConnectionGraph"]
+
 
 @dataclass
 class TopologyMemberSpecInclude(TopologyMemberNode):
-    node: AstNode['SpecInclude']
+    node: AstNode["SpecInclude"]
+
 
 @dataclass
 class TopologyMemberSpecTlmPacketSet(TopologyMemberNode):
-    node: AstNode['SpecTlmPacketSet']
+    node: AstNode["SpecTlmPacketSet"]
+
 
 @dataclass
 class TopologyMemberSpecTopImport(TopologyMemberNode):
-    node: AstNode['SpecImport']
+    node: AstNode["SpecImport"]
+
 
 #################################
 ### Telemetry Packet Set Member
 #################################
 
+
 class TlmPacketSetMemberNode(ABC):
     pass
+
 
 @dataclass
 class TlmPacketSetMember:
     node: Annotated[TlmPacketSetMemberNode]
 
+
 @dataclass
 class TlmPacketSetMemberSpecInclude(TlmPacketSetMemberNode):
-    node: AstNode['SpecInclude']
+    node: AstNode["SpecInclude"]
+
 
 @dataclass
 class TlmPacketSetMemberSpecTlmPacket(TlmPacketSetMemberNode):
-    node: AstNode['SpecTlmPacket']
+    node: AstNode["SpecTlmPacket"]
+
 
 ############################
 ### Interface Member
 ############################
 
+
 @dataclass
 class InterfaceMember:
-    node: Annotated['InterfaceMemberNode']
+    node: Annotated["InterfaceMemberNode"]
+
 
 class InterfaceMemberNode(ABC):
     pass
 
+
 @dataclass
 class InterfaceMemberSpecPortInstance(InterfaceMemberNode):
-    node: AstNode['SpecPortInstance']
+    node: AstNode["SpecPortInstance"]
+
 
 @dataclass
 class InterfaceMemberSpecImportInterface(InterfaceMemberNode):
-    node: AstNode['SpecImport']
+    node: AstNode["SpecImport"]
+
 
 ###############################
 ### Telemetry Packet Member
 ###############################
 
+
 class TlmPacketMember(ABC):
     pass
 
+
 @dataclass
 class TlmPacketMemberSpecInclude(TlmPacketMember):
-    node: AstNode['SpecInclude']
+    node: AstNode["SpecInclude"]
+
 
 @dataclass
 class TlmPacketMemberTlmChannelIdentifier(TlmPacketMember):
-    node: AstNode['TlmChannelIdentifier']
+    node: AstNode["TlmChannelIdentifier"]
 
 
 ##########################
 ### Specifiers
 ##########################
+
 
 class QueueFull(Enum):
     ASSERT = "assert"
@@ -606,15 +742,17 @@ class QueueFull(Enum):
     def __str__(self):
         return self.value
 
+
 @dataclass
 class SpecCommand:
-    kind: 'SpecCommandKind'
+    kind: "SpecCommandKind"
     name: Ident
     params: FormalParamList
     opcode: Optional[AstNode[Expr]]
     priority: Optional[AstNode[Expr]]
     queue_full: Optional[AstNode[QueueFull]]
-    
+
+
 class SpecCommandKind(Enum):
     ASYNC = "async"
     GUARDED = "guarded"
@@ -623,18 +761,22 @@ class SpecCommandKind(Enum):
     def __str__(self):
         return self.value
 
+
 @dataclass
 class SpecCompInstance:
-    visibility: 'Visibility'
+    visibility: "Visibility"
     instance: AstNode[QualIdent]
+
 
 class SpecConnectionGraph(ABC):
     pass
 
+
 @dataclass
 class Direct(SpecConnectionGraph):
     name: Ident
-    connections: List['Connection']
+    connections: List["Connection"]
+
 
 class PatternKind(Enum):
     COMMAND = "command"
@@ -647,20 +789,23 @@ class PatternKind(Enum):
 
     def __str__(self):
         return self.value
-    
+
+
 @dataclass
 class Pattern(SpecConnectionGraph):
     kind: PatternKind
     source: AstNode[QualIdent]
     targets: List[AstNode[QualIdent]]
 
+
 @dataclass
 class Connection:
     is_unmatched: bool
-    from_port: AstNode['PortInstanceIdentifier']
+    from_port: AstNode["PortInstanceIdentifier"]
     from_index: Optional[AstNode[Expr]]
-    to_port: AstNode['PortInstanceIdentifier']
+    to_port: AstNode["PortInstanceIdentifier"]
     to_index: Optional[AstNode[Expr]]
+
 
 @dataclass
 class SpecContainer:
@@ -668,14 +813,16 @@ class SpecContainer:
     id: Optional[AstNode[Expr]]
     default_priority: Optional[AstNode[Expr]]
 
+
 @dataclass
 class SpecEvent:
     name: Ident
     params: FormalParamList
-    severity: 'SpecEventSeverity'
+    severity: "SpecEventSeverity"
     id: Optional[AstNode[Expr]]
     format: AstNode[str]
     throttle: Optional[AstNode[Expr]]
+
 
 class SpecEventSeverity(Enum):
     ACTIVITY_HIGH = "activity high"
@@ -690,14 +837,17 @@ class SpecEventSeverity(Enum):
     def __str__(self):
         return self.value
 
+
 @dataclass
 class SpecInclude:
     file: AstNode[str]
+
 
 @dataclass
 class SpecInit:
     phase: AstNode[Expr]
     code: str
+
 
 @dataclass
 class SpecInternalPort:
@@ -706,11 +856,13 @@ class SpecInternalPort:
     priority: Optional[AstNode[Expr]]
     queue_full: Optional[QueueFull]
 
+
 @dataclass
 class SpecLoc:
-    kind: 'SpecLocKind'
+    kind: "SpecLocKind"
     symbol: AstNode[QualIdent]
     file: AstNode[str]
+
 
 class SpecLocKind(Enum):
     COMPONENT = "component"
@@ -725,35 +877,40 @@ class SpecLocKind(Enum):
     def __str__(self):
         return self.value
 
+
 @dataclass
 class SpecParam:
     name: Ident
-    type_name: AstNode['TypeName']
+    type_name: AstNode["TypeName"]
     default: Optional[AstNode[Expr]]
     id: Optional[AstNode[Expr]]
     set_opcode: Optional[AstNode[Expr]]
     save_opcode: Optional[AstNode[Expr]]
     is_external: bool
 
+
 class SpecPortInstance(ABC):
     pass
 
+
 @dataclass
-class General(SpecPortInstance):
-    kind: 'GeneralKind'
+class GeneralPortInstance(SpecPortInstance):
+    kind: "GeneralKind"
     name: Ident
     size: Optional[AstNode[Expr]]
     port: Optional[AstNode[QualIdent]]
     priority: Optional[AstNode[Expr]]
     queue_full: Optional[AstNode[QueueFull]]
 
+
 @dataclass
-class Special(SpecPortInstance):
-    input_kind: Optional['SpecialInputKind']
-    kind: 'SpecialKind'
+class SpecialPortInstance(SpecPortInstance):
+    input_kind: Optional["SpecialInputKind"]
+    kind: "SpecialKind"
     name: Ident
     priority: Optional[AstNode[Expr]]
     queue_full: Optional[AstNode[QueueFull]]
+
 
 class GeneralKind(Enum):
     ASYNC_INPUT = "async input"
@@ -763,7 +920,8 @@ class GeneralKind(Enum):
 
     def __str__(self):
         return self.value
-    
+
+
 class SpecialInputKind(Enum):
     ASYNC = "async"
     GUARDED = "guarded"
@@ -771,7 +929,8 @@ class SpecialInputKind(Enum):
 
     def __str__(self):
         return self.value
-    
+
+
 class SpecialKind(Enum):
     COMMAND_RECV = "command recv"
     COMMAND_REG = "command reg"
@@ -789,18 +948,21 @@ class SpecialKind(Enum):
 
     def __str__(self):
         return self.value
-    
+
+
 @dataclass
 class SpecPortMatching:
     port1: AstNode[Ident]
     port2: AstNode[Ident]
 
+
 @dataclass
 class SpecRecord:
     name: Ident
-    record_type: AstNode['TypeName']
+    record_type: AstNode["TypeName"]
     is_array: bool
     id: Optional[AstNode[Expr]]
+
 
 @dataclass
 class SpecStateMachineInstance:
@@ -809,15 +971,17 @@ class SpecStateMachineInstance:
     priority: Optional[AstNode[Expr]]
     queue_full: Optional[QueueFull]
 
+
 @dataclass
 class SpecTlmChannel:
     name: Ident
-    type_name: AstNode['TypeName']
+    type_name: AstNode["TypeName"]
     id: Optional[AstNode[Expr]]
-    update: Optional['SpecTlmChannelUpdate']
+    update: Optional["SpecTlmChannelUpdate"]
     format: Optional[AstNode[str]]
-    low: List['Limit']
-    high: List['Limit']
+    low: List["Limit"]
+    high: List["Limit"]
+
 
 class SpecTlmChannelUpdate(Enum):
     ALWAYS = "always"
@@ -825,43 +989,52 @@ class SpecTlmChannelUpdate(Enum):
 
     def __str__(self):
         return self.value
-    
+
+
 @dataclass
 class SpecTlmPacket:
     name: Ident
     id: Optional[AstNode[Expr]]
     group: AstNode[Expr]
-    members: List['TlmPacketMember']
+    members: List["TlmPacketMember"]
+
 
 @dataclass
 class SpecTlmPacketSet:
     name: Ident
-    members: List['TlmPacketSetMember']
-    omitted: List[AstNode['TlmChannelIdentifier']]
+    members: List["TlmPacketSetMember"]
+    omitted: List[AstNode["TlmChannelIdentifier"]]
+
 
 @dataclass
 class SpecImport:
     sym: AstNode[QualIdent]
 
+
 @dataclass
 class SpecInitialTransition:
-    transition: AstNode['TransitionExpr']
+    transition: AstNode["TransitionExpr"]
+
 
 @dataclass
 class SpecStateEntry:
     actions: List[AstNode[Ident]]
 
+
 @dataclass
 class SpecStateExit:
     actions: List[AstNode[Ident]]
+
 
 @dataclass
 class SpecStateTransition:
     signal: AstNode[Ident]
     guard: Optional[AstNode[Ident]]
-    transition_or_do: 'TransitionOrDo'
+    transition_or_do: "TransitionOrDo"
 
-Limit: TypeAlias = Tuple[AstNode['LimitKind'], AstNode[Expr]]
+
+Limit: TypeAlias = Tuple[AstNode["LimitKind"], AstNode[Expr]]
+
 
 class LimitKind(Enum):
     RED = "red"
@@ -871,12 +1044,14 @@ class LimitKind(Enum):
     def __str__(self):
         return self.value
 
+
 class TypeFloat(Enum):
     F32 = "F32"
     F64 = "F64"
 
     def __str__(self):
         return self.value
+
 
 class TypeInt(Enum):
     I8 = "I8"
@@ -890,29 +1065,36 @@ class TypeInt(Enum):
 
     def __str__(self):
         return self.value
-    
+
+
 class TypeName(ABC):
     pass
+
 
 @dataclass
 class TypeNameFloat(TypeName):
     name: TypeFloat
 
+
 @dataclass
 class TypeNameInt(TypeName):
     name: TypeInt
+
 
 @dataclass
 class TypeNameQualIdent(TypeName):
     name: AstNode[QualIdent]
 
+
 @dataclass
 class TypeNameBool(TypeName):
     pass
 
+
 @dataclass
 class TypeNameString(TypeName):
     size: Optional[AstNode[Expr]]
+
 
 class Unop(Enum):
     MINUS = "-"
@@ -920,22 +1102,26 @@ class Unop(Enum):
     def __str__(self):
         return self.value
 
+
 class Visibility(Enum):
     PRIVATE = "private"
     PUBLIC = "public"
 
     def __str__(self):
         return self.value
-    
+
+
 @dataclass
 class FormalParam:
-    kind: 'FormalParamKind'
+    kind: "FormalParamKind"
     name: Ident
     type_name: AstNode[TypeName]
+
 
 class FormalParamKind(Enum):
     REF = "ref"
     VALUE = "value"
+
 
 class LiteralBool(Enum):
     TRUE = "true"
@@ -945,31 +1131,38 @@ class LiteralBool(Enum):
     def __str__(self):
         return self.value
 
+
 @dataclass
 class PortInstanceIdentifier:
     component_instance: AstNode[QualIdent]
     port_name: AstNode[Ident]
+
 
 @dataclass
 class TransitionExpr:
     actions: List[AstNode[Ident]]
     target: AstNode[QualIdent]
 
+
 class TransitionOrDo(ABC):
     pass
+
 
 @dataclass
 class Transition(TransitionOrDo):
     transition: AstNode[TransitionExpr]
 
+
 @dataclass
 class Do(TransitionOrDo):
     actions: List[AstNode[Ident]]
+
 
 @dataclass
 class StructMember:
     name: Ident
     value: AstNode[Expr]
+
 
 @dataclass
 class StructTypeMember:
@@ -977,6 +1170,7 @@ class StructTypeMember:
     size: Optional[AstNode[Expr]]
     type_name: AstNode[TypeName]
     format: Optional[AstNode[str]]
+
 
 @dataclass
 class TlmChannelIdentifier:

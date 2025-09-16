@@ -1,7 +1,8 @@
-from semantics.symbol_interface import SymbolInterface
+from fprime_python_model.semantics.symbol_interface import SymbolInterface
 from dataclasses import dataclass
-import fpp_ast
-from fpp_ast_node import AstNode
+from fprime_python_model.fpp_ast import fpp_ast
+from fprime_python_model.fpp_ast.fpp_ast_node import AstNode
+
 
 class Symbol(SymbolInterface):
     pass
@@ -126,6 +127,7 @@ class PortSymbol(Symbol):
 
     def get_unqualified_name(self):
         return self.node[1].data.name
+
 
 @dataclass(eq=False, unsafe_hash=True)
 class StateMachineSymbol(Symbol):

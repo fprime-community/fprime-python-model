@@ -1,13 +1,14 @@
 from typing import List, Tuple, TypeVar, override, Callable, TypeAlias
-import fpp_ast
-from fpp_ast_node import AstNode
-from fpp_ast_visitor import AstVisitor, In
-from line_utils import LineUtils, Line, join_lists, IndentMode
-from error import InternalError
+from fprime_python_model.fpp_ast import fpp_ast
+from fprime_python_model.fpp_ast.fpp_ast_node import AstNode
+from fprime_python_model.utils.fpp_ast_visitor import AstVisitor, In
+from fprime_python_model.utils.line_utils import LineUtils, Line, join_lists, IndentMode
+from fprime_python_model.utils.error import InternalError
 
 T = TypeVar("T")
 
 Out: TypeAlias = List[Line]
+
 
 class AstWriter(AstVisitor, LineUtils):
 
@@ -197,7 +198,7 @@ class AstWriter(AstVisitor, LineUtils):
             [self.module_member(m) for m in data.members]
         )
         concat_list = self.ident(data.name) + module_member_lines
-        return result +  list(map(self.indent_in, concat_list))
+        return result + list(map(self.indent_in, concat_list))
 
     @override
     def def_port_annotated_node(
@@ -278,7 +279,12 @@ class AstWriter(AstVisitor, LineUtils):
         data = node.data
         result = self.lines("def topology")
         topology_member_lines = [self.topology_member(m) for m in data.members]
-        concat_list = list(map(self.indent_in, self.ident(data.name) + self.flatten(topology_member_lines)))
+        concat_list = list(
+            map(
+                self.indent_in,
+                self.ident(data.name) + self.flatten(topology_member_lines),
+            )
+        )
         return result + concat_list
 
     @override
@@ -397,26 +403,33 @@ class AstWriter(AstVisitor, LineUtils):
         def direct(g: fpp_ast.Direct):
             def connection(c: fpp_ast.Connection):
                 prefix = "unmatched connection" if c.is_unmatched else "connection"
-                lines_list = self.lines(prefix) + list(map(self.indent_in, (
-                    self.add_prefix("from port", self.port_instance_identifier)(
-                        c.from_port.data
+                lines_list = self.lines(prefix) + list(
+                    map(
+                        self.indent_in,
+                        (
+                            self.add_prefix("from port", self.port_instance_identifier)(
+                                c.from_port.data
+                            )
+                            + self.lines_opt(
+                                self.add_prefix("index", self.expr_node), c.from_index
+                            )
+                            + self.add_prefix("to port", self.port_instance_identifier)(
+                                c.to_port.data
+                            )
+                            + self.lines_opt(
+                                self.add_prefix("index", self.expr_node), c.to_index
+                            )
+                        ),
                     )
-                    + self.lines_opt(
-                        self.add_prefix("index", self.expr_node), c.from_index
-                    )
-                    + self.add_prefix("to port", self.port_instance_identifier)(
-                        c.to_port.data
-                    )
-                    + self.lines_opt(
-                        self.add_prefix("index", self.expr_node), c.to_index
-                    )
-                )))
+                )
 
                 return lines_list
 
             result = self.lines("spec connection graph direct")
             connection_lines = [connection(c) for c in g.connections]
-            concat_list = self.flatten(self.ident(g.name) + [s for s in connection_lines])
+            concat_list = self.flatten(
+                self.ident(g.name) + [s for s in connection_lines]
+            )
             return result + list(map(self.indent_in, concat_list))
 
         def pattern(g: fpp_ast.Pattern):
@@ -554,7 +567,7 @@ class AstWriter(AstVisitor, LineUtils):
     ):
         _, node, _ = a_node
 
-        def general(i: fpp_ast.General):
+        def general(i: fpp_ast.GeneralPortInstance):
             kind = self.lines(f"kind {str(i.kind)}")
             concat_list = (
                 kind
@@ -573,13 +586,13 @@ class AstWriter(AstVisitor, LineUtils):
                 self.indent_in(line) for line in concat_list
             ]
 
-        def special(i: fpp_ast.Special):
+        def special(i: fpp_ast.SpecialPortInstance):
             kind = self.lines(f"kind {str(i.kind)}")
             concat_list = (
                 self.lines_opt(
                     self.add_prefix("input kind", self.string),
                     str(i.input_kind) if i.input_kind is not None else None,
-                ) # TODO: update to be consistent with how we handle optionals
+                )  # TODO: update to be consistent with how we handle optionals
                 + kind
                 + self.ident(i.name)
                 + self.lines_opt(
@@ -592,9 +605,9 @@ class AstWriter(AstVisitor, LineUtils):
             ]
 
         data = node.data
-        if isinstance(data, fpp_ast.General):
+        if isinstance(data, fpp_ast.GeneralPortInstance):
             return general(data)
-        elif isinstance(data, fpp_ast.Special):
+        elif isinstance(data, fpp_ast.SpecialPortInstance):
             return special(data)
         else:
             raise ValueError("Unknown SpecPortInstance subtype")
@@ -620,11 +633,14 @@ class AstWriter(AstVisitor, LineUtils):
         else:
             write_record_type = self.type_name_node
 
-        lines_out = self.lines("spec record") + list(map(self.indent_in,
-            self.ident(data.name)
-            + write_record_type(data.record_type)
-            + self.lines_opt(self.add_prefix("id", self.expr_node), data.id)
-        ))
+        lines_out = self.lines("spec record") + list(
+            map(
+                self.indent_in,
+                self.ident(data.name)
+                + write_record_type(data.record_type)
+                + self.lines_opt(self.add_prefix("id", self.expr_node), data.id),
+            )
+        )
 
         return lines_out
 
@@ -695,22 +711,28 @@ class AstWriter(AstVisitor, LineUtils):
 
         def limit(l: fpp_ast.Limit) -> List[Line]:
             k, en = l
-            return self.lines("limit") + list(map(self.indent_in, kind(k.data) + self.expr_node(en)))
+            return self.lines("limit") + list(
+                map(self.indent_in, kind(k.data) + self.expr_node(en))
+            )
 
         def limits(name: str, ls: List[fpp_ast.Limit]) -> List[Line]:
             return self.flatten(list(map(self.add_prefix_no_indent(name, limit), ls)))
 
-        lines_out = self.lines("spec tlm channel") + list(map(self.indent_in,
-            self.ident(tc.name)
-            + self.type_name_node(tc.type_name)
-            + self.lines_opt(self.add_prefix("id", self.expr_node), tc.id)
-            + self.lines_opt(update, tc.update)
-            + self.lines_opt(
-                self.add_prefix("format", self.apply_to_data(self.string)), tc.format
+        lines_out = self.lines("spec tlm channel") + list(
+            map(
+                self.indent_in,
+                self.ident(tc.name)
+                + self.type_name_node(tc.type_name)
+                + self.lines_opt(self.add_prefix("id", self.expr_node), tc.id)
+                + self.lines_opt(update, tc.update)
+                + self.lines_opt(
+                    self.add_prefix("format", self.apply_to_data(self.string)),
+                    tc.format,
+                )
+                + limits("low", tc.low)
+                + limits("high", tc.high),
             )
-            + limits("low", tc.low)
-            + limits("high", tc.high)
-        ))
+        )
 
         return lines_out
 
@@ -720,12 +742,15 @@ class AstWriter(AstVisitor, LineUtils):
     ):
         _, node, _ = a_node
         data = node.data
-        lines_out = self.lines("spec tlm packet") + list(map(self.indent_in,
-            self.ident(data.name)
-            + self.lines_opt(self.add_prefix("id", self.expr_node), data.id)
-            + self.add_prefix("group", self.expr_node)(data.group)
-            + self.flatten([self.tlm_packet_member(m) for m in data.members])
-        ))
+        lines_out = self.lines("spec tlm packet") + list(
+            map(
+                self.indent_in,
+                self.ident(data.name)
+                + self.lines_opt(self.add_prefix("id", self.expr_node), data.id)
+                + self.add_prefix("group", self.expr_node)(data.group)
+                + self.flatten([self.tlm_packet_member(m) for m in data.members]),
+            )
+        )
 
         return lines_out
 
@@ -746,14 +771,15 @@ class AstWriter(AstVisitor, LineUtils):
             for line in self.apply_to_data(self.tlm_channel_identifier)(o)
         ]
 
-        lines_out = (
-            self.lines("spec tlm packet set") + list(map(self.indent_in, 
-            self.ident(data.name)
-            + self.lines("members")
-            + packet_set_member_lines
-            + self.lines("omitted")
-            + omitted_channel_lines
-            ))
+        lines_out = self.lines("spec tlm packet set") + list(
+            map(
+                self.indent_in,
+                self.ident(data.name)
+                + self.lines("members")
+                + packet_set_member_lines
+                + self.lines("omitted")
+                + omitted_channel_lines,
+            )
         )
 
         return lines_out
@@ -843,10 +869,15 @@ class AstWriter(AstVisitor, LineUtils):
         return self.lines(f"queue full {qf}")
 
     def spec_init(self, si: fpp_ast.SpecInit) -> List[Line]:
-        return self.lines("spec init") + list(map(self.indent_in, (
-            self.add_prefix("phase", self.expr_node)(si.phase)
-            + self.add_prefix("code", self.string)(si.code)
-        )))
+        return self.lines("spec init") + list(
+            map(
+                self.indent_in,
+                (
+                    self.add_prefix("phase", self.expr_node)(si.phase)
+                    + self.add_prefix("code", self.string)(si.code)
+                ),
+            )
+        )
 
     def formal_param(self, fp: fpp_ast.FormalParam) -> List[Line]:
         def kind(k: fpp_ast.FormalParamKind) -> str:
@@ -1007,20 +1038,25 @@ class AstWriter(AstVisitor, LineUtils):
     def add_prefix(self, s: str, f: Callable[[T], Out]) -> Callable[[T], Out]:
         def wrapped(t: T) -> Out:
             return join_lists(IndentMode.INDENT, self.lines(s), " ", f(t))
+
         return wrapped
 
     def add_prefix_no_indent(self, s: str, f: Callable[[T], Out]) -> Callable[[T], Out]:
         def wrapped(t: T) -> Out:
             return join_lists(IndentMode.NO_INDENT, self.lines(s), " ", f(t))
+
         return wrapped
 
     def add_suffix(self, f: Callable[[T], Out], s: str) -> Callable[[T], Out]:
         def wrapped(t: T) -> Out:
             return join_lists(IndentMode.INDENT, f(t), " ", self.lines(s))
+
         return wrapped
 
     def type_name_node(self, node: AstNode[fpp_ast.TypeName]) -> List[Line]:
-        func: Callable[[AstNode[fpp_ast.TypeName]], List[Line]] = lambda n: self.match_type_name_node((), n)
+        func: Callable[[AstNode[fpp_ast.TypeName]], List[Line]] = (
+            lambda n: self.match_type_name_node((), n)
+        )
         return self.add_prefix("type name", func)(node)
 
     def visibility(self, v: fpp_ast.Visibility) -> str:

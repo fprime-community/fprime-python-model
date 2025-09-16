@@ -1,9 +1,10 @@
-from fpp_locations import Locations, Location
+from fprime_python_model.fpp_ast.fpp_locations import Locations, Location
 import json
 from typing import Dict
 import os
-from fpp_ast_node import AstId
+from fprime_python_model.fpp_ast.fpp_ast_node import AstId
 from pathlib import Path
+
 
 def translate_location_map_json(file: str) -> dict[AstId, Location]:
     if not os.path.exists(file):

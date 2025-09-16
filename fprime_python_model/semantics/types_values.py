@@ -1,17 +1,19 @@
 from typing import Optional, List, Dict, Generic, TypeVar, Tuple, TypeAlias, Callable
 from abc import ABC, abstractmethod
 from enum import Enum
-from error import InternalError
-from fpp_ast_node import AstNode, AstId
-import fpp_ast
+from fprime_python_model.utils.error import InternalError
+from fprime_python_model.fpp_ast.fpp_ast_node import AstNode, AstId
+from fprime_python_model.fpp_ast import fpp_ast
 from dataclasses import dataclass
+from fprime_python_model.semantics.format import Format
 import math
+
 
 class Type(ABC):
     """An FPP Type"""
 
     @abstractmethod
-    def get_default_value(self) -> Optional['Value']:
+    def get_default_value(self) -> Optional["Value"]:
         """Get the default value"""
         pass
 
@@ -67,6 +69,7 @@ class Type(ABC):
         """Is this type numeric?"""
         return self.is_int() or self.is_float()
 
+
 class Signedness(Enum):
     SIGNED = "signed"
     UNSIGNED = "unsigned"
@@ -107,7 +110,7 @@ class PrimitiveIntType(PrimitiveType, IntType):
     def __init__(self, kind: PrimitiveIntKind):
         self.kind = kind
 
-    def get_default_value(self) -> Optional['PrimitiveIntValue']:
+    def get_default_value(self) -> Optional["PrimitiveIntValue"]:
         return PrimitiveIntValue(0, self.kind)
 
     def is_displayable(self) -> bool:
@@ -138,13 +141,15 @@ class PrimitiveIntType(PrimitiveType, IntType):
 
     def __str__(self) -> str:
         return self.kind.name
-    
+
+
 class FloatKind(Enum):
     F32 = "F32"
     F64 = "F64"
 
     def __str__(self):
         return self.value
+
 
 @dataclass
 class FloatType(PrimitiveType):
@@ -189,6 +194,7 @@ class BooleanType(PrimitiveType):
     def is_displayable(self):
         return True
 
+
 @dataclass
 class StringType(Type):
     def __init__(self, size: Optional[AstNode[fpp_ast.Expr]] = None):
@@ -205,6 +211,7 @@ class StringType(Type):
 
     def is_displayable(self):
         return True
+
 
 @dataclass
 class IntegerType(IntType):
@@ -232,9 +239,7 @@ class AbsType(Type):
 
 class AliasType(Type):
     def __init__(
-        self,
-        node: fpp_ast.Annotated[AstNode[fpp_ast.DefAliasType]],
-        alias_type: Type
+        self, node: fpp_ast.Annotated[AstNode[fpp_ast.DefAliasType]], alias_type: Type
     ):
         self.node = node
         self.alias_type = alias_type
@@ -262,19 +267,18 @@ class ArrayType(Type):
     def __init__(
         self,
         node: fpp_ast.Annotated[AstNode[fpp_ast.DefArray]],
-        anon_array: 'AnonArrayType',
-        default: Optional['ArrayValue'] = None,
-        # format_: Optional['Format'] = None,
-        format = None
+        anon_array: "AnonArrayType",
+        default: Optional["ArrayValue"] = None,
+        format: Optional[Format] = None,
     ):
         self.node = node
         self.anon_array = anon_array
         self.default = default
         self.format = format
 
-    __match_args__ = ('node', 'anon_array', 'default', 'format')
+    __match_args__ = ("node", "anon_array", "default", "format")
 
-    def get_default_value(self) -> Optional['ArrayValue']:
+    def get_default_value(self) -> Optional["ArrayValue"]:
         return self.default
 
     def get_array_size(self) -> Optional[int]:
@@ -292,18 +296,19 @@ class ArrayType(Type):
     def __str__(self) -> str:
         return f"array {self.node[1].data.name}"
 
+
 class EnumType(Type):
     def __init__(
         self,
         node: fpp_ast.Annotated[AstNode[fpp_ast.DefEnum]],
         rep_type: PrimitiveIntType,
-        default: Optional['EnumConstantValue'] = None
+        default: Optional["EnumConstantValue"] = None,
     ):
         self.node = node
         self.rep_type = rep_type
         self.default = default
 
-    def get_default_value(self) -> Optional['EnumConstantValue']:
+    def get_default_value(self) -> Optional["EnumConstantValue"]:
         return self.default
 
     def get_def_node_id(self) -> Optional[AstId]:
@@ -324,15 +329,15 @@ class EnumType(Type):
 
 StructMembersType: TypeAlias = Dict[fpp_ast.Unqualified, Type]
 
+
 class StructType(Type):
     def __init__(
         self,
         node: fpp_ast.Annotated[AstNode[fpp_ast.DefStruct]],
-        anon_struct: 'AnonStructType',
-        default: Optional['StructValue'] = None,
+        anon_struct: "AnonStructType",
+        default: Optional["StructValue"] = None,
         sizes: Dict[fpp_ast.Unqualified, int] = dict(),
-        # formats: Dict[fpp_ast.Unqualified, 'Format'] = None
-        formats = None
+        formats: Dict[fpp_ast.Unqualified, Format] = dict(),
     ):
         self.node = node
         self.anon_struct = anon_struct
@@ -340,10 +345,9 @@ class StructType(Type):
         self.sizes = sizes if sizes is not None else {}
         self.formats = formats if formats is not None else {}
 
-    __match_args__ = ('node', 'anon_struct', 'default', 'sizes', 'formats')
+    __match_args__ = ("node", "anon_struct", "default", "sizes", "formats")
 
-
-    def get_default_value(self) -> Optional['StructValue']:
+    def get_default_value(self) -> Optional["StructValue"]:
         return self.default
 
     def get_def_node_id(self) -> Optional[AstId]:
@@ -353,7 +357,9 @@ class StructType(Type):
         return self.anon_struct.has_numeric_members()
 
     def is_displayable(self) -> bool:
-        return all(member.is_displayable() for member in self.anon_struct.members.values())
+        return all(
+            member.is_displayable() for member in self.anon_struct.members.values()
+        )
 
     def __str__(self) -> str:
         return f"struct {self.node[1].data.name}"
@@ -363,13 +369,13 @@ class AnonArrayType(Type):
     def __init__(self, size: Optional[int], elt_type: Type):
         self.size = size
         self.elt_type = elt_type
-    
-    __match_args__ = ('size', 'elt_type')
 
-    def set_size(self, size: int) -> 'AnonArrayType':
+    __match_args__ = ("size", "elt_type")
+
+    def set_size(self, size: int) -> "AnonArrayType":
         return AnonArrayType(size=size, elt_type=self.elt_type)
 
-    def get_default_value(self) -> Optional['AnonArrayValue']:
+    def get_default_value(self) -> Optional["AnonArrayValue"]:
         default_value = self.elt_type.get_default_value()
         if self.size is not None and default_value is not None:
             elts: List[Value] = [default_value] * self.size
@@ -388,13 +394,14 @@ class AnonArrayType(Type):
         else:
             return f"array of {self.elt_type}"
 
+
 class AnonStructType(Type):
     def __init__(self, members: StructMembersType):
         self.members: StructMembersType = members
 
-    __match_args__ = ('members')
+    __match_args__ = "members"
 
-    def get_default_value(self) -> Optional['AnonStructValue']:
+    def get_default_value(self) -> Optional["AnonStructValue"]:
         out: StructMembersValue = {}
         for member_name, member_type in self.members.items():
             value = member_type.get_default_value()
@@ -413,31 +420,32 @@ class AnonStructType(Type):
         return f"{{ {', '.join(member_strs)} }}"
 
 
-T = TypeVar('T')
+T = TypeVar("T")
+
 
 class Value(ABC):
     def __init__(self):
         pass
 
-    def __add__(self, other: 'Value') -> Optional['Value']:
+    def __add__(self, other: "Value") -> Optional["Value"]:
         def int_op(v1: int, v2: int) -> int:
             return v1 + v2
-        
+
         def double_op(v1: float, v2: float) -> float:
             return v1 + v2
 
         return self.binop(Binop(int_op, double_op), other)
 
-    def __truediv__(self, other: 'Value') -> Optional['Value']:
+    def __truediv__(self, other: "Value") -> Optional["Value"]:
         def int_op(v1: int, v2: int) -> int:
             return v1 // v2
 
         def double_op(v1: float, v2: float) -> float:
             return v1 / v2
-        
+
         return self.binop(Binop(int_op, double_op), other)
 
-    def __mul__(self, other: 'Value') -> Optional['Value']:
+    def __mul__(self, other: "Value") -> Optional["Value"]:
         def int_op(v1: int, v2: int) -> int:
             return v1 * v2
 
@@ -446,13 +454,13 @@ class Value(ABC):
 
         return self.binop(Binop(int_op, double_op), other)
 
-    def __neg__(self) -> Optional['Value']:
+    def __neg__(self) -> Optional["Value"]:
         return None
 
     def is_zero(self) -> bool:
         return False
 
-    def binop(self, op: 'Binop', other: 'Value') -> Optional['Value']:
+    def binop(self, op: "Binop", other: "Value") -> Optional["Value"]:
         return None
 
     @abstractmethod
@@ -465,7 +473,7 @@ class PrimitiveIntValue(Value):
         self.value = value
         self.kind = kind
 
-    def get_type(self) -> 'Type':
+    def get_type(self) -> "Type":
         return PrimitiveIntType(self.kind)
 
     def is_zero(self) -> bool:
@@ -474,8 +482,9 @@ class PrimitiveIntValue(Value):
     def __str__(self):
         return f"{self.value}: {self.kind}"
 
-    def __neg__(self) -> 'PrimitiveIntValue':
+    def __neg__(self) -> "PrimitiveIntValue":
         return PrimitiveIntValue(-self.value, self.kind)
+
 
 class IntegerValue(Value):
     def __init__(self, value: int):
@@ -483,9 +492,9 @@ class IntegerValue(Value):
 
     def fits_in_u64_width(self) -> bool:
         u64_bound = 1 << 64
-        return (- (u64_bound // 2)) <= self.value < u64_bound
+        return (-(u64_bound // 2)) <= self.value < u64_bound
 
-    def get_type(self) -> 'Type':
+    def get_type(self) -> "Type":
         return IntegerType()
 
     def is_zero(self) -> bool:
@@ -494,7 +503,7 @@ class IntegerValue(Value):
     def __str__(self):
         return str(self.value)
 
-    def __neg__(self) -> Optional['IntegerValue']:
+    def __neg__(self) -> Optional["IntegerValue"]:
         return IntegerValue(-self.value)
 
 
@@ -507,13 +516,13 @@ class FloatValue(Value):
     def is_zero(self) -> bool:
         return math.fabs(self.value) <= 0
 
-    def get_type(self) -> 'Type':
+    def get_type(self) -> "Type":
         return FloatType(self.kind)
 
     def __str__(self) -> str:
         return f"{self.value}: {self.kind}"
 
-    def __neg__(self) -> 'FloatValue':
+    def __neg__(self) -> "FloatValue":
         return FloatValue(-self.value, self.kind)
 
 
@@ -521,7 +530,7 @@ class BooleanValue(Value):
     def __init__(self, value: bool):
         self.value = value
 
-    def get_type(self) -> 'Type':
+    def get_type(self) -> "Type":
         return BooleanType()
 
     def __str__(self) -> str:
@@ -532,18 +541,18 @@ class StringValue(Value):
     def __init__(self, value: str):
         self.value = value
 
-    def get_type(self) -> 'Type':
+    def get_type(self) -> "Type":
         return StringType(None)
 
     def __str__(self) -> str:
-        return f"\"{self.value}\""
+        return f'"{self.value}"'
 
 
 class AnonArrayValue(Value):
     def __init__(self, elements: List[Value]):
         self.elements = elements
 
-    def get_type(self) -> 'Type':
+    def get_type(self) -> "Type":
         size = len(self.elements)
         elt_type = self.elements[0].get_type()
         return AnonArrayType(size, elt_type)
@@ -580,7 +589,7 @@ class EnumConstantValue(Value):
         self.value = value
         self.t = t
 
-    def get_type(self) -> 'EnumType':
+    def get_type(self) -> "EnumType":
         return self.t
 
     def __str__(self) -> str:
@@ -588,6 +597,7 @@ class EnumConstantValue(Value):
 
 
 StructMembersValue: TypeAlias = Dict[fpp_ast.Unqualified, Value]
+
 
 class AnonStructValue(Value):
     def __init__(self, members: StructMembersValue):
@@ -616,11 +626,19 @@ class StructValue(Value):
         return self.t
 
     def __str__(self) -> str:
-        type_name = getattr(self.t.node[1].data, 'name', 'unknown') if hasattr(self.t, 'node') else 'unknown'
+        type_name = (
+            getattr(self.t.node[1].data, "name", "unknown")
+            if hasattr(self.t, "node")
+            else "unknown"
+        )
         return f"{str(self.anon_struct)}: {type_name}"
 
 
 class Binop(Generic[T]):
-    def __init__(self, int_op: Callable[[int, int], int], double_op: Callable[[float, float], float]):
+    def __init__(
+        self,
+        int_op: Callable[[int, int], int],
+        double_op: Callable[[float, float], float],
+    ):
         self.int_op = int_op
         self.double_op = double_op

@@ -21,5 +21,5 @@ name_groups: List[NameGroup] = [
     NameGroup.TOPOLOGY,
     NameGroup.INTERFACE,
     NameGroup.TYPE,
-    NameGroup.VALUE
+    NameGroup.VALUE,
 ]

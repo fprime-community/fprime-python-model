@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
-from fpp_ast_node import AstId
-from fpp_ast import Unqualified
+from fprime_python_model.fpp_ast.fpp_ast_node import AstId
+from fprime_python_model.fpp_ast.fpp_ast import Unqualified
+
 
 class SymbolInterface(ABC):
     @abstractmethod
@@ -15,4 +16,7 @@ class SymbolInterface(ABC):
         return hash(self.get_node_id())
 
     def __eq__(self, other):
-        return isinstance(other, SymbolInterface) and self.get_node_id() == other.get_node_id()
+        return (
+            isinstance(other, SymbolInterface)
+            and self.get_node_id() == other.get_node_id()
+        )

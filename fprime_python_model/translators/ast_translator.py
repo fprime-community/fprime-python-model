@@ -1,9 +1,9 @@
 import json
-from typing import Dict, List, Callable, Any
+from typing import Dict, List, Callable, Any, Tuple
 import os
-from fpp_ast import *
-from fpp_ast_node import AstId
-from error import (
+from fprime_python_model.fpp_ast.fpp_ast import *
+from fprime_python_model.fpp_ast.fpp_ast_node import AstNode, AstId
+from fprime_python_model.utils.error import (
     NotSupportedInFppToJsonException,
     InvalidFppToJsonField,
     InvalidFppToJsonDictionary,
@@ -706,26 +706,36 @@ def translate_queue_full(d: dict) -> AstNode[QueueFull]:
     return AstNode.create_with_id(get_queue_full(data), id)
 
 
+def translate_special_port_instance(d: dict) -> SpecialPortInstance:
+    return SpecialPortInstance(
+        translate_optional(d["inputKind"], translate_special_input_kind),
+        translate_special_kind(d["kind"]),
+        d["name"],
+        translate_optional(d["priority"], translate_expr),
+        translate_optional(d["queueFull"], translate_queue_full),
+    )
+
+
+def translate_general_port_instance(
+    d: dict, port_qual_ident_node: Optional[AstNode[QualIdent]] = None
+) -> GeneralPortInstance:
+    if not port_qual_ident_node:
+        port_qual_ident_node = translate_optional(d["port"], translate_qual_ident)
+    return GeneralPortInstance(
+        translate_general_kind(d["kind"]),
+        d["name"],
+        translate_optional(d["size"], translate_expr),
+        port_qual_ident_node,
+        translate_optional(d["priority"], translate_expr),
+        translate_optional(d["queueFull"], translate_queue_full),
+    )
+
+
 def translate_port_instance(d: dict) -> SpecPortInstance:
     if "Special" in d:
-        special_node = d["Special"]
-        return Special(
-            translate_optional(special_node["inputKind"], translate_special_input_kind),
-            translate_special_kind(special_node["kind"]),
-            special_node["name"],
-            translate_optional(special_node["priority"], translate_expr),
-            translate_optional(special_node["queueFull"], translate_queue_full),
-        )
+        return translate_special_port_instance(d["Special"])
     elif "General" in d:
-        general_node = d["General"]
-        return General(
-            translate_general_kind(general_node["kind"]),
-            general_node["name"],
-            translate_optional(general_node["size"], translate_expr),
-            translate_optional(general_node["port"], translate_qual_ident),
-            translate_optional(general_node["priority"], translate_expr),
-            translate_optional(general_node["queueFull"], translate_queue_full),
-        )
+        return translate_general_port_instance(d["General"])
     else:
         raise InvalidFppToJsonDictionary("port instance", d)
 
@@ -847,7 +857,9 @@ def translate_topology_members(l: List) -> List[TopologyMember]:
                             )
                         )
                     member = TopologyMemberSpecConnectionGraph(
-                        AstNode.create_with_id(Direct(data["Direct"]["name"], connections), id)
+                        AstNode.create_with_id(
+                            Direct(data["Direct"]["name"], connections), id
+                        )
                     )
                 elif "Pattern" in data:
                     targets = []
@@ -1094,6 +1106,7 @@ def translate_trans_unit(l: List) -> TransUnit:
     for m in l:
         trans_unit_members = translate_module_members(m["members"])
     return TransUnit(trans_unit_members)
+
 
 def translate_ast_json(file: str) -> TransUnit:
     if not os.path.exists(file):

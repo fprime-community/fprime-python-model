@@ -1,27 +1,28 @@
-from fpp_ast_visitor import AstVisitor, In
-from typing import Dict, TypeAlias, Union
-from fpp_ast_node import AstId, T, AstNode
-import fpp_ast
-from error import InternalError
+from fprime_python_model.utils.fpp_ast_visitor import AstVisitor, In
+from typing import Dict, TypeAlias, Tuple
+from fprime_python_model.fpp_ast.fpp_ast_node import AstId, T, AstNode
+from fprime_python_model.fpp_ast import fpp_ast
+from fprime_python_model.utils.error import InternalError
 
 Out: TypeAlias = None
+
 
 class ConstructAstMap(AstVisitor):
 
     def __init__(self):
         super().__init__()
-        self.ast_id_map: Dict[AstId, Union[fpp_ast.Annotated[AstNode[T]], AstNode[T]]] = dict()
+        self.ast_id_map: Dict[AstId, AstNode[T]] = dict()
+        self.annotated_ast_id_map: Dict[AstId, fpp_ast.Annotated[AstNode[T]]] = dict()
 
     def default(self, _in: In):
         raise InternalError("ConstructAstMap: Visitor not implemented")
 
     def add_annotated_node_to_map(self, a_node: fpp_ast.Annotated[AstNode[T]]):
-        print(a_node[1]._id)
-        self.ast_id_map[a_node[1]._id] = a_node
+        self.annotated_ast_id_map[a_node[1]._id] = a_node
 
     def add_node_to_map(self, a_node: AstNode[T]):
         self.ast_id_map[a_node._id] = a_node
-    
+
     def def_abs_type_annotated_node(
         self, _in: In, a_node: fpp_ast.Annotated[AstNode[fpp_ast.DefAbsType]]
     ) -> Out:
@@ -171,7 +172,9 @@ class ConstructAstMap(AstVisitor):
         for m in data.members:
             self.topology_member(m)
 
-    def def_enum_constant(self, a_node: fpp_ast.Annotated[AstNode[fpp_ast.DefEnumConstant]]) -> Out:
+    def def_enum_constant(
+        self, a_node: fpp_ast.Annotated[AstNode[fpp_ast.DefEnumConstant]]
+    ) -> Out:
         self.add_annotated_node_to_map(a_node)
 
     def expr_array_node(
@@ -291,6 +294,9 @@ class ConstructAstMap(AstVisitor):
         self, _in: In, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecPortInstance]]
     ) -> Out:
         self.add_annotated_node_to_map(a_node)
+        if isinstance(a_node[1].data, fpp_ast.GeneralPortInstance):
+            if a_node[1].data.port:
+                self.add_node_to_map(a_node[1].data.port)
 
     def spec_port_matching_annotated_node(
         self, _in: In, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecPortMatching]]
@@ -358,7 +364,7 @@ class ConstructAstMap(AstVisitor):
         self, _in: In, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecImport]]
     ) -> Out:
         self.add_annotated_node_to_map(a_node)
-    
+
     def module_member(self, member: fpp_ast.ModuleMember) -> Out:
         a1, _, a2 = member.node
         self.match_module_member(None, member)
@@ -379,33 +385,34 @@ class ConstructAstMap(AstVisitor):
         a1, _, a2 = member.node
         self.match_state_machine_member(None, member)
 
-    def struct_type_member(self, member: fpp_ast.Annotated[AstNode[fpp_ast.StructTypeMember]]) -> Out:
+    def struct_type_member(
+        self, member: fpp_ast.Annotated[AstNode[fpp_ast.StructTypeMember]]
+    ) -> Out:
         self.add_annotated_node_to_map(member)
         self.type_name_node(member[1].data.type_name)
-    
+
     def interface_member(self, member: fpp_ast.InterfaceMember) -> Out:
         a1, _, a2 = member.node
         self.match_interface_member(None, member)
-    
+
     def tlm_packet_set_member(self, member: fpp_ast.TlmPacketSetMember) -> Out:
         a1, _, a2 = member.node
         self.match_tlm_packet_set_member(None, member)
-    
+
     def expr_node(self, node):
         self.match_expr_node(None, node)
 
     def tu_member(self, tum: fpp_ast.TUMember) -> Out:
         self.module_member(tum)
 
-    def trans_unit(self, in_, tu: fpp_ast.TransUnit) -> Dict[AstId, Union[fpp_ast.Annotated[AstNode[T]], AstNode[T]]]:
+    def trans_unit(self, in_, tu: fpp_ast.TransUnit) -> Out:
         for member in tu.members:
             self.tu_member(member)
-        return self.ast_id_map
-    
+
     def type_name_node(self, node: AstNode[fpp_ast.TypeName]) -> Out:
         self.match_type_name_node(None, node)
-    
-    def type_name_bool_node( self, _in: In, a_node: AstNode[fpp_ast.TypeName]) -> Out:
+
+    def type_name_bool_node(self, _in: In, a_node: AstNode[fpp_ast.TypeName]) -> Out:
         self.add_node_to_map(a_node)
 
     def type_name_float_node(
@@ -427,7 +434,15 @@ class ConstructAstMap(AstVisitor):
         self, _in: In, a_node: AstNode[fpp_ast.TypeName], tn: fpp_ast.TypeNameString
     ) -> Out:
         self.add_node_to_map(a_node)
+        if tn.size:
+            self.add_node_to_map(tn.size)
 
     def formal_param_list(self, params: fpp_ast.FormalParamList) -> Out:
         for param in params:
             self.type_name_node(param[1].data.type_name)
+
+    def construct_ast_map(
+        self, tu: fpp_ast.TransUnit
+    ) -> Tuple[Dict[AstId, AstNode[T]], Dict[AstId, fpp_ast.Annotated[AstNode[T]]]]:
+        self.trans_unit(None, tu)
+        return self.ast_id_map, self.annotated_ast_id_map

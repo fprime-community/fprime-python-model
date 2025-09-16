@@ -1,8 +1,9 @@
 from dataclasses import dataclass
 from typing import Generic, TypeVar, ClassVar, TypeAlias
 
-T = TypeVar('T')
+T = TypeVar("T")
 AstId: TypeAlias = int
+
 
 @dataclass(frozen=True)
 class AstNode(Generic[T]):
@@ -20,9 +21,9 @@ class AstNode(Generic[T]):
         return id0
 
     @classmethod
-    def create(cls, data: T) -> 'AstNode[T]':
+    def create(cls, data: T) -> "AstNode[T]":
         return cls(data, cls.get_id())
-    
+
     @classmethod
-    def create_with_id(cls, data: T, id: AstId) -> 'AstNode[T]':
+    def create_with_id(cls, data: T, id: AstId) -> "AstNode[T]":
         return cls(data, id)

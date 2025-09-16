@@ -1,11 +1,19 @@
 from dataclasses import dataclass, field
 from typing import Optional, Set, List, Dict, Tuple
-from fpp_ast_node import AstId
+from fprime_python_model.fpp_ast.fpp_ast_node import AstId
 from typing import Any
-from semantics.symbol import Symbol, ComponentSymbol, ComponentInstanceSymbol, StateMachineSymbol, ConstantSymbol, TopologySymbol
-from semantics.scope import Scope
-from semantics.types_values import Type, Value
+from fprime_python_model.semantics.symbol import (
+    Symbol,
+    ComponentSymbol,
+    ComponentInstanceSymbol,
+    StateMachineSymbol,
+    ConstantSymbol,
+    TopologySymbol,
+)
+from fprime_python_model.semantics.scope import Scope
+from fprime_python_model.semantics.types_values import Type, Value
 from pathlib import Path
+
 
 @dataclass
 class Analysis:
@@ -33,13 +41,15 @@ class Analysis:
     type_map: Dict[AstId, Type] = field(default_factory=dict)
 
     # Mapping from constant symbols and expressions to their values
-    value_map: Dict[ConstantSymbol, Value] = field(default_factory=dict)
+    value_map: Dict[AstId, Value] = field(default_factory=dict)
 
     # Map from component symbols to components
     component_map: Dict[ComponentSymbol, Any] = field(default_factory=dict)
 
     # Map from component instance symbols to component instances
-    component_instance_map: Dict[ComponentInstanceSymbol, Any] = field(default_factory=dict)
+    component_instance_map: Dict[ComponentInstanceSymbol, Any] = field(
+        default_factory=dict
+    )
 
     # # Map from interface symbols to interfaces
     # Not in fpp-to-json analysis output
@@ -50,4 +60,3 @@ class Analysis:
 
     # Map from state machine symbols to state machines
     state_machine_map: Dict[StateMachineSymbol, Any] = field(default_factory=dict)
-
