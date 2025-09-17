@@ -899,15 +899,6 @@ def translate_topology_members(l: List) -> List[TopologyMember]:
         members.append(TopologyMember(annotate(m[0], member, m[2])))
     return members
 
-# def translate_tu_member(tu_member) -> ModuleMemberDefModule:
-#     member = ModuleMemberDefModule(
-#         AstNode.create_with_id(
-#             DefModule(
-#                 tu_member["name"], translate_module_members(tu_member["members"])
-#             ),
-#             id,
-#         )
-#     )
 
 def translate_module_members(l: List) -> List[ModuleMember]:
     members = []
@@ -1112,6 +1103,7 @@ def translate_trans_unit_list(l: List) -> List[TransUnit]:
         trans_unit_members = translate_module_members(tu["members"])
         trans_units.append(TransUnit(trans_unit_members))
     return trans_units
+
 
 def translate_ast_json(file: str) -> List[TransUnit]:
     if not os.path.exists(file):

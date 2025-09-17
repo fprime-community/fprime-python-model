@@ -89,6 +89,7 @@ from fprime_python_model.utils.error import InternalError
 
 RT = TypeVar("RT")
 
+
 class AnalysisTranslator:
     """
     Translates the JSON representation of an FPP analysis to an Analysis Python data structure.
@@ -127,7 +128,7 @@ class AnalysisTranslator:
         for i in l:
             out_set.add(Path(str(i)))
         return out_set
-    
+
     def translate_symbol(self, symbol_type: str, node_id: AstId) -> Symbol:
         a_node = self.get_annotated_ast_node_by_id(node_id)
         match symbol_type:
@@ -425,15 +426,17 @@ class AnalysisTranslator:
     def translate_alias_type(self, d: Dict[str, dict]) -> AliasType:
         a_node = self.get_annotated_ast_node_by_id(AstId(d["node"]["astNodeId"]))
         return AliasType(a_node, self.translate_type(d["aliasType"]))
-    
+
     def translate_boolean_type(self) -> BooleanType:
         return BooleanType()
-    
+
     def require_type(self, var: object, expected_type: type) -> RT:
         if not isinstance(var, expected_type):
-            raise TypeError(f"{var} must be of type {expected_type.__name__}, not {type(var).__name__}")        
-        return cast('RT', var)
-    
+            raise TypeError(
+                f"{var} must be of type {expected_type.__name__}, not {type(var).__name__}"
+            )
+        return cast("RT", var)
+
     def translate_primitive_int_value(self, d: Dict[str, dict]) -> PrimitiveIntValue:
         value: int = self.require_type(d["value"], int)
         kind = self.translate_primitive_int_kind(next(iter(d["kind"])))
@@ -458,7 +461,7 @@ class AnalysisTranslator:
 
     def translate_integer_value(self, d: Dict[str, int]) -> IntegerValue:
         return IntegerValue(int(d["value"]))
-    
+
     def translate_boolean_value(self, d: Dict[str, int]) -> BooleanValue:
         return BooleanValue(bool(d["value"]))
 
@@ -562,10 +565,8 @@ class AnalysisTranslator:
         match ty:
             case "DefPort":
                 symbol: PortSymbol = self.require_type(
-                    self.translate_symbol(
-                        "Port", d[ty]["symbol"]["Port"]["nodeId"]
-                    ), 
-                    PortSymbol
+                    self.translate_symbol("Port", d[ty]["symbol"]["Port"]["nodeId"]),
+                    PortSymbol,
                 )
                 return DefPortPortInstanceType(symbol)
             case "Serial":
@@ -596,8 +597,7 @@ class AnalysisTranslator:
         a_node = self.get_annotated_ast_node_by_id(int(d["aNode"]["astNodeId"]))
         specifier = translate_special_port_instance(d["specifier"])
         symbol: PortSymbol = self.require_type(
-            self.translate_symbol("Port", d["symbol"]["Port"]["nodeId"]),
-            PortSymbol
+            self.translate_symbol("Port", d["symbol"]["Port"]["nodeId"]), PortSymbol
         )
         priority = self.translate_optional(d["priority"], int)
         queue_full = self.translate_optional(d["queueFull"], get_queue_full)
@@ -673,7 +673,7 @@ class AnalysisTranslator:
         a_node = self.get_annotated_ast_node_by_id(int(d["aNode"]["astNodeId"]))
         symbol: StateMachineSymbol = self.require_type(
             self.translate_symbol("StateMachine", d["symbol"]["node"]["astNodeId"]),
-            StateMachineSymbol
+            StateMachineSymbol,
         )
         priority = self.translate_optional(d["priority"], int)
         queue_full = get_queue_full(d["queueFull"])
