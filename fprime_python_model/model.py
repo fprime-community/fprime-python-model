@@ -23,20 +23,43 @@ class FprimePythonModel:
         self.fpp_ast_json_file = fpp_ast_json_file
         self.fpp_locations_json_file = fpp_locations_json_file
         self.fpp_analysis_json_file = fpp_analysis_json_file
-        self.ast_id_map: Dict[AstId, AstNode[T]] = dict()
-        self.annotated_ast_id_map: Dict[AstId, Annotated[AstNode[T]]] = dict()
-        self.ast: List[TransUnit] = list()
-        self.location_map: Dict[int, Location] = dict()
-        self.analysis: Analysis = Analysis()
+        self._ast_id_map: Dict[AstId, AstNode] = dict()
+        self._annotated_ast_id_map: Dict[AstId, Annotated[AstNode]] = dict()
+        self._ast: List[TransUnit] = list()
+        self._location_map: Dict[int, Location] = dict()
+        self._analysis: Analysis = Analysis()
 
-        self._translate_json()
+        self._load()
 
-    def _translate_json(self):
-        self.location_map = translate_location_map_json(self.fpp_locations_json_file)
-        self.ast = translate_ast_json(self.fpp_ast_json_file)
-        self.ast_id_map, self.annotated_ast_id_map = (
-            ConstructAstMap().construct_ast_map(self.ast)
+    def _load(self):
+        self._location_map = translate_location_map_json(self.fpp_locations_json_file)
+        self._ast = translate_ast_json(self.fpp_ast_json_file)
+        self._ast_id_map, self._annotated_ast_id_map = (
+            ConstructAstMap().construct_ast_map(self._ast)
         )
-        self.analysis = AnalysisTranslator(
-            self.ast_id_map, self.annotated_ast_id_map, self.fpp_analysis_json_file
+        self._analysis = AnalysisTranslator(
+            self._ast_id_map, self._annotated_ast_id_map, self.fpp_analysis_json_file
         ).translate_analysis_json()
+
+    @property
+    def analysis(self) -> Analysis:
+        return self._analysis
+
+    @property
+    def ast(self) -> List[TransUnit]:
+        return self._ast
+
+    @property
+    def location_map(self) -> Dict[int, Location]:
+        return self._location_map
+
+    @property
+    def annotated_ast_id_map(self) -> Dict[AstId, Annotated[AstNode]]:
+        return self._annotated_ast_id_map
+
+    @property
+    def ast_id_map(self) -> Dict[AstId, AstNode]:
+        return self._ast_id_map
+
+    def get_location(self, node: AstNode) -> Location:
+        return self.location_map[node._id]

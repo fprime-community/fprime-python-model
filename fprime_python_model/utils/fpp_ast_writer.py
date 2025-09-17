@@ -592,7 +592,7 @@ class AstWriter(AstVisitor, LineUtils):
                 self.lines_opt(
                     self.add_prefix("input kind", self.string),
                     str(i.input_kind) if i.input_kind is not None else None,
-                )  # TODO: update to be consistent with how we handle optionals
+                )
                 + kind
                 + self.ident(i.name)
                 + self.lines_opt(

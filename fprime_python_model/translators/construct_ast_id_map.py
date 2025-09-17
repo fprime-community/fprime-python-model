@@ -1,6 +1,6 @@
 from fprime_python_model.utils.fpp_ast_visitor import AstVisitor, In
 from typing import Dict, TypeAlias, Tuple, List
-from fprime_python_model.fpp_ast.fpp_ast_node import AstId, T, AstNode
+from fprime_python_model.fpp_ast.fpp_ast_node import AstId, AstNode
 from fprime_python_model.fpp_ast import fpp_ast
 from fprime_python_model.utils.error import InternalError
 
@@ -11,16 +11,16 @@ class ConstructAstMap(AstVisitor):
 
     def __init__(self):
         super().__init__()
-        self.ast_id_map: Dict[AstId, AstNode[T]] = dict()
-        self.annotated_ast_id_map: Dict[AstId, fpp_ast.Annotated[AstNode[T]]] = dict()
+        self.ast_id_map: Dict[AstId, AstNode] = dict()
+        self.annotated_ast_id_map: Dict[AstId, fpp_ast.Annotated[AstNode]] = dict()
 
     def default(self, _in: In):
         raise InternalError("ConstructAstMap: Visitor not implemented")
 
-    def add_annotated_node_to_map(self, a_node: fpp_ast.Annotated[AstNode[T]]):
+    def add_annotated_node_to_map(self, a_node: fpp_ast.Annotated[AstNode]):
         self.annotated_ast_id_map[a_node[1]._id] = a_node
 
-    def add_node_to_map(self, a_node: AstNode[T]):
+    def add_node_to_map(self, a_node: AstNode):
         self.ast_id_map[a_node._id] = a_node
 
     def def_abs_type_annotated_node(
@@ -438,7 +438,7 @@ class ConstructAstMap(AstVisitor):
 
     def construct_ast_map(
         self, tu_list: List[fpp_ast.TransUnit]
-    ) -> Tuple[Dict[AstId, AstNode[T]], Dict[AstId, fpp_ast.Annotated[AstNode[T]]]]:
+    ) -> Tuple[Dict[AstId, AstNode], Dict[AstId, fpp_ast.Annotated[AstNode]]]:
         for tu in tu_list:
             self.trans_unit(None, tu)
         return self.ast_id_map, self.annotated_ast_id_map

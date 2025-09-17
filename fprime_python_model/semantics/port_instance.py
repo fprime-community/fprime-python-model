@@ -75,7 +75,9 @@ class PortInstance(ABC):
     def get_type(self) -> Optional[PortInstanceType]:
         return None
 
-    # def get_loc TODO
+    @abstractmethod
+    def get_node(self) -> AstNode:
+        pass
 
     @abstractmethod
     def get_node_id(self) -> AstId:
@@ -95,6 +97,9 @@ class GeneralPortInstance(PortInstance):
     ty: PortInstanceType
     import_node_ids: List[AstId] = field(default_factory=list)
 
+    def get_node(self) -> AstNode:
+        return self.a_node[1]
+
     def get_node_id(self) -> AstId:
         return self.a_node[1]._id
 
@@ -111,6 +116,9 @@ class SpecialPortInstance(PortInstance):
     queue_full: Optional[fpp_ast.QueueFull]
     import_node_ids: List[AstId] = field(default_factory=list)
 
+    def get_node(self) -> AstNode:
+        return self.a_node[1]
+
     def get_node_id(self) -> AstId:
         return self.a_node[1]._id
 
@@ -123,6 +131,9 @@ class InternalPortInstance(PortInstance):
     a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecialPortInstance]]
     priority: Optional[int]
     queue_full: Optional[fpp_ast.QueueFull]
+
+    def get_node(self) -> AstNode:
+        return self.a_node[1]
 
     def get_node_id(self) -> AstId:
         return self.a_node[1]._id

@@ -26,4 +26,5 @@ class StateMachineInstance:
     def get_sm_kind(self) -> StateMachineKind:
         return get_symbol_kind(self.symbol)
 
-    # TODO get loc
+    def get_node(self) -> AstNode:
+        return self.a_node[1]

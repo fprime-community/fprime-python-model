@@ -15,9 +15,9 @@ class Command(ABC):
     def get_name(self) -> str:
         pass
 
-    # @abstractmethod TODO
-    # def get_loc(self) -> Location:
-    #     pass
+    @abstractmethod
+    def get_node(self) -> AstNode:
+        pass
 
 
 class NonParamKind(ABC):
@@ -63,6 +63,10 @@ class CommandNonParam(Command):
     def get_name(self) -> str:
         return self.a_node[1].data.name
 
+    @override
+    def get_node(self) -> AstNode:
+        return self.a_node[1]
+
 
 @dataclass
 class CommandParam(Command):
@@ -76,3 +80,7 @@ class CommandParam(Command):
             return f"{param_name}_PRM_SAVE"
         else:
             return f"{param_name}_PRM_SET"
+
+    @override
+    def get_node(self) -> AstNode:
+        return self.a_node[1]

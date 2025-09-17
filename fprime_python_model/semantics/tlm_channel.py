@@ -21,4 +21,5 @@ class TlmChannel:
     def get_name(self) -> fpp_ast.Ident:
         return self.a_node[1].data.name
 
-    # TODO get loc
+    def get_node(self) -> AstNode:
+        return self.a_node[1]

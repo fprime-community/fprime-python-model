@@ -1,5 +1,16 @@
 import json
-from typing import Dict, List, Set, Callable, Any, Optional, Tuple, TypeVar, cast
+from typing import (
+    Dict,
+    List,
+    Set,
+    Callable,
+    Any,
+    Optional,
+    Tuple,
+    TypeVar,
+    cast,
+    Type as TypingType,
+)
 import os
 from fprime_python_model.fpp_ast import fpp_ast
 from fprime_python_model.fpp_ast.fpp_ast_node import AstId, T
@@ -413,11 +424,17 @@ class AnalysisTranslator:
             field_list.append((field, field_string))
         return Format(prefix, field_list)
 
+    def translate_sizes(self, d: Dict[str, int]) -> Dict[fpp_ast.Unqualified, int]:
+        out_dict: Dict[fpp_ast.Unqualified, int] = dict()
+        for name, size in d.items():
+            out_dict[fpp_ast.Unqualified(name)] = self.require_type(size, int)
+        return out_dict
+
     def translate_struct_type(self, d: Dict[str, dict]) -> StructType:
         a_node = self.get_annotated_ast_node_by_id(AstId(d["node"]["astNodeId"]))
         anon_struct_type = self.translate_anon_struct_type(d["anonStruct"])
         default = self.translate_optional(d["default"], self.translate_struct_value)
-        sizes: Dict[fpp_ast.Unqualified, int] = dict()  # TODO convert sizes
+        sizes: Dict[fpp_ast.Unqualified, int] = self.translate_sizes(d["sizes"])
         formats: Dict[fpp_ast.Unqualified, Format] = dict()
         for name, format_dict in d["formats"].items():
             formats[name] = self.translate_format(format_dict)
@@ -430,12 +447,12 @@ class AnalysisTranslator:
     def translate_boolean_type(self) -> BooleanType:
         return BooleanType()
 
-    def require_type(self, var: object, expected_type: type) -> RT:
+    def require_type(self, var: object, expected_type: TypingType[RT]) -> RT:
         if not isinstance(var, expected_type):
             raise TypeError(
                 f"{var} must be of type {expected_type.__name__}, not {type(var).__name__}"
             )
-        return cast("RT", var)
+        return cast(RT, var)
 
     def translate_primitive_int_value(self, d: Dict[str, dict]) -> PrimitiveIntValue:
         value: int = self.require_type(d["value"], int)
