@@ -1,5 +1,5 @@
 from fprime_python_model.utils.fpp_ast_visitor import AstVisitor, In
-from typing import Dict, TypeAlias, Tuple
+from typing import Dict, TypeAlias, Tuple, List
 from fprime_python_model.fpp_ast.fpp_ast_node import AstId, T, AstNode
 from fprime_python_model.fpp_ast import fpp_ast
 from fprime_python_model.utils.error import InternalError
@@ -236,6 +236,7 @@ class ConstructAstMap(AstVisitor):
         self, _in: In, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecCommand]]
     ) -> Out:
         self.add_annotated_node_to_map(a_node)
+        self.formal_param_list(a_node[1].data.params)
 
     def spec_comp_instance_annotated_node(
         self, _in: In, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecCompInstance]]
@@ -256,6 +257,7 @@ class ConstructAstMap(AstVisitor):
         self, _in: In, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecEvent]]
     ) -> Out:
         self.add_annotated_node_to_map(a_node)
+        self.formal_param_list(a_node[1].data.params)
 
     def spec_include_annotated_node(
         self, _in: In, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecInclude]]
@@ -366,23 +368,18 @@ class ConstructAstMap(AstVisitor):
         self.add_annotated_node_to_map(a_node)
 
     def module_member(self, member: fpp_ast.ModuleMember) -> Out:
-        a1, _, a2 = member.node
         self.match_module_member(None, member)
 
     def topology_member(self, member: fpp_ast.TopologyMember) -> Out:
-        a1, _, a2 = member.node
         self.match_topology_member(None, member)
 
     def component_member(self, member: fpp_ast.ComponentMember) -> Out:
-        a1, _, a2 = member.node
         self.match_component_member(None, member)
 
     def state_member(self, member: fpp_ast.StateMember) -> Out:
-        a1, _, a2 = member.node
         self.match_state_member(None, member)
 
     def state_machine_member(self, member: fpp_ast.StateMachineMember) -> Out:
-        a1, _, a2 = member.node
         self.match_state_machine_member(None, member)
 
     def struct_type_member(
@@ -392,11 +389,9 @@ class ConstructAstMap(AstVisitor):
         self.type_name_node(member[1].data.type_name)
 
     def interface_member(self, member: fpp_ast.InterfaceMember) -> Out:
-        a1, _, a2 = member.node
         self.match_interface_member(None, member)
 
     def tlm_packet_set_member(self, member: fpp_ast.TlmPacketSetMember) -> Out:
-        a1, _, a2 = member.node
         self.match_tlm_packet_set_member(None, member)
 
     def expr_node(self, node):
@@ -442,7 +437,8 @@ class ConstructAstMap(AstVisitor):
             self.type_name_node(param[1].data.type_name)
 
     def construct_ast_map(
-        self, tu: fpp_ast.TransUnit
+        self, tu_list: List[fpp_ast.TransUnit]
     ) -> Tuple[Dict[AstId, AstNode[T]], Dict[AstId, fpp_ast.Annotated[AstNode[T]]]]:
-        self.trans_unit(None, tu)
+        for tu in tu_list:
+            self.trans_unit(None, tu)
         return self.ast_id_map, self.annotated_ast_id_map

@@ -12,6 +12,7 @@ from fprime_python_model.semantics.symbol import (
 )
 from fprime_python_model.semantics.scope import Scope
 from fprime_python_model.semantics.types_values import Type, Value
+from fprime_python_model.semantics.component import Component
 from pathlib import Path
 
 
@@ -40,11 +41,11 @@ class Analysis:
     # Mapping from types and constant symbols to their types
     type_map: Dict[AstId, Type] = field(default_factory=dict)
 
-    # Mapping from constant symbols and expressions to their values
+    # Mapping from constant symbol and expression AST IDs to their values
     value_map: Dict[AstId, Value] = field(default_factory=dict)
 
-    # Map from component symbols to components
-    component_map: Dict[ComponentSymbol, Any] = field(default_factory=dict)
+    # Map from component Ast IDs to components
+    component_map: Dict[AstId, Component] = field(default_factory=dict)
 
     # Map from component instance symbols to component instances
     component_instance_map: Dict[ComponentInstanceSymbol, Any] = field(

@@ -1,5 +1,5 @@
 import json
-from typing import Dict, List, Set, Callable, Any, Optional, Tuple
+from typing import Dict, List, Set, Callable, Any, Optional, Tuple, TypeVar, cast
 import os
 from fprime_python_model.fpp_ast import fpp_ast
 from fprime_python_model.fpp_ast.fpp_ast_node import AstId, T
@@ -38,6 +38,7 @@ from fprime_python_model.semantics.types_values import (
     AnonStructValue,
     StructMembersValue,
     StructMembersType,
+    AliasType,
 )
 from fprime_python_model.utils.error import InvalidFppToJsonField
 from fprime_python_model.semantics.format import (
@@ -76,7 +77,6 @@ from fprime_python_model.translators.ast_translator import (
     translate_special_port_instance,
     translate_general_kind,
     translate_special_kind,
-    translate_general_port_instance,
     translate_spec_tlm_channel_update,
 )
 from fprime_python_model.semantics.tlm_channel import TlmChannel, TlmChannelId, Limits
@@ -87,6 +87,7 @@ from fprime_python_model.semantics.container import Container, ContainerId
 from fprime_python_model.semantics.record import Record, RecordId
 from fprime_python_model.utils.error import InternalError
 
+RT = TypeVar("RT")
 
 class AnalysisTranslator:
     """
@@ -126,7 +127,7 @@ class AnalysisTranslator:
         for i in l:
             out_set.add(Path(str(i)))
         return out_set
-
+    
     def translate_symbol(self, symbol_type: str, node_id: AstId) -> Symbol:
         a_node = self.get_annotated_ast_node_by_id(node_id)
         match symbol_type:
@@ -202,9 +203,7 @@ class AnalysisTranslator:
             parent_symbol_type = next(iter(inner_dict))
             parent_id = AstId(inner_dict[parent_symbol_type]["nodeId"])
             parent_symbol: Symbol = self.translate_symbol(parent_symbol_type, parent_id)
-            out_dict[AstId(child_id)] = (
-                parent_symbol  # TODO update so the symbol can be the key in the dictionary
-            )
+            out_dict[AstId(child_id)] = parent_symbol
         return out_dict
 
     def translate_use_def_map(self, d: Dict[str, dict]) -> Dict[AstId, Symbol]:
@@ -213,9 +212,7 @@ class AnalysisTranslator:
             def_symbol_type = next(iter(inner_dict))
             def_id = AstId(inner_dict[def_symbol_type]["nodeId"])
             def_symbol: Symbol = self.translate_symbol(def_symbol_type, def_id)
-            out_dict[AstId(use_id)] = (
-                def_symbol  # TODO update so the symbol can be the key in the dictionary
-            )
+            out_dict[AstId(use_id)] = def_symbol
         return out_dict
 
     def translate_name_group(self, ng: str) -> NameGroup:
@@ -260,8 +257,8 @@ class AnalysisTranslator:
     def translate_primitive_type(self, d: Dict[str, dict]) -> Type:
         t_type = next(iter(d))
         match t_type:
-            case "Bool":
-                return BooleanType()
+            case "Boolean":
+                return self.translate_boolean_type()
             case "Float":
                 kind = self.translate_float_kind(next(iter(d[t_type]["kind"])))
                 return FloatType(kind)
@@ -425,28 +422,29 @@ class AnalysisTranslator:
             formats[name] = self.translate_format(format_dict)
         return StructType(a_node, anon_struct_type, default, sizes, formats)
 
+    def translate_alias_type(self, d: Dict[str, dict]) -> AliasType:
+        a_node = self.get_annotated_ast_node_by_id(AstId(d["node"]["astNodeId"]))
+        return AliasType(a_node, self.translate_type(d["aliasType"]))
+    
+    def translate_boolean_type(self) -> BooleanType:
+        return BooleanType()
+    
+    def require_type(self, var: object, expected_type: type) -> RT:
+        if not isinstance(var, expected_type):
+            raise TypeError(f"{var} must be of type {expected_type.__name__}, not {type(var).__name__}")        
+        return cast('RT', var)
+    
     def translate_primitive_int_value(self, d: Dict[str, dict]) -> PrimitiveIntValue:
-        if not isinstance(d["value"], int):
-            raise TypeError(
-                f"{d['value']} has an invalid type; expected int, actual {type(d['value'])}"
-            )
-        value = d["value"]
+        value: int = self.require_type(d["value"], int)
         kind = self.translate_primitive_int_kind(next(iter(d["kind"])))
         return PrimitiveIntValue(value, kind)
 
     def translate_string_value(self, d: Dict[str, dict]) -> StringValue:
-        if not isinstance(d["value"], str):
-            raise TypeError(
-                f"{d['value']} has an invalid type; expected string, actual {type(d['value'])}"
-            )
-        return StringValue(d["value"])
+        value: str = self.require_type(d["value"], str)
+        return StringValue(value)
 
     def translate_float_value(self, d: Dict[str, dict]) -> FloatValue:
-        if not isinstance(d["value"], float):
-            raise TypeError(
-                f"{d['value']} has an invalid type; expected float, actual {type(d['value'])}"
-            )
-        value = float(d["value"])
+        value: float = self.require_type(d["value"], float)
         kind = self.translate_float_kind(next(iter(d["kind"])))
         return FloatValue(value, kind)
 
@@ -460,6 +458,9 @@ class AnalysisTranslator:
 
     def translate_integer_value(self, d: Dict[str, int]) -> IntegerValue:
         return IntegerValue(int(d["value"]))
+    
+    def translate_boolean_value(self, d: Dict[str, int]) -> BooleanValue:
+        return BooleanValue(bool(d["value"]))
 
     def translate_value(self, d: Dict[str, dict]) -> Value:
         v_type = next(iter(d))
@@ -468,6 +469,8 @@ class AnalysisTranslator:
                 return self.translate_integer_value(d[v_type])
             case "PrimitiveInt":
                 return self.translate_primitive_int_value(d[v_type])
+            case "Boolean":
+                return self.translate_boolean_value(d[v_type])
             case "Float":
                 return self.translate_float_value(d[v_type])
             case "String":
@@ -494,6 +497,8 @@ class AnalysisTranslator:
                 return self.translate_primitive_type(d[t_type])
             case "Int":
                 return self.translate_int_type(d[t_type])
+            case "Boolean":
+                return self.translate_boolean_type()
             case "Enum":
                 return self.translate_enum_type(d[t_type])
             case "Array":
@@ -508,6 +513,8 @@ class AnalysisTranslator:
                 return self.translate_anon_array_type(d[t_type])
             case "AbsType":
                 return self.translate_abs_type(d[t_type])
+            case "AliasType":
+                return self.translate_alias_type(d[t_type])
             case _:
                 raise InternalError(f"Translation not implemented for type {t_type}")
 
@@ -554,8 +561,11 @@ class AnalysisTranslator:
         ty = next(iter(d))
         match ty:
             case "DefPort":
-                symbol = self.translate_symbol(
-                    "Port", d[ty]["symbol"]["Port"]["nodeId"]
+                symbol: PortSymbol = self.require_type(
+                    self.translate_symbol(
+                        "Port", d[ty]["symbol"]["Port"]["nodeId"]
+                    ), 
+                    PortSymbol
                 )
                 return DefPortPortInstanceType(symbol)
             case "Serial":
@@ -585,7 +595,10 @@ class AnalysisTranslator:
     ) -> SpecialPortInstance:
         a_node = self.get_annotated_ast_node_by_id(int(d["aNode"]["astNodeId"]))
         specifier = translate_special_port_instance(d["specifier"])
-        symbol = self.translate_symbol("Port", d["symbol"]["Port"]["nodeId"])
+        symbol: PortSymbol = self.require_type(
+            self.translate_symbol("Port", d["symbol"]["Port"]["nodeId"]),
+            PortSymbol
+        )
         priority = self.translate_optional(d["priority"], int)
         queue_full = self.translate_optional(d["queueFull"], get_queue_full)
         import_node_ids = [AstId(i) for i in d["importNodeIds"]]
@@ -597,19 +610,15 @@ class AnalysisTranslator:
         self, d: Dict[str, dict]
     ) -> GeneralPortInstance:
         a_node = self.get_annotated_ast_node_by_id(int(d["aNode"]["astNodeId"]))
-        port_qual_ident_node = None
-        if "Some" in d["specifier"]["port"]:
-            port_qual_ident_node = self.get_annotated_ast_node_by_id(
-                AstId(d["specifier"]["port"]["Some"]["astNodeId"])
-            )[1]
-        specifier = translate_general_port_instance(
-            d["specifier"], port_qual_ident_node
-        )
         kind = translate_general_kind(d["kind"])
         size = d["size"]
+        if not isinstance(size, int):
+            raise TypeError(
+                f"{d['size']} has an invalid type; expected int, actual {type(d['size'])}"
+            )
         ty = self.translate_port_instance_type(d["ty"])
         import_node_ids = [AstId(i) for i in d["importNodeIds"]]
-        return GeneralPortInstance(a_node, specifier, kind, size, ty, import_node_ids)
+        return GeneralPortInstance(a_node, None, kind, size, ty, import_node_ids)
 
     def translate_limit_kind(self, kind_str: str) -> fpp_ast.LimitKind:
         match kind_str:
@@ -650,9 +659,9 @@ class AnalysisTranslator:
         a_node = self.get_annotated_ast_node_by_id(int(d["aNode"]["astNodeId"]))
         param_type = self.translate_type(d["paramType"])
         default = self.translate_optional(d["default"], self.translate_value)
-        set_opcode = d["setOpcode"]
-        save_opcode = d["saveOpcode"]
-        is_external = d["isExternal"]
+        set_opcode: int = self.require_type(d["setOpcode"], int)
+        save_opcode: int = self.require_type(d["saveOpcode"], int)
+        is_external: bool = self.require_type(d["isExternal"], bool)
         return Param(a_node, param_type, default, set_opcode, save_opcode, is_external)
 
     # def translate_spec_port_matching(self, d: Dict[str, dict]) -> fpp_ast.SpecPortMatching:
@@ -662,7 +671,10 @@ class AnalysisTranslator:
         self, d: Dict[str, dict]
     ) -> StateMachineInstance:
         a_node = self.get_annotated_ast_node_by_id(int(d["aNode"]["astNodeId"]))
-        symbol = self.translate_symbol("StateMachine", d["symbol"]["node"]["astNodeId"])
+        symbol: StateMachineSymbol = self.require_type(
+            self.translate_symbol("StateMachine", d["symbol"]["node"]["astNodeId"]),
+            StateMachineSymbol
+        )
         priority = self.translate_optional(d["priority"], int)
         queue_full = get_queue_full(d["queueFull"])
         return StateMachineInstance(a_node, symbol, priority, queue_full)
@@ -812,16 +824,24 @@ class AnalysisTranslator:
             data: Dict = json.load(f)
             return Analysis(
                 included_file_set=self.translate_input_file_set(
-                    data.get("inputFileSet")
+                    self.require_type(data.get("inputFileSet"), list)
                 ),
                 parent_symbol_map=self.translate_parent_symbol_map(
-                    data.get("parentSymbolMap")
+                    self.require_type(data.get("parentSymbolMap"), dict)
                 ),
-                use_def_map=self.translate_use_def_map(data.get("useDefMap")),
+                use_def_map=self.translate_use_def_map(
+                    self.require_type(data.get("useDefMap"), dict)
+                ),
                 symbol_scope_map=self.symbol_scope_translator(
-                    data.get("symbolScopeMap")
+                    self.require_type(data.get("symbolScopeMap"), dict)
                 ),
-                type_map=self.translate_type_map(data.get("typeMap")),
-                value_map=self.translate_value_map(data.get("valueMap")),
-                component_map=self.translate_component_map(data.get("componentMap")),
+                type_map=self.translate_type_map(
+                    self.require_type(data.get("typeMap"), dict)
+                ),
+                value_map=self.translate_value_map(
+                    self.require_type(data.get("valueMap"), dict)
+                ),
+                component_map=self.translate_component_map(
+                    self.require_type(data.get("componentMap"), dict)
+                ),
             )

@@ -8,7 +8,7 @@ class Symbol(SymbolInterface):
     pass
 
 
-@dataclass(eq=False, unsafe_hash=True)
+@dataclass
 class AbsTypeSymbol(Symbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefAbsType]]
 
@@ -19,7 +19,7 @@ class AbsTypeSymbol(Symbol):
         return self.node[1].data.name
 
 
-@dataclass(eq=False, unsafe_hash=True)
+@dataclass
 class AliasTypeSymbol(Symbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefAliasType]]
 
@@ -30,7 +30,7 @@ class AliasTypeSymbol(Symbol):
         return self.node[1].data.name
 
 
-@dataclass(eq=False, unsafe_hash=True)
+@dataclass
 class ArraySymbol(Symbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefArray]]
 
@@ -41,7 +41,7 @@ class ArraySymbol(Symbol):
         return self.node[1].data.name
 
 
-@dataclass(eq=False, unsafe_hash=True)
+@dataclass
 class ComponentSymbol(Symbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefComponent]]
 
@@ -52,7 +52,7 @@ class ComponentSymbol(Symbol):
         return self.node[1].data.name
 
 
-@dataclass(eq=False, unsafe_hash=True)
+@dataclass
 class ComponentInstanceSymbol(Symbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefComponentInstance]]
 
@@ -63,7 +63,7 @@ class ComponentInstanceSymbol(Symbol):
         return self.node[1].data.name
 
 
-@dataclass(eq=False, unsafe_hash=True)
+@dataclass
 class ConstantSymbol(Symbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefConstant]]
 
@@ -74,7 +74,7 @@ class ConstantSymbol(Symbol):
         return self.node[1].data.name
 
 
-@dataclass(eq=False, unsafe_hash=True)
+@dataclass
 class EnumSymbol(Symbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefEnum]]
 
@@ -85,7 +85,7 @@ class EnumSymbol(Symbol):
         return self.node[1].data.name
 
 
-@dataclass(eq=False, unsafe_hash=True)
+@dataclass
 class EnumConstantSymbol(Symbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefEnumConstant]]
 
@@ -96,7 +96,7 @@ class EnumConstantSymbol(Symbol):
         return self.node[1].data.name
 
 
-@dataclass(eq=False, unsafe_hash=True)
+@dataclass
 class InterfaceSymbol(Symbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefInterface]]
 
@@ -107,7 +107,7 @@ class InterfaceSymbol(Symbol):
         return self.node[1].data.name
 
 
-@dataclass(eq=False, unsafe_hash=True)
+@dataclass
 class ModuleSymbol(Symbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefModule]]
 
@@ -118,7 +118,7 @@ class ModuleSymbol(Symbol):
         return self.node[1].data.name
 
 
-@dataclass(eq=False, unsafe_hash=True)
+@dataclass
 class PortSymbol(Symbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefPort]]
 
@@ -129,7 +129,7 @@ class PortSymbol(Symbol):
         return self.node[1].data.name
 
 
-@dataclass(eq=False, unsafe_hash=True)
+@dataclass
 class StateMachineSymbol(Symbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefStateMachine]]
 
@@ -140,7 +140,7 @@ class StateMachineSymbol(Symbol):
         return self.node[1].data.name
 
 
-@dataclass(eq=False, unsafe_hash=True)
+@dataclass
 class StructSymbol(Symbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefStruct]]
 
@@ -151,7 +151,7 @@ class StructSymbol(Symbol):
         return self.node[1].data.name
 
 
-@dataclass(eq=False, unsafe_hash=True)
+@dataclass
 class TopologySymbol(Symbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefTopology]]
 

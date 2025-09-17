@@ -75,7 +75,7 @@ class Qualified(QualIdent):
 
     @override
     def to_ident_list(self):
-        return self.qualifier.data.to_ident_list + [self.name.data]
+        return self.qualifier.data.to_ident_list() + [self.name.data]
 
 
 def qual_ident_from_node_list(node_list: "NodeList") -> QualIdent:

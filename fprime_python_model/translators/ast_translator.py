@@ -716,16 +716,12 @@ def translate_special_port_instance(d: dict) -> SpecialPortInstance:
     )
 
 
-def translate_general_port_instance(
-    d: dict, port_qual_ident_node: Optional[AstNode[QualIdent]] = None
-) -> GeneralPortInstance:
-    if not port_qual_ident_node:
-        port_qual_ident_node = translate_optional(d["port"], translate_qual_ident)
+def translate_general_port_instance(d: dict) -> GeneralPortInstance:
     return GeneralPortInstance(
         translate_general_kind(d["kind"]),
         d["name"],
         translate_optional(d["size"], translate_expr),
-        port_qual_ident_node,
+        translate_optional(d["port"], translate_qual_ident),
         translate_optional(d["priority"], translate_expr),
         translate_optional(d["queueFull"], translate_queue_full),
     )
@@ -903,6 +899,15 @@ def translate_topology_members(l: List) -> List[TopologyMember]:
         members.append(TopologyMember(annotate(m[0], member, m[2])))
     return members
 
+# def translate_tu_member(tu_member) -> ModuleMemberDefModule:
+#     member = ModuleMemberDefModule(
+#         AstNode.create_with_id(
+#             DefModule(
+#                 tu_member["name"], translate_module_members(tu_member["members"])
+#             ),
+#             id,
+#         )
+#     )
 
 def translate_module_members(l: List) -> List[ModuleMember]:
     members = []
@@ -1101,16 +1106,16 @@ def translate_state_machine_members(d: Dict[str, List]) -> List[StateMachineMemb
     return members
 
 
-def translate_trans_unit(l: List) -> TransUnit:
-    trans_unit_members = []
-    for m in l:
-        trans_unit_members = translate_module_members(m["members"])
-    return TransUnit(trans_unit_members)
+def translate_trans_unit_list(l: List) -> List[TransUnit]:
+    trans_units = []
+    for tu in l:
+        trans_unit_members = translate_module_members(tu["members"])
+        trans_units.append(TransUnit(trans_unit_members))
+    return trans_units
 
-
-def translate_ast_json(file: str) -> TransUnit:
+def translate_ast_json(file: str) -> List[TransUnit]:
     if not os.path.exists(file):
         raise FileNotFoundError(f'File "{file}" not found')
     with open(file, "r") as f:
         data: List[Dict] = json.load(f)
-        return translate_trans_unit(data)
+        return translate_trans_unit_list(data)
