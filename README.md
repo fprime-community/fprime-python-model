@@ -10,7 +10,7 @@ tool, see the [FPP User's Guide](https://nasa.github.io/fpp/fpp-users-guide.html
 ```sh
 git clone https://github.com/fprime-community/fprime-python-model.git
 cd fprime-python-model
-pip install fprime-python-model
+pip install .
 ```
 
 ## Usage
