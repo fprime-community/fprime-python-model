@@ -35,3 +35,18 @@ model = FprimePythonModel(
 )
 ```
 
+Once an `FprimePythonModel` is constructed, you can access the python data structures that represent
+the FPP AST, Location Map, and Analysis of the model:
+
+```python
+model.ast # Model AST
+model.locations # Location map
+model.analysis # Model Analysis data structure
+```
+
+## Traversing AST
+You can traverse AST nodes by writing an AST visitor, which can be used to query or search the AST of a model. An AST visitor base class (`AstVisitor`) is provided in `fprime_python_model/utils/fpp_ast_visitor.py`. 
+
+Examples of how the `AstVistor` is used in this project are: 
+- `fprime_python_model/utils/fpp_ast_writer.py`, which is used to print the AST to the console 
+- `fprime_python_model/translators/construct_ast_id_map.py` which is used to create a mapping from AST IDs to AST nodes.
