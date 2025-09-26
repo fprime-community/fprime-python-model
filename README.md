@@ -49,4 +49,4 @@ You can traverse AST nodes by writing an AST visitor, which can be used to query
 
 Examples of how the `AstVistor` is used in this project are: 
 - `fprime_python_model/utils/fpp_ast_writer.py`, which is used to print the AST to the console 
-- `fprime_python_model/translators/construct_ast_id_map.py` which is used to create a mapping from AST IDs to AST nodes.
+- `fprime_python_model/translators/construct_ast_id_map.py`, which is used to create a mapping from AST IDs to AST nodes.
