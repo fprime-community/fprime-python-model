@@ -4,7 +4,6 @@ from dataclasses import dataclass
 from enum import Enum
 from fprime_python_model.fpp_ast.fpp_ast_node import AstNode
 from fprime_python_model.utils.error import InternalError
-from fprime_python_model.fpp_ast.fpp_locations import Locations
 
 T = TypeVar("T")
 Annotated: TypeAlias = Tuple[List[str], T, List[str]]
@@ -121,15 +120,6 @@ def qualifier(node_list: NodeList) -> List[AstNode[Ident]]:
 def name(node_list: NodeList) -> AstNode[Ident]:
     """Get the unqualified name"""
     return split(node_list)[1]
-
-
-def node_from_node_list(node_list: NodeList) -> AstNode[QualIdent]:
-    """Create a QualIdent node from a node list"""
-    qual_id = qual_ident_from_node_list(node_list)
-    node = AstNode.create(qual_id)
-    loc = Locations.get(node_list[0]._id)
-    Locations.put(node._id, loc)
-    return node
 
 
 ##########################

@@ -19,5 +19,5 @@ class Param:
     def get_name(self) -> fpp_ast.Ident:
         return self.a_node[1].data.name
 
-    def get_node(self) -> AstNode:
+    def get_node(self) -> AstNode[fpp_ast.SpecParam]:
         return self.a_node[1]

@@ -14,15 +14,8 @@ class AstNode(Generic[T]):
     # Class variable shared amongst all instances of the class
     _next_id: ClassVar[AstId] = 0
 
-    @classmethod
-    def get_id(cls) -> AstId:
-        id0 = cls._next_id
-        cls._next_id = id0 + 1
-        return id0
-
-    @classmethod
-    def create(cls, data: T) -> "AstNode[T]":
-        return cls(data, cls.get_id())
+    def get_id(self) -> AstId:
+        return self._id
 
     @classmethod
     def create_with_id(cls, data: T, id: AstId) -> "AstNode[T]":

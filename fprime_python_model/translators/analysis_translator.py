@@ -85,7 +85,6 @@ from fprime_python_model.semantics.port_instance import (
 )
 from fprime_python_model.translators.ast_translator import (
     get_queue_full,
-    translate_special_port_instance,
     translate_general_kind,
     translate_special_kind,
     translate_spec_tlm_channel_update,
@@ -612,7 +611,7 @@ class AnalysisTranslator:
         self, d: Dict[str, dict]
     ) -> SpecialPortInstance:
         a_node = self.get_annotated_ast_node_by_id(int(d["aNode"]["astNodeId"]))
-        specifier = translate_special_port_instance(d["specifier"])
+        specifier = a_node[1].data
         symbol: PortSymbol = self.require_type(
             self.translate_symbol("Port", d["symbol"]["Port"]["nodeId"]), PortSymbol
         )
@@ -627,6 +626,7 @@ class AnalysisTranslator:
         self, d: Dict[str, dict]
     ) -> GeneralPortInstance:
         a_node = self.get_annotated_ast_node_by_id(int(d["aNode"]["astNodeId"]))
+        specifier = a_node[1].data
         kind = translate_general_kind(d["kind"])
         size = d["size"]
         if not isinstance(size, int):
@@ -635,7 +635,7 @@ class AnalysisTranslator:
             )
         ty = self.translate_port_instance_type(d["ty"])
         import_node_ids = [AstId(i) for i in d["importNodeIds"]]
-        return GeneralPortInstance(a_node, None, kind, size, ty, import_node_ids)
+        return GeneralPortInstance(a_node, specifier, kind, size, ty, import_node_ids)
 
     def translate_limit_kind(self, kind_str: str) -> fpp_ast.LimitKind:
         match kind_str:
