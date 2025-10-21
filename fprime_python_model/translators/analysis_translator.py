@@ -840,8 +840,11 @@ class AnalysisTranslator:
         with open(self.analysis_json_file, "r") as f:
             data: Dict = json.load(f)
             return Analysis(
-                included_file_set=self.translate_input_file_set(
+                input_file_set=self.translate_input_file_set(
                     self.require_type(data.get("inputFileSet"), list)
+                ),
+                included_file_set=self.translate_input_file_set(
+                    self.require_type(data.get("includedFileSet"), list)
                 ),
                 parent_symbol_map=self.translate_parent_symbol_map(
                     self.require_type(data.get("parentSymbolMap"), dict)
