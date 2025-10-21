@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from fprime_python_model.fpp_ast.fpp_ast_node import AstId
-from fprime_python_model.fpp_ast.fpp_ast import Unqualified
+from fprime_python_model.semantics.name import UnqualifiedName
 
 
 class SymbolInterface(ABC):
@@ -9,7 +9,7 @@ class SymbolInterface(ABC):
         pass
 
     @abstractmethod
-    def get_unqualified_name(self) -> Unqualified:
+    def get_unqualified_name(self) -> UnqualifiedName:
         pass
 
     def __hash__(self):
