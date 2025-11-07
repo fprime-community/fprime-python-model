@@ -7,6 +7,7 @@ from fprime_python_model.semantics.symbol import PortSymbol
 from fprime_python_model.fpp_ast import fpp_ast
 from fprime_python_model.semantics.name import UnqualifiedName
 
+
 class Direction(Enum):
     INPUT = "input"
     OUTPUT = "output"
@@ -64,7 +65,7 @@ class SerialPortInstanceType(PortInstanceType):
 class PortInstance(ABC):
 
     def __str__(self):
-        return str(self.get_unqualified_name)
+        return str(self.get_unqualified_name())
 
     def get_array_size(self) -> int:
         return 1

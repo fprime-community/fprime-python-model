@@ -424,6 +424,8 @@ class ConstructAstMap(AstVisitor):
         self, _in: In, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecStateExit]]
     ) -> Out:
         self.add_annotated_node_to_map(a_node)
+        for a in a_node[1].data.actions:
+            self.add_node_to_map(a)
 
     def spec_state_machine_instance_annotated_node(
         self,
@@ -435,7 +437,19 @@ class ConstructAstMap(AstVisitor):
     def spec_state_transition_annotated_node(
         self, _in: In, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecStateTransition]]
     ) -> Out:
+        data = a_node[1].data
         self.add_annotated_node_to_map(a_node)
+        self.add_node_to_map(data.signal)
+        if data.guard:
+            self.add_node_to_map(data.guard)
+        self.transition_or_do(data.transition_or_do)
+
+    def transition_or_do(self, transition_or_do: fpp_ast.TransitionOrDo):
+        if isinstance(transition_or_do, fpp_ast.Transition):
+            self.transition_expr_node(transition_or_do.transition)
+        elif isinstance(transition_or_do, fpp_ast.Do):
+            for a in transition_or_do.actions:
+                self.add_node_to_map(a)
 
     def spec_tlm_channel_annotated_node(
         self, _in: In, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecTlmChannel]]
@@ -599,6 +613,7 @@ class ConstructAstMap(AstVisitor):
 
     def transition_expr_node(self, tr_node: AstNode[fpp_ast.TransitionExpr]) -> Out:
         node = tr_node.data
+        self.add_node_to_map(tr_node)
         for a in node.actions:
             self.add_node_to_map(a)
         self.qual_ident_node(node.target)

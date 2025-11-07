@@ -14,13 +14,14 @@ TUMember: TypeAlias = "ModuleMember"
 
 @dataclass
 class TransUnit:
-    """Translation unit"""
-
+    """Translation unit consisting of translation unit members
+    """
     members: List[TUMember]
 
 
 class Binop(Enum):
-    """Binary operation"""
+    """Binary operation
+    """
 
     ADD = "+"
     DIV = "/"
@@ -32,7 +33,8 @@ class Binop(Enum):
 
 
 class ComponentKind(Enum):
-    """Component kind"""
+    """Component kind
+    """
 
     ACTIVE = "active"
     PASSIVE = "passive"
@@ -43,17 +45,22 @@ class ComponentKind(Enum):
 
 
 class QualIdent(ABC):
-    """A possibly-qualified identifier"""
+    """A possibly-qualified identifier
+    """
 
     @abstractmethod
     def to_ident_list(self) -> List[Ident]:
-        """Convert a qualified identifier to a list of identifiers"""
+        """Convert a qualified identifier to a list of identifiers
+        Returns:
+            List[Ident]: List of identifiers
+        """
         pass
 
 
 @dataclass(eq=True)
 class Unqualified(QualIdent):
-    """An unqualified identifier"""
+    """An unqualified identifier
+    """
 
     name: Ident
 
@@ -78,21 +85,21 @@ class Qualified(QualIdent):
 
 
 def qual_ident_from_node_list(node_list: "NodeList") -> QualIdent:
-    """
-    Construct a qualified identifier from a node list
+    """Construct a qualified identifier from a node list
+
+    Args:
+        node_list (NodeList): List of Ident AST nodes
+
+    Returns:
+        QualIdent: Qualified identifier created from node list
     """
     split_node_list = split(node_list)
     if not split_node_list[0] and split_node_list[1]:
         return Unqualified(split_node_list[1].data)
-    elif split_node_list[0] and split_node_list[1]:
+    else:
         qualifier_1 = qual_ident_from_node_list(split_node_list[0])
         node = AstNode.create_with_id(qualifier_1, name(split_node_list[0])._id)
         return Qualified(node, split_node_list[1])
-    else:
-        raise InternalError(
-            "Could not construct a qualified identifier from a node list"
-        )
-
 
 NodeList: TypeAlias = List[AstNode[Ident]]
 """
@@ -100,10 +107,17 @@ A qualified identifier represented as a list of identifier nodes
 This is useful during parsing
 """
 
-
 def split(node_list: NodeList) -> Tuple[List[AstNode[Ident]], AstNode[Ident]]:
-    """
-    Split a qualified identifier list into qualifier and name
+    """Split a qualified identifier list into qualifier and name
+
+    Args:
+        node_list (NodeList): List of Ident AST nodes
+
+    Raises:
+        InternalError: Raised if the node list is empty
+
+    Returns:
+        Tuple[List[AstNode[Ident]], AstNode[Ident]]: _description_
     """
     rev: NodeList = node_list[::-1]
     if not rev:
@@ -113,12 +127,26 @@ def split(node_list: NodeList) -> Tuple[List[AstNode[Ident]], AstNode[Ident]]:
 
 
 def qualifier(node_list: NodeList) -> List[AstNode[Ident]]:
-    """Get the qualifier"""
+    """Get the qualifier
+
+    Args:
+        node_list (NodeList): List of Ident AST nodes
+
+    Returns:
+        List[AstNode[Ident]]: List of qualifier Ident AST nodes
+    """
     return split(node_list)[0]
 
 
 def name(node_list: NodeList) -> AstNode[Ident]:
-    """Get the unqualified name"""
+    """Get the unqualified name
+
+    Args:
+        node_list (NodeList): List of Ident AST nodes
+
+    Returns:
+        AstNode[Ident]: Unqualified Ident AST node
+    """
     return split(node_list)[1]
 
 
@@ -129,17 +157,23 @@ def name(node_list: NodeList) -> AstNode[Ident]:
 
 @dataclass
 class DefAbsType:
+    """Abstract type definition
+    """
     name: Ident
 
 
 @dataclass
 class DefAliasType:
+    """Aliased type definition
+    """
     name: Ident
     type_name: AstNode["TypeName"]
 
 
 @dataclass
 class DefArray:
+    """Array definition
+    """
     name: Ident
     size: AstNode["Expr"]
     elt_type: AstNode["TypeName"]
@@ -149,6 +183,8 @@ class DefArray:
 
 @dataclass
 class DefComponent:
+    """Component definition
+    """
     kind: ComponentKind
     name: Ident
     members: List["ComponentMember"]
@@ -156,6 +192,8 @@ class DefComponent:
 
 @dataclass
 class DefComponentInstance:
+    """Component instance definition
+    """
     name: Ident
     component: AstNode[QualIdent]
     base_id: AstNode["Expr"]
@@ -170,12 +208,16 @@ class DefComponentInstance:
 
 @dataclass
 class DefConstant:
+    """Constant definition
+    """
     name: Ident
     value: AstNode["Expr"]
 
 
 @dataclass
 class DefEnum:
+    """Enum definition
+    """
     name: Ident
     type_name: Optional[AstNode["TypeName"]]
     constants: List[Annotated[AstNode["DefEnumConstant"]]]
@@ -184,18 +226,24 @@ class DefEnum:
 
 @dataclass
 class DefEnumConstant:
+    """Enum constant definition
+    """
     name: Ident
     value: Optional[AstNode["Expr"]]
 
 
 @dataclass
 class DefModule:
+    """Module definition
+    """
     name: Ident
     members: List["ModuleMember"]
 
 
 @dataclass
 class DefPort:
+    """Port definition
+    """
     name: Ident
     params: FormalParamList
     return_type: Optional[AstNode["TypeName"]]
@@ -203,18 +251,24 @@ class DefPort:
 
 @dataclass
 class DefStateMachine:
+    """State machine definition
+    """
     name: Ident
     members: Optional[List["StateMachineMember"]]
 
 
 @dataclass
 class DefAction:
+    """Action definition
+    """
     name: Ident
     type_name: Optional[AstNode["TypeName"]]
 
 
 @dataclass
 class DefChoice:
+    """Choice definition 
+    """
     name: Ident
     guard: AstNode[Ident]
     if_transition: AstNode["TransitionExpr"]
@@ -223,30 +277,40 @@ class DefChoice:
 
 @dataclass
 class DefGuard:
+    """Guard definition
+    """
     name: Ident
     type_name: Optional[AstNode["TypeName"]]
 
 
 @dataclass
 class DefSignal:
+    """Signal definition
+    """
     name: Ident
     type_name: Optional[AstNode["TypeName"]]
 
 
 @dataclass
 class DefState:
+    """State definition
+    """
     name: Ident
     members: List["StateMember"]
 
 
 @dataclass
 class DefInterface:
+    """Interface definition
+    """
     name: Ident
     members: List["InterfaceMember"]
 
 
 @dataclass
 class DefStruct:
+    """Struct definition
+    """
     name: Ident
     members: List[Annotated[AstNode["StructTypeMember"]]]
     default: Optional[AstNode["Expr"]]
@@ -254,6 +318,8 @@ class DefStruct:
 
 @dataclass
 class DefTopology:
+    """Topology defintion
+    """
     name: Ident
     members: List["TopologyMember"]
 
@@ -269,101 +335,141 @@ class ComponentMemberNode(ABC):
 
 @dataclass
 class ComponentMember:
+    """Component member with annotated component member node
+    """
     node: Annotated[ComponentMemberNode]
 
 
 @dataclass
 class ComponentMemberDefAbsType(ComponentMemberNode):
+    """Abstract type component member
+    """
     node: AstNode[DefAbsType]
 
 
 @dataclass
 class ComponentMemberDefAliasType(ComponentMemberNode):
+    """Alias type component member
+    """
     node: AstNode[DefAliasType]
 
 
 @dataclass
 class ComponentMemberDefArray(ComponentMemberNode):
+    """Array component member
+    """
     node: AstNode[DefArray]
 
 
 @dataclass
 class ComponentMemberDefConstant(ComponentMemberNode):
+    """Constant component member
+    """
     node: AstNode[DefConstant]
 
 
 @dataclass
 class ComponentMemberDefEnum(ComponentMemberNode):
+    """Enum component member
+    """
     node: AstNode[DefEnum]
 
 
 @dataclass
 class ComponentMemberDefStateMachine(ComponentMemberNode):
+    """State machine component member
+    """
     node: AstNode[DefStateMachine]
 
 
 @dataclass
 class ComponentMemberDefStruct(ComponentMemberNode):
+    """Struct component member
+    """
     node: AstNode[DefStruct]
 
 
 @dataclass
 class ComponentMemberSpecCommand(ComponentMemberNode):
+    """Command component member
+    """
     node: AstNode["SpecCommand"]
 
 
 @dataclass
 class ComponentMemberSpecContainer(ComponentMemberNode):
+    """Container component member
+    """
     node: AstNode["SpecContainer"]
 
 
 @dataclass
 class ComponentMemberSpecEvent(ComponentMemberNode):
+    """Event component member
+    """
     node: AstNode["SpecEvent"]
 
 
 @dataclass
 class ComponentMemberSpecInclude(ComponentMemberNode):
+    """Include specifier component member
+    """
     node: AstNode["SpecInclude"]
 
 
 @dataclass
 class ComponentMemberSpecInternalPort(ComponentMemberNode):
+    """Internal port specifier component member
+    """
     node: AstNode["SpecInternalPort"]
 
 
 @dataclass
 class ComponentMemberSpecParam(ComponentMemberNode):
+    """Param component member
+    """
     node: AstNode["SpecParam"]
 
 
 @dataclass
 class ComponentMemberSpecPortInstance(ComponentMemberNode):
+    """Port instance component member
+    """
     node: AstNode["SpecPortInstance"]
 
 
 @dataclass
 class ComponentMemberSpecPortMatching(ComponentMemberNode):
+    """Port matching component member
+    """
     node: AstNode["SpecPortMatching"]
 
 
 @dataclass
 class ComponentMemberSpecRecord(ComponentMemberNode):
+    """Record component member
+    """
     node: AstNode["SpecRecord"]
 
 
 @dataclass
 class ComponentMemberSpecStateMachineInstance(ComponentMemberNode):
+    """State machine instance component member
+    """
     node: AstNode["SpecStateMachineInstance"]
 
 
 @dataclass
 class ComponentMemberSpecTlmChannel(ComponentMemberNode):
+    """Telemetry channel component member
+    """
     node: AstNode["SpecTlmChannel"]
 
 
 @dataclass
 class ComponentMemberSpecImportInterface(ComponentMemberNode):
+    """Import specifier component member
+    """
     node: AstNode["SpecImport"]
 
 
@@ -378,81 +484,113 @@ class ModuleMemberNode(ABC):
 
 @dataclass
 class ModuleMember:
+    """Module member with annotated module member node
+    """
     node: Annotated[ModuleMemberNode]
 
 
 @dataclass
 class ModuleMemberDefAbsType(ModuleMemberNode):
+    """Abstract type module member
+    """
     node: AstNode[DefAbsType]
 
 
 @dataclass
 class ModuleMemberDefAliasType(ModuleMemberNode):
+    """Alias type module member
+    """
     node: AstNode[DefAliasType]
 
 
 @dataclass
 class ModuleMemberDefArray(ModuleMemberNode):
+    """Array module member
+    """
     node: AstNode[DefArray]
 
 
 @dataclass
 class ModuleMemberDefComponent(ModuleMemberNode):
+    """Component module member
+    """
     node: AstNode[DefComponent]
 
 
 @dataclass
 class ModuleMemberDefComponentInstance(ModuleMemberNode):
+    """Component instance module member
+    """
     node: AstNode[DefComponentInstance]
 
 
 @dataclass
 class ModuleMemberDefConstant(ModuleMemberNode):
+    """Constant module member
+    """
     node: AstNode[DefConstant]
 
 
 @dataclass
 class ModuleMemberDefEnum(ModuleMemberNode):
+    """Enum module member
+    """
     node: AstNode[DefEnum]
 
 
 @dataclass
 class ModuleMemberDefInterface(ModuleMemberNode):
+    """Interface module member
+    """
     node: AstNode["DefInterface"]
 
 
 @dataclass
 class ModuleMemberDefModule(ModuleMemberNode):
+    """Module module member
+    """
     node: AstNode[DefModule]
 
 
 @dataclass
 class ModuleMemberDefPort(ModuleMemberNode):
+    """Port module member
+    """
     node: AstNode["DefPort"]
 
 
 @dataclass
 class ModuleMemberDefStateMachine(ModuleMemberNode):
+    """State machine module member
+    """
     node: AstNode["DefStateMachine"]
 
 
 @dataclass
 class ModuleMemberDefStruct(ModuleMemberNode):
+    """Struct module member
+    """
     node: AstNode["DefStruct"]
 
 
 @dataclass
 class ModuleMemberDefTopology(ModuleMemberNode):
+    """Topology module member
+    """
     node: AstNode["DefTopology"]
 
 
 @dataclass
 class ModuleMemberSpecInclude(ModuleMemberNode):
+    """Include specifier module member
+    """
     node: AstNode["SpecInclude"]
 
 
 @dataclass
 class ModuleMemberSpecLoc(ModuleMemberNode):
+    """Location specifier module member
+    """
     node: AstNode["SpecLoc"]
 
 
@@ -463,6 +601,8 @@ class ModuleMemberSpecLoc(ModuleMemberNode):
 
 @dataclass
 class StateMachineMember:
+    """State machine member with annotated state machine member member node
+    """
     node: Annotated["StateMachineMemberNode"]
 
 
@@ -472,31 +612,43 @@ class StateMachineMemberNode(ABC):
 
 @dataclass
 class StateMachineMemberDefAction(StateMachineMemberNode):
+    """Action state machine member
+    """
     node: AstNode["DefAction"]
 
 
 @dataclass
 class StateMachineMemberDefChoice(StateMachineMemberNode):
+    """Choice state machine member
+    """
     node: AstNode["DefChoice"]
 
 
 @dataclass
 class StateMachineMemberDefGuard(StateMachineMemberNode):
+    """Guard state machine member
+    """
     node: AstNode["DefGuard"]
 
 
 @dataclass
 class StateMachineMemberDefSignal(StateMachineMemberNode):
+    """Signal state machine member
+    """
     node: AstNode["DefSignal"]
 
 
 @dataclass
 class StateMachineMemberDefState(StateMachineMemberNode):
+    """State state machine member
+    """
     node: AstNode["DefState"]
 
 
 @dataclass
 class StateMachineMemberSpecInitialTransition(StateMachineMemberNode):
+    """Initial state state machine member
+    """
     node: AstNode["SpecInitialTransition"]
 
 
@@ -507,6 +659,8 @@ class StateMachineMemberSpecInitialTransition(StateMachineMemberNode):
 
 @dataclass
 class StateMember:
+    """State member with annotated state member node
+    """
     node: Annotated["StateMemberNode"]
 
 
@@ -516,31 +670,43 @@ class StateMemberNode(ABC):
 
 @dataclass
 class StateMemberDefChoice(StateMemberNode):
+    """Choice state member
+    """
     node: AstNode[DefChoice]
 
 
 @dataclass
 class StateMemberDefState(StateMemberNode):
+    """State state member
+    """
     node: AstNode[DefState]
 
 
 @dataclass
 class StateMemberSpecStateEntry(StateMemberNode):
+    """State entry state member
+    """
     node: AstNode["SpecStateEntry"]
 
 
 @dataclass
 class StateMemberSpecStateExit(StateMemberNode):
+    """State exit state member
+    """
     node: AstNode["SpecStateExit"]
 
 
 @dataclass
 class StateMemberSpecInitialTransition(StateMemberNode):
+    """Initial state state member
+    """
     node: AstNode["SpecInitialTransition"]
 
 
 @dataclass
 class StateMemberSpecStateTransition(StateMemberNode):
+    """Transition state member
+    """
     node: AstNode["SpecStateTransition"]
 
 
@@ -555,11 +721,15 @@ class Expr(ABC):
 
 @dataclass
 class ExprArray(Expr):
+    """Array expression
+    """
     elts: List[AstNode[Expr]]
 
 
 @dataclass
 class ExprBinop(Expr):
+    """Binary operation expression
+    """
     e1: AstNode[Expr]
     op: "Binop"
     e2: AstNode[Expr]
@@ -567,47 +737,65 @@ class ExprBinop(Expr):
 
 @dataclass
 class ExprDot(Expr):
+    """Dot expression
+    """
     e: AstNode[Expr]
     id: AstNode[Ident]
 
 
 @dataclass
 class ExprIdent(Expr):
+    """Ident expression
+    """
     value: Ident
 
 
 @dataclass
 class ExprLiteralBool(Expr):
+    """Literal Boolean expression
+    """
     value: "LiteralBool"
 
 
 @dataclass
 class ExprLiteralInt(Expr):
+    """Literal integer expression
+    """
     value: str
 
 
 @dataclass
 class ExprLiteralFloat(Expr):
+    """Literal float expression
+    """
     value: str
 
 
 @dataclass
 class ExprLiteralString(Expr):
+    """Literal string expression
+    """
     value: str
 
 
 @dataclass
 class ExprParen(Expr):
+    """Parenthesis expression
+    """
     e: AstNode[Expr]
 
 
 @dataclass
 class ExprStruct(Expr):
+    """Struct expression
+    """
     members: List[AstNode["StructMember"]]
 
 
 @dataclass
 class ExprUnop(Expr):
+    """Unary operation expression
+    """
     op: "Unop"
     e: AstNode[Expr]
 
@@ -623,31 +811,43 @@ class TopologyMemberNode(ABC):
 
 @dataclass
 class TopologyMember:
+    """Topology member with anotated topology member node
+    """
     node: Annotated[TopologyMemberNode]
 
 
 @dataclass
 class TopologyMemberSpecCompInstance(TopologyMemberNode):
+    """Component instance topology member
+    """
     node: AstNode["SpecCompInstance"]
 
 
 @dataclass
 class TopologyMemberSpecConnectionGraph(TopologyMemberNode):
+    """Connection graph topology member
+    """
     node: AstNode["SpecConnectionGraph"]
 
 
 @dataclass
 class TopologyMemberSpecInclude(TopologyMemberNode):
+    """Include specifier topology member
+    """
     node: AstNode["SpecInclude"]
 
 
 @dataclass
 class TopologyMemberSpecTlmPacketSet(TopologyMemberNode):
+    """Telemetry packet set topology member
+    """
     node: AstNode["SpecTlmPacketSet"]
 
 
 @dataclass
 class TopologyMemberSpecTopImport(TopologyMemberNode):
+    """Topology import topology member
+    """
     node: AstNode["SpecImport"]
 
 

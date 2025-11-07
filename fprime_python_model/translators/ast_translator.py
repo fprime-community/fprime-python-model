@@ -760,7 +760,7 @@ def translate_state_machine(data: dict, id: AstId) -> AstNode[DefStateMachine]:
 def translate_interface_members(l: List) -> List[InterfaceMember]:
     members = []
     for m in l:
-        m_dict: dict = m["node"][1]
+        m_dict: dict = m[1]
         m_key = list(m_dict.keys())[0]
         id = m_dict[m_key]["node"]["AstNode"]["id"]
         data: dict = m_dict[m_key]["node"]["AstNode"]["data"]
@@ -778,14 +778,14 @@ def translate_interface_members(l: List) -> List[InterfaceMember]:
                 )
             case _:
                 raise InvalidFppToJsonField(m_key)
-        members.append(InterfaceMember(annotate(m["node"][0], member, m["node"][2])))
+        members.append(InterfaceMember(annotate(m[0], member, m[2])))
     return members
 
 
 def translate_tlm_packet_set_members(d: dict) -> List[TlmPacketSetMember]:
     members = []
     for member in d:
-        node = member["node"][1]
+        node = member[1]
         if "SpecTlmPacket" in node:
             spec_tlm_pkt_data, spec_tlm_pkt_id = read_ast_node(
                 node["SpecTlmPacket"]["node"]
@@ -810,9 +810,7 @@ def translate_tlm_packet_set_members(d: dict) -> List[TlmPacketSetMember]:
                     spec_tlm_pkt_id,
                 )
             )
-            members.append(
-                TlmPacketSetMember(annotate(member["node"][0], pkt, member["node"][2]))
-            )
+            members.append(TlmPacketSetMember(annotate(member[0], pkt, member[2])))
         elif "SpecInclude" in node:
             raise NotSupportedInFppToJsonException("SpecInclude")
     return members

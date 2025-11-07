@@ -1,19 +1,20 @@
 from dataclasses import dataclass, field
 from typing import Optional, Set, List, Dict, Tuple
 from fprime_python_model.fpp_ast.fpp_ast_node import AstId
-from fprime_python_model.fpp_ast.fpp_ast import Ident
+from fprime_python_model.fpp_ast.fpp_ast import Ident, SpecLocKind, SpecLoc
 from typing import Any
 from fprime_python_model.semantics.symbol import (
     Symbol,
-    ComponentInstanceSymbol,
-    StateMachineSymbol,
-    TopologySymbol,
     SymbolInterface,
 )
 from fprime_python_model.semantics.name import QualifiedName
 from fprime_python_model.semantics.scope import Scope
 from fprime_python_model.semantics.types_values import Type, Value
 from fprime_python_model.semantics.component import Component
+from fprime_python_model.semantics.component_instance import ComponentInstance
+from fprime_python_model.semantics.topology import Topology
+from fprime_python_model.semantics.state_machine import StateMachine
+from fprime_python_model.semantics.interface import Interface
 from pathlib import Path
 
 
@@ -28,7 +29,9 @@ class Analysis:
     included_file_set: Set[Path] = field(default_factory=set)
 
     # A map from (spec loc kind, qualified name) to spec locs
-    location_specifier_map: Dict[Tuple[Any, Any], Any] = field(default_factory=dict)
+    location_specifier_map: Dict[Tuple[SpecLocKind, QualifiedName], SpecLoc] = field(
+        default_factory=dict
+    )
 
     # Mapping from Ast Ids to their parent symbols
     parent_symbol_map: Dict[AstId, Symbol] = field(default_factory=dict)
@@ -48,25 +51,21 @@ class Analysis:
     # Map from component Ast IDs to components
     component_map: Dict[AstId, Component] = field(default_factory=dict)
 
-    # Map from component instance symbols to component instances
-    component_instance_map: Dict[ComponentInstanceSymbol, Any] = field(
-        default_factory=dict
-    )
+    # Map from component instance symbol IDs to component instances
+    component_instance_map: Dict[AstId, ComponentInstance] = field(default_factory=dict)
 
-    # # Map from interface symbols to interfaces
-    # Not in fpp-to-json analysis output
-    # interface_map: Dict[InterfaceSymbol, Any] = field(default_factory=dict)
+    # Map from interface symbol IDs to interfaces
+    interface_map: Dict[AstId, Interface] = field(default_factory=dict)
 
-    # Map from topology symbols to topologies
-    topology_map: Dict[TopologySymbol, Any] = field(default_factory=dict)
+    # Map from topology symbol IDs to topologies
+    topology_map: Dict[AstId, Topology] = field(default_factory=dict)
 
-    # Map from state machine symbols to state machines
-    state_machine_map: Dict[StateMachineSymbol, Any] = field(default_factory=dict)
-
+    # Map from state machine symbol IDs to state machines
+    state_machine_map: Dict[AstId, StateMachine] = field(default_factory=dict)
 
     def get_qualified_name_from_map(self, s: SymbolInterface) -> QualifiedName:
         result: List[Ident] = []
-        current = s
+        current: Optional[SymbolInterface] = s
 
         while current is not None:
             result.append(current.get_unqualified_name())
