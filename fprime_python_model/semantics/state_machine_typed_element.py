@@ -23,9 +23,10 @@ class StateEntryTypedElement(StateMachineTypedElement):
 
     def show_kind(self) -> str:
         return "entry actions"
-    
+
     def __hash__(self):
         return hash(self.get_node_id())
+
 
 @dataclass
 class StateExitTypedElement(StateMachineTypedElement):
@@ -36,9 +37,10 @@ class StateExitTypedElement(StateMachineTypedElement):
 
     def show_kind(self) -> str:
         return "exit actions"
-    
+
     def __hash__(self):
         return hash(self.get_node_id())
+
 
 @dataclass
 class InitialTransitionTypedElement(StateMachineTypedElement):
@@ -49,9 +51,10 @@ class InitialTransitionTypedElement(StateMachineTypedElement):
 
     def show_kind(self) -> str:
         return "initial transition"
-    
+
     def __hash__(self):
         return hash(self.get_node_id())
+
 
 @dataclass
 class StateTransitionTypedElement(StateMachineTypedElement):
@@ -62,9 +65,10 @@ class StateTransitionTypedElement(StateMachineTypedElement):
 
     def show_kind(self) -> str:
         return "state transition"
-    
+
     def __hash__(self):
         return hash(self.get_node_id())
+
 
 @dataclass
 class ChoiceTypedElement(StateMachineTypedElement):

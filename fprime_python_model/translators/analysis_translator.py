@@ -111,14 +111,42 @@ from fprime_python_model.semantics.port_instance_identifier import (
 )
 from fprime_python_model.semantics.interface import Interface
 from fprime_python_model.semantics.state_machine import StateMachine
-from fprime_python_model.semantics.state_machine_analysis import StateMachineAnalysis, SignalStateTransitionMap, StateTransitionMap, SignalTransitionMap, TransitionExprMap
+from fprime_python_model.semantics.state_machine_analysis import (
+    StateMachineAnalysis,
+    SignalStateTransitionMap,
+    StateTransitionMap,
+    SignalTransitionMap,
+    TransitionExprMap,
+)
 from fprime_python_model.semantics.state_machine_scope import StateMachineScope
 from fprime_python_model.semantics.state_machine_name_group import StateMachineNameGroup
-from fprime_python_model.semantics.state_machine_symbol import StateSymbol, ChoiceSymbol, GuardSymbol, SignalSymbol, ActionSymbol
-from fprime_python_model.semantics.transition_graph import TransitionGraph, TransitionGraphNode, ArcMap
+from fprime_python_model.semantics.state_machine_symbol import (
+    StateSymbol,
+    ChoiceSymbol,
+    GuardSymbol,
+    SignalSymbol,
+    ActionSymbol,
+)
+from fprime_python_model.semantics.transition_graph import (
+    TransitionGraph,
+    TransitionGraphNode,
+    ArcMap,
+)
 from fprime_python_model.semantics.state_or_junction import State, Choice, StateOrChoice
-from fprime_python_model.semantics.state_machine_typed_element import StateMachineTypedElement, StateEntryTypedElement, StateExitTypedElement, StateTransitionTypedElement, InitialTransitionTypedElement, ChoiceTypedElement
-from fprime_python_model.semantics.transition import Transition, ExternalTransition, InternalTransition, GuardedTransition
+from fprime_python_model.semantics.state_machine_typed_element import (
+    StateMachineTypedElement,
+    StateEntryTypedElement,
+    StateExitTypedElement,
+    StateTransitionTypedElement,
+    InitialTransitionTypedElement,
+    ChoiceTypedElement,
+)
+from fprime_python_model.semantics.transition import (
+    Transition,
+    ExternalTransition,
+    InternalTransition,
+    GuardedTransition,
+)
 
 RT = TypeVar("RT")
 
@@ -1069,7 +1097,7 @@ class AnalysisTranslator:
             port_map=self.translate_port_map(d["portMap"]),
             special_port_map=self.translate_spec_port_map(d["specialPortMap"]),
         )
-    
+
     def translate_state_machine_name_group(self, ng: str) -> StateMachineNameGroup:
         match ng:
             case "Action":
@@ -1082,7 +1110,7 @@ class AnalysisTranslator:
                 return StateMachineNameGroup.STATE
             case _:
                 raise InternalError("Encountered invalid state machine name group.")
-    
+
     def translate_state_machine_scope(self, d: Dict[str, dict]) -> Scope:
         scope = StateMachineScope()
         for name_group_str, scope_map in d.items():
@@ -1094,38 +1122,52 @@ class AnalysisTranslator:
                 symbol = self.translate_symbol(symbol_type, symbol_id)
                 scope = scope.put(name_group, symbol.get_unqualified_name(), symbol)
         return scope
-    
-    def translate_state_machine_scope_map(self, d: Dict[str, dict]) -> Dict[AstId, StateMachineScope]:
+
+    def translate_state_machine_scope_map(
+        self, d: Dict[str, dict]
+    ) -> Dict[AstId, StateMachineScope]:
         symbol_scope_map: Dict[AstId, StateMachineScope] = dict()
         for id, inner_dict in d.items():
-            symbol_scope_map[AstId(id)] = self.translate_state_machine_scope(inner_dict["map"])
+            symbol_scope_map[AstId(id)] = self.translate_state_machine_scope(
+                inner_dict["map"]
+            )
 
         return symbol_scope_map
-    
+
     def translate_state_or_choice(self, d: Dict[str, dict]) -> StateOrChoice:
         soc = next(iter(d))
         if soc == "Choice":
-            choice_a_node = self.get_annotated_ast_node_by_id(d[soc]["symbol"]["node"]["astNodeId"])
+            choice_a_node = self.get_annotated_ast_node_by_id(
+                d[soc]["symbol"]["node"]["astNodeId"]
+            )
             return Choice(ChoiceSymbol(choice_a_node))
         elif soc == "State":
-            state_a_node = self.get_annotated_ast_node_by_id(d[soc]["symbol"]["node"]["astNodeId"])
+            state_a_node = self.get_annotated_ast_node_by_id(
+                d[soc]["symbol"]["node"]["astNodeId"]
+            )
             return State(StateSymbol(state_a_node))
         else:
             raise InternalError("Invalid state or choice JSON")
 
-    def translate_transition_graph_node(self, d: Dict[str, dict]) -> TransitionGraphNode:
+    def translate_transition_graph_node(
+        self, d: Dict[str, dict]
+    ) -> TransitionGraphNode:
         return TransitionGraphNode(self.translate_state_or_choice(d["soc"]))
-    
+
     def translate_arc_map(self, d: Dict[str, dict]) -> ArcMap:
-        return dict() # TODO
+        return dict()  # TODO
 
     def translate_transition_graph(self, d: Dict[str, dict]) -> TransitionGraph:
         return TransitionGraph(
-            self.translate_optional(d["initialNode"], self.translate_transition_graph_node),
-            self.translate_arc_map(d["arcMap"])   
+            self.translate_optional(
+                d["initialNode"], self.translate_transition_graph_node
+            ),
+            self.translate_arc_map(d["arcMap"]),
         )
-    
-    def translate_type_option_map(self, d: Dict[str, dict]) -> Dict[StateMachineTypedElement, Optional[Type]]:
+
+    def translate_type_option_map(
+        self, d: Dict[str, dict]
+    ) -> Dict[StateMachineTypedElement, Optional[Type]]:
         out_dict: Dict[StateMachineTypedElement, Optional[Type]] = dict()
         for id, inner_dict in d.items():
             a_node = self.get_annotated_ast_node_by_id(AstId(id))
@@ -1144,38 +1186,49 @@ class AnalysisTranslator:
             else:
                 raise InternalError("Invalid type option JSON")
         return out_dict
-    
-    def translate_action_symbol_list(self, l: List[Dict[str, dict]]) -> List[ActionSymbol]:
+
+    def translate_action_symbol_list(
+        self, l: List[Dict[str, dict]]
+    ) -> List[ActionSymbol]:
         out_list: List[ActionSymbol] = []
         for i in l:
             a_node = self.get_annotated_ast_node_by_id(i["node"]["astNodeId"])
             out_list.append(ActionSymbol(a_node))
         return out_list
-    
+
     def translate_transition(self, d: Dict[str, dict]) -> Transition:
         transition_kind = next(iter(d))
         if transition_kind == "External":
             return ExternalTransition(
-                actions=self.translate_action_symbol_list(d[transition_kind]["actions"]),
-                target=self.translate_state_or_choice(d[transition_kind]["target"])
+                actions=self.translate_action_symbol_list(
+                    d[transition_kind]["actions"]
+                ),
+                target=self.translate_state_or_choice(d[transition_kind]["target"]),
             )
         elif transition_kind == "Internal":
             return InternalTransition(
-                actions=self.translate_action_symbol_list(d[transition_kind]["actions"]),
+                actions=self.translate_action_symbol_list(
+                    d[transition_kind]["actions"]
+                ),
             )
         elif transition_kind == "Guarded":
             guard_opt: Optional[GuardSymbol] = None
             if "Some" in d[transition_kind]["guardOpt"]:
-                guard_a_node = self.get_annotated_ast_node_by_id(d[transition_kind]["guardOpt"]["Some"]["node"]["astNodeId"])
+                guard_a_node = self.get_annotated_ast_node_by_id(
+                    d[transition_kind]["guardOpt"]["Some"]["node"]["astNodeId"]
+                )
                 guard_opt = GuardSymbol(guard_a_node)
             return GuardedTransition(
-                guard_opt=guard_opt, 
-                transition=self.translate_transition(d[transition_kind]["transition"])
+                guard_opt=guard_opt,
+                transition=self.translate_transition(d[transition_kind]["transition"]),
             )
 
-
-    def translate_flattened_state_transition_map(self, d: Dict[str, dict]) -> SignalStateTransitionMap:
-        out_dict: SignalStateTransitionMap = dict() # Dict[SignalSymbol, StateTransitionMap]
+    def translate_flattened_state_transition_map(
+        self, d: Dict[str, dict]
+    ) -> SignalStateTransitionMap:
+        out_dict: SignalStateTransitionMap = (
+            dict()
+        )  # Dict[SignalSymbol, StateTransitionMap]
         for id, inner_dict in d.items():
             a_node = self.get_annotated_ast_node_by_id(AstId(id))
             signal_symbol = SignalSymbol(a_node)
@@ -1183,24 +1236,41 @@ class AnalysisTranslator:
             for state_unqual_name, guarded_transition_dict in inner_dict.items():
                 guard_opt: Optional[GuardSymbol] = None
                 if "Some" in guarded_transition_dict["guardOpt"]:
-                    guard_a_node = self.get_annotated_ast_node_by_id(guarded_transition_dict["guardOpt"]["Some"]["node"]["astNodeId"])
+                    guard_a_node = self.get_annotated_ast_node_by_id(
+                        guarded_transition_dict["guardOpt"]["Some"]["node"]["astNodeId"]
+                    )
                     guard_opt = GuardSymbol(guard_a_node)
-                transition = self.translate_transition(guarded_transition_dict["transition"])
-                state_transition_map[state_unqual_name] = GuardedTransition(guard_opt, transition)
+                transition = self.translate_transition(
+                    guarded_transition_dict["transition"]
+                )
+                state_transition_map[state_unqual_name] = GuardedTransition(
+                    guard_opt, transition
+                )
             out_dict[signal_symbol.get_node_id()] = state_transition_map
         return out_dict
 
-    def translate_state_machine_analysis(self, d: Dict[str, dict]) -> StateMachineAnalysis:
-        sm_a_node = self.get_annotated_ast_node_by_id(int(d["symbol"]["node"]["astNodeId"]))
+    def translate_state_machine_analysis(
+        self, d: Dict[str, dict]
+    ) -> StateMachineAnalysis:
+        sm_a_node = self.get_annotated_ast_node_by_id(
+            int(d["symbol"]["node"]["astNodeId"])
+        )
         return StateMachineAnalysis(
             symbol=StateMachineSymbol(sm_a_node),
-            symbol_scope_map=self.translate_state_machine_scope_map(d["symbolScopeMap"]),
+            symbol_scope_map=self.translate_state_machine_scope_map(
+                d["symbolScopeMap"]
+            ),
             use_def_map=self.translate_use_def_map(d["useDefMap"]),
             transition_graph=self.translate_transition_graph(d["transitionGraph"]),
-            reverse_transition_graph=self.translate_transition_graph(d["reverseTransitionGraph"]),
+            reverse_transition_graph=self.translate_transition_graph(
+                d["reverseTransitionGraph"]
+            ),
             type_option_map=self.translate_type_option_map(d["typeOptionMap"]),
-            flattened_state_transition_map=self.translate_flattened_state_transition_map(d["flattenedStateTransitionMap"])
+            flattened_state_transition_map=self.translate_flattened_state_transition_map(
+                d["flattenedStateTransitionMap"]
+            ),
         )
+
     def translate_state_machine(self, d: Dict[str, dict]) -> StateMachine:
         a_node = self.get_annotated_ast_node_by_id(int(d["aNode"]["astNodeId"]))
         return StateMachine(
@@ -1245,7 +1315,7 @@ class AnalysisTranslator:
         for id, inner_dict in d.items():
             out_dict[AstId(id)] = self.translate_interface(inner_dict)
         return out_dict
-    
+
     def translate_state_machine_map(self, d: Dict) -> Dict[AstId, StateMachine]:
         out_dict: Dict[AstId, StateMachine] = dict()
         for id, inner_dict in d.items():
@@ -1298,5 +1368,5 @@ class AnalysisTranslator:
                 ),
                 state_machine_map=self.translate_state_machine_map(
                     self.require_type(data.get("stateMachineMap"), dict)
-                )
+                ),
             )
