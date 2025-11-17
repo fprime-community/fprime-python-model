@@ -58,7 +58,7 @@ from fprime_python_model.semantics.format import (
     IntegerField,
     RationalField,
     RationalFieldType,
-    IntegeFieldType,
+    IntegerFieldType,
     Field,
 )
 from fprime_python_model.semantics.component import Component, PortMatching
@@ -121,6 +121,7 @@ from fprime_python_model.semantics.state_machine_analysis import (
 from fprime_python_model.semantics.state_machine_scope import StateMachineScope
 from fprime_python_model.semantics.state_machine_name_group import StateMachineNameGroup
 from fprime_python_model.semantics.state_machine_symbol import (
+    StateMachineSymbolInterface,
     StateSymbol,
     ChoiceSymbol,
     GuardSymbol,
@@ -246,6 +247,14 @@ class AnalysisTranslator:
                 return StructSymbol(a_node)
             case "Topology":
                 return TopologySymbol(a_node)
+            case _:
+                raise InvalidFppToJsonField(symbol_type)
+
+    def translate_state_machine_symbol(
+        self, symbol_type: str, node_id: AstId
+    ) -> StateMachineSymbolInterface:
+        a_node = self.get_annotated_ast_node_by_id(node_id)
+        match symbol_type:
             case "Choice":
                 return ChoiceSymbol(a_node)
             case "State":
@@ -309,6 +318,19 @@ class AnalysisTranslator:
             def_symbol_type = next(iter(inner_dict))
             def_id = AstId(inner_dict[def_symbol_type]["nodeId"])
             def_symbol: Symbol = self.translate_symbol(def_symbol_type, def_id)
+            out_dict[AstId(use_id)] = def_symbol
+        return out_dict
+
+    def translate_state_machine_use_def_map(
+        self, d: Dict[str, dict]
+    ) -> Dict[AstId, StateMachineSymbolInterface]:
+        out_dict: Dict[AstId, StateMachineSymbolInterface] = dict()
+        for use_id, inner_dict in d.items():
+            def_symbol_type = next(iter(inner_dict))
+            def_id = AstId(inner_dict[def_symbol_type]["nodeId"])
+            def_symbol: StateMachineSymbolInterface = (
+                self.translate_state_machine_symbol(def_symbol_type, def_id)
+            )
             out_dict[AstId(use_id)] = def_symbol
         return out_dict
 
@@ -493,13 +515,13 @@ class AnalysisTranslator:
             elif field_type == "Integer":
                 it = next(iter(f[0][field_type]["t"]))
                 if it == "Character":
-                    integer_type = IntegeFieldType.CHARACTER
+                    integer_type = IntegerFieldType.CHARACTER
                 elif it == "Decimal":
-                    integer_type = IntegeFieldType.DECIMAL
+                    integer_type = IntegerFieldType.DECIMAL
                 elif it == "Hexadecimal":
-                    integer_type = IntegeFieldType.HEXADECIMAL
+                    integer_type = IntegerFieldType.HEXADECIMAL
                 elif it == "Octal":
-                    integer_type = IntegeFieldType.OCTAL
+                    integer_type = IntegerFieldType.OCTAL
                 else:
                     raise InvalidFppToJsonField(it)
                 field = IntegerField(integer_type)
@@ -1111,7 +1133,7 @@ class AnalysisTranslator:
             case _:
                 raise InternalError("Encountered invalid state machine name group.")
 
-    def translate_state_machine_scope(self, d: Dict[str, dict]) -> Scope:
+    def translate_state_machine_scope(self, d: Dict[str, dict]) -> StateMachineScope:
         scope = StateMachineScope()
         for name_group_str, scope_map in d.items():
             name_group = self.translate_state_machine_name_group(name_group_str)
@@ -1119,7 +1141,7 @@ class AnalysisTranslator:
             for name, inner_dict in inner_map.items():
                 symbol_type = next(iter(inner_dict))
                 symbol_id = inner_dict[symbol_type]["nodeId"]
-                symbol = self.translate_symbol(symbol_type, symbol_id)
+                symbol = self.translate_state_machine_symbol(symbol_type, symbol_id)
                 scope = scope.put(name_group, symbol.get_unqualified_name(), symbol)
         return scope
 
@@ -1222,18 +1244,18 @@ class AnalysisTranslator:
                 guard_opt=guard_opt,
                 transition=self.translate_transition(d[transition_kind]["transition"]),
             )
+        else:
+            raise InvalidFppToJsonField(transition_kind)
 
     def translate_flattened_state_transition_map(
         self, d: Dict[str, dict]
     ) -> SignalStateTransitionMap:
-        out_dict: SignalStateTransitionMap = (
-            dict()
-        )  # Dict[SignalSymbol, StateTransitionMap]
+        out_dict: SignalStateTransitionMap = dict()
         for id, inner_dict in d.items():
             a_node = self.get_annotated_ast_node_by_id(AstId(id))
             signal_symbol = SignalSymbol(a_node)
             state_transition_map: StateTransitionMap = dict()
-            for state_unqual_name, guarded_transition_dict in inner_dict.items():
+            for state_id, guarded_transition_dict in inner_dict.items():
                 guard_opt: Optional[GuardSymbol] = None
                 if "Some" in guarded_transition_dict["guardOpt"]:
                     guard_a_node = self.get_annotated_ast_node_by_id(
@@ -1243,10 +1265,19 @@ class AnalysisTranslator:
                 transition = self.translate_transition(
                     guarded_transition_dict["transition"]
                 )
-                state_transition_map[state_unqual_name] = GuardedTransition(
+                state_transition_map[AstId(state_id)] = GuardedTransition(
                     guard_opt, transition
                 )
             out_dict[signal_symbol.get_node_id()] = state_transition_map
+        return out_dict
+
+    def translate_flattened_choice_transition_map(
+        self, d: Dict[str, dict]
+    ) -> TransitionExprMap:
+        out_dict: TransitionExprMap = dict()
+        for id, inner_dict in d.items():
+            a_node = self.get_annotated_ast_node_by_id(AstId(id))
+            out_dict[a_node[1].get_id()] = self.translate_transition(inner_dict)
         return out_dict
 
     def translate_state_machine_analysis(
@@ -1260,7 +1291,7 @@ class AnalysisTranslator:
             symbol_scope_map=self.translate_state_machine_scope_map(
                 d["symbolScopeMap"]
             ),
-            use_def_map=self.translate_use_def_map(d["useDefMap"]),
+            use_def_map=self.translate_state_machine_use_def_map(d["useDefMap"]),
             transition_graph=self.translate_transition_graph(d["transitionGraph"]),
             reverse_transition_graph=self.translate_transition_graph(
                 d["reverseTransitionGraph"]
@@ -1268,6 +1299,9 @@ class AnalysisTranslator:
             type_option_map=self.translate_type_option_map(d["typeOptionMap"]),
             flattened_state_transition_map=self.translate_flattened_state_transition_map(
                 d["flattenedStateTransitionMap"]
+            ),
+            flattened_choice_transition_map=self.translate_flattened_choice_transition_map(
+                d["flattenedChoiceTransitionMap"]
             ),
         )
 
@@ -1363,9 +1397,9 @@ class AnalysisTranslator:
                 topology_map=self.translate_topology_map(
                     self.require_type(data.get("topologyMap"), dict)
                 ),
-                interface_map=self.translate_interface_map(
-                    self.require_type(data.get("interfaceMap"), dict)
-                ),
+                # interface_map=self.translate_interface_map(
+                #     self.require_type(data.get("interfaceMap"), dict)
+                # ),
                 state_machine_map=self.translate_state_machine_map(
                     self.require_type(data.get("stateMachineMap"), dict)
                 ),

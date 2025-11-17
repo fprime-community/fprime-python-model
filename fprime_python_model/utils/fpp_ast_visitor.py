@@ -470,7 +470,6 @@ class AstVisitor(ABC, Generic[In, Out]):
 
     def match_state_member(self, _in: In, member: fpp_ast.StateMember) -> Out:
         pre, node, post = member.node
-
         match node:
             case fpp_ast.StateMemberDefChoice():
                 return self.def_choice_annotated_node(_in, (pre, node.node, post))

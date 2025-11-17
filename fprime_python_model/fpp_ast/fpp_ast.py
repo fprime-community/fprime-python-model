@@ -273,6 +273,9 @@ class DefComponentInstance:
     :param priority: Thread priority
     :type priority: Optional[AstNode[Expr]]
     :param cpu: CPU affinity
+    :type cpu: Optional[AstNode[Expr]]
+    :param init_specs: List of init specifiers
+    :type init_specs: List[Annotated[AstNode[SpecInit]]]
     """
 
     name: Ident

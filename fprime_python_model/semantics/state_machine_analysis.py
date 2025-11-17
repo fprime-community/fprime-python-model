@@ -6,6 +6,7 @@ from fprime_python_model.fpp_ast.fpp_ast_node import AstNode, AstId
 from fprime_python_model.semantics.name import UnqualifiedName
 from fprime_python_model.semantics.transition_graph import TransitionGraph
 from fprime_python_model.semantics.state_machine_symbol import (
+    StateMachineSymbolInterface,
     SignalSymbol,
     StateSymbol,
     ActionSymbol,
@@ -21,17 +22,17 @@ from fprime_python_model.semantics.types_values import Type
 from fprime_python_model.semantics.state_or_junction import StateOrChoice, State, Choice
 from fprime_python_model.utils.error import InternalError
 
-SignalTransitionMap = Dict[SignalSymbol, GuardedTransition]
-StateTransitionMap = Dict[StateSymbol, GuardedTransition]
-SignalStateTransitionMap = Dict[SignalSymbol, StateTransitionMap]
-TransitionExprMap = Dict[AstNode[fpp_ast.TransitionExpr], Transition]
+SignalTransitionMap = Dict[AstId, GuardedTransition]
+StateTransitionMap = Dict[AstId, GuardedTransition]
+SignalStateTransitionMap = Dict[AstId, StateTransitionMap]
+TransitionExprMap = Dict[AstId, Transition]
 
 
 @dataclass
 class StateMachineAnalysis:
     symbol: StateMachineSymbol
     symbol_scope_map: Dict[AstId, StateMachineScope] = field(default_factory=dict)
-    use_def_map: Dict[AstId, StateMachineSymbol] = field(default_factory=dict)
+    use_def_map: Dict[AstId, StateMachineSymbolInterface] = field(default_factory=dict)
     transition_graph: TransitionGraph = field(default_factory=TransitionGraph)
     reverse_transition_graph: TransitionGraph = field(default_factory=TransitionGraph)
     type_option_map: Dict[StateMachineTypedElement, Optional[Type]] = field(
