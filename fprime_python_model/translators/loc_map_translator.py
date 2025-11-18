@@ -11,7 +11,7 @@ def translate_location_map_json(file: str) -> dict[AstId, Location]:
         raise FileNotFoundError(f'File "{file}" not found')
     with open(file, "r") as f:
         data: Dict[str, dict] = json.load(f)
-        for k, v in data.items():
+        for k, v in data["locationMap"].items():
             try:
                 Locations.put(
                     int(k), Location(Path(v["file"]), v["pos"], v["includingLoc"])

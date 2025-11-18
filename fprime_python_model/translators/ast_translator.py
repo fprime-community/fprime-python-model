@@ -1109,5 +1109,5 @@ def translate_ast_json(file: str) -> List[TransUnit]:
     if not os.path.exists(file):
         raise FileNotFoundError(f'File "{file}" not found')
     with open(file, "r") as f:
-        data: List[Dict] = json.load(f)
-        return translate_trans_unit_list(data)
+        data: Dict = json.load(f)
+        return translate_trans_unit_list(data["ast"])

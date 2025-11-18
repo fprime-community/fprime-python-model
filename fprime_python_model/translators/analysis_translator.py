@@ -839,6 +839,7 @@ class AnalysisTranslator:
             raise FileNotFoundError(f'File "{self.analysis_json_file}" not found')
         with open(self.analysis_json_file, "r") as f:
             data: Dict = json.load(f)
+            data = data["analysis"]
             return Analysis(
                 input_file_set=self.translate_input_file_set(
                     self.require_type(data.get("inputFileSet"), list)
