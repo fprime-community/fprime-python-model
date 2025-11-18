@@ -1,0 +1,847 @@
+[
+    {
+      "members" : [
+        [
+          [
+            "Component for illustrating event identifiers"
+          ],
+          {
+            "DefComponent" : {
+              "node" : {
+                "AstNode" : {
+                  "data" : {
+                    "kind" : {
+                      "Passive" : {
+                        
+                      }
+                    },
+                    "name" : "EventIdentifiers",
+                    "members" : [
+                      [
+                        [
+                          "Event port"
+                        ],
+                        {
+                          "SpecPortInstance" : {
+                            "node" : {
+                              "AstNode" : {
+                                "data" : {
+                                  "Special" : {
+                                    "inputKind" : "None",
+                                    "kind" : {
+                                      "Event" : {
+                                        
+                                      }
+                                    },
+                                    "name" : "eventOut",
+                                    "priority" : "None",
+                                    "queueFull" : "None"
+                                  }
+                                },
+                                "id" : 0
+                              }
+                            }
+                          }
+                        },
+                        [
+                        ]
+                      ],
+                      [
+                        [
+                          "Text event port"
+                        ],
+                        {
+                          "SpecPortInstance" : {
+                            "node" : {
+                              "AstNode" : {
+                                "data" : {
+                                  "Special" : {
+                                    "inputKind" : "None",
+                                    "kind" : {
+                                      "TextEvent" : {
+                                        
+                                      }
+                                    },
+                                    "name" : "textEventOut",
+                                    "priority" : "None",
+                                    "queueFull" : "None"
+                                  }
+                                },
+                                "id" : 1
+                              }
+                            }
+                          }
+                        },
+                        [
+                        ]
+                      ],
+                      [
+                        [
+                          "Time get port"
+                        ],
+                        {
+                          "SpecPortInstance" : {
+                            "node" : {
+                              "AstNode" : {
+                                "data" : {
+                                  "Special" : {
+                                    "inputKind" : "None",
+                                    "kind" : {
+                                      "TimeGet" : {
+                                        
+                                      }
+                                    },
+                                    "name" : "timeGetOut",
+                                    "priority" : "None",
+                                    "queueFull" : "None"
+                                  }
+                                },
+                                "id" : 2
+                              }
+                            }
+                          }
+                        },
+                        [
+                        ]
+                      ],
+                      [
+                        [
+                          "Event 1",
+                          "Its identifier is 0x00"
+                        ],
+                        {
+                          "SpecEvent" : {
+                            "node" : {
+                              "AstNode" : {
+                                "data" : {
+                                  "name" : "Event1",
+                                  "params" : [
+                                  ],
+                                  "severity" : {
+                                    "ActivityLow" : {
+                                      
+                                    }
+                                  },
+                                  "id" : {
+                                    "Some" : {
+                                      "AstNode" : {
+                                        "data" : {
+                                          "ExprLiteralInt" : {
+                                            "value" : "0x10"
+                                          }
+                                        },
+                                        "id" : 3
+                                      }
+                                    }
+                                  },
+                                  "format" : {
+                                    "AstNode" : {
+                                      "data" : "Event 1 occurred",
+                                      "id" : 4
+                                    }
+                                  },
+                                  "throttle" : "None"
+                                },
+                                "id" : 5
+                              }
+                            }
+                          }
+                        },
+                        [
+                        ]
+                      ],
+                      [
+                        [
+                          "Event 2",
+                          "Its identifier is 0x10"
+                        ],
+                        {
+                          "SpecEvent" : {
+                            "node" : {
+                              "AstNode" : {
+                                "data" : {
+                                  "name" : "Event2",
+                                  "params" : [
+                                    [
+                                      [
+                                      ],
+                                      {
+                                        "AstNode" : {
+                                          "data" : {
+                                            "kind" : {
+                                              "Value" : {
+                                                
+                                              }
+                                            },
+                                            "name" : "count",
+                                            "typeName" : {
+                                              "AstNode" : {
+                                                "data" : {
+                                                  "TypeNameInt" : {
+                                                    "name" : {
+                                                      "U32" : {
+                                                        
+                                                      }
+                                                    }
+                                                  }
+                                                },
+                                                "id" : 8
+                                              }
+                                            }
+                                          },
+                                          "id" : 9
+                                        }
+                                      },
+                                      [
+                                        "The count"
+                                      ]
+                                    ]
+                                  ],
+                                  "severity" : {
+                                    "ActivityHigh" : {
+                                      
+                                    }
+                                  },
+                                  "id" : {
+                                    "Some" : {
+                                      "AstNode" : {
+                                        "data" : {
+                                          "ExprLiteralInt" : {
+                                            "value" : "0x11"
+                                          }
+                                        },
+                                        "id" : 10
+                                      }
+                                    }
+                                  },
+                                  "format" : {
+                                    "AstNode" : {
+                                      "data" : "The count is {}",
+                                      "id" : 11
+                                    }
+                                  },
+                                  "throttle" : "None"
+                                },
+                                "id" : 12
+                              }
+                            }
+                          }
+                        },
+                        [
+                        ]
+                      ],
+                      [
+                        [
+                          "Event 3",
+                          "Its identifier is 0x11"
+                        ],
+                        {
+                          "SpecEvent" : {
+                            "node" : {
+                              "AstNode" : {
+                                "data" : {
+                                  "name" : "Event3",
+                                  "params" : [
+                                  ],
+                                  "severity" : {
+                                    "ActivityHigh" : {
+                                      
+                                    }
+                                  },
+                                  "id" : "None",
+                                  "format" : {
+                                    "AstNode" : {
+                                      "data" : "Event 3 occurred",
+                                      "id" : 17
+                                    }
+                                  },
+                                  "throttle" : "None"
+                                },
+                                "id" : 18
+                              }
+                            }
+                          }
+                        },
+                        [
+                        ]
+                      ]
+                    ]
+                  },
+                  "id" : 19
+                }
+              }
+            }
+          },
+          [
+          ]
+        ],
+        [
+          [
+          ],
+          {
+            "DefModule" : {
+              "node" : {
+                "AstNode" : {
+                  "data" : {
+                    "name" : "M",
+                    "members" : [
+                      [
+                        [
+                          "Component for illustrating event throttling"
+                        ],
+                        {
+                          "DefComponent" : {
+                            "node" : {
+                              "AstNode" : {
+                                "data" : {
+                                  "kind" : {
+                                    "Passive" : {
+                                      
+                                    }
+                                  },
+                                  "name" : "EventThrottling",
+                                  "members" : [
+                                    [
+                                      [
+                                        "Event port"
+                                      ],
+                                      {
+                                        "SpecPortInstance" : {
+                                          "node" : {
+                                            "AstNode" : {
+                                              "data" : {
+                                                "Special" : {
+                                                  "inputKind" : "None",
+                                                  "kind" : {
+                                                    "Event" : {
+                                                      
+                                                    }
+                                                  },
+                                                  "name" : "eventOut",
+                                                  "priority" : "None",
+                                                  "queueFull" : "None"
+                                                }
+                                              },
+                                              "id" : 120
+                                            }
+                                          }
+                                        }
+                                      },
+                                      [
+                                      ]
+                                    ],
+                                    [
+                                      [
+                                        "Text event port"
+                                      ],
+                                      {
+                                        "SpecPortInstance" : {
+                                          "node" : {
+                                            "AstNode" : {
+                                              "data" : {
+                                                "Special" : {
+                                                  "inputKind" : "None",
+                                                  "kind" : {
+                                                    "TextEvent" : {
+                                                      
+                                                    }
+                                                  },
+                                                  "name" : "textEventOut",
+                                                  "priority" : "None",
+                                                  "queueFull" : "None"
+                                                }
+                                              },
+                                              "id" : 121
+                                            }
+                                          }
+                                        }
+                                      },
+                                      [
+                                      ]
+                                    ],
+                                    [
+                                      [
+                                        "Time get port"
+                                      ],
+                                      {
+                                        "SpecPortInstance" : {
+                                          "node" : {
+                                            "AstNode" : {
+                                              "data" : {
+                                                "Special" : {
+                                                  "inputKind" : "None",
+                                                  "kind" : {
+                                                    "TimeGet" : {
+                                                      
+                                                    }
+                                                  },
+                                                  "name" : "timeGetOut",
+                                                  "priority" : "None",
+                                                  "queueFull" : "None"
+                                                }
+                                              },
+                                              "id" : 122
+                                            }
+                                          }
+                                        }
+                                      },
+                                      [
+                                      ]
+                                    ],
+                                    [
+                                      [
+                                        "Event 1"
+                                      ],
+                                      {
+                                        "SpecEvent" : {
+                                          "node" : {
+                                            "AstNode" : {
+                                              "data" : {
+                                                "name" : "Event1",
+                                                "params" : [
+                                                ],
+                                                "severity" : {
+                                                  "ActivityLow" : {
+                                                    
+                                                  }
+                                                },
+                                                "id" : {
+                                                  "Some" : {
+                                                    "AstNode" : {
+                                                      "data" : {
+                                                        "ExprLiteralInt" : {
+                                                          "value" : "0x10"
+                                                        }
+                                                      },
+                                                      "id" : 123
+                                                    }
+                                                  }
+                                                },
+                                                "format" : {
+                                                  "AstNode" : {
+                                                    "data" : "Event 1 occurred",
+                                                    "id" : 124
+                                                  }
+                                                },
+                                                "throttle" : "None"
+                                              },
+                                              "id" : 125
+                                            }
+                                          }
+                                        }
+                                      },
+                                      [
+                                      ]
+                                    ],
+                                    [
+                                      [
+                                        "Event 2"
+                                      ],
+                                      {
+                                        "SpecEvent" : {
+                                          "node" : {
+                                            "AstNode" : {
+                                              "data" : {
+                                                "name" : "Event2",
+                                                "params" : [
+                                                  [
+                                                    [
+                                                    ],
+                                                    {
+                                                      "AstNode" : {
+                                                        "data" : {
+                                                          "kind" : {
+                                                            "Value" : {
+                                                              
+                                                            }
+                                                          },
+                                                          "name" : "port",
+                                                          "typeName" : {
+                                                            "AstNode" : {
+                                                              "data" : {
+                                                                "TypeNameInt" : {
+                                                                  "name" : {
+                                                                    "I32" : {
+                                                                      
+                                                                    }
+                                                                  }
+                                                                }
+                                                              },
+                                                              "id" : 128
+                                                            }
+                                                          }
+                                                        },
+                                                        "id" : 129
+                                                      }
+                                                    },
+                                                    [
+                                                      "Port arg"
+                                                    ]
+                                                  ]
+                                                ],
+                                                "severity" : {
+                                                  "Command" : {
+                                                    
+                                                  }
+                                                },
+                                                "id" : {
+                                                  "Some" : {
+                                                    "AstNode" : {
+                                                      "data" : {
+                                                        "ExprLiteralInt" : {
+                                                          "value" : "2"
+                                                        }
+                                                      },
+                                                      "id" : 130
+                                                    }
+                                                  }
+                                                },
+                                                "format" : {
+                                                  "AstNode" : {
+                                                    "data" : "Port {}",
+                                                    "id" : 131
+                                                  }
+                                                },
+                                                "throttle" : "None"
+                                              },
+                                              "id" : 132
+                                            }
+                                          }
+                                        }
+                                      },
+                                      [
+                                      ]
+                                    ],
+                                    [
+                                      [
+                                        "Event 3",
+                                        "Event with 3 args"
+                                      ],
+                                      {
+                                        "SpecEvent" : {
+                                          "node" : {
+                                            "AstNode" : {
+                                              "data" : {
+                                                "name" : "Event3",
+                                                "params" : [
+                                                  [
+                                                    [
+                                                    ],
+                                                    {
+                                                      "AstNode" : {
+                                                        "data" : {
+                                                          "kind" : {
+                                                            "Value" : {
+                                                              
+                                                            }
+                                                          },
+                                                          "name" : "arg1",
+                                                          "typeName" : {
+                                                            "AstNode" : {
+                                                              "data" : {
+                                                                "TypeNameInt" : {
+                                                                  "name" : {
+                                                                    "I32" : {
+                                                                      
+                                                                    }
+                                                                  }
+                                                                }
+                                                              },
+                                                              "id" : 135
+                                                            }
+                                                          }
+                                                        },
+                                                        "id" : 136
+                                                      }
+                                                    },
+                                                    [
+                                                      "Arg1"
+                                                    ]
+                                                  ],
+                                                  [
+                                                    [
+                                                    ],
+                                                    {
+                                                      "AstNode" : {
+                                                        "data" : {
+                                                          "kind" : {
+                                                            "Value" : {
+                                                              
+                                                            }
+                                                          },
+                                                          "name" : "arg2",
+                                                          "typeName" : {
+                                                            "AstNode" : {
+                                                              "data" : {
+                                                                "TypeNameFloat" : {
+                                                                  "name" : {
+                                                                    "F32" : {
+                                                                      
+                                                                    }
+                                                                  }
+                                                                }
+                                                              },
+                                                              "id" : 139
+                                                            }
+                                                          }
+                                                        },
+                                                        "id" : 140
+                                                      }
+                                                    },
+                                                    [
+                                                      "Arg2"
+                                                    ]
+                                                  ],
+                                                  [
+                                                    [
+                                                    ],
+                                                    {
+                                                      "AstNode" : {
+                                                        "data" : {
+                                                          "kind" : {
+                                                            "Value" : {
+                                                              
+                                                            }
+                                                          },
+                                                          "name" : "arg3",
+                                                          "typeName" : {
+                                                            "AstNode" : {
+                                                              "data" : {
+                                                                "TypeNameInt" : {
+                                                                  "name" : {
+                                                                    "U8" : {
+                                                                      
+                                                                    }
+                                                                  }
+                                                                }
+                                                              },
+                                                              "id" : 143
+                                                            }
+                                                          }
+                                                        },
+                                                        "id" : 144
+                                                      }
+                                                    },
+                                                    [
+                                                      "Arg3"
+                                                    ]
+                                                  ]
+                                                ],
+                                                "severity" : {
+                                                  "ActivityHigh" : {
+                                                    
+                                                  }
+                                                },
+                                                "id" : {
+                                                  "Some" : {
+                                                    "AstNode" : {
+                                                      "data" : {
+                                                        "ExprLiteralInt" : {
+                                                          "value" : "9"
+                                                        }
+                                                      },
+                                                      "id" : 145
+                                                    }
+                                                  }
+                                                },
+                                                "format" : {
+                                                  "AstNode" : {
+                                                    "data" : "Event3 args: I32: {}, F32: {f}, U8: {}",
+                                                    "id" : 146
+                                                  }
+                                                },
+                                                "throttle" : "None"
+                                              },
+                                              "id" : 147
+                                            }
+                                          }
+                                        }
+                                      },
+                                      [
+                                      ]
+                                    ],
+                                    [
+                                      [
+                                        "Exceeded the number of commands that can be simultaneously executed"
+                                      ],
+                                      {
+                                        "SpecEvent" : {
+                                          "node" : {
+                                            "AstNode" : {
+                                              "data" : {
+                                                "name" : "TooManyCommands",
+                                                "params" : [
+                                                  [
+                                                    [
+                                                    ],
+                                                    {
+                                                      "AstNode" : {
+                                                        "data" : {
+                                                          "kind" : {
+                                                            "Value" : {
+                                                              
+                                                            }
+                                                          },
+                                                          "name" : "Opcode",
+                                                          "typeName" : {
+                                                            "AstNode" : {
+                                                              "data" : {
+                                                                "TypeNameInt" : {
+                                                                  "name" : {
+                                                                    "U32" : {
+                                                                      
+                                                                    }
+                                                                  }
+                                                                }
+                                                              },
+                                                              "id" : 164
+                                                            }
+                                                          }
+                                                        },
+                                                        "id" : 165
+                                                      }
+                                                    },
+                                                    [
+                                                      "The opcode that overflowed the list"
+                                                    ]
+                                                  ]
+                                                ],
+                                                "severity" : {
+                                                  "WarningHigh" : {
+                                                    
+                                                  }
+                                                },
+                                                "id" : {
+                                                  "Some" : {
+                                                    "AstNode" : {
+                                                      "data" : {
+                                                        "ExprLiteralInt" : {
+                                                          "value" : "6"
+                                                        }
+                                                      },
+                                                      "id" : 166
+                                                    }
+                                                  }
+                                                },
+                                                "format" : {
+                                                  "AstNode" : {
+                                                    "data" : "Too many outstanding commands. opcode=0x{x}",
+                                                    "id" : 167
+                                                  }
+                                                },
+                                                "throttle" : "None"
+                                              },
+                                              "id" : 168
+                                            }
+                                          }
+                                        }
+                                      },
+                                      [
+                                      ]
+                                    ]
+                                  ]
+                                },
+                                "id" : 169
+                              }
+                            }
+                          }
+                        },
+                        [
+                        ]
+                      ]
+                    ]
+                  },
+                  "id" : 170
+                }
+              }
+            }
+          },
+          [
+          ]
+        ],
+        [
+          [
+          ],
+          {
+            "DefModule" : {
+              "node" : {
+                "AstNode" : {
+                  "data" : {
+                    "name" : "Fw",
+                    "members" : [
+                      [
+                        [
+                        ],
+                        {
+                          "DefPort" : {
+                            "node" : {
+                              "AstNode" : {
+                                "data" : {
+                                  "name" : "Log",
+                                  "params" : [
+                                  ],
+                                  "returnType" : "None"
+                                },
+                                "id" : 171
+                              }
+                            }
+                          }
+                        },
+                        [
+                        ]
+                      ],
+                      [
+                        [
+                        ],
+                        {
+                          "DefPort" : {
+                            "node" : {
+                              "AstNode" : {
+                                "data" : {
+                                  "name" : "LogText",
+                                  "params" : [
+                                  ],
+                                  "returnType" : "None"
+                                },
+                                "id" : 172
+                              }
+                            }
+                          }
+                        },
+                        [
+                        ]
+                      ],
+                      [
+                        [
+                        ],
+                        {
+                          "DefPort" : {
+                            "node" : {
+                              "AstNode" : {
+                                "data" : {
+                                  "name" : "Time",
+                                  "params" : [
+                                  ],
+                                  "returnType" : "None"
+                                },
+                                "id" : 175
+                              }
+                            }
+                          }
+                        },
+                        [
+                        ]
+                      ]
+                    ]
+                  },
+                  "id" : 176
+                }
+              }
+            }
+          },
+          [
+          ]
+        ]
+      ]
+    }
+]

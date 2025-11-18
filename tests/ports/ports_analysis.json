@@ -1,0 +1,956 @@
+{
+    "componentInstanceMap" : {
+      "88" : {
+        "aNode" : {
+          "astNodeId" : 88
+        },
+        "qualifiedName" : {
+          "qualifier" : [
+          ],
+          "base" : "i"
+        },
+        "component" : {
+          "astNodeId" : 81
+        },
+        "baseId" : 8448,
+        "maxId" : 8447,
+        "file" : "None",
+        "queueSize" : {
+          "Some" : 10
+        },
+        "stackSize" : "None",
+        "priority" : "None",
+        "cpu" : "None",
+        "initSpecifierMap" : {
+          
+        }
+      }
+    },
+    "componentMap" : {
+      "81" : {
+        "aNode" : {
+          "astNodeId" : 81
+        },
+        "portMap" : {
+          "productRecvIn" : {
+            "Special" : {
+              "aNode" : {
+                "astNodeId" : 80
+              },
+              "specifier" : {
+                "inputKind" : {
+                  "Some" : {
+                    "Async" : {
+                      
+                    }
+                  }
+                },
+                "kind" : {
+                  "ProductRecv" : {
+                    
+                  }
+                },
+                "name" : "productRecvIn",
+                "priority" : "None",
+                "queueFull" : "None"
+              },
+              "symbol" : {
+                "Port" : {
+                  "nodeId" : 67,
+                  "unqualifiedName" : "DpResponse"
+                }
+              },
+              "priority" : "None",
+              "queueFull" : {
+                "Some" : {
+                  "Assert" : {
+                    
+                  }
+                }
+              },
+              "importNodeIds" : [
+              ]
+            }
+          }
+        },
+        "specialPortMap" : {
+          "product recv" : {
+            "aNode" : {
+              "astNodeId" : 80
+            },
+            "specifier" : {
+              "inputKind" : {
+                "Some" : {
+                  "Async" : {
+                    
+                  }
+                }
+              },
+              "kind" : {
+                "ProductRecv" : {
+                  
+                }
+              },
+              "name" : "productRecvIn",
+              "priority" : "None",
+              "queueFull" : "None"
+            },
+            "symbol" : {
+              "Port" : {
+                "nodeId" : 67,
+                "unqualifiedName" : "DpResponse"
+              }
+            },
+            "priority" : "None",
+            "queueFull" : {
+              "Some" : {
+                "Assert" : {
+                  
+                }
+              }
+            },
+            "importNodeIds" : [
+            ]
+          }
+        },
+        "commandMap" : {
+          
+        },
+        "defaultOpcode" : 0,
+        "tlmChannelMap" : {
+          
+        },
+        "tlmChannelNameMap" : {
+          
+        },
+        "defaultTlmChannelId" : 0,
+        "eventMap" : {
+          
+        },
+        "defaultEventId" : 0,
+        "paramMap" : {
+          
+        },
+        "specPortMatchingList" : [
+        ],
+        "stateMachineInstanceMap" : {
+          
+        },
+        "portMatchingList" : [
+        ],
+        "defaultParamId" : 0,
+        "containerMap" : {
+          
+        },
+        "defaultContainerId" : 0,
+        "recordMap" : {
+          
+        },
+        "defaultRecordId" : 0
+      }
+    },
+    "includedFileSet" : [
+    ],
+    "inputFileSet" : [
+      "[ local path prefix ]/compiler/tools/fpp-to-json/test/ports.fpp"
+    ],
+    "locationSpecifierMap" : [
+    ],
+    "parentSymbolMap" : {
+      "67" : {
+        "Module" : {
+          "nodeId" : 68,
+          "unqualifiedName" : "Fw"
+        }
+      },
+      "23" : {
+        "Enum" : {
+          "nodeId" : 24,
+          "unqualifiedName" : "E"
+        }
+      },
+      "50" : {
+        "Enum" : {
+          "nodeId" : 54,
+          "unqualifiedName" : "Status"
+        }
+      },
+      "69" : {
+        "Module" : {
+          "nodeId" : 82,
+          "unqualifiedName" : "M"
+        }
+      },
+      "53" : {
+        "Enum" : {
+          "nodeId" : 54,
+          "unqualifiedName" : "Status"
+        }
+      },
+      "20" : {
+        "Enum" : {
+          "nodeId" : 24,
+          "unqualifiedName" : "E"
+        }
+      },
+      "81" : {
+        "Module" : {
+          "nodeId" : 82,
+          "unqualifiedName" : "M"
+        }
+      },
+      "118" : {
+        "Module" : {
+          "nodeId" : 82,
+          "unqualifiedName" : "M"
+        }
+      }
+    },
+    "symbolScopeMap" : {
+      "68" : {
+        "map" : {
+          "Port" : {
+            "map" : {
+              "DpResponse" : {
+                "Port" : {
+                  "nodeId" : 67,
+                  "unqualifiedName" : "DpResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "24" : {
+        "map" : {
+          "Value" : {
+            "map" : {
+              "A" : {
+                "EnumConstant" : {
+                  "nodeId" : 20,
+                  "unqualifiedName" : "A"
+                }
+              },
+              "B" : {
+                "EnumConstant" : {
+                  "nodeId" : 23,
+                  "unqualifiedName" : "B"
+                }
+              }
+            }
+          }
+        }
+      },
+      "54" : {
+        "map" : {
+          "Value" : {
+            "map" : {
+              "SUCCEED" : {
+                "EnumConstant" : {
+                  "nodeId" : 50,
+                  "unqualifiedName" : "SUCCEED"
+                }
+              },
+              "FAIL" : {
+                "EnumConstant" : {
+                  "nodeId" : 53,
+                  "unqualifiedName" : "FAIL"
+                }
+              }
+            }
+          }
+        }
+      },
+      "82" : {
+        "map" : {
+          "Topology" : {
+            "map" : {
+              "T" : {
+                "Topology" : {
+                  "nodeId" : 118,
+                  "unqualifiedName" : "T"
+                }
+              }
+            }
+          },
+          "StateMachine" : {
+            "map" : {
+              "Q" : {
+                "Component" : {
+                  "nodeId" : 81,
+                  "unqualifiedName" : "Q"
+                }
+              }
+            }
+          },
+          "Value" : {
+            "map" : {
+              "Q" : {
+                "Component" : {
+                  "nodeId" : 81,
+                  "unqualifiedName" : "Q"
+                }
+              }
+            }
+          },
+          "Port" : {
+            "map" : {
+              "P" : {
+                "Port" : {
+                  "nodeId" : 69,
+                  "unqualifiedName" : "P"
+                }
+              }
+            }
+          },
+          "Component" : {
+            "map" : {
+              "Q" : {
+                "Component" : {
+                  "nodeId" : 81,
+                  "unqualifiedName" : "Q"
+                }
+              }
+            }
+          },
+          "Type" : {
+            "map" : {
+              "Q" : {
+                "Component" : {
+                  "nodeId" : 81,
+                  "unqualifiedName" : "Q"
+                }
+              }
+            }
+          }
+        }
+      },
+      "81" : {
+        "map" : {
+          
+        }
+      }
+    },
+    "topologyMap" : {
+      "118" : {
+        "aNode" : {
+          "astNodeId" : 118
+        },
+        "directImportMap" : {
+          
+        },
+        "transitiveImportSet" : [
+        ],
+        "instanceMap" : [
+          [
+            {
+              "aNode" : {
+                "astNodeId" : 88
+              },
+              "qualifiedName" : {
+                "qualifier" : [
+                ],
+                "base" : "i"
+              },
+              "component" : {
+                "astNodeId" : 81
+              },
+              "baseId" : 8448,
+              "maxId" : 8447,
+              "file" : "None",
+              "queueSize" : {
+                "Some" : 10
+              },
+              "stackSize" : "None",
+              "priority" : "None",
+              "cpu" : "None",
+              "initSpecifierMap" : {
+                
+              }
+            },
+            [
+              {
+                "Public" : {
+                  
+                }
+              },
+              {
+                "file" : "[ local path prefix ]/compiler/tools/fpp-to-json/test/ports.fpp",
+                "pos" : "39.9",
+                "includingLoc" : "None"
+              }
+            ]
+          ]
+        ],
+        "patternMap" : {
+          
+        },
+        "connectionMap" : {
+          
+        },
+        "localConnectionMap" : {
+          
+        },
+        "outputConnectionMap" : [
+        ],
+        "inputConnectionMap" : [
+        ],
+        "fromPortNumberMap" : [
+        ],
+        "toPortNumberMap" : [
+        ],
+        "unconnectedPortSet" : [
+          {
+            "componentInstance" : {
+              "aNode" : {
+                "astNodeId" : 88
+              },
+              "qualifiedName" : {
+                "qualifier" : [
+                ],
+                "base" : "i"
+              },
+              "component" : {
+                "astNodeId" : 81
+              },
+              "baseId" : 8448,
+              "maxId" : 8447,
+              "file" : "None",
+              "queueSize" : {
+                "Some" : 10
+              },
+              "stackSize" : "None",
+              "priority" : "None",
+              "cpu" : "None",
+              "initSpecifierMap" : {
+                
+              }
+            },
+            "portInstance" : {
+              "Special" : {
+                "aNode" : {
+                  "astNodeId" : 80
+                },
+                "specifier" : {
+                  "inputKind" : {
+                    "Some" : {
+                      "Async" : {
+                        
+                      }
+                    }
+                  },
+                  "kind" : {
+                    "ProductRecv" : {
+                      
+                    }
+                  },
+                  "name" : "productRecvIn",
+                  "priority" : "None",
+                  "queueFull" : "None"
+                },
+                "symbol" : {
+                  "Port" : {
+                    "nodeId" : 67,
+                    "unqualifiedName" : "DpResponse"
+                  }
+                },
+                "priority" : "None",
+                "queueFull" : {
+                  "Some" : {
+                    "Assert" : {
+                      
+                    }
+                  }
+                },
+                "importNodeIds" : [
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    "typeMap" : {
+      "23" : {
+        "Enum" : {
+          "node" : {
+            "astNodeId" : 24
+          },
+          "repType" : {
+            "kind" : {
+              "I32" : {
+                
+              }
+            }
+          },
+          "default" : "None"
+        }
+      },
+      "44" : {
+        "AbsType" : {
+          "node" : {
+            "astNodeId" : 25
+          }
+        }
+      },
+      "50" : {
+        "Enum" : {
+          "node" : {
+            "astNodeId" : 54
+          },
+          "repType" : {
+            "kind" : {
+              "I32" : {
+                
+              }
+            }
+          },
+          "default" : "None"
+        }
+      },
+      "24" : {
+        "Enum" : {
+          "node" : {
+            "astNodeId" : 24
+          },
+          "repType" : {
+            "kind" : {
+              "I32" : {
+                
+              }
+            }
+          },
+          "default" : {
+            "Some" : {
+              "value" : [
+                "A",
+                0
+              ],
+              "t" : {
+                "node" : {
+                  "astNodeId" : 24
+                },
+                "repType" : {
+                  "kind" : {
+                    "I32" : {
+                      
+                    }
+                  }
+                },
+                "default" : "None"
+              }
+            }
+          }
+        }
+      },
+      "48" : {
+        "AbsType" : {
+          "node" : {
+            "astNodeId" : 25
+          }
+        }
+      },
+      "54" : {
+        "Enum" : {
+          "node" : {
+            "astNodeId" : 54
+          },
+          "repType" : {
+            "kind" : {
+              "I32" : {
+                
+              }
+            }
+          },
+          "default" : {
+            "Some" : {
+              "value" : [
+                "SUCCEED",
+                0
+              ],
+              "t" : {
+                "node" : {
+                  "astNodeId" : 54
+                },
+                "repType" : {
+                  "kind" : {
+                    "I32" : {
+                      
+                    }
+                  }
+                },
+                "default" : "None"
+              }
+            }
+          }
+        }
+      },
+      "32" : {
+        "AbsType" : {
+          "node" : {
+            "astNodeId" : 25
+          }
+        }
+      },
+      "6" : {
+        "Int" : {
+          "PrimitiveInt" : {
+            "kind" : {
+              "U32" : {
+                
+              }
+            }
+          }
+        }
+      },
+      "53" : {
+        "Enum" : {
+          "node" : {
+            "astNodeId" : 54
+          },
+          "repType" : {
+            "kind" : {
+              "I32" : {
+                
+              }
+            }
+          },
+          "default" : "None"
+        }
+      },
+      "20" : {
+        "Enum" : {
+          "node" : {
+            "astNodeId" : 24
+          },
+          "repType" : {
+            "kind" : {
+              "I32" : {
+                
+              }
+            }
+          },
+          "default" : "None"
+        }
+      },
+      "86" : {
+        "Int" : {
+          "Integer" : {
+            
+          }
+        }
+      },
+      "63" : {
+        "Enum" : {
+          "node" : {
+            "astNodeId" : 54
+          },
+          "repType" : {
+            "kind" : {
+              "I32" : {
+                
+              }
+            }
+          },
+          "default" : {
+            "Some" : {
+              "value" : [
+                "SUCCEED",
+                0
+              ],
+              "t" : {
+                "node" : {
+                  "astNodeId" : 54
+                },
+                "repType" : {
+                  "kind" : {
+                    "I32" : {
+                      
+                    }
+                  }
+                },
+                "default" : "None"
+              }
+            }
+          }
+        }
+      },
+      "28" : {
+        "Enum" : {
+          "node" : {
+            "astNodeId" : 24
+          },
+          "repType" : {
+            "kind" : {
+              "I32" : {
+                
+              }
+            }
+          },
+          "default" : {
+            "Some" : {
+              "value" : [
+                "A",
+                0
+              ],
+              "t" : {
+                "node" : {
+                  "astNodeId" : 24
+                },
+                "repType" : {
+                  "kind" : {
+                    "I32" : {
+                      
+                    }
+                  }
+                },
+                "default" : "None"
+              }
+            }
+          }
+        }
+      },
+      "11" : {
+        "Primitive" : {
+          "Float" : {
+            "kind" : {
+              "F32" : {
+                
+              }
+            }
+          }
+        }
+      },
+      "9" : {
+        "Int" : {
+          "PrimitiveInt" : {
+            "kind" : {
+              "I32" : {
+                
+              }
+            }
+          }
+        }
+      },
+      "59" : {
+        "Int" : {
+          "PrimitiveInt" : {
+            "kind" : {
+              "U32" : {
+                
+              }
+            }
+          }
+        }
+      },
+      "87" : {
+        "Int" : {
+          "Integer" : {
+            
+          }
+        }
+      },
+      "17" : {
+        "String" : {
+          "size" : "None"
+        }
+      },
+      "25" : {
+        "AbsType" : {
+          "node" : {
+            "astNodeId" : 25
+          }
+        }
+      }
+    },
+    "useDefMap" : {
+      "62" : {
+        "Enum" : {
+          "nodeId" : 54,
+          "unqualifiedName" : "Status"
+        }
+      },
+      "44" : {
+        "AbsType" : {
+          "nodeId" : 25,
+          "unqualifiedName" : "T"
+        }
+      },
+      "83" : {
+        "Module" : {
+          "nodeId" : 82,
+          "unqualifiedName" : "M"
+        }
+      },
+      "43" : {
+        "AbsType" : {
+          "nodeId" : 25,
+          "unqualifiedName" : "T"
+        }
+      },
+      "32" : {
+        "AbsType" : {
+          "nodeId" : 25,
+          "unqualifiedName" : "T"
+        }
+      },
+      "80" : {
+        "Port" : {
+          "nodeId" : 67,
+          "unqualifiedName" : "DpResponse"
+        }
+      },
+      "27" : {
+        "Enum" : {
+          "nodeId" : 24,
+          "unqualifiedName" : "E"
+        }
+      },
+      "63" : {
+        "Enum" : {
+          "nodeId" : 54,
+          "unqualifiedName" : "Status"
+        }
+      },
+      "85" : {
+        "Component" : {
+          "nodeId" : 81,
+          "unqualifiedName" : "Q"
+        }
+      },
+      "28" : {
+        "Enum" : {
+          "nodeId" : 24,
+          "unqualifiedName" : "E"
+        }
+      },
+      "48" : {
+        "AbsType" : {
+          "nodeId" : 25,
+          "unqualifiedName" : "T"
+        }
+      },
+      "116" : {
+        "ComponentInstance" : {
+          "nodeId" : 88,
+          "unqualifiedName" : "i"
+        }
+      },
+      "47" : {
+        "AbsType" : {
+          "nodeId" : 25,
+          "unqualifiedName" : "T"
+        }
+      },
+      "31" : {
+        "AbsType" : {
+          "nodeId" : 25,
+          "unqualifiedName" : "T"
+        }
+      }
+    },
+    "valueMap" : {
+      "23" : {
+        "EnumConstant" : {
+          "value" : [
+            "B",
+            1
+          ],
+          "t" : {
+            "node" : {
+              "astNodeId" : 24
+            },
+            "repType" : {
+              "kind" : {
+                "I32" : {
+                  
+                }
+              }
+            },
+            "default" : "None"
+          }
+        }
+      },
+      "50" : {
+        "EnumConstant" : {
+          "value" : [
+            "SUCCEED",
+            0
+          ],
+          "t" : {
+            "node" : {
+              "astNodeId" : 54
+            },
+            "repType" : {
+              "kind" : {
+                "I32" : {
+                  
+                }
+              }
+            },
+            "default" : "None"
+          }
+        }
+      },
+      "87" : {
+        "Integer" : {
+          "value" : 10
+        }
+      },
+      "53" : {
+        "EnumConstant" : {
+          "value" : [
+            "FAIL",
+            1
+          ],
+          "t" : {
+            "node" : {
+              "astNodeId" : 54
+            },
+            "repType" : {
+              "kind" : {
+                "I32" : {
+                  
+                }
+              }
+            },
+            "default" : "None"
+          }
+        }
+      },
+      "20" : {
+        "EnumConstant" : {
+          "value" : [
+            "A",
+            0
+          ],
+          "t" : {
+            "node" : {
+              "astNodeId" : 24
+            },
+            "repType" : {
+              "kind" : {
+                "I32" : {
+                  
+                }
+              }
+            },
+            "default" : "None"
+          }
+        }
+      },
+      "86" : {
+        "Integer" : {
+          "value" : 8448
+        }
+      }
+    },
+    "stateMachineMap" : {
+      
+    },
+    "dictionarySymbolSet" : [
+    ],
+    "interfaceMap" : {
+      
+    }
+}

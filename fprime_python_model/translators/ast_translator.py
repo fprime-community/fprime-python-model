@@ -760,7 +760,7 @@ def translate_state_machine(data: dict, id: AstId) -> AstNode[DefStateMachine]:
 def translate_interface_members(l: List) -> List[InterfaceMember]:
     members = []
     for m in l:
-        m_dict: dict = m["node"][1]  # TODO: temp, waiting for fpp pr to be merged
+        m_dict: dict = m[1]
         m_key = list(m_dict.keys())[0]
         id = m_dict[m_key]["node"]["AstNode"]["id"]
         data: dict = m_dict[m_key]["node"]["AstNode"]["data"]
@@ -778,7 +778,7 @@ def translate_interface_members(l: List) -> List[InterfaceMember]:
                 )
             case _:
                 raise InvalidFppToJsonField(m_key)
-        members.append(InterfaceMember(annotate(m["node"][0], member, m["node"][2])))
+        members.append(InterfaceMember(annotate(m[0], member, m[2])))
     return members
 
 

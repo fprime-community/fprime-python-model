@@ -67,7 +67,7 @@ class Lines: # TODO rename to JoinOpts
         return Lines([Line(prefix)]).join("", self, False)
 
     def add_prefix_and_suffix(self, prefix: str, suffix: str) -> Lines:
-        return self.add_prefix(prefix, self.add_suffix(self, suffix))
+        return self.add_prefix(prefix).add_suffix(suffix)
 
     def join(self, sep: str, other: Lines, indent: bool = True) -> Lines: # avoid passing boolean into func
         if not other:
