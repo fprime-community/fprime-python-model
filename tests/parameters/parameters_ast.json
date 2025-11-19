@@ -1,212 +1,180 @@
-[
+{
+  "fppVersion": "[ fpp version ]",
+  "ast": [
     {
-      "members" : [
+      "members": [
         [
-          [
-            "An array of 3 F64 values"
-          ],
+          ["An array of 3 F64 values"],
           {
-            "DefArray" : {
-              "node" : {
-                "AstNode" : {
-                  "data" : {
-                    "name" : "F64x3",
-                    "size" : {
-                      "AstNode" : {
-                        "data" : {
-                          "ExprLiteralInt" : {
-                            "value" : "3"
+            "DefArray": {
+              "node": {
+                "AstNode": {
+                  "data": {
+                    "name": "F64x3",
+                    "size": {
+                      "AstNode": {
+                        "data": {
+                          "ExprLiteralInt": {
+                            "value": "3"
                           }
                         },
-                        "id" : 0
+                        "id": 0
                       }
                     },
-                    "eltType" : {
-                      "AstNode" : {
-                        "data" : {
-                          "TypeNameFloat" : {
-                            "name" : {
-                              "F64" : {
-                                
-                              }
+                    "eltType": {
+                      "AstNode": {
+                        "data": {
+                          "TypeNameFloat": {
+                            "name": {
+                              "F64": {}
                             }
                           }
                         },
-                        "id" : 1
+                        "id": 1
                       }
                     },
-                    "default" : "None",
-                    "format" : "None",
-                    "isDictionaryDef" : false
+                    "default": "None",
+                    "format": "None",
+                    "isDictionaryDef": false
                   },
-                  "id" : 2
+                  "id": 2
                 }
               }
             }
           },
-          [
-          ]
+          []
         ],
         [
-          [
-            "A component for illustrating parameter set and save opcodes"
-          ],
+          ["A component for illustrating parameter set and save opcodes"],
           {
-            "DefComponent" : {
-              "node" : {
-                "AstNode" : {
-                  "data" : {
-                    "kind" : {
-                      "Passive" : {
-                        
-                      }
+            "DefComponent": {
+              "node": {
+                "AstNode": {
+                  "data": {
+                    "kind": {
+                      "Passive": {}
                     },
-                    "name" : "ParamOpcodes",
-                    "members" : [
+                    "name": "ParamOpcodes",
+                    "members": [
                       [
-                        [
-                          "Command receive port"
-                        ],
+                        ["Command receive port"],
                         {
-                          "SpecPortInstance" : {
-                            "node" : {
-                              "AstNode" : {
-                                "data" : {
-                                  "Special" : {
-                                    "inputKind" : "None",
-                                    "kind" : {
-                                      "CommandRecv" : {
-                                        
-                                      }
+                          "SpecPortInstance": {
+                            "node": {
+                              "AstNode": {
+                                "data": {
+                                  "Special": {
+                                    "inputKind": "None",
+                                    "kind": {
+                                      "CommandRecv": {}
                                     },
-                                    "name" : "cmdIn",
-                                    "priority" : "None",
-                                    "queueFull" : "None"
+                                    "name": "cmdIn",
+                                    "priority": "None",
+                                    "queueFull": "None"
                                   }
                                 },
-                                "id" : 3
+                                "id": 3
                               }
                             }
                           }
                         },
-                        [
-                        ]
+                        []
                       ],
                       [
-                        [
-                          "Command registration port"
-                        ],
+                        ["Command registration port"],
                         {
-                          "SpecPortInstance" : {
-                            "node" : {
-                              "AstNode" : {
-                                "data" : {
-                                  "Special" : {
-                                    "inputKind" : "None",
-                                    "kind" : {
-                                      "CommandReg" : {
-                                        
-                                      }
+                          "SpecPortInstance": {
+                            "node": {
+                              "AstNode": {
+                                "data": {
+                                  "Special": {
+                                    "inputKind": "None",
+                                    "kind": {
+                                      "CommandReg": {}
                                     },
-                                    "name" : "cmdRegOut",
-                                    "priority" : "None",
-                                    "queueFull" : "None"
+                                    "name": "cmdRegOut",
+                                    "priority": "None",
+                                    "queueFull": "None"
                                   }
                                 },
-                                "id" : 4
+                                "id": 4
                               }
                             }
                           }
                         },
-                        [
-                        ]
+                        []
                       ],
                       [
-                        [
-                          "Command response port"
-                        ],
+                        ["Command response port"],
                         {
-                          "SpecPortInstance" : {
-                            "node" : {
-                              "AstNode" : {
-                                "data" : {
-                                  "Special" : {
-                                    "inputKind" : "None",
-                                    "kind" : {
-                                      "CommandResp" : {
-                                        
-                                      }
+                          "SpecPortInstance": {
+                            "node": {
+                              "AstNode": {
+                                "data": {
+                                  "Special": {
+                                    "inputKind": "None",
+                                    "kind": {
+                                      "CommandResp": {}
                                     },
-                                    "name" : "cmdResponseOut",
-                                    "priority" : "None",
-                                    "queueFull" : "None"
+                                    "name": "cmdResponseOut",
+                                    "priority": "None",
+                                    "queueFull": "None"
                                   }
                                 },
-                                "id" : 5
+                                "id": 5
                               }
                             }
                           }
                         },
-                        [
-                        ]
+                        []
                       ],
                       [
-                        [
-                          "Parameter get port"
-                        ],
+                        ["Parameter get port"],
                         {
-                          "SpecPortInstance" : {
-                            "node" : {
-                              "AstNode" : {
-                                "data" : {
-                                  "Special" : {
-                                    "inputKind" : "None",
-                                    "kind" : {
-                                      "ParamGet" : {
-                                        
-                                      }
+                          "SpecPortInstance": {
+                            "node": {
+                              "AstNode": {
+                                "data": {
+                                  "Special": {
+                                    "inputKind": "None",
+                                    "kind": {
+                                      "ParamGet": {}
                                     },
-                                    "name" : "prmGetOut",
-                                    "priority" : "None",
-                                    "queueFull" : "None"
+                                    "name": "prmGetOut",
+                                    "priority": "None",
+                                    "queueFull": "None"
                                   }
                                 },
-                                "id" : 6
+                                "id": 6
                               }
                             }
                           }
                         },
-                        [
-                        ]
+                        []
                       ],
                       [
-                        [
-                          "Parameter set port"
-                        ],
+                        ["Parameter set port"],
                         {
-                          "SpecPortInstance" : {
-                            "node" : {
-                              "AstNode" : {
-                                "data" : {
-                                  "Special" : {
-                                    "inputKind" : "None",
-                                    "kind" : {
-                                      "ParamSet" : {
-                                        
-                                      }
+                          "SpecPortInstance": {
+                            "node": {
+                              "AstNode": {
+                                "data": {
+                                  "Special": {
+                                    "inputKind": "None",
+                                    "kind": {
+                                      "ParamSet": {}
                                     },
-                                    "name" : "prmSetOut",
-                                    "priority" : "None",
-                                    "queueFull" : "None"
+                                    "name": "prmSetOut",
+                                    "priority": "None",
+                                    "queueFull": "None"
                                   }
                                 },
-                                "id" : 7
+                                "id": 7
                               }
                             }
                           }
                         },
-                        [
-                        ]
+                        []
                       ],
                       [
                         [
@@ -215,49 +183,46 @@
                           "Its implied save opcode is 0x01"
                         ],
                         {
-                          "SpecParam" : {
-                            "node" : {
-                              "AstNode" : {
-                                "data" : {
-                                  "name" : "Param1",
-                                  "typeName" : {
-                                    "AstNode" : {
-                                      "data" : {
-                                        "TypeNameInt" : {
-                                          "name" : {
-                                            "U32" : {
-                                              
-                                            }
+                          "SpecParam": {
+                            "node": {
+                              "AstNode": {
+                                "data": {
+                                  "name": "Param1",
+                                  "typeName": {
+                                    "AstNode": {
+                                      "data": {
+                                        "TypeNameInt": {
+                                          "name": {
+                                            "U32": {}
                                           }
                                         }
                                       },
-                                      "id" : 8
+                                      "id": 8
                                     }
                                   },
-                                  "default" : {
-                                    "Some" : {
-                                      "AstNode" : {
-                                        "data" : {
-                                          "ExprLiteralInt" : {
-                                            "value" : "1"
+                                  "default": {
+                                    "Some": {
+                                      "AstNode": {
+                                        "data": {
+                                          "ExprLiteralInt": {
+                                            "value": "1"
                                           }
                                         },
-                                        "id" : 9
+                                        "id": 9
                                       }
                                     }
                                   },
-                                  "id" : "None",
-                                  "setOpcode" : "None",
-                                  "saveOpcode" : "None",
-                                  "isExternal" : false
+                                  "id": "None",
+                                  "setOpcode": "None",
+                                  "saveOpcode": "None",
+                                  "isExternal": false
                                 },
-                                "id" : 10
+                                "id": 10
                               }
                             }
                           }
                         },
-                        [
-                        ]
+                        []
                       ],
                       [
                         [
@@ -266,82 +231,79 @@
                           "Its save opcode is 0x11"
                         ],
                         {
-                          "SpecParam" : {
-                            "node" : {
-                              "AstNode" : {
-                                "data" : {
-                                  "name" : "Param2",
-                                  "typeName" : {
-                                    "AstNode" : {
-                                      "data" : {
-                                        "TypeNameFloat" : {
-                                          "name" : {
-                                            "F64" : {
-                                              
-                                            }
+                          "SpecParam": {
+                            "node": {
+                              "AstNode": {
+                                "data": {
+                                  "name": "Param2",
+                                  "typeName": {
+                                    "AstNode": {
+                                      "data": {
+                                        "TypeNameFloat": {
+                                          "name": {
+                                            "F64": {}
                                           }
                                         }
                                       },
-                                      "id" : 11
+                                      "id": 11
                                     }
                                   },
-                                  "default" : {
-                                    "Some" : {
-                                      "AstNode" : {
-                                        "data" : {
-                                          "ExprLiteralFloat" : {
-                                            "value" : "2.0"
+                                  "default": {
+                                    "Some": {
+                                      "AstNode": {
+                                        "data": {
+                                          "ExprLiteralFloat": {
+                                            "value": "2.0"
                                           }
                                         },
-                                        "id" : 12
+                                        "id": 12
                                       }
                                     }
                                   },
-                                  "id" : {
-                                    "Some" : {
-                                      "AstNode" : {
-                                        "data" : {
-                                          "ExprLiteralInt" : {
-                                            "value" : "0x10"
+                                  "id": {
+                                    "Some": {
+                                      "AstNode": {
+                                        "data": {
+                                          "ExprLiteralInt": {
+                                            "value": "0x10"
                                           }
                                         },
-                                        "id" : 13
+                                        "id": 13
                                       }
                                     }
                                   },
-                                  "setOpcode" : {
-                                    "Some" : {
-                                      "AstNode" : {
-                                        "data" : {
-                                          "ExprLiteralInt" : {
-                                            "value" : "0x10"
+                                  "setOpcode": {
+                                    "Some": {
+                                      "AstNode": {
+                                        "data": {
+                                          "ExprLiteralInt": {
+                                            "value": "0x10"
                                           }
                                         },
-                                        "id" : 14
+                                        "id": 14
                                       }
                                     }
                                   },
-                                  "saveOpcode" : {
-                                    "Some" : {
-                                      "AstNode" : {
-                                        "data" : {
-                                          "ExprLiteralInt" : {
-                                            "value" : "0x11"
+                                  "saveOpcode": {
+                                    "Some": {
+                                      "AstNode": {
+                                        "data": {
+                                          "ExprLiteralInt": {
+                                            "value": "0x11"
                                           }
                                         },
-                                        "id" : 15
+                                        "id": 15
                                       }
                                     }
                                   },
-                                  "isExternal" : false
+                                  "isExternal": false
                                 },
-                                "id" : 16
+                                "id": 16
                               }
                             }
                           }
                         },
-                        [
-                        ]
+                        []
                       ],
                       [
                         [
@@ -350,96 +312,95 @@
                           "Its save opcode is 0x20"
                         ],
                         {
-                          "SpecParam" : {
-                            "node" : {
-                              "AstNode" : {
-                                "data" : {
-                                  "name" : "Param3",
-                                  "typeName" : {
-                                    "AstNode" : {
-                                      "data" : {
-                                        "TypeNameQualIdent" : {
-                                          "name" : {
-                                            "AstNode" : {
-                                              "data" : {
-                                                "Unqualified" : {
-                                                  "name" : "F64x3"
+                          "SpecParam": {
+                            "node": {
+                              "AstNode": {
+                                "data": {
+                                  "name": "Param3",
+                                  "typeName": {
+                                    "AstNode": {
+                                      "data": {
+                                        "TypeNameQualIdent": {
+                                          "name": {
+                                            "AstNode": {
+                                              "data": {
+                                                "Unqualified": {
+                                                  "name": "F64x3"
                                                 }
                                               },
-                                              "id" : 18
+                                              "id": 18
                                             }
                                           }
                                         }
                                       },
-                                      "id" : 19
+                                      "id": 19
                                     }
                                   },
-                                  "default" : {
-                                    "Some" : {
-                                      "AstNode" : {
-                                        "data" : {
-                                          "ExprArray" : {
-                                            "elts" : [
+                                  "default": {
+                                    "Some": {
+                                      "AstNode": {
+                                        "data": {
+                                          "ExprArray": {
+                                            "elts": [
                                               {
-                                                "AstNode" : {
-                                                  "data" : {
-                                                    "ExprLiteralFloat" : {
-                                                      "value" : "1.0"
+                                                "AstNode": {
+                                                  "data": {
+                                                    "ExprLiteralFloat": {
+                                                      "value": "1.0"
                                                     }
                                                   },
-                                                  "id" : 20
+                                                  "id": 20
                                                 }
                                               },
                                               {
-                                                "AstNode" : {
-                                                  "data" : {
-                                                    "ExprLiteralFloat" : {
-                                                      "value" : "2.0"
+                                                "AstNode": {
+                                                  "data": {
+                                                    "ExprLiteralFloat": {
+                                                      "value": "2.0"
                                                     }
                                                   },
-                                                  "id" : 21
+                                                  "id": 21
                                                 }
                                               },
                                               {
-                                                "AstNode" : {
-                                                  "data" : {
-                                                    "ExprLiteralFloat" : {
-                                                      "value" : "3.0"
+                                                "AstNode": {
+                                                  "data": {
+                                                    "ExprLiteralFloat": {
+                                                      "value": "3.0"
                                                     }
                                                   },
-                                                  "id" : 22
+                                                  "id": 22
                                                 }
                                               }
                                             ]
                                           }
                                         },
-                                        "id" : 23
+                                        "id": 23
                                       }
                                     }
                                   },
-                                  "id" : "None",
-                                  "setOpcode" : "None",
-                                  "saveOpcode" : {
-                                    "Some" : {
-                                      "AstNode" : {
-                                        "data" : {
-                                          "ExprLiteralInt" : {
-                                            "value" : "0x20"
+                                  "id": "None",
+                                  "setOpcode": "None",
+                                  "saveOpcode": {
+                                    "Some": {
+                                      "AstNode": {
+                                        "data": {
+                                          "ExprLiteralInt": {
+                                            "value": "0x20"
                                           }
                                         },
-                                        "id" : 24
+                                        "id": 24
                                       }
                                     }
                                   },
-                                  "isExternal" : false
+                                  "isExternal": false
                                 },
-                                "id" : 25
+                                "id": 25
                               }
                             }
                           }
                         },
-                        [
-                        ]
+                        []
                       ],
                       [
                         [
@@ -448,185 +409,165 @@
                           "Its save opcode is 0x22"
                         ],
                         {
-                          "SpecParam" : {
-                            "node" : {
-                              "AstNode" : {
-                                "data" : {
-                                  "name" : "Param4",
-                                  "typeName" : {
-                                    "AstNode" : {
-                                      "data" : {
-                                        "TypeNameInt" : {
-                                          "name" : {
-                                            "I16" : {
-                                              
-                                            }
+                          "SpecParam": {
+                            "node": {
+                              "AstNode": {
+                                "data": {
+                                  "name": "Param4",
+                                  "typeName": {
+                                    "AstNode": {
+                                      "data": {
+                                        "TypeNameInt": {
+                                          "name": {
+                                            "I16": {}
                                           }
                                         }
                                       },
-                                      "id" : 32
+                                      "id": 32
                                     }
                                   },
-                                  "default" : {
-                                    "Some" : {
-                                      "AstNode" : {
-                                        "data" : {
-                                          "ExprLiteralInt" : {
-                                            "value" : "42"
+                                  "default": {
+                                    "Some": {
+                                      "AstNode": {
+                                        "data": {
+                                          "ExprLiteralInt": {
+                                            "value": "42"
                                           }
                                         },
-                                        "id" : 33
+                                        "id": 33
                                       }
                                     }
                                   },
-                                  "id" : "None",
-                                  "setOpcode" : "None",
-                                  "saveOpcode" : "None",
-                                  "isExternal" : true
+                                  "id": "None",
+                                  "setOpcode": "None",
+                                  "saveOpcode": "None",
+                                  "isExternal": true
                                 },
-                                "id" : 34
+                                "id": 34
                               }
                             }
                           }
                         },
-                        [
-                        ]
+                        []
                       ]
                     ]
                   },
-                  "id" : 35
+                  "id": 35
                 }
               }
             }
           },
-          [
-          ]
+          []
         ],
         [
-          [
-          ],
+          [],
           {
-            "DefModule" : {
-              "node" : {
-                "AstNode" : {
-                  "data" : {
-                    "name" : "Fw",
-                    "members" : [
+            "DefModule": {
+              "node": {
+                "AstNode": {
+                  "data": {
+                    "name": "Fw",
+                    "members": [
                       [
-                        [
-                        ],
+                        [],
                         {
-                          "DefPort" : {
-                            "node" : {
-                              "AstNode" : {
-                                "data" : {
-                                  "name" : "PrmGet",
-                                  "params" : [
-                                  ],
-                                  "returnType" : "None"
+                          "DefPort": {
+                            "node": {
+                              "AstNode": {
+                                "data": {
+                                  "name": "PrmGet",
+                                  "params": [],
+                                  "returnType": "None"
                                 },
-                                "id" : 36
+                                "id": 36
                               }
                             }
                           }
                         },
-                        [
-                        ]
+                        []
                       ],
                       [
-                        [
-                        ],
+                        [],
                         {
-                          "DefPort" : {
-                            "node" : {
-                              "AstNode" : {
-                                "data" : {
-                                  "name" : "PrmSet",
-                                  "params" : [
-                                  ],
-                                  "returnType" : "None"
+                          "DefPort": {
+                            "node": {
+                              "AstNode": {
+                                "data": {
+                                  "name": "PrmSet",
+                                  "params": [],
+                                  "returnType": "None"
                                 },
-                                "id" : 37
+                                "id": 37
                               }
                             }
                           }
                         },
-                        [
-                        ]
+                        []
                       ],
                       [
-                        [
-                        ],
+                        [],
                         {
-                          "DefPort" : {
-                            "node" : {
-                              "AstNode" : {
-                                "data" : {
-                                  "name" : "Cmd",
-                                  "params" : [
-                                  ],
-                                  "returnType" : "None"
+                          "DefPort": {
+                            "node": {
+                              "AstNode": {
+                                "data": {
+                                  "name": "Cmd",
+                                  "params": [],
+                                  "returnType": "None"
                                 },
-                                "id" : 38
+                                "id": 38
                               }
                             }
                           }
                         },
-                        [
-                        ]
+                        []
                       ],
                       [
-                        [
-                        ],
+                        [],
                         {
-                          "DefPort" : {
-                            "node" : {
-                              "AstNode" : {
-                                "data" : {
-                                  "name" : "CmdReg",
-                                  "params" : [
-                                  ],
-                                  "returnType" : "None"
+                          "DefPort": {
+                            "node": {
+                              "AstNode": {
+                                "data": {
+                                  "name": "CmdReg",
+                                  "params": [],
+                                  "returnType": "None"
                                 },
-                                "id" : 39
+                                "id": 39
                               }
                             }
                           }
                         },
-                        [
-                        ]
+                        []
                       ],
                       [
-                        [
-                        ],
+                        [],
                         {
-                          "DefPort" : {
-                            "node" : {
-                              "AstNode" : {
-                                "data" : {
-                                  "name" : "CmdResponse",
-                                  "params" : [
-                                  ],
-                                  "returnType" : "None"
+                          "DefPort": {
+                            "node": {
+                              "AstNode": {
+                                "data": {
+                                  "name": "CmdResponse",
+                                  "params": [],
+                                  "returnType": "None"
                                 },
-                                "id" : 42
+                                "id": 42
                               }
                             }
                           }
                         },
-                        [
-                        ]
+                        []
                       ]
                     ]
                   },
-                  "id" : 43
+                  "id": 43
                 }
               }
             }
           },
-          [
-          ]
+          []
         ]
       ]
     }
-]
+  ]
+}

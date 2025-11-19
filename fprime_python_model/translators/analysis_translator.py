@@ -1485,9 +1485,9 @@ class AnalysisTranslator:
                 topology_map=self.translate_topology_map(
                     self.require_type(data.get("topologyMap"), dict)
                 ),
-                # interface_map=self.translate_interface_map(
-                #     self.require_type(data.get("interfaceMap"), dict)
-                # ),
+                interface_map=self.translate_interface_map(
+                    self.require_type(data.get("interfaceMap"), dict)
+                ),
                 state_machine_map=self.translate_state_machine_map(
                     self.require_type(data.get("stateMachineMap"), dict)
                 ),

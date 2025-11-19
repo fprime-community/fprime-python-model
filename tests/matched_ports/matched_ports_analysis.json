@@ -1,250 +1,216 @@
 {
-    "componentInstanceMap" : {
-      
-    },
-    "componentMap" : {
-      "21" : {
-        "aNode" : {
-          "astNodeId" : 21
+  "fppVersion": "[ fpp version ]",
+  "analysis": {
+    "componentInstanceMap": {},
+    "componentMap": {
+      "21": {
+        "aNode": {
+          "astNodeId": 21
         },
-        "portMap" : {
-          "pingOut" : {
-            "General" : {
-              "aNode" : {
-                "astNodeId" : 6
+        "portMap": {
+          "pingOut": {
+            "General": {
+              "aNode": {
+                "astNodeId": 6
               },
-              "specifier" : {
-                "kind" : {
-                  "Output" : {
-                    
+              "specifier": {
+                "kind": {
+                  "Output": {}
+                },
+                "name": "pingOut",
+                "size": {
+                  "Some": {
+                    "astNodeId": 2
                   }
                 },
-                "name" : "pingOut",
-                "size" : {
-                  "Some" : {
-                    "astNodeId" : 2
+                "port": {
+                  "Some": {
+                    "astNodeId": 5
                   }
                 },
-                "port" : {
-                  "Some" : {
-                    "astNodeId" : 5
-                  }
-                },
-                "priority" : "None",
-                "queueFull" : "None"
+                "priority": "None",
+                "queueFull": "None"
               },
-              "kind" : "Output",
-              "size" : 10,
-              "ty" : {
-                "DefPort" : {
-                  "symbol" : {
-                    "Port" : {
-                      "nodeId" : 24,
-                      "unqualifiedName" : "Ping"
+              "kind": "Output",
+              "size": 10,
+              "ty": {
+                "DefPort": {
+                  "symbol": {
+                    "Port": {
+                      "nodeId": 24,
+                      "unqualifiedName": "Ping"
                     }
                   }
                 }
               },
-              "importNodeIds" : [
-              ]
+              "importNodeIds": []
             }
           },
-          "pingIn" : {
-            "General" : {
-              "aNode" : {
-                "astNodeId" : 11
+          "pingIn": {
+            "General": {
+              "aNode": {
+                "astNodeId": 11
               },
-              "specifier" : {
-                "kind" : {
-                  "AsyncInput" : {
-                    
+              "specifier": {
+                "kind": {
+                  "AsyncInput": {}
+                },
+                "name": "pingIn",
+                "size": {
+                  "Some": {
+                    "astNodeId": 7
                   }
                 },
-                "name" : "pingIn",
-                "size" : {
-                  "Some" : {
-                    "astNodeId" : 7
+                "port": {
+                  "Some": {
+                    "astNodeId": 10
                   }
                 },
-                "port" : {
-                  "Some" : {
-                    "astNodeId" : 10
-                  }
-                },
-                "priority" : "None",
-                "queueFull" : "None"
+                "priority": "None",
+                "queueFull": "None"
               },
-              "kind" : "AsyncInput",
-              "size" : 10,
-              "ty" : {
-                "DefPort" : {
-                  "symbol" : {
-                    "Port" : {
-                      "nodeId" : 24,
-                      "unqualifiedName" : "Ping"
+              "kind": "AsyncInput",
+              "size": 10,
+              "ty": {
+                "DefPort": {
+                  "symbol": {
+                    "Port": {
+                      "nodeId": 24,
+                      "unqualifiedName": "Ping"
                     }
                   }
                 }
               },
-              "importNodeIds" : [
-              ]
+              "importNodeIds": []
             }
           }
         },
-        "specialPortMap" : {
-          
-        },
-        "commandMap" : {
-          
-        },
-        "defaultOpcode" : 0,
-        "tlmChannelMap" : {
-          
-        },
-        "tlmChannelNameMap" : {
-          
-        },
-        "defaultTlmChannelId" : 0,
-        "eventMap" : {
-          
-        },
-        "defaultEventId" : 0,
-        "paramMap" : {
-          
-        },
-        "specPortMatchingList" : [
+        "specialPortMap": {},
+        "commandMap": {},
+        "defaultOpcode": 0,
+        "tlmChannelMap": {},
+        "tlmChannelNameMap": {},
+        "defaultTlmChannelId": 0,
+        "eventMap": {},
+        "defaultEventId": 0,
+        "paramMap": {},
+        "specPortMatchingList": [
           {
-            "astNodeId" : 20
+            "astNodeId": 20
           }
         ],
-        "stateMachineInstanceMap" : {
-          
-        },
-        "portMatchingList" : [
+        "stateMachineInstanceMap": {},
+        "portMatchingList": [
           {
-            "aNode" : {
-              "astNodeId" : 20
+            "aNode": {
+              "astNodeId": 20
             },
-            "instance1" : {
-              "aNode" : {
-                "astNodeId" : 6
+            "instance1": {
+              "aNode": {
+                "astNodeId": 6
               },
-              "specifier" : {
-                "kind" : {
-                  "Output" : {
-                    
+              "specifier": {
+                "kind": {
+                  "Output": {}
+                },
+                "name": "pingOut",
+                "size": {
+                  "Some": {
+                    "astNodeId": 2
                   }
                 },
-                "name" : "pingOut",
-                "size" : {
-                  "Some" : {
-                    "astNodeId" : 2
+                "port": {
+                  "Some": {
+                    "astNodeId": 5
                   }
                 },
-                "port" : {
-                  "Some" : {
-                    "astNodeId" : 5
-                  }
-                },
-                "priority" : "None",
-                "queueFull" : "None"
+                "priority": "None",
+                "queueFull": "None"
               },
-              "kind" : "Output",
-              "size" : 10,
-              "ty" : {
-                "DefPort" : {
-                  "symbol" : {
-                    "Port" : {
-                      "nodeId" : 24,
-                      "unqualifiedName" : "Ping"
+              "kind": "Output",
+              "size": 10,
+              "ty": {
+                "DefPort": {
+                  "symbol": {
+                    "Port": {
+                      "nodeId": 24,
+                      "unqualifiedName": "Ping"
                     }
                   }
                 }
               },
-              "importNodeIds" : [
-              ]
+              "importNodeIds": []
             },
-            "instance2" : {
-              "aNode" : {
-                "astNodeId" : 11
+            "instance2": {
+              "aNode": {
+                "astNodeId": 11
               },
-              "specifier" : {
-                "kind" : {
-                  "AsyncInput" : {
-                    
+              "specifier": {
+                "kind": {
+                  "AsyncInput": {}
+                },
+                "name": "pingIn",
+                "size": {
+                  "Some": {
+                    "astNodeId": 7
                   }
                 },
-                "name" : "pingIn",
-                "size" : {
-                  "Some" : {
-                    "astNodeId" : 7
+                "port": {
+                  "Some": {
+                    "astNodeId": 10
                   }
                 },
-                "port" : {
-                  "Some" : {
-                    "astNodeId" : 10
-                  }
-                },
-                "priority" : "None",
-                "queueFull" : "None"
+                "priority": "None",
+                "queueFull": "None"
               },
-              "kind" : "AsyncInput",
-              "size" : 10,
-              "ty" : {
-                "DefPort" : {
-                  "symbol" : {
-                    "Port" : {
-                      "nodeId" : 24,
-                      "unqualifiedName" : "Ping"
+              "kind": "AsyncInput",
+              "size": 10,
+              "ty": {
+                "DefPort": {
+                  "symbol": {
+                    "Port": {
+                      "nodeId": 24,
+                      "unqualifiedName": "Ping"
                     }
                   }
                 }
               },
-              "importNodeIds" : [
-              ]
+              "importNodeIds": []
             }
           }
         ],
-        "defaultParamId" : 0,
-        "containerMap" : {
-          
-        },
-        "defaultContainerId" : 0,
-        "recordMap" : {
-          
-        },
-        "defaultRecordId" : 0
+        "defaultParamId": 0,
+        "containerMap": {},
+        "defaultContainerId": 0,
+        "recordMap": {},
+        "defaultRecordId": 0
       }
     },
-    "includedFileSet" : [
-    ],
-    "inputFileSet" : [
+    "includedFileSet": [],
+    "inputFileSet": [
       "[ local path prefix ]/compiler/tools/fpp-to-json/test/matchedPorts.fpp"
     ],
-    "locationSpecifierMap" : [
-    ],
-    "parentSymbolMap" : {
-      "24" : {
-        "Module" : {
-          "nodeId" : 25,
-          "unqualifiedName" : "Svc"
+    "locationSpecifierMap": [],
+    "parentSymbolMap": {
+      "24": {
+        "Module": {
+          "nodeId": 25,
+          "unqualifiedName": "Svc"
         }
       }
     },
-    "symbolScopeMap" : {
-      "21" : {
-        "map" : {
-          
-        }
+    "symbolScopeMap": {
+      "21": {
+        "map": {}
       },
-      "25" : {
-        "map" : {
-          "Port" : {
-            "map" : {
-              "Ping" : {
-                "Port" : {
-                  "nodeId" : 24,
-                  "unqualifiedName" : "Ping"
+      "25": {
+        "map": {
+          "Port": {
+            "map": {
+              "Ping": {
+                "Port": {
+                  "nodeId": 24,
+                  "unqualifiedName": "Ping"
                 }
               }
             }
@@ -252,105 +218,91 @@
         }
       }
     },
-    "topologyMap" : {
-      
-    },
-    "typeMap" : {
-      "0" : {
-        "Int" : {
-          "Integer" : {
-            
-          }
+    "topologyMap": {},
+    "typeMap": {
+      "0": {
+        "Int": {
+          "Integer": {}
         }
       },
-      "1" : {
-        "Int" : {
-          "Integer" : {
-            
-          }
+      "1": {
+        "Int": {
+          "Integer": {}
         }
       },
-      "2" : {
-        "Int" : {
-          "Integer" : {
-            
-          }
+      "2": {
+        "Int": {
+          "Integer": {}
         }
       },
-      "7" : {
-        "Int" : {
-          "Integer" : {
-            
-          }
+      "7": {
+        "Int": {
+          "Integer": {}
         }
       }
     },
-    "useDefMap" : {
-      "8" : {
-        "Module" : {
-          "nodeId" : 25,
-          "unqualifiedName" : "Svc"
+    "useDefMap": {
+      "8": {
+        "Module": {
+          "nodeId": 25,
+          "unqualifiedName": "Svc"
         }
       },
-      "5" : {
-        "Port" : {
-          "nodeId" : 24,
-          "unqualifiedName" : "Ping"
+      "5": {
+        "Port": {
+          "nodeId": 24,
+          "unqualifiedName": "Ping"
         }
       },
-      "10" : {
-        "Port" : {
-          "nodeId" : 24,
-          "unqualifiedName" : "Ping"
+      "10": {
+        "Port": {
+          "nodeId": 24,
+          "unqualifiedName": "Ping"
         }
       },
-      "2" : {
-        "Constant" : {
-          "nodeId" : 1,
-          "unqualifiedName" : "numPingPorts"
+      "2": {
+        "Constant": {
+          "nodeId": 1,
+          "unqualifiedName": "numPingPorts"
         }
       },
-      "7" : {
-        "Constant" : {
-          "nodeId" : 1,
-          "unqualifiedName" : "numPingPorts"
+      "7": {
+        "Constant": {
+          "nodeId": 1,
+          "unqualifiedName": "numPingPorts"
         }
       },
-      "3" : {
-        "Module" : {
-          "nodeId" : 25,
-          "unqualifiedName" : "Svc"
+      "3": {
+        "Module": {
+          "nodeId": 25,
+          "unqualifiedName": "Svc"
         }
       }
     },
-    "valueMap" : {
-      "0" : {
-        "Integer" : {
-          "value" : 10
+    "valueMap": {
+      "0": {
+        "Integer": {
+          "value": 10
         }
       },
-      "1" : {
-        "Integer" : {
-          "value" : 10
+      "1": {
+        "Integer": {
+          "value": 10
         }
       },
-      "2" : {
-        "Integer" : {
-          "value" : 10
+      "2": {
+        "Integer": {
+          "value": 10
         }
       },
-      "7" : {
-        "Integer" : {
-          "value" : 10
+      "7": {
+        "Integer": {
+          "value": 10
         }
       }
     },
-    "stateMachineMap" : {
-      
-    },
-    "dictionarySymbolSet" : [
-    ],
-    "interfaceMap" : {
-      
-    }
+    "stateMachineMap": {},
+    "dictionarySymbolSet": [],
+    "interfaceMap": {}
+  }
 }

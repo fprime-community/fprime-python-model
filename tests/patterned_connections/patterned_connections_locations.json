@@ -1,1053 +1,1055 @@
 {
-    "0" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "2.34",
-      "includingLoc" : "None"
-    },
-    "1" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "2.37",
-      "includingLoc" : "None"
-    },
-    "2" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "2.34",
-      "includingLoc" : "None"
-    },
-    "3" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "2.5",
-      "includingLoc" : "None"
-    },
-    "4" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "4.5",
-      "includingLoc" : "None"
-    },
-    "5" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "4.5",
-      "includingLoc" : "None"
-    },
-    "6" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "4.5",
-      "includingLoc" : "None"
-    },
-    "7" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "1.1",
-      "includingLoc" : "None"
-    },
-    "8" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "8.28",
-      "includingLoc" : "None"
-    },
-    "9" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "8.31",
-      "includingLoc" : "None"
-    },
-    "10" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "8.28",
-      "includingLoc" : "None"
-    },
-    "11" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "8.5",
-      "includingLoc" : "None"
-    },
-    "12" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "9.32",
-      "includingLoc" : "None"
-    },
-    "13" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "9.35",
-      "includingLoc" : "None"
-    },
-    "14" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "9.32",
-      "includingLoc" : "None"
-    },
-    "15" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "9.5",
-      "includingLoc" : "None"
-    },
-    "16" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "10.37",
-      "includingLoc" : "None"
-    },
-    "17" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "10.40",
-      "includingLoc" : "None"
-    },
-    "18" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "10.37",
-      "includingLoc" : "None"
-    },
-    "19" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "10.5",
-      "includingLoc" : "None"
-    },
-    "20" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "11.26",
-      "includingLoc" : "None"
-    },
-    "21" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "11.29",
-      "includingLoc" : "None"
-    },
-    "22" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "11.26",
-      "includingLoc" : "None"
-    },
-    "23" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "11.5",
-      "includingLoc" : "None"
-    },
-    "24" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "11.26",
-      "includingLoc" : "None"
-    },
-    "25" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "11.29",
-      "includingLoc" : "None"
-    },
-    "26" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "11.26",
-      "includingLoc" : "None"
-    },
-    "27" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "11.5",
-      "includingLoc" : "None"
-    },
-    "28" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "11.26",
-      "includingLoc" : "None"
-    },
-    "29" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "11.29",
-      "includingLoc" : "None"
-    },
-    "30" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "11.26",
-      "includingLoc" : "None"
-    },
-    "31" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "11.5",
-      "includingLoc" : "None"
-    },
-    "32" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "7.1",
-      "includingLoc" : "None"
-    },
-    "33" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "15.31",
-      "includingLoc" : "None"
-    },
-    "34" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "15.34",
-      "includingLoc" : "None"
-    },
-    "35" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "15.31",
-      "includingLoc" : "None"
-    },
-    "36" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "15.5",
-      "includingLoc" : "None"
-    },
-    "37" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "16.5",
-      "includingLoc" : "None"
-    },
-    "38" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "16.5",
-      "includingLoc" : "None"
-    },
-    "39" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "16.5",
-      "includingLoc" : "None"
-    },
-    "40" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "14.1",
-      "includingLoc" : "None"
-    },
-    "41" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "21.27",
-      "includingLoc" : "None"
-    },
-    "42" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "21.31",
-      "includingLoc" : "None"
-    },
-    "43" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "21.27",
-      "includingLoc" : "None"
-    },
-    "44" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "21.5",
-      "includingLoc" : "None"
-    },
-    "45" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "22.33",
-      "includingLoc" : "None"
-    },
-    "46" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "22.37",
-      "includingLoc" : "None"
-    },
-    "47" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "22.33",
-      "includingLoc" : "None"
-    },
-    "48" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "22.5",
-      "includingLoc" : "None"
-    },
-    "49" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "22.33",
-      "includingLoc" : "None"
-    },
-    "50" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "22.37",
-      "includingLoc" : "None"
-    },
-    "51" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "22.33",
-      "includingLoc" : "None"
-    },
-    "52" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "22.5",
-      "includingLoc" : "None"
-    },
-    "53" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "22.33",
-      "includingLoc" : "None"
-    },
-    "54" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "22.37",
-      "includingLoc" : "None"
-    },
-    "55" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "22.33",
-      "includingLoc" : "None"
-    },
-    "56" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "22.5",
-      "includingLoc" : "None"
-    },
-    "57" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "20.1",
-      "includingLoc" : "None"
-    },
-    "58" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "26.31",
-      "includingLoc" : "None"
-    },
-    "59" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "26.34",
-      "includingLoc" : "None"
-    },
-    "60" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "26.31",
-      "includingLoc" : "None"
-    },
-    "61" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "26.5",
-      "includingLoc" : "None"
-    },
-    "62" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "27.31",
-      "includingLoc" : "None"
-    },
-    "63" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "27.34",
-      "includingLoc" : "None"
-    },
-    "64" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "27.31",
-      "includingLoc" : "None"
-    },
-    "65" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "27.5",
-      "includingLoc" : "None"
-    },
-    "66" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "27.31",
-      "includingLoc" : "None"
-    },
-    "67" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "27.34",
-      "includingLoc" : "None"
-    },
-    "68" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "27.31",
-      "includingLoc" : "None"
-    },
-    "69" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "27.5",
-      "includingLoc" : "None"
-    },
-    "70" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "27.31",
-      "includingLoc" : "None"
-    },
-    "71" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "27.34",
-      "includingLoc" : "None"
-    },
-    "72" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "27.31",
-      "includingLoc" : "None"
-    },
-    "73" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "27.5",
-      "includingLoc" : "None"
-    },
-    "74" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "25.1",
-      "includingLoc" : "None"
-    },
-    "75" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "31.26",
-      "includingLoc" : "None"
-    },
-    "76" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "31.29",
-      "includingLoc" : "None"
-    },
-    "77" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "31.26",
-      "includingLoc" : "None"
-    },
-    "78" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "31.5",
-      "includingLoc" : "None"
-    },
-    "79" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "31.26",
-      "includingLoc" : "None"
-    },
-    "80" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "31.29",
-      "includingLoc" : "None"
-    },
-    "81" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "31.26",
-      "includingLoc" : "None"
-    },
-    "82" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "31.5",
-      "includingLoc" : "None"
-    },
-    "83" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "31.26",
-      "includingLoc" : "None"
-    },
-    "84" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "31.29",
-      "includingLoc" : "None"
-    },
-    "85" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "31.26",
-      "includingLoc" : "None"
-    },
-    "86" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "31.5",
-      "includingLoc" : "None"
-    },
-    "87" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "30.1",
-      "includingLoc" : "None"
-    },
-    "88" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "35.35",
-      "includingLoc" : "None"
-    },
-    "89" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "35.38",
-      "includingLoc" : "None"
-    },
-    "90" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "35.35",
-      "includingLoc" : "None"
-    },
-    "91" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "35.5",
-      "includingLoc" : "None"
-    },
-    "92" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "35.35",
-      "includingLoc" : "None"
-    },
-    "93" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "35.38",
-      "includingLoc" : "None"
-    },
-    "94" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "35.35",
-      "includingLoc" : "None"
-    },
-    "95" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "35.5",
-      "includingLoc" : "None"
-    },
-    "96" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "35.35",
-      "includingLoc" : "None"
-    },
-    "97" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "35.38",
-      "includingLoc" : "None"
-    },
-    "98" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "35.35",
-      "includingLoc" : "None"
-    },
-    "99" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "35.5",
-      "includingLoc" : "None"
-    },
-    "100" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "34.1",
-      "includingLoc" : "None"
-    },
-    "101" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "39.5",
-      "includingLoc" : "None"
-    },
-    "102" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "40.5",
-      "includingLoc" : "None"
-    },
-    "103" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "41.5",
-      "includingLoc" : "None"
-    },
-    "104" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "41.5",
-      "includingLoc" : "None"
-    },
-    "105" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "41.5",
-      "includingLoc" : "None"
-    },
-    "106" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "38.1",
-      "includingLoc" : "None"
-    },
-    "107" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "44.13",
-      "includingLoc" : "None"
-    },
-    "108" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "44.13",
-      "includingLoc" : "None"
-    },
-    "109" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "44.23",
-      "includingLoc" : "None"
-    },
-    "110" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "44.1",
-      "includingLoc" : "None"
-    },
-    "111" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "45.14",
-      "includingLoc" : "None"
-    },
-    "112" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "45.14",
-      "includingLoc" : "None"
-    },
-    "113" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "45.27",
-      "includingLoc" : "None"
-    },
-    "114" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "45.1",
-      "includingLoc" : "None"
-    },
-    "115" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "46.14",
-      "includingLoc" : "None"
-    },
-    "116" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "46.14",
-      "includingLoc" : "None"
-    },
-    "117" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "46.30",
-      "includingLoc" : "None"
-    },
-    "118" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "46.1",
-      "includingLoc" : "None"
-    },
-    "119" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "47.14",
-      "includingLoc" : "None"
-    },
-    "120" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "47.14",
-      "includingLoc" : "None"
-    },
-    "121" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "47.28",
-      "includingLoc" : "None"
-    },
-    "122" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "47.1",
-      "includingLoc" : "None"
-    },
-    "123" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "48.14",
-      "includingLoc" : "None"
-    },
-    "124" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "48.14",
-      "includingLoc" : "None"
-    },
-    "125" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "48.29",
-      "includingLoc" : "None"
-    },
-    "126" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "48.1",
-      "includingLoc" : "None"
-    },
-    "127" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "49.14",
-      "includingLoc" : "None"
-    },
-    "128" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "49.14",
-      "includingLoc" : "None"
-    },
-    "129" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "49.28",
-      "includingLoc" : "None"
-    },
-    "130" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "49.1",
-      "includingLoc" : "None"
-    },
-    "131" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "50.14",
-      "includingLoc" : "None"
-    },
-    "132" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "50.14",
-      "includingLoc" : "None"
-    },
-    "133" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "50.32",
-      "includingLoc" : "None"
-    },
-    "134" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "50.1",
-      "includingLoc" : "None"
-    },
-    "135" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "51.14",
-      "includingLoc" : "None"
-    },
-    "136" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "51.14",
-      "includingLoc" : "None"
-    },
-    "137" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "51.32",
-      "includingLoc" : "None"
-    },
-    "138" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "51.1",
-      "includingLoc" : "None"
-    },
-    "139" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "54.14",
-      "includingLoc" : "None"
-    },
-    "140" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "54.14",
-      "includingLoc" : "None"
-    },
-    "141" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "54.5",
-      "includingLoc" : "None"
-    },
-    "142" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "55.14",
-      "includingLoc" : "None"
-    },
-    "143" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "55.14",
-      "includingLoc" : "None"
-    },
-    "144" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "55.5",
-      "includingLoc" : "None"
-    },
-    "145" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "56.14",
-      "includingLoc" : "None"
-    },
-    "146" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "56.14",
-      "includingLoc" : "None"
-    },
-    "147" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "56.5",
-      "includingLoc" : "None"
-    },
-    "148" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "57.14",
-      "includingLoc" : "None"
-    },
-    "149" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "57.14",
-      "includingLoc" : "None"
-    },
-    "150" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "57.5",
-      "includingLoc" : "None"
-    },
-    "151" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "58.14",
-      "includingLoc" : "None"
-    },
-    "152" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "58.14",
-      "includingLoc" : "None"
-    },
-    "153" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "58.5",
-      "includingLoc" : "None"
-    },
-    "154" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "59.14",
-      "includingLoc" : "None"
-    },
-    "155" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "59.14",
-      "includingLoc" : "None"
-    },
-    "156" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "59.5",
-      "includingLoc" : "None"
-    },
-    "157" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "60.14",
-      "includingLoc" : "None"
-    },
-    "158" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "60.14",
-      "includingLoc" : "None"
-    },
-    "159" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "60.5",
-      "includingLoc" : "None"
-    },
-    "160" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "61.14",
-      "includingLoc" : "None"
-    },
-    "161" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "61.14",
-      "includingLoc" : "None"
-    },
-    "162" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "61.5",
-      "includingLoc" : "None"
-    },
-    "163" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "63.31",
-      "includingLoc" : "None"
-    },
-    "164" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "63.31",
-      "includingLoc" : "None"
-    },
-    "165" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "63.5",
-      "includingLoc" : "None"
-    },
-    "166" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "64.34",
-      "includingLoc" : "None"
-    },
-    "167" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "64.34",
-      "includingLoc" : "None"
-    },
-    "168" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "64.39",
-      "includingLoc" : "None"
-    },
-    "169" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "64.39",
-      "includingLoc" : "None"
-    },
-    "170" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "64.5",
-      "includingLoc" : "None"
-    },
-    "171" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "65.32",
-      "includingLoc" : "None"
-    },
-    "172" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "65.32",
-      "includingLoc" : "None"
-    },
-    "173" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "65.5",
-      "includingLoc" : "None"
-    },
-    "174" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "66.33",
-      "includingLoc" : "None"
-    },
-    "175" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "66.33",
-      "includingLoc" : "None"
-    },
-    "176" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "66.5",
-      "includingLoc" : "None"
-    },
-    "177" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "67.32",
-      "includingLoc" : "None"
-    },
-    "178" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "67.32",
-      "includingLoc" : "None"
-    },
-    "179" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "67.5",
-      "includingLoc" : "None"
-    },
-    "180" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "68.36",
-      "includingLoc" : "None"
-    },
-    "181" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "68.36",
-      "includingLoc" : "None"
-    },
-    "182" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "68.5",
-      "includingLoc" : "None"
-    },
-    "183" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "69.37",
-      "includingLoc" : "None"
-    },
-    "184" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "69.37",
-      "includingLoc" : "None"
-    },
-    "185" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "69.5",
-      "includingLoc" : "None"
-    },
-    "186" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "69.37",
-      "includingLoc" : "None"
-    },
-    "187" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "69.37",
-      "includingLoc" : "None"
-    },
-    "188" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "69.5",
-      "includingLoc" : "None"
-    },
-    "189" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "69.37",
-      "includingLoc" : "None"
-    },
-    "190" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "69.37",
-      "includingLoc" : "None"
-    },
-    "191" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "69.5",
-      "includingLoc" : "None"
-    },
-    "192" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
-      "pos" : "53.1",
-      "includingLoc" : "None"
-    },
-    "193" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
-      "pos" : "4.3",
-      "includingLoc" : "None"
-    },
-    "194" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
-      "pos" : "5.3",
-      "includingLoc" : "None"
-    },
-    "195" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
-      "pos" : "6.3",
-      "includingLoc" : "None"
-    },
-    "196" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
-      "pos" : "7.3",
-      "includingLoc" : "None"
-    },
-    "197" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
-      "pos" : "8.3",
-      "includingLoc" : "None"
-    },
-    "198" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
-      "pos" : "9.3",
-      "includingLoc" : "None"
-    },
-    "199" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
-      "pos" : "10.3",
-      "includingLoc" : "None"
-    },
-    "200" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
-      "pos" : "11.3",
-      "includingLoc" : "None"
-    },
-    "201" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
-      "pos" : "12.3",
-      "includingLoc" : "None"
-    },
-    "202" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
-      "pos" : "13.3",
-      "includingLoc" : "None"
-    },
-    "203" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
-      "pos" : "13.3",
-      "includingLoc" : "None"
-    },
-    "204" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
-      "pos" : "13.3",
-      "includingLoc" : "None"
-    },
-    "205" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
-      "pos" : "3.1",
-      "includingLoc" : "None"
-    },
-    "206" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
-      "pos" : "17.3",
-      "includingLoc" : "None"
-    },
-    "207" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
-      "pos" : "17.3",
-      "includingLoc" : "None"
-    },
-    "208" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
-      "pos" : "17.3",
-      "includingLoc" : "None"
-    },
-    "209" : {
-      "file" : "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
-      "pos" : "16.1",
-      "includingLoc" : "None"
+  "fppVersion": "[ fpp version ]",
+  "locationMap": {
+    "0": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "2.34",
+      "includingLoc": "None"
+    },
+    "1": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "2.37",
+      "includingLoc": "None"
+    },
+    "2": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "2.34",
+      "includingLoc": "None"
+    },
+    "3": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "2.5",
+      "includingLoc": "None"
+    },
+    "4": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "4.5",
+      "includingLoc": "None"
+    },
+    "5": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "4.5",
+      "includingLoc": "None"
+    },
+    "6": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "4.5",
+      "includingLoc": "None"
+    },
+    "7": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "1.1",
+      "includingLoc": "None"
+    },
+    "8": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "8.28",
+      "includingLoc": "None"
+    },
+    "9": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "8.31",
+      "includingLoc": "None"
+    },
+    "10": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "8.28",
+      "includingLoc": "None"
+    },
+    "11": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "8.5",
+      "includingLoc": "None"
+    },
+    "12": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "9.32",
+      "includingLoc": "None"
+    },
+    "13": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "9.35",
+      "includingLoc": "None"
+    },
+    "14": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "9.32",
+      "includingLoc": "None"
+    },
+    "15": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "9.5",
+      "includingLoc": "None"
+    },
+    "16": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "10.37",
+      "includingLoc": "None"
+    },
+    "17": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "10.40",
+      "includingLoc": "None"
+    },
+    "18": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "10.37",
+      "includingLoc": "None"
+    },
+    "19": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "10.5",
+      "includingLoc": "None"
+    },
+    "20": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "11.26",
+      "includingLoc": "None"
+    },
+    "21": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "11.29",
+      "includingLoc": "None"
+    },
+    "22": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "11.26",
+      "includingLoc": "None"
+    },
+    "23": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "11.5",
+      "includingLoc": "None"
+    },
+    "24": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "11.26",
+      "includingLoc": "None"
+    },
+    "25": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "11.29",
+      "includingLoc": "None"
+    },
+    "26": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "11.26",
+      "includingLoc": "None"
+    },
+    "27": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "11.5",
+      "includingLoc": "None"
+    },
+    "28": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "11.26",
+      "includingLoc": "None"
+    },
+    "29": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "11.29",
+      "includingLoc": "None"
+    },
+    "30": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "11.26",
+      "includingLoc": "None"
+    },
+    "31": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "11.5",
+      "includingLoc": "None"
+    },
+    "32": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "7.1",
+      "includingLoc": "None"
+    },
+    "33": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "15.31",
+      "includingLoc": "None"
+    },
+    "34": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "15.34",
+      "includingLoc": "None"
+    },
+    "35": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "15.31",
+      "includingLoc": "None"
+    },
+    "36": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "15.5",
+      "includingLoc": "None"
+    },
+    "37": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "16.5",
+      "includingLoc": "None"
+    },
+    "38": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "16.5",
+      "includingLoc": "None"
+    },
+    "39": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "16.5",
+      "includingLoc": "None"
+    },
+    "40": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "14.1",
+      "includingLoc": "None"
+    },
+    "41": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "21.27",
+      "includingLoc": "None"
+    },
+    "42": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "21.31",
+      "includingLoc": "None"
+    },
+    "43": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "21.27",
+      "includingLoc": "None"
+    },
+    "44": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "21.5",
+      "includingLoc": "None"
+    },
+    "45": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "22.33",
+      "includingLoc": "None"
+    },
+    "46": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "22.37",
+      "includingLoc": "None"
+    },
+    "47": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "22.33",
+      "includingLoc": "None"
+    },
+    "48": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "22.5",
+      "includingLoc": "None"
+    },
+    "49": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "22.33",
+      "includingLoc": "None"
+    },
+    "50": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "22.37",
+      "includingLoc": "None"
+    },
+    "51": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "22.33",
+      "includingLoc": "None"
+    },
+    "52": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "22.5",
+      "includingLoc": "None"
+    },
+    "53": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "22.33",
+      "includingLoc": "None"
+    },
+    "54": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "22.37",
+      "includingLoc": "None"
+    },
+    "55": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "22.33",
+      "includingLoc": "None"
+    },
+    "56": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "22.5",
+      "includingLoc": "None"
+    },
+    "57": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "20.1",
+      "includingLoc": "None"
+    },
+    "58": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "26.31",
+      "includingLoc": "None"
+    },
+    "59": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "26.34",
+      "includingLoc": "None"
+    },
+    "60": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "26.31",
+      "includingLoc": "None"
+    },
+    "61": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "26.5",
+      "includingLoc": "None"
+    },
+    "62": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "27.31",
+      "includingLoc": "None"
+    },
+    "63": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "27.34",
+      "includingLoc": "None"
+    },
+    "64": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "27.31",
+      "includingLoc": "None"
+    },
+    "65": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "27.5",
+      "includingLoc": "None"
+    },
+    "66": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "27.31",
+      "includingLoc": "None"
+    },
+    "67": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "27.34",
+      "includingLoc": "None"
+    },
+    "68": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "27.31",
+      "includingLoc": "None"
+    },
+    "69": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "27.5",
+      "includingLoc": "None"
+    },
+    "70": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "27.31",
+      "includingLoc": "None"
+    },
+    "71": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "27.34",
+      "includingLoc": "None"
+    },
+    "72": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "27.31",
+      "includingLoc": "None"
+    },
+    "73": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "27.5",
+      "includingLoc": "None"
+    },
+    "74": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "25.1",
+      "includingLoc": "None"
+    },
+    "75": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "31.26",
+      "includingLoc": "None"
+    },
+    "76": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "31.29",
+      "includingLoc": "None"
+    },
+    "77": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "31.26",
+      "includingLoc": "None"
+    },
+    "78": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "31.5",
+      "includingLoc": "None"
+    },
+    "79": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "31.26",
+      "includingLoc": "None"
+    },
+    "80": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "31.29",
+      "includingLoc": "None"
+    },
+    "81": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "31.26",
+      "includingLoc": "None"
+    },
+    "82": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "31.5",
+      "includingLoc": "None"
+    },
+    "83": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "31.26",
+      "includingLoc": "None"
+    },
+    "84": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "31.29",
+      "includingLoc": "None"
+    },
+    "85": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "31.26",
+      "includingLoc": "None"
+    },
+    "86": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "31.5",
+      "includingLoc": "None"
+    },
+    "87": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "30.1",
+      "includingLoc": "None"
+    },
+    "88": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "35.35",
+      "includingLoc": "None"
+    },
+    "89": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "35.38",
+      "includingLoc": "None"
+    },
+    "90": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "35.35",
+      "includingLoc": "None"
+    },
+    "91": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "35.5",
+      "includingLoc": "None"
+    },
+    "92": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "35.35",
+      "includingLoc": "None"
+    },
+    "93": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "35.38",
+      "includingLoc": "None"
+    },
+    "94": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "35.35",
+      "includingLoc": "None"
+    },
+    "95": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "35.5",
+      "includingLoc": "None"
+    },
+    "96": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "35.35",
+      "includingLoc": "None"
+    },
+    "97": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "35.38",
+      "includingLoc": "None"
+    },
+    "98": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "35.35",
+      "includingLoc": "None"
+    },
+    "99": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "35.5",
+      "includingLoc": "None"
+    },
+    "100": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "34.1",
+      "includingLoc": "None"
+    },
+    "101": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "39.5",
+      "includingLoc": "None"
+    },
+    "102": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "40.5",
+      "includingLoc": "None"
+    },
+    "103": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "41.5",
+      "includingLoc": "None"
+    },
+    "104": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "41.5",
+      "includingLoc": "None"
+    },
+    "105": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "41.5",
+      "includingLoc": "None"
+    },
+    "106": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "38.1",
+      "includingLoc": "None"
+    },
+    "107": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "44.13",
+      "includingLoc": "None"
+    },
+    "108": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "44.13",
+      "includingLoc": "None"
+    },
+    "109": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "44.23",
+      "includingLoc": "None"
+    },
+    "110": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "44.1",
+      "includingLoc": "None"
+    },
+    "111": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "45.14",
+      "includingLoc": "None"
+    },
+    "112": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "45.14",
+      "includingLoc": "None"
+    },
+    "113": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "45.27",
+      "includingLoc": "None"
+    },
+    "114": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "45.1",
+      "includingLoc": "None"
+    },
+    "115": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "46.14",
+      "includingLoc": "None"
+    },
+    "116": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "46.14",
+      "includingLoc": "None"
+    },
+    "117": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "46.30",
+      "includingLoc": "None"
+    },
+    "118": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "46.1",
+      "includingLoc": "None"
+    },
+    "119": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "47.14",
+      "includingLoc": "None"
+    },
+    "120": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "47.14",
+      "includingLoc": "None"
+    },
+    "121": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "47.28",
+      "includingLoc": "None"
+    },
+    "122": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "47.1",
+      "includingLoc": "None"
+    },
+    "123": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "48.14",
+      "includingLoc": "None"
+    },
+    "124": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "48.14",
+      "includingLoc": "None"
+    },
+    "125": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "48.29",
+      "includingLoc": "None"
+    },
+    "126": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "48.1",
+      "includingLoc": "None"
+    },
+    "127": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "49.14",
+      "includingLoc": "None"
+    },
+    "128": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "49.14",
+      "includingLoc": "None"
+    },
+    "129": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "49.28",
+      "includingLoc": "None"
+    },
+    "130": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "49.1",
+      "includingLoc": "None"
+    },
+    "131": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "50.14",
+      "includingLoc": "None"
+    },
+    "132": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "50.14",
+      "includingLoc": "None"
+    },
+    "133": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "50.32",
+      "includingLoc": "None"
+    },
+    "134": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "50.1",
+      "includingLoc": "None"
+    },
+    "135": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "51.14",
+      "includingLoc": "None"
+    },
+    "136": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "51.14",
+      "includingLoc": "None"
+    },
+    "137": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "51.32",
+      "includingLoc": "None"
+    },
+    "138": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "51.1",
+      "includingLoc": "None"
+    },
+    "139": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "54.14",
+      "includingLoc": "None"
+    },
+    "140": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "54.14",
+      "includingLoc": "None"
+    },
+    "141": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "54.5",
+      "includingLoc": "None"
+    },
+    "142": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "55.14",
+      "includingLoc": "None"
+    },
+    "143": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "55.14",
+      "includingLoc": "None"
+    },
+    "144": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "55.5",
+      "includingLoc": "None"
+    },
+    "145": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "56.14",
+      "includingLoc": "None"
+    },
+    "146": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "56.14",
+      "includingLoc": "None"
+    },
+    "147": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "56.5",
+      "includingLoc": "None"
+    },
+    "148": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "57.14",
+      "includingLoc": "None"
+    },
+    "149": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "57.14",
+      "includingLoc": "None"
+    },
+    "150": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "57.5",
+      "includingLoc": "None"
+    },
+    "151": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "58.14",
+      "includingLoc": "None"
+    },
+    "152": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "58.14",
+      "includingLoc": "None"
+    },
+    "153": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "58.5",
+      "includingLoc": "None"
+    },
+    "154": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "59.14",
+      "includingLoc": "None"
+    },
+    "155": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "59.14",
+      "includingLoc": "None"
+    },
+    "156": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "59.5",
+      "includingLoc": "None"
+    },
+    "157": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "60.14",
+      "includingLoc": "None"
+    },
+    "158": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "60.14",
+      "includingLoc": "None"
+    },
+    "159": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "60.5",
+      "includingLoc": "None"
+    },
+    "160": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "61.14",
+      "includingLoc": "None"
+    },
+    "161": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "61.14",
+      "includingLoc": "None"
+    },
+    "162": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "61.5",
+      "includingLoc": "None"
+    },
+    "163": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "63.31",
+      "includingLoc": "None"
+    },
+    "164": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "63.31",
+      "includingLoc": "None"
+    },
+    "165": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "63.5",
+      "includingLoc": "None"
+    },
+    "166": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "64.34",
+      "includingLoc": "None"
+    },
+    "167": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "64.34",
+      "includingLoc": "None"
+    },
+    "168": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "64.39",
+      "includingLoc": "None"
+    },
+    "169": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "64.39",
+      "includingLoc": "None"
+    },
+    "170": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "64.5",
+      "includingLoc": "None"
+    },
+    "171": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "65.32",
+      "includingLoc": "None"
+    },
+    "172": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "65.32",
+      "includingLoc": "None"
+    },
+    "173": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "65.5",
+      "includingLoc": "None"
+    },
+    "174": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "66.33",
+      "includingLoc": "None"
+    },
+    "175": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "66.33",
+      "includingLoc": "None"
+    },
+    "176": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "66.5",
+      "includingLoc": "None"
+    },
+    "177": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "67.32",
+      "includingLoc": "None"
+    },
+    "178": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "67.32",
+      "includingLoc": "None"
+    },
+    "179": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "67.5",
+      "includingLoc": "None"
+    },
+    "180": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "68.36",
+      "includingLoc": "None"
+    },
+    "181": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "68.36",
+      "includingLoc": "None"
+    },
+    "182": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "68.5",
+      "includingLoc": "None"
+    },
+    "183": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "69.37",
+      "includingLoc": "None"
+    },
+    "184": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "69.37",
+      "includingLoc": "None"
+    },
+    "185": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "69.5",
+      "includingLoc": "None"
+    },
+    "186": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "69.37",
+      "includingLoc": "None"
+    },
+    "187": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "69.37",
+      "includingLoc": "None"
+    },
+    "188": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "69.5",
+      "includingLoc": "None"
+    },
+    "189": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "69.37",
+      "includingLoc": "None"
+    },
+    "190": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "69.37",
+      "includingLoc": "None"
+    },
+    "191": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "69.5",
+      "includingLoc": "None"
+    },
+    "192": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+      "pos": "53.1",
+      "includingLoc": "None"
+    },
+    "193": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
+      "pos": "4.3",
+      "includingLoc": "None"
+    },
+    "194": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
+      "pos": "5.3",
+      "includingLoc": "None"
+    },
+    "195": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
+      "pos": "6.3",
+      "includingLoc": "None"
+    },
+    "196": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
+      "pos": "7.3",
+      "includingLoc": "None"
+    },
+    "197": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
+      "pos": "8.3",
+      "includingLoc": "None"
+    },
+    "198": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
+      "pos": "9.3",
+      "includingLoc": "None"
+    },
+    "199": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
+      "pos": "10.3",
+      "includingLoc": "None"
+    },
+    "200": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
+      "pos": "11.3",
+      "includingLoc": "None"
+    },
+    "201": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
+      "pos": "12.3",
+      "includingLoc": "None"
+    },
+    "202": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
+      "pos": "13.3",
+      "includingLoc": "None"
+    },
+    "203": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
+      "pos": "13.3",
+      "includingLoc": "None"
+    },
+    "204": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
+      "pos": "13.3",
+      "includingLoc": "None"
+    },
+    "205": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
+      "pos": "3.1",
+      "includingLoc": "None"
+    },
+    "206": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
+      "pos": "17.3",
+      "includingLoc": "None"
+    },
+    "207": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
+      "pos": "17.3",
+      "includingLoc": "None"
+    },
+    "208": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
+      "pos": "17.3",
+      "includingLoc": "None"
+    },
+    "209": {
+      "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
+      "pos": "16.1",
+      "includingLoc": "None"
     }
+  }
 }
-  
