@@ -1448,6 +1448,7 @@ class AnalysisTranslator:
             raise FileNotFoundError(f'File "{self.analysis_json_file}" not found')
         with open(self.analysis_json_file, "r") as f:
             data: Dict = json.load(f)
+            data = data["analysis"]
             self.component_map = self.translate_component_map(
                 self.require_type(data.get("componentMap"), dict)
             )
