@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from enum import Enum
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Tuple, TypeVar
+from typing import List, Optional, Tuple
 from fprime_python_model.fpp_ast.fpp_ast_node import AstNode, AstId
 from fprime_python_model.semantics.symbol import PortSymbol
 from fprime_python_model.fpp_ast import fpp_ast

@@ -13,18 +13,33 @@ from typing import (
 )
 import os
 from fprime_python_model.fpp_ast import fpp_ast
-from fprime_python_model.fpp_ast.fpp_ast_node import AstId, T
+from fprime_python_model.fpp_ast.fpp_ast_node import AstNode, AstId, T
 from pathlib import Path
 from fprime_python_model.semantics.analysis import Analysis
-from fprime_python_model.semantics.symbol import *
 from fprime_python_model.semantics.scope import Scope
+from fprime_python_model.semantics.symbol import (
+    Symbol,
+    EnumConstantSymbol,
+    EnumSymbol,
+    StructSymbol,
+    TopologySymbol,
+    InterfaceSymbol,
+    ArraySymbol,
+    StateMachineSymbol,
+    PortSymbol,
+    ModuleSymbol,
+    ComponentInstanceSymbol,
+    ComponentSymbol,
+    ConstantSymbol,
+    AliasTypeSymbol,
+    AbsTypeSymbol,
+)
 from fprime_python_model.semantics.name_group import NameGroup
 from fprime_python_model.semantics.types_values import (
     Type,
     Value,
     BooleanType,
     FloatType,
-    IntType,
     StringType,
     FloatKind,
     IntegerType,
@@ -47,8 +62,6 @@ from fprime_python_model.semantics.types_values import (
     StructType,
     AnonStructType,
     AnonStructValue,
-    StructMembersValue,
-    StructMembersType,
     AliasType,
 )
 from fprime_python_model.utils.error import InvalidFppToJsonField
@@ -92,7 +105,6 @@ from fprime_python_model.translators.ast_translator import (
     translate_spec_tlm_channel_update,
     translate_spec_loc_kind,
     translate_pattern_kind,
-    translate_qual_ident,
 )
 from fprime_python_model.semantics.tlm_channel import TlmChannel, TlmChannelId, Limits
 from fprime_python_model.semantics.event import Event, EventId
@@ -115,7 +127,6 @@ from fprime_python_model.semantics.state_machine_analysis import (
     StateMachineAnalysis,
     SignalStateTransitionMap,
     StateTransitionMap,
-    SignalTransitionMap,
     TransitionExprMap,
 )
 from fprime_python_model.semantics.state_machine_scope import StateMachineScope
@@ -132,6 +143,10 @@ from fprime_python_model.semantics.transition_graph import (
     TransitionGraph,
     TransitionGraphNode,
     ArcMap,
+    Arc,
+    InitialArc,
+    StateArc,
+    ChoiceArc,
 )
 from fprime_python_model.semantics.state_or_junction import State, Choice, StateOrChoice
 from fprime_python_model.semantics.state_machine_typed_element import (
@@ -977,10 +992,15 @@ class AnalysisTranslator:
         return out_dict
 
     def translate_connection_pattern(self, d: Dict) -> ConnectionPattern:
+        target_ident_nodes: List[AstNode[fpp_ast.QualIdent]] = []
+        for t in d["targets"]:
+            target_ident_nodes.append(
+                self.get_annotated_ast_node_by_id(t[0]["aNode"]["astNodeId"])[1]
+            )
         ast = fpp_ast.Pattern(
             translate_pattern_kind(d["ast"]["kind"]),
             self.ast_map[d["ast"]["source"]["astNodeId"]],
-            [],  # TODO
+            target_ident_nodes,
         )
         source: Tuple[ComponentInstance, Location] = (
             self.component_instance_map[d["source"][0]["aNode"]["astNodeId"]],
@@ -990,11 +1010,24 @@ class AnalysisTranslator:
                 d["source"][1]["includingLoc"],
             ),
         )
+        targets: Set[Tuple[ComponentInstance, Location]] = set()
+        for t in d["targets"]:
+            loc_dict = t[1]
+            targets.add(
+                (
+                    self.component_instance_map[t[0]["aNode"]["astNodeId"]],
+                    Location(
+                        Path(loc_dict["file"]),
+                        loc_dict["pos"],
+                        loc_dict["includingLoc"],
+                    ),
+                )
+            )
         return ConnectionPattern(
             a_node=self.get_annotated_ast_node_by_id(d["aNode"]["astNodeId"]),
             ast=ast,
             source=source,
-            targets=set(),  # TODO
+            targets=targets,
         )
 
     def translate_pattern_map(
@@ -1176,8 +1209,62 @@ class AnalysisTranslator:
     ) -> TransitionGraphNode:
         return TransitionGraphNode(self.translate_state_or_choice(d["soc"]))
 
-    def translate_arc_map(self, d: Dict[str, dict]) -> ArcMap:
-        return dict()  # TODO
+    def translate_arc_set(self, l: List[Dict]) -> Set[Arc]:
+        arc_set: Set[Arc] = set()
+        for a in l:
+            key = next(iter(a))
+            if key == "State":
+                arc_set.add(
+                    StateArc(
+                        self.require_type(
+                            self.translate_state_machine_symbol(
+                                "State", a[key]["startState"]["node"]["astNodeId"]
+                            ),
+                            StateSymbol,
+                        ),
+                        self.get_annotated_ast_node_by_id(a[key]["aNode"]["astNodeId"]),
+                        self.translate_transition_graph_node(a[key]["endNode"]),
+                    )
+                )
+            elif key == "Choice":
+                arc_set.add(
+                    ChoiceArc(
+                        self.require_type(
+                            self.translate_state_machine_symbol(
+                                "Choice", a[key]["startChoice"]["node"]["astNodeId"]
+                            ),
+                            ChoiceSymbol,
+                        ),
+                        self.get_annotated_ast_node_by_id(a[key]["aNode"]["astNodeId"])[
+                            1
+                        ],
+                        self.translate_transition_graph_node(a[key]["endNode"]),
+                    )
+                )
+            elif key == "Initial":
+                arc_set.add(
+                    InitialArc(
+                        self.require_type(
+                            self.translate_state_machine_symbol(
+                                "State", a[key]["startState"]["node"]["astNodeId"]
+                            ),
+                            StateSymbol,
+                        ),
+                        self.get_annotated_ast_node_by_id(a[key]["aNode"]["astNodeId"]),
+                        self.translate_transition_graph_node(a[key]["endNode"]),
+                    )
+                )
+            else:
+                raise InvalidFppToJsonField(key)
+
+        return arc_set
+
+    def translate_arc_map(self, d: Dict[str, list]) -> ArcMap:
+        arc_map: ArcMap = dict()
+        for name, inner_list in d.items():
+            arc_map[name] = self.translate_arc_set(inner_list)
+
+        return arc_map
 
     def translate_transition_graph(self, d: Dict[str, dict]) -> TransitionGraph:
         return TransitionGraph(

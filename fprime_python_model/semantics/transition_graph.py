@@ -2,7 +2,6 @@ from dataclasses import dataclass, field
 from typing import Optional, Dict, Set
 from abc import ABC, abstractmethod
 from fprime_python_model.semantics.state_machine_symbol import (
-    StateMachineSymbolInterface,
     StateSymbol,
     ChoiceSymbol,
 )
@@ -68,6 +67,15 @@ class InitialArc(Arc):
         end_name = self.end_node.soc.get_name()
         return f"{self.show_kind()} at {str(loc.path)}:{loc.pos} to {end_name}"
 
+    def __hash__(self):
+        return hash(
+            (
+                self.start_state.get_node_id(),
+                self.a_node[1].get_id(),
+                self.end_node.soc.get_symbol().get_node_id(),
+            )
+        )
+
 
 @dataclass
 class StateArc(Arc):
@@ -90,6 +98,15 @@ class StateArc(Arc):
     def show_transition(self, loc: Location) -> str:
         end_name = self.end_node.soc.get_name()
         return f"{self.show_kind()} at {str(loc.path)}:{loc.pos} to {end_name}"
+
+    def __hash__(self):
+        return hash(
+            (
+                self.start_state.get_node_id(),
+                self.a_node[1].get_id(),
+                self.end_node.soc.get_symbol().get_node_id(),
+            )
+        )
 
 
 @dataclass
@@ -114,8 +131,17 @@ class ChoiceArc(Arc):
         end_name = self.end_node.soc.get_name()
         return f"{self.show_kind()} at {str(loc.path)}:{loc.pos} to {end_name}"
 
+    def __hash__(self):
+        return hash(
+            (
+                self.start_choice.get_node_id(),
+                self.a_node.get_id(),
+                self.end_node.soc.get_symbol().get_node_id(),
+            )
+        )
 
-ArcMap = Dict[TransitionGraphNode, Set[Arc]]
+
+ArcMap = Dict[str, Set[Arc]]  # temporary string key, should be symbol ID
 
 
 @dataclass

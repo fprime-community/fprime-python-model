@@ -1,13 +1,8 @@
-from dataclasses import dataclass, field
-from typing import Tuple, Set
-from fprime_python_model.fpp_ast import fpp_ast
-from fprime_python_model.fpp_ast.fpp_ast_node import AstNode
+from dataclasses import dataclass
 from fprime_python_model.semantics.component_instance import ComponentInstance
-from fprime_python_model.fpp_ast.fpp_locations import Location
 from fprime_python_model.semantics.port_instance import PortInstance
 from fprime_python_model.semantics.name import (
     QualifiedName,
-    UnqualifiedName,
     qualified_name_from_ident_list,
 )
 

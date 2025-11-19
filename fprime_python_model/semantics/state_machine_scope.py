@@ -1,5 +1,3 @@
-from dataclasses import dataclass
-from typing import TypeVar
 from fprime_python_model.semantics.state_machine_symbol import (
     StateMachineSymbolInterface,
 )

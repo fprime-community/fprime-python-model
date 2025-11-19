@@ -1,5 +1,4 @@
 from fprime_python_model.semantics.symbol_interface import SymbolInterface
-from abc import ABC
 from dataclasses import dataclass
 from fprime_python_model.fpp_ast import fpp_ast
 from fprime_python_model.fpp_ast.fpp_ast_node import AstNode, AstId

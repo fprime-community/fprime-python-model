@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 from abc import ABC, abstractmethod
-from typing import List, Optional
 from fprime_python_model.semantics.state_machine_symbol import (
     StateMachineSymbolInterface,
     StateSymbol,

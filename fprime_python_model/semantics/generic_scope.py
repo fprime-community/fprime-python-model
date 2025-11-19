@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 from typing import Dict, TypeVar, Generic, Optional
 from fprime_python_model.semantics.symbol_interface import SymbolInterface
-from fprime_python_model.fpp_ast import fpp_ast
 from fprime_python_model.semantics.name import UnqualifiedName
 
 NG = TypeVar("NG")
@@ -61,11 +60,12 @@ class GenericNameSymbolMap(Generic[S]):
 @dataclass(frozen=True)
 class GenericScope(Generic[NG, S]):
     """
-    A generic collection of name-symbol maps, one for each name group 
+    A generic collection of name-symbol maps, one for each name group
 
     :param map: The map
     :type symbol_map: Dict[NG, GenericNameSymbolMap[S]]
     """
+
     map: Dict[NG, GenericNameSymbolMap[S]]
 
     def __init__(self, map: Dict[NG, GenericNameSymbolMap[S]] = dict()):

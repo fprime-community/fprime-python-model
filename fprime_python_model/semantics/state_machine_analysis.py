@@ -3,7 +3,6 @@ from typing import Dict, Optional
 from fprime_python_model.semantics.symbol import StateMachineSymbol
 from fprime_python_model.fpp_ast import fpp_ast
 from fprime_python_model.fpp_ast.fpp_ast_node import AstNode, AstId
-from fprime_python_model.semantics.name import UnqualifiedName
 from fprime_python_model.semantics.transition_graph import TransitionGraph
 from fprime_python_model.semantics.state_machine_symbol import (
     StateMachineSymbolInterface,

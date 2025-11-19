@@ -1,5 +1,5 @@
 from typing import Dict, List
-from fprime_python_model.fpp_ast.fpp_ast_node import AstNode, AstId, T
+from fprime_python_model.fpp_ast.fpp_ast_node import AstNode, AstId
 from fprime_python_model.fpp_ast.fpp_ast import Annotated
 from fprime_python_model.translators.ast_translator import translate_ast_json
 from fprime_python_model.translators.loc_map_translator import (

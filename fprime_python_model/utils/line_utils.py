@@ -1,7 +1,9 @@
 from __future__ import annotations
-from typing import List, Callable, Optional, Any
+from typing import List, Callable, Optional, Any, TypeVar
 from dataclasses import dataclass
 from enum import Enum
+
+T = TypeVar("T")
 
 
 @dataclass
@@ -45,7 +47,7 @@ class IndentMode(Enum):
 
 
 @dataclass
-class Lines: # TODO rename to JoinOpts
+class Lines:
     lines: List[Line]
 
     def __iter__(self):
@@ -69,7 +71,9 @@ class Lines: # TODO rename to JoinOpts
     def add_prefix_and_suffix(self, prefix: str, suffix: str) -> Lines:
         return self.add_prefix(prefix).add_suffix(suffix)
 
-    def join(self, sep: str, other: Lines, indent: bool = True) -> Lines: # avoid passing boolean into func
+    def join(
+        self, sep: str, other: Lines, indent: bool = True
+    ) -> Lines:  # avoid passing boolean into func
         if not other:
             return self
 
@@ -89,9 +93,12 @@ class Lines: # TODO rename to JoinOpts
     def join_with_break(self, sep: str, other: Lines) -> Lines:
         if not other.lines and not sep:
             return self
-        result = add_suffix(self.lines, " \\")
-        result += [Line(sep + l.string, l.indent.indent_in(2)) for l in other.lines]
-        return Lines(result)
+        result = self.add_suffix(" \\")
+        indented = []
+        for l in other.add_prefix(sep).lines:
+            indented.append(Line(l.string, l.indent.indent_in(2)))
+        # result += [Line(sep + l.string, l.indent.indent_in(2)) for l in other.lines]
+        return Lines(result.lines + indented)
 
     def join_opt(
         self, opt: Optional[Any], sep: str, f: Callable[[Any], Lines]
@@ -147,7 +154,7 @@ def blank() -> Line:
     return Line("")
 
 
-def blank_separated(f: Callable[[Any], List[Line]], items: List[Any]) -> List[Line]:
+def blank_separated(f: Callable[[T], List[Line]], items: List[T]) -> List[Line]:
     """Apply f to each item and insert blank lines between results."""
     if not items:
         return []

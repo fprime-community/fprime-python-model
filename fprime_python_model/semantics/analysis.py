@@ -2,7 +2,6 @@ from dataclasses import dataclass, field
 from typing import Optional, Set, List, Dict, Tuple
 from fprime_python_model.fpp_ast.fpp_ast_node import AstId
 from fprime_python_model.fpp_ast.fpp_ast import Ident, SpecLocKind, SpecLoc
-from typing import Any
 from fprime_python_model.semantics.symbol import (
     Symbol,
     SymbolInterface,

@@ -1,0 +1,751 @@
+[
+    {
+      "members" : [
+        [
+          [
+            "Component for illustrating telemetry channel limits"
+          ],
+          {
+            "DefComponent" : {
+              "node" : {
+                "AstNode" : {
+                  "data" : {
+                    "kind" : {
+                      "Passive" : {
+                        
+                      }
+                    },
+                    "name" : "TlmLimits",
+                    "members" : [
+                      [
+                        [
+                          "Telemetry port"
+                        ],
+                        {
+                          "SpecPortInstance" : {
+                            "node" : {
+                              "AstNode" : {
+                                "data" : {
+                                  "Special" : {
+                                    "inputKind" : "None",
+                                    "kind" : {
+                                      "Telemetry" : {
+                                        
+                                      }
+                                    },
+                                    "name" : "tlmOut",
+                                    "priority" : "None",
+                                    "queueFull" : "None"
+                                  }
+                                },
+                                "id" : 0
+                              }
+                            }
+                          }
+                        },
+                        [
+                        ]
+                      ],
+                      [
+                        [
+                          "Time get port"
+                        ],
+                        {
+                          "SpecPortInstance" : {
+                            "node" : {
+                              "AstNode" : {
+                                "data" : {
+                                  "Special" : {
+                                    "inputKind" : "None",
+                                    "kind" : {
+                                      "TimeGet" : {
+                                        
+                                      }
+                                    },
+                                    "name" : "timeGetOut",
+                                    "priority" : "None",
+                                    "queueFull" : "None"
+                                  }
+                                },
+                                "id" : 1
+                              }
+                            }
+                          }
+                        },
+                        [
+                        ]
+                      ],
+                      [
+                        [
+                          "Telemetry channel 1"
+                        ],
+                        {
+                          "SpecTlmChannel" : {
+                            "node" : {
+                              "AstNode" : {
+                                "data" : {
+                                  "name" : "Channel1",
+                                  "typeName" : {
+                                    "AstNode" : {
+                                      "data" : {
+                                        "TypeNameInt" : {
+                                          "name" : {
+                                            "U32" : {
+                                              
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "id" : 2
+                                    }
+                                  },
+                                  "id" : {
+                                    "Some" : {
+                                      "AstNode" : {
+                                        "data" : {
+                                          "ExprLiteralInt" : {
+                                            "value" : "0"
+                                          }
+                                        },
+                                        "id" : 3
+                                      }
+                                    }
+                                  },
+                                  "update" : "None",
+                                  "format" : {
+                                    "Some" : {
+                                      "AstNode" : {
+                                        "data" : "{}s",
+                                        "id" : 4
+                                      }
+                                    }
+                                  },
+                                  "low" : [
+                                    [
+                                      {
+                                        "AstNode" : {
+                                          "data" : {
+                                            "Red" : {
+                                              
+                                            }
+                                          },
+                                          "id" : 5
+                                        }
+                                      },
+                                      {
+                                        "AstNode" : {
+                                          "data" : {
+                                            "ExprLiteralInt" : {
+                                              "value" : "0"
+                                            }
+                                          },
+                                          "id" : 6
+                                        }
+                                      }
+                                    ],
+                                    [
+                                      {
+                                        "AstNode" : {
+                                          "data" : {
+                                            "Orange" : {
+                                              
+                                            }
+                                          },
+                                          "id" : 7
+                                        }
+                                      },
+                                      {
+                                        "AstNode" : {
+                                          "data" : {
+                                            "ExprLiteralInt" : {
+                                              "value" : "1"
+                                            }
+                                          },
+                                          "id" : 8
+                                        }
+                                      }
+                                    ],
+                                    [
+                                      {
+                                        "AstNode" : {
+                                          "data" : {
+                                            "Yellow" : {
+                                              
+                                            }
+                                          },
+                                          "id" : 9
+                                        }
+                                      },
+                                      {
+                                        "AstNode" : {
+                                          "data" : {
+                                            "ExprLiteralInt" : {
+                                              "value" : "2"
+                                            }
+                                          },
+                                          "id" : 10
+                                        }
+                                      }
+                                    ]
+                                  ],
+                                  "high" : [
+                                  ]
+                                },
+                                "id" : 11
+                              }
+                            }
+                          }
+                        },
+                        [
+                        ]
+                      ],
+                      [
+                        [
+                          "Telemetry channel 2"
+                        ],
+                        {
+                          "SpecTlmChannel" : {
+                            "node" : {
+                              "AstNode" : {
+                                "data" : {
+                                  "name" : "Channel2",
+                                  "typeName" : {
+                                    "AstNode" : {
+                                      "data" : {
+                                        "TypeNameFloat" : {
+                                          "name" : {
+                                            "F64" : {
+                                              
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "id" : 12
+                                    }
+                                  },
+                                  "id" : {
+                                    "Some" : {
+                                      "AstNode" : {
+                                        "data" : {
+                                          "ExprLiteralInt" : {
+                                            "value" : "0x10"
+                                          }
+                                        },
+                                        "id" : 13
+                                      }
+                                    }
+                                  },
+                                  "update" : {
+                                    "Some" : {
+                                      "OnChange" : {
+                                        
+                                      }
+                                    }
+                                  },
+                                  "format" : {
+                                    "Some" : {
+                                      "AstNode" : {
+                                        "data" : "{.3f}",
+                                        "id" : 14
+                                      }
+                                    }
+                                  },
+                                  "low" : [
+                                    [
+                                      {
+                                        "AstNode" : {
+                                          "data" : {
+                                            "Red" : {
+                                              
+                                            }
+                                          },
+                                          "id" : 15
+                                        }
+                                      },
+                                      {
+                                        "AstNode" : {
+                                          "data" : {
+                                            "ExprUnop" : {
+                                              "op" : {
+                                                "Minus" : {
+                                                  
+                                                }
+                                              },
+                                              "e" : {
+                                                "AstNode" : {
+                                                  "data" : {
+                                                    "ExprLiteralInt" : {
+                                                      "value" : "3"
+                                                    }
+                                                  },
+                                                  "id" : 16
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "id" : 17
+                                        }
+                                      }
+                                    ],
+                                    [
+                                      {
+                                        "AstNode" : {
+                                          "data" : {
+                                            "Orange" : {
+                                              
+                                            }
+                                          },
+                                          "id" : 18
+                                        }
+                                      },
+                                      {
+                                        "AstNode" : {
+                                          "data" : {
+                                            "ExprUnop" : {
+                                              "op" : {
+                                                "Minus" : {
+                                                  
+                                                }
+                                              },
+                                              "e" : {
+                                                "AstNode" : {
+                                                  "data" : {
+                                                    "ExprLiteralInt" : {
+                                                      "value" : "2"
+                                                    }
+                                                  },
+                                                  "id" : 19
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "id" : 20
+                                        }
+                                      }
+                                    ],
+                                    [
+                                      {
+                                        "AstNode" : {
+                                          "data" : {
+                                            "Yellow" : {
+                                              
+                                            }
+                                          },
+                                          "id" : 21
+                                        }
+                                      },
+                                      {
+                                        "AstNode" : {
+                                          "data" : {
+                                            "ExprUnop" : {
+                                              "op" : {
+                                                "Minus" : {
+                                                  
+                                                }
+                                              },
+                                              "e" : {
+                                                "AstNode" : {
+                                                  "data" : {
+                                                    "ExprLiteralInt" : {
+                                                      "value" : "1"
+                                                    }
+                                                  },
+                                                  "id" : 22
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "id" : 23
+                                        }
+                                      }
+                                    ]
+                                  ],
+                                  "high" : [
+                                    [
+                                      {
+                                        "AstNode" : {
+                                          "data" : {
+                                            "Red" : {
+                                              
+                                            }
+                                          },
+                                          "id" : 24
+                                        }
+                                      },
+                                      {
+                                        "AstNode" : {
+                                          "data" : {
+                                            "ExprLiteralInt" : {
+                                              "value" : "3"
+                                            }
+                                          },
+                                          "id" : 25
+                                        }
+                                      }
+                                    ],
+                                    [
+                                      {
+                                        "AstNode" : {
+                                          "data" : {
+                                            "Orange" : {
+                                              
+                                            }
+                                          },
+                                          "id" : 26
+                                        }
+                                      },
+                                      {
+                                        "AstNode" : {
+                                          "data" : {
+                                            "ExprLiteralInt" : {
+                                              "value" : "2"
+                                            }
+                                          },
+                                          "id" : 27
+                                        }
+                                      }
+                                    ],
+                                    [
+                                      {
+                                        "AstNode" : {
+                                          "data" : {
+                                            "Yellow" : {
+                                              
+                                            }
+                                          },
+                                          "id" : 28
+                                        }
+                                      },
+                                      {
+                                        "AstNode" : {
+                                          "data" : {
+                                            "ExprLiteralInt" : {
+                                              "value" : "1"
+                                            }
+                                          },
+                                          "id" : 29
+                                        }
+                                      }
+                                    ]
+                                  ]
+                                },
+                                "id" : 30
+                              }
+                            }
+                          }
+                        },
+                        [
+                        ]
+                      ],
+                      [
+                        [
+                          "Telemetry channel 3"
+                        ],
+                        {
+                          "SpecTlmChannel" : {
+                            "node" : {
+                              "AstNode" : {
+                                "data" : {
+                                  "name" : "Channel3",
+                                  "typeName" : {
+                                    "AstNode" : {
+                                      "data" : {
+                                        "TypeNameFloat" : {
+                                          "name" : {
+                                            "F64" : {
+                                              
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "id" : 49
+                                    }
+                                  },
+                                  "id" : "None",
+                                  "update" : {
+                                    "Some" : {
+                                      "Always" : {
+                                        
+                                      }
+                                    }
+                                  },
+                                  "format" : {
+                                    "Some" : {
+                                      "AstNode" : {
+                                        "data" : "{e}",
+                                        "id" : 50
+                                      }
+                                    }
+                                  },
+                                  "low" : [
+                                  ],
+                                  "high" : [
+                                    [
+                                      {
+                                        "AstNode" : {
+                                          "data" : {
+                                            "Red" : {
+                                              
+                                            }
+                                          },
+                                          "id" : 51
+                                        }
+                                      },
+                                      {
+                                        "AstNode" : {
+                                          "data" : {
+                                            "ExprLiteralInt" : {
+                                              "value" : "3"
+                                            }
+                                          },
+                                          "id" : 52
+                                        }
+                                      }
+                                    ],
+                                    [
+                                      {
+                                        "AstNode" : {
+                                          "data" : {
+                                            "Orange" : {
+                                              
+                                            }
+                                          },
+                                          "id" : 53
+                                        }
+                                      },
+                                      {
+                                        "AstNode" : {
+                                          "data" : {
+                                            "ExprLiteralInt" : {
+                                              "value" : "2"
+                                            }
+                                          },
+                                          "id" : 54
+                                        }
+                                      }
+                                    ],
+                                    [
+                                      {
+                                        "AstNode" : {
+                                          "data" : {
+                                            "Yellow" : {
+                                              
+                                            }
+                                          },
+                                          "id" : 55
+                                        }
+                                      },
+                                      {
+                                        "AstNode" : {
+                                          "data" : {
+                                            "ExprLiteralInt" : {
+                                              "value" : "1"
+                                            }
+                                          },
+                                          "id" : 56
+                                        }
+                                      }
+                                    ]
+                                  ]
+                                },
+                                "id" : 57
+                              }
+                            }
+                          }
+                        },
+                        [
+                        ]
+                      ]
+                    ]
+                  },
+                  "id" : 58
+                }
+              }
+            }
+          },
+          [
+          ]
+        ],
+        [
+          [
+          ],
+          {
+            "DefModule" : {
+              "node" : {
+                "AstNode" : {
+                  "data" : {
+                    "name" : "Fw",
+                    "members" : [
+                      [
+                        [
+                        ],
+                        {
+                          "DefPort" : {
+                            "node" : {
+                              "AstNode" : {
+                                "data" : {
+                                  "name" : "Tlm",
+                                  "params" : [
+                                  ],
+                                  "returnType" : "None"
+                                },
+                                "id" : 59
+                              }
+                            }
+                          }
+                        },
+                        [
+                        ]
+                      ],
+                      [
+                        [
+                        ],
+                        {
+                          "DefPort" : {
+                            "node" : {
+                              "AstNode" : {
+                                "data" : {
+                                  "name" : "Time",
+                                  "params" : [
+                                  ],
+                                  "returnType" : "None"
+                                },
+                                "id" : 62
+                              }
+                            }
+                          }
+                        },
+                        [
+                        ]
+                      ]
+                    ]
+                  },
+                  "id" : 63
+                }
+              }
+            }
+          },
+          [
+          ]
+        ],
+        [
+          [
+          ],
+          {
+            "DefComponentInstance" : {
+              "node" : {
+                "AstNode" : {
+                  "data" : {
+                    "name" : "i",
+                    "component" : {
+                      "AstNode" : {
+                        "data" : {
+                          "Unqualified" : {
+                            "name" : "TlmLimits"
+                          }
+                        },
+                        "id" : 65
+                      }
+                    },
+                    "baseId" : {
+                      "AstNode" : {
+                        "data" : {
+                          "ExprLiteralInt" : {
+                            "value" : "0x4A00"
+                          }
+                        },
+                        "id" : 66
+                      }
+                    },
+                    "implType" : "None",
+                    "file" : "None",
+                    "queueSize" : "None",
+                    "stackSize" : "None",
+                    "priority" : "None",
+                    "cpu" : "None",
+                    "initSpecs" : [
+                    ]
+                  },
+                  "id" : 67
+                }
+              }
+            }
+          },
+          [
+          ]
+        ],
+        [
+          [
+          ],
+          {
+            "DefModule" : {
+              "node" : {
+                "AstNode" : {
+                  "data" : {
+                    "name" : "M",
+                    "members" : [
+                      [
+                        [
+                        ],
+                        {
+                          "DefTopology" : {
+                            "node" : {
+                              "AstNode" : {
+                                "data" : {
+                                  "name" : "T",
+                                  "members" : [
+                                    [
+                                      [
+                                      ],
+                                      {
+                                        "SpecCompInstance" : {
+                                          "node" : {
+                                            "AstNode" : {
+                                              "data" : {
+                                                "visibility" : {
+                                                  "Public" : {
+                                                    
+                                                  }
+                                                },
+                                                "instance" : {
+                                                  "AstNode" : {
+                                                    "data" : {
+                                                      "Unqualified" : {
+                                                        "name" : "i"
+                                                      }
+                                                    },
+                                                    "id" : 95
+                                                  }
+                                                }
+                                              },
+                                              "id" : 96
+                                            }
+                                          }
+                                        }
+                                      },
+                                      [
+                                      ]
+                                    ]
+                                  ]
+                                },
+                                "id" : 97
+                              }
+                            }
+                          }
+                        },
+                        [
+                        ]
+                      ]
+                    ]
+                  },
+                  "id" : 98
+                }
+              }
+            }
+          },
+          [
+          ]
+        ]
+      ]
+    }
+]

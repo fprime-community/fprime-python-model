@@ -80,7 +80,6 @@ class AstWriter(AstVisitor, LineUtils):
     ):
         _, node, _ = a_node
         data = node.data
-        guard = data.guard
         result = self.lines("def choice")
         concat_list = (
             self.ident(data.name)
@@ -170,10 +169,10 @@ class AstWriter(AstVisitor, LineUtils):
         concat_list = (
             self.ident(data.name)
             + self.lines_opt(self.type_name_node, data.type_name)
-            + enum_constant_lines
+            + self.flatten(enum_constant_lines)
             + self.lines_opt(self.add_prefix("default", self.expr_node), data.default)
         )
-        return result + list(map(self.indent_in, self.flatten(concat_list)))
+        return result + list(map(self.indent_in, concat_list))
 
     @override
     def def_guard_annotated_node(
