@@ -1,6 +1,4 @@
-from fprime_python_model.fpp_ast.fpp_ast_node import AstId
-from fprime_python_model.utils.error import InternalError
-from typing import Optional, Dict
+from typing import Optional
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -11,41 +9,5 @@ class Location:
     pos: str
     includingLoc: Optional[str]
 
-
-class Locations:
-    """
-    Manage locations of AST nodes
-    """
-
-    _map: Dict[AstId, Location] = {}
-
-    @staticmethod
-    def put(id: AstId, loc: Location):
-        """
-        Put a location into the map.
-        """
-        Locations._map[id] = loc
-
-    @staticmethod
-    def get(id: AstId) -> Location:
-        """
-        Get a location from the map. Raise InternalError if the location is not there.
-        """
-        if id in Locations._map:
-            return Locations._map[id]
-        else:
-            raise InternalError(f"unknown location for AST node {id}")
-
-    @staticmethod
-    def get_opt(id: AstId) -> Optional[Location]:
-        """
-        Get an optional location from the map.
-        """
-        return Locations._map.get(id)
-
-    @staticmethod
-    def get_map():
-        """
-        Get the location map as an immutable map.
-        """
-        return Locations._map.copy()
+    def __hash__(self):
+        return hash((self.path, self.pos, self.includingLoc))

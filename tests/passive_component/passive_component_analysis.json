@@ -1,0 +1,474 @@
+{
+  "fppVersion": "[ fpp version ]",
+  "analysis": {
+    "componentInstanceMap": {
+      "60": {
+        "aNode": {
+          "astNodeId": 60
+        },
+        "qualifiedName": {
+          "qualifier": ["FSW"],
+          "base": "engineTemp"
+        },
+        "component": {
+          "astNodeId": 44
+        },
+        "baseId": 256,
+        "maxId": 257,
+        "file": "None",
+        "queueSize": "None",
+        "stackSize": "None",
+        "priority": "None",
+        "cpu": "None",
+        "initSpecifierMap": {}
+      }
+    },
+    "componentMap": {
+      "44": {
+        "aNode": {
+          "astNodeId": 44
+        },
+        "portMap": {
+          "schedIn": {
+            "General": {
+              "aNode": {
+                "astNodeId": 33
+              },
+              "specifier": {
+                "kind": {
+                  "SyncInput": {}
+                },
+                "name": "schedIn",
+                "size": "None",
+                "port": {
+                  "Some": {
+                    "astNodeId": 32
+                  }
+                },
+                "priority": "None",
+                "queueFull": "None"
+              },
+              "kind": "SyncInput",
+              "size": 1,
+              "ty": {
+                "DefPort": {
+                  "symbol": {
+                    "Port": {
+                      "nodeId": 64,
+                      "unqualifiedName": "Sched"
+                    }
+                  }
+                }
+              },
+              "importNodeIds": []
+            }
+          },
+          "tlmOut": {
+            "Special": {
+              "aNode": {
+                "astNodeId": 34
+              },
+              "specifier": {
+                "inputKind": "None",
+                "kind": {
+                  "Telemetry": {}
+                },
+                "name": "tlmOut",
+                "priority": "None",
+                "queueFull": "None"
+              },
+              "symbol": {
+                "Port": {
+                  "nodeId": 66,
+                  "unqualifiedName": "Tlm"
+                }
+              },
+              "priority": "None",
+              "queueFull": "None",
+              "importNodeIds": []
+            }
+          },
+          "timeGetOut": {
+            "Special": {
+              "aNode": {
+                "astNodeId": 35
+              },
+              "specifier": {
+                "inputKind": "None",
+                "kind": {
+                  "TimeGet": {}
+                },
+                "name": "timeGetOut",
+                "priority": "None",
+                "queueFull": "None"
+              },
+              "symbol": {
+                "Port": {
+                  "nodeId": 69,
+                  "unqualifiedName": "Time"
+                }
+              },
+              "priority": "None",
+              "queueFull": "None",
+              "importNodeIds": []
+            }
+          }
+        },
+        "specialPortMap": {
+          "telemetry": {
+            "aNode": {
+              "astNodeId": 34
+            },
+            "specifier": {
+              "inputKind": "None",
+              "kind": {
+                "Telemetry": {}
+              },
+              "name": "tlmOut",
+              "priority": "None",
+              "queueFull": "None"
+            },
+            "symbol": {
+              "Port": {
+                "nodeId": 66,
+                "unqualifiedName": "Tlm"
+              }
+            },
+            "priority": "None",
+            "queueFull": "None",
+            "importNodeIds": []
+          },
+          "time get": {
+            "aNode": {
+              "astNodeId": 35
+            },
+            "specifier": {
+              "inputKind": "None",
+              "kind": {
+                "TimeGet": {}
+              },
+              "name": "timeGetOut",
+              "priority": "None",
+              "queueFull": "None"
+            },
+            "symbol": {
+              "Port": {
+                "nodeId": 69,
+                "unqualifiedName": "Time"
+              }
+            },
+            "priority": "None",
+            "queueFull": "None",
+            "importNodeIds": []
+          }
+        },
+        "commandMap": {},
+        "defaultOpcode": 0,
+        "tlmChannelMap": {
+          "0": {
+            "aNode": {
+              "astNodeId": 37
+            },
+            "channelType": {
+              "Primitive": {
+                "Float": {
+                  "kind": {
+                    "F32": {}
+                  }
+                }
+              }
+            },
+            "update": {
+              "Always": {}
+            },
+            "format": "None",
+            "lowLimits": {},
+            "highLimits": {}
+          },
+          "1": {
+            "aNode": {
+              "astNodeId": 43
+            },
+            "channelType": {
+              "Primitive": {
+                "Float": {
+                  "kind": {
+                    "F32": {}
+                  }
+                }
+              }
+            },
+            "update": {
+              "Always": {}
+            },
+            "format": "None",
+            "lowLimits": {},
+            "highLimits": {}
+          }
+        },
+        "tlmChannelNameMap": {
+          "ImpulseTemp": {
+            "aNode": {
+              "astNodeId": 37
+            },
+            "channelType": {
+              "Primitive": {
+                "Float": {
+                  "kind": {
+                    "F32": {}
+                  }
+                }
+              }
+            },
+            "update": {
+              "Always": {}
+            },
+            "format": "None",
+            "lowLimits": {},
+            "highLimits": {}
+          },
+          "WarpTemp": {
+            "aNode": {
+              "astNodeId": 43
+            },
+            "channelType": {
+              "Primitive": {
+                "Float": {
+                  "kind": {
+                    "F32": {}
+                  }
+                }
+              }
+            },
+            "update": {
+              "Always": {}
+            },
+            "format": "None",
+            "lowLimits": {},
+            "highLimits": {}
+          }
+        },
+        "defaultTlmChannelId": 2,
+        "eventMap": {},
+        "defaultEventId": 0,
+        "paramMap": {},
+        "specPortMatchingList": [],
+        "stateMachineInstanceMap": {},
+        "portMatchingList": [],
+        "defaultParamId": 0,
+        "containerMap": {},
+        "defaultContainerId": 0,
+        "recordMap": {},
+        "defaultRecordId": 0
+      }
+    },
+    "includedFileSet": [],
+    "inputFileSet": [
+      "[ local path prefix ]/compiler/tools/fpp-to-json/test/passiveComponent.fpp"
+    ],
+    "locationSpecifierMap": [],
+    "parentSymbolMap": {
+      "66": {
+        "Module": {
+          "nodeId": 70,
+          "unqualifiedName": "Fw"
+        }
+      },
+      "44": {
+        "Module": {
+          "nodeId": 45,
+          "unqualifiedName": "Sensors"
+        }
+      },
+      "60": {
+        "Module": {
+          "nodeId": 61,
+          "unqualifiedName": "FSW"
+        }
+      },
+      "69": {
+        "Module": {
+          "nodeId": 70,
+          "unqualifiedName": "Fw"
+        }
+      },
+      "64": {
+        "Module": {
+          "nodeId": 65,
+          "unqualifiedName": "Svc"
+        }
+      }
+    },
+    "symbolScopeMap": {
+      "45": {
+        "map": {
+          "Component": {
+            "map": {
+              "EngineTemp": {
+                "Component": {
+                  "nodeId": 44,
+                  "unqualifiedName": "EngineTemp"
+                }
+              }
+            }
+          },
+          "StateMachine": {
+            "map": {
+              "EngineTemp": {
+                "Component": {
+                  "nodeId": 44,
+                  "unqualifiedName": "EngineTemp"
+                }
+              }
+            }
+          },
+          "Type": {
+            "map": {
+              "EngineTemp": {
+                "Component": {
+                  "nodeId": 44,
+                  "unqualifiedName": "EngineTemp"
+                }
+              }
+            }
+          },
+          "Value": {
+            "map": {
+              "EngineTemp": {
+                "Component": {
+                  "nodeId": 44,
+                  "unqualifiedName": "EngineTemp"
+                }
+              }
+            }
+          }
+        }
+      },
+      "44": {
+        "map": {}
+      },
+      "61": {
+        "map": {
+          "ComponentInstance": {
+            "map": {
+              "engineTemp": {
+                "ComponentInstance": {
+                  "nodeId": 60,
+                  "unqualifiedName": "engineTemp"
+                }
+              }
+            }
+          }
+        }
+      },
+      "65": {
+        "map": {
+          "Port": {
+            "map": {
+              "Sched": {
+                "Port": {
+                  "nodeId": 64,
+                  "unqualifiedName": "Sched"
+                }
+              }
+            }
+          }
+        }
+      },
+      "70": {
+        "map": {
+          "Port": {
+            "map": {
+              "Tlm": {
+                "Port": {
+                  "nodeId": 66,
+                  "unqualifiedName": "Tlm"
+                }
+              },
+              "Time": {
+                "Port": {
+                  "nodeId": 69,
+                  "unqualifiedName": "Time"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "topologyMap": {},
+    "typeMap": {
+      "36": {
+        "Primitive": {
+          "Float": {
+            "kind": {
+              "F32": {}
+            }
+          }
+        }
+      },
+      "42": {
+        "Primitive": {
+          "Float": {
+            "kind": {
+              "F32": {}
+            }
+          }
+        }
+      },
+      "59": {
+        "Int": {
+          "Integer": {}
+        }
+      }
+    },
+    "useDefMap": {
+      "34": {
+        "Port": {
+          "nodeId": 66,
+          "unqualifiedName": "Tlm"
+        }
+      },
+      "56": {
+        "Module": {
+          "nodeId": 45,
+          "unqualifiedName": "Sensors"
+        }
+      },
+      "35": {
+        "Port": {
+          "nodeId": 69,
+          "unqualifiedName": "Time"
+        }
+      },
+      "32": {
+        "Port": {
+          "nodeId": 64,
+          "unqualifiedName": "Sched"
+        }
+      },
+      "58": {
+        "Component": {
+          "nodeId": 44,
+          "unqualifiedName": "EngineTemp"
+        }
+      },
+      "30": {
+        "Module": {
+          "nodeId": 65,
+          "unqualifiedName": "Svc"
+        }
+      }
+    },
+    "valueMap": {
+      "59": {
+        "Integer": {
+          "value": 256
+        }
+      }
+    },
+    "stateMachineMap": {},
+    "dictionarySymbolSet": [],
+    "interfaceMap": {}
+  }
+}

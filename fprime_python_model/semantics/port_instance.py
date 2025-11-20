@@ -1,10 +1,11 @@
 from abc import ABC, abstractmethod
 from enum import Enum
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Tuple, TypeVar
+from typing import List, Optional, Tuple
 from fprime_python_model.fpp_ast.fpp_ast_node import AstNode, AstId
 from fprime_python_model.semantics.symbol import PortSymbol
 from fprime_python_model.fpp_ast import fpp_ast
+from fprime_python_model.semantics.name import UnqualifiedName
 
 
 class Direction(Enum):
@@ -51,7 +52,7 @@ class DefPortPortInstanceType(PortInstanceType):
     symbol: PortSymbol
 
     def __str__(self) -> str:
-        return "temp"
+        return self.symbol.get_unqualified_name()
 
 
 @dataclass
@@ -64,7 +65,7 @@ class SerialPortInstanceType(PortInstanceType):
 class PortInstance(ABC):
 
     def __str__(self):
-        return str(self.get_unqualified_name)
+        return str(self.get_unqualified_name())
 
     def get_array_size(self) -> int:
         return 1
@@ -80,11 +81,11 @@ class PortInstance(ABC):
         pass
 
     @abstractmethod
-    def get_node_id(self) -> AstId:
+    def get_unqualified_name(self) -> UnqualifiedName:
         pass
 
     @abstractmethod
-    def get_unqualified_name(self) -> fpp_ast.Unqualified:
+    def get_import_node_ids(self) -> List[AstId]:
         pass
 
 
@@ -93,18 +94,31 @@ class GeneralPortInstance(PortInstance):
     a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecPortInstance]]
     specifier: fpp_ast.GeneralPortInstance
     kind: fpp_ast.GeneralKind
-    size: Optional[int]
+    size: int
     ty: PortInstanceType
     import_node_ids: List[AstId] = field(default_factory=list)
+
+    def get_direction(self) -> Optional[Direction]:
+        match self.kind:
+            case fpp_ast.GeneralKind.OUTPUT:
+                return Direction.OUTPUT
+            case _:
+                return Direction.INPUT
+
+    def get_array_size(self):
+        return self.size
+
+    def get_type(self) -> Optional[PortInstanceType]:
+        return self.ty
 
     def get_node(self) -> AstNode:
         return self.a_node[1]
 
-    def get_node_id(self) -> AstId:
-        return self.a_node[1]._id
+    def get_unqualified_name(self) -> UnqualifiedName:
+        return self.specifier.name
 
-    def get_unqualified_name(self) -> fpp_ast.Unqualified:
-        return fpp_ast.Unqualified(self.specifier.name)
+    def get_import_node_ids(self) -> List[AstId]:
+        return self.import_node_ids
 
 
 @dataclass
@@ -116,14 +130,26 @@ class SpecialPortInstance(PortInstance):
     queue_full: Optional[fpp_ast.QueueFull]
     import_node_ids: List[AstId] = field(default_factory=list)
 
+    def get_direction(self) -> Optional[Direction]:
+        match self.specifier.kind:
+            case fpp_ast.SpecialKind.COMMAND_RECV:
+                return Direction.INPUT
+            case fpp_ast.SpecialKind.PRODUCT_RECV:
+                return Direction.INPUT
+            case _:
+                return Direction.OUTPUT
+
+    def get_type(self):
+        return DefPortPortInstanceType(self.symbol)
+
     def get_node(self) -> AstNode:
         return self.a_node[1]
 
-    def get_node_id(self) -> AstId:
-        return self.a_node[1]._id
+    def get_unqualified_name(self) -> UnqualifiedName:
+        return self.specifier.name
 
-    def get_unqualified_name(self) -> fpp_ast.Unqualified:
-        return fpp_ast.Unqualified(self.specifier.name)
+    def get_import_node_ids(self) -> List[AstId]:
+        return self.import_node_ids
 
 
 @dataclass
@@ -135,8 +161,8 @@ class InternalPortInstance(PortInstance):
     def get_node(self) -> AstNode:
         return self.a_node[1]
 
-    def get_node_id(self) -> AstId:
-        return self.a_node[1]._id
+    def get_unqualified_name(self) -> UnqualifiedName:
+        return self.a_node[1].data.name
 
-    def get_unqualified_name(self) -> fpp_ast.Unqualified:
-        return fpp_ast.Unqualified(self.a_node[1].data.name)
+    def get_import_node_ids(self):
+        return []

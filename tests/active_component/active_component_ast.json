@@ -1,0 +1,809 @@
+{
+  "fppVersion": "[ fpp version ]",
+  "ast": [
+    {
+      "members": [
+        [
+          [],
+          {
+            "DefModule": {
+              "node": {
+                "AstNode": {
+                  "data": {
+                    "name": "Fw",
+                    "members": [
+                      [
+                        [],
+                        {
+                          "DefPort": {
+                            "node": {
+                              "AstNode": {
+                                "data": {
+                                  "name": "BufferSend",
+                                  "params": [],
+                                  "returnType": "None"
+                                },
+                                "id": 2
+                              }
+                            }
+                          }
+                        },
+                        []
+                      ]
+                    ]
+                  },
+                  "id": 3
+                }
+              }
+            }
+          },
+          []
+        ],
+        [
+          [],
+          {
+            "DefModule": {
+              "node": {
+                "AstNode": {
+                  "data": {
+                    "name": "Svc",
+                    "members": [
+                      [
+                        [],
+                        {
+                          "DefPort": {
+                            "node": {
+                              "AstNode": {
+                                "data": {
+                                  "name": "Sched",
+                                  "params": [],
+                                  "returnType": "None"
+                                },
+                                "id": 6
+                              }
+                            }
+                          }
+                        },
+                        []
+                      ]
+                    ]
+                  },
+                  "id": 7
+                }
+              }
+            }
+          },
+          []
+        ],
+        [
+          [],
+          {
+            "DefModule": {
+              "node": {
+                "AstNode": {
+                  "data": {
+                    "name": "Utils",
+                    "members": [
+                      [
+                        ["A component for compressing data"],
+                        {
+                          "DefComponent": {
+                            "node": {
+                              "AstNode": {
+                                "data": {
+                                  "kind": {
+                                    "Active": {}
+                                  },
+                                  "name": "DataCompressor",
+                                  "members": [
+                                    [
+                                      ["Uncompressed input data"],
+                                      {
+                                        "SpecPortInstance": {
+                                          "node": {
+                                            "AstNode": {
+                                              "data": {
+                                                "General": {
+                                                  "kind": {
+                                                    "AsyncInput": {}
+                                                  },
+                                                  "name": "bufferSendIn",
+                                                  "size": "None",
+                                                  "port": {
+                                                    "Some": {
+                                                      "AstNode": {
+                                                        "data": {
+                                                          "Qualified": {
+                                                            "qualifier": {
+                                                              "AstNode": {
+                                                                "data": {
+                                                                  "Unqualified": {
+                                                                    "name": "Fw"
+                                                                  }
+                                                                },
+                                                                "id": 42
+                                                              }
+                                                            },
+                                                            "name": {
+                                                              "AstNode": {
+                                                                "data": "BufferSend",
+                                                                "id": 43
+                                                              }
+                                                            }
+                                                          }
+                                                        },
+                                                        "id": 44
+                                                      }
+                                                    }
+                                                  },
+                                                  "priority": "None",
+                                                  "queueFull": "None"
+                                                }
+                                              },
+                                              "id": 45
+                                            }
+                                          }
+                                        }
+                                      },
+                                      []
+                                    ],
+                                    [
+                                      ["Compressed output data"],
+                                      {
+                                        "SpecPortInstance": {
+                                          "node": {
+                                            "AstNode": {
+                                              "data": {
+                                                "General": {
+                                                  "kind": {
+                                                    "Output": {}
+                                                  },
+                                                  "name": "bufferSendOut",
+                                                  "size": "None",
+                                                  "port": {
+                                                    "Some": {
+                                                      "AstNode": {
+                                                        "data": {
+                                                          "Qualified": {
+                                                            "qualifier": {
+                                                              "AstNode": {
+                                                                "data": {
+                                                                  "Unqualified": {
+                                                                    "name": "Fw"
+                                                                  }
+                                                                },
+                                                                "id": 54
+                                                              }
+                                                            },
+                                                            "name": {
+                                                              "AstNode": {
+                                                                "data": "BufferSend",
+                                                                "id": 55
+                                                              }
+                                                            }
+                                                          }
+                                                        },
+                                                        "id": 56
+                                                      }
+                                                    }
+                                                  },
+                                                  "priority": "None",
+                                                  "queueFull": "None"
+                                                }
+                                              },
+                                              "id": 57
+                                            }
+                                          }
+                                        }
+                                      },
+                                      []
+                                    ]
+                                  ]
+                                },
+                                "id": 58
+                              }
+                            }
+                          }
+                        },
+                        []
+                      ]
+                    ]
+                  },
+                  "id": 59
+                }
+              }
+            }
+          },
+          []
+        ],
+        [
+          [],
+          {
+            "DefModule": {
+              "node": {
+                "AstNode": {
+                  "data": {
+                    "name": "M",
+                    "members": [
+                      [
+                        ["A component with state machines"],
+                        {
+                          "DefComponent": {
+                            "node": {
+                              "AstNode": {
+                                "data": {
+                                  "kind": {
+                                    "Active": {}
+                                  },
+                                  "name": "StateMachines",
+                                  "members": [
+                                    [
+                                      ["Sched in port"],
+                                      {
+                                        "SpecPortInstance": {
+                                          "node": {
+                                            "AstNode": {
+                                              "data": {
+                                                "General": {
+                                                  "kind": {
+                                                    "AsyncInput": {}
+                                                  },
+                                                  "name": "schedIn",
+                                                  "size": "None",
+                                                  "port": {
+                                                    "Some": {
+                                                      "AstNode": {
+                                                        "data": {
+                                                          "Qualified": {
+                                                            "qualifier": {
+                                                              "AstNode": {
+                                                                "data": {
+                                                                  "Unqualified": {
+                                                                    "name": "Svc"
+                                                                  }
+                                                                },
+                                                                "id": 112
+                                                              }
+                                                            },
+                                                            "name": {
+                                                              "AstNode": {
+                                                                "data": "Sched",
+                                                                "id": 113
+                                                              }
+                                                            }
+                                                          }
+                                                        },
+                                                        "id": 114
+                                                      }
+                                                    }
+                                                  },
+                                                  "priority": "None",
+                                                  "queueFull": "None"
+                                                }
+                                              },
+                                              "id": 115
+                                            }
+                                          }
+                                        }
+                                      },
+                                      []
+                                    ],
+                                    [
+                                      ["State machine S1"],
+                                      {
+                                        "DefStateMachine": {
+                                          "node": {
+                                            "AstNode": {
+                                              "data": {
+                                                "name": "S1",
+                                                "members": "None"
+                                              },
+                                              "id": 116
+                                            }
+                                          }
+                                        }
+                                      },
+                                      []
+                                    ],
+                                    [
+                                      ["State machine S2"],
+                                      {
+                                        "DefStateMachine": {
+                                          "node": {
+                                            "AstNode": {
+                                              "data": {
+                                                "name": "S2",
+                                                "members": {
+                                                  "Some": [
+                                                    [
+                                                      [],
+                                                      {
+                                                        "SpecInitialTransition": {
+                                                          "node": {
+                                                            "AstNode": {
+                                                              "data": {
+                                                                "transition": {
+                                                                  "AstNode": {
+                                                                    "data": {
+                                                                      "actions": [],
+                                                                      "target": {
+                                                                        "AstNode": {
+                                                                          "data": {
+                                                                            "Unqualified": {
+                                                                              "name": "IDLE"
+                                                                            }
+                                                                          },
+                                                                          "id": 118
+                                                                        }
+                                                                      }
+                                                                    },
+                                                                    "id": 119
+                                                                  }
+                                                                }
+                                                              },
+                                                              "id": 120
+                                                            }
+                                                          }
+                                                        }
+                                                      },
+                                                      []
+                                                    ],
+                                                    [
+                                                      [],
+                                                      {
+                                                        "DefState": {
+                                                          "node": {
+                                                            "AstNode": {
+                                                              "data": {
+                                                                "name": "IDLE",
+                                                                "members": []
+                                                              },
+                                                              "id": 123
+                                                            }
+                                                          }
+                                                        }
+                                                      },
+                                                      []
+                                                    ]
+                                                  ]
+                                                }
+                                              },
+                                              "id": 124
+                                            }
+                                          }
+                                        }
+                                      },
+                                      []
+                                    ],
+                                    [
+                                      ["State machine instance s1"],
+                                      {
+                                        "SpecStateMachineInstance": {
+                                          "node": {
+                                            "AstNode": {
+                                              "data": {
+                                                "name": "s1",
+                                                "stateMachine": {
+                                                  "AstNode": {
+                                                    "data": {
+                                                      "Unqualified": {
+                                                        "name": "S1"
+                                                      }
+                                                    },
+                                                    "id": 126
+                                                  }
+                                                },
+                                                "priority": "None",
+                                                "queueFull": "None"
+                                              },
+                                              "id": 127
+                                            }
+                                          }
+                                        }
+                                      },
+                                      []
+                                    ],
+                                    [
+                                      ["State machine instance s2"],
+                                      {
+                                        "SpecStateMachineInstance": {
+                                          "node": {
+                                            "AstNode": {
+                                              "data": {
+                                                "name": "s2",
+                                                "stateMachine": {
+                                                  "AstNode": {
+                                                    "data": {
+                                                      "Unqualified": {
+                                                        "name": "S2"
+                                                      }
+                                                    },
+                                                    "id": 135
+                                                  }
+                                                },
+                                                "priority": "None",
+                                                "queueFull": "None"
+                                              },
+                                              "id": 136
+                                            }
+                                          }
+                                        }
+                                      },
+                                      []
+                                    ]
+                                  ]
+                                },
+                                "id": 137
+                              }
+                            }
+                          }
+                        },
+                        []
+                      ]
+                    ]
+                  },
+                  "id": 138
+                }
+              }
+            }
+          },
+          []
+        ],
+        [
+          [],
+          {
+            "DefModule": {
+              "node": {
+                "AstNode": {
+                  "data": {
+                    "name": "FSW",
+                    "members": [
+                      [
+                        [],
+                        {
+                          "DefModule": {
+                            "node": {
+                              "AstNode": {
+                                "data": {
+                                  "name": "Default",
+                                  "members": [
+                                    [
+                                      ["Default queue size"],
+                                      {
+                                        "DefConstant": {
+                                          "node": {
+                                            "AstNode": {
+                                              "data": {
+                                                "name": "queueSize",
+                                                "value": {
+                                                  "AstNode": {
+                                                    "data": {
+                                                      "ExprLiteralInt": {
+                                                        "value": "10"
+                                                      }
+                                                    },
+                                                    "id": 139
+                                                  }
+                                                },
+                                                "isDictionaryDef": false
+                                              },
+                                              "id": 140
+                                            }
+                                          }
+                                        }
+                                      },
+                                      []
+                                    ],
+                                    [
+                                      ["Default stack size"],
+                                      {
+                                        "DefConstant": {
+                                          "node": {
+                                            "AstNode": {
+                                              "data": {
+                                                "name": "stackSize",
+                                                "value": {
+                                                  "AstNode": {
+                                                    "data": {
+                                                      "ExprBinop": {
+                                                        "e1": {
+                                                          "AstNode": {
+                                                            "data": {
+                                                              "ExprLiteralInt": {
+                                                                "value": "10"
+                                                              }
+                                                            },
+                                                            "id": 149
+                                                          }
+                                                        },
+                                                        "op": {
+                                                          "Mul": {}
+                                                        },
+                                                        "e2": {
+                                                          "AstNode": {
+                                                            "data": {
+                                                              "ExprLiteralInt": {
+                                                                "value": "1024"
+                                                              }
+                                                            },
+                                                            "id": 150
+                                                          }
+                                                        }
+                                                      }
+                                                    },
+                                                    "id": 151
+                                                  }
+                                                },
+                                                "isDictionaryDef": false
+                                              },
+                                              "id": 152
+                                            }
+                                          }
+                                        }
+                                      },
+                                      []
+                                    ]
+                                  ]
+                                },
+                                "id": 153
+                              }
+                            }
+                          }
+                        },
+                        []
+                      ],
+                      [
+                        ["Data compressor instance"],
+                        {
+                          "DefComponentInstance": {
+                            "node": {
+                              "AstNode": {
+                                "data": {
+                                  "name": "dataCompressor",
+                                  "component": {
+                                    "AstNode": {
+                                      "data": {
+                                        "Qualified": {
+                                          "qualifier": {
+                                            "AstNode": {
+                                              "data": {
+                                                "Unqualified": {
+                                                  "name": "Utils"
+                                                }
+                                              },
+                                              "id": 154
+                                            }
+                                          },
+                                          "name": {
+                                            "AstNode": {
+                                              "data": "DataCompressor",
+                                              "id": 155
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "id": 156
+                                    }
+                                  },
+                                  "baseId": {
+                                    "AstNode": {
+                                      "data": {
+                                        "ExprLiteralInt": {
+                                          "value": "0x100"
+                                        }
+                                      },
+                                      "id": 157
+                                    }
+                                  },
+                                  "implType": "None",
+                                  "file": "None",
+                                  "queueSize": {
+                                    "Some": {
+                                      "AstNode": {
+                                        "data": {
+                                          "ExprDot": {
+                                            "e": {
+                                              "AstNode": {
+                                                "data": {
+                                                  "ExprIdent": {
+                                                    "value": "Default"
+                                                  }
+                                                },
+                                                "id": 158
+                                              }
+                                            },
+                                            "id": {
+                                              "AstNode": {
+                                                "data": "queueSize",
+                                                "id": 159
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "id": 160
+                                      }
+                                    }
+                                  },
+                                  "stackSize": {
+                                    "Some": {
+                                      "AstNode": {
+                                        "data": {
+                                          "ExprDot": {
+                                            "e": {
+                                              "AstNode": {
+                                                "data": {
+                                                  "ExprIdent": {
+                                                    "value": "Default"
+                                                  }
+                                                },
+                                                "id": 161
+                                              }
+                                            },
+                                            "id": {
+                                              "AstNode": {
+                                                "data": "stackSize",
+                                                "id": 162
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "id": 163
+                                      }
+                                    }
+                                  },
+                                  "priority": {
+                                    "Some": {
+                                      "AstNode": {
+                                        "data": {
+                                          "ExprLiteralInt": {
+                                            "value": "30"
+                                          }
+                                        },
+                                        "id": 164
+                                      }
+                                    }
+                                  },
+                                  "cpu": "None",
+                                  "initSpecs": []
+                                },
+                                "id": 165
+                              }
+                            }
+                          }
+                        },
+                        []
+                      ],
+                      [
+                        ["State machines instance"],
+                        {
+                          "DefComponentInstance": {
+                            "node": {
+                              "AstNode": {
+                                "data": {
+                                  "name": "stateMachines",
+                                  "component": {
+                                    "AstNode": {
+                                      "data": {
+                                        "Qualified": {
+                                          "qualifier": {
+                                            "AstNode": {
+                                              "data": {
+                                                "Unqualified": {
+                                                  "name": "M"
+                                                }
+                                              },
+                                              "id": 190
+                                            }
+                                          },
+                                          "name": {
+                                            "AstNode": {
+                                              "data": "StateMachines",
+                                              "id": 191
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "id": 192
+                                    }
+                                  },
+                                  "baseId": {
+                                    "AstNode": {
+                                      "data": {
+                                        "ExprLiteralInt": {
+                                          "value": "0x200"
+                                        }
+                                      },
+                                      "id": 193
+                                    }
+                                  },
+                                  "implType": "None",
+                                  "file": "None",
+                                  "queueSize": {
+                                    "Some": {
+                                      "AstNode": {
+                                        "data": {
+                                          "ExprDot": {
+                                            "e": {
+                                              "AstNode": {
+                                                "data": {
+                                                  "ExprIdent": {
+                                                    "value": "Default"
+                                                  }
+                                                },
+                                                "id": 194
+                                              }
+                                            },
+                                            "id": {
+                                              "AstNode": {
+                                                "data": "queueSize",
+                                                "id": 195
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "id": 196
+                                      }
+                                    }
+                                  },
+                                  "stackSize": {
+                                    "Some": {
+                                      "AstNode": {
+                                        "data": {
+                                          "ExprDot": {
+                                            "e": {
+                                              "AstNode": {
+                                                "data": {
+                                                  "ExprIdent": {
+                                                    "value": "Default"
+                                                  }
+                                                },
+                                                "id": 197
+                                              }
+                                            },
+                                            "id": {
+                                              "AstNode": {
+                                                "data": "stackSize",
+                                                "id": 198
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "id": 199
+                                      }
+                                    }
+                                  },
+                                  "priority": {
+                                    "Some": {
+                                      "AstNode": {
+                                        "data": {
+                                          "ExprLiteralInt": {
+                                            "value": "40"
+                                          }
+                                        },
+                                        "id": 200
+                                      }
+                                    }
+                                  },
+                                  "cpu": "None",
+                                  "initSpecs": []
+                                },
+                                "id": 201
+                              }
+                            }
+                          }
+                        },
+                        []
+                      ]
+                    ]
+                  },
+                  "id": 202
+                }
+              }
+            }
+          },
+          []
+        ]
+      ]
+    }
+  ]
+}

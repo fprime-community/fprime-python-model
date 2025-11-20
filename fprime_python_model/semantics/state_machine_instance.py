@@ -1,8 +1,7 @@
-from typing import Optional, TypeAlias
+from typing import Optional
 from dataclasses import dataclass
 from fprime_python_model.fpp_ast import fpp_ast
-from fprime_python_model.fpp_ast.fpp_ast_node import AstNode, AstId
-from fprime_python_model.semantics.format import Format
+from fprime_python_model.fpp_ast.fpp_ast_node import AstNode
 from fprime_python_model.semantics.symbol import StateMachineSymbol
 from fprime_python_model.semantics.state_machine import (
     get_symbol_kind,
@@ -17,14 +16,11 @@ class StateMachineInstance:
     priorty: Optional[int]
     queue_full: fpp_ast.QueueFull
 
-    def get_node_id(self) -> AstId:
-        return self.a_node[1]._id
-
     def get_name(self) -> str:
         return self.a_node[1].data.name
 
     def get_sm_kind(self) -> StateMachineKind:
         return get_symbol_kind(self.symbol)
 
-    def get_node(self) -> AstNode:
+    def get_node(self) -> AstNode[fpp_ast.SpecStateMachineInstance]:
         return self.a_node[1]
