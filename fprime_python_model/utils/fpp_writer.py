@@ -255,8 +255,12 @@ class FppWriter(AstVisitor, LineUtils):
     ):
         _, node, _ = a_node
         data = node.data
-        return self.prefix_with_dictionary(
-            f"type {self.ident(data.name)} = ", data.is_dictionary_def
+        return Lines(
+            self.lines(
+                self.prefix_with_dictionary(
+                    f"type {self.ident(data.name)} = ", data.is_dictionary_def
+                )
+            )
         ).join("", self.type_name_node(data.type_name))
 
     def def_abs_type_annotated_node(
@@ -281,8 +285,12 @@ class FppWriter(AstVisitor, LineUtils):
         _, node, _ = a_node
         data = node.data
         return (
-            self.prefix_with_dictionary(
-                f"array {self.ident(data.name)} = [", data.is_dictionary_def
+            Lines(
+                self.lines(
+                    self.prefix_with_dictionary(
+                        f"array {self.ident(data.name)} = [", data.is_dictionary_def
+                    )
+                )
             )
             .join("", self.expr_node(data.size), False)
             .join("] ", self.type_name_node(data.elt_type), False)
@@ -376,8 +384,12 @@ class FppWriter(AstVisitor, LineUtils):
     ):
         _, node, _ = a_node
         data = node.data
-        return self.prefix_with_dictionary(
-            f"constant {self.ident(data.name)}", data.is_dictionary_def
+        return Lines(
+            self.lines(
+                self.prefix_with_dictionary(
+                    f"constant {self.ident(data.name)}", data.is_dictionary_def
+                )
+            )
         ).join(" = ", self.expr_node(data.value), True)
 
     def def_enum_annotated_node(
@@ -386,8 +398,12 @@ class FppWriter(AstVisitor, LineUtils):
         _, node, _ = a_node
         data = node.data
 
-        lines = self.prefix_with_dictionary(
-            f"enum {self.ident(data.name)}", data.is_dictionary_def
+        lines = Lines(
+            self.lines(
+                self.prefix_with_dictionary(
+                    f"enum {self.ident(data.name)}", data.is_dictionary_def
+                )
+            )
         ).join_opt(data.type_name, ": ", self.type_name_node)
 
         constants_lines = []
@@ -479,8 +495,12 @@ class FppWriter(AstVisitor, LineUtils):
             out: Lines = self.annotate_node(self.struct_type_member)(m)
             struct_lines += out.lines
         return (
-            self.prefix_with_dictionary(
-                f"struct {self.ident(data.name)}", data.is_dictionary_def
+            Lines(
+                self.lines(
+                    self.prefix_with_dictionary(
+                        f"struct {self.ident(data.name)}", data.is_dictionary_def
+                    )
+                )
             )
             .join_no_indent(" ", self.add_braces(Lines(struct_lines)))
             .join_opt(data.default, " default ", self.expr_node)
@@ -683,7 +703,11 @@ class FppWriter(AstVisitor, LineUtils):
         data = node.data
         kind = str(data.kind)
         return (
-            Lines(self.lines(f"locate {kind}"))
+            Lines(
+                self.lines(
+                    f"locate {self.prefix_with_dictionary(kind, data.is_dictionary_def)}"
+                )
+            )
             .join(" ", self.qual_ident(data.symbol.data), False)
             .join(" at ", self.string(data.file.data), False)
         )
@@ -943,8 +967,8 @@ class FppWriter(AstVisitor, LineUtils):
                 result.append(item)
         return result
 
-    def prefix_with_dictionary(self, s: str, is_dictionary_def) -> Out:
+    def prefix_with_dictionary(self, s: str, is_dictionary_def) -> str:
         if is_dictionary_def:
-            return Lines(self.lines(f"dictionary {s}"))
+            return f"dictionary {s}"
         else:
-            return Lines(self.lines(s))
+            return s

@@ -1060,6 +1060,7 @@ def translate_module_members(l: List) -> List[fpp_ast.ModuleMember]:
                             translate_spec_loc_kind(data["kind"]),
                             translate_qual_ident(data["symbol"]),
                             translate_string(data["file"]),
+                            data["isDictionaryDef"],
                         ),
                         id,
                     )

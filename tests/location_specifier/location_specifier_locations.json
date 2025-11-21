@@ -1,0 +1,85 @@
+{
+  "fppVersion": "v3.1.0a10-46-g5b2da7ca1",
+  "locationMap": {
+    "0": {
+      "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/location_specifier.fpp",
+      "pos": "1.28",
+      "includingLoc": "None"
+    },
+    "1": {
+      "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/location_specifier.fpp",
+      "pos": "1.28",
+      "includingLoc": "None"
+    },
+    "2": {
+      "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/location_specifier.fpp",
+      "pos": "1.34",
+      "includingLoc": "None"
+    },
+    "3": {
+      "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/location_specifier.fpp",
+      "pos": "1.1",
+      "includingLoc": "None"
+    },
+    "4": {
+      "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/location_specifier.fpp",
+      "pos": "3.17",
+      "includingLoc": "None"
+    },
+    "5": {
+      "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/location_specifier.fpp",
+      "pos": "3.17",
+      "includingLoc": "None"
+    },
+    "6": {
+      "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/location_specifier.fpp",
+      "pos": "3.23",
+      "includingLoc": "None"
+    },
+    "7": {
+      "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/location_specifier.fpp",
+      "pos": "3.1",
+      "includingLoc": "None"
+    },
+    "8": {
+      "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/location_specifier.fpp",
+      "pos": "5.24",
+      "includingLoc": "None"
+    },
+    "9": {
+      "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/location_specifier.fpp",
+      "pos": "5.24",
+      "includingLoc": "None"
+    },
+    "10": {
+      "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/location_specifier.fpp",
+      "pos": "5.30",
+      "includingLoc": "None"
+    },
+    "11": {
+      "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/location_specifier.fpp",
+      "pos": "5.1",
+      "includingLoc": "None"
+    },
+    "12": {
+      "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/location_specifier.fpp",
+      "pos": "7.13",
+      "includingLoc": "None"
+    },
+    "13": {
+      "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/location_specifier.fpp",
+      "pos": "7.13",
+      "includingLoc": "None"
+    },
+    "14": {
+      "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/location_specifier.fpp",
+      "pos": "7.19",
+      "includingLoc": "None"
+    },
+    "15": {
+      "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/location_specifier.fpp",
+      "pos": "7.1",
+      "includingLoc": "None"
+    }
+  }
+}

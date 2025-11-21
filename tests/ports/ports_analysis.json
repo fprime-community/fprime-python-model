@@ -1,959 +1,819 @@
 {
-  "fppVersion" : "v3.1.0a10-46-g5b2da7ca1",
-  "analysis" : {
-    "componentInstanceMap" : {
-      "88" : {
-        "aNode" : {
-          "astNodeId" : 88
+  "fppVersion": "v3.1.0a10-46-g5b2da7ca1",
+  "analysis": {
+    "componentInstanceMap": {
+      "88": {
+        "aNode": {
+          "astNodeId": 88
         },
-        "qualifiedName" : {
-          "qualifier" : [
-          ],
-          "base" : "i"
+        "qualifiedName": {
+          "qualifier": [],
+          "base": "i"
         },
-        "component" : {
-          "astNodeId" : 81
+        "component": {
+          "astNodeId": 81
         },
-        "baseId" : 8448,
-        "maxId" : 8447,
-        "file" : "None",
-        "queueSize" : {
-          "Some" : 10
+        "baseId": 8448,
+        "maxId": 8447,
+        "file": "None",
+        "queueSize": {
+          "Some": 10
         },
-        "stackSize" : "None",
-        "priority" : "None",
-        "cpu" : "None",
-        "initSpecifierMap" : {
-          
-        }
+        "stackSize": "None",
+        "priority": "None",
+        "cpu": "None",
+        "initSpecifierMap": {}
       }
     },
-    "componentMap" : {
-      "81" : {
-        "aNode" : {
-          "astNodeId" : 81
+    "componentMap": {
+      "81": {
+        "aNode": {
+          "astNodeId": 81
         },
-        "portMap" : {
-          "productRecvIn" : {
-            "Special" : {
-              "aNode" : {
-                "astNodeId" : 80
+        "portMap": {
+          "productRecvIn": {
+            "Special": {
+              "aNode": {
+                "astNodeId": 80
               },
-              "specifier" : {
-                "inputKind" : {
-                  "Some" : {
-                    "Async" : {
-                      
-                    }
+              "specifier": {
+                "inputKind": {
+                  "Some": {
+                    "Async": {}
                   }
                 },
-                "kind" : {
-                  "ProductRecv" : {
-                    
-                  }
+                "kind": {
+                  "ProductRecv": {}
                 },
-                "name" : "productRecvIn",
-                "priority" : "None",
-                "queueFull" : "None"
+                "name": "productRecvIn",
+                "priority": "None",
+                "queueFull": "None"
               },
-              "symbol" : {
-                "Port" : {
-                  "nodeId" : 67,
-                  "unqualifiedName" : "DpResponse"
+              "symbol": {
+                "Port": {
+                  "nodeId": 67,
+                  "unqualifiedName": "DpResponse"
                 }
               },
-              "priority" : "None",
-              "queueFull" : {
-                "Some" : {
-                  "Assert" : {
-                    
-                  }
+              "priority": "None",
+              "queueFull": {
+                "Some": {
+                  "Assert": {}
                 }
               },
-              "importNodeIds" : [
-              ]
+              "importNodeIds": []
             }
           }
         },
-        "specialPortMap" : {
-          "product recv" : {
-            "aNode" : {
-              "astNodeId" : 80
+        "specialPortMap": {
+          "product recv": {
+            "aNode": {
+              "astNodeId": 80
             },
-            "specifier" : {
-              "inputKind" : {
-                "Some" : {
-                  "Async" : {
-                    
-                  }
+            "specifier": {
+              "inputKind": {
+                "Some": {
+                  "Async": {}
                 }
               },
-              "kind" : {
-                "ProductRecv" : {
-                  
-                }
+              "kind": {
+                "ProductRecv": {}
               },
-              "name" : "productRecvIn",
-              "priority" : "None",
-              "queueFull" : "None"
+              "name": "productRecvIn",
+              "priority": "None",
+              "queueFull": "None"
             },
-            "symbol" : {
-              "Port" : {
-                "nodeId" : 67,
-                "unqualifiedName" : "DpResponse"
+            "symbol": {
+              "Port": {
+                "nodeId": 67,
+                "unqualifiedName": "DpResponse"
               }
             },
-            "priority" : "None",
-            "queueFull" : {
-              "Some" : {
-                "Assert" : {
-                  
-                }
+            "priority": "None",
+            "queueFull": {
+              "Some": {
+                "Assert": {}
               }
             },
-            "importNodeIds" : [
-            ]
+            "importNodeIds": []
           }
         },
-        "commandMap" : {
-          
-        },
-        "defaultOpcode" : 0,
-        "tlmChannelMap" : {
-          
-        },
-        "tlmChannelNameMap" : {
-          
-        },
-        "defaultTlmChannelId" : 0,
-        "eventMap" : {
-          
-        },
-        "defaultEventId" : 0,
-        "paramMap" : {
-          
-        },
-        "specPortMatchingList" : [
-        ],
-        "stateMachineInstanceMap" : {
-          
-        },
-        "portMatchingList" : [
-        ],
-        "defaultParamId" : 0,
-        "containerMap" : {
-          
-        },
-        "defaultContainerId" : 0,
-        "recordMap" : {
-          
-        },
-        "defaultRecordId" : 0
+        "commandMap": {},
+        "defaultOpcode": 0,
+        "tlmChannelMap": {},
+        "tlmChannelNameMap": {},
+        "defaultTlmChannelId": 0,
+        "eventMap": {},
+        "defaultEventId": 0,
+        "paramMap": {},
+        "specPortMatchingList": [],
+        "stateMachineInstanceMap": {},
+        "portMatchingList": [],
+        "defaultParamId": 0,
+        "containerMap": {},
+        "defaultContainerId": 0,
+        "recordMap": {},
+        "defaultRecordId": 0
       }
     },
-    "includedFileSet" : [
-    ],
-    "inputFileSet" : [
+    "includedFileSet": [],
+    "inputFileSet": [
       "[ local path prefix ]/compiler/tools/fpp-to-json/test/ports.fpp"
     ],
-    "locationSpecifierMap" : [
-    ],
-    "parentSymbolMap" : {
-      "67" : {
-        "Module" : {
-          "nodeId" : 68,
-          "unqualifiedName" : "Fw"
+    "locationSpecifierMap": [],
+    "parentSymbolMap": {
+      "67": {
+        "Module": {
+          "nodeId": 68,
+          "unqualifiedName": "Fw"
         }
       },
-      "23" : {
-        "Enum" : {
-          "nodeId" : 24,
-          "unqualifiedName" : "E"
+      "23": {
+        "Enum": {
+          "nodeId": 24,
+          "unqualifiedName": "E"
         }
       },
-      "50" : {
-        "Enum" : {
-          "nodeId" : 54,
-          "unqualifiedName" : "Status"
+      "50": {
+        "Enum": {
+          "nodeId": 54,
+          "unqualifiedName": "Status"
         }
       },
-      "69" : {
-        "Module" : {
-          "nodeId" : 82,
-          "unqualifiedName" : "M"
+      "69": {
+        "Module": {
+          "nodeId": 82,
+          "unqualifiedName": "M"
         }
       },
-      "53" : {
-        "Enum" : {
-          "nodeId" : 54,
-          "unqualifiedName" : "Status"
+      "53": {
+        "Enum": {
+          "nodeId": 54,
+          "unqualifiedName": "Status"
         }
       },
-      "20" : {
-        "Enum" : {
-          "nodeId" : 24,
-          "unqualifiedName" : "E"
+      "20": {
+        "Enum": {
+          "nodeId": 24,
+          "unqualifiedName": "E"
         }
       },
-      "81" : {
-        "Module" : {
-          "nodeId" : 82,
-          "unqualifiedName" : "M"
+      "81": {
+        "Module": {
+          "nodeId": 82,
+          "unqualifiedName": "M"
         }
       },
-      "118" : {
-        "Module" : {
-          "nodeId" : 82,
-          "unqualifiedName" : "M"
+      "118": {
+        "Module": {
+          "nodeId": 82,
+          "unqualifiedName": "M"
         }
       }
     },
-    "symbolScopeMap" : {
-      "68" : {
-        "map" : {
-          "Port" : {
-            "map" : {
-              "DpResponse" : {
-                "Port" : {
-                  "nodeId" : 67,
-                  "unqualifiedName" : "DpResponse"
+    "symbolScopeMap": {
+      "68": {
+        "map": {
+          "Port": {
+            "map": {
+              "DpResponse": {
+                "Port": {
+                  "nodeId": 67,
+                  "unqualifiedName": "DpResponse"
                 }
               }
             }
           }
         }
       },
-      "24" : {
-        "map" : {
-          "Value" : {
-            "map" : {
-              "A" : {
-                "EnumConstant" : {
-                  "nodeId" : 20,
-                  "unqualifiedName" : "A"
+      "24": {
+        "map": {
+          "Value": {
+            "map": {
+              "A": {
+                "EnumConstant": {
+                  "nodeId": 20,
+                  "unqualifiedName": "A"
                 }
               },
-              "B" : {
-                "EnumConstant" : {
-                  "nodeId" : 23,
-                  "unqualifiedName" : "B"
+              "B": {
+                "EnumConstant": {
+                  "nodeId": 23,
+                  "unqualifiedName": "B"
                 }
               }
             }
           }
         }
       },
-      "54" : {
-        "map" : {
-          "Value" : {
-            "map" : {
-              "SUCCEED" : {
-                "EnumConstant" : {
-                  "nodeId" : 50,
-                  "unqualifiedName" : "SUCCEED"
+      "54": {
+        "map": {
+          "Value": {
+            "map": {
+              "SUCCEED": {
+                "EnumConstant": {
+                  "nodeId": 50,
+                  "unqualifiedName": "SUCCEED"
                 }
               },
-              "FAIL" : {
-                "EnumConstant" : {
-                  "nodeId" : 53,
-                  "unqualifiedName" : "FAIL"
+              "FAIL": {
+                "EnumConstant": {
+                  "nodeId": 53,
+                  "unqualifiedName": "FAIL"
                 }
               }
             }
           }
         }
       },
-      "82" : {
-        "map" : {
-          "Topology" : {
-            "map" : {
-              "T" : {
-                "Topology" : {
-                  "nodeId" : 118,
-                  "unqualifiedName" : "T"
+      "82": {
+        "map": {
+          "Topology": {
+            "map": {
+              "T": {
+                "Topology": {
+                  "nodeId": 118,
+                  "unqualifiedName": "T"
                 }
               }
             }
           },
-          "StateMachine" : {
-            "map" : {
-              "Q" : {
-                "Component" : {
-                  "nodeId" : 81,
-                  "unqualifiedName" : "Q"
+          "StateMachine": {
+            "map": {
+              "Q": {
+                "Component": {
+                  "nodeId": 81,
+                  "unqualifiedName": "Q"
                 }
               }
             }
           },
-          "Value" : {
-            "map" : {
-              "Q" : {
-                "Component" : {
-                  "nodeId" : 81,
-                  "unqualifiedName" : "Q"
+          "Value": {
+            "map": {
+              "Q": {
+                "Component": {
+                  "nodeId": 81,
+                  "unqualifiedName": "Q"
                 }
               }
             }
           },
-          "Port" : {
-            "map" : {
-              "P" : {
-                "Port" : {
-                  "nodeId" : 69,
-                  "unqualifiedName" : "P"
+          "Port": {
+            "map": {
+              "P": {
+                "Port": {
+                  "nodeId": 69,
+                  "unqualifiedName": "P"
                 }
               }
             }
           },
-          "Component" : {
-            "map" : {
-              "Q" : {
-                "Component" : {
-                  "nodeId" : 81,
-                  "unqualifiedName" : "Q"
+          "Component": {
+            "map": {
+              "Q": {
+                "Component": {
+                  "nodeId": 81,
+                  "unqualifiedName": "Q"
                 }
               }
             }
           },
-          "Type" : {
-            "map" : {
-              "Q" : {
-                "Component" : {
-                  "nodeId" : 81,
-                  "unqualifiedName" : "Q"
+          "Type": {
+            "map": {
+              "Q": {
+                "Component": {
+                  "nodeId": 81,
+                  "unqualifiedName": "Q"
                 }
               }
             }
           }
         }
       },
-      "81" : {
-        "map" : {
-          
-        }
+      "81": {
+        "map": {}
       }
     },
-    "topologyMap" : {
-      "118" : {
-        "aNode" : {
-          "astNodeId" : 118
+    "topologyMap": {
+      "118": {
+        "aNode": {
+          "astNodeId": 118
         },
-        "directImportMap" : {
-          
-        },
-        "transitiveImportSet" : [
-        ],
-        "instanceMap" : [
+        "directImportMap": {},
+        "transitiveImportSet": [],
+        "instanceMap": [
           [
             {
-              "aNode" : {
-                "astNodeId" : 88
+              "aNode": {
+                "astNodeId": 88
               },
-              "qualifiedName" : {
-                "qualifier" : [
-                ],
-                "base" : "i"
+              "qualifiedName": {
+                "qualifier": [],
+                "base": "i"
               },
-              "component" : {
-                "astNodeId" : 81
+              "component": {
+                "astNodeId": 81
               },
-              "baseId" : 8448,
-              "maxId" : 8447,
-              "file" : "None",
-              "queueSize" : {
-                "Some" : 10
+              "baseId": 8448,
+              "maxId": 8447,
+              "file": "None",
+              "queueSize": {
+                "Some": 10
               },
-              "stackSize" : "None",
-              "priority" : "None",
-              "cpu" : "None",
-              "initSpecifierMap" : {
-                
-              }
+              "stackSize": "None",
+              "priority": "None",
+              "cpu": "None",
+              "initSpecifierMap": {}
             },
             [
               {
-                "Public" : {
-                  
-                }
+                "Public": {}
               },
               {
-                "file" : "[ local path prefix ]/compiler/tools/fpp-to-json/test/ports.fpp",
-                "pos" : "39.9",
-                "includingLoc" : "None"
+                "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/ports.fpp",
+                "pos": "39.9",
+                "includingLoc": "None"
               }
             ]
           ]
         ],
-        "patternMap" : {
-          
-        },
-        "connectionMap" : {
-          
-        },
-        "localConnectionMap" : {
-          
-        },
-        "outputConnectionMap" : [
-        ],
-        "inputConnectionMap" : [
-        ],
-        "fromPortNumberMap" : [
-        ],
-        "toPortNumberMap" : [
-        ],
-        "unconnectedPortSet" : [
+        "patternMap": {},
+        "connectionMap": {},
+        "localConnectionMap": {},
+        "outputConnectionMap": [],
+        "inputConnectionMap": [],
+        "fromPortNumberMap": [],
+        "toPortNumberMap": [],
+        "unconnectedPortSet": [
           {
-            "componentInstance" : {
-              "aNode" : {
-                "astNodeId" : 88
+            "componentInstance": {
+              "aNode": {
+                "astNodeId": 88
               },
-              "qualifiedName" : {
-                "qualifier" : [
-                ],
-                "base" : "i"
+              "qualifiedName": {
+                "qualifier": [],
+                "base": "i"
               },
-              "component" : {
-                "astNodeId" : 81
+              "component": {
+                "astNodeId": 81
               },
-              "baseId" : 8448,
-              "maxId" : 8447,
-              "file" : "None",
-              "queueSize" : {
-                "Some" : 10
+              "baseId": 8448,
+              "maxId": 8447,
+              "file": "None",
+              "queueSize": {
+                "Some": 10
               },
-              "stackSize" : "None",
-              "priority" : "None",
-              "cpu" : "None",
-              "initSpecifierMap" : {
-                
-              }
+              "stackSize": "None",
+              "priority": "None",
+              "cpu": "None",
+              "initSpecifierMap": {}
             },
-            "portInstance" : {
-              "Special" : {
-                "aNode" : {
-                  "astNodeId" : 80
+            "portInstance": {
+              "Special": {
+                "aNode": {
+                  "astNodeId": 80
                 },
-                "specifier" : {
-                  "inputKind" : {
-                    "Some" : {
-                      "Async" : {
-                        
-                      }
+                "specifier": {
+                  "inputKind": {
+                    "Some": {
+                      "Async": {}
                     }
                   },
-                  "kind" : {
-                    "ProductRecv" : {
-                      
-                    }
+                  "kind": {
+                    "ProductRecv": {}
                   },
-                  "name" : "productRecvIn",
-                  "priority" : "None",
-                  "queueFull" : "None"
+                  "name": "productRecvIn",
+                  "priority": "None",
+                  "queueFull": "None"
                 },
-                "symbol" : {
-                  "Port" : {
-                    "nodeId" : 67,
-                    "unqualifiedName" : "DpResponse"
+                "symbol": {
+                  "Port": {
+                    "nodeId": 67,
+                    "unqualifiedName": "DpResponse"
                   }
                 },
-                "priority" : "None",
-                "queueFull" : {
-                  "Some" : {
-                    "Assert" : {
-                      
-                    }
+                "priority": "None",
+                "queueFull": {
+                  "Some": {
+                    "Assert": {}
                   }
                 },
-                "importNodeIds" : [
-                ]
+                "importNodeIds": []
               }
             }
           }
         ]
       }
     },
-    "typeMap" : {
-      "23" : {
-        "Enum" : {
-          "node" : {
-            "astNodeId" : 24
+    "typeMap": {
+      "23": {
+        "Enum": {
+          "node": {
+            "astNodeId": 24
           },
-          "repType" : {
-            "kind" : {
-              "I32" : {
-                
-              }
+          "repType": {
+            "kind": {
+              "I32": {}
             }
           },
-          "default" : "None"
+          "default": "None"
         }
       },
-      "44" : {
-        "AbsType" : {
-          "node" : {
-            "astNodeId" : 25
+      "44": {
+        "AbsType": {
+          "node": {
+            "astNodeId": 25
           }
         }
       },
-      "50" : {
-        "Enum" : {
-          "node" : {
-            "astNodeId" : 54
+      "50": {
+        "Enum": {
+          "node": {
+            "astNodeId": 54
           },
-          "repType" : {
-            "kind" : {
-              "I32" : {
-                
-              }
+          "repType": {
+            "kind": {
+              "I32": {}
             }
           },
-          "default" : "None"
+          "default": "None"
         }
       },
-      "24" : {
-        "Enum" : {
-          "node" : {
-            "astNodeId" : 24
+      "24": {
+        "Enum": {
+          "node": {
+            "astNodeId": 24
           },
-          "repType" : {
-            "kind" : {
-              "I32" : {
-                
-              }
+          "repType": {
+            "kind": {
+              "I32": {}
             }
           },
-          "default" : {
-            "Some" : {
-              "value" : [
-                "A",
-                0
-              ],
-              "t" : {
-                "node" : {
-                  "astNodeId" : 24
+          "default": {
+            "Some": {
+              "value": ["A", 0],
+              "t": {
+                "node": {
+                  "astNodeId": 24
                 },
-                "repType" : {
-                  "kind" : {
-                    "I32" : {
-                      
-                    }
+                "repType": {
+                  "kind": {
+                    "I32": {}
                   }
                 },
-                "default" : "None"
+                "default": "None"
               }
             }
           }
         }
       },
-      "48" : {
-        "AbsType" : {
-          "node" : {
-            "astNodeId" : 25
+      "48": {
+        "AbsType": {
+          "node": {
+            "astNodeId": 25
           }
         }
       },
-      "54" : {
-        "Enum" : {
-          "node" : {
-            "astNodeId" : 54
+      "54": {
+        "Enum": {
+          "node": {
+            "astNodeId": 54
           },
-          "repType" : {
-            "kind" : {
-              "I32" : {
-                
-              }
+          "repType": {
+            "kind": {
+              "I32": {}
             }
           },
-          "default" : {
-            "Some" : {
-              "value" : [
-                "SUCCEED",
-                0
-              ],
-              "t" : {
-                "node" : {
-                  "astNodeId" : 54
+          "default": {
+            "Some": {
+              "value": ["SUCCEED", 0],
+              "t": {
+                "node": {
+                  "astNodeId": 54
                 },
-                "repType" : {
-                  "kind" : {
-                    "I32" : {
-                      
-                    }
+                "repType": {
+                  "kind": {
+                    "I32": {}
                   }
                 },
-                "default" : "None"
+                "default": "None"
               }
             }
           }
         }
       },
-      "32" : {
-        "AbsType" : {
-          "node" : {
-            "astNodeId" : 25
+      "32": {
+        "AbsType": {
+          "node": {
+            "astNodeId": 25
           }
         }
       },
-      "6" : {
-        "Int" : {
-          "PrimitiveInt" : {
-            "kind" : {
-              "U32" : {
-                
-              }
+      "6": {
+        "Int": {
+          "PrimitiveInt": {
+            "kind": {
+              "U32": {}
             }
           }
         }
       },
-      "53" : {
-        "Enum" : {
-          "node" : {
-            "astNodeId" : 54
+      "53": {
+        "Enum": {
+          "node": {
+            "astNodeId": 54
           },
-          "repType" : {
-            "kind" : {
-              "I32" : {
-                
-              }
+          "repType": {
+            "kind": {
+              "I32": {}
             }
           },
-          "default" : "None"
+          "default": "None"
         }
       },
-      "20" : {
-        "Enum" : {
-          "node" : {
-            "astNodeId" : 24
+      "20": {
+        "Enum": {
+          "node": {
+            "astNodeId": 24
           },
-          "repType" : {
-            "kind" : {
-              "I32" : {
-                
-              }
+          "repType": {
+            "kind": {
+              "I32": {}
             }
           },
-          "default" : "None"
+          "default": "None"
         }
       },
-      "86" : {
-        "Int" : {
-          "Integer" : {
-            
-          }
+      "86": {
+        "Int": {
+          "Integer": {}
         }
       },
-      "63" : {
-        "Enum" : {
-          "node" : {
-            "astNodeId" : 54
+      "63": {
+        "Enum": {
+          "node": {
+            "astNodeId": 54
           },
-          "repType" : {
-            "kind" : {
-              "I32" : {
-                
-              }
+          "repType": {
+            "kind": {
+              "I32": {}
             }
           },
-          "default" : {
-            "Some" : {
-              "value" : [
-                "SUCCEED",
-                0
-              ],
-              "t" : {
-                "node" : {
-                  "astNodeId" : 54
+          "default": {
+            "Some": {
+              "value": ["SUCCEED", 0],
+              "t": {
+                "node": {
+                  "astNodeId": 54
                 },
-                "repType" : {
-                  "kind" : {
-                    "I32" : {
-                      
-                    }
+                "repType": {
+                  "kind": {
+                    "I32": {}
                   }
                 },
-                "default" : "None"
+                "default": "None"
               }
             }
           }
         }
       },
-      "28" : {
-        "Enum" : {
-          "node" : {
-            "astNodeId" : 24
+      "28": {
+        "Enum": {
+          "node": {
+            "astNodeId": 24
           },
-          "repType" : {
-            "kind" : {
-              "I32" : {
-                
-              }
+          "repType": {
+            "kind": {
+              "I32": {}
             }
           },
-          "default" : {
-            "Some" : {
-              "value" : [
-                "A",
-                0
-              ],
-              "t" : {
-                "node" : {
-                  "astNodeId" : 24
+          "default": {
+            "Some": {
+              "value": ["A", 0],
+              "t": {
+                "node": {
+                  "astNodeId": 24
                 },
-                "repType" : {
-                  "kind" : {
-                    "I32" : {
-                      
-                    }
+                "repType": {
+                  "kind": {
+                    "I32": {}
                   }
                 },
-                "default" : "None"
+                "default": "None"
               }
             }
           }
         }
       },
-      "11" : {
-        "Primitive" : {
-          "Float" : {
-            "kind" : {
-              "F32" : {
-                
-              }
+      "11": {
+        "Primitive": {
+          "Float": {
+            "kind": {
+              "F32": {}
             }
           }
         }
       },
-      "9" : {
-        "Int" : {
-          "PrimitiveInt" : {
-            "kind" : {
-              "I32" : {
-                
-              }
+      "9": {
+        "Int": {
+          "PrimitiveInt": {
+            "kind": {
+              "I32": {}
             }
           }
         }
       },
-      "59" : {
-        "Int" : {
-          "PrimitiveInt" : {
-            "kind" : {
-              "U32" : {
-                
-              }
+      "59": {
+        "Int": {
+          "PrimitiveInt": {
+            "kind": {
+              "U32": {}
             }
           }
         }
       },
-      "87" : {
-        "Int" : {
-          "Integer" : {
-            
-          }
+      "87": {
+        "Int": {
+          "Integer": {}
         }
       },
-      "17" : {
-        "String" : {
-          "size" : "None"
+      "17": {
+        "String": {
+          "size": "None"
         }
       },
-      "25" : {
-        "AbsType" : {
-          "node" : {
-            "astNodeId" : 25
+      "25": {
+        "AbsType": {
+          "node": {
+            "astNodeId": 25
           }
         }
       }
     },
-    "useDefMap" : {
-      "62" : {
-        "Enum" : {
-          "nodeId" : 54,
-          "unqualifiedName" : "Status"
+    "useDefMap": {
+      "62": {
+        "Enum": {
+          "nodeId": 54,
+          "unqualifiedName": "Status"
         }
       },
-      "44" : {
-        "AbsType" : {
-          "nodeId" : 25,
-          "unqualifiedName" : "T"
+      "44": {
+        "AbsType": {
+          "nodeId": 25,
+          "unqualifiedName": "T"
         }
       },
-      "83" : {
-        "Module" : {
-          "nodeId" : 82,
-          "unqualifiedName" : "M"
+      "83": {
+        "Module": {
+          "nodeId": 82,
+          "unqualifiedName": "M"
         }
       },
-      "43" : {
-        "AbsType" : {
-          "nodeId" : 25,
-          "unqualifiedName" : "T"
+      "43": {
+        "AbsType": {
+          "nodeId": 25,
+          "unqualifiedName": "T"
         }
       },
-      "32" : {
-        "AbsType" : {
-          "nodeId" : 25,
-          "unqualifiedName" : "T"
+      "32": {
+        "AbsType": {
+          "nodeId": 25,
+          "unqualifiedName": "T"
         }
       },
-      "80" : {
-        "Port" : {
-          "nodeId" : 67,
-          "unqualifiedName" : "DpResponse"
+      "80": {
+        "Port": {
+          "nodeId": 67,
+          "unqualifiedName": "DpResponse"
         }
       },
-      "27" : {
-        "Enum" : {
-          "nodeId" : 24,
-          "unqualifiedName" : "E"
+      "27": {
+        "Enum": {
+          "nodeId": 24,
+          "unqualifiedName": "E"
         }
       },
-      "63" : {
-        "Enum" : {
-          "nodeId" : 54,
-          "unqualifiedName" : "Status"
+      "63": {
+        "Enum": {
+          "nodeId": 54,
+          "unqualifiedName": "Status"
         }
       },
-      "85" : {
-        "Component" : {
-          "nodeId" : 81,
-          "unqualifiedName" : "Q"
+      "85": {
+        "Component": {
+          "nodeId": 81,
+          "unqualifiedName": "Q"
         }
       },
-      "28" : {
-        "Enum" : {
-          "nodeId" : 24,
-          "unqualifiedName" : "E"
+      "28": {
+        "Enum": {
+          "nodeId": 24,
+          "unqualifiedName": "E"
         }
       },
-      "48" : {
-        "AbsType" : {
-          "nodeId" : 25,
-          "unqualifiedName" : "T"
+      "48": {
+        "AbsType": {
+          "nodeId": 25,
+          "unqualifiedName": "T"
         }
       },
-      "116" : {
-        "ComponentInstance" : {
-          "nodeId" : 88,
-          "unqualifiedName" : "i"
+      "116": {
+        "ComponentInstance": {
+          "nodeId": 88,
+          "unqualifiedName": "i"
         }
       },
-      "47" : {
-        "AbsType" : {
-          "nodeId" : 25,
-          "unqualifiedName" : "T"
+      "47": {
+        "AbsType": {
+          "nodeId": 25,
+          "unqualifiedName": "T"
         }
       },
-      "31" : {
-        "AbsType" : {
-          "nodeId" : 25,
-          "unqualifiedName" : "T"
+      "31": {
+        "AbsType": {
+          "nodeId": 25,
+          "unqualifiedName": "T"
         }
       }
     },
-    "valueMap" : {
-      "23" : {
-        "EnumConstant" : {
-          "value" : [
-            "B",
-            1
-          ],
-          "t" : {
-            "node" : {
-              "astNodeId" : 24
+    "valueMap": {
+      "23": {
+        "EnumConstant": {
+          "value": ["B", 1],
+          "t": {
+            "node": {
+              "astNodeId": 24
             },
-            "repType" : {
-              "kind" : {
-                "I32" : {
-                  
-                }
+            "repType": {
+              "kind": {
+                "I32": {}
               }
             },
-            "default" : "None"
+            "default": "None"
           }
         }
       },
-      "50" : {
-        "EnumConstant" : {
-          "value" : [
-            "SUCCEED",
-            0
-          ],
-          "t" : {
-            "node" : {
-              "astNodeId" : 54
+      "50": {
+        "EnumConstant": {
+          "value": ["SUCCEED", 0],
+          "t": {
+            "node": {
+              "astNodeId": 54
             },
-            "repType" : {
-              "kind" : {
-                "I32" : {
-                  
-                }
+            "repType": {
+              "kind": {
+                "I32": {}
               }
             },
-            "default" : "None"
+            "default": "None"
           }
         }
       },
-      "87" : {
-        "Integer" : {
-          "value" : 10
+      "87": {
+        "Integer": {
+          "value": 10
         }
       },
-      "53" : {
-        "EnumConstant" : {
-          "value" : [
-            "FAIL",
-            1
-          ],
-          "t" : {
-            "node" : {
-              "astNodeId" : 54
+      "53": {
+        "EnumConstant": {
+          "value": ["FAIL", 1],
+          "t": {
+            "node": {
+              "astNodeId": 54
             },
-            "repType" : {
-              "kind" : {
-                "I32" : {
-                  
-                }
+            "repType": {
+              "kind": {
+                "I32": {}
               }
             },
-            "default" : "None"
+            "default": "None"
           }
         }
       },
-      "20" : {
-        "EnumConstant" : {
-          "value" : [
-            "A",
-            0
-          ],
-          "t" : {
-            "node" : {
-              "astNodeId" : 24
+      "20": {
+        "EnumConstant": {
+          "value": ["A", 0],
+          "t": {
+            "node": {
+              "astNodeId": 24
             },
-            "repType" : {
-              "kind" : {
-                "I32" : {
-                  
-                }
+            "repType": {
+              "kind": {
+                "I32": {}
               }
             },
-            "default" : "None"
+            "default": "None"
           }
         }
       },
-      "86" : {
-        "Integer" : {
-          "value" : 8448
+      "86": {
+        "Integer": {
+          "value": 8448
         }
       }
     },
-    "stateMachineMap" : {
-      
-    },
-    "dictionarySymbolSet" : [
-    ],
-    "interfaceMap" : {
-      
-    }
+    "stateMachineMap": {},
+    "dictionarySymbolSet": [],
+    "interfaceMap": {}
   }
 }

@@ -223,12 +223,8 @@ class AnalysisTranslator:
             qual_name_json: Dict = ls[0][1]
             spec_loc_kind = translate_spec_loc_kind(kind_json)
             spec_loc_qualified_name = self.translate_qualified_name(qual_name_json)
-            spec_loc = fpp_ast.SpecLoc(
-                translate_spec_loc_kind(ls[1]["kind"]),
-                self.ast_map[ls[1]["symbol"]["astNodeId"]],
-                self.ast_map[ls[1]["file"]["astNodeId"]],
-            )
-            out_dict[(spec_loc_kind, spec_loc_qualified_name)] = spec_loc
+            spec_loc_a_node = self.get_annotated_ast_node_by_id(ls[1]["astNodeId"])
+            out_dict[(spec_loc_kind, spec_loc_qualified_name)] = spec_loc_a_node[1].data
         return out_dict
 
     def translate_symbol(self, symbol_type: str, node_id: AstId) -> Symbol:
@@ -794,7 +790,7 @@ class AnalysisTranslator:
 
     def translate_throttle(self, d: Dict[str, dict]) -> Throttle:
         return Throttle(
-            d["count"],
+            self.require_type(d["count"], int),
             self.translate_optional(d["every"], self.translate_time_interval),
         )
 

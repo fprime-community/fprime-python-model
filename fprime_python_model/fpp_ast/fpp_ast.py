@@ -1888,7 +1888,7 @@ class SpecLocKind(Enum):
     PORT = "port"
     STATE_MACHINE = "state machine"
     TOPOLOGY = "topology"
-    TYPE = "type "
+    TYPE = "type"
     INTERFACE = "interface"
 
     def __str__(self):
