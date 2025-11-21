@@ -1,5 +1,5 @@
 {
-  "fppVersion": "[ fpp version ]",
+  "fppVersion": "v3.1.0a10-46-g5b2da7ca1",
   "analysis": {
     "componentInstanceMap": {
       "165": {
@@ -897,7 +897,7 @@
               }
             },
             "arcMap": {
-              "state IDLE": []
+              "123": []
             }
           },
           "reverseTransitionGraph": {
@@ -915,7 +915,7 @@
               }
             },
             "arcMap": {
-              "state IDLE": []
+              "123": []
             }
           },
           "typeOptionMap": {

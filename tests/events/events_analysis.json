@@ -1,5 +1,5 @@
 {
-  "fppVersion": "[ fpp version ]",
+  "fppVersion": "v3.1.0a10-46-g5b2da7ca1",
   "analysis": {
     "componentInstanceMap": {},
     "componentMap": {
@@ -24,7 +24,7 @@
               },
               "symbol": {
                 "Port": {
-                  "nodeId": 171,
+                  "nodeId": 198,
                   "unqualifiedName": "Log"
                 }
               },
@@ -49,7 +49,7 @@
               },
               "symbol": {
                 "Port": {
-                  "nodeId": 172,
+                  "nodeId": 199,
                   "unqualifiedName": "LogText"
                 }
               },
@@ -74,7 +74,7 @@
               },
               "symbol": {
                 "Port": {
-                  "nodeId": 175,
+                  "nodeId": 202,
                   "unqualifiedName": "Time"
                 }
               },
@@ -100,7 +100,7 @@
             },
             "symbol": {
               "Port": {
-                "nodeId": 171,
+                "nodeId": 198,
                 "unqualifiedName": "Log"
               }
             },
@@ -123,7 +123,7 @@
             },
             "symbol": {
               "Port": {
-                "nodeId": 172,
+                "nodeId": 199,
                 "unqualifiedName": "LogText"
               }
             },
@@ -146,7 +146,7 @@
             },
             "symbol": {
               "Port": {
-                "nodeId": 175,
+                "nodeId": 202,
                 "unqualifiedName": "Time"
               }
             },
@@ -210,15 +210,15 @@
         "recordMap": {},
         "defaultRecordId": 0
       },
-      "169": {
+      "196": {
         "aNode": {
-          "astNodeId": 169
+          "astNodeId": 196
         },
         "portMap": {
           "eventOut": {
             "Special": {
               "aNode": {
-                "astNodeId": 120
+                "astNodeId": 138
               },
               "specifier": {
                 "inputKind": "None",
@@ -231,7 +231,7 @@
               },
               "symbol": {
                 "Port": {
-                  "nodeId": 171,
+                  "nodeId": 198,
                   "unqualifiedName": "Log"
                 }
               },
@@ -243,7 +243,7 @@
           "textEventOut": {
             "Special": {
               "aNode": {
-                "astNodeId": 121
+                "astNodeId": 139
               },
               "specifier": {
                 "inputKind": "None",
@@ -256,7 +256,7 @@
               },
               "symbol": {
                 "Port": {
-                  "nodeId": 172,
+                  "nodeId": 199,
                   "unqualifiedName": "LogText"
                 }
               },
@@ -268,7 +268,7 @@
           "timeGetOut": {
             "Special": {
               "aNode": {
-                "astNodeId": 122
+                "astNodeId": 140
               },
               "specifier": {
                 "inputKind": "None",
@@ -281,7 +281,7 @@
               },
               "symbol": {
                 "Port": {
-                  "nodeId": 175,
+                  "nodeId": 202,
                   "unqualifiedName": "Time"
                 }
               },
@@ -294,7 +294,7 @@
         "specialPortMap": {
           "event": {
             "aNode": {
-              "astNodeId": 120
+              "astNodeId": 138
             },
             "specifier": {
               "inputKind": "None",
@@ -307,7 +307,7 @@
             },
             "symbol": {
               "Port": {
-                "nodeId": 171,
+                "nodeId": 198,
                 "unqualifiedName": "Log"
               }
             },
@@ -317,7 +317,7 @@
           },
           "text event": {
             "aNode": {
-              "astNodeId": 121
+              "astNodeId": 139
             },
             "specifier": {
               "inputKind": "None",
@@ -330,7 +330,7 @@
             },
             "symbol": {
               "Port": {
-                "nodeId": 172,
+                "nodeId": 199,
                 "unqualifiedName": "LogText"
               }
             },
@@ -340,7 +340,7 @@
           },
           "time get": {
             "aNode": {
-              "astNodeId": 122
+              "astNodeId": 140
             },
             "specifier": {
               "inputKind": "None",
@@ -353,7 +353,7 @@
             },
             "symbol": {
               "Port": {
-                "nodeId": 175,
+                "nodeId": 202,
                 "unqualifiedName": "Time"
               }
             },
@@ -370,17 +370,22 @@
         "eventMap": {
           "16": {
             "aNode": {
-              "astNodeId": 125
+              "astNodeId": 145
             },
             "format": {
               "prefix": "Event 1 occurred",
               "fields": []
             },
-            "throttle": "None"
+            "throttle": {
+              "Some": {
+                "count": 10,
+                "every": "None"
+              }
+            }
           },
           "2": {
             "aNode": {
-              "astNodeId": 132
+              "astNodeId": 159
             },
             "format": {
               "prefix": "Port ",
@@ -393,11 +398,21 @@
                 ]
               ]
             },
-            "throttle": "None"
+            "throttle": {
+              "Some": {
+                "count": 10,
+                "every": {
+                  "Some": {
+                    "seconds": 10,
+                    "useconds": 10
+                  }
+                }
+              }
+            }
           },
           "9": {
             "aNode": {
-              "astNodeId": 147
+              "astNodeId": 174
             },
             "format": {
               "prefix": "Event3 args: I32: ",
@@ -431,7 +446,7 @@
           },
           "6": {
             "aNode": {
-              "astNodeId": 168
+              "astNodeId": 195
             },
             "format": {
               "prefix": "Too many outstanding commands. opcode=0x",
@@ -469,27 +484,27 @@
     ],
     "locationSpecifierMap": [],
     "parentSymbolMap": {
-      "169": {
+      "196": {
         "Module": {
-          "nodeId": 170,
+          "nodeId": 197,
           "unqualifiedName": "M"
         }
       },
-      "171": {
+      "198": {
         "Module": {
-          "nodeId": 176,
+          "nodeId": 203,
           "unqualifiedName": "Fw"
         }
       },
-      "172": {
+      "199": {
         "Module": {
-          "nodeId": 176,
+          "nodeId": 203,
           "unqualifiedName": "Fw"
         }
       },
-      "175": {
+      "202": {
         "Module": {
-          "nodeId": 176,
+          "nodeId": 203,
           "unqualifiedName": "Fw"
         }
       }
@@ -498,16 +513,16 @@
       "19": {
         "map": {}
       },
-      "169": {
+      "196": {
         "map": {}
       },
-      "170": {
+      "197": {
         "map": {
           "Component": {
             "map": {
               "EventThrottling": {
                 "Component": {
-                  "nodeId": 169,
+                  "nodeId": 196,
                   "unqualifiedName": "EventThrottling"
                 }
               }
@@ -517,7 +532,7 @@
             "map": {
               "EventThrottling": {
                 "Component": {
-                  "nodeId": 169,
+                  "nodeId": 196,
                   "unqualifiedName": "EventThrottling"
                 }
               }
@@ -527,7 +542,7 @@
             "map": {
               "EventThrottling": {
                 "Component": {
-                  "nodeId": 169,
+                  "nodeId": 196,
                   "unqualifiedName": "EventThrottling"
                 }
               }
@@ -537,7 +552,7 @@
             "map": {
               "EventThrottling": {
                 "Component": {
-                  "nodeId": 169,
+                  "nodeId": 196,
                   "unqualifiedName": "EventThrottling"
                 }
               }
@@ -545,25 +560,25 @@
           }
         }
       },
-      "176": {
+      "203": {
         "map": {
           "Port": {
             "map": {
               "Log": {
                 "Port": {
-                  "nodeId": 171,
+                  "nodeId": 198,
                   "unqualifiedName": "Log"
                 }
               },
               "LogText": {
                 "Port": {
-                  "nodeId": 172,
+                  "nodeId": 199,
                   "unqualifiedName": "LogText"
                 }
               },
               "Time": {
                 "Port": {
-                  "nodeId": 175,
+                  "nodeId": 202,
                   "unqualifiedName": "Time"
                 }
               }
@@ -574,25 +589,12 @@
     },
     "topologyMap": {},
     "typeMap": {
-      "135": {
+      "141": {
         "Int": {
-          "PrimitiveInt": {
-            "kind": {
-              "I32": {}
-            }
-          }
+          "Integer": {}
         }
       },
-      "128": {
-        "Int": {
-          "PrimitiveInt": {
-            "kind": {
-              "I32": {}
-            }
-          }
-        }
-      },
-      "139": {
+      "166": {
         "Primitive": {
           "Float": {
             "kind": {
@@ -601,12 +603,12 @@
           }
         }
       },
-      "123": {
+      "155": {
         "Int": {
           "Integer": {}
         }
       },
-      "166": {
+      "152": {
         "Int": {
           "Integer": {}
         }
@@ -616,12 +618,47 @@
           "Integer": {}
         }
       },
-      "145": {
+      "148": {
+        "Int": {
+          "PrimitiveInt": {
+            "kind": {
+              "I32": {}
+            }
+          }
+        }
+      },
+      "143": {
         "Int": {
           "Integer": {}
         }
       },
-      "3": {
+      "172": {
+        "Int": {
+          "Integer": {}
+        }
+      },
+      "157": {
+        "AnonStruct": {
+          "members": {
+            "seconds": {
+              "Int": {
+                "Integer": {}
+              }
+            },
+            "useconds": {
+              "Int": {
+                "Integer": {}
+              }
+            }
+          }
+        }
+      },
+      "193": {
+        "Int": {
+          "Integer": {}
+        }
+      },
+      "153": {
         "Int": {
           "Integer": {}
         }
@@ -635,16 +672,7 @@
           }
         }
       },
-      "164": {
-        "Int": {
-          "PrimitiveInt": {
-            "kind": {
-              "U32": {}
-            }
-          }
-        }
-      },
-      "143": {
+      "170": {
         "Int": {
           "PrimitiveInt": {
             "kind": {
@@ -653,59 +681,87 @@
           }
         }
       },
-      "130": {
+      "162": {
+        "Int": {
+          "PrimitiveInt": {
+            "kind": {
+              "I32": {}
+            }
+          }
+        }
+      },
+      "191": {
+        "Int": {
+          "PrimitiveInt": {
+            "kind": {
+              "U32": {}
+            }
+          }
+        }
+      },
+      "150": {
+        "Int": {
+          "Integer": {}
+        }
+      },
+      "3": {
         "Int": {
           "Integer": {}
         }
       }
     },
     "useDefMap": {
-      "120": {
+      "139": {
         "Port": {
-          "nodeId": 171,
-          "unqualifiedName": "Log"
+          "nodeId": 199,
+          "unqualifiedName": "LogText"
         }
       },
-      "121": {
+      "138": {
         "Port": {
-          "nodeId": 172,
-          "unqualifiedName": "LogText"
+          "nodeId": 198,
+          "unqualifiedName": "Log"
         }
       },
       "1": {
         "Port": {
-          "nodeId": 172,
+          "nodeId": 199,
           "unqualifiedName": "LogText"
         }
       },
-      "122": {
+      "140": {
         "Port": {
-          "nodeId": 175,
+          "nodeId": 202,
           "unqualifiedName": "Time"
         }
       },
       "0": {
         "Port": {
-          "nodeId": 171,
+          "nodeId": 198,
           "unqualifiedName": "Log"
         }
       },
       "2": {
         "Port": {
-          "nodeId": 175,
+          "nodeId": 202,
           "unqualifiedName": "Time"
         }
       }
     },
     "valueMap": {
-      "123": {
+      "141": {
         "Integer": {
           "value": 16
         }
       },
-      "166": {
+      "155": {
         "Integer": {
-          "value": 6
+          "value": 10
+        }
+      },
+      "152": {
+        "Integer": {
+          "value": 10
         }
       },
       "10": {
@@ -713,12 +769,43 @@
           "value": 17
         }
       },
-      "145": {
+      "143": {
+        "Integer": {
+          "value": 10
+        }
+      },
+      "172": {
         "Integer": {
           "value": 9
         }
       },
-      "130": {
+      "157": {
+        "AnonStruct": {
+          "members": {
+            "seconds": {
+              "Integer": {
+                "value": 10
+              }
+            },
+            "useconds": {
+              "Integer": {
+                "value": 10
+              }
+            }
+          }
+        }
+      },
+      "193": {
+        "Integer": {
+          "value": 6
+        }
+      },
+      "153": {
+        "Integer": {
+          "value": 10
+        }
+      },
+      "150": {
         "Integer": {
           "value": 2
         }
@@ -730,6 +817,7 @@
       }
     },
     "stateMachineMap": {},
+    "dictionarySymbolSet": [],
     "interfaceMap": {}
   }
 }

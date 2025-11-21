@@ -214,6 +214,15 @@ class ConstructAstMap(AstVisitor):
         self, _in: In, a_node: AstNode[fpp_ast.Expr], e: fpp_ast.ExprArray
     ) -> Out:
         self.add_node_to_map(a_node)
+        for elem in e.elts:
+            self.add_node_to_map(elem)
+
+    def expr_array_subscript_node(
+        self, _in: In, a_node: AstNode[fpp_ast.Expr], e: fpp_ast.ExprArraySubscript
+    ) -> Out:
+        self.add_node_to_map(a_node)
+        self.expr_node(e.e1)
+        self.expr_node(e.e2)
 
     def expr_binop_node(
         self, _in: In, a_node: AstNode[fpp_ast.Expr], e: fpp_ast.ExprBinop
@@ -324,7 +333,7 @@ class ConstructAstMap(AstVisitor):
             self.add_node_to_map(data.id)
         self.add_node_to_map(data.format)
         if data.throttle:
-            self.expr_node(data.throttle)
+            self.throttle(data.throttle)
 
     def spec_include_annotated_node(
         self, _in: In, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecInclude]]
@@ -630,6 +639,12 @@ class ConstructAstMap(AstVisitor):
             limit_kind, limit_val = limit
             self.add_node_to_map(limit_kind)
             self.expr_node(limit_val)
+
+    def throttle(self, throttle: AstNode[fpp_ast.EventThrottle]) -> Out:
+        data = throttle.data
+        self.expr_node(data.count)
+        if data.every:
+            self.expr_node(data.every)
 
     def construct_ast_map(
         self, tu_list: List[fpp_ast.TransUnit]

@@ -1,5 +1,5 @@
 {
-  "fppVersion": "[ fpp version ]",
+  "fppVersion": "v3.1.0a10-46-g5b2da7ca1",
   "analysis": {
     "componentInstanceMap": {},
     "componentMap": {},
@@ -12,12 +12,7 @@
     "symbolScopeMap": {},
     "topologyMap": {},
     "typeMap": {
-      "45": {
-        "Int": {
-          "Integer": {}
-        }
-      },
-      "8": {
+      "33": {
         "Int": {
           "Integer": {}
         }
@@ -28,6 +23,21 @@
         }
       },
       "42": {
+        "AnonStruct": {
+          "members": {}
+        }
+      },
+      "2": {
+        "Int": {
+          "Integer": {}
+        }
+      },
+      "18": {
+        "Int": {
+          "Integer": {}
+        }
+      },
+      "52": {
         "AnonArray": {
           "size": {
             "Some": 2
@@ -50,14 +60,19 @@
           }
         }
       },
-      "18": {
+      "28": {
         "Int": {
           "Integer": {}
         }
       },
-      "52": {
+      "45": {
         "Int": {
           "Integer": {}
+        }
+      },
+      "67": {
+        "Primitive": {
+          "Boolean": {}
         }
       },
       "12": {
@@ -69,7 +84,40 @@
           }
         }
       },
+      "66": {
+        "Int": {
+          "Integer": {}
+        }
+      },
       "51": {
+        "AnonArray": {
+          "size": {
+            "Some": 2
+          },
+          "eltType": {
+            "AnonStruct": {
+              "members": {
+                "x": {
+                  "Int": {
+                    "Integer": {}
+                  }
+                },
+                "y": {
+                  "Int": {
+                    "Integer": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "8": {
+        "Int": {
+          "Integer": {}
+        }
+      },
+      "73": {
         "Int": {
           "Integer": {}
         }
@@ -80,6 +128,25 @@
         }
       },
       "23": {
+        "AnonArray": {
+          "size": {
+            "Some": 2
+          },
+          "eltType": {
+            "AnonArray": {
+              "size": {
+                "Some": 2
+              },
+              "eltType": {
+                "Int": {
+                  "Integer": {}
+                }
+              }
+            }
+          }
+        }
+      },
+      "62": {
         "Int": {
           "Integer": {}
         }
@@ -95,6 +162,16 @@
             "x": {
               "Int": {
                 "Integer": {}
+              }
+            },
+            "y": {
+              "String": {
+                "size": "None"
+              }
+            },
+            "z": {
+              "Primitive": {
+                "Boolean": {}
               }
             }
           }
@@ -120,16 +197,6 @@
               "Integer": {}
             }
           }
-        }
-      },
-      "44": {
-        "Int": {
-          "Integer": {}
-        }
-      },
-      "33": {
-        "Int": {
-          "Integer": {}
         }
       },
       "22": {
@@ -161,25 +228,42 @@
           "Integer": {}
         }
       },
-      "50": {
-        "Int": {
-          "Integer": {}
+      "26": {
+        "AnonArray": {
+          "size": {
+            "Some": 2
+          },
+          "eltType": {
+            "Int": {
+              "Integer": {}
+            }
+          }
         }
       },
-      "37": {
+      "50": {
         "AnonStruct": {
           "members": {
             "x": {
               "Int": {
                 "Integer": {}
               }
-            },
-            "y": {
-              "Int": {
-                "Integer": {}
-              }
             }
           }
+        }
+      },
+      "37": {
+        "Primitive": {
+          "Boolean": {}
+        }
+      },
+      "68": {
+        "Primitive": {
+          "Boolean": {}
+        }
+      },
+      "61": {
+        "Int": {
+          "Integer": {}
         }
       },
       "13": {
@@ -198,14 +282,14 @@
           }
         }
       },
-      "46": {
+      "24": {
         "Int": {
           "Integer": {}
         }
       },
       "35": {
-        "Int": {
-          "Integer": {}
+        "String": {
+          "size": "None"
         }
       },
       "16": {
@@ -226,8 +310,8 @@
         }
       },
       "59": {
-        "Primitive": {
-          "Boolean": {}
+        "Int": {
+          "Integer": {}
         }
       },
       "48": {
@@ -264,17 +348,17 @@
           "Integer": {}
         }
       },
+      "65": {
+        "Int": {
+          "Integer": {}
+        }
+      },
       "57": {
-        "Primitive": {
-          "Boolean": {}
+        "Int": {
+          "Integer": {}
         }
       },
       "32": {
-        "AnonStruct": {
-          "members": {}
-        }
-      },
-      "49": {
         "Int": {
           "Integer": {}
         }
@@ -287,6 +371,27 @@
       "1": {
         "Int": {
           "Integer": {}
+        }
+      },
+      "39": {
+        "AnonStruct": {
+          "members": {
+            "x": {
+              "Int": {
+                "Integer": {}
+              }
+            },
+            "y": {
+              "String": {
+                "size": "None"
+              }
+            },
+            "z": {
+              "Primitive": {
+                "Boolean": {}
+              }
+            }
+          }
         }
       },
       "17": {
@@ -302,13 +407,20 @@
         }
       },
       "25": {
-        "String": {
-          "size": "None"
+        "AnonArray": {
+          "size": {
+            "Some": 2
+          },
+          "eltType": {
+            "Int": {
+              "Integer": {}
+            }
+          }
         }
       },
       "60": {
-        "Primitive": {
-          "Boolean": {}
+        "Int": {
+          "Integer": {}
         }
       },
       "14": {
@@ -328,18 +440,34 @@
         }
       },
       "47": {
+        "AnonStruct": {
+          "members": {
+            "x": {
+              "Int": {
+                "Integer": {}
+              }
+            },
+            "y": {
+              "Int": {
+                "Integer": {}
+              }
+            }
+          }
+        }
+      },
+      "31": {
         "Int": {
           "Integer": {}
         }
       },
-      "31": {
-        "AnonStruct": {
-          "members": {}
+      "69": {
+        "Primitive": {
+          "Boolean": {}
         }
       },
       "58": {
-        "Primitive": {
-          "Boolean": {}
+        "Int": {
+          "Integer": {}
         }
       },
       "64": {
@@ -370,37 +498,37 @@
         }
       },
       "27": {
+        "AnonArray": {
+          "size": {
+            "Some": 2
+          },
+          "eltType": {
+            "AnonArray": {
+              "size": {
+                "Some": 2
+              },
+              "eltType": {
+                "Int": {
+                  "Integer": {}
+                }
+              }
+            }
+          }
+        }
+      },
+      "70": {
         "Primitive": {
           "Boolean": {}
         }
       },
-      "2": {
-        "Int": {
-          "Integer": {}
-        }
-      },
-      "38": {
-        "Int": {
-          "Integer": {}
-        }
-      },
       "30": {
-        "AnonStruct": {
-          "members": {
-            "x": {
-              "Int": {
-                "Integer": {}
-              }
-            },
-            "y": {
-              "String": {
-                "size": "None"
-              }
-            },
-            "z": {
-              "Primitive": {
-                "Boolean": {}
-              }
+        "AnonArray": {
+          "size": {
+            "Some": 2
+          },
+          "eltType": {
+            "Int": {
+              "Integer": {}
             }
           }
         }
@@ -411,47 +539,13 @@
         }
       },
       "29": {
-        "AnonStruct": {
-          "members": {
-            "x": {
-              "Int": {
-                "Integer": {}
-              }
-            },
-            "y": {
-              "String": {
-                "size": "None"
-              }
-            },
-            "z": {
-              "Primitive": {
-                "Boolean": {}
-              }
-            }
-          }
+        "Int": {
+          "Integer": {}
         }
       },
       "41": {
-        "AnonArray": {
-          "size": {
-            "Some": 2
-          },
-          "eltType": {
-            "AnonStruct": {
-              "members": {
-                "x": {
-                  "Int": {
-                    "Integer": {}
-                  }
-                },
-                "y": {
-                  "Int": {
-                    "Integer": {}
-                  }
-                }
-              }
-            }
-          }
+        "AnonStruct": {
+          "members": {}
         }
       },
       "63": {
@@ -463,25 +557,37 @@
         "Int": {
           "Integer": {}
         }
+      },
+      "74": {
+        "Int": {
+          "Integer": {}
+        }
       }
     },
     "useDefMap": {
-      "45": {
+      "23": {
         "Constant": {
-          "nodeId": 44,
-          "unqualifiedName": "j"
+          "nodeId": 22,
+          "unqualifiedName": "f"
+        }
+      },
+      "27": {
+        "Constant": {
+          "nodeId": 22,
+          "unqualifiedName": "f"
+        }
+      },
+      "55": {
+        "Constant": {
+          "nodeId": 54,
+          "unqualifiedName": "l"
         }
       }
     },
     "valueMap": {
-      "45": {
+      "33": {
         "Integer": {
           "value": 1
-        }
-      },
-      "8": {
-        "Integer": {
-          "value": 3
         }
       },
       "5": {
@@ -490,6 +596,21 @@
         }
       },
       "42": {
+        "AnonStruct": {
+          "members": {}
+        }
+      },
+      "2": {
+        "Integer": {
+          "value": 43981
+        }
+      },
+      "18": {
+        "Integer": {
+          "value": 3
+        }
+      },
+      "52": {
         "AnonArray": {
           "elements": [
             {
@@ -527,14 +648,19 @@
           ]
         }
       },
-      "18": {
+      "28": {
         "Integer": {
-          "value": 3
+          "value": 0
         }
       },
-      "52": {
+      "45": {
         "Integer": {
-          "value": 3
+          "value": 2
+        }
+      },
+      "67": {
+        "Boolean": {
+          "value": true
         }
       },
       "12": {
@@ -545,9 +671,57 @@
           }
         }
       },
-      "51": {
+      "66": {
         "Integer": {
-          "value": 2
+          "value": 1
+        }
+      },
+      "51": {
+        "AnonArray": {
+          "elements": [
+            {
+              "AnonStruct": {
+                "members": {
+                  "x": {
+                    "Integer": {
+                      "value": 1
+                    }
+                  },
+                  "y": {
+                    "Integer": {
+                      "value": 2
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "AnonStruct": {
+                "members": {
+                  "x": {
+                    "Integer": {
+                      "value": 3
+                    }
+                  },
+                  "y": {
+                    "Integer": {
+                      "value": 0
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "8": {
+        "Integer": {
+          "value": 3
+        }
+      },
+      "73": {
+        "Integer": {
+          "value": 0
         }
       },
       "19": {
@@ -556,8 +730,46 @@
         }
       },
       "23": {
+        "AnonArray": {
+          "elements": [
+            {
+              "AnonArray": {
+                "elements": [
+                  {
+                    "Integer": {
+                      "value": 1
+                    }
+                  },
+                  {
+                    "Integer": {
+                      "value": 2
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "AnonArray": {
+                "elements": [
+                  {
+                    "Integer": {
+                      "value": 3
+                    }
+                  },
+                  {
+                    "Integer": {
+                      "value": 4
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "62": {
         "Integer": {
-          "value": 1
+          "value": 3
         }
       },
       "4": {
@@ -570,7 +782,17 @@
           "members": {
             "x": {
               "Integer": {
-                "value": 3
+                "value": 1
+              }
+            },
+            "y": {
+              "String": {
+                "value": "abc"
+              }
+            },
+            "z": {
+              "Boolean": {
+                "value": false
               }
             }
           }
@@ -605,16 +827,6 @@
               }
             }
           ]
-        }
-      },
-      "44": {
-        "Integer": {
-          "value": 1
-        }
-      },
-      "33": {
-        "Integer": {
-          "value": 1
         }
       },
       "22": {
@@ -665,25 +877,46 @@
           "value": 1
         }
       },
-      "50": {
-        "Integer": {
-          "value": 1
-        }
-      },
-      "37": {
-        "AnonStruct": {
-          "members": {
-            "x": {
+      "26": {
+        "AnonArray": {
+          "elements": [
+            {
               "Integer": {
                 "value": 1
               }
             },
-            "y": {
+            {
               "Integer": {
                 "value": 2
               }
             }
+          ]
+        }
+      },
+      "50": {
+        "AnonStruct": {
+          "members": {
+            "x": {
+              "Integer": {
+                "value": 3
+              }
+            }
           }
+        }
+      },
+      "37": {
+        "Boolean": {
+          "value": false
+        }
+      },
+      "68": {
+        "Boolean": {
+          "value": true
+        }
+      },
+      "61": {
+        "Integer": {
+          "value": 2
         }
       },
       "13": {
@@ -708,14 +941,14 @@
           ]
         }
       },
-      "46": {
+      "24": {
         "Integer": {
-          "value": 1
+          "value": 0
         }
       },
       "35": {
-        "Integer": {
-          "value": 2
+        "String": {
+          "value": "abc"
         }
       },
       "16": {
@@ -745,13 +978,13 @@
         }
       },
       "59": {
-        "Boolean": {
-          "value": false
+        "Integer": {
+          "value": -1
         }
       },
       "48": {
         "Integer": {
-          "value": -1
+          "value": 3
         }
       },
       "21": {
@@ -802,19 +1035,19 @@
           "value": 1
         }
       },
+      "65": {
+        "Integer": {
+          "value": 1
+        }
+      },
       "57": {
-        "Boolean": {
-          "value": true
+        "Integer": {
+          "value": 1
         }
       },
       "32": {
-        "AnonStruct": {
-          "members": {}
-        }
-      },
-      "49": {
         "Integer": {
-          "value": -1
+          "value": 2
         }
       },
       "6": {
@@ -825,6 +1058,27 @@
       "1": {
         "Integer": {
           "value": 1234
+        }
+      },
+      "39": {
+        "AnonStruct": {
+          "members": {
+            "x": {
+              "Integer": {
+                "value": 1
+              }
+            },
+            "y": {
+              "String": {
+                "value": "abc"
+              }
+            },
+            "z": {
+              "Boolean": {
+                "value": false
+              }
+            }
+          }
         }
       },
       "17": {
@@ -844,13 +1098,24 @@
         }
       },
       "25": {
-        "String": {
-          "value": "abc"
+        "AnonArray": {
+          "elements": [
+            {
+              "Integer": {
+                "value": 1
+              }
+            },
+            {
+              "Integer": {
+                "value": 2
+              }
+            }
+          ]
         }
       },
       "60": {
-        "Boolean": {
-          "value": false
+        "Integer": {
+          "value": 1
         }
       },
       "14": {
@@ -876,28 +1141,44 @@
         }
       },
       "47": {
-        "Integer": {
-          "value": 1
+        "AnonStruct": {
+          "members": {
+            "x": {
+              "Integer": {
+                "value": 1
+              }
+            },
+            "y": {
+              "Integer": {
+                "value": 2
+              }
+            }
+          }
         }
       },
       "31": {
-        "AnonStruct": {
-          "members": {}
+        "Integer": {
+          "value": 2
+        }
+      },
+      "69": {
+        "Boolean": {
+          "value": false
         }
       },
       "58": {
-        "Boolean": {
-          "value": true
+        "Integer": {
+          "value": -1
         }
       },
       "64": {
         "Integer": {
-          "value": 0
+          "value": 1
         }
       },
       "53": {
         "Integer": {
-          "value": 3
+          "value": 1
         }
       },
       "0": {
@@ -922,39 +1203,62 @@
         }
       },
       "27": {
+        "AnonArray": {
+          "elements": [
+            {
+              "AnonArray": {
+                "elements": [
+                  {
+                    "Integer": {
+                      "value": 1
+                    }
+                  },
+                  {
+                    "Integer": {
+                      "value": 2
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "AnonArray": {
+                "elements": [
+                  {
+                    "Integer": {
+                      "value": 3
+                    }
+                  },
+                  {
+                    "Integer": {
+                      "value": 4
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "70": {
         "Boolean": {
           "value": false
         }
       },
-      "2": {
-        "Integer": {
-          "value": 43981
-        }
-      },
-      "38": {
-        "Integer": {
-          "value": 3
-        }
-      },
       "30": {
-        "AnonStruct": {
-          "members": {
-            "x": {
+        "AnonArray": {
+          "elements": [
+            {
               "Integer": {
                 "value": 1
               }
             },
-            "y": {
-              "String": {
-                "value": "abc"
-              }
-            },
-            "z": {
-              "Boolean": {
-                "value": false
+            {
+              "Integer": {
+                "value": 2
               }
             }
-          }
+          ]
         }
       },
       "7": {
@@ -963,76 +1267,33 @@
         }
       },
       "29": {
-        "AnonStruct": {
-          "members": {
-            "x": {
-              "Integer": {
-                "value": 1
-              }
-            },
-            "y": {
-              "String": {
-                "value": "abc"
-              }
-            },
-            "z": {
-              "Boolean": {
-                "value": false
-              }
-            }
-          }
+        "Integer": {
+          "value": 1
         }
       },
       "41": {
-        "AnonArray": {
-          "elements": [
-            {
-              "AnonStruct": {
-                "members": {
-                  "x": {
-                    "Integer": {
-                      "value": 1
-                    }
-                  },
-                  "y": {
-                    "Integer": {
-                      "value": 2
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "AnonStruct": {
-                "members": {
-                  "x": {
-                    "Integer": {
-                      "value": 3
-                    }
-                  },
-                  "y": {
-                    "Integer": {
-                      "value": 0
-                    }
-                  }
-                }
-              }
-            }
-          ]
+        "AnonStruct": {
+          "members": {}
         }
       },
       "63": {
         "Integer": {
-          "value": 0
+          "value": 3
         }
       },
       "3": {
         "Integer": {
           "value": 43981
         }
+      },
+      "74": {
+        "Integer": {
+          "value": 0
+        }
       }
     },
     "stateMachineMap": {},
+    "dictionarySymbolSet": [],
     "interfaceMap": {}
   }
 }

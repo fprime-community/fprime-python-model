@@ -108,6 +108,14 @@ def translate_expr(expr_dict: dict) -> AstNode[fpp_ast.Expr]:
         for e in data["ExprArray"]["elts"]:
             elts.append(translate_expr(e))
         return AstNode.create_with_id(fpp_ast.ExprArray(elts), id)
+    elif "ExprArraySubscript" in data:
+        return AstNode.create_with_id(
+            fpp_ast.ExprArraySubscript(
+                translate_expr(data["ExprArraySubscript"]["e1"]),
+                translate_expr(data["ExprArraySubscript"]["e2"]),
+            ),
+            id,
+        )
     elif "ExprBinop" in data:
         return AstNode.create_with_id(
             fpp_ast.ExprBinop(
@@ -172,6 +180,16 @@ def translate_expr(expr_dict: dict) -> AstNode[fpp_ast.Expr]:
         )
     else:
         raise InvalidFppToJsonDictionary("expression", expr_dict)
+
+
+def translate_throttle(d: Dict[str, dict]) -> AstNode[fpp_ast.EventThrottle]:
+    return AstNode.create_with_id(
+        fpp_ast.EventThrottle(
+            translate_expr(d["AstNode"]["data"]["count"]),
+            translate_optional(d["AstNode"]["data"]["every"], translate_expr),
+        ),
+        d["AstNode"]["id"],
+    )
 
 
 def translate_transition_expr(te: dict) -> AstNode[fpp_ast.TransitionExpr]:
@@ -293,7 +311,9 @@ def translate_def_abs_type(data: dict, id: AstId) -> AstNode[fpp_ast.DefAbsType]
 
 def translate_def_alias_type(data: dict, id: AstId) -> AstNode[fpp_ast.DefAliasType]:
     return AstNode.create_with_id(
-        fpp_ast.DefAliasType(data["name"], translate_type_name(data["typeName"])),
+        fpp_ast.DefAliasType(
+            data["name"], translate_type_name(data["typeName"]), data["isDictionaryDef"]
+        ),
         id,
     )
 
@@ -306,6 +326,7 @@ def translate_def_array(data: dict, id: AstId) -> AstNode[fpp_ast.DefArray]:
             translate_type_name(data["eltType"]),
             translate_optional(data["default"], translate_expr),
             translate_optional(data["format"], translate_string),
+            data["isDictionaryDef"],
         ),
         id,
     )
@@ -313,7 +334,10 @@ def translate_def_array(data: dict, id: AstId) -> AstNode[fpp_ast.DefArray]:
 
 def translate_def_constant(data: dict, id: AstId) -> AstNode[fpp_ast.DefConstant]:
     return AstNode.create_with_id(
-        fpp_ast.DefConstant(data["name"], translate_expr(data["value"])), id
+        fpp_ast.DefConstant(
+            data["name"], translate_expr(data["value"]), data["isDictionaryDef"]
+        ),
+        id,
     )
 
 
@@ -336,6 +360,7 @@ def translate_def_enum(data: dict, id: AstId) -> AstNode[fpp_ast.DefEnum]:
             translate_optional(data["typeName"], translate_type_name),
             constants,
             translate_optional(data["default"], translate_expr),
+            data["isDictionaryDef"],
         ),
         id,
     )
@@ -360,6 +385,7 @@ def translate_def_struct(data: dict, id: AstId) -> AstNode[fpp_ast.DefStruct]:
             data["name"],
             struct_members,
             translate_optional(data["default"], translate_expr),
+            data["isDictionaryDef"],
         ),
         id,
     )
@@ -449,7 +475,7 @@ def translate_component_members(l: list) -> List[fpp_ast.ComponentMember]:
                             translate_severity(data["severity"]),
                             translate_optional(data["id"], translate_expr),
                             translate_string(data["format"]),
-                            translate_optional(data["throttle"], translate_expr),
+                            translate_optional(data["throttle"], translate_throttle),
                         ),
                         id,
                     )

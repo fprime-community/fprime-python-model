@@ -8,6 +8,18 @@ EventId: TypeAlias = int
 
 
 @dataclass
+class TimeInterval:
+    seconds: int
+    useconds: int
+
+
+@dataclass
+class Throttle:
+    count: int
+    every: Optional[TimeInterval]
+
+
+@dataclass
 class Event:
     """
     An FPP event
@@ -22,7 +34,7 @@ class Event:
 
     a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecEvent]]
     format: Format
-    throttle: Optional[int]
+    throttle: Optional[Throttle]
 
     def get_name(self) -> fpp_ast.Ident:
         """

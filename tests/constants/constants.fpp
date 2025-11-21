@@ -26,16 +26,20 @@ constant f = [
                ]
              ]
 
-constant g = {
+constant g = f[0]
+
+constant h = f[0][1]
+
+constant i = {
                x = 1
                y = "abc"
                z = false
              }
 
-constant h = {
+constant j = {
              }
 
-constant i = [
+constant k = [
                {
                  x = 1
                  y = 2
@@ -45,21 +49,21 @@ constant i = [
                }
              ]
 
-constant j = 1
+constant l = 1
 
-constant k = j
+constant m = l
 
-constant l = -1
+constant n = -1
 
-constant m = 1 + 2
+constant o = 1 + 2
 
-constant n = (1)
+constant p = (1)
 
-constant o = true
+constant q = true
 
-constant p = false
+constant r = false
 
 @ This is a pre annotation.
 @ It has two lines.
-constant q = 0 @< This is a post annotation.
+constant s = 0 @< This is a post annotation.
                @< It also has two lines.

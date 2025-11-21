@@ -107,7 +107,7 @@ from fprime_python_model.translators.ast_translator import (
     translate_pattern_kind,
 )
 from fprime_python_model.semantics.tlm_channel import TlmChannel, TlmChannelId, Limits
-from fprime_python_model.semantics.event import Event, EventId
+from fprime_python_model.semantics.event import Event, EventId, Throttle, TimeInterval
 from fprime_python_model.semantics.param import Param, ParamId
 from fprime_python_model.semantics.state_machine_instance import StateMachineInstance
 from fprime_python_model.semantics.container import Container, ContainerId
@@ -368,7 +368,7 @@ class AnalysisTranslator:
             case "Value":
                 return NameGroup.VALUE
             case _:
-                raise InternalError("Encountered invalid name group.")
+                raise InternalError(f"Encountered invalid name group {ng}.")
 
     def translate_scope(self, d: Dict[str, dict]) -> Scope:
         scope = Scope()
@@ -788,11 +788,23 @@ class AnalysisTranslator:
         low_limits = self.translate_limits(d["lowLimits"])
         high_limits = self.translate_limits(d["highLimits"])
         return TlmChannel(a_node, c_type, update, format, low_limits, high_limits)
+    
+    def translate_time_interval(self, d: Dict[str, int]) -> TimeInterval:
+        return TimeInterval(
+            d["seconds"],
+            d["useconds"]
+        )
+
+    def translate_throttle(self, d: Dict[str, dict]) -> Throttle:
+        return Throttle(
+            d["count"],
+            self.translate_optional(d["every"], self.translate_time_interval)
+        )
 
     def translate_event(self, d: Dict[str, dict]) -> Event:
         a_node = self.get_annotated_ast_node_by_id(int(d["aNode"]["astNodeId"]))
         format = self.translate_format(d["format"])
-        throttle = self.translate_optional(d["throttle"], int)
+        throttle = self.translate_optional(d["throttle"], self.translate_throttle)
         return Event(a_node, format, throttle)
 
     def translate_param(self, d: Dict[str, dict]) -> Param:

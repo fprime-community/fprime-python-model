@@ -255,15 +255,9 @@ class FppWriter(AstVisitor, LineUtils):
     ):
         _, node, _ = a_node
         data = node.data
-        return Lines(self.lines(f"type {self.ident(data.name)} = ")).join(
-            "", self.type_name_node(data.type_name)
-        )
-        # return join_lists(
-        #     IndentMode.NO_INDENT,
-        #     self.lines(f"type {self.ident(data.name)} = "),
-        #     "",
-        #     self.type_name_node(data.type_name),
-        # )
+        return self.prefix_with_dictionary(
+            f"type {self.ident(data.name)} = ", data.is_dictionary_def
+        ).join("", self.type_name_node(data.type_name))
 
     def def_abs_type_annotated_node(
         self, _in: In, a_node: fpp_ast.Annotated[AstNode[fpp_ast.DefAbsType]]
@@ -287,7 +281,9 @@ class FppWriter(AstVisitor, LineUtils):
         _, node, _ = a_node
         data = node.data
         return (
-            Lines(self.lines(f"array {self.ident(data.name)} = ["))
+            self.prefix_with_dictionary(
+                f"array {self.ident(data.name)} = [", data.is_dictionary_def
+            )
             .join("", self.expr_node(data.size), False)
             .join("] ", self.type_name_node(data.elt_type), False)
             .join_opt(data.default, " default ", self.expr_node)
@@ -380,9 +376,9 @@ class FppWriter(AstVisitor, LineUtils):
     ):
         _, node, _ = a_node
         data = node.data
-        return Lines(self.lines(f"constant {self.ident(data.name)}")).join(
-            " = ", self.expr_node(data.value), True
-        )
+        return self.prefix_with_dictionary(
+            f"constant {self.ident(data.name)}", data.is_dictionary_def
+        ).join(" = ", self.expr_node(data.value), True)
 
     def def_enum_annotated_node(
         self, _in, a_node: fpp_ast.Annotated[AstNode[fpp_ast.DefEnum]]
@@ -390,9 +386,9 @@ class FppWriter(AstVisitor, LineUtils):
         _, node, _ = a_node
         data = node.data
 
-        lines = Lines(self.lines(f"enum {self.ident(data.name)}")).join_opt(
-            data.type_name, ": ", self.type_name_node
-        )
+        lines = self.prefix_with_dictionary(
+            f"enum {self.ident(data.name)}", data.is_dictionary_def
+        ).join_opt(data.type_name, ": ", self.type_name_node)
 
         constants_lines = []
         for const in data.constants:
@@ -483,7 +479,9 @@ class FppWriter(AstVisitor, LineUtils):
             out: Lines = self.annotate_node(self.struct_type_member)(m)
             struct_lines += out.lines
         return (
-            Lines(self.lines(f"struct {self.ident(data.name)}"))
+            self.prefix_with_dictionary(
+                f"struct {self.ident(data.name)}", data.is_dictionary_def
+            )
             .join_no_indent(" ", self.add_braces(Lines(struct_lines)))
             .join_opt(data.default, " default ", self.expr_node)
         )
@@ -509,6 +507,13 @@ class FppWriter(AstVisitor, LineUtils):
             [self.line("[")]
             + [self.indent_in(x) for elt in e.elts for x in self.expr_node(elt)]
             + [self.line("]")]
+        )
+
+    def expr_array_subscript_node(
+        self, _in, node: AstNode[fpp_ast.Expr], e: fpp_ast.ExprArraySubscript
+    ):
+        return self.expr_node(e.e1).join(
+            "", self.expr_node(e.e2).add_prefix_and_suffix("[", "]")
         )
 
     def expr_dot_node(self, _in, node, e):
@@ -617,8 +622,10 @@ class FppWriter(AstVisitor, LineUtils):
     def spec_event_annotated_node(
         self, _in, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecEvent]]
     ):
-        def event_throttle(throttle: AstNode[fpp_ast.Expr]):
-            return self.expr_node(throttle).add_prefix("throttle ")
+        def event_throttle(throttle: AstNode[fpp_ast.EventThrottle]):
+            return self.expr_node(throttle.data.count).add_prefix("throttle ").join_opt(
+                throttle.data.every, " every ", self.expr_node
+            )
 
         _, node, _ = a_node
         data = node.data
@@ -933,3 +940,9 @@ class FppWriter(AstVisitor, LineUtils):
             else:
                 result.append(item)
         return result
+
+    def prefix_with_dictionary(self, s: str, is_dictionary_def) -> Out:
+        if is_dictionary_def:
+            return Lines(self.lines(f"dictionary {s}"))
+        else:
+            return Lines(self.lines(s))

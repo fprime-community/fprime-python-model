@@ -1,5 +1,5 @@
 {
-  "fppVersion": "[ fpp version ]",
+  "fppVersion": "v3.1.0a10-46-g5b2da7ca1",
   "ast": [
     {
       "members": [
@@ -20,7 +20,8 @@
                         },
                         "id": 0
                       }
-                    }
+                    },
+                    "isDictionaryDef": false
                   },
                   "id": 1
                 }
@@ -46,7 +47,8 @@
                         },
                         "id": 2
                       }
-                    }
+                    },
+                    "isDictionaryDef": false
                   },
                   "id": 3
                 }
@@ -72,7 +74,8 @@
                         },
                         "id": 4
                       }
-                    }
+                    },
+                    "isDictionaryDef": false
                   },
                   "id": 5
                 }
@@ -129,7 +132,8 @@
                         },
                         "id": 9
                       }
-                    }
+                    },
+                    "isDictionaryDef": false
                   },
                   "id": 10
                 }
@@ -176,7 +180,8 @@
                         },
                         "id": 13
                       }
-                    }
+                    },
+                    "isDictionaryDef": false
                   },
                   "id": 14
                 }
@@ -265,7 +270,8 @@
                         },
                         "id": 21
                       }
-                    }
+                    },
+                    "isDictionaryDef": false
                   },
                   "id": 22
                 }
@@ -285,72 +291,35 @@
                     "value": {
                       "AstNode": {
                         "data": {
-                          "ExprStruct": {
-                            "members": [
-                              {
-                                "AstNode": {
-                                  "data": {
-                                    "name": "x",
-                                    "value": {
-                                      "AstNode": {
-                                        "data": {
-                                          "ExprLiteralInt": {
-                                            "value": "1"
-                                          }
-                                        },
-                                        "id": 23
-                                      }
-                                    }
-                                  },
-                                  "id": 24
-                                }
-                              },
-                              {
-                                "AstNode": {
-                                  "data": {
-                                    "name": "y",
-                                    "value": {
-                                      "AstNode": {
-                                        "data": {
-                                          "ExprLiteralString": {
-                                            "value": "abc"
-                                          }
-                                        },
-                                        "id": 25
-                                      }
-                                    }
-                                  },
-                                  "id": 26
-                                }
-                              },
-                              {
-                                "AstNode": {
-                                  "data": {
-                                    "name": "z",
-                                    "value": {
-                                      "AstNode": {
-                                        "data": {
-                                          "ExprLiteralBool": {
-                                            "value": {
-                                              "False": {}
-                                            }
-                                          }
-                                        },
-                                        "id": 27
-                                      }
-                                    }
-                                  },
-                                  "id": 28
-                                }
+                          "ExprArraySubscript": {
+                            "e1": {
+                              "AstNode": {
+                                "data": {
+                                  "ExprIdent": {
+                                    "value": "f"
+                                  }
+                                },
+                                "id": 23
                               }
-                            ]
+                            },
+                            "e2": {
+                              "AstNode": {
+                                "data": {
+                                  "ExprLiteralInt": {
+                                    "value": "0"
+                                  }
+                                },
+                                "id": 24
+                              }
+                            }
                           }
                         },
-                        "id": 29
+                        "id": 25
                       }
-                    }
+                    },
+                    "isDictionaryDef": false
                   },
-                  "id": 30
+                  "id": 26
                 }
               }
             }
@@ -368,13 +337,52 @@
                     "value": {
                       "AstNode": {
                         "data": {
-                          "ExprStruct": {
-                            "members": []
+                          "ExprArraySubscript": {
+                            "e1": {
+                              "AstNode": {
+                                "data": {
+                                  "ExprArraySubscript": {
+                                    "e1": {
+                                      "AstNode": {
+                                        "data": {
+                                          "ExprIdent": {
+                                            "value": "f"
+                                          }
+                                        },
+                                        "id": 27
+                                      }
+                                    },
+                                    "e2": {
+                                      "AstNode": {
+                                        "data": {
+                                          "ExprLiteralInt": {
+                                            "value": "0"
+                                          }
+                                        },
+                                        "id": 28
+                                      }
+                                    }
+                                  }
+                                },
+                                "id": 30
+                              }
+                            },
+                            "e2": {
+                              "AstNode": {
+                                "data": {
+                                  "ExprLiteralInt": {
+                                    "value": "1"
+                                  }
+                                },
+                                "id": 29
+                              }
+                            }
                           }
                         },
                         "id": 31
                       }
-                    }
+                    },
+                    "isDictionaryDef": false
                   },
                   "id": 32
                 }
@@ -391,6 +399,117 @@
                 "AstNode": {
                   "data": {
                     "name": "i",
+                    "value": {
+                      "AstNode": {
+                        "data": {
+                          "ExprStruct": {
+                            "members": [
+                              {
+                                "AstNode": {
+                                  "data": {
+                                    "name": "x",
+                                    "value": {
+                                      "AstNode": {
+                                        "data": {
+                                          "ExprLiteralInt": {
+                                            "value": "1"
+                                          }
+                                        },
+                                        "id": 33
+                                      }
+                                    }
+                                  },
+                                  "id": 34
+                                }
+                              },
+                              {
+                                "AstNode": {
+                                  "data": {
+                                    "name": "y",
+                                    "value": {
+                                      "AstNode": {
+                                        "data": {
+                                          "ExprLiteralString": {
+                                            "value": "abc"
+                                          }
+                                        },
+                                        "id": 35
+                                      }
+                                    }
+                                  },
+                                  "id": 36
+                                }
+                              },
+                              {
+                                "AstNode": {
+                                  "data": {
+                                    "name": "z",
+                                    "value": {
+                                      "AstNode": {
+                                        "data": {
+                                          "ExprLiteralBool": {
+                                            "value": {
+                                              "False": {}
+                                            }
+                                          }
+                                        },
+                                        "id": 37
+                                      }
+                                    }
+                                  },
+                                  "id": 38
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        "id": 39
+                      }
+                    },
+                    "isDictionaryDef": false
+                  },
+                  "id": 40
+                }
+              }
+            }
+          },
+          []
+        ],
+        [
+          [],
+          {
+            "DefConstant": {
+              "node": {
+                "AstNode": {
+                  "data": {
+                    "name": "j",
+                    "value": {
+                      "AstNode": {
+                        "data": {
+                          "ExprStruct": {
+                            "members": []
+                          }
+                        },
+                        "id": 41
+                      }
+                    },
+                    "isDictionaryDef": false
+                  },
+                  "id": 42
+                }
+              }
+            }
+          },
+          []
+        ],
+        [
+          [],
+          {
+            "DefConstant": {
+              "node": {
+                "AstNode": {
+                  "data": {
+                    "name": "k",
                     "value": {
                       "AstNode": {
                         "data": {
@@ -412,11 +531,11 @@
                                                       "value": "1"
                                                     }
                                                   },
-                                                  "id": 33
+                                                  "id": 43
                                                 }
                                               }
                                             },
-                                            "id": 34
+                                            "id": 44
                                           }
                                         },
                                         {
@@ -430,17 +549,17 @@
                                                       "value": "2"
                                                     }
                                                   },
-                                                  "id": 35
+                                                  "id": 45
                                                 }
                                               }
                                             },
-                                            "id": 36
+                                            "id": 46
                                           }
                                         }
                                       ]
                                     }
                                   },
-                                  "id": 37
+                                  "id": 47
                                 }
                               },
                               {
@@ -459,79 +578,28 @@
                                                       "value": "3"
                                                     }
                                                   },
-                                                  "id": 38
+                                                  "id": 48
                                                 }
                                               }
                                             },
-                                            "id": 39
+                                            "id": 49
                                           }
                                         }
                                       ]
                                     }
                                   },
-                                  "id": 40
+                                  "id": 50
                                 }
                               }
                             ]
                           }
                         },
-                        "id": 41
+                        "id": 51
                       }
-                    }
+                    },
+                    "isDictionaryDef": false
                   },
-                  "id": 42
-                }
-              }
-            }
-          },
-          []
-        ],
-        [
-          [],
-          {
-            "DefConstant": {
-              "node": {
-                "AstNode": {
-                  "data": {
-                    "name": "j",
-                    "value": {
-                      "AstNode": {
-                        "data": {
-                          "ExprLiteralInt": {
-                            "value": "1"
-                          }
-                        },
-                        "id": 43
-                      }
-                    }
-                  },
-                  "id": 44
-                }
-              }
-            }
-          },
-          []
-        ],
-        [
-          [],
-          {
-            "DefConstant": {
-              "node": {
-                "AstNode": {
-                  "data": {
-                    "name": "k",
-                    "value": {
-                      "AstNode": {
-                        "data": {
-                          "ExprIdent": {
-                            "value": "j"
-                          }
-                        },
-                        "id": 45
-                      }
-                    }
-                  },
-                  "id": 46
+                  "id": 52
                 }
               }
             }
@@ -549,27 +617,16 @@
                     "value": {
                       "AstNode": {
                         "data": {
-                          "ExprUnop": {
-                            "op": {
-                              "Minus": {}
-                            },
-                            "e": {
-                              "AstNode": {
-                                "data": {
-                                  "ExprLiteralInt": {
-                                    "value": "1"
-                                  }
-                                },
-                                "id": 47
-                              }
-                            }
+                          "ExprLiteralInt": {
+                            "value": "1"
                           }
                         },
-                        "id": 48
+                        "id": 53
                       }
-                    }
+                    },
+                    "isDictionaryDef": false
                   },
-                  "id": 49
+                  "id": 54
                 }
               }
             }
@@ -587,37 +644,16 @@
                     "value": {
                       "AstNode": {
                         "data": {
-                          "ExprBinop": {
-                            "e1": {
-                              "AstNode": {
-                                "data": {
-                                  "ExprLiteralInt": {
-                                    "value": "1"
-                                  }
-                                },
-                                "id": 50
-                              }
-                            },
-                            "op": {
-                              "Add": {}
-                            },
-                            "e2": {
-                              "AstNode": {
-                                "data": {
-                                  "ExprLiteralInt": {
-                                    "value": "2"
-                                  }
-                                },
-                                "id": 51
-                              }
-                            }
+                          "ExprIdent": {
+                            "value": "l"
                           }
                         },
-                        "id": 52
+                        "id": 55
                       }
-                    }
+                    },
+                    "isDictionaryDef": false
                   },
-                  "id": 53
+                  "id": 56
                 }
               }
             }
@@ -635,7 +671,10 @@
                     "value": {
                       "AstNode": {
                         "data": {
-                          "ExprParen": {
+                          "ExprUnop": {
+                            "op": {
+                              "Minus": {}
+                            },
                             "e": {
                               "AstNode": {
                                 "data": {
@@ -643,16 +682,17 @@
                                     "value": "1"
                                   }
                                 },
-                                "id": 54
+                                "id": 57
                               }
                             }
                           }
                         },
-                        "id": 55
+                        "id": 58
                       }
-                    }
+                    },
+                    "isDictionaryDef": false
                   },
-                  "id": 56
+                  "id": 59
                 }
               }
             }
@@ -670,17 +710,38 @@
                     "value": {
                       "AstNode": {
                         "data": {
-                          "ExprLiteralBool": {
-                            "value": {
-                              "True": {}
+                          "ExprBinop": {
+                            "e1": {
+                              "AstNode": {
+                                "data": {
+                                  "ExprLiteralInt": {
+                                    "value": "1"
+                                  }
+                                },
+                                "id": 60
+                              }
+                            },
+                            "op": {
+                              "Add": {}
+                            },
+                            "e2": {
+                              "AstNode": {
+                                "data": {
+                                  "ExprLiteralInt": {
+                                    "value": "2"
+                                  }
+                                },
+                                "id": 61
+                              }
                             }
                           }
                         },
-                        "id": 57
+                        "id": 62
                       }
-                    }
+                    },
+                    "isDictionaryDef": false
                   },
-                  "id": 58
+                  "id": 63
                 }
               }
             }
@@ -698,17 +759,83 @@
                     "value": {
                       "AstNode": {
                         "data": {
+                          "ExprParen": {
+                            "e": {
+                              "AstNode": {
+                                "data": {
+                                  "ExprLiteralInt": {
+                                    "value": "1"
+                                  }
+                                },
+                                "id": 64
+                              }
+                            }
+                          }
+                        },
+                        "id": 65
+                      }
+                    },
+                    "isDictionaryDef": false
+                  },
+                  "id": 66
+                }
+              }
+            }
+          },
+          []
+        ],
+        [
+          [],
+          {
+            "DefConstant": {
+              "node": {
+                "AstNode": {
+                  "data": {
+                    "name": "q",
+                    "value": {
+                      "AstNode": {
+                        "data": {
+                          "ExprLiteralBool": {
+                            "value": {
+                              "True": {}
+                            }
+                          }
+                        },
+                        "id": 67
+                      }
+                    },
+                    "isDictionaryDef": false
+                  },
+                  "id": 68
+                }
+              }
+            }
+          },
+          []
+        ],
+        [
+          [],
+          {
+            "DefConstant": {
+              "node": {
+                "AstNode": {
+                  "data": {
+                    "name": "r",
+                    "value": {
+                      "AstNode": {
+                        "data": {
                           "ExprLiteralBool": {
                             "value": {
                               "False": {}
                             }
                           }
                         },
-                        "id": 59
+                        "id": 69
                       }
-                    }
+                    },
+                    "isDictionaryDef": false
                   },
-                  "id": 60
+                  "id": 70
                 }
               }
             }
@@ -722,7 +849,7 @@
               "node": {
                 "AstNode": {
                   "data": {
-                    "name": "q",
+                    "name": "s",
                     "value": {
                       "AstNode": {
                         "data": {
@@ -730,11 +857,12 @@
                             "value": "0"
                           }
                         },
-                        "id": 63
+                        "id": 73
                       }
-                    }
+                    },
+                    "isDictionaryDef": false
                   },
-                  "id": 64
+                  "id": 74
                 }
               }
             }

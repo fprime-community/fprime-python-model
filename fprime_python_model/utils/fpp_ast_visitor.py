@@ -127,6 +127,11 @@ class AstVisitor(ABC, Generic[In, Out]):
     ) -> Out:
         return self.default(_in)
 
+    def expr_array_subscript_node(
+        self, _in: In, node: AstNode[fpp_ast.Expr], e: fpp_ast.ExprArraySubscript
+    ) -> Out:
+        return self.default(_in)
+
     def expr_binop_node(
         self, _in: In, node: AstNode[fpp_ast.Expr], e: fpp_ast.ExprBinop
     ) -> Out:
@@ -383,6 +388,8 @@ class AstVisitor(ABC, Generic[In, Out]):
         match expr:
             case fpp_ast.ExprArray():
                 return self.expr_array_node(_in, node, expr)
+            case fpp_ast.ExprArraySubscript():
+                return self.expr_array_subscript_node(_in, node, expr)
             case fpp_ast.ExprBinop():
                 return self.expr_binop_node(_in, node, expr)
             case fpp_ast.ExprDot():

@@ -204,10 +204,13 @@ class DefAliasType:
     :type name: Ident
     :param type_name: Type name that the alias type represents
     :type type_name: AstNode[TypeName]
+    :param is_dictionary_def: Whether the alias type is a dictionary definition
+    :type is_dictionary_def: bool
     """
 
     name: Ident
     type_name: AstNode["TypeName"]
+    is_dictionary_def: bool
 
 
 @dataclass
@@ -225,6 +228,8 @@ class DefArray:
     :type default: Optional[AstNode[Expr]]
     :param format: Format string
     :type format: Optional[AstNode[str]]
+    :param is_dictionary_def: Whether the array is a dictionary definition
+    :type is_dictionary_def: bool
     """
 
     name: Ident
@@ -232,6 +237,7 @@ class DefArray:
     elt_type: AstNode["TypeName"]
     default: Optional[AstNode["Expr"]]
     format: Optional[AstNode[str]]
+    is_dictionary_def: bool
 
 
 @dataclass
@@ -299,11 +305,13 @@ class DefConstant:
     :type name: Ident
     :param value: Value of the constant
     :type value: AstNode[Expr]
-
+    :param is_dictionary_def: Whether the constant is a dictionary definition
+    :type is_dictionary_def: bool
     """
 
     name: Ident
     value: AstNode["Expr"]
+    is_dictionary_def: bool
 
 
 @dataclass
@@ -319,12 +327,15 @@ class DefEnum:
     :type constants: List[Annotated[AstNode[DefEnumConstant]]]
     :param default: Default value of the enum
     :type default: Optional[AstNode[Expr]]
+    :param is_dictionary_def: Whether the enum is a dictionary definition
+    :type is_dictionary_def: bool
     """
 
     name: Ident
     type_name: Optional[AstNode["TypeName"]]
     constants: List[Annotated[AstNode["DefEnumConstant"]]]
     default: Optional[AstNode["Expr"]]
+    is_dictionary_def: bool
 
 
 @dataclass
@@ -497,11 +508,14 @@ class DefStruct:
     :type members: List[Annotated[AstNode[StructMember]]]
     :param default: Default value of the struct
     :type default: Optional[AstNode[Expr]]
+    :param is_dictionary_def: Whether the struct is a dictionary definition
+    :type is_dictionary_def: bool
     """
 
     name: Ident
     members: List[Annotated[AstNode["StructTypeMember"]]]
     default: Optional[AstNode["Expr"]]
+    is_dictionary_def: bool
 
 
 @dataclass
@@ -1178,6 +1192,21 @@ class ExprArray(Expr):
 
 
 @dataclass
+class ExprArraySubscript(Expr):
+    """
+    Array expression
+
+    :param e1: Expression AST node
+    :type e1: AstNode[Expr]
+    :param e2: Expression AST node
+    :type e2: AstNode[Expr]
+    """
+
+    e1: AstNode[Expr]
+    e2: AstNode[Expr]
+
+
+@dataclass
 class ExprBinop(Expr):
     """
     Binary operation expression
@@ -1704,6 +1733,21 @@ class SpecContainer:
 
 
 @dataclass
+class EventThrottle:
+    """
+    Event throttle
+
+    :param count: Maximum throttle count
+    :type count: AstNode[Expr]
+    :param every: Throttle period
+    :type every: Optional[AstNode[Expr]]
+    """
+
+    count: AstNode[Expr]
+    every: Optional[AstNode[Expr]]
+
+
+@dataclass
 class SpecEvent:
     """
     Event specifier
@@ -1719,7 +1763,7 @@ class SpecEvent:
     :param format: Event format string
     :type format: AstNode[str]
     :param throttle: Event throttle
-    :type throttle: Optional[AstNode[Expr]]
+    :type throttle: Optional[AstNode[EventThrottle]]
     """
 
     name: Ident
@@ -1727,7 +1771,7 @@ class SpecEvent:
     severity: "SpecEventSeverity"
     id: Optional[AstNode[Expr]]
     format: AstNode[str]
-    throttle: Optional[AstNode[Expr]]
+    throttle: Optional[AstNode[EventThrottle]]
 
 
 class SpecEventSeverity(Enum):
@@ -1813,11 +1857,14 @@ class SpecLoc:
     :type symbol: AstNode[QualIdent]
     :param file: Path of the FPP source file
     :type file: AstNode[str]
+    :param is_dictionary_def: Whether the location specifier specified the location of a dictionary definition
+    :type is_dictionary_def: bool
     """
 
     kind: "SpecLocKind"
     symbol: AstNode[QualIdent]
     file: AstNode[str]
+    is_dictionary_def: bool
 
 
 class SpecLocKind(Enum):

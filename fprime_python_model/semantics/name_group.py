@@ -3,14 +3,17 @@ from typing import List
 
 
 class NameGroup(Enum):
-    COMPONENT_INSTANCE = "ComponentInstance"
-    COMPONENT = "Component"
-    PORT = "Port"
-    STATE_MACHINE = "StateMachine"
-    TOPOLOGY = "Topology"
-    INTERFACE = "Interface"
-    TYPE = "Type"
-    VALUE = "Value"
+    COMPONENT_INSTANCE = "component instance"
+    COMPONENT = "component"
+    PORT = "port"
+    STATE_MACHINE = "state machine"
+    TOPOLOGY = "topology"
+    INTERFACE = "interface"
+    TYPE = "type"
+    VALUE = "constant"
+
+    def __str__(self):
+        return self.value
 
 
 name_groups: List[NameGroup] = [
