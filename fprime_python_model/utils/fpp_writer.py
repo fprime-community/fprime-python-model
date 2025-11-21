@@ -623,8 +623,10 @@ class FppWriter(AstVisitor, LineUtils):
         self, _in, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecEvent]]
     ):
         def event_throttle(throttle: AstNode[fpp_ast.EventThrottle]):
-            return self.expr_node(throttle.data.count).add_prefix("throttle ").join_opt(
-                throttle.data.every, " every ", self.expr_node
+            return (
+                self.expr_node(throttle.data.count)
+                .add_prefix("throttle ")
+                .join_opt(throttle.data.every, " every ", self.expr_node)
             )
 
         _, node, _ = a_node

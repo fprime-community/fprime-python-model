@@ -788,17 +788,14 @@ class AnalysisTranslator:
         low_limits = self.translate_limits(d["lowLimits"])
         high_limits = self.translate_limits(d["highLimits"])
         return TlmChannel(a_node, c_type, update, format, low_limits, high_limits)
-    
+
     def translate_time_interval(self, d: Dict[str, int]) -> TimeInterval:
-        return TimeInterval(
-            d["seconds"],
-            d["useconds"]
-        )
+        return TimeInterval(d["seconds"], d["useconds"])
 
     def translate_throttle(self, d: Dict[str, dict]) -> Throttle:
         return Throttle(
             d["count"],
-            self.translate_optional(d["every"], self.translate_time_interval)
+            self.translate_optional(d["every"], self.translate_time_interval),
         )
 
     def translate_event(self, d: Dict[str, dict]) -> Event:
