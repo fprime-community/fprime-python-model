@@ -1,3 +1,5 @@
+import json
+from packaging.version import Version
 from typing import Dict, List
 from fprime_python_model.fpp_ast.fpp_ast_node import AstNode, AstId
 from fprime_python_model.fpp_ast.fpp_ast import Annotated
@@ -10,6 +12,8 @@ from fprime_python_model.translators.construct_ast_id_map import ConstructAstMap
 from fprime_python_model.fpp_ast.fpp_ast import TransUnit
 from fprime_python_model.fpp_ast.fpp_locations import Location
 from fprime_python_model.semantics.analysis import Analysis
+
+MIN_FPP_VERSION = Version("3.1.0a10")
 
 
 class FprimePythonModel:
@@ -29,7 +33,26 @@ class FprimePythonModel:
         self._location_map: Dict[int, Location] = dict()
         self._analysis: Analysis = Analysis()
 
+        self._check_fpp_version()
         self._load()
+
+    def _check_fpp_version(self):
+        json_files = [
+            self.fpp_ast_json_file,
+            self.fpp_locations_json_file,
+            self.fpp_analysis_json_file,
+        ]
+        for file in json_files:
+            with open(file, "r") as f:
+                data = json.load(f)
+                # Remove leading "v" and git hash
+                version_string = str(data["fppVersion"]).lstrip("v").split("-")[0]
+                fpp_version = Version(version_string)
+                if fpp_version < MIN_FPP_VERSION:
+                    raise ValueError(
+                        f'JSON file "{file}" was generated with an incompatible FPP version ({fpp_version}). '
+                        f"Minimum supported is {MIN_FPP_VERSION}."
+                    )
 
     def _load(self):
         self._location_map = translate_location_map_json(self.fpp_locations_json_file)

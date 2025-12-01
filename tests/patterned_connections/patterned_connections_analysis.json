@@ -1,5 +1,5 @@
 {
-  "fppVersion": "[ fpp version ]",
+  "fppVersion": "v3.1.0a10",
   "analysis": {
     "componentInstanceMap": {
       "110": {
@@ -1010,8 +1010,8 @@
     },
     "includedFileSet": [],
     "inputFileSet": [
-      "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
-      "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp"
+      "[ local path prefix ]/compiler/tools/fpp-to-json/test/fprime/defs.fpp",
+      "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp"
     ],
     "locationSpecifierMap": [],
     "parentSymbolMap": {
@@ -1224,7 +1224,7 @@
                 "Public": {}
               },
               {
-                "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                 "pos": "55.5",
                 "includingLoc": "None"
               }
@@ -1256,7 +1256,7 @@
                 "Public": {}
               },
               {
-                "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                 "pos": "59.5",
                 "includingLoc": "None"
               }
@@ -1288,7 +1288,7 @@
                 "Public": {}
               },
               {
-                "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                 "pos": "58.5",
                 "includingLoc": "None"
               }
@@ -1320,7 +1320,7 @@
                 "Public": {}
               },
               {
-                "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                 "pos": "60.5",
                 "includingLoc": "None"
               }
@@ -1352,7 +1352,7 @@
                 "Public": {}
               },
               {
-                "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                 "pos": "61.5",
                 "includingLoc": "None"
               }
@@ -1384,7 +1384,7 @@
                 "Public": {}
               },
               {
-                "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                 "pos": "56.5",
                 "includingLoc": "None"
               }
@@ -1416,7 +1416,7 @@
                 "Public": {}
               },
               {
-                "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                 "pos": "54.5",
                 "includingLoc": "None"
               }
@@ -1448,7 +1448,7 @@
                 "Public": {}
               },
               {
-                "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                 "pos": "57.5",
                 "includingLoc": "None"
               }
@@ -1491,7 +1491,7 @@
                 "initSpecifierMap": {}
               },
               {
-                "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                 "pos": "65.32",
                 "includingLoc": "None"
               }
@@ -1537,7 +1537,7 @@
                 "initSpecifierMap": {}
               },
               {
-                "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                 "pos": "64.34",
                 "includingLoc": "None"
               }
@@ -1565,7 +1565,7 @@
                   "initSpecifierMap": {}
                 },
                 {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "64.39",
                   "includingLoc": "None"
                 }
@@ -1607,7 +1607,7 @@
                 "initSpecifierMap": {}
               },
               {
-                "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                 "pos": "67.32",
                 "includingLoc": "None"
               }
@@ -1649,7 +1649,7 @@
                 "initSpecifierMap": {}
               },
               {
-                "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                 "pos": "68.36",
                 "includingLoc": "None"
               }
@@ -1691,7 +1691,7 @@
                 "initSpecifierMap": {}
               },
               {
-                "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                 "pos": "63.31",
                 "includingLoc": "None"
               }
@@ -1733,7 +1733,7 @@
                 "initSpecifierMap": {}
               },
               {
-                "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                 "pos": "69.37",
                 "includingLoc": "None"
               }
@@ -1775,7 +1775,7 @@
                 "initSpecifierMap": {}
               },
               {
-                "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                 "pos": "66.33",
                 "includingLoc": "None"
               }
@@ -1788,7 +1788,7 @@
             {
               "from": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "64.5",
                   "includingLoc": "None"
                 },
@@ -1843,7 +1843,7 @@
               },
               "to": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "64.5",
                   "includingLoc": "None"
                 },
@@ -1912,7 +1912,7 @@
             {
               "from": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "64.5",
                   "includingLoc": "None"
                 },
@@ -1976,7 +1976,7 @@
               },
               "to": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "64.5",
                   "includingLoc": "None"
                 },
@@ -2036,7 +2036,7 @@
             {
               "from": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "64.5",
                   "includingLoc": "None"
                 },
@@ -2091,7 +2091,7 @@
               },
               "to": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "64.5",
                   "includingLoc": "None"
                 },
@@ -2160,7 +2160,7 @@
             {
               "from": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "63.5",
                   "includingLoc": "None"
                 },
@@ -2215,7 +2215,7 @@
               },
               "to": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "63.5",
                   "includingLoc": "None"
                 },
@@ -2282,7 +2282,7 @@
             {
               "from": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "63.5",
                   "includingLoc": "None"
                 },
@@ -2337,7 +2337,7 @@
               },
               "to": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "63.5",
                   "includingLoc": "None"
                 },
@@ -2408,7 +2408,7 @@
             {
               "from": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "64.5",
                   "includingLoc": "None"
                 },
@@ -2463,7 +2463,7 @@
               },
               "to": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "64.5",
                   "includingLoc": "None"
                 },
@@ -2532,7 +2532,7 @@
             {
               "from": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "64.5",
                   "includingLoc": "None"
                 },
@@ -2596,7 +2596,7 @@
               },
               "to": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "64.5",
                   "includingLoc": "None"
                 },
@@ -2656,7 +2656,7 @@
             {
               "from": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "64.5",
                   "includingLoc": "None"
                 },
@@ -2711,7 +2711,7 @@
               },
               "to": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "64.5",
                   "includingLoc": "None"
                 },
@@ -2780,7 +2780,7 @@
             {
               "from": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "63.5",
                   "includingLoc": "None"
                 },
@@ -2835,7 +2835,7 @@
               },
               "to": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "63.5",
                   "includingLoc": "None"
                 },
@@ -2902,7 +2902,7 @@
             {
               "from": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "63.5",
                   "includingLoc": "None"
                 },
@@ -2957,7 +2957,7 @@
               },
               "to": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "63.5",
                   "includingLoc": "None"
                 },
@@ -3076,7 +3076,7 @@
               {
                 "from": {
                   "loc": {
-                    "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                    "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                     "pos": "63.5",
                     "includingLoc": "None"
                   },
@@ -3131,7 +3131,7 @@
                 },
                 "to": {
                   "loc": {
-                    "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                    "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                     "pos": "63.5",
                     "includingLoc": "None"
                   },
@@ -3258,7 +3258,7 @@
               {
                 "from": {
                   "loc": {
-                    "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                    "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                     "pos": "64.5",
                     "includingLoc": "None"
                   },
@@ -3322,7 +3322,7 @@
                 },
                 "to": {
                   "loc": {
-                    "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                    "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                     "pos": "64.5",
                     "includingLoc": "None"
                   },
@@ -3431,7 +3431,7 @@
               {
                 "from": {
                   "loc": {
-                    "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                    "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                     "pos": "63.5",
                     "includingLoc": "None"
                   },
@@ -3486,7 +3486,7 @@
                 },
                 "to": {
                   "loc": {
-                    "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                    "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                     "pos": "63.5",
                     "includingLoc": "None"
                   },
@@ -3604,7 +3604,7 @@
               {
                 "from": {
                   "loc": {
-                    "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                    "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                     "pos": "64.5",
                     "includingLoc": "None"
                   },
@@ -3659,7 +3659,7 @@
                 },
                 "to": {
                   "loc": {
-                    "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                    "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                     "pos": "64.5",
                     "includingLoc": "None"
                   },
@@ -3777,7 +3777,7 @@
               {
                 "from": {
                   "loc": {
-                    "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                    "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                     "pos": "64.5",
                     "includingLoc": "None"
                   },
@@ -3832,7 +3832,7 @@
                 },
                 "to": {
                   "loc": {
-                    "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                    "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                     "pos": "64.5",
                     "includingLoc": "None"
                   },
@@ -3961,7 +3961,7 @@
               {
                 "from": {
                   "loc": {
-                    "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                    "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                     "pos": "64.5",
                     "includingLoc": "None"
                   },
@@ -4016,7 +4016,7 @@
                 },
                 "to": {
                   "loc": {
-                    "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                    "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                     "pos": "64.5",
                     "includingLoc": "None"
                   },
@@ -4134,7 +4134,7 @@
               {
                 "from": {
                   "loc": {
-                    "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                    "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                     "pos": "64.5",
                     "includingLoc": "None"
                   },
@@ -4198,7 +4198,7 @@
                 },
                 "to": {
                   "loc": {
-                    "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                    "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                     "pos": "64.5",
                     "includingLoc": "None"
                   },
@@ -4316,7 +4316,7 @@
               {
                 "from": {
                   "loc": {
-                    "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                    "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                     "pos": "64.5",
                     "includingLoc": "None"
                   },
@@ -4371,7 +4371,7 @@
                 },
                 "to": {
                   "loc": {
-                    "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                    "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                     "pos": "64.5",
                     "includingLoc": "None"
                   },
@@ -4498,7 +4498,7 @@
               {
                 "from": {
                   "loc": {
-                    "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                    "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                     "pos": "63.5",
                     "includingLoc": "None"
                   },
@@ -4553,7 +4553,7 @@
                 },
                 "to": {
                   "loc": {
-                    "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                    "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                     "pos": "63.5",
                     "includingLoc": "None"
                   },
@@ -4620,7 +4620,7 @@
               {
                 "from": {
                   "loc": {
-                    "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                    "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                     "pos": "63.5",
                     "includingLoc": "None"
                   },
@@ -4675,7 +4675,7 @@
                 },
                 "to": {
                   "loc": {
-                    "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                    "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                     "pos": "63.5",
                     "includingLoc": "None"
                   },
@@ -4747,7 +4747,7 @@
             {
               "from": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "63.5",
                   "includingLoc": "None"
                 },
@@ -4802,7 +4802,7 @@
               },
               "to": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "63.5",
                   "includingLoc": "None"
                 },
@@ -4872,7 +4872,7 @@
             {
               "from": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "64.5",
                   "includingLoc": "None"
                 },
@@ -4936,7 +4936,7 @@
               },
               "to": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "64.5",
                   "includingLoc": "None"
                 },
@@ -4997,7 +4997,7 @@
             {
               "from": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "64.5",
                   "includingLoc": "None"
                 },
@@ -5052,7 +5052,7 @@
               },
               "to": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "64.5",
                   "includingLoc": "None"
                 },
@@ -5122,7 +5122,7 @@
             {
               "from": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "63.5",
                   "includingLoc": "None"
                 },
@@ -5177,7 +5177,7 @@
               },
               "to": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "63.5",
                   "includingLoc": "None"
                 },
@@ -5247,7 +5247,7 @@
             {
               "from": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "64.5",
                   "includingLoc": "None"
                 },
@@ -5302,7 +5302,7 @@
               },
               "to": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "64.5",
                   "includingLoc": "None"
                 },
@@ -5374,7 +5374,7 @@
             {
               "from": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "63.5",
                   "includingLoc": "None"
                 },
@@ -5429,7 +5429,7 @@
               },
               "to": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "63.5",
                   "includingLoc": "None"
                 },
@@ -5499,7 +5499,7 @@
             {
               "from": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "64.5",
                   "includingLoc": "None"
                 },
@@ -5563,7 +5563,7 @@
               },
               "to": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "64.5",
                   "includingLoc": "None"
                 },
@@ -5624,7 +5624,7 @@
             {
               "from": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "64.5",
                   "includingLoc": "None"
                 },
@@ -5679,7 +5679,7 @@
               },
               "to": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "64.5",
                   "includingLoc": "None"
                 },
@@ -5749,7 +5749,7 @@
             {
               "from": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "63.5",
                   "includingLoc": "None"
                 },
@@ -5804,7 +5804,7 @@
               },
               "to": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "63.5",
                   "includingLoc": "None"
                 },
@@ -5874,7 +5874,7 @@
             {
               "from": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "64.5",
                   "includingLoc": "None"
                 },
@@ -5929,7 +5929,7 @@
               },
               "to": {
                 "loc": {
-                  "file": "/Users/jawest/Documents/fprime-infrastructure/new-fpp/fpp/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
+                  "file": "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",
                   "pos": "64.5",
                   "includingLoc": "None"
                 },
