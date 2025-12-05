@@ -1,147 +1,85 @@
 {
-  "fppVersion": "v3.1.0a10-46-g5b2da7ca1",
-  "ast": [
+  "fppVersion" : "v3.1.0a10-54-g11243e778",
+  "ast" : [
     {
-      "members": [
+      "members" : [
         [
-          [],
+          [
+          ],
           {
-            "SpecLoc": {
-              "node": {
-                "AstNode": {
-                  "data": {
-                    "kind": {
-                      "Constant": {}
+            "SpecLoc" : {
+              "node" : {
+                "AstNode" : {
+                  "data" : {
+                    "kind" : {
+                      "Constant" : {
+                        
+                      }
                     },
-                    "symbol": {
-                      "AstNode": {
-                        "data": {
-                          "Unqualified": {
-                            "name": "c1"
+                    "symbol" : {
+                      "AstNode" : {
+                        "data" : {
+                          "Unqualified" : {
+                            "name" : "c"
                           }
                         },
-                        "id": 1
+                        "id" : 1
                       }
                     },
-                    "file": {
-                      "AstNode": {
-                        "data": "c.fpp",
-                        "id": 2
+                    "file" : {
+                      "AstNode" : {
+                        "data" : "dictionary_c.fpp",
+                        "id" : 2
                       }
                     },
-                    "isDictionaryDef": true
+                    "isDictionaryDef" : true
                   },
-                  "id": 3
+                  "id" : 3
                 }
               }
             }
           },
-          []
+          [
+          ]
         ],
         [
-          [],
+          [
+          ],
           {
-            "SpecLoc": {
-              "node": {
-                "AstNode": {
-                  "data": {
-                    "kind": {
-                      "Constant": {}
+            "SpecLoc" : {
+              "node" : {
+                "AstNode" : {
+                  "data" : {
+                    "kind" : {
+                      "Type" : {
+                        
+                      }
                     },
-                    "symbol": {
-                      "AstNode": {
-                        "data": {
-                          "Unqualified": {
-                            "name": "c2"
+                    "symbol" : {
+                      "AstNode" : {
+                        "data" : {
+                          "Unqualified" : {
+                            "name" : "T1"
                           }
                         },
-                        "id": 5
+                        "id" : 5
                       }
                     },
-                    "file": {
-                      "AstNode": {
-                        "data": "c.fpp",
-                        "id": 6
+                    "file" : {
+                      "AstNode" : {
+                        "data" : "dictionary_T1.fpp",
+                        "id" : 6
                       }
                     },
-                    "isDictionaryDef": false
+                    "isDictionaryDef" : true
                   },
-                  "id": 7
+                  "id" : 7
                 }
               }
             }
           },
-          []
-        ],
-        [
-          [],
-          {
-            "SpecLoc": {
-              "node": {
-                "AstNode": {
-                  "data": {
-                    "kind": {
-                      "Type": {}
-                    },
-                    "symbol": {
-                      "AstNode": {
-                        "data": {
-                          "Unqualified": {
-                            "name": "t1"
-                          }
-                        },
-                        "id": 9
-                      }
-                    },
-                    "file": {
-                      "AstNode": {
-                        "data": "t.fpp",
-                        "id": 10
-                      }
-                    },
-                    "isDictionaryDef": true
-                  },
-                  "id": 11
-                }
-              }
-            }
-          },
-          []
-        ],
-        [
-          [],
-          {
-            "SpecLoc": {
-              "node": {
-                "AstNode": {
-                  "data": {
-                    "kind": {
-                      "Type": {}
-                    },
-                    "symbol": {
-                      "AstNode": {
-                        "data": {
-                          "Unqualified": {
-                            "name": "t2"
-                          }
-                        },
-                        "id": 13
-                      }
-                    },
-                    "file": {
-                      "AstNode": {
-                        "data": "t.fpp",
-                        "id": 14
-                      }
-                    },
-                    "isDictionaryDef": false
-                  },
-                  "id": 15
-                }
-              }
-            }
-          },
-          []
+          [
+          ]
         ]
       ]
     }

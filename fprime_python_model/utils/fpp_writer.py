@@ -47,7 +47,7 @@ class FppWriter(AstVisitor, LineUtils):
     def annotate(self, pre: List[str], lines: Out, post: List[str]) -> Lines:
         pre1 = [self.line(f"@ {s}") for s in pre]
         post1 = [self.line(f"@< {s}") for s in post]
-        return Lines(pre1 + lines.lines).join(" ", Lines(post1), True)
+        return Lines(pre1 + lines.lines).join(" ", Lines(post1))
 
     def annotate_node(
         self, f: Callable[[T], Out]
@@ -145,7 +145,7 @@ class FppWriter(AstVisitor, LineUtils):
         return (
             self.expr_node(si.phase)
             .add_prefix("phase ")
-            .join(" ", self.string(si.code), False)
+            .join_no_indent(" ", self.string(si.code))
         )
 
     def formal_param(self, fp: fpp_ast.FormalParam) -> Out:
@@ -186,23 +186,23 @@ class FppWriter(AstVisitor, LineUtils):
         return self.annotate(pre, l, post)
 
     def struct_member(self, member: fpp_ast.StructMember) -> Out:
-        return Lines(self.lines(self.ident(member.name))).join(
-            " = ", self.expr_node(member.value), False
+        return Lines(self.lines(self.ident(member.name))).join_no_indent(
+            " = ", self.expr_node(member.value)
         )
 
     def struct_type_member(self, member: fpp_ast.StructTypeMember) -> Out:
         return (
             Lines(self.lines(f"{self.ident(member.name)}:"))
             .join_opt(member.size, " ", self.bracket_expr_node)
-            .join(" ", self.type_name_node(member.type_name), False)
+            .join_no_indent(" ", self.type_name_node(member.type_name))
             .join_opt(member.format, " format ", self.apply_to_data(self.string))
         )
 
     def transition_expr(self, transition: fpp_ast.TransitionExpr) -> Out:
         sep = "enter " if not transition.actions else " enter "
 
-        return self.action_list(transition.actions).join(
-            sep, self.qual_ident(transition.target.data), False
+        return self.action_list(transition.actions).join_no_indent(
+            sep, self.qual_ident(transition.target.data)
         )
 
     def module_member(self, member: fpp_ast.ModuleMember) -> Out:
@@ -292,8 +292,8 @@ class FppWriter(AstVisitor, LineUtils):
                     )
                 )
             )
-            .join("", self.expr_node(data.size), False)
-            .join("] ", self.type_name_node(data.elt_type), False)
+            .join_no_indent("", self.expr_node(data.size))
+            .join_no_indent("] ", self.type_name_node(data.elt_type))
             .join_opt(data.default, " default ", self.expr_node)
             .join_opt(data.format, " format ", self.apply_to_data(self.string))
         )
@@ -354,8 +354,8 @@ class FppWriter(AstVisitor, LineUtils):
 
         return (
             Lines(self.lines(f"instance {self.ident(data.name)}"))
-            .join(": ", self.qual_ident(data.component.data), False)
-            .join(" base id ", self.expr_node(data.base_id), False)
+            .join_no_indent(": ", self.qual_ident(data.component.data))
+            .join_no_indent(" base id ", self.expr_node(data.base_id))
             .join_opt_with_break(
                 data.impl_type, "type ", self.apply_to_data(self.string)
             )
@@ -390,7 +390,7 @@ class FppWriter(AstVisitor, LineUtils):
                     f"constant {self.ident(data.name)}", data.is_dictionary_def
                 )
             )
-        ).join(" = ", self.expr_node(data.value), True)
+        ).join(" = ", self.expr_node(data.value))
 
     def def_enum_annotated_node(
         self, _in, a_node: fpp_ast.Annotated[AstNode[fpp_ast.DefEnum]]
@@ -537,7 +537,7 @@ class FppWriter(AstVisitor, LineUtils):
         )
 
     def expr_dot_node(self, _in, node, e):
-        return self.expr_node(e.e).join(".", Lines(self.lines(e.id.data)), False)
+        return self.expr_node(e.e).join_no_indent(".", Lines(self.lines(e.id.data)))
 
     def expr_ident_node(self, _in, node, e):
         return Lines(self.lines(e.value))
@@ -565,12 +565,16 @@ class FppWriter(AstVisitor, LineUtils):
         return self.add_braces(Lines(struct_lines))
 
     def expr_unop_node(self, _in, node, e):
-        return Lines(self.lines(self.unop(e.op))).join("", self.expr_node(e.e), False)
+        return Lines(self.lines(self.unop(e.op))).join_no_indent(
+            "", self.expr_node(e.e)
+        )
 
     def expr_binop_node(
         self, _in: In, node: AstNode[fpp_ast.Expr], e: fpp_ast.ExprBinop
     ):
-        return self.expr_node(e.e1).join(self.binop(e.op), self.expr_node(e.e2), False)
+        return self.expr_node(e.e1).join_no_indent(
+            self.binop(e.op), self.expr_node(e.e2)
+        )
 
     def spec_command_annotated_node(
         self, _in, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecCommand]]
@@ -708,8 +712,8 @@ class FppWriter(AstVisitor, LineUtils):
                     f"locate {self.prefix_with_dictionary(kind, data.is_dictionary_def)}"
                 )
             )
-            .join(" ", self.qual_ident(data.symbol.data), False)
-            .join(" at ", self.string(data.file.data), False)
+            .join_no_indent(" ", self.qual_ident(data.symbol.data))
+            .join_no_indent(" at ", self.string(data.file.data))
         )
 
     def spec_param_annotated_node(
@@ -742,7 +746,7 @@ class FppWriter(AstVisitor, LineUtils):
             return (
                 Lines(self.lines(f"{kind} port {self.ident(i.name)}:"))
                 .join_opt(i.size, " ", self.bracket_expr_node)
-                .join(" ", port(i.port), False)
+                .join_no_indent(" ", port(i.port))
                 .join_opt_with_break(i.priority, "priority ", self.expr_node)
                 .join_opt_with_break(
                     i.queue_full, "", self.apply_to_data(self.queue_full)
@@ -791,7 +795,7 @@ class FppWriter(AstVisitor, LineUtils):
         data = node.data
         return (
             Lines(self.lines(f"product record {self.ident(data.name)}"))
-            .join(": ", record_type(data.record_type, data.is_array), False)
+            .join_no_indent(": ", record_type(data.record_type, data.is_array))
             .join_opt(data.id, " id ", self.expr_node)
         )
 
@@ -800,16 +804,14 @@ class FppWriter(AstVisitor, LineUtils):
     ):
         _, node, _ = a_node
         data = node.data
-        return Lines(self.lines("entry ")).join(
-            "", self.action_list(data.actions), True
-        )
+        return Lines(self.lines("entry ")).join("", self.action_list(data.actions))
 
     def spec_state_exit_annotated_node(
         self, _in, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecStateExit]]
     ):
         _, node, _ = a_node
         data = node.data
-        return Lines(self.lines("exit ")).join("", self.action_list(data.actions), True)
+        return Lines(self.lines("exit ")).join("", self.action_list(data.actions))
 
     def spec_state_machine_instance_annotated_node(
         self, _in, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecStateMachineInstance]]
@@ -818,7 +820,7 @@ class FppWriter(AstVisitor, LineUtils):
         data = node.data
         return (
             Lines(self.lines(f"state machine instance {self.ident(data.name)}"))
-            .join(": ", self.qual_ident(data.state_machine.data), False)
+            .join_no_indent(": ", self.qual_ident(data.state_machine.data))
             .join_opt_with_break(data.priority, "priority ", self.expr_node)
             .join_opt_with_break(data.queue_full, "", self.queue_full)
         )
@@ -861,7 +863,7 @@ class FppWriter(AstVisitor, LineUtils):
 
         return (
             Lines(self.lines(f"telemetry {self.ident(data.name)}"))
-            .join(": ", self.type_name_node(data.type_name), False)
+            .join_no_indent(": ", self.type_name_node(data.type_name))
             .join_opt(data.id, " id ", self.expr_node)
             .join_opt(data.update, " update ", update)
             .join_opt_with_break(
@@ -876,19 +878,13 @@ class FppWriter(AstVisitor, LineUtils):
     ):
         _, node, _ = a_node
         data = node.data
-        # lines(s"packet ${ident(data.name)}").
-        # joinOpt (data.id) (" id ") (exprNode).
-        # join (" group ") (exprNode(data.group)).
-        # joinNoIndent (" ") (
-        #     addBraces(data.members.flatMap(tlmPacketMember))
-        # )
         member_lines = []
         for m in data.members:
             member_lines += self.tlm_packet_member(m).lines
         return (
             Lines(self.lines(f"packet {self.ident(data.name)}"))
             .join_opt(data.id, " id ", self.expr_node)
-            .join(" group ", self.expr_node(data.group), False)
+            .join_no_indent(" group ", self.expr_node(data.group))
             .join_no_indent(" ", self.add_braces(Lines(member_lines)))
         )
 

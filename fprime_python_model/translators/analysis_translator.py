@@ -177,12 +177,14 @@ class AnalysisTranslator:
         ast_map: Dict[AstId, AstNode],
         annotated_ast_map: Dict[AstId, fpp_ast.Annotated[AstNode]],
         analysis_json_file: str,
+        location_map: Dict[AstId, Location],
     ):
         self.ast_map: Dict[AstId, AstNode] = ast_map
         self.annotated_ast_map: Dict[AstId, fpp_ast.Annotated[AstNode]] = (
             annotated_ast_map
         )
         self.analysis_json_file: str = analysis_json_file
+        self.location_map = location_map
 
         self.component_map: Dict[AstId, Component] = dict()
         self.component_instance_map: Dict[AstId, ComponentInstance] = dict()
@@ -259,7 +261,9 @@ class AnalysisTranslator:
             case "Topology":
                 return TopologySymbol(a_node)
             case _:
-                raise InvalidFppToJsonField(symbol_type)
+                raise InvalidFppToJsonField(
+                    symbol_type, self.location_map.get(node_id, None)
+                )
 
     def translate_state_machine_symbol(
         self, symbol_type: str, node_id: AstId
@@ -277,7 +281,9 @@ class AnalysisTranslator:
             case "Guard":
                 return GuardSymbol(a_node)
             case _:
-                raise InvalidFppToJsonField(symbol_type)
+                raise InvalidFppToJsonField(
+                    symbol_type, self.location_map.get(node_id, None)
+                )
 
     def get_symbol_type_from_node(self, a_node: fpp_ast.Annotated[AstNode[T]]) -> str:
         _, node, _ = a_node
@@ -724,7 +730,9 @@ class AnalysisTranslator:
                 )
                 return InternalPortInstance(a_node, priority, queue_full)
             case _:
-                raise InvalidFppToJsonField(p_type)
+                raise InvalidFppToJsonField(
+                    p_type, self.location_map.get(a_node[1].get_id(), None)
+                )
 
     def translate_special_port_instance(
         self, d: Dict[str, dict]

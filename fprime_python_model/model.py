@@ -3,7 +3,7 @@ from packaging.version import Version
 from typing import Dict, List
 from fprime_python_model.fpp_ast.fpp_ast_node import AstNode, AstId
 from fprime_python_model.fpp_ast.fpp_ast import Annotated
-from fprime_python_model.translators.ast_translator import translate_ast_json
+from fprime_python_model.translators.ast_translator import AstTranslator
 from fprime_python_model.translators.loc_map_translator import (
     translate_location_map_json,
 )
@@ -12,8 +12,7 @@ from fprime_python_model.translators.construct_ast_id_map import ConstructAstMap
 from fprime_python_model.fpp_ast.fpp_ast import TransUnit
 from fprime_python_model.fpp_ast.fpp_locations import Location
 from fprime_python_model.semantics.analysis import Analysis
-
-MIN_FPP_VERSION = Version("3.1.0a10")
+from fprime_python_model.fpp_version import check_version
 
 
 class FprimePythonModel:
@@ -47,21 +46,24 @@ class FprimePythonModel:
                 data = json.load(f)
                 # Remove leading "v" and git hash
                 version_string = str(data["fppVersion"]).lstrip("v").split("-")[0]
-                fpp_version = Version(version_string)
-                if fpp_version < MIN_FPP_VERSION:
-                    raise ValueError(
-                        f'JSON file "{file}" was generated with an incompatible FPP version ({fpp_version}). '
-                        f"Minimum supported is {MIN_FPP_VERSION}."
-                    )
+                check_version(
+                    version_string,
+                    f'JSON file "{file}" was generated with an incompatible version of FPP ({version_string}).',
+                )
 
     def _load(self):
         self._location_map = translate_location_map_json(self.fpp_locations_json_file)
-        self._ast = translate_ast_json(self.fpp_ast_json_file)
+        self._ast = AstTranslator(
+            self.fpp_ast_json_file, self.location_map
+        ).translate_ast_json()
         self._ast_id_map, self._annotated_ast_id_map = (
             ConstructAstMap().construct_ast_map(self._ast)
         )
         self._analysis = AnalysisTranslator(
-            self._ast_id_map, self._annotated_ast_id_map, self.fpp_analysis_json_file
+            self.ast_id_map,
+            self.annotated_ast_id_map,
+            self.fpp_analysis_json_file,
+            self.location_map,
         ).translate_analysis_json()
 
     @property
@@ -85,4 +87,4 @@ class FprimePythonModel:
         return self._ast_id_map
 
     def get_location(self, node: AstNode) -> Location:
-        return self.location_map[node._id]
+        return self.location_map[node.get_id()]

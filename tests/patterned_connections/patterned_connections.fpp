@@ -2,8 +2,6 @@ passive component Time {
 
   sync input port timeGetPort: Fw.Time
 
-  time get port timeGetOut
-
 }
 
 passive component Command {
@@ -21,8 +19,6 @@ passive component Command {
 passive component Event {
 
   sync input port eventLog: Fw.Log
-
-  time get port timeGetOut
 
 }
 
@@ -54,18 +50,6 @@ passive component TextEvent {
 
 }
 
-passive component C {
-
-  command reg port cmdRegOut
-
-  command recv port cmdIn
-
-  command resp port cmdResponseOut
-
-}
-
-instance c: C base id 0x100
-
 instance c1: Time base id 0x100
 
 instance c2: Command base id 0x200
@@ -81,8 +65,6 @@ instance c6: Telemetry base id 0x600
 instance c7: TextEvent base id 0x700
 
 topology T {
-
-  instance c
 
   instance c1
 
@@ -100,9 +82,7 @@ topology T {
 
   time connections instance c1
 
-  command connections instance c2 {
-    c
-  }
+  command connections instance c2
 
   event connections instance c3
 

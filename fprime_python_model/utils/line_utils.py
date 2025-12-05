@@ -6,7 +6,12 @@ from enum import Enum
 T = TypeVar("T")
 
 
-@dataclass
+class IndentMode(Enum):
+    INDENT = "Indent"
+    NO_INDENT = "NoIndent"
+
+
+@dataclass(frozen=True)
 class Indentation:
     value: int = 0
 
@@ -20,10 +25,10 @@ class Indentation:
         return " " * self.value
 
 
+@dataclass(frozen=True)
 class Line:
-    def __init__(self, string: str = "", indent: Indentation | None = None):
-        self.string = string
-        self.indent = indent or Indentation(0)
+    string: str = ""
+    indent: Indentation = Indentation(0)
 
     def __str__(self) -> str:
         return f"{self.indent}{self.string}" if self.string else ""
@@ -38,12 +43,7 @@ class Line:
         return Line(self.string, Indentation(n))
 
     def get_size(self) -> int:
-        return int(self.indent.value) + len(self.string)
-
-
-class IndentMode(Enum):
-    INDENT = "Indent"
-    NO_INDENT = "NoIndent"
+        return self.indent.value + len(self.string)
 
 
 @dataclass
@@ -63,41 +63,28 @@ class Lines:
         return "\n".join(str(l) for l in self.lines)
 
     def add_suffix(self, suffix: str) -> Lines:
-        return self.join("", Lines([Line(suffix)]), False)
+        return Lines(add_suffix(self.lines, suffix))
 
     def add_prefix(self, prefix: str) -> Lines:
-        return Lines([Line(prefix)]).join("", self, False)
+        return Lines(add_prefix(prefix, self.lines))
 
     def add_prefix_and_suffix(self, prefix: str, suffix: str) -> Lines:
-        return self.add_prefix(prefix).add_suffix(suffix)
+        return Lines(add_prefix_and_suffix(prefix, self.lines, suffix))
 
-    def join(
-        self, sep: str, other: Lines, indent: bool = True
-    ) -> Lines:  # avoid passing boolean into func
-        if not other:
-            return self
-
-        *prefix, last1 = self.lines
-        first2, *rest2 = other.lines
-        joined = join(sep, last1, first2)
-
-        if indent:
-            indent_size = last1.get_size() + len(sep)
-            rest2 = [ln.indent_in(indent_size) for ln in rest2]
-
-        return Lines(prefix + [joined] + rest2)
+    def join(self, sep: str, other: Lines) -> Lines:
+        return Lines(join_lists(IndentMode.INDENT, self.lines, sep, other.lines))
 
     def join_no_indent(self, sep: str, other: Lines) -> Lines:
-        return self.join(sep, other, indent=False)
+        return Lines(join_lists(IndentMode.NO_INDENT, self.lines, sep, other.lines))
 
     def join_with_break(self, sep: str, other: Lines) -> Lines:
         if not other.lines and not sep:
             return self
+
         result = self.add_suffix(" \\")
-        indented = []
-        for l in other.add_prefix(sep).lines:
-            indented.append(Line(l.string, l.indent.indent_in(2)))
-        # result += [Line(sep + l.string, l.indent.indent_in(2)) for l in other.lines]
+        indented = [
+            Line(l.string, l.indent.indent_in(2)) for l in other.add_prefix(sep).lines
+        ]
         return Lines(result.lines + indented)
 
     def join_opt(
@@ -155,10 +142,8 @@ def blank() -> Line:
 
 
 def blank_separated(f: Callable[[T], List[Line]], items: List[T]) -> List[Line]:
-    """Apply f to each item and insert blank lines between results."""
-    if not items:
-        return []
-    result = []
+    """Apply f to each item and insert blank lines between lists of lines."""
+    result: List[Line] = []
     for i, item in enumerate(items):
         result.extend(f(item))
         if i < len(items) - 1:
@@ -167,7 +152,7 @@ def blank_separated(f: Callable[[T], List[Line]], items: List[T]) -> List[Line]:
 
 
 class LineUtils:
-    """Convenience utilities for manipulating Lines."""
+    """Convenience utilities for manipulating lines."""
 
     indent_increment = 2
     q = '"'
@@ -179,11 +164,10 @@ class LineUtils:
         return Line(s)
 
     def lines(self, s: str) -> List[Line]:
-        """Create multiple lines from a string, removing leading '|' markers."""
         stripped = "\n".join(
             part.split("|", 1)[1] if "|" in part else part for part in s.split("\n")
         )
         return [self.line(line) for line in stripped.split("\n")]
 
-    def lines_opt(self, f: Callable, o: Optional[Any]) -> List[Line]:
+    def lines_opt(self, f: Callable[[Any], List[Line]], o: Optional[Any]) -> List[Line]:
         return [] if o is None else f(o)

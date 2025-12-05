@@ -1,9 +1,20 @@
 from fprime_python_model.fpp_ast.fpp_locations import Location
 import json
-from typing import Dict
+from typing import Dict, Optional
 import os
 from fprime_python_model.fpp_ast.fpp_ast_node import AstId
 from pathlib import Path
+
+
+def translate_including_loc(d: dict) -> Optional[Location]:
+    if "Some" in d:
+        return Location(
+            Path(d["Some"]["file"]),
+            d["Some"]["pos"],
+            translate_including_loc(d["Some"]["includingLoc"]),
+        )
+    else:
+        return None
 
 
 def translate_location_map_json(file: str) -> dict[AstId, Location]:
@@ -14,7 +25,11 @@ def translate_location_map_json(file: str) -> dict[AstId, Location]:
         data: Dict[str, dict] = json.load(f)
         for k, v in data["locationMap"].items():
             try:
-                loc_map[int(k)] = Location(Path(v["file"]), v["pos"], v["includingLoc"])
+                loc_map[int(k)] = Location(
+                    Path(v["file"]),
+                    v["pos"],
+                    translate_including_loc(v["includingLoc"]),
+                )
             except KeyError as e:
                 raise KeyError(f"Location map for ID {k} is missing required field {e}")
     return loc_map

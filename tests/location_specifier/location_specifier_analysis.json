@@ -1,78 +1,78 @@
 {
-  "fppVersion": "v3.1.0a10-46-g5b2da7ca1",
-  "analysis": {
-    "componentInstanceMap": {},
-    "componentMap": {},
-    "includedFileSet": [],
-    "inputFileSet": [
-      "[ local path prefix ]/compiler/tools/fpp-to-json/test/location_specifier.fpp"
+  "fppVersion" : "v3.1.0a10-54-g11243e778",
+  "analysis" : {
+    "componentInstanceMap" : {
+      
+    },
+    "componentMap" : {
+      
+    },
+    "includedFileSet" : [
     ],
-    "locationSpecifierMap": [
+    "inputFileSet" : [
+      "[ local path prefix ]/compiler/tools/fpp-depend/test/dictionary_no_top.fpp"
+    ],
+    "locationSpecifierMap" : [
       [
         [
           {
-            "Constant": {}
+            "Constant" : {
+              
+            }
           },
           {
-            "qualifier": [],
-            "base": "c1"
+            "qualifier" : [
+            ],
+            "base" : "c"
           }
         ],
         {
-          "astNodeId": 3
+          "astNodeId" : 3
         }
       ],
       [
         [
           {
-            "Constant": {}
+            "Type" : {
+              
+            }
           },
           {
-            "qualifier": [],
-            "base": "c2"
+            "qualifier" : [
+            ],
+            "base" : "T1"
           }
         ],
         {
-          "astNodeId": 7
-        }
-      ],
-      [
-        [
-          {
-            "Type": {}
-          },
-          {
-            "qualifier": [],
-            "base": "t1"
-          }
-        ],
-        {
-          "astNodeId": 11
-        }
-      ],
-      [
-        [
-          {
-            "Type": {}
-          },
-          {
-            "qualifier": [],
-            "base": "t2"
-          }
-        ],
-        {
-          "astNodeId": 15
+          "astNodeId" : 7
         }
       ]
     ],
-    "parentSymbolMap": {},
-    "symbolScopeMap": {},
-    "topologyMap": {},
-    "typeMap": {},
-    "useDefMap": {},
-    "valueMap": {},
-    "stateMachineMap": {},
-    "dictionarySymbolSet": [],
-    "interfaceMap": {}
+    "parentSymbolMap" : {
+      
+    },
+    "symbolScopeMap" : {
+      
+    },
+    "topologyMap" : {
+      
+    },
+    "typeMap" : {
+      
+    },
+    "useDefMap" : {
+      
+    },
+    "valueMap" : {
+      
+    },
+    "stateMachineMap" : {
+      
+    },
+    "dictionarySymbolSet" : [
+    ],
+    "interfaceMap" : {
+      
+    }
   }
 }
