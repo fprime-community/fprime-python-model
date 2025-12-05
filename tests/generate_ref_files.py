@@ -31,7 +31,7 @@ test_name_map = {
 }
 
 # fpp-to-json tests that are located in different tool directories and might included input files
-# List of tuples with the following format: (location of test, test name, input file)
+# Dictionary with test name keys and tuple values with the following format: (location of test, input file)
 additional_tests = {
     "state_machine": ("compiler/tools/fpp-syntax/test/state-machine.fpp", None),
     "patterned_connections": (
