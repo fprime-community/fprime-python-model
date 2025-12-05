@@ -38,10 +38,10 @@ def test_ast():
 
             # Save FPP Writer output to txt file and diff against reference FPP
             out_file = os.path.join(test_path, f"{test}.out.txt")
-            with open(out_file, "w") as f:
+            with open(out_file, "w") as out:
                 for l in fpp_lines:
                     for line in l.lines:
-                        f.write(str(line) + "\n")
+                        out.write(str(line) + "\n")
 
             result = subprocess.run(["diff", fpp_ref_file, out_file])
             assert result.returncode == 0

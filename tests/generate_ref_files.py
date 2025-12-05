@@ -5,11 +5,11 @@ import sys
 import os
 import re
 from fprime_python_model.fpp_version import check_version
-from typing import Optional
+from typing import Optional, Dict, Tuple, List
 
 # fpp-to-json tests (with no input files)
 # Mapping of fprime-python-model test names to fpp-to-json test names
-test_name_map = {
+test_name_map: Dict[str, str] = {
     "active_component": "activeComponents",
     "commands": "commands",
     "constants": "constants",
@@ -32,7 +32,7 @@ test_name_map = {
 
 # fpp-to-json tests that are located in different tool directories and might included input files
 # Dictionary with test name keys and tuple values with the following format: (location of test, input file)
-additional_tests = {
+additional_tests: Dict[str, Tuple[str, Optional[str]]] = {
     "state_machine": ("compiler/tools/fpp-syntax/test/state-machine.fpp", None),
     "patterned_connections": (
         "compiler/tools/fpp-to-json/test/patternedConnections.fpp",
@@ -68,7 +68,7 @@ def create_model_ref_file(
     input_file: Optional[str] = None,
 ):
     test_fpp_ref_name = f"tests/{test_name}/{test_name}.fpp"
-    fpp_format_cmd = [fpp_format, fpp_ref_model]
+    fpp_format_cmd: List = [fpp_format, fpp_ref_model]
     if input_file:
         fpp_format_cmd = [fpp_format, fpp_ref_model, input_file]
     # Run fpp-format on reference model and save output to test case directory
@@ -87,9 +87,9 @@ def create_json_ref_files(
     test_name: str,
     input_file: Optional[str] = None,
 ):
-    fpp_to_json_cmd = [fpp_to_json, fpp_ref_model]
+    fpp_to_json_cmd: List[str] = [str(fpp_to_json), fpp_ref_model]
     if input_file:
-        fpp_to_json_cmd = [fpp_to_json, fpp_ref_model, input_file]
+        fpp_to_json_cmd = [str(fpp_to_json), fpp_ref_model, input_file]
     # Run fpp-to-json on reference model and save output to test case directory
     result = subprocess.run(fpp_to_json_cmd)
     if result.returncode != 0:
@@ -166,22 +166,22 @@ def main():
     clean()
 
     for test_name, fpp_to_json_test_name in test_name_map.items():
-        fpp_ref_model = f"{str(fpp_to_json_tests_path)}/{fpp_to_json_test_name}.fpp"
+        fpp_ref_model: str = f"{str(fpp_to_json_tests_path)}/{fpp_to_json_test_name}.fpp"
         create_model_ref_file(fpp_format, fpp_ref_model, test_name)
         create_json_ref_files(fpp_to_json, str(fpp_ref_model), test_name)
 
     for test_name, (test_location, input_file) in additional_tests.items():
-        fpp_ref_model = fpp_repo_path / test_location
+        fpp_ref = str(fpp_repo_path / test_location)
 
-        input_file_path = None
+        input_file_path: Optional[str] = None
         if input_file:
-            input_file_path = fpp_repo_path / input_file
+            input_file_path = str(fpp_repo_path / input_file)
 
         create_model_ref_file(
-            fpp_format, str(fpp_ref_model), test_name, input_file_path
+            fpp_format, fpp_ref, test_name, input_file_path
         )
         create_json_ref_files(
-            fpp_to_json, str(fpp_ref_model), test_name, input_file_path
+            fpp_to_json, fpp_ref, test_name, input_file_path
         )
 
 
