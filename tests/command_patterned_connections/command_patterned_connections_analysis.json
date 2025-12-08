@@ -1,0 +1,3777 @@
+{
+  "fppVersion" : "v3.1.0a10-54-g11243e778",
+  "analysis" : {
+    "componentInstanceMap" : {
+      "36" : {
+        "aNode" : {
+          "astNodeId" : 36
+        },
+        "qualifiedName" : {
+          "qualifier" : [
+            "M"
+          ],
+          "base" : "commands"
+        },
+        "component" : {
+          "astNodeId" : 26
+        },
+        "baseId" : 256,
+        "maxId" : 255,
+        "file" : "None",
+        "queueSize" : "None",
+        "stackSize" : "None",
+        "priority" : "None",
+        "cpu" : "None",
+        "initSpecifierMap" : {
+          
+        }
+      },
+      "40" : {
+        "aNode" : {
+          "astNodeId" : 40
+        },
+        "qualifiedName" : {
+          "qualifier" : [
+            "M"
+          ],
+          "base" : "c"
+        },
+        "component" : {
+          "astNodeId" : 32
+        },
+        "baseId" : 256,
+        "maxId" : 255,
+        "file" : "None",
+        "queueSize" : "None",
+        "stackSize" : "None",
+        "priority" : "None",
+        "cpu" : "None",
+        "initSpecifierMap" : {
+          
+        }
+      }
+    },
+    "componentMap" : {
+      "26" : {
+        "aNode" : {
+          "astNodeId" : 26
+        },
+        "portMap" : {
+          "cmdRegIn" : {
+            "General" : {
+              "aNode" : {
+                "astNodeId" : 9
+              },
+              "specifier" : {
+                "kind" : {
+                  "SyncInput" : {
+                    
+                  }
+                },
+                "name" : "cmdRegIn",
+                "size" : "None",
+                "port" : {
+                  "Some" : {
+                    "astNodeId" : 8
+                  }
+                },
+                "priority" : "None",
+                "queueFull" : "None"
+              },
+              "kind" : "SyncInput",
+              "size" : 1,
+              "ty" : {
+                "DefPort" : {
+                  "symbol" : {
+                    "Port" : {
+                      "nodeId" : 1,
+                      "unqualifiedName" : "CmdReg"
+                    }
+                  }
+                }
+              },
+              "importNodeIds" : [
+              ]
+            }
+          },
+          "cmdOut" : {
+            "General" : {
+              "aNode" : {
+                "astNodeId" : 13
+              },
+              "specifier" : {
+                "kind" : {
+                  "Output" : {
+                    
+                  }
+                },
+                "name" : "cmdOut",
+                "size" : "None",
+                "port" : {
+                  "Some" : {
+                    "astNodeId" : 12
+                  }
+                },
+                "priority" : "None",
+                "queueFull" : "None"
+              },
+              "kind" : "Output",
+              "size" : 1,
+              "ty" : {
+                "DefPort" : {
+                  "symbol" : {
+                    "Port" : {
+                      "nodeId" : 0,
+                      "unqualifiedName" : "Cmd"
+                    }
+                  }
+                }
+              },
+              "importNodeIds" : [
+              ]
+            }
+          },
+          "cmdResponseIn" : {
+            "General" : {
+              "aNode" : {
+                "astNodeId" : 25
+              },
+              "specifier" : {
+                "kind" : {
+                  "SyncInput" : {
+                    
+                  }
+                },
+                "name" : "cmdResponseIn",
+                "size" : "None",
+                "port" : {
+                  "Some" : {
+                    "astNodeId" : 24
+                  }
+                },
+                "priority" : "None",
+                "queueFull" : "None"
+              },
+              "kind" : "SyncInput",
+              "size" : 1,
+              "ty" : {
+                "DefPort" : {
+                  "symbol" : {
+                    "Port" : {
+                      "nodeId" : 4,
+                      "unqualifiedName" : "CmdResponse"
+                    }
+                  }
+                }
+              },
+              "importNodeIds" : [
+              ]
+            }
+          }
+        },
+        "specialPortMap" : {
+          
+        },
+        "commandMap" : {
+          
+        },
+        "defaultOpcode" : 0,
+        "tlmChannelMap" : {
+          
+        },
+        "tlmChannelNameMap" : {
+          
+        },
+        "defaultTlmChannelId" : 0,
+        "eventMap" : {
+          
+        },
+        "defaultEventId" : 0,
+        "paramMap" : {
+          
+        },
+        "specPortMatchingList" : [
+        ],
+        "stateMachineInstanceMap" : {
+          
+        },
+        "portMatchingList" : [
+        ],
+        "defaultParamId" : 0,
+        "containerMap" : {
+          
+        },
+        "defaultContainerId" : 0,
+        "recordMap" : {
+          
+        },
+        "defaultRecordId" : 0
+      },
+      "32" : {
+        "aNode" : {
+          "astNodeId" : 32
+        },
+        "portMap" : {
+          "cmdRegOut" : {
+            "Special" : {
+              "aNode" : {
+                "astNodeId" : 27
+              },
+              "specifier" : {
+                "inputKind" : "None",
+                "kind" : {
+                  "CommandReg" : {
+                    
+                  }
+                },
+                "name" : "cmdRegOut",
+                "priority" : "None",
+                "queueFull" : "None"
+              },
+              "symbol" : {
+                "Port" : {
+                  "nodeId" : 1,
+                  "unqualifiedName" : "CmdReg"
+                }
+              },
+              "priority" : "None",
+              "queueFull" : "None",
+              "importNodeIds" : [
+              ]
+            }
+          },
+          "cmdIn" : {
+            "Special" : {
+              "aNode" : {
+                "astNodeId" : 28
+              },
+              "specifier" : {
+                "inputKind" : "None",
+                "kind" : {
+                  "CommandRecv" : {
+                    
+                  }
+                },
+                "name" : "cmdIn",
+                "priority" : "None",
+                "queueFull" : "None"
+              },
+              "symbol" : {
+                "Port" : {
+                  "nodeId" : 0,
+                  "unqualifiedName" : "Cmd"
+                }
+              },
+              "priority" : "None",
+              "queueFull" : "None",
+              "importNodeIds" : [
+              ]
+            }
+          },
+          "cmdResponseOut" : {
+            "Special" : {
+              "aNode" : {
+                "astNodeId" : 31
+              },
+              "specifier" : {
+                "inputKind" : "None",
+                "kind" : {
+                  "CommandResp" : {
+                    
+                  }
+                },
+                "name" : "cmdResponseOut",
+                "priority" : "None",
+                "queueFull" : "None"
+              },
+              "symbol" : {
+                "Port" : {
+                  "nodeId" : 4,
+                  "unqualifiedName" : "CmdResponse"
+                }
+              },
+              "priority" : "None",
+              "queueFull" : "None",
+              "importNodeIds" : [
+              ]
+            }
+          }
+        },
+        "specialPortMap" : {
+          "command reg" : {
+            "aNode" : {
+              "astNodeId" : 27
+            },
+            "specifier" : {
+              "inputKind" : "None",
+              "kind" : {
+                "CommandReg" : {
+                  
+                }
+              },
+              "name" : "cmdRegOut",
+              "priority" : "None",
+              "queueFull" : "None"
+            },
+            "symbol" : {
+              "Port" : {
+                "nodeId" : 1,
+                "unqualifiedName" : "CmdReg"
+              }
+            },
+            "priority" : "None",
+            "queueFull" : "None",
+            "importNodeIds" : [
+            ]
+          },
+          "command recv" : {
+            "aNode" : {
+              "astNodeId" : 28
+            },
+            "specifier" : {
+              "inputKind" : "None",
+              "kind" : {
+                "CommandRecv" : {
+                  
+                }
+              },
+              "name" : "cmdIn",
+              "priority" : "None",
+              "queueFull" : "None"
+            },
+            "symbol" : {
+              "Port" : {
+                "nodeId" : 0,
+                "unqualifiedName" : "Cmd"
+              }
+            },
+            "priority" : "None",
+            "queueFull" : "None",
+            "importNodeIds" : [
+            ]
+          },
+          "command resp" : {
+            "aNode" : {
+              "astNodeId" : 31
+            },
+            "specifier" : {
+              "inputKind" : "None",
+              "kind" : {
+                "CommandResp" : {
+                  
+                }
+              },
+              "name" : "cmdResponseOut",
+              "priority" : "None",
+              "queueFull" : "None"
+            },
+            "symbol" : {
+              "Port" : {
+                "nodeId" : 4,
+                "unqualifiedName" : "CmdResponse"
+              }
+            },
+            "priority" : "None",
+            "queueFull" : "None",
+            "importNodeIds" : [
+            ]
+          }
+        },
+        "commandMap" : {
+          
+        },
+        "defaultOpcode" : 0,
+        "tlmChannelMap" : {
+          
+        },
+        "tlmChannelNameMap" : {
+          
+        },
+        "defaultTlmChannelId" : 0,
+        "eventMap" : {
+          
+        },
+        "defaultEventId" : 0,
+        "paramMap" : {
+          
+        },
+        "specPortMatchingList" : [
+        ],
+        "stateMachineInstanceMap" : {
+          
+        },
+        "portMatchingList" : [
+        ],
+        "defaultParamId" : 0,
+        "containerMap" : {
+          
+        },
+        "defaultContainerId" : 0,
+        "recordMap" : {
+          
+        },
+        "defaultRecordId" : 0
+      }
+    },
+    "includedFileSet" : [
+    ],
+    "inputFileSet" : [
+      "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp"
+    ],
+    "locationSpecifierMap" : [
+    ],
+    "parentSymbolMap" : {
+      "26" : {
+        "Module" : {
+          "nodeId" : 107,
+          "unqualifiedName" : "M"
+        }
+      },
+      "32" : {
+        "Module" : {
+          "nodeId" : 107,
+          "unqualifiedName" : "M"
+        }
+      },
+      "106" : {
+        "Module" : {
+          "nodeId" : 107,
+          "unqualifiedName" : "M"
+        }
+      },
+      "0" : {
+        "Module" : {
+          "nodeId" : 5,
+          "unqualifiedName" : "Fw"
+        }
+      },
+      "4" : {
+        "Module" : {
+          "nodeId" : 5,
+          "unqualifiedName" : "Fw"
+        }
+      },
+      "40" : {
+        "Module" : {
+          "nodeId" : 107,
+          "unqualifiedName" : "M"
+        }
+      },
+      "36" : {
+        "Module" : {
+          "nodeId" : 107,
+          "unqualifiedName" : "M"
+        }
+      },
+      "1" : {
+        "Module" : {
+          "nodeId" : 5,
+          "unqualifiedName" : "Fw"
+        }
+      }
+    },
+    "symbolScopeMap" : {
+      "5" : {
+        "map" : {
+          "Port" : {
+            "map" : {
+              "Cmd" : {
+                "Port" : {
+                  "nodeId" : 0,
+                  "unqualifiedName" : "Cmd"
+                }
+              },
+              "CmdReg" : {
+                "Port" : {
+                  "nodeId" : 1,
+                  "unqualifiedName" : "CmdReg"
+                }
+              },
+              "CmdResponse" : {
+                "Port" : {
+                  "nodeId" : 4,
+                  "unqualifiedName" : "CmdResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "26" : {
+        "map" : {
+          
+        }
+      },
+      "32" : {
+        "map" : {
+          
+        }
+      },
+      "107" : {
+        "map" : {
+          "ComponentInstance" : {
+            "map" : {
+              "commands" : {
+                "ComponentInstance" : {
+                  "nodeId" : 36,
+                  "unqualifiedName" : "commands"
+                }
+              },
+              "c" : {
+                "ComponentInstance" : {
+                  "nodeId" : 40,
+                  "unqualifiedName" : "c"
+                }
+              }
+            }
+          },
+          "Topology" : {
+            "map" : {
+              "T" : {
+                "Topology" : {
+                  "nodeId" : 106,
+                  "unqualifiedName" : "T"
+                }
+              }
+            }
+          },
+          "StateMachine" : {
+            "map" : {
+              "Commands" : {
+                "Component" : {
+                  "nodeId" : 26,
+                  "unqualifiedName" : "Commands"
+                }
+              },
+              "C" : {
+                "Component" : {
+                  "nodeId" : 32,
+                  "unqualifiedName" : "C"
+                }
+              }
+            }
+          },
+          "Value" : {
+            "map" : {
+              "Commands" : {
+                "Component" : {
+                  "nodeId" : 26,
+                  "unqualifiedName" : "Commands"
+                }
+              },
+              "C" : {
+                "Component" : {
+                  "nodeId" : 32,
+                  "unqualifiedName" : "C"
+                }
+              }
+            }
+          },
+          "Component" : {
+            "map" : {
+              "Commands" : {
+                "Component" : {
+                  "nodeId" : 26,
+                  "unqualifiedName" : "Commands"
+                }
+              },
+              "C" : {
+                "Component" : {
+                  "nodeId" : 32,
+                  "unqualifiedName" : "C"
+                }
+              }
+            }
+          },
+          "Type" : {
+            "map" : {
+              "Commands" : {
+                "Component" : {
+                  "nodeId" : 26,
+                  "unqualifiedName" : "Commands"
+                }
+              },
+              "C" : {
+                "Component" : {
+                  "nodeId" : 32,
+                  "unqualifiedName" : "C"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "topologyMap" : {
+      "106" : {
+        "aNode" : {
+          "astNodeId" : 106
+        },
+        "directImportMap" : {
+          
+        },
+        "transitiveImportSet" : [
+        ],
+        "instanceMap" : [
+          [
+            {
+              "aNode" : {
+                "astNodeId" : 36
+              },
+              "qualifiedName" : {
+                "qualifier" : [
+                  "M"
+                ],
+                "base" : "commands"
+              },
+              "component" : {
+                "astNodeId" : 26
+              },
+              "baseId" : 256,
+              "maxId" : 255,
+              "file" : "None",
+              "queueSize" : "None",
+              "stackSize" : "None",
+              "priority" : "None",
+              "cpu" : "None",
+              "initSpecifierMap" : {
+                
+              }
+            },
+            [
+              {
+                "Public" : {
+                  
+                }
+              },
+              {
+                "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                "pos" : "20.5",
+                "includingLoc" : "None"
+              }
+            ]
+          ],
+          [
+            {
+              "aNode" : {
+                "astNodeId" : 40
+              },
+              "qualifiedName" : {
+                "qualifier" : [
+                  "M"
+                ],
+                "base" : "c"
+              },
+              "component" : {
+                "astNodeId" : 32
+              },
+              "baseId" : 256,
+              "maxId" : 255,
+              "file" : "None",
+              "queueSize" : "None",
+              "stackSize" : "None",
+              "priority" : "None",
+              "cpu" : "None",
+              "initSpecifierMap" : {
+                
+              }
+            },
+            [
+              {
+                "Public" : {
+                  
+                }
+              },
+              {
+                "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                "pos" : "21.5",
+                "includingLoc" : "None"
+              }
+            ]
+          ]
+        ],
+        "patternMap" : {
+          "Command" : {
+            "aNode" : {
+              "astNodeId" : 105
+            },
+            "ast" : {
+              "kind" : {
+                "Command" : {
+                  
+                }
+              },
+              "source" : {
+                "astNodeId" : 102
+              },
+              "targets" : [
+                {
+                  "astNodeId" : 104
+                }
+              ]
+            },
+            "source" : [
+              {
+                "aNode" : {
+                  "astNodeId" : 36
+                },
+                "qualifiedName" : {
+                  "qualifier" : [
+                    "M"
+                  ],
+                  "base" : "commands"
+                },
+                "component" : {
+                  "astNodeId" : 26
+                },
+                "baseId" : 256,
+                "maxId" : 255,
+                "file" : "None",
+                "queueSize" : "None",
+                "stackSize" : "None",
+                "priority" : "None",
+                "cpu" : "None",
+                "initSpecifierMap" : {
+                  
+                }
+              },
+              {
+                "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                "pos" : "22.34",
+                "includingLoc" : "None"
+              }
+            ],
+            "targets" : [
+              [
+                {
+                  "aNode" : {
+                    "astNodeId" : 40
+                  },
+                  "qualifiedName" : {
+                    "qualifier" : [
+                      "M"
+                    ],
+                    "base" : "c"
+                  },
+                  "component" : {
+                    "astNodeId" : 32
+                  },
+                  "baseId" : 256,
+                  "maxId" : 255,
+                  "file" : "None",
+                  "queueSize" : "None",
+                  "stackSize" : "None",
+                  "priority" : "None",
+                  "cpu" : "None",
+                  "initSpecifierMap" : {
+                    
+                  }
+                },
+                {
+                  "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                  "pos" : "22.45",
+                  "includingLoc" : "None"
+                }
+              ]
+            ]
+          }
+        },
+        "connectionMap" : {
+          "CommandRegistration" : [
+            {
+              "from" : {
+                "loc" : {
+                  "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                  "pos" : "22.5",
+                  "includingLoc" : "None"
+                },
+                "port" : {
+                  "componentInstance" : {
+                    "aNode" : {
+                      "astNodeId" : 40
+                    },
+                    "qualifiedName" : {
+                      "qualifier" : [
+                        "M"
+                      ],
+                      "base" : "c"
+                    },
+                    "component" : {
+                      "astNodeId" : 32
+                    },
+                    "baseId" : 256,
+                    "maxId" : 255,
+                    "file" : "None",
+                    "queueSize" : "None",
+                    "stackSize" : "None",
+                    "priority" : "None",
+                    "cpu" : "None",
+                    "initSpecifierMap" : {
+                      
+                    }
+                  },
+                  "portInstance" : {
+                    "Special" : {
+                      "aNode" : {
+                        "astNodeId" : 27
+                      },
+                      "specifier" : {
+                        "inputKind" : "None",
+                        "kind" : {
+                          "CommandReg" : {
+                            
+                          }
+                        },
+                        "name" : "cmdRegOut",
+                        "priority" : "None",
+                        "queueFull" : "None"
+                      },
+                      "symbol" : {
+                        "Port" : {
+                          "nodeId" : 1,
+                          "unqualifiedName" : "CmdReg"
+                        }
+                      },
+                      "priority" : "None",
+                      "queueFull" : "None",
+                      "importNodeIds" : [
+                      ]
+                    }
+                  }
+                },
+                "portNumber" : "None"
+              },
+              "to" : {
+                "loc" : {
+                  "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                  "pos" : "22.5",
+                  "includingLoc" : "None"
+                },
+                "port" : {
+                  "componentInstance" : {
+                    "aNode" : {
+                      "astNodeId" : 36
+                    },
+                    "qualifiedName" : {
+                      "qualifier" : [
+                        "M"
+                      ],
+                      "base" : "commands"
+                    },
+                    "component" : {
+                      "astNodeId" : 26
+                    },
+                    "baseId" : 256,
+                    "maxId" : 255,
+                    "file" : "None",
+                    "queueSize" : "None",
+                    "stackSize" : "None",
+                    "priority" : "None",
+                    "cpu" : "None",
+                    "initSpecifierMap" : {
+                      
+                    }
+                  },
+                  "portInstance" : {
+                    "General" : {
+                      "aNode" : {
+                        "astNodeId" : 9
+                      },
+                      "specifier" : {
+                        "kind" : {
+                          "SyncInput" : {
+                            
+                          }
+                        },
+                        "name" : "cmdRegIn",
+                        "size" : "None",
+                        "port" : {
+                          "Some" : {
+                            "astNodeId" : 8
+                          }
+                        },
+                        "priority" : "None",
+                        "queueFull" : "None"
+                      },
+                      "kind" : "SyncInput",
+                      "size" : 1,
+                      "ty" : {
+                        "DefPort" : {
+                          "symbol" : {
+                            "Port" : {
+                              "nodeId" : 1,
+                              "unqualifiedName" : "CmdReg"
+                            }
+                          }
+                        }
+                      },
+                      "importNodeIds" : [
+                      ]
+                    }
+                  }
+                },
+                "portNumber" : "None"
+              },
+              "isUnmatched" : false
+            }
+          ],
+          "Command" : [
+            {
+              "from" : {
+                "loc" : {
+                  "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                  "pos" : "22.5",
+                  "includingLoc" : "None"
+                },
+                "port" : {
+                  "componentInstance" : {
+                    "aNode" : {
+                      "astNodeId" : 36
+                    },
+                    "qualifiedName" : {
+                      "qualifier" : [
+                        "M"
+                      ],
+                      "base" : "commands"
+                    },
+                    "component" : {
+                      "astNodeId" : 26
+                    },
+                    "baseId" : 256,
+                    "maxId" : 255,
+                    "file" : "None",
+                    "queueSize" : "None",
+                    "stackSize" : "None",
+                    "priority" : "None",
+                    "cpu" : "None",
+                    "initSpecifierMap" : {
+                      
+                    }
+                  },
+                  "portInstance" : {
+                    "General" : {
+                      "aNode" : {
+                        "astNodeId" : 13
+                      },
+                      "specifier" : {
+                        "kind" : {
+                          "Output" : {
+                            
+                          }
+                        },
+                        "name" : "cmdOut",
+                        "size" : "None",
+                        "port" : {
+                          "Some" : {
+                            "astNodeId" : 12
+                          }
+                        },
+                        "priority" : "None",
+                        "queueFull" : "None"
+                      },
+                      "kind" : "Output",
+                      "size" : 1,
+                      "ty" : {
+                        "DefPort" : {
+                          "symbol" : {
+                            "Port" : {
+                              "nodeId" : 0,
+                              "unqualifiedName" : "Cmd"
+                            }
+                          }
+                        }
+                      },
+                      "importNodeIds" : [
+                      ]
+                    }
+                  }
+                },
+                "portNumber" : "None"
+              },
+              "to" : {
+                "loc" : {
+                  "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                  "pos" : "22.5",
+                  "includingLoc" : "None"
+                },
+                "port" : {
+                  "componentInstance" : {
+                    "aNode" : {
+                      "astNodeId" : 40
+                    },
+                    "qualifiedName" : {
+                      "qualifier" : [
+                        "M"
+                      ],
+                      "base" : "c"
+                    },
+                    "component" : {
+                      "astNodeId" : 32
+                    },
+                    "baseId" : 256,
+                    "maxId" : 255,
+                    "file" : "None",
+                    "queueSize" : "None",
+                    "stackSize" : "None",
+                    "priority" : "None",
+                    "cpu" : "None",
+                    "initSpecifierMap" : {
+                      
+                    }
+                  },
+                  "portInstance" : {
+                    "Special" : {
+                      "aNode" : {
+                        "astNodeId" : 28
+                      },
+                      "specifier" : {
+                        "inputKind" : "None",
+                        "kind" : {
+                          "CommandRecv" : {
+                            
+                          }
+                        },
+                        "name" : "cmdIn",
+                        "priority" : "None",
+                        "queueFull" : "None"
+                      },
+                      "symbol" : {
+                        "Port" : {
+                          "nodeId" : 0,
+                          "unqualifiedName" : "Cmd"
+                        }
+                      },
+                      "priority" : "None",
+                      "queueFull" : "None",
+                      "importNodeIds" : [
+                      ]
+                    }
+                  }
+                },
+                "portNumber" : "None"
+              },
+              "isUnmatched" : false
+            }
+          ],
+          "CommandResponse" : [
+            {
+              "from" : {
+                "loc" : {
+                  "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                  "pos" : "22.5",
+                  "includingLoc" : "None"
+                },
+                "port" : {
+                  "componentInstance" : {
+                    "aNode" : {
+                      "astNodeId" : 40
+                    },
+                    "qualifiedName" : {
+                      "qualifier" : [
+                        "M"
+                      ],
+                      "base" : "c"
+                    },
+                    "component" : {
+                      "astNodeId" : 32
+                    },
+                    "baseId" : 256,
+                    "maxId" : 255,
+                    "file" : "None",
+                    "queueSize" : "None",
+                    "stackSize" : "None",
+                    "priority" : "None",
+                    "cpu" : "None",
+                    "initSpecifierMap" : {
+                      
+                    }
+                  },
+                  "portInstance" : {
+                    "Special" : {
+                      "aNode" : {
+                        "astNodeId" : 31
+                      },
+                      "specifier" : {
+                        "inputKind" : "None",
+                        "kind" : {
+                          "CommandResp" : {
+                            
+                          }
+                        },
+                        "name" : "cmdResponseOut",
+                        "priority" : "None",
+                        "queueFull" : "None"
+                      },
+                      "symbol" : {
+                        "Port" : {
+                          "nodeId" : 4,
+                          "unqualifiedName" : "CmdResponse"
+                        }
+                      },
+                      "priority" : "None",
+                      "queueFull" : "None",
+                      "importNodeIds" : [
+                      ]
+                    }
+                  }
+                },
+                "portNumber" : "None"
+              },
+              "to" : {
+                "loc" : {
+                  "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                  "pos" : "22.5",
+                  "includingLoc" : "None"
+                },
+                "port" : {
+                  "componentInstance" : {
+                    "aNode" : {
+                      "astNodeId" : 36
+                    },
+                    "qualifiedName" : {
+                      "qualifier" : [
+                        "M"
+                      ],
+                      "base" : "commands"
+                    },
+                    "component" : {
+                      "astNodeId" : 26
+                    },
+                    "baseId" : 256,
+                    "maxId" : 255,
+                    "file" : "None",
+                    "queueSize" : "None",
+                    "stackSize" : "None",
+                    "priority" : "None",
+                    "cpu" : "None",
+                    "initSpecifierMap" : {
+                      
+                    }
+                  },
+                  "portInstance" : {
+                    "General" : {
+                      "aNode" : {
+                        "astNodeId" : 25
+                      },
+                      "specifier" : {
+                        "kind" : {
+                          "SyncInput" : {
+                            
+                          }
+                        },
+                        "name" : "cmdResponseIn",
+                        "size" : "None",
+                        "port" : {
+                          "Some" : {
+                            "astNodeId" : 24
+                          }
+                        },
+                        "priority" : "None",
+                        "queueFull" : "None"
+                      },
+                      "kind" : "SyncInput",
+                      "size" : 1,
+                      "ty" : {
+                        "DefPort" : {
+                          "symbol" : {
+                            "Port" : {
+                              "nodeId" : 4,
+                              "unqualifiedName" : "CmdResponse"
+                            }
+                          }
+                        }
+                      },
+                      "importNodeIds" : [
+                      ]
+                    }
+                  }
+                },
+                "portNumber" : "None"
+              },
+              "isUnmatched" : false
+            }
+          ]
+        },
+        "localConnectionMap" : {
+          "CommandRegistration" : [
+            {
+              "from" : {
+                "loc" : {
+                  "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                  "pos" : "22.5",
+                  "includingLoc" : "None"
+                },
+                "port" : {
+                  "componentInstance" : {
+                    "aNode" : {
+                      "astNodeId" : 40
+                    },
+                    "qualifiedName" : {
+                      "qualifier" : [
+                        "M"
+                      ],
+                      "base" : "c"
+                    },
+                    "component" : {
+                      "astNodeId" : 32
+                    },
+                    "baseId" : 256,
+                    "maxId" : 255,
+                    "file" : "None",
+                    "queueSize" : "None",
+                    "stackSize" : "None",
+                    "priority" : "None",
+                    "cpu" : "None",
+                    "initSpecifierMap" : {
+                      
+                    }
+                  },
+                  "portInstance" : {
+                    "Special" : {
+                      "aNode" : {
+                        "astNodeId" : 27
+                      },
+                      "specifier" : {
+                        "inputKind" : "None",
+                        "kind" : {
+                          "CommandReg" : {
+                            
+                          }
+                        },
+                        "name" : "cmdRegOut",
+                        "priority" : "None",
+                        "queueFull" : "None"
+                      },
+                      "symbol" : {
+                        "Port" : {
+                          "nodeId" : 1,
+                          "unqualifiedName" : "CmdReg"
+                        }
+                      },
+                      "priority" : "None",
+                      "queueFull" : "None",
+                      "importNodeIds" : [
+                      ]
+                    }
+                  }
+                },
+                "portNumber" : "None"
+              },
+              "to" : {
+                "loc" : {
+                  "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                  "pos" : "22.5",
+                  "includingLoc" : "None"
+                },
+                "port" : {
+                  "componentInstance" : {
+                    "aNode" : {
+                      "astNodeId" : 36
+                    },
+                    "qualifiedName" : {
+                      "qualifier" : [
+                        "M"
+                      ],
+                      "base" : "commands"
+                    },
+                    "component" : {
+                      "astNodeId" : 26
+                    },
+                    "baseId" : 256,
+                    "maxId" : 255,
+                    "file" : "None",
+                    "queueSize" : "None",
+                    "stackSize" : "None",
+                    "priority" : "None",
+                    "cpu" : "None",
+                    "initSpecifierMap" : {
+                      
+                    }
+                  },
+                  "portInstance" : {
+                    "General" : {
+                      "aNode" : {
+                        "astNodeId" : 9
+                      },
+                      "specifier" : {
+                        "kind" : {
+                          "SyncInput" : {
+                            
+                          }
+                        },
+                        "name" : "cmdRegIn",
+                        "size" : "None",
+                        "port" : {
+                          "Some" : {
+                            "astNodeId" : 8
+                          }
+                        },
+                        "priority" : "None",
+                        "queueFull" : "None"
+                      },
+                      "kind" : "SyncInput",
+                      "size" : 1,
+                      "ty" : {
+                        "DefPort" : {
+                          "symbol" : {
+                            "Port" : {
+                              "nodeId" : 1,
+                              "unqualifiedName" : "CmdReg"
+                            }
+                          }
+                        }
+                      },
+                      "importNodeIds" : [
+                      ]
+                    }
+                  }
+                },
+                "portNumber" : "None"
+              },
+              "isUnmatched" : false
+            }
+          ],
+          "Command" : [
+            {
+              "from" : {
+                "loc" : {
+                  "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                  "pos" : "22.5",
+                  "includingLoc" : "None"
+                },
+                "port" : {
+                  "componentInstance" : {
+                    "aNode" : {
+                      "astNodeId" : 36
+                    },
+                    "qualifiedName" : {
+                      "qualifier" : [
+                        "M"
+                      ],
+                      "base" : "commands"
+                    },
+                    "component" : {
+                      "astNodeId" : 26
+                    },
+                    "baseId" : 256,
+                    "maxId" : 255,
+                    "file" : "None",
+                    "queueSize" : "None",
+                    "stackSize" : "None",
+                    "priority" : "None",
+                    "cpu" : "None",
+                    "initSpecifierMap" : {
+                      
+                    }
+                  },
+                  "portInstance" : {
+                    "General" : {
+                      "aNode" : {
+                        "astNodeId" : 13
+                      },
+                      "specifier" : {
+                        "kind" : {
+                          "Output" : {
+                            
+                          }
+                        },
+                        "name" : "cmdOut",
+                        "size" : "None",
+                        "port" : {
+                          "Some" : {
+                            "astNodeId" : 12
+                          }
+                        },
+                        "priority" : "None",
+                        "queueFull" : "None"
+                      },
+                      "kind" : "Output",
+                      "size" : 1,
+                      "ty" : {
+                        "DefPort" : {
+                          "symbol" : {
+                            "Port" : {
+                              "nodeId" : 0,
+                              "unqualifiedName" : "Cmd"
+                            }
+                          }
+                        }
+                      },
+                      "importNodeIds" : [
+                      ]
+                    }
+                  }
+                },
+                "portNumber" : "None"
+              },
+              "to" : {
+                "loc" : {
+                  "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                  "pos" : "22.5",
+                  "includingLoc" : "None"
+                },
+                "port" : {
+                  "componentInstance" : {
+                    "aNode" : {
+                      "astNodeId" : 40
+                    },
+                    "qualifiedName" : {
+                      "qualifier" : [
+                        "M"
+                      ],
+                      "base" : "c"
+                    },
+                    "component" : {
+                      "astNodeId" : 32
+                    },
+                    "baseId" : 256,
+                    "maxId" : 255,
+                    "file" : "None",
+                    "queueSize" : "None",
+                    "stackSize" : "None",
+                    "priority" : "None",
+                    "cpu" : "None",
+                    "initSpecifierMap" : {
+                      
+                    }
+                  },
+                  "portInstance" : {
+                    "Special" : {
+                      "aNode" : {
+                        "astNodeId" : 28
+                      },
+                      "specifier" : {
+                        "inputKind" : "None",
+                        "kind" : {
+                          "CommandRecv" : {
+                            
+                          }
+                        },
+                        "name" : "cmdIn",
+                        "priority" : "None",
+                        "queueFull" : "None"
+                      },
+                      "symbol" : {
+                        "Port" : {
+                          "nodeId" : 0,
+                          "unqualifiedName" : "Cmd"
+                        }
+                      },
+                      "priority" : "None",
+                      "queueFull" : "None",
+                      "importNodeIds" : [
+                      ]
+                    }
+                  }
+                },
+                "portNumber" : "None"
+              },
+              "isUnmatched" : false
+            }
+          ],
+          "CommandResponse" : [
+            {
+              "from" : {
+                "loc" : {
+                  "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                  "pos" : "22.5",
+                  "includingLoc" : "None"
+                },
+                "port" : {
+                  "componentInstance" : {
+                    "aNode" : {
+                      "astNodeId" : 40
+                    },
+                    "qualifiedName" : {
+                      "qualifier" : [
+                        "M"
+                      ],
+                      "base" : "c"
+                    },
+                    "component" : {
+                      "astNodeId" : 32
+                    },
+                    "baseId" : 256,
+                    "maxId" : 255,
+                    "file" : "None",
+                    "queueSize" : "None",
+                    "stackSize" : "None",
+                    "priority" : "None",
+                    "cpu" : "None",
+                    "initSpecifierMap" : {
+                      
+                    }
+                  },
+                  "portInstance" : {
+                    "Special" : {
+                      "aNode" : {
+                        "astNodeId" : 31
+                      },
+                      "specifier" : {
+                        "inputKind" : "None",
+                        "kind" : {
+                          "CommandResp" : {
+                            
+                          }
+                        },
+                        "name" : "cmdResponseOut",
+                        "priority" : "None",
+                        "queueFull" : "None"
+                      },
+                      "symbol" : {
+                        "Port" : {
+                          "nodeId" : 4,
+                          "unqualifiedName" : "CmdResponse"
+                        }
+                      },
+                      "priority" : "None",
+                      "queueFull" : "None",
+                      "importNodeIds" : [
+                      ]
+                    }
+                  }
+                },
+                "portNumber" : "None"
+              },
+              "to" : {
+                "loc" : {
+                  "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                  "pos" : "22.5",
+                  "includingLoc" : "None"
+                },
+                "port" : {
+                  "componentInstance" : {
+                    "aNode" : {
+                      "astNodeId" : 36
+                    },
+                    "qualifiedName" : {
+                      "qualifier" : [
+                        "M"
+                      ],
+                      "base" : "commands"
+                    },
+                    "component" : {
+                      "astNodeId" : 26
+                    },
+                    "baseId" : 256,
+                    "maxId" : 255,
+                    "file" : "None",
+                    "queueSize" : "None",
+                    "stackSize" : "None",
+                    "priority" : "None",
+                    "cpu" : "None",
+                    "initSpecifierMap" : {
+                      
+                    }
+                  },
+                  "portInstance" : {
+                    "General" : {
+                      "aNode" : {
+                        "astNodeId" : 25
+                      },
+                      "specifier" : {
+                        "kind" : {
+                          "SyncInput" : {
+                            
+                          }
+                        },
+                        "name" : "cmdResponseIn",
+                        "size" : "None",
+                        "port" : {
+                          "Some" : {
+                            "astNodeId" : 24
+                          }
+                        },
+                        "priority" : "None",
+                        "queueFull" : "None"
+                      },
+                      "kind" : "SyncInput",
+                      "size" : 1,
+                      "ty" : {
+                        "DefPort" : {
+                          "symbol" : {
+                            "Port" : {
+                              "nodeId" : 4,
+                              "unqualifiedName" : "CmdResponse"
+                            }
+                          }
+                        }
+                      },
+                      "importNodeIds" : [
+                      ]
+                    }
+                  }
+                },
+                "portNumber" : "None"
+              },
+              "isUnmatched" : false
+            }
+          ]
+        },
+        "outputConnectionMap" : [
+          [
+            {
+              "componentInstance" : {
+                "aNode" : {
+                  "astNodeId" : 40
+                },
+                "qualifiedName" : {
+                  "qualifier" : [
+                    "M"
+                  ],
+                  "base" : "c"
+                },
+                "component" : {
+                  "astNodeId" : 32
+                },
+                "baseId" : 256,
+                "maxId" : 255,
+                "file" : "None",
+                "queueSize" : "None",
+                "stackSize" : "None",
+                "priority" : "None",
+                "cpu" : "None",
+                "initSpecifierMap" : {
+                  
+                }
+              },
+              "portInstance" : {
+                "Special" : {
+                  "aNode" : {
+                    "astNodeId" : 27
+                  },
+                  "specifier" : {
+                    "inputKind" : "None",
+                    "kind" : {
+                      "CommandReg" : {
+                        
+                      }
+                    },
+                    "name" : "cmdRegOut",
+                    "priority" : "None",
+                    "queueFull" : "None"
+                  },
+                  "symbol" : {
+                    "Port" : {
+                      "nodeId" : 1,
+                      "unqualifiedName" : "CmdReg"
+                    }
+                  },
+                  "priority" : "None",
+                  "queueFull" : "None",
+                  "importNodeIds" : [
+                  ]
+                }
+              }
+            },
+            [
+              {
+                "from" : {
+                  "loc" : {
+                    "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                    "pos" : "22.5",
+                    "includingLoc" : "None"
+                  },
+                  "port" : {
+                    "componentInstance" : {
+                      "aNode" : {
+                        "astNodeId" : 40
+                      },
+                      "qualifiedName" : {
+                        "qualifier" : [
+                          "M"
+                        ],
+                        "base" : "c"
+                      },
+                      "component" : {
+                        "astNodeId" : 32
+                      },
+                      "baseId" : 256,
+                      "maxId" : 255,
+                      "file" : "None",
+                      "queueSize" : "None",
+                      "stackSize" : "None",
+                      "priority" : "None",
+                      "cpu" : "None",
+                      "initSpecifierMap" : {
+                        
+                      }
+                    },
+                    "portInstance" : {
+                      "Special" : {
+                        "aNode" : {
+                          "astNodeId" : 27
+                        },
+                        "specifier" : {
+                          "inputKind" : "None",
+                          "kind" : {
+                            "CommandReg" : {
+                              
+                            }
+                          },
+                          "name" : "cmdRegOut",
+                          "priority" : "None",
+                          "queueFull" : "None"
+                        },
+                        "symbol" : {
+                          "Port" : {
+                            "nodeId" : 1,
+                            "unqualifiedName" : "CmdReg"
+                          }
+                        },
+                        "priority" : "None",
+                        "queueFull" : "None",
+                        "importNodeIds" : [
+                        ]
+                      }
+                    }
+                  },
+                  "portNumber" : "None"
+                },
+                "to" : {
+                  "loc" : {
+                    "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                    "pos" : "22.5",
+                    "includingLoc" : "None"
+                  },
+                  "port" : {
+                    "componentInstance" : {
+                      "aNode" : {
+                        "astNodeId" : 36
+                      },
+                      "qualifiedName" : {
+                        "qualifier" : [
+                          "M"
+                        ],
+                        "base" : "commands"
+                      },
+                      "component" : {
+                        "astNodeId" : 26
+                      },
+                      "baseId" : 256,
+                      "maxId" : 255,
+                      "file" : "None",
+                      "queueSize" : "None",
+                      "stackSize" : "None",
+                      "priority" : "None",
+                      "cpu" : "None",
+                      "initSpecifierMap" : {
+                        
+                      }
+                    },
+                    "portInstance" : {
+                      "General" : {
+                        "aNode" : {
+                          "astNodeId" : 9
+                        },
+                        "specifier" : {
+                          "kind" : {
+                            "SyncInput" : {
+                              
+                            }
+                          },
+                          "name" : "cmdRegIn",
+                          "size" : "None",
+                          "port" : {
+                            "Some" : {
+                              "astNodeId" : 8
+                            }
+                          },
+                          "priority" : "None",
+                          "queueFull" : "None"
+                        },
+                        "kind" : "SyncInput",
+                        "size" : 1,
+                        "ty" : {
+                          "DefPort" : {
+                            "symbol" : {
+                              "Port" : {
+                                "nodeId" : 1,
+                                "unqualifiedName" : "CmdReg"
+                              }
+                            }
+                          }
+                        },
+                        "importNodeIds" : [
+                        ]
+                      }
+                    }
+                  },
+                  "portNumber" : "None"
+                },
+                "isUnmatched" : false
+              }
+            ]
+          ],
+          [
+            {
+              "componentInstance" : {
+                "aNode" : {
+                  "astNodeId" : 36
+                },
+                "qualifiedName" : {
+                  "qualifier" : [
+                    "M"
+                  ],
+                  "base" : "commands"
+                },
+                "component" : {
+                  "astNodeId" : 26
+                },
+                "baseId" : 256,
+                "maxId" : 255,
+                "file" : "None",
+                "queueSize" : "None",
+                "stackSize" : "None",
+                "priority" : "None",
+                "cpu" : "None",
+                "initSpecifierMap" : {
+                  
+                }
+              },
+              "portInstance" : {
+                "General" : {
+                  "aNode" : {
+                    "astNodeId" : 13
+                  },
+                  "specifier" : {
+                    "kind" : {
+                      "Output" : {
+                        
+                      }
+                    },
+                    "name" : "cmdOut",
+                    "size" : "None",
+                    "port" : {
+                      "Some" : {
+                        "astNodeId" : 12
+                      }
+                    },
+                    "priority" : "None",
+                    "queueFull" : "None"
+                  },
+                  "kind" : "Output",
+                  "size" : 1,
+                  "ty" : {
+                    "DefPort" : {
+                      "symbol" : {
+                        "Port" : {
+                          "nodeId" : 0,
+                          "unqualifiedName" : "Cmd"
+                        }
+                      }
+                    }
+                  },
+                  "importNodeIds" : [
+                  ]
+                }
+              }
+            },
+            [
+              {
+                "from" : {
+                  "loc" : {
+                    "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                    "pos" : "22.5",
+                    "includingLoc" : "None"
+                  },
+                  "port" : {
+                    "componentInstance" : {
+                      "aNode" : {
+                        "astNodeId" : 36
+                      },
+                      "qualifiedName" : {
+                        "qualifier" : [
+                          "M"
+                        ],
+                        "base" : "commands"
+                      },
+                      "component" : {
+                        "astNodeId" : 26
+                      },
+                      "baseId" : 256,
+                      "maxId" : 255,
+                      "file" : "None",
+                      "queueSize" : "None",
+                      "stackSize" : "None",
+                      "priority" : "None",
+                      "cpu" : "None",
+                      "initSpecifierMap" : {
+                        
+                      }
+                    },
+                    "portInstance" : {
+                      "General" : {
+                        "aNode" : {
+                          "astNodeId" : 13
+                        },
+                        "specifier" : {
+                          "kind" : {
+                            "Output" : {
+                              
+                            }
+                          },
+                          "name" : "cmdOut",
+                          "size" : "None",
+                          "port" : {
+                            "Some" : {
+                              "astNodeId" : 12
+                            }
+                          },
+                          "priority" : "None",
+                          "queueFull" : "None"
+                        },
+                        "kind" : "Output",
+                        "size" : 1,
+                        "ty" : {
+                          "DefPort" : {
+                            "symbol" : {
+                              "Port" : {
+                                "nodeId" : 0,
+                                "unqualifiedName" : "Cmd"
+                              }
+                            }
+                          }
+                        },
+                        "importNodeIds" : [
+                        ]
+                      }
+                    }
+                  },
+                  "portNumber" : "None"
+                },
+                "to" : {
+                  "loc" : {
+                    "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                    "pos" : "22.5",
+                    "includingLoc" : "None"
+                  },
+                  "port" : {
+                    "componentInstance" : {
+                      "aNode" : {
+                        "astNodeId" : 40
+                      },
+                      "qualifiedName" : {
+                        "qualifier" : [
+                          "M"
+                        ],
+                        "base" : "c"
+                      },
+                      "component" : {
+                        "astNodeId" : 32
+                      },
+                      "baseId" : 256,
+                      "maxId" : 255,
+                      "file" : "None",
+                      "queueSize" : "None",
+                      "stackSize" : "None",
+                      "priority" : "None",
+                      "cpu" : "None",
+                      "initSpecifierMap" : {
+                        
+                      }
+                    },
+                    "portInstance" : {
+                      "Special" : {
+                        "aNode" : {
+                          "astNodeId" : 28
+                        },
+                        "specifier" : {
+                          "inputKind" : "None",
+                          "kind" : {
+                            "CommandRecv" : {
+                              
+                            }
+                          },
+                          "name" : "cmdIn",
+                          "priority" : "None",
+                          "queueFull" : "None"
+                        },
+                        "symbol" : {
+                          "Port" : {
+                            "nodeId" : 0,
+                            "unqualifiedName" : "Cmd"
+                          }
+                        },
+                        "priority" : "None",
+                        "queueFull" : "None",
+                        "importNodeIds" : [
+                        ]
+                      }
+                    }
+                  },
+                  "portNumber" : "None"
+                },
+                "isUnmatched" : false
+              }
+            ]
+          ],
+          [
+            {
+              "componentInstance" : {
+                "aNode" : {
+                  "astNodeId" : 40
+                },
+                "qualifiedName" : {
+                  "qualifier" : [
+                    "M"
+                  ],
+                  "base" : "c"
+                },
+                "component" : {
+                  "astNodeId" : 32
+                },
+                "baseId" : 256,
+                "maxId" : 255,
+                "file" : "None",
+                "queueSize" : "None",
+                "stackSize" : "None",
+                "priority" : "None",
+                "cpu" : "None",
+                "initSpecifierMap" : {
+                  
+                }
+              },
+              "portInstance" : {
+                "Special" : {
+                  "aNode" : {
+                    "astNodeId" : 31
+                  },
+                  "specifier" : {
+                    "inputKind" : "None",
+                    "kind" : {
+                      "CommandResp" : {
+                        
+                      }
+                    },
+                    "name" : "cmdResponseOut",
+                    "priority" : "None",
+                    "queueFull" : "None"
+                  },
+                  "symbol" : {
+                    "Port" : {
+                      "nodeId" : 4,
+                      "unqualifiedName" : "CmdResponse"
+                    }
+                  },
+                  "priority" : "None",
+                  "queueFull" : "None",
+                  "importNodeIds" : [
+                  ]
+                }
+              }
+            },
+            [
+              {
+                "from" : {
+                  "loc" : {
+                    "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                    "pos" : "22.5",
+                    "includingLoc" : "None"
+                  },
+                  "port" : {
+                    "componentInstance" : {
+                      "aNode" : {
+                        "astNodeId" : 40
+                      },
+                      "qualifiedName" : {
+                        "qualifier" : [
+                          "M"
+                        ],
+                        "base" : "c"
+                      },
+                      "component" : {
+                        "astNodeId" : 32
+                      },
+                      "baseId" : 256,
+                      "maxId" : 255,
+                      "file" : "None",
+                      "queueSize" : "None",
+                      "stackSize" : "None",
+                      "priority" : "None",
+                      "cpu" : "None",
+                      "initSpecifierMap" : {
+                        
+                      }
+                    },
+                    "portInstance" : {
+                      "Special" : {
+                        "aNode" : {
+                          "astNodeId" : 31
+                        },
+                        "specifier" : {
+                          "inputKind" : "None",
+                          "kind" : {
+                            "CommandResp" : {
+                              
+                            }
+                          },
+                          "name" : "cmdResponseOut",
+                          "priority" : "None",
+                          "queueFull" : "None"
+                        },
+                        "symbol" : {
+                          "Port" : {
+                            "nodeId" : 4,
+                            "unqualifiedName" : "CmdResponse"
+                          }
+                        },
+                        "priority" : "None",
+                        "queueFull" : "None",
+                        "importNodeIds" : [
+                        ]
+                      }
+                    }
+                  },
+                  "portNumber" : "None"
+                },
+                "to" : {
+                  "loc" : {
+                    "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                    "pos" : "22.5",
+                    "includingLoc" : "None"
+                  },
+                  "port" : {
+                    "componentInstance" : {
+                      "aNode" : {
+                        "astNodeId" : 36
+                      },
+                      "qualifiedName" : {
+                        "qualifier" : [
+                          "M"
+                        ],
+                        "base" : "commands"
+                      },
+                      "component" : {
+                        "astNodeId" : 26
+                      },
+                      "baseId" : 256,
+                      "maxId" : 255,
+                      "file" : "None",
+                      "queueSize" : "None",
+                      "stackSize" : "None",
+                      "priority" : "None",
+                      "cpu" : "None",
+                      "initSpecifierMap" : {
+                        
+                      }
+                    },
+                    "portInstance" : {
+                      "General" : {
+                        "aNode" : {
+                          "astNodeId" : 25
+                        },
+                        "specifier" : {
+                          "kind" : {
+                            "SyncInput" : {
+                              
+                            }
+                          },
+                          "name" : "cmdResponseIn",
+                          "size" : "None",
+                          "port" : {
+                            "Some" : {
+                              "astNodeId" : 24
+                            }
+                          },
+                          "priority" : "None",
+                          "queueFull" : "None"
+                        },
+                        "kind" : "SyncInput",
+                        "size" : 1,
+                        "ty" : {
+                          "DefPort" : {
+                            "symbol" : {
+                              "Port" : {
+                                "nodeId" : 4,
+                                "unqualifiedName" : "CmdResponse"
+                              }
+                            }
+                          }
+                        },
+                        "importNodeIds" : [
+                        ]
+                      }
+                    }
+                  },
+                  "portNumber" : "None"
+                },
+                "isUnmatched" : false
+              }
+            ]
+          ]
+        ],
+        "inputConnectionMap" : [
+          [
+            {
+              "componentInstance" : {
+                "aNode" : {
+                  "astNodeId" : 36
+                },
+                "qualifiedName" : {
+                  "qualifier" : [
+                    "M"
+                  ],
+                  "base" : "commands"
+                },
+                "component" : {
+                  "astNodeId" : 26
+                },
+                "baseId" : 256,
+                "maxId" : 255,
+                "file" : "None",
+                "queueSize" : "None",
+                "stackSize" : "None",
+                "priority" : "None",
+                "cpu" : "None",
+                "initSpecifierMap" : {
+                  
+                }
+              },
+              "portInstance" : {
+                "General" : {
+                  "aNode" : {
+                    "astNodeId" : 9
+                  },
+                  "specifier" : {
+                    "kind" : {
+                      "SyncInput" : {
+                        
+                      }
+                    },
+                    "name" : "cmdRegIn",
+                    "size" : "None",
+                    "port" : {
+                      "Some" : {
+                        "astNodeId" : 8
+                      }
+                    },
+                    "priority" : "None",
+                    "queueFull" : "None"
+                  },
+                  "kind" : "SyncInput",
+                  "size" : 1,
+                  "ty" : {
+                    "DefPort" : {
+                      "symbol" : {
+                        "Port" : {
+                          "nodeId" : 1,
+                          "unqualifiedName" : "CmdReg"
+                        }
+                      }
+                    }
+                  },
+                  "importNodeIds" : [
+                  ]
+                }
+              }
+            },
+            [
+              {
+                "from" : {
+                  "loc" : {
+                    "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                    "pos" : "22.5",
+                    "includingLoc" : "None"
+                  },
+                  "port" : {
+                    "componentInstance" : {
+                      "aNode" : {
+                        "astNodeId" : 40
+                      },
+                      "qualifiedName" : {
+                        "qualifier" : [
+                          "M"
+                        ],
+                        "base" : "c"
+                      },
+                      "component" : {
+                        "astNodeId" : 32
+                      },
+                      "baseId" : 256,
+                      "maxId" : 255,
+                      "file" : "None",
+                      "queueSize" : "None",
+                      "stackSize" : "None",
+                      "priority" : "None",
+                      "cpu" : "None",
+                      "initSpecifierMap" : {
+                        
+                      }
+                    },
+                    "portInstance" : {
+                      "Special" : {
+                        "aNode" : {
+                          "astNodeId" : 27
+                        },
+                        "specifier" : {
+                          "inputKind" : "None",
+                          "kind" : {
+                            "CommandReg" : {
+                              
+                            }
+                          },
+                          "name" : "cmdRegOut",
+                          "priority" : "None",
+                          "queueFull" : "None"
+                        },
+                        "symbol" : {
+                          "Port" : {
+                            "nodeId" : 1,
+                            "unqualifiedName" : "CmdReg"
+                          }
+                        },
+                        "priority" : "None",
+                        "queueFull" : "None",
+                        "importNodeIds" : [
+                        ]
+                      }
+                    }
+                  },
+                  "portNumber" : "None"
+                },
+                "to" : {
+                  "loc" : {
+                    "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                    "pos" : "22.5",
+                    "includingLoc" : "None"
+                  },
+                  "port" : {
+                    "componentInstance" : {
+                      "aNode" : {
+                        "astNodeId" : 36
+                      },
+                      "qualifiedName" : {
+                        "qualifier" : [
+                          "M"
+                        ],
+                        "base" : "commands"
+                      },
+                      "component" : {
+                        "astNodeId" : 26
+                      },
+                      "baseId" : 256,
+                      "maxId" : 255,
+                      "file" : "None",
+                      "queueSize" : "None",
+                      "stackSize" : "None",
+                      "priority" : "None",
+                      "cpu" : "None",
+                      "initSpecifierMap" : {
+                        
+                      }
+                    },
+                    "portInstance" : {
+                      "General" : {
+                        "aNode" : {
+                          "astNodeId" : 9
+                        },
+                        "specifier" : {
+                          "kind" : {
+                            "SyncInput" : {
+                              
+                            }
+                          },
+                          "name" : "cmdRegIn",
+                          "size" : "None",
+                          "port" : {
+                            "Some" : {
+                              "astNodeId" : 8
+                            }
+                          },
+                          "priority" : "None",
+                          "queueFull" : "None"
+                        },
+                        "kind" : "SyncInput",
+                        "size" : 1,
+                        "ty" : {
+                          "DefPort" : {
+                            "symbol" : {
+                              "Port" : {
+                                "nodeId" : 1,
+                                "unqualifiedName" : "CmdReg"
+                              }
+                            }
+                          }
+                        },
+                        "importNodeIds" : [
+                        ]
+                      }
+                    }
+                  },
+                  "portNumber" : "None"
+                },
+                "isUnmatched" : false
+              }
+            ]
+          ],
+          [
+            {
+              "componentInstance" : {
+                "aNode" : {
+                  "astNodeId" : 40
+                },
+                "qualifiedName" : {
+                  "qualifier" : [
+                    "M"
+                  ],
+                  "base" : "c"
+                },
+                "component" : {
+                  "astNodeId" : 32
+                },
+                "baseId" : 256,
+                "maxId" : 255,
+                "file" : "None",
+                "queueSize" : "None",
+                "stackSize" : "None",
+                "priority" : "None",
+                "cpu" : "None",
+                "initSpecifierMap" : {
+                  
+                }
+              },
+              "portInstance" : {
+                "Special" : {
+                  "aNode" : {
+                    "astNodeId" : 28
+                  },
+                  "specifier" : {
+                    "inputKind" : "None",
+                    "kind" : {
+                      "CommandRecv" : {
+                        
+                      }
+                    },
+                    "name" : "cmdIn",
+                    "priority" : "None",
+                    "queueFull" : "None"
+                  },
+                  "symbol" : {
+                    "Port" : {
+                      "nodeId" : 0,
+                      "unqualifiedName" : "Cmd"
+                    }
+                  },
+                  "priority" : "None",
+                  "queueFull" : "None",
+                  "importNodeIds" : [
+                  ]
+                }
+              }
+            },
+            [
+              {
+                "from" : {
+                  "loc" : {
+                    "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                    "pos" : "22.5",
+                    "includingLoc" : "None"
+                  },
+                  "port" : {
+                    "componentInstance" : {
+                      "aNode" : {
+                        "astNodeId" : 36
+                      },
+                      "qualifiedName" : {
+                        "qualifier" : [
+                          "M"
+                        ],
+                        "base" : "commands"
+                      },
+                      "component" : {
+                        "astNodeId" : 26
+                      },
+                      "baseId" : 256,
+                      "maxId" : 255,
+                      "file" : "None",
+                      "queueSize" : "None",
+                      "stackSize" : "None",
+                      "priority" : "None",
+                      "cpu" : "None",
+                      "initSpecifierMap" : {
+                        
+                      }
+                    },
+                    "portInstance" : {
+                      "General" : {
+                        "aNode" : {
+                          "astNodeId" : 13
+                        },
+                        "specifier" : {
+                          "kind" : {
+                            "Output" : {
+                              
+                            }
+                          },
+                          "name" : "cmdOut",
+                          "size" : "None",
+                          "port" : {
+                            "Some" : {
+                              "astNodeId" : 12
+                            }
+                          },
+                          "priority" : "None",
+                          "queueFull" : "None"
+                        },
+                        "kind" : "Output",
+                        "size" : 1,
+                        "ty" : {
+                          "DefPort" : {
+                            "symbol" : {
+                              "Port" : {
+                                "nodeId" : 0,
+                                "unqualifiedName" : "Cmd"
+                              }
+                            }
+                          }
+                        },
+                        "importNodeIds" : [
+                        ]
+                      }
+                    }
+                  },
+                  "portNumber" : "None"
+                },
+                "to" : {
+                  "loc" : {
+                    "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                    "pos" : "22.5",
+                    "includingLoc" : "None"
+                  },
+                  "port" : {
+                    "componentInstance" : {
+                      "aNode" : {
+                        "astNodeId" : 40
+                      },
+                      "qualifiedName" : {
+                        "qualifier" : [
+                          "M"
+                        ],
+                        "base" : "c"
+                      },
+                      "component" : {
+                        "astNodeId" : 32
+                      },
+                      "baseId" : 256,
+                      "maxId" : 255,
+                      "file" : "None",
+                      "queueSize" : "None",
+                      "stackSize" : "None",
+                      "priority" : "None",
+                      "cpu" : "None",
+                      "initSpecifierMap" : {
+                        
+                      }
+                    },
+                    "portInstance" : {
+                      "Special" : {
+                        "aNode" : {
+                          "astNodeId" : 28
+                        },
+                        "specifier" : {
+                          "inputKind" : "None",
+                          "kind" : {
+                            "CommandRecv" : {
+                              
+                            }
+                          },
+                          "name" : "cmdIn",
+                          "priority" : "None",
+                          "queueFull" : "None"
+                        },
+                        "symbol" : {
+                          "Port" : {
+                            "nodeId" : 0,
+                            "unqualifiedName" : "Cmd"
+                          }
+                        },
+                        "priority" : "None",
+                        "queueFull" : "None",
+                        "importNodeIds" : [
+                        ]
+                      }
+                    }
+                  },
+                  "portNumber" : "None"
+                },
+                "isUnmatched" : false
+              }
+            ]
+          ],
+          [
+            {
+              "componentInstance" : {
+                "aNode" : {
+                  "astNodeId" : 36
+                },
+                "qualifiedName" : {
+                  "qualifier" : [
+                    "M"
+                  ],
+                  "base" : "commands"
+                },
+                "component" : {
+                  "astNodeId" : 26
+                },
+                "baseId" : 256,
+                "maxId" : 255,
+                "file" : "None",
+                "queueSize" : "None",
+                "stackSize" : "None",
+                "priority" : "None",
+                "cpu" : "None",
+                "initSpecifierMap" : {
+                  
+                }
+              },
+              "portInstance" : {
+                "General" : {
+                  "aNode" : {
+                    "astNodeId" : 25
+                  },
+                  "specifier" : {
+                    "kind" : {
+                      "SyncInput" : {
+                        
+                      }
+                    },
+                    "name" : "cmdResponseIn",
+                    "size" : "None",
+                    "port" : {
+                      "Some" : {
+                        "astNodeId" : 24
+                      }
+                    },
+                    "priority" : "None",
+                    "queueFull" : "None"
+                  },
+                  "kind" : "SyncInput",
+                  "size" : 1,
+                  "ty" : {
+                    "DefPort" : {
+                      "symbol" : {
+                        "Port" : {
+                          "nodeId" : 4,
+                          "unqualifiedName" : "CmdResponse"
+                        }
+                      }
+                    }
+                  },
+                  "importNodeIds" : [
+                  ]
+                }
+              }
+            },
+            [
+              {
+                "from" : {
+                  "loc" : {
+                    "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                    "pos" : "22.5",
+                    "includingLoc" : "None"
+                  },
+                  "port" : {
+                    "componentInstance" : {
+                      "aNode" : {
+                        "astNodeId" : 40
+                      },
+                      "qualifiedName" : {
+                        "qualifier" : [
+                          "M"
+                        ],
+                        "base" : "c"
+                      },
+                      "component" : {
+                        "astNodeId" : 32
+                      },
+                      "baseId" : 256,
+                      "maxId" : 255,
+                      "file" : "None",
+                      "queueSize" : "None",
+                      "stackSize" : "None",
+                      "priority" : "None",
+                      "cpu" : "None",
+                      "initSpecifierMap" : {
+                        
+                      }
+                    },
+                    "portInstance" : {
+                      "Special" : {
+                        "aNode" : {
+                          "astNodeId" : 31
+                        },
+                        "specifier" : {
+                          "inputKind" : "None",
+                          "kind" : {
+                            "CommandResp" : {
+                              
+                            }
+                          },
+                          "name" : "cmdResponseOut",
+                          "priority" : "None",
+                          "queueFull" : "None"
+                        },
+                        "symbol" : {
+                          "Port" : {
+                            "nodeId" : 4,
+                            "unqualifiedName" : "CmdResponse"
+                          }
+                        },
+                        "priority" : "None",
+                        "queueFull" : "None",
+                        "importNodeIds" : [
+                        ]
+                      }
+                    }
+                  },
+                  "portNumber" : "None"
+                },
+                "to" : {
+                  "loc" : {
+                    "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                    "pos" : "22.5",
+                    "includingLoc" : "None"
+                  },
+                  "port" : {
+                    "componentInstance" : {
+                      "aNode" : {
+                        "astNodeId" : 36
+                      },
+                      "qualifiedName" : {
+                        "qualifier" : [
+                          "M"
+                        ],
+                        "base" : "commands"
+                      },
+                      "component" : {
+                        "astNodeId" : 26
+                      },
+                      "baseId" : 256,
+                      "maxId" : 255,
+                      "file" : "None",
+                      "queueSize" : "None",
+                      "stackSize" : "None",
+                      "priority" : "None",
+                      "cpu" : "None",
+                      "initSpecifierMap" : {
+                        
+                      }
+                    },
+                    "portInstance" : {
+                      "General" : {
+                        "aNode" : {
+                          "astNodeId" : 25
+                        },
+                        "specifier" : {
+                          "kind" : {
+                            "SyncInput" : {
+                              
+                            }
+                          },
+                          "name" : "cmdResponseIn",
+                          "size" : "None",
+                          "port" : {
+                            "Some" : {
+                              "astNodeId" : 24
+                            }
+                          },
+                          "priority" : "None",
+                          "queueFull" : "None"
+                        },
+                        "kind" : "SyncInput",
+                        "size" : 1,
+                        "ty" : {
+                          "DefPort" : {
+                            "symbol" : {
+                              "Port" : {
+                                "nodeId" : 4,
+                                "unqualifiedName" : "CmdResponse"
+                              }
+                            }
+                          }
+                        },
+                        "importNodeIds" : [
+                        ]
+                      }
+                    }
+                  },
+                  "portNumber" : "None"
+                },
+                "isUnmatched" : false
+              }
+            ]
+          ]
+        ],
+        "fromPortNumberMap" : [
+          [
+            {
+              "from" : {
+                "loc" : {
+                  "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                  "pos" : "22.5",
+                  "includingLoc" : "None"
+                },
+                "port" : {
+                  "componentInstance" : {
+                    "aNode" : {
+                      "astNodeId" : 36
+                    },
+                    "qualifiedName" : {
+                      "qualifier" : [
+                        "M"
+                      ],
+                      "base" : "commands"
+                    },
+                    "component" : {
+                      "astNodeId" : 26
+                    },
+                    "baseId" : 256,
+                    "maxId" : 255,
+                    "file" : "None",
+                    "queueSize" : "None",
+                    "stackSize" : "None",
+                    "priority" : "None",
+                    "cpu" : "None",
+                    "initSpecifierMap" : {
+                      
+                    }
+                  },
+                  "portInstance" : {
+                    "General" : {
+                      "aNode" : {
+                        "astNodeId" : 13
+                      },
+                      "specifier" : {
+                        "kind" : {
+                          "Output" : {
+                            
+                          }
+                        },
+                        "name" : "cmdOut",
+                        "size" : "None",
+                        "port" : {
+                          "Some" : {
+                            "astNodeId" : 12
+                          }
+                        },
+                        "priority" : "None",
+                        "queueFull" : "None"
+                      },
+                      "kind" : "Output",
+                      "size" : 1,
+                      "ty" : {
+                        "DefPort" : {
+                          "symbol" : {
+                            "Port" : {
+                              "nodeId" : 0,
+                              "unqualifiedName" : "Cmd"
+                            }
+                          }
+                        }
+                      },
+                      "importNodeIds" : [
+                      ]
+                    }
+                  }
+                },
+                "portNumber" : "None"
+              },
+              "to" : {
+                "loc" : {
+                  "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                  "pos" : "22.5",
+                  "includingLoc" : "None"
+                },
+                "port" : {
+                  "componentInstance" : {
+                    "aNode" : {
+                      "astNodeId" : 40
+                    },
+                    "qualifiedName" : {
+                      "qualifier" : [
+                        "M"
+                      ],
+                      "base" : "c"
+                    },
+                    "component" : {
+                      "astNodeId" : 32
+                    },
+                    "baseId" : 256,
+                    "maxId" : 255,
+                    "file" : "None",
+                    "queueSize" : "None",
+                    "stackSize" : "None",
+                    "priority" : "None",
+                    "cpu" : "None",
+                    "initSpecifierMap" : {
+                      
+                    }
+                  },
+                  "portInstance" : {
+                    "Special" : {
+                      "aNode" : {
+                        "astNodeId" : 28
+                      },
+                      "specifier" : {
+                        "inputKind" : "None",
+                        "kind" : {
+                          "CommandRecv" : {
+                            
+                          }
+                        },
+                        "name" : "cmdIn",
+                        "priority" : "None",
+                        "queueFull" : "None"
+                      },
+                      "symbol" : {
+                        "Port" : {
+                          "nodeId" : 0,
+                          "unqualifiedName" : "Cmd"
+                        }
+                      },
+                      "priority" : "None",
+                      "queueFull" : "None",
+                      "importNodeIds" : [
+                      ]
+                    }
+                  }
+                },
+                "portNumber" : "None"
+              },
+              "isUnmatched" : false
+            },
+            0
+          ],
+          [
+            {
+              "from" : {
+                "loc" : {
+                  "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                  "pos" : "22.5",
+                  "includingLoc" : "None"
+                },
+                "port" : {
+                  "componentInstance" : {
+                    "aNode" : {
+                      "astNodeId" : 40
+                    },
+                    "qualifiedName" : {
+                      "qualifier" : [
+                        "M"
+                      ],
+                      "base" : "c"
+                    },
+                    "component" : {
+                      "astNodeId" : 32
+                    },
+                    "baseId" : 256,
+                    "maxId" : 255,
+                    "file" : "None",
+                    "queueSize" : "None",
+                    "stackSize" : "None",
+                    "priority" : "None",
+                    "cpu" : "None",
+                    "initSpecifierMap" : {
+                      
+                    }
+                  },
+                  "portInstance" : {
+                    "Special" : {
+                      "aNode" : {
+                        "astNodeId" : 27
+                      },
+                      "specifier" : {
+                        "inputKind" : "None",
+                        "kind" : {
+                          "CommandReg" : {
+                            
+                          }
+                        },
+                        "name" : "cmdRegOut",
+                        "priority" : "None",
+                        "queueFull" : "None"
+                      },
+                      "symbol" : {
+                        "Port" : {
+                          "nodeId" : 1,
+                          "unqualifiedName" : "CmdReg"
+                        }
+                      },
+                      "priority" : "None",
+                      "queueFull" : "None",
+                      "importNodeIds" : [
+                      ]
+                    }
+                  }
+                },
+                "portNumber" : "None"
+              },
+              "to" : {
+                "loc" : {
+                  "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                  "pos" : "22.5",
+                  "includingLoc" : "None"
+                },
+                "port" : {
+                  "componentInstance" : {
+                    "aNode" : {
+                      "astNodeId" : 36
+                    },
+                    "qualifiedName" : {
+                      "qualifier" : [
+                        "M"
+                      ],
+                      "base" : "commands"
+                    },
+                    "component" : {
+                      "astNodeId" : 26
+                    },
+                    "baseId" : 256,
+                    "maxId" : 255,
+                    "file" : "None",
+                    "queueSize" : "None",
+                    "stackSize" : "None",
+                    "priority" : "None",
+                    "cpu" : "None",
+                    "initSpecifierMap" : {
+                      
+                    }
+                  },
+                  "portInstance" : {
+                    "General" : {
+                      "aNode" : {
+                        "astNodeId" : 9
+                      },
+                      "specifier" : {
+                        "kind" : {
+                          "SyncInput" : {
+                            
+                          }
+                        },
+                        "name" : "cmdRegIn",
+                        "size" : "None",
+                        "port" : {
+                          "Some" : {
+                            "astNodeId" : 8
+                          }
+                        },
+                        "priority" : "None",
+                        "queueFull" : "None"
+                      },
+                      "kind" : "SyncInput",
+                      "size" : 1,
+                      "ty" : {
+                        "DefPort" : {
+                          "symbol" : {
+                            "Port" : {
+                              "nodeId" : 1,
+                              "unqualifiedName" : "CmdReg"
+                            }
+                          }
+                        }
+                      },
+                      "importNodeIds" : [
+                      ]
+                    }
+                  }
+                },
+                "portNumber" : "None"
+              },
+              "isUnmatched" : false
+            },
+            0
+          ],
+          [
+            {
+              "from" : {
+                "loc" : {
+                  "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                  "pos" : "22.5",
+                  "includingLoc" : "None"
+                },
+                "port" : {
+                  "componentInstance" : {
+                    "aNode" : {
+                      "astNodeId" : 40
+                    },
+                    "qualifiedName" : {
+                      "qualifier" : [
+                        "M"
+                      ],
+                      "base" : "c"
+                    },
+                    "component" : {
+                      "astNodeId" : 32
+                    },
+                    "baseId" : 256,
+                    "maxId" : 255,
+                    "file" : "None",
+                    "queueSize" : "None",
+                    "stackSize" : "None",
+                    "priority" : "None",
+                    "cpu" : "None",
+                    "initSpecifierMap" : {
+                      
+                    }
+                  },
+                  "portInstance" : {
+                    "Special" : {
+                      "aNode" : {
+                        "astNodeId" : 31
+                      },
+                      "specifier" : {
+                        "inputKind" : "None",
+                        "kind" : {
+                          "CommandResp" : {
+                            
+                          }
+                        },
+                        "name" : "cmdResponseOut",
+                        "priority" : "None",
+                        "queueFull" : "None"
+                      },
+                      "symbol" : {
+                        "Port" : {
+                          "nodeId" : 4,
+                          "unqualifiedName" : "CmdResponse"
+                        }
+                      },
+                      "priority" : "None",
+                      "queueFull" : "None",
+                      "importNodeIds" : [
+                      ]
+                    }
+                  }
+                },
+                "portNumber" : "None"
+              },
+              "to" : {
+                "loc" : {
+                  "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                  "pos" : "22.5",
+                  "includingLoc" : "None"
+                },
+                "port" : {
+                  "componentInstance" : {
+                    "aNode" : {
+                      "astNodeId" : 36
+                    },
+                    "qualifiedName" : {
+                      "qualifier" : [
+                        "M"
+                      ],
+                      "base" : "commands"
+                    },
+                    "component" : {
+                      "astNodeId" : 26
+                    },
+                    "baseId" : 256,
+                    "maxId" : 255,
+                    "file" : "None",
+                    "queueSize" : "None",
+                    "stackSize" : "None",
+                    "priority" : "None",
+                    "cpu" : "None",
+                    "initSpecifierMap" : {
+                      
+                    }
+                  },
+                  "portInstance" : {
+                    "General" : {
+                      "aNode" : {
+                        "astNodeId" : 25
+                      },
+                      "specifier" : {
+                        "kind" : {
+                          "SyncInput" : {
+                            
+                          }
+                        },
+                        "name" : "cmdResponseIn",
+                        "size" : "None",
+                        "port" : {
+                          "Some" : {
+                            "astNodeId" : 24
+                          }
+                        },
+                        "priority" : "None",
+                        "queueFull" : "None"
+                      },
+                      "kind" : "SyncInput",
+                      "size" : 1,
+                      "ty" : {
+                        "DefPort" : {
+                          "symbol" : {
+                            "Port" : {
+                              "nodeId" : 4,
+                              "unqualifiedName" : "CmdResponse"
+                            }
+                          }
+                        }
+                      },
+                      "importNodeIds" : [
+                      ]
+                    }
+                  }
+                },
+                "portNumber" : "None"
+              },
+              "isUnmatched" : false
+            },
+            0
+          ]
+        ],
+        "toPortNumberMap" : [
+          [
+            {
+              "from" : {
+                "loc" : {
+                  "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                  "pos" : "22.5",
+                  "includingLoc" : "None"
+                },
+                "port" : {
+                  "componentInstance" : {
+                    "aNode" : {
+                      "astNodeId" : 40
+                    },
+                    "qualifiedName" : {
+                      "qualifier" : [
+                        "M"
+                      ],
+                      "base" : "c"
+                    },
+                    "component" : {
+                      "astNodeId" : 32
+                    },
+                    "baseId" : 256,
+                    "maxId" : 255,
+                    "file" : "None",
+                    "queueSize" : "None",
+                    "stackSize" : "None",
+                    "priority" : "None",
+                    "cpu" : "None",
+                    "initSpecifierMap" : {
+                      
+                    }
+                  },
+                  "portInstance" : {
+                    "Special" : {
+                      "aNode" : {
+                        "astNodeId" : 27
+                      },
+                      "specifier" : {
+                        "inputKind" : "None",
+                        "kind" : {
+                          "CommandReg" : {
+                            
+                          }
+                        },
+                        "name" : "cmdRegOut",
+                        "priority" : "None",
+                        "queueFull" : "None"
+                      },
+                      "symbol" : {
+                        "Port" : {
+                          "nodeId" : 1,
+                          "unqualifiedName" : "CmdReg"
+                        }
+                      },
+                      "priority" : "None",
+                      "queueFull" : "None",
+                      "importNodeIds" : [
+                      ]
+                    }
+                  }
+                },
+                "portNumber" : "None"
+              },
+              "to" : {
+                "loc" : {
+                  "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                  "pos" : "22.5",
+                  "includingLoc" : "None"
+                },
+                "port" : {
+                  "componentInstance" : {
+                    "aNode" : {
+                      "astNodeId" : 36
+                    },
+                    "qualifiedName" : {
+                      "qualifier" : [
+                        "M"
+                      ],
+                      "base" : "commands"
+                    },
+                    "component" : {
+                      "astNodeId" : 26
+                    },
+                    "baseId" : 256,
+                    "maxId" : 255,
+                    "file" : "None",
+                    "queueSize" : "None",
+                    "stackSize" : "None",
+                    "priority" : "None",
+                    "cpu" : "None",
+                    "initSpecifierMap" : {
+                      
+                    }
+                  },
+                  "portInstance" : {
+                    "General" : {
+                      "aNode" : {
+                        "astNodeId" : 9
+                      },
+                      "specifier" : {
+                        "kind" : {
+                          "SyncInput" : {
+                            
+                          }
+                        },
+                        "name" : "cmdRegIn",
+                        "size" : "None",
+                        "port" : {
+                          "Some" : {
+                            "astNodeId" : 8
+                          }
+                        },
+                        "priority" : "None",
+                        "queueFull" : "None"
+                      },
+                      "kind" : "SyncInput",
+                      "size" : 1,
+                      "ty" : {
+                        "DefPort" : {
+                          "symbol" : {
+                            "Port" : {
+                              "nodeId" : 1,
+                              "unqualifiedName" : "CmdReg"
+                            }
+                          }
+                        }
+                      },
+                      "importNodeIds" : [
+                      ]
+                    }
+                  }
+                },
+                "portNumber" : "None"
+              },
+              "isUnmatched" : false
+            },
+            0
+          ],
+          [
+            {
+              "from" : {
+                "loc" : {
+                  "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                  "pos" : "22.5",
+                  "includingLoc" : "None"
+                },
+                "port" : {
+                  "componentInstance" : {
+                    "aNode" : {
+                      "astNodeId" : 40
+                    },
+                    "qualifiedName" : {
+                      "qualifier" : [
+                        "M"
+                      ],
+                      "base" : "c"
+                    },
+                    "component" : {
+                      "astNodeId" : 32
+                    },
+                    "baseId" : 256,
+                    "maxId" : 255,
+                    "file" : "None",
+                    "queueSize" : "None",
+                    "stackSize" : "None",
+                    "priority" : "None",
+                    "cpu" : "None",
+                    "initSpecifierMap" : {
+                      
+                    }
+                  },
+                  "portInstance" : {
+                    "Special" : {
+                      "aNode" : {
+                        "astNodeId" : 31
+                      },
+                      "specifier" : {
+                        "inputKind" : "None",
+                        "kind" : {
+                          "CommandResp" : {
+                            
+                          }
+                        },
+                        "name" : "cmdResponseOut",
+                        "priority" : "None",
+                        "queueFull" : "None"
+                      },
+                      "symbol" : {
+                        "Port" : {
+                          "nodeId" : 4,
+                          "unqualifiedName" : "CmdResponse"
+                        }
+                      },
+                      "priority" : "None",
+                      "queueFull" : "None",
+                      "importNodeIds" : [
+                      ]
+                    }
+                  }
+                },
+                "portNumber" : "None"
+              },
+              "to" : {
+                "loc" : {
+                  "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                  "pos" : "22.5",
+                  "includingLoc" : "None"
+                },
+                "port" : {
+                  "componentInstance" : {
+                    "aNode" : {
+                      "astNodeId" : 36
+                    },
+                    "qualifiedName" : {
+                      "qualifier" : [
+                        "M"
+                      ],
+                      "base" : "commands"
+                    },
+                    "component" : {
+                      "astNodeId" : 26
+                    },
+                    "baseId" : 256,
+                    "maxId" : 255,
+                    "file" : "None",
+                    "queueSize" : "None",
+                    "stackSize" : "None",
+                    "priority" : "None",
+                    "cpu" : "None",
+                    "initSpecifierMap" : {
+                      
+                    }
+                  },
+                  "portInstance" : {
+                    "General" : {
+                      "aNode" : {
+                        "astNodeId" : 25
+                      },
+                      "specifier" : {
+                        "kind" : {
+                          "SyncInput" : {
+                            
+                          }
+                        },
+                        "name" : "cmdResponseIn",
+                        "size" : "None",
+                        "port" : {
+                          "Some" : {
+                            "astNodeId" : 24
+                          }
+                        },
+                        "priority" : "None",
+                        "queueFull" : "None"
+                      },
+                      "kind" : "SyncInput",
+                      "size" : 1,
+                      "ty" : {
+                        "DefPort" : {
+                          "symbol" : {
+                            "Port" : {
+                              "nodeId" : 4,
+                              "unqualifiedName" : "CmdResponse"
+                            }
+                          }
+                        }
+                      },
+                      "importNodeIds" : [
+                      ]
+                    }
+                  }
+                },
+                "portNumber" : "None"
+              },
+              "isUnmatched" : false
+            },
+            0
+          ],
+          [
+            {
+              "from" : {
+                "loc" : {
+                  "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                  "pos" : "22.5",
+                  "includingLoc" : "None"
+                },
+                "port" : {
+                  "componentInstance" : {
+                    "aNode" : {
+                      "astNodeId" : 36
+                    },
+                    "qualifiedName" : {
+                      "qualifier" : [
+                        "M"
+                      ],
+                      "base" : "commands"
+                    },
+                    "component" : {
+                      "astNodeId" : 26
+                    },
+                    "baseId" : 256,
+                    "maxId" : 255,
+                    "file" : "None",
+                    "queueSize" : "None",
+                    "stackSize" : "None",
+                    "priority" : "None",
+                    "cpu" : "None",
+                    "initSpecifierMap" : {
+                      
+                    }
+                  },
+                  "portInstance" : {
+                    "General" : {
+                      "aNode" : {
+                        "astNodeId" : 13
+                      },
+                      "specifier" : {
+                        "kind" : {
+                          "Output" : {
+                            
+                          }
+                        },
+                        "name" : "cmdOut",
+                        "size" : "None",
+                        "port" : {
+                          "Some" : {
+                            "astNodeId" : 12
+                          }
+                        },
+                        "priority" : "None",
+                        "queueFull" : "None"
+                      },
+                      "kind" : "Output",
+                      "size" : 1,
+                      "ty" : {
+                        "DefPort" : {
+                          "symbol" : {
+                            "Port" : {
+                              "nodeId" : 0,
+                              "unqualifiedName" : "Cmd"
+                            }
+                          }
+                        }
+                      },
+                      "importNodeIds" : [
+                      ]
+                    }
+                  }
+                },
+                "portNumber" : "None"
+              },
+              "to" : {
+                "loc" : {
+                  "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+                  "pos" : "22.5",
+                  "includingLoc" : "None"
+                },
+                "port" : {
+                  "componentInstance" : {
+                    "aNode" : {
+                      "astNodeId" : 40
+                    },
+                    "qualifiedName" : {
+                      "qualifier" : [
+                        "M"
+                      ],
+                      "base" : "c"
+                    },
+                    "component" : {
+                      "astNodeId" : 32
+                    },
+                    "baseId" : 256,
+                    "maxId" : 255,
+                    "file" : "None",
+                    "queueSize" : "None",
+                    "stackSize" : "None",
+                    "priority" : "None",
+                    "cpu" : "None",
+                    "initSpecifierMap" : {
+                      
+                    }
+                  },
+                  "portInstance" : {
+                    "Special" : {
+                      "aNode" : {
+                        "astNodeId" : 28
+                      },
+                      "specifier" : {
+                        "inputKind" : "None",
+                        "kind" : {
+                          "CommandRecv" : {
+                            
+                          }
+                        },
+                        "name" : "cmdIn",
+                        "priority" : "None",
+                        "queueFull" : "None"
+                      },
+                      "symbol" : {
+                        "Port" : {
+                          "nodeId" : 0,
+                          "unqualifiedName" : "Cmd"
+                        }
+                      },
+                      "priority" : "None",
+                      "queueFull" : "None",
+                      "importNodeIds" : [
+                      ]
+                    }
+                  }
+                },
+                "portNumber" : "None"
+              },
+              "isUnmatched" : false
+            },
+            0
+          ]
+        ],
+        "unconnectedPortSet" : [
+        ]
+      }
+    },
+    "typeMap" : {
+      "35" : {
+        "Int" : {
+          "Integer" : {
+            
+          }
+        }
+      },
+      "39" : {
+        "Int" : {
+          "Integer" : {
+            
+          }
+        }
+      }
+    },
+    "useDefMap" : {
+      "34" : {
+        "Component" : {
+          "nodeId" : 26,
+          "unqualifiedName" : "Commands"
+        }
+      },
+      "8" : {
+        "Port" : {
+          "nodeId" : 1,
+          "unqualifiedName" : "CmdReg"
+        }
+      },
+      "104" : {
+        "ComponentInstance" : {
+          "nodeId" : 40,
+          "unqualifiedName" : "c"
+        }
+      },
+      "22" : {
+        "Module" : {
+          "nodeId" : 5,
+          "unqualifiedName" : "Fw"
+        }
+      },
+      "24" : {
+        "Port" : {
+          "nodeId" : 4,
+          "unqualifiedName" : "CmdResponse"
+        }
+      },
+      "10" : {
+        "Module" : {
+          "nodeId" : 5,
+          "unqualifiedName" : "Fw"
+        }
+      },
+      "6" : {
+        "Module" : {
+          "nodeId" : 5,
+          "unqualifiedName" : "Fw"
+        }
+      },
+      "27" : {
+        "Port" : {
+          "nodeId" : 1,
+          "unqualifiedName" : "CmdReg"
+        }
+      },
+      "28" : {
+        "Port" : {
+          "nodeId" : 0,
+          "unqualifiedName" : "Cmd"
+        }
+      },
+      "12" : {
+        "Port" : {
+          "nodeId" : 0,
+          "unqualifiedName" : "Cmd"
+        }
+      },
+      "89" : {
+        "ComponentInstance" : {
+          "nodeId" : 40,
+          "unqualifiedName" : "c"
+        }
+      },
+      "102" : {
+        "ComponentInstance" : {
+          "nodeId" : 36,
+          "unqualifiedName" : "commands"
+        }
+      },
+      "31" : {
+        "Port" : {
+          "nodeId" : 4,
+          "unqualifiedName" : "CmdResponse"
+        }
+      },
+      "86" : {
+        "ComponentInstance" : {
+          "nodeId" : 36,
+          "unqualifiedName" : "commands"
+        }
+      },
+      "38" : {
+        "Component" : {
+          "nodeId" : 32,
+          "unqualifiedName" : "C"
+        }
+      }
+    },
+    "valueMap" : {
+      "35" : {
+        "Integer" : {
+          "value" : 256
+        }
+      },
+      "39" : {
+        "Integer" : {
+          "value" : 256
+        }
+      }
+    },
+    "stateMachineMap" : {
+      
+    },
+    "dictionarySymbolSet" : [
+    ],
+    "interfaceMap" : {
+      
+    }
+  }
+}

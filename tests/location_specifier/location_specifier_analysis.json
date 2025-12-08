@@ -1,0 +1,78 @@
+{
+  "fppVersion" : "v3.1.0a10-54-g11243e778",
+  "analysis" : {
+    "componentInstanceMap" : {
+      
+    },
+    "componentMap" : {
+      
+    },
+    "includedFileSet" : [
+    ],
+    "inputFileSet" : [
+      "[ local path prefix ]/compiler/tools/fpp-depend/test/dictionary_no_top.fpp"
+    ],
+    "locationSpecifierMap" : [
+      [
+        [
+          {
+            "Constant" : {
+              
+            }
+          },
+          {
+            "qualifier" : [
+            ],
+            "base" : "c"
+          }
+        ],
+        {
+          "astNodeId" : 3
+        }
+      ],
+      [
+        [
+          {
+            "Type" : {
+              
+            }
+          },
+          {
+            "qualifier" : [
+            ],
+            "base" : "T1"
+          }
+        ],
+        {
+          "astNodeId" : 7
+        }
+      ]
+    ],
+    "parentSymbolMap" : {
+      
+    },
+    "symbolScopeMap" : {
+      
+    },
+    "topologyMap" : {
+      
+    },
+    "typeMap" : {
+      
+    },
+    "useDefMap" : {
+      
+    },
+    "valueMap" : {
+      
+    },
+    "stateMachineMap" : {
+      
+    },
+    "dictionarySymbolSet" : [
+    ],
+    "interfaceMap" : {
+      
+    }
+  }
+}

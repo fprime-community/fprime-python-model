@@ -1,453 +1,528 @@
 {
-  "fppVersion": "[ fpp version ]",
-  "analysis": {
-    "componentInstanceMap": {},
-    "componentMap": {
-      "28": {
-        "aNode": {
-          "astNodeId": 28
+  "fppVersion" : "v3.1.0a10-54-g11243e778",
+  "analysis" : {
+    "componentInstanceMap" : {
+      
+    },
+    "componentMap" : {
+      "28" : {
+        "aNode" : {
+          "astNodeId" : 28
         },
-        "portMap": {
-          "productRequestOut": {
-            "Special": {
-              "aNode": {
-                "astNodeId": 7
+        "portMap" : {
+          "productRequestOut" : {
+            "Special" : {
+              "aNode" : {
+                "astNodeId" : 7
               },
-              "specifier": {
-                "inputKind": "None",
-                "kind": {
-                  "ProductRequest": {}
-                },
-                "name": "productRequestOut",
-                "priority": "None",
-                "queueFull": "None"
-              },
-              "symbol": {
-                "Port": {
-                  "nodeId": 0,
-                  "unqualifiedName": "DpRequest"
-                }
-              },
-              "priority": "None",
-              "queueFull": "None",
-              "importNodeIds": []
-            }
-          },
-          "productRecvIn": {
-            "Special": {
-              "aNode": {
-                "astNodeId": 8
-              },
-              "specifier": {
-                "inputKind": {
-                  "Some": {
-                    "Sync": {}
+              "specifier" : {
+                "inputKind" : "None",
+                "kind" : {
+                  "ProductRequest" : {
+                    
                   }
                 },
-                "kind": {
-                  "ProductRecv": {}
-                },
-                "name": "productRecvIn",
-                "priority": "None",
-                "queueFull": "None"
+                "name" : "productRequestOut",
+                "priority" : "None",
+                "queueFull" : "None"
               },
-              "symbol": {
-                "Port": {
-                  "nodeId": 1,
-                  "unqualifiedName": "DpResponse"
+              "symbol" : {
+                "Port" : {
+                  "nodeId" : 0,
+                  "unqualifiedName" : "DpRequest"
                 }
               },
-              "priority": "None",
-              "queueFull": {
-                "Some": {
-                  "Assert": {}
-                }
-              },
-              "importNodeIds": []
+              "priority" : "None",
+              "queueFull" : "None",
+              "importNodeIds" : [
+              ]
             }
           },
-          "productSendOut": {
-            "Special": {
-              "aNode": {
-                "astNodeId": 9
+          "productRecvIn" : {
+            "Special" : {
+              "aNode" : {
+                "astNodeId" : 8
               },
-              "specifier": {
-                "inputKind": "None",
-                "kind": {
-                  "ProductSend": {}
+              "specifier" : {
+                "inputKind" : {
+                  "Some" : {
+                    "Sync" : {
+                      
+                    }
+                  }
                 },
-                "name": "productSendOut",
-                "priority": "None",
-                "queueFull": "None"
+                "kind" : {
+                  "ProductRecv" : {
+                    
+                  }
+                },
+                "name" : "productRecvIn",
+                "priority" : "None",
+                "queueFull" : "None"
               },
-              "symbol": {
-                "Port": {
-                  "nodeId": 2,
-                  "unqualifiedName": "DpSend"
+              "symbol" : {
+                "Port" : {
+                  "nodeId" : 1,
+                  "unqualifiedName" : "DpResponse"
                 }
               },
-              "priority": "None",
-              "queueFull": "None",
-              "importNodeIds": []
+              "priority" : "None",
+              "queueFull" : {
+                "Some" : {
+                  "Assert" : {
+                    
+                  }
+                }
+              },
+              "importNodeIds" : [
+              ]
             }
           },
-          "timeGetOut": {
-            "Special": {
-              "aNode": {
-                "astNodeId": 10
+          "productSendOut" : {
+            "Special" : {
+              "aNode" : {
+                "astNodeId" : 9
               },
-              "specifier": {
-                "inputKind": "None",
-                "kind": {
-                  "TimeGet": {}
+              "specifier" : {
+                "inputKind" : "None",
+                "kind" : {
+                  "ProductSend" : {
+                    
+                  }
                 },
-                "name": "timeGetOut",
-                "priority": "None",
-                "queueFull": "None"
+                "name" : "productSendOut",
+                "priority" : "None",
+                "queueFull" : "None"
               },
-              "symbol": {
-                "Port": {
-                  "nodeId": 5,
-                  "unqualifiedName": "Time"
+              "symbol" : {
+                "Port" : {
+                  "nodeId" : 2,
+                  "unqualifiedName" : "DpSend"
                 }
               },
-              "priority": "None",
-              "queueFull": "None",
-              "importNodeIds": []
+              "priority" : "None",
+              "queueFull" : "None",
+              "importNodeIds" : [
+              ]
+            }
+          },
+          "timeGetOut" : {
+            "Special" : {
+              "aNode" : {
+                "astNodeId" : 10
+              },
+              "specifier" : {
+                "inputKind" : "None",
+                "kind" : {
+                  "TimeGet" : {
+                    
+                  }
+                },
+                "name" : "timeGetOut",
+                "priority" : "None",
+                "queueFull" : "None"
+              },
+              "symbol" : {
+                "Port" : {
+                  "nodeId" : 5,
+                  "unqualifiedName" : "Time"
+                }
+              },
+              "priority" : "None",
+              "queueFull" : "None",
+              "importNodeIds" : [
+              ]
             }
           }
         },
-        "specialPortMap": {
-          "product request": {
-            "aNode": {
-              "astNodeId": 7
+        "specialPortMap" : {
+          "product request" : {
+            "aNode" : {
+              "astNodeId" : 7
             },
-            "specifier": {
-              "inputKind": "None",
-              "kind": {
-                "ProductRequest": {}
-              },
-              "name": "productRequestOut",
-              "priority": "None",
-              "queueFull": "None"
-            },
-            "symbol": {
-              "Port": {
-                "nodeId": 0,
-                "unqualifiedName": "DpRequest"
-              }
-            },
-            "priority": "None",
-            "queueFull": "None",
-            "importNodeIds": []
-          },
-          "product recv": {
-            "aNode": {
-              "astNodeId": 8
-            },
-            "specifier": {
-              "inputKind": {
-                "Some": {
-                  "Sync": {}
+            "specifier" : {
+              "inputKind" : "None",
+              "kind" : {
+                "ProductRequest" : {
+                  
                 }
               },
-              "kind": {
-                "ProductRecv": {}
-              },
-              "name": "productRecvIn",
-              "priority": "None",
-              "queueFull": "None"
+              "name" : "productRequestOut",
+              "priority" : "None",
+              "queueFull" : "None"
             },
-            "symbol": {
-              "Port": {
-                "nodeId": 1,
-                "unqualifiedName": "DpResponse"
+            "symbol" : {
+              "Port" : {
+                "nodeId" : 0,
+                "unqualifiedName" : "DpRequest"
               }
             },
-            "priority": "None",
-            "queueFull": {
-              "Some": {
-                "Assert": {}
-              }
-            },
-            "importNodeIds": []
+            "priority" : "None",
+            "queueFull" : "None",
+            "importNodeIds" : [
+            ]
           },
-          "product send": {
-            "aNode": {
-              "astNodeId": 9
+          "product recv" : {
+            "aNode" : {
+              "astNodeId" : 8
             },
-            "specifier": {
-              "inputKind": "None",
-              "kind": {
-                "ProductSend": {}
+            "specifier" : {
+              "inputKind" : {
+                "Some" : {
+                  "Sync" : {
+                    
+                  }
+                }
               },
-              "name": "productSendOut",
-              "priority": "None",
-              "queueFull": "None"
+              "kind" : {
+                "ProductRecv" : {
+                  
+                }
+              },
+              "name" : "productRecvIn",
+              "priority" : "None",
+              "queueFull" : "None"
             },
-            "symbol": {
-              "Port": {
-                "nodeId": 2,
-                "unqualifiedName": "DpSend"
+            "symbol" : {
+              "Port" : {
+                "nodeId" : 1,
+                "unqualifiedName" : "DpResponse"
               }
             },
-            "priority": "None",
-            "queueFull": "None",
-            "importNodeIds": []
+            "priority" : "None",
+            "queueFull" : {
+              "Some" : {
+                "Assert" : {
+                  
+                }
+              }
+            },
+            "importNodeIds" : [
+            ]
           },
-          "time get": {
-            "aNode": {
-              "astNodeId": 10
+          "product send" : {
+            "aNode" : {
+              "astNodeId" : 9
             },
-            "specifier": {
-              "inputKind": "None",
-              "kind": {
-                "TimeGet": {}
+            "specifier" : {
+              "inputKind" : "None",
+              "kind" : {
+                "ProductSend" : {
+                  
+                }
               },
-              "name": "timeGetOut",
-              "priority": "None",
-              "queueFull": "None"
+              "name" : "productSendOut",
+              "priority" : "None",
+              "queueFull" : "None"
             },
-            "symbol": {
-              "Port": {
-                "nodeId": 5,
-                "unqualifiedName": "Time"
+            "symbol" : {
+              "Port" : {
+                "nodeId" : 2,
+                "unqualifiedName" : "DpSend"
               }
             },
-            "priority": "None",
-            "queueFull": "None",
-            "importNodeIds": []
+            "priority" : "None",
+            "queueFull" : "None",
+            "importNodeIds" : [
+            ]
+          },
+          "time get" : {
+            "aNode" : {
+              "astNodeId" : 10
+            },
+            "specifier" : {
+              "inputKind" : "None",
+              "kind" : {
+                "TimeGet" : {
+                  
+                }
+              },
+              "name" : "timeGetOut",
+              "priority" : "None",
+              "queueFull" : "None"
+            },
+            "symbol" : {
+              "Port" : {
+                "nodeId" : 5,
+                "unqualifiedName" : "Time"
+              }
+            },
+            "priority" : "None",
+            "queueFull" : "None",
+            "importNodeIds" : [
+            ]
           }
         },
-        "commandMap": {},
-        "defaultOpcode": 0,
-        "tlmChannelMap": {},
-        "tlmChannelNameMap": {},
-        "defaultTlmChannelId": 0,
-        "eventMap": {},
-        "defaultEventId": 0,
-        "paramMap": {},
-        "specPortMatchingList": [],
-        "stateMachineInstanceMap": {},
-        "portMatchingList": [],
-        "defaultParamId": 0,
-        "containerMap": {
-          "0": {
-            "aNode": {
-              "astNodeId": 11
+        "commandMap" : {
+          
+        },
+        "defaultOpcode" : 0,
+        "tlmChannelMap" : {
+          
+        },
+        "tlmChannelNameMap" : {
+          
+        },
+        "defaultTlmChannelId" : 0,
+        "eventMap" : {
+          
+        },
+        "defaultEventId" : 0,
+        "paramMap" : {
+          
+        },
+        "specPortMatchingList" : [
+        ],
+        "stateMachineInstanceMap" : {
+          
+        },
+        "portMatchingList" : [
+        ],
+        "defaultParamId" : 0,
+        "containerMap" : {
+          "0" : {
+            "aNode" : {
+              "astNodeId" : 11
             },
-            "defaultPriority": "None"
+            "defaultPriority" : "None"
           },
-          "256": {
-            "aNode": {
-              "astNodeId": 13
+          "256" : {
+            "aNode" : {
+              "astNodeId" : 13
             },
-            "defaultPriority": "None"
+            "defaultPriority" : "None"
           },
-          "512": {
-            "aNode": {
-              "astNodeId": 16
+          "512" : {
+            "aNode" : {
+              "astNodeId" : 16
             },
-            "defaultPriority": {
-              "Some": 3
+            "defaultPriority" : {
+              "Some" : 3
             }
           }
         },
-        "defaultContainerId": 513,
-        "recordMap": {
-          "0": {
-            "aNode": {
-              "astNodeId": 18
+        "defaultContainerId" : 513,
+        "recordMap" : {
+          "0" : {
+            "aNode" : {
+              "astNodeId" : 18
             },
-            "recordType": {
-              "Int": {
-                "PrimitiveInt": {
-                  "kind": {
-                    "U32": {}
+            "recordType" : {
+              "Int" : {
+                "PrimitiveInt" : {
+                  "kind" : {
+                    "U32" : {
+                      
+                    }
                   }
                 }
               }
             },
-            "isArray": false
+            "isArray" : false
           },
-          "256": {
-            "aNode": {
-              "astNodeId": 27
+          "256" : {
+            "aNode" : {
+              "astNodeId" : 27
             },
-            "recordType": {
-              "Int": {
-                "PrimitiveInt": {
-                  "kind": {
-                    "U32": {}
+            "recordType" : {
+              "Int" : {
+                "PrimitiveInt" : {
+                  "kind" : {
+                    "U32" : {
+                      
+                    }
                   }
                 }
               }
             },
-            "isArray": false
+            "isArray" : false
           }
         },
-        "defaultRecordId": 257
+        "defaultRecordId" : 257
       }
     },
-    "includedFileSet": [],
-    "inputFileSet": [
+    "includedFileSet" : [
+    ],
+    "inputFileSet" : [
       "[ local path prefix ]/compiler/tools/fpp-to-json/test/dataProducts.fpp"
     ],
-    "locationSpecifierMap": [],
-    "parentSymbolMap": {
-      "0": {
-        "Module": {
-          "nodeId": 6,
-          "unqualifiedName": "Fw"
+    "locationSpecifierMap" : [
+    ],
+    "parentSymbolMap" : {
+      "0" : {
+        "Module" : {
+          "nodeId" : 6,
+          "unqualifiedName" : "Fw"
         }
       },
-      "1": {
-        "Module": {
-          "nodeId": 6,
-          "unqualifiedName": "Fw"
+      "1" : {
+        "Module" : {
+          "nodeId" : 6,
+          "unqualifiedName" : "Fw"
         }
       },
-      "2": {
-        "Module": {
-          "nodeId": 6,
-          "unqualifiedName": "Fw"
+      "2" : {
+        "Module" : {
+          "nodeId" : 6,
+          "unqualifiedName" : "Fw"
         }
       },
-      "5": {
-        "Module": {
-          "nodeId": 6,
-          "unqualifiedName": "Fw"
+      "5" : {
+        "Module" : {
+          "nodeId" : 6,
+          "unqualifiedName" : "Fw"
         }
       }
     },
-    "symbolScopeMap": {
-      "6": {
-        "map": {
-          "Port": {
-            "map": {
-              "DpRequest": {
-                "Port": {
-                  "nodeId": 0,
-                  "unqualifiedName": "DpRequest"
+    "symbolScopeMap" : {
+      "6" : {
+        "map" : {
+          "Port" : {
+            "map" : {
+              "DpRequest" : {
+                "Port" : {
+                  "nodeId" : 0,
+                  "unqualifiedName" : "DpRequest"
                 }
               },
-              "DpResponse": {
-                "Port": {
-                  "nodeId": 1,
-                  "unqualifiedName": "DpResponse"
+              "DpResponse" : {
+                "Port" : {
+                  "nodeId" : 1,
+                  "unqualifiedName" : "DpResponse"
                 }
               },
-              "DpSend": {
-                "Port": {
-                  "nodeId": 2,
-                  "unqualifiedName": "DpSend"
+              "DpSend" : {
+                "Port" : {
+                  "nodeId" : 2,
+                  "unqualifiedName" : "DpSend"
                 }
               },
-              "Time": {
-                "Port": {
-                  "nodeId": 5,
-                  "unqualifiedName": "Time"
+              "Time" : {
+                "Port" : {
+                  "nodeId" : 5,
+                  "unqualifiedName" : "Time"
                 }
               }
             }
           }
         }
       },
-      "28": {
-        "map": {}
+      "28" : {
+        "map" : {
+          
+        }
       }
     },
-    "topologyMap": {},
-    "typeMap": {
-      "12": {
-        "Int": {
-          "Integer": {}
+    "topologyMap" : {
+      
+    },
+    "typeMap" : {
+      "12" : {
+        "Int" : {
+          "Integer" : {
+            
+          }
         }
       },
-      "15": {
-        "Int": {
-          "Integer": {}
+      "15" : {
+        "Int" : {
+          "Integer" : {
+            
+          }
         }
       },
-      "26": {
-        "Int": {
-          "Integer": {}
+      "26" : {
+        "Int" : {
+          "Integer" : {
+            
+          }
         }
       },
-      "17": {
-        "Int": {
-          "PrimitiveInt": {
-            "kind": {
-              "U32": {}
+      "17" : {
+        "Int" : {
+          "PrimitiveInt" : {
+            "kind" : {
+              "U32" : {
+                
+              }
             }
           }
         }
       },
-      "25": {
-        "Int": {
-          "PrimitiveInt": {
-            "kind": {
-              "U32": {}
+      "25" : {
+        "Int" : {
+          "PrimitiveInt" : {
+            "kind" : {
+              "U32" : {
+                
+              }
             }
           }
         }
       },
-      "14": {
-        "Int": {
-          "Integer": {}
+      "14" : {
+        "Int" : {
+          "Integer" : {
+            
+          }
         }
       }
     },
-    "useDefMap": {
-      "7": {
-        "Port": {
-          "nodeId": 0,
-          "unqualifiedName": "DpRequest"
+    "useDefMap" : {
+      "7" : {
+        "Port" : {
+          "nodeId" : 0,
+          "unqualifiedName" : "DpRequest"
         }
       },
-      "8": {
-        "Port": {
-          "nodeId": 1,
-          "unqualifiedName": "DpResponse"
+      "8" : {
+        "Port" : {
+          "nodeId" : 1,
+          "unqualifiedName" : "DpResponse"
         }
       },
-      "9": {
-        "Port": {
-          "nodeId": 2,
-          "unqualifiedName": "DpSend"
+      "9" : {
+        "Port" : {
+          "nodeId" : 2,
+          "unqualifiedName" : "DpSend"
         }
       },
-      "10": {
-        "Port": {
-          "nodeId": 5,
-          "unqualifiedName": "Time"
+      "10" : {
+        "Port" : {
+          "nodeId" : 5,
+          "unqualifiedName" : "Time"
         }
       }
     },
-    "valueMap": {
-      "12": {
-        "Integer": {
-          "value": 256
+    "valueMap" : {
+      "12" : {
+        "Integer" : {
+          "value" : 256
         }
       },
-      "14": {
-        "Integer": {
-          "value": 512
+      "14" : {
+        "Integer" : {
+          "value" : 512
         }
       },
-      "15": {
-        "Integer": {
-          "value": 3
+      "15" : {
+        "Integer" : {
+          "value" : 3
         }
       },
-      "26": {
-        "Integer": {
-          "value": 256
+      "26" : {
+        "Integer" : {
+          "value" : 256
         }
       }
     },
-    "stateMachineMap": {},
-    "dictionarySymbolSet": [],
-    "interfaceMap": {}
+    "stateMachineMap" : {
+      
+    },
+    "dictionarySymbolSet" : [
+    ],
+    "interfaceMap" : {
+      
+    }
   }
 }

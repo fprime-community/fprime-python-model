@@ -1,0 +1,87 @@
+{
+  "fppVersion" : "v3.1.0a10-54-g11243e778",
+  "ast" : [
+    {
+      "members" : [
+        [
+          [
+          ],
+          {
+            "SpecLoc" : {
+              "node" : {
+                "AstNode" : {
+                  "data" : {
+                    "kind" : {
+                      "Constant" : {
+                        
+                      }
+                    },
+                    "symbol" : {
+                      "AstNode" : {
+                        "data" : {
+                          "Unqualified" : {
+                            "name" : "c"
+                          }
+                        },
+                        "id" : 1
+                      }
+                    },
+                    "file" : {
+                      "AstNode" : {
+                        "data" : "dictionary_c.fpp",
+                        "id" : 2
+                      }
+                    },
+                    "isDictionaryDef" : true
+                  },
+                  "id" : 3
+                }
+              }
+            }
+          },
+          [
+          ]
+        ],
+        [
+          [
+          ],
+          {
+            "SpecLoc" : {
+              "node" : {
+                "AstNode" : {
+                  "data" : {
+                    "kind" : {
+                      "Type" : {
+                        
+                      }
+                    },
+                    "symbol" : {
+                      "AstNode" : {
+                        "data" : {
+                          "Unqualified" : {
+                            "name" : "T1"
+                          }
+                        },
+                        "id" : 5
+                      }
+                    },
+                    "file" : {
+                      "AstNode" : {
+                        "data" : "dictionary_T1.fpp",
+                        "id" : 6
+                      }
+                    },
+                    "isDictionaryDef" : true
+                  },
+                  "id" : 7
+                }
+              }
+            }
+          },
+          [
+          ]
+        ]
+      ]
+    }
+  ]
+}

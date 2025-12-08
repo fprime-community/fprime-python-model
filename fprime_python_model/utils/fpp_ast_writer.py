@@ -12,7 +12,7 @@ Out: TypeAlias = List[Line]
 
 class AstWriter(AstVisitor, LineUtils):
 
-    def ident(self, s: str) -> List[Line]:
+    def ident(self, s: str) -> Out:
         return self.lines(f"ident {s}")
 
     def write_trans_unit(self, tu: fpp_ast.TransUnit) -> Out:
@@ -25,10 +25,13 @@ class AstWriter(AstVisitor, LineUtils):
         a_node: fpp_ast.Annotated[AstNode[fpp_ast.DefAliasType]],
     ) -> Out:
         _, node, _ = a_node
-        return self.lines("def alias type") + list(
+        data = node.data
+        return self.prefix_with_dictionary(
+            "def alias type", data.is_dictionary_def
+        ) + list(
             map(
                 self.indent_in,
-                self.ident(node.data.name) + self.type_name_node(node.data.type_name),
+                self.ident(data.name) + self.type_name_node(data.type_name),
             )
         )
 
@@ -62,7 +65,7 @@ class AstWriter(AstVisitor, LineUtils):
     ):
         _, node, _ = a_node
         data = node.data
-        result = self.lines("def array")
+        result = self.prefix_with_dictionary("def array", data.is_dictionary_def)
         concat_list = (
             self.ident(data.name)
             + self.add_prefix("size", self.expr_node)(data.size)
@@ -152,7 +155,7 @@ class AstWriter(AstVisitor, LineUtils):
     ):
         _, node, _ = a_node
         data = node.data
-        result = self.lines("def constant")
+        result = self.prefix_with_dictionary("def constant", data.is_dictionary_def)
         concat_list = self.ident(data.name) + self.expr_node(data.value)
         return result + list(map(self.indent_in, concat_list))
 
@@ -162,7 +165,7 @@ class AstWriter(AstVisitor, LineUtils):
     ):
         _, node, _ = a_node
         data = node.data
-        result = self.lines("def enum")
+        result = self.prefix_with_dictionary("def enum", data.is_dictionary_def)
         enum_constant_lines = [
             self.annotate_node(self.def_enum_constant)(c) for c in data.constants
         ]
@@ -259,7 +262,7 @@ class AstWriter(AstVisitor, LineUtils):
     ):
         _, node, _ = a_node
         data = node.data
-        result = self.lines("def struct")
+        result = self.prefix_with_dictionary("def struct", data.is_dictionary_def)
         struct_type_member_lines = [
             self.annotate_node(self.struct_type_member)(m) for m in data.members
         ]
@@ -297,6 +300,15 @@ class AstWriter(AstVisitor, LineUtils):
         result = self.lines("expr array")
         concat_list = self.flatten([self.expr_node(el) for el in e.elts])
         return result + [self.indent_in(line) for line in concat_list]
+
+    @override
+    def expr_array_subscript_node(
+        self, _in: In, node: AstNode[fpp_ast.Expr], e: fpp_ast.ExprArraySubscript
+    ):
+        result = self.lines("expr array subscript")
+        return result + [
+            self.indent_in(line) for line in self.expr_node(e.e1) + self.expr_node(e.e2)
+        ]
 
     @override
     def expr_binop_node(
@@ -477,6 +489,14 @@ class AstWriter(AstVisitor, LineUtils):
     ):
         _, node, _ = a_node
         data = node.data
+
+        def throttle_clause(throttle: AstNode[fpp_ast.EventThrottle]) -> Out:
+            return self.add_prefix("throttle", self.expr_node)(
+                throttle.data.count
+            ) + self.lines_opt(
+                self.add_prefix("every", self.expr_node), throttle.data.every
+            )
+
         result = self.lines("spec event")
         concat_list = (
             self.ident(data.name)
@@ -484,7 +504,7 @@ class AstWriter(AstVisitor, LineUtils):
             + self.lines(f"severity {str(data.severity)}")
             + self.lines_opt(self.add_prefix("id", self.expr_node), data.id)
             + self.add_prefix("format", self.string)(data.format.data)
-            + self.lines_opt(self.add_prefix("throttle", self.expr_node), data.throttle)
+            + self.lines_opt(throttle_clause, data.throttle)
         )
         return result + [self.indent_in(line) for line in concat_list]
 
@@ -702,19 +722,19 @@ class AstWriter(AstVisitor, LineUtils):
         _, node, _ = a_node
         tc = node.data
 
-        def update(u: fpp_ast.SpecTlmChannelUpdate) -> List[Line]:
+        def update(u: fpp_ast.SpecTlmChannelUpdate) -> Out:
             return self.lines(f"update {u}")
 
-        def kind(k: fpp_ast.LimitKind) -> List[Line]:
+        def kind(k: fpp_ast.LimitKind) -> Out:
             return self.lines(str(k))
 
-        def limit(l: fpp_ast.Limit) -> List[Line]:
+        def limit(l: fpp_ast.Limit) -> Out:
             k, en = l
             return self.lines("limit") + list(
                 map(self.indent_in, kind(k.data) + self.expr_node(en))
             )
 
-        def limits(name: str, ls: List[fpp_ast.Limit]) -> List[Line]:
+        def limits(name: str, ls: List[fpp_ast.Limit]) -> Out:
             return self.flatten(list(map(self.add_prefix_no_indent(name, limit), ls)))
 
         lines_out = self.lines("spec tlm channel") + list(
@@ -841,10 +861,10 @@ class AstWriter(AstVisitor, LineUtils):
             for line in self.lines_opt(self.add_prefix("size", self.expr_node), tn.size)
         ]
 
-    def expr_node(self, node):
+    def expr_node(self, node) -> Out:
         return self.match_expr_node(None, node)
 
-    def annotate(self, pre: List[str], lines: Out, post: List[str]) -> List[Line]:
+    def annotate(self, pre: List[str], lines: Out, post: List[str]) -> Out:
         def pre_line(s: str) -> Line:
             return self.line(f"@ {s}")
 
@@ -864,10 +884,10 @@ class AstWriter(AstVisitor, LineUtils):
 
         return wrapped
 
-    def queue_full(self, qf: fpp_ast.QueueFull) -> List[Line]:
+    def queue_full(self, qf: fpp_ast.QueueFull) -> Out:
         return self.lines(f"queue full {qf}")
 
-    def spec_init(self, si: fpp_ast.SpecInit) -> List[Line]:
+    def spec_init(self, si: fpp_ast.SpecInit) -> Out:
         return self.lines("spec init") + list(
             map(
                 self.indent_in,
@@ -878,7 +898,7 @@ class AstWriter(AstVisitor, LineUtils):
             )
         )
 
-    def formal_param(self, fp: fpp_ast.FormalParam) -> List[Line]:
+    def formal_param(self, fp: fpp_ast.FormalParam) -> Out:
         def kind(k: fpp_ast.FormalParamKind) -> str:
             match k:
                 case fpp_ast.FormalParamKind.REF:
@@ -896,60 +916,60 @@ class AstWriter(AstVisitor, LineUtils):
         )
         return result
 
-    def formal_param_list(self, params: fpp_ast.FormalParamList) -> List[Line]:
+    def formal_param_list(self, params: fpp_ast.FormalParamList) -> Out:
         return [
             line
             for param in params
             for line in self.annotate_node(self.formal_param)(param)
         ]
 
-    def binop(self, op: fpp_ast.Binop) -> List[Line]:
+    def binop(self, op: fpp_ast.Binop) -> Out:
         return self.lines(f"binop {op}")
 
-    def unop(self, op: fpp_ast.Unop) -> List[Line]:
+    def unop(self, op: fpp_ast.Unop) -> Out:
         return self.lines(f"unop {op}")
 
-    def module_member(self, member: fpp_ast.ModuleMember) -> List[Line]:
+    def module_member(self, member: fpp_ast.ModuleMember) -> Out:
         a1, _, a2 = member.node
         l = self.match_module_member(None, member)
         return self.annotate(a1, l, a2)
 
-    def topology_member(self, member: fpp_ast.TopologyMember) -> List[Line]:
+    def topology_member(self, member: fpp_ast.TopologyMember) -> Out:
         a1, _, a2 = member.node
         l = self.match_topology_member(None, member)
         return self.annotate(a1, l, a2)
 
-    def component_member(self, member: fpp_ast.ComponentMember) -> List[Line]:
+    def component_member(self, member: fpp_ast.ComponentMember) -> Out:
         a1, _, a2 = member.node
         l = self.match_component_member(None, member)
         return self.annotate(a1, l, a2)
 
-    def state_member(self, member: fpp_ast.StateMember) -> List[Line]:
+    def state_member(self, member: fpp_ast.StateMember) -> Out:
         a1, _, a2 = member.node
         l = self.match_state_member(None, member)
         return self.annotate(a1, l, a2)
 
-    def state_machine_member(self, member: fpp_ast.StateMachineMember) -> List[Line]:
+    def state_machine_member(self, member: fpp_ast.StateMachineMember) -> Out:
         a1, _, a2 = member.node
         l = self.match_state_machine_member(None, member)
         return self.annotate(a1, l, a2)
 
-    def tu_member(self, tum: fpp_ast.TUMember) -> List[Line]:
+    def tu_member(self, tum: fpp_ast.TUMember) -> Out:
         return self.module_member(tum)
 
-    def interface_member(self, member: fpp_ast.InterfaceMember) -> List[Line]:
+    def interface_member(self, member: fpp_ast.InterfaceMember) -> Out:
         a1, _, a2 = member.node
         l = self.match_interface_member(None, member)
         return self.annotate(a1, l, a2)
 
-    def struct_member(self, member: fpp_ast.StructMember) -> List[Line]:
+    def struct_member(self, member: fpp_ast.StructMember) -> Out:
         return self.lines("struct member") + list(
             map(
                 self.indent_in, (self.ident(member.name) + self.expr_node(member.value))
             )
         )
 
-    def struct_type_member(self, member: fpp_ast.StructTypeMember) -> List[Line]:
+    def struct_type_member(self, member: fpp_ast.StructTypeMember) -> Out:
         return self.lines("struct type member") + list(
             map(
                 self.indent_in,
@@ -965,7 +985,7 @@ class AstWriter(AstVisitor, LineUtils):
             )
         )
 
-    def tlm_packet_member(self, member: fpp_ast.TlmPacketMember) -> List[Line]:
+    def tlm_packet_member(self, member: fpp_ast.TlmPacketMember) -> Out:
         match member:
             case fpp_ast.TlmPacketMemberSpecInclude():
                 return self.spec_include_annotated_node(None, ([], member.node, []))
@@ -976,20 +996,20 @@ class AstWriter(AstVisitor, LineUtils):
             case _:
                 raise Exception("TlmPacketMember writer not implemented")
 
-    def tlm_packet_set_member(self, member: fpp_ast.TlmPacketSetMember) -> List[Line]:
+    def tlm_packet_set_member(self, member: fpp_ast.TlmPacketSetMember) -> Out:
         a1, _, a2 = member.node
         l = self.match_tlm_packet_set_member(None, member)
         return self.annotate(a1, l, a2)
 
-    def action_list(self, actions: List[AstNode[fpp_ast.Ident]]) -> List[Line]:
+    def action_list(self, actions: List[AstNode[fpp_ast.Ident]]) -> Out:
         return [self.line(f"action ident {node.data}") for node in actions]
 
-    def transition_expr(self, transition: fpp_ast.TransitionExpr) -> List[Line]:
+    def transition_expr(self, transition: fpp_ast.TransitionExpr) -> Out:
         return self.action_list(transition.actions) + self.add_prefix(
             "target", self.apply_to_data(self.qual_ident)
         )(transition.target)
 
-    def string(self, s: str) -> List[Line]:
+    def string(self, s: str) -> Out:
         return [self.line(split_s) for split_s in s.split("\n")]
 
     def apply_to_data(self, f):
@@ -998,13 +1018,11 @@ class AstWriter(AstVisitor, LineUtils):
 
         return inner
 
-    def port_instance_identifier(
-        self, pii: fpp_ast.PortInstanceIdentifier
-    ) -> List[Line]:
+    def port_instance_identifier(self, pii: fpp_ast.PortInstanceIdentifier) -> Out:
         qid = fpp_ast.Qualified(pii.component_instance, pii.port_name)
         return self.qual_ident(qid)
 
-    def tlm_channel_identifier(self, tci: fpp_ast.TlmChannelIdentifier) -> List[Line]:
+    def tlm_channel_identifier(self, tci: fpp_ast.TlmChannelIdentifier) -> Out:
         qid = fpp_ast.Qualified(tci.component_instance, tci.channel_name)
         return self.qual_ident(qid)
 
@@ -1019,11 +1037,11 @@ class AstWriter(AstVisitor, LineUtils):
     def qual_ident(self, qid: fpp_ast.QualIdent) -> Out:
         return self.lines(f"qual ident {self.qual_ident_string(qid)}")
 
-    def def_enum_constant(self, dec: fpp_ast.DefEnumConstant) -> List[Line]:
+    def def_enum_constant(self, dec: fpp_ast.DefEnumConstant) -> Out:
         constants = self.ident(dec.name) + self.lines_opt(self.expr_node, dec.value)
         return self.lines("def enum constant") + list(map(self.indent_in, constants))
 
-    def file_string(self, s: str) -> List[Line]:
+    def file_string(self, s: str) -> Out:
         return self.lines(f"file {s}")
 
     def transition_or_do(self, tod):
@@ -1052,7 +1070,7 @@ class AstWriter(AstVisitor, LineUtils):
 
         return wrapped
 
-    def type_name_node(self, node: AstNode[fpp_ast.TypeName]) -> List[Line]:
+    def type_name_node(self, node: AstNode[fpp_ast.TypeName]) -> Out:
         func: Callable[[AstNode[fpp_ast.TypeName]], List[Line]] = (
             lambda n: self.match_type_name_node((), n)
         )
@@ -1069,3 +1087,9 @@ class AstWriter(AstVisitor, LineUtils):
             else:
                 result.append(item)
         return result
+
+    def prefix_with_dictionary(self, s: str, is_dictionary_def: bool) -> Out:
+        if is_dictionary_def:
+            return self.lines(f"dictionary {s}")
+        else:
+            return self.lines(s)

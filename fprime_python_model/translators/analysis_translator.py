@@ -107,7 +107,7 @@ from fprime_python_model.translators.ast_translator import (
     translate_pattern_kind,
 )
 from fprime_python_model.semantics.tlm_channel import TlmChannel, TlmChannelId, Limits
-from fprime_python_model.semantics.event import Event, EventId
+from fprime_python_model.semantics.event import Event, EventId, Throttle, TimeInterval
 from fprime_python_model.semantics.param import Param, ParamId
 from fprime_python_model.semantics.state_machine_instance import StateMachineInstance
 from fprime_python_model.semantics.container import Container, ContainerId
@@ -177,12 +177,14 @@ class AnalysisTranslator:
         ast_map: Dict[AstId, AstNode],
         annotated_ast_map: Dict[AstId, fpp_ast.Annotated[AstNode]],
         analysis_json_file: str,
+        location_map: Dict[AstId, Location],
     ):
         self.ast_map: Dict[AstId, AstNode] = ast_map
         self.annotated_ast_map: Dict[AstId, fpp_ast.Annotated[AstNode]] = (
             annotated_ast_map
         )
         self.analysis_json_file: str = analysis_json_file
+        self.location_map = location_map
 
         self.component_map: Dict[AstId, Component] = dict()
         self.component_instance_map: Dict[AstId, ComponentInstance] = dict()
@@ -223,12 +225,8 @@ class AnalysisTranslator:
             qual_name_json: Dict = ls[0][1]
             spec_loc_kind = translate_spec_loc_kind(kind_json)
             spec_loc_qualified_name = self.translate_qualified_name(qual_name_json)
-            spec_loc = fpp_ast.SpecLoc(
-                translate_spec_loc_kind(ls[1]["kind"]),
-                self.ast_map[ls[1]["symbol"]["astNodeId"]],
-                self.ast_map[ls[1]["file"]["astNodeId"]],
-            )
-            out_dict[(spec_loc_kind, spec_loc_qualified_name)] = spec_loc
+            spec_loc_a_node = self.get_annotated_ast_node_by_id(ls[1]["astNodeId"])
+            out_dict[(spec_loc_kind, spec_loc_qualified_name)] = spec_loc_a_node[1].data
         return out_dict
 
     def translate_symbol(self, symbol_type: str, node_id: AstId) -> Symbol:
@@ -263,7 +261,9 @@ class AnalysisTranslator:
             case "Topology":
                 return TopologySymbol(a_node)
             case _:
-                raise InvalidFppToJsonField(symbol_type)
+                raise InvalidFppToJsonField(
+                    symbol_type, self.location_map.get(node_id, None)
+                )
 
     def translate_state_machine_symbol(
         self, symbol_type: str, node_id: AstId
@@ -281,7 +281,9 @@ class AnalysisTranslator:
             case "Guard":
                 return GuardSymbol(a_node)
             case _:
-                raise InvalidFppToJsonField(symbol_type)
+                raise InvalidFppToJsonField(
+                    symbol_type, self.location_map.get(node_id, None)
+                )
 
     def get_symbol_type_from_node(self, a_node: fpp_ast.Annotated[AstNode[T]]) -> str:
         _, node, _ = a_node
@@ -368,7 +370,7 @@ class AnalysisTranslator:
             case "Value":
                 return NameGroup.VALUE
             case _:
-                raise InternalError("Encountered invalid name group.")
+                raise InternalError(f"Encountered invalid name group {ng}.")
 
     def translate_scope(self, d: Dict[str, dict]) -> Scope:
         scope = Scope()
@@ -728,7 +730,9 @@ class AnalysisTranslator:
                 )
                 return InternalPortInstance(a_node, priority, queue_full)
             case _:
-                raise InvalidFppToJsonField(p_type)
+                raise InvalidFppToJsonField(
+                    p_type, self.location_map.get(a_node[1].get_id(), None)
+                )
 
     def translate_special_port_instance(
         self, d: Dict[str, dict]
@@ -789,10 +793,19 @@ class AnalysisTranslator:
         high_limits = self.translate_limits(d["highLimits"])
         return TlmChannel(a_node, c_type, update, format, low_limits, high_limits)
 
+    def translate_time_interval(self, d: Dict[str, int]) -> TimeInterval:
+        return TimeInterval(d["seconds"], d["useconds"])
+
+    def translate_throttle(self, d: Dict[str, dict]) -> Throttle:
+        return Throttle(
+            self.require_type(d["count"], int),
+            self.translate_optional(d["every"], self.translate_time_interval),
+        )
+
     def translate_event(self, d: Dict[str, dict]) -> Event:
         a_node = self.get_annotated_ast_node_by_id(int(d["aNode"]["astNodeId"]))
         format = self.translate_format(d["format"])
-        throttle = self.translate_optional(d["throttle"], int)
+        throttle = self.translate_optional(d["throttle"], self.translate_throttle)
         return Event(a_node, format, throttle)
 
     def translate_param(self, d: Dict[str, dict]) -> Param:

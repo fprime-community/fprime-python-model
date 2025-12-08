@@ -5,7 +5,9 @@ from fprime_python_model.fpp_ast.fpp_ast_node import AstNode
 
 
 class Symbol(SymbolInterface):
-    pass
+
+    def is_dictionary_def(self):
+        return False
 
 
 @dataclass
@@ -29,6 +31,9 @@ class AliasTypeSymbol(Symbol):
     def get_unqualified_name(self):
         return self.node[1].data.name
 
+    def is_dictionary_def(self):
+        return self.node[1].data.is_dictionary_def
+
 
 @dataclass
 class ArraySymbol(Symbol):
@@ -39,6 +44,9 @@ class ArraySymbol(Symbol):
 
     def get_unqualified_name(self):
         return self.node[1].data.name
+
+    def is_dictionary_def(self):
+        return self.node[1].data.is_dictionary_def
 
 
 @dataclass
@@ -73,6 +81,9 @@ class ConstantSymbol(Symbol):
     def get_unqualified_name(self):
         return self.node[1].data.name
 
+    def is_dictionary_def(self):
+        return self.node[1].data.is_dictionary_def
+
 
 @dataclass
 class EnumSymbol(Symbol):
@@ -83,6 +94,9 @@ class EnumSymbol(Symbol):
 
     def get_unqualified_name(self):
         return self.node[1].data.name
+
+    def is_dictionary_def(self):
+        return self.node[1].data.is_dictionary_def
 
 
 @dataclass
@@ -149,6 +163,9 @@ class StructSymbol(Symbol):
 
     def get_unqualified_name(self):
         return self.node[1].data.name
+
+    def is_dictionary_def(self):
+        return self.node[1].data.is_dictionary_def
 
 
 @dataclass

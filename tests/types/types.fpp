@@ -1,4 +1,4 @@
-constant numElements = 3
+dictionary constant numElements = 3
 
 array A = [numElements] string size 40 default [
                                                  "1"
@@ -35,7 +35,7 @@ type T
 
 array arr = [3] T
 
-struct SignalInfo {
+dictionary struct SignalInfo {
   $type: SignalType
   history: SignalSet
   pairHistory: SignalPairSet
@@ -48,15 +48,15 @@ struct SignalPair {
 
 array SignalPairSet = [4] SignalPair
 
-array SignalSet = [4] F32 format "{f}"
+dictionary array SignalSet = [4] F32 format "{f}"
 
-enum SignalType {
+dictionary enum SignalType {
   TRIANGLE
   SQUARE
   SINE
   NOISE
 }
 
-type Alias1 = U32
+dictionary type Alias1 = U32
 
 type Alias2 = U32

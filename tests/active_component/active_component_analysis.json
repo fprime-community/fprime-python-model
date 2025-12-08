@@ -1,564 +1,627 @@
 {
-  "fppVersion": "[ fpp version ]",
-  "analysis": {
-    "componentInstanceMap": {
-      "165": {
-        "aNode": {
-          "astNodeId": 165
+  "fppVersion" : "v3.1.0a10-54-g11243e778",
+  "analysis" : {
+    "componentInstanceMap" : {
+      "165" : {
+        "aNode" : {
+          "astNodeId" : 165
         },
-        "qualifiedName": {
-          "qualifier": ["FSW"],
-          "base": "dataCompressor"
+        "qualifiedName" : {
+          "qualifier" : [
+            "FSW"
+          ],
+          "base" : "dataCompressor"
         },
-        "component": {
-          "astNodeId": 58
+        "component" : {
+          "astNodeId" : 58
         },
-        "baseId": 256,
-        "maxId": 255,
-        "file": "None",
-        "queueSize": {
-          "Some": 10
+        "baseId" : 256,
+        "maxId" : 255,
+        "file" : "None",
+        "queueSize" : {
+          "Some" : 10
         },
-        "stackSize": {
-          "Some": 10240
+        "stackSize" : {
+          "Some" : 10240
         },
-        "priority": {
-          "Some": 30
+        "priority" : {
+          "Some" : 30
         },
-        "cpu": "None",
-        "initSpecifierMap": {}
+        "cpu" : "None",
+        "initSpecifierMap" : {
+          
+        }
       },
-      "201": {
-        "aNode": {
-          "astNodeId": 201
+      "201" : {
+        "aNode" : {
+          "astNodeId" : 201
         },
-        "qualifiedName": {
-          "qualifier": ["FSW"],
-          "base": "stateMachines"
+        "qualifiedName" : {
+          "qualifier" : [
+            "FSW"
+          ],
+          "base" : "stateMachines"
         },
-        "component": {
-          "astNodeId": 137
+        "component" : {
+          "astNodeId" : 137
         },
-        "baseId": 512,
-        "maxId": 511,
-        "file": "None",
-        "queueSize": {
-          "Some": 10
+        "baseId" : 512,
+        "maxId" : 511,
+        "file" : "None",
+        "queueSize" : {
+          "Some" : 10
         },
-        "stackSize": {
-          "Some": 10240
+        "stackSize" : {
+          "Some" : 10240
         },
-        "priority": {
-          "Some": 40
+        "priority" : {
+          "Some" : 40
         },
-        "cpu": "None",
-        "initSpecifierMap": {}
+        "cpu" : "None",
+        "initSpecifierMap" : {
+          
+        }
       }
     },
-    "componentMap": {
-      "58": {
-        "aNode": {
-          "astNodeId": 58
+    "componentMap" : {
+      "58" : {
+        "aNode" : {
+          "astNodeId" : 58
         },
-        "portMap": {
-          "bufferSendIn": {
-            "General": {
-              "aNode": {
-                "astNodeId": 45
+        "portMap" : {
+          "bufferSendIn" : {
+            "General" : {
+              "aNode" : {
+                "astNodeId" : 45
               },
-              "specifier": {
-                "kind": {
-                  "AsyncInput": {}
-                },
-                "name": "bufferSendIn",
-                "size": "None",
-                "port": {
-                  "Some": {
-                    "astNodeId": 44
+              "specifier" : {
+                "kind" : {
+                  "AsyncInput" : {
+                    
                   }
                 },
-                "priority": "None",
-                "queueFull": "None"
+                "name" : "bufferSendIn",
+                "size" : "None",
+                "port" : {
+                  "Some" : {
+                    "astNodeId" : 44
+                  }
+                },
+                "priority" : "None",
+                "queueFull" : "None"
               },
-              "kind": "AsyncInput",
-              "size": 1,
-              "ty": {
-                "DefPort": {
-                  "symbol": {
-                    "Port": {
-                      "nodeId": 2,
-                      "unqualifiedName": "BufferSend"
+              "kind" : "AsyncInput",
+              "size" : 1,
+              "ty" : {
+                "DefPort" : {
+                  "symbol" : {
+                    "Port" : {
+                      "nodeId" : 2,
+                      "unqualifiedName" : "BufferSend"
                     }
                   }
                 }
               },
-              "importNodeIds": []
+              "importNodeIds" : [
+              ]
             }
           },
-          "bufferSendOut": {
-            "General": {
-              "aNode": {
-                "astNodeId": 57
+          "bufferSendOut" : {
+            "General" : {
+              "aNode" : {
+                "astNodeId" : 57
               },
-              "specifier": {
-                "kind": {
-                  "Output": {}
-                },
-                "name": "bufferSendOut",
-                "size": "None",
-                "port": {
-                  "Some": {
-                    "astNodeId": 56
+              "specifier" : {
+                "kind" : {
+                  "Output" : {
+                    
                   }
                 },
-                "priority": "None",
-                "queueFull": "None"
+                "name" : "bufferSendOut",
+                "size" : "None",
+                "port" : {
+                  "Some" : {
+                    "astNodeId" : 56
+                  }
+                },
+                "priority" : "None",
+                "queueFull" : "None"
               },
-              "kind": "Output",
-              "size": 1,
-              "ty": {
-                "DefPort": {
-                  "symbol": {
-                    "Port": {
-                      "nodeId": 2,
-                      "unqualifiedName": "BufferSend"
+              "kind" : "Output",
+              "size" : 1,
+              "ty" : {
+                "DefPort" : {
+                  "symbol" : {
+                    "Port" : {
+                      "nodeId" : 2,
+                      "unqualifiedName" : "BufferSend"
                     }
                   }
                 }
               },
-              "importNodeIds": []
+              "importNodeIds" : [
+              ]
             }
           }
         },
-        "specialPortMap": {},
-        "commandMap": {},
-        "defaultOpcode": 0,
-        "tlmChannelMap": {},
-        "tlmChannelNameMap": {},
-        "defaultTlmChannelId": 0,
-        "eventMap": {},
-        "defaultEventId": 0,
-        "paramMap": {},
-        "specPortMatchingList": [],
-        "stateMachineInstanceMap": {},
-        "portMatchingList": [],
-        "defaultParamId": 0,
-        "containerMap": {},
-        "defaultContainerId": 0,
-        "recordMap": {},
-        "defaultRecordId": 0
+        "specialPortMap" : {
+          
+        },
+        "commandMap" : {
+          
+        },
+        "defaultOpcode" : 0,
+        "tlmChannelMap" : {
+          
+        },
+        "tlmChannelNameMap" : {
+          
+        },
+        "defaultTlmChannelId" : 0,
+        "eventMap" : {
+          
+        },
+        "defaultEventId" : 0,
+        "paramMap" : {
+          
+        },
+        "specPortMatchingList" : [
+        ],
+        "stateMachineInstanceMap" : {
+          
+        },
+        "portMatchingList" : [
+        ],
+        "defaultParamId" : 0,
+        "containerMap" : {
+          
+        },
+        "defaultContainerId" : 0,
+        "recordMap" : {
+          
+        },
+        "defaultRecordId" : 0
       },
-      "137": {
-        "aNode": {
-          "astNodeId": 137
+      "137" : {
+        "aNode" : {
+          "astNodeId" : 137
         },
-        "portMap": {
-          "schedIn": {
-            "General": {
-              "aNode": {
-                "astNodeId": 115
+        "portMap" : {
+          "schedIn" : {
+            "General" : {
+              "aNode" : {
+                "astNodeId" : 115
               },
-              "specifier": {
-                "kind": {
-                  "AsyncInput": {}
-                },
-                "name": "schedIn",
-                "size": "None",
-                "port": {
-                  "Some": {
-                    "astNodeId": 114
+              "specifier" : {
+                "kind" : {
+                  "AsyncInput" : {
+                    
                   }
                 },
-                "priority": "None",
-                "queueFull": "None"
+                "name" : "schedIn",
+                "size" : "None",
+                "port" : {
+                  "Some" : {
+                    "astNodeId" : 114
+                  }
+                },
+                "priority" : "None",
+                "queueFull" : "None"
               },
-              "kind": "AsyncInput",
-              "size": 1,
-              "ty": {
-                "DefPort": {
-                  "symbol": {
-                    "Port": {
-                      "nodeId": 6,
-                      "unqualifiedName": "Sched"
+              "kind" : "AsyncInput",
+              "size" : 1,
+              "ty" : {
+                "DefPort" : {
+                  "symbol" : {
+                    "Port" : {
+                      "nodeId" : 6,
+                      "unqualifiedName" : "Sched"
                     }
                   }
                 }
               },
-              "importNodeIds": []
+              "importNodeIds" : [
+              ]
             }
           }
         },
-        "specialPortMap": {},
-        "commandMap": {},
-        "defaultOpcode": 0,
-        "tlmChannelMap": {},
-        "tlmChannelNameMap": {},
-        "defaultTlmChannelId": 0,
-        "eventMap": {},
-        "defaultEventId": 0,
-        "paramMap": {},
-        "specPortMatchingList": [],
-        "stateMachineInstanceMap": {
-          "s1": {
-            "aNode": {
-              "astNodeId": 127
+        "specialPortMap" : {
+          
+        },
+        "commandMap" : {
+          
+        },
+        "defaultOpcode" : 0,
+        "tlmChannelMap" : {
+          
+        },
+        "tlmChannelNameMap" : {
+          
+        },
+        "defaultTlmChannelId" : 0,
+        "eventMap" : {
+          
+        },
+        "defaultEventId" : 0,
+        "paramMap" : {
+          
+        },
+        "specPortMatchingList" : [
+        ],
+        "stateMachineInstanceMap" : {
+          "s1" : {
+            "aNode" : {
+              "astNodeId" : 127
             },
-            "symbol": {
-              "node": {
-                "astNodeId": 116
+            "symbol" : {
+              "node" : {
+                "astNodeId" : 116
               }
             },
-            "priority": "None",
-            "queueFull": {
-              "Assert": {}
+            "priority" : "None",
+            "queueFull" : {
+              "Assert" : {
+                
+              }
             }
           },
-          "s2": {
-            "aNode": {
-              "astNodeId": 136
+          "s2" : {
+            "aNode" : {
+              "astNodeId" : 136
             },
-            "symbol": {
-              "node": {
-                "astNodeId": 124
+            "symbol" : {
+              "node" : {
+                "astNodeId" : 124
               }
             },
-            "priority": "None",
-            "queueFull": {
-              "Assert": {}
+            "priority" : "None",
+            "queueFull" : {
+              "Assert" : {
+                
+              }
             }
           }
         },
-        "portMatchingList": [],
-        "defaultParamId": 0,
-        "containerMap": {},
-        "defaultContainerId": 0,
-        "recordMap": {},
-        "defaultRecordId": 0
+        "portMatchingList" : [
+        ],
+        "defaultParamId" : 0,
+        "containerMap" : {
+          
+        },
+        "defaultContainerId" : 0,
+        "recordMap" : {
+          
+        },
+        "defaultRecordId" : 0
       }
     },
-    "includedFileSet": [],
-    "inputFileSet": [
+    "includedFileSet" : [
+    ],
+    "inputFileSet" : [
       "[ local path prefix ]/compiler/tools/fpp-to-json/test/activeComponents.fpp"
     ],
-    "locationSpecifierMap": [],
-    "parentSymbolMap": {
-      "153": {
-        "Module": {
-          "nodeId": 202,
-          "unqualifiedName": "FSW"
+    "locationSpecifierMap" : [
+    ],
+    "parentSymbolMap" : {
+      "153" : {
+        "Module" : {
+          "nodeId" : 202,
+          "unqualifiedName" : "FSW"
         }
       },
-      "124": {
-        "Component": {
-          "nodeId": 137,
-          "unqualifiedName": "StateMachines"
+      "124" : {
+        "Component" : {
+          "nodeId" : 137,
+          "unqualifiedName" : "StateMachines"
         }
       },
-      "201": {
-        "Module": {
-          "nodeId": 202,
-          "unqualifiedName": "FSW"
+      "201" : {
+        "Module" : {
+          "nodeId" : 202,
+          "unqualifiedName" : "FSW"
         }
       },
-      "152": {
-        "Module": {
-          "nodeId": 153,
-          "unqualifiedName": "Default"
+      "152" : {
+        "Module" : {
+          "nodeId" : 153,
+          "unqualifiedName" : "Default"
         }
       },
-      "116": {
-        "Component": {
-          "nodeId": 137,
-          "unqualifiedName": "StateMachines"
+      "116" : {
+        "Component" : {
+          "nodeId" : 137,
+          "unqualifiedName" : "StateMachines"
         }
       },
-      "137": {
-        "Module": {
-          "nodeId": 138,
-          "unqualifiedName": "M"
+      "137" : {
+        "Module" : {
+          "nodeId" : 138,
+          "unqualifiedName" : "M"
         }
       },
-      "6": {
-        "Module": {
-          "nodeId": 7,
-          "unqualifiedName": "Svc"
+      "6" : {
+        "Module" : {
+          "nodeId" : 7,
+          "unqualifiedName" : "Svc"
         }
       },
-      "140": {
-        "Module": {
-          "nodeId": 153,
-          "unqualifiedName": "Default"
+      "140" : {
+        "Module" : {
+          "nodeId" : 153,
+          "unqualifiedName" : "Default"
         }
       },
-      "58": {
-        "Module": {
-          "nodeId": 59,
-          "unqualifiedName": "Utils"
+      "58" : {
+        "Module" : {
+          "nodeId" : 59,
+          "unqualifiedName" : "Utils"
         }
       },
-      "2": {
-        "Module": {
-          "nodeId": 3,
-          "unqualifiedName": "Fw"
+      "2" : {
+        "Module" : {
+          "nodeId" : 3,
+          "unqualifiedName" : "Fw"
         }
       },
-      "165": {
-        "Module": {
-          "nodeId": 202,
-          "unqualifiedName": "FSW"
+      "165" : {
+        "Module" : {
+          "nodeId" : 202,
+          "unqualifiedName" : "FSW"
         }
       }
     },
-    "symbolScopeMap": {
-      "153": {
-        "map": {
-          "Value": {
-            "map": {
-              "queueSize": {
-                "Constant": {
-                  "nodeId": 140,
-                  "unqualifiedName": "queueSize"
+    "symbolScopeMap" : {
+      "153" : {
+        "map" : {
+          "Value" : {
+            "map" : {
+              "queueSize" : {
+                "Constant" : {
+                  "nodeId" : 140,
+                  "unqualifiedName" : "queueSize"
                 }
               },
-              "stackSize": {
-                "Constant": {
-                  "nodeId": 152,
-                  "unqualifiedName": "stackSize"
+              "stackSize" : {
+                "Constant" : {
+                  "nodeId" : 152,
+                  "unqualifiedName" : "stackSize"
                 }
               }
             }
           }
         }
       },
-      "59": {
-        "map": {
-          "Component": {
-            "map": {
-              "DataCompressor": {
-                "Component": {
-                  "nodeId": 58,
-                  "unqualifiedName": "DataCompressor"
+      "59" : {
+        "map" : {
+          "Component" : {
+            "map" : {
+              "DataCompressor" : {
+                "Component" : {
+                  "nodeId" : 58,
+                  "unqualifiedName" : "DataCompressor"
                 }
               }
             }
           },
-          "StateMachine": {
-            "map": {
-              "DataCompressor": {
-                "Component": {
-                  "nodeId": 58,
-                  "unqualifiedName": "DataCompressor"
+          "StateMachine" : {
+            "map" : {
+              "DataCompressor" : {
+                "Component" : {
+                  "nodeId" : 58,
+                  "unqualifiedName" : "DataCompressor"
                 }
               }
             }
           },
-          "Type": {
-            "map": {
-              "DataCompressor": {
-                "Component": {
-                  "nodeId": 58,
-                  "unqualifiedName": "DataCompressor"
+          "Type" : {
+            "map" : {
+              "DataCompressor" : {
+                "Component" : {
+                  "nodeId" : 58,
+                  "unqualifiedName" : "DataCompressor"
                 }
               }
             }
           },
-          "Value": {
-            "map": {
-              "DataCompressor": {
-                "Component": {
-                  "nodeId": 58,
-                  "unqualifiedName": "DataCompressor"
+          "Value" : {
+            "map" : {
+              "DataCompressor" : {
+                "Component" : {
+                  "nodeId" : 58,
+                  "unqualifiedName" : "DataCompressor"
                 }
               }
             }
           }
         }
       },
-      "138": {
-        "map": {
-          "Component": {
-            "map": {
-              "StateMachines": {
-                "Component": {
-                  "nodeId": 137,
-                  "unqualifiedName": "StateMachines"
+      "138" : {
+        "map" : {
+          "Component" : {
+            "map" : {
+              "StateMachines" : {
+                "Component" : {
+                  "nodeId" : 137,
+                  "unqualifiedName" : "StateMachines"
                 }
               }
             }
           },
-          "StateMachine": {
-            "map": {
-              "StateMachines": {
-                "Component": {
-                  "nodeId": 137,
-                  "unqualifiedName": "StateMachines"
+          "StateMachine" : {
+            "map" : {
+              "StateMachines" : {
+                "Component" : {
+                  "nodeId" : 137,
+                  "unqualifiedName" : "StateMachines"
                 }
               }
             }
           },
-          "Type": {
-            "map": {
-              "StateMachines": {
-                "Component": {
-                  "nodeId": 137,
-                  "unqualifiedName": "StateMachines"
+          "Type" : {
+            "map" : {
+              "StateMachines" : {
+                "Component" : {
+                  "nodeId" : 137,
+                  "unqualifiedName" : "StateMachines"
                 }
               }
             }
           },
-          "Value": {
-            "map": {
-              "StateMachines": {
-                "Component": {
-                  "nodeId": 137,
-                  "unqualifiedName": "StateMachines"
+          "Value" : {
+            "map" : {
+              "StateMachines" : {
+                "Component" : {
+                  "nodeId" : 137,
+                  "unqualifiedName" : "StateMachines"
                 }
               }
             }
           }
         }
       },
-      "202": {
-        "map": {
-          "ComponentInstance": {
-            "map": {
-              "Default": {
-                "Module": {
-                  "nodeId": 153,
-                  "unqualifiedName": "Default"
+      "202" : {
+        "map" : {
+          "ComponentInstance" : {
+            "map" : {
+              "Default" : {
+                "Module" : {
+                  "nodeId" : 153,
+                  "unqualifiedName" : "Default"
                 }
               },
-              "dataCompressor": {
-                "ComponentInstance": {
-                  "nodeId": 165,
-                  "unqualifiedName": "dataCompressor"
+              "dataCompressor" : {
+                "ComponentInstance" : {
+                  "nodeId" : 165,
+                  "unqualifiedName" : "dataCompressor"
                 }
               },
-              "stateMachines": {
-                "ComponentInstance": {
-                  "nodeId": 201,
-                  "unqualifiedName": "stateMachines"
+              "stateMachines" : {
+                "ComponentInstance" : {
+                  "nodeId" : 201,
+                  "unqualifiedName" : "stateMachines"
                 }
               }
             }
           },
-          "Topology": {
-            "map": {
-              "Default": {
-                "Module": {
-                  "nodeId": 153,
-                  "unqualifiedName": "Default"
+          "Topology" : {
+            "map" : {
+              "Default" : {
+                "Module" : {
+                  "nodeId" : 153,
+                  "unqualifiedName" : "Default"
                 }
               }
             }
           },
-          "Interface": {
-            "map": {
-              "Default": {
-                "Module": {
-                  "nodeId": 153,
-                  "unqualifiedName": "Default"
+          "Interface" : {
+            "map" : {
+              "Default" : {
+                "Module" : {
+                  "nodeId" : 153,
+                  "unqualifiedName" : "Default"
                 }
               }
             }
           },
-          "StateMachine": {
-            "map": {
-              "Default": {
-                "Module": {
-                  "nodeId": 153,
-                  "unqualifiedName": "Default"
+          "StateMachine" : {
+            "map" : {
+              "Default" : {
+                "Module" : {
+                  "nodeId" : 153,
+                  "unqualifiedName" : "Default"
                 }
               }
             }
           },
-          "Value": {
-            "map": {
-              "Default": {
-                "Module": {
-                  "nodeId": 153,
-                  "unqualifiedName": "Default"
+          "Value" : {
+            "map" : {
+              "Default" : {
+                "Module" : {
+                  "nodeId" : 153,
+                  "unqualifiedName" : "Default"
                 }
               }
             }
           },
-          "Port": {
-            "map": {
-              "Default": {
-                "Module": {
-                  "nodeId": 153,
-                  "unqualifiedName": "Default"
+          "Port" : {
+            "map" : {
+              "Default" : {
+                "Module" : {
+                  "nodeId" : 153,
+                  "unqualifiedName" : "Default"
                 }
               }
             }
           },
-          "Component": {
-            "map": {
-              "Default": {
-                "Module": {
-                  "nodeId": 153,
-                  "unqualifiedName": "Default"
+          "Component" : {
+            "map" : {
+              "Default" : {
+                "Module" : {
+                  "nodeId" : 153,
+                  "unqualifiedName" : "Default"
                 }
               }
             }
           },
-          "Type": {
-            "map": {
-              "Default": {
-                "Module": {
-                  "nodeId": 153,
-                  "unqualifiedName": "Default"
+          "Type" : {
+            "map" : {
+              "Default" : {
+                "Module" : {
+                  "nodeId" : 153,
+                  "unqualifiedName" : "Default"
                 }
               }
             }
           }
         }
       },
-      "137": {
-        "map": {
-          "StateMachine": {
-            "map": {
-              "S1": {
-                "StateMachine": {
-                  "nodeId": 116,
-                  "unqualifiedName": "S1"
+      "137" : {
+        "map" : {
+          "StateMachine" : {
+            "map" : {
+              "S1" : {
+                "StateMachine" : {
+                  "nodeId" : 116,
+                  "unqualifiedName" : "S1"
                 }
               },
-              "S2": {
-                "StateMachine": {
-                  "nodeId": 124,
-                  "unqualifiedName": "S2"
+              "S2" : {
+                "StateMachine" : {
+                  "nodeId" : 124,
+                  "unqualifiedName" : "S2"
                 }
               }
             }
           }
         }
       },
-      "58": {
-        "map": {}
+      "58" : {
+        "map" : {
+          
+        }
       },
-      "7": {
-        "map": {
-          "Port": {
-            "map": {
-              "Sched": {
-                "Port": {
-                  "nodeId": 6,
-                  "unqualifiedName": "Sched"
+      "7" : {
+        "map" : {
+          "Port" : {
+            "map" : {
+              "Sched" : {
+                "Port" : {
+                  "nodeId" : 6,
+                  "unqualifiedName" : "Sched"
                 }
               }
             }
           }
         }
       },
-      "3": {
-        "map": {
-          "Port": {
-            "map": {
-              "BufferSend": {
-                "Port": {
-                  "nodeId": 2,
-                  "unqualifiedName": "BufferSend"
+      "3" : {
+        "map" : {
+          "Port" : {
+            "map" : {
+              "BufferSend" : {
+                "Port" : {
+                  "nodeId" : 2,
+                  "unqualifiedName" : "BufferSend"
                 }
               }
             }
@@ -566,367 +629,422 @@
         }
       }
     },
-    "topologyMap": {},
-    "typeMap": {
-      "193": {
-        "Int": {
-          "Integer": {}
+    "topologyMap" : {
+      
+    },
+    "typeMap" : {
+      "193" : {
+        "Int" : {
+          "Integer" : {
+            
+          }
         }
       },
-      "164": {
-        "Int": {
-          "Integer": {}
+      "164" : {
+        "Int" : {
+          "Integer" : {
+            
+          }
         }
       },
-      "139": {
-        "Int": {
-          "Integer": {}
+      "139" : {
+        "Int" : {
+          "Integer" : {
+            
+          }
         }
       },
-      "163": {
-        "Int": {
-          "Integer": {}
+      "163" : {
+        "Int" : {
+          "Integer" : {
+            
+          }
         }
       },
-      "152": {
-        "Int": {
-          "Integer": {}
+      "152" : {
+        "Int" : {
+          "Integer" : {
+            
+          }
         }
       },
-      "199": {
-        "Int": {
-          "Integer": {}
+      "199" : {
+        "Int" : {
+          "Integer" : {
+            
+          }
         }
       },
-      "196": {
-        "Int": {
-          "Integer": {}
+      "196" : {
+        "Int" : {
+          "Integer" : {
+            
+          }
         }
       },
-      "140": {
-        "Int": {
-          "Integer": {}
+      "140" : {
+        "Int" : {
+          "Integer" : {
+            
+          }
         }
       },
-      "151": {
-        "Int": {
-          "Integer": {}
+      "151" : {
+        "Int" : {
+          "Integer" : {
+            
+          }
         }
       },
-      "149": {
-        "Int": {
-          "Integer": {}
+      "149" : {
+        "Int" : {
+          "Integer" : {
+            
+          }
         }
       },
-      "160": {
-        "Int": {
-          "Integer": {}
+      "160" : {
+        "Int" : {
+          "Integer" : {
+            
+          }
         }
       },
-      "150": {
-        "Int": {
-          "Integer": {}
+      "150" : {
+        "Int" : {
+          "Integer" : {
+            
+          }
         }
       },
-      "200": {
-        "Int": {
-          "Integer": {}
+      "200" : {
+        "Int" : {
+          "Integer" : {
+            
+          }
         }
       },
-      "157": {
-        "Int": {
-          "Integer": {}
+      "157" : {
+        "Int" : {
+          "Integer" : {
+            
+          }
         }
       }
     },
-    "useDefMap": {
-      "158": {
-        "Module": {
-          "nodeId": 153,
-          "unqualifiedName": "Default"
+    "useDefMap" : {
+      "158" : {
+        "Module" : {
+          "nodeId" : 153,
+          "unqualifiedName" : "Default"
         }
       },
-      "135": {
-        "StateMachine": {
-          "nodeId": 124,
-          "unqualifiedName": "S2"
+      "135" : {
+        "StateMachine" : {
+          "nodeId" : 124,
+          "unqualifiedName" : "S2"
         }
       },
-      "56": {
-        "Port": {
-          "nodeId": 2,
-          "unqualifiedName": "BufferSend"
+      "56" : {
+        "Port" : {
+          "nodeId" : 2,
+          "unqualifiedName" : "BufferSend"
         }
       },
-      "163": {
-        "Constant": {
-          "nodeId": 152,
-          "unqualifiedName": "stackSize"
+      "163" : {
+        "Constant" : {
+          "nodeId" : 152,
+          "unqualifiedName" : "stackSize"
         }
       },
-      "199": {
-        "Constant": {
-          "nodeId": 152,
-          "unqualifiedName": "stackSize"
+      "199" : {
+        "Constant" : {
+          "nodeId" : 152,
+          "unqualifiedName" : "stackSize"
         }
       },
-      "196": {
-        "Constant": {
-          "nodeId": 140,
-          "unqualifiedName": "queueSize"
+      "196" : {
+        "Constant" : {
+          "nodeId" : 140,
+          "unqualifiedName" : "queueSize"
         }
       },
-      "54": {
-        "Module": {
-          "nodeId": 3,
-          "unqualifiedName": "Fw"
+      "54" : {
+        "Module" : {
+          "nodeId" : 3,
+          "unqualifiedName" : "Fw"
         }
       },
-      "126": {
-        "StateMachine": {
-          "nodeId": 116,
-          "unqualifiedName": "S1"
+      "126" : {
+        "StateMachine" : {
+          "nodeId" : 116,
+          "unqualifiedName" : "S1"
         }
       },
-      "190": {
-        "Module": {
-          "nodeId": 138,
-          "unqualifiedName": "M"
+      "190" : {
+        "Module" : {
+          "nodeId" : 138,
+          "unqualifiedName" : "M"
         }
       },
-      "160": {
-        "Constant": {
-          "nodeId": 140,
-          "unqualifiedName": "queueSize"
+      "160" : {
+        "Constant" : {
+          "nodeId" : 140,
+          "unqualifiedName" : "queueSize"
         }
       },
-      "161": {
-        "Module": {
-          "nodeId": 153,
-          "unqualifiedName": "Default"
+      "161" : {
+        "Module" : {
+          "nodeId" : 153,
+          "unqualifiedName" : "Default"
         }
       },
-      "44": {
-        "Port": {
-          "nodeId": 2,
-          "unqualifiedName": "BufferSend"
+      "44" : {
+        "Port" : {
+          "nodeId" : 2,
+          "unqualifiedName" : "BufferSend"
         }
       },
-      "197": {
-        "Module": {
-          "nodeId": 153,
-          "unqualifiedName": "Default"
+      "197" : {
+        "Module" : {
+          "nodeId" : 153,
+          "unqualifiedName" : "Default"
         }
       },
-      "192": {
-        "Component": {
-          "nodeId": 137,
-          "unqualifiedName": "StateMachines"
+      "192" : {
+        "Component" : {
+          "nodeId" : 137,
+          "unqualifiedName" : "StateMachines"
         }
       },
-      "112": {
-        "Module": {
-          "nodeId": 7,
-          "unqualifiedName": "Svc"
+      "112" : {
+        "Module" : {
+          "nodeId" : 7,
+          "unqualifiedName" : "Svc"
         }
       },
-      "42": {
-        "Module": {
-          "nodeId": 3,
-          "unqualifiedName": "Fw"
+      "42" : {
+        "Module" : {
+          "nodeId" : 3,
+          "unqualifiedName" : "Fw"
         }
       },
-      "156": {
-        "Component": {
-          "nodeId": 58,
-          "unqualifiedName": "DataCompressor"
+      "156" : {
+        "Component" : {
+          "nodeId" : 58,
+          "unqualifiedName" : "DataCompressor"
         }
       },
-      "194": {
-        "Module": {
-          "nodeId": 153,
-          "unqualifiedName": "Default"
+      "194" : {
+        "Module" : {
+          "nodeId" : 153,
+          "unqualifiedName" : "Default"
         }
       },
-      "154": {
-        "Module": {
-          "nodeId": 59,
-          "unqualifiedName": "Utils"
+      "154" : {
+        "Module" : {
+          "nodeId" : 59,
+          "unqualifiedName" : "Utils"
         }
       },
-      "114": {
-        "Port": {
-          "nodeId": 6,
-          "unqualifiedName": "Sched"
+      "114" : {
+        "Port" : {
+          "nodeId" : 6,
+          "unqualifiedName" : "Sched"
         }
       }
     },
-    "valueMap": {
-      "193": {
-        "Integer": {
-          "value": 512
+    "valueMap" : {
+      "193" : {
+        "Integer" : {
+          "value" : 512
         }
       },
-      "164": {
-        "Integer": {
-          "value": 30
+      "164" : {
+        "Integer" : {
+          "value" : 30
         }
       },
-      "139": {
-        "Integer": {
-          "value": 10
+      "139" : {
+        "Integer" : {
+          "value" : 10
         }
       },
-      "163": {
-        "Integer": {
-          "value": 10240
+      "163" : {
+        "Integer" : {
+          "value" : 10240
         }
       },
-      "152": {
-        "Integer": {
-          "value": 10240
+      "152" : {
+        "Integer" : {
+          "value" : 10240
         }
       },
-      "199": {
-        "Integer": {
-          "value": 10240
+      "199" : {
+        "Integer" : {
+          "value" : 10240
         }
       },
-      "196": {
-        "Integer": {
-          "value": 10
+      "196" : {
+        "Integer" : {
+          "value" : 10
         }
       },
-      "140": {
-        "Integer": {
-          "value": 10
+      "140" : {
+        "Integer" : {
+          "value" : 10
         }
       },
-      "151": {
-        "Integer": {
-          "value": 10240
+      "151" : {
+        "Integer" : {
+          "value" : 10240
         }
       },
-      "149": {
-        "Integer": {
-          "value": 10
+      "149" : {
+        "Integer" : {
+          "value" : 10
         }
       },
-      "160": {
-        "Integer": {
-          "value": 10
+      "160" : {
+        "Integer" : {
+          "value" : 10
         }
       },
-      "150": {
-        "Integer": {
-          "value": 1024
+      "150" : {
+        "Integer" : {
+          "value" : 1024
         }
       },
-      "200": {
-        "Integer": {
-          "value": 40
+      "200" : {
+        "Integer" : {
+          "value" : 40
         }
       },
-      "157": {
-        "Integer": {
-          "value": 256
+      "157" : {
+        "Integer" : {
+          "value" : 256
         }
       }
     },
-    "stateMachineMap": {
-      "116": {
-        "aNode": {
-          "astNodeId": 116
+    "stateMachineMap" : {
+      "116" : {
+        "aNode" : {
+          "astNodeId" : 116
         },
-        "sma": {
-          "symbol": {
-            "node": {
-              "astNodeId": 116
+        "sma" : {
+          "symbol" : {
+            "node" : {
+              "astNodeId" : 116
             }
           },
-          "symbolScopeMap": {},
-          "useDefMap": {},
-          "transitionGraph": {
-            "initialNode": "None",
-            "arcMap": {}
+          "symbolScopeMap" : {
+            
           },
-          "reverseTransitionGraph": {
-            "initialNode": "None",
-            "arcMap": {}
+          "useDefMap" : {
+            
           },
-          "typeOptionMap": {},
-          "flattenedStateTransitionMap": {},
-          "flattenedChoiceTransitionMap": {}
+          "transitionGraph" : {
+            "initialNode" : "None",
+            "arcMap" : {
+              
+            }
+          },
+          "reverseTransitionGraph" : {
+            "initialNode" : "None",
+            "arcMap" : {
+              
+            }
+          },
+          "typeOptionMap" : {
+            
+          },
+          "flattenedStateTransitionMap" : {
+            
+          },
+          "flattenedChoiceTransitionMap" : {
+            
+          }
         }
       },
-      "124": {
-        "aNode": {
-          "astNodeId": 124
+      "124" : {
+        "aNode" : {
+          "astNodeId" : 124
         },
-        "sma": {
-          "symbol": {
-            "node": {
-              "astNodeId": 124
+        "sma" : {
+          "symbol" : {
+            "node" : {
+              "astNodeId" : 124
             }
           },
-          "symbolScopeMap": {
-            "123": {
-              "map": {}
-            }
-          },
-          "useDefMap": {
-            "118": {
-              "State": {
-                "nodeId": 123,
-                "unqualifiedName": "IDLE"
+          "symbolScopeMap" : {
+            "123" : {
+              "map" : {
+                
               }
             }
           },
-          "transitionGraph": {
-            "initialNode": {
-              "Some": {
-                "soc": {
-                  "State": {
-                    "symbol": {
-                      "node": {
-                        "astNodeId": 123
+          "useDefMap" : {
+            "118" : {
+              "State" : {
+                "nodeId" : 123,
+                "unqualifiedName" : "IDLE"
+              }
+            }
+          },
+          "transitionGraph" : {
+            "initialNode" : {
+              "Some" : {
+                "soc" : {
+                  "State" : {
+                    "symbol" : {
+                      "node" : {
+                        "astNodeId" : 123
                       }
                     }
                   }
                 }
               }
             },
-            "arcMap": {
-              "state IDLE": []
+            "arcMap" : {
+              "123" : [
+              ]
             }
           },
-          "reverseTransitionGraph": {
-            "initialNode": {
-              "Some": {
-                "soc": {
-                  "State": {
-                    "symbol": {
-                      "node": {
-                        "astNodeId": 123
+          "reverseTransitionGraph" : {
+            "initialNode" : {
+              "Some" : {
+                "soc" : {
+                  "State" : {
+                    "symbol" : {
+                      "node" : {
+                        "astNodeId" : 123
                       }
                     }
                   }
                 }
               }
             },
-            "arcMap": {
-              "state IDLE": []
+            "arcMap" : {
+              "123" : [
+              ]
             }
           },
-          "typeOptionMap": {
-            "120": "None"
+          "typeOptionMap" : {
+            "120" : "None"
           },
-          "flattenedStateTransitionMap": {},
-          "flattenedChoiceTransitionMap": {}
+          "flattenedStateTransitionMap" : {
+            
+          },
+          "flattenedChoiceTransitionMap" : {
+            
+          }
         }
       }
     },
-    "dictionarySymbolSet": [],
-    "interfaceMap": {}
+    "dictionarySymbolSet" : [
+    ],
+    "interfaceMap" : {
+      
+    }
   }
 }

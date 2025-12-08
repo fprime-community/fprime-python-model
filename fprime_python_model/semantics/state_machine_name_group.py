@@ -3,10 +3,13 @@ from typing import List
 
 
 class StateMachineNameGroup(Enum):
-    ACTION = "Action"
-    GUARD = "Guard"
-    SIGNAL = "Signal"
-    STATE = "State"
+    ACTION = "action"
+    GUARD = "guard"
+    SIGNAL = "signal"
+    STATE = "state"
+
+    def __str__(self):
+        return self.value
 
 
 name_groups: List[StateMachineNameGroup] = [
