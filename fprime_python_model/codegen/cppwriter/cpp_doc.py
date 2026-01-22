@@ -6,11 +6,8 @@ from dataclasses import dataclass, field
 from enum import Enum, auto
 from typing import Optional, List
 
-from fprime_python_model.utils.line_utils import Lines, Line
+from fprime_python_model.utils.line_utils import Line, Lines, LinesOutput
 
-# Note that the Scala version contains two fields in the Lines
-# class: output and cpp_file_name_base_opt, which do not occur in 
-# fprime_python_model.utils.line_utils.Lines.
 
 @dataclass
 class CppDoc:
