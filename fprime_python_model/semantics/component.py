@@ -16,6 +16,7 @@ from fprime_python_model.semantics.record import Record, RecordId
 from fprime_python_model.semantics.state_machine_instance import StateMachineInstance
 from fprime_python_model.semantics.state_machine import StateMachineKind
 from fprime_python_model.semantics.name import UnqualifiedName
+from fprime_python_model.semantics.port_interface import PortInterface
 
 
 @dataclass
@@ -52,10 +53,8 @@ class Component:
 
     :param a_node: The annotated AST node defining the component
     :type a_node: fpp_ast.Annotated[AstNode[fpp_ast.DefComponent]]
-    :param port_map: The map from port names to port instances
-    :type port_map: Dict[UnqualifiedName, PortInstance]
-    :param special_port_map: The map from special port kinds to special port instances
-    :type special_port_map: Dict[fpp_ast.SpecialKind, SpecialPortInstance]
+    :param port_interface: The port interface of the component
+    :type port_interface: PortInterface
     :param command_map: The map from command opcodes to commands
     :type command_map: Dict[CommandOpcode, Command]
     :param tlm_channel_map: The map from telemetry channel IDs to channels
@@ -79,10 +78,7 @@ class Component:
     """
 
     a_node: fpp_ast.Annotated[AstNode[fpp_ast.DefComponent]]
-    port_map: Dict[UnqualifiedName, PortInstance] = field(default_factory=dict)
-    special_port_map: Dict[fpp_ast.SpecialKind, SpecialPortInstance] = field(
-        default_factory=dict
-    )
+    port_interface: PortInterface = field(default=lambda: PortInterface("component"))
     command_map: Dict[CommandOpcode, Command] = field(default_factory=dict)
     tlm_channel_map: Dict[TlmChannelId, TlmChannel] = field(default_factory=dict)
     tlm_channel_name_map: Dict[UnqualifiedName, TlmChannel] = field(
@@ -99,6 +95,12 @@ class Component:
     port_matching_list: List[PortMatching] = field(default_factory=list)
     container_map: Dict[ContainerId, Container] = field(default_factory=dict)
     record_map: Dict[RecordId, Record] = field(default_factory=dict)
+
+    def port_map(self) -> Dict[UnqualifiedName, PortInstance]:
+        return self.port_interface.port_map
+
+    def special_port_map(self) -> Dict[fpp_ast.SpecialKind, SpecialPortInstance]:
+        return self.port_interface.special_port_map
 
     def has_parameters(self) -> bool:
         """

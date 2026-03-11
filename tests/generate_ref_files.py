@@ -166,7 +166,9 @@ def main():
     clean()
 
     for test_name, fpp_to_json_test_name in test_name_map.items():
-        fpp_ref_model: str = f"{str(fpp_to_json_tests_path)}/{fpp_to_json_test_name}.fpp"
+        fpp_ref_model: str = (
+            f"{str(fpp_to_json_tests_path)}/{fpp_to_json_test_name}.fpp"
+        )
         create_model_ref_file(fpp_format, fpp_ref_model, test_name)
         create_json_ref_files(fpp_to_json, str(fpp_ref_model), test_name)
 
@@ -177,12 +179,8 @@ def main():
         if input_file:
             input_file_path = str(fpp_repo_path / input_file)
 
-        create_model_ref_file(
-            fpp_format, fpp_ref, test_name, input_file_path
-        )
-        create_json_ref_files(
-            fpp_to_json, fpp_ref, test_name, input_file_path
-        )
+        create_model_ref_file(fpp_format, fpp_ref, test_name, input_file_path)
+        create_json_ref_files(fpp_to_json, fpp_ref, test_name, input_file_path)
 
 
 if __name__ == "__main__":

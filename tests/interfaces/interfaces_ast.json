@@ -1,5 +1,5 @@
 {
-  "fppVersion" : "v3.1.0a10-54-g11243e778",
+  "fppVersion" : "v3.1.1a4-339-gcf148f982",
   "ast" : [
     {
       "members" : [
@@ -109,6 +109,68 @@
         ],
         [
           [
+          ],
+          {
+            "DefAliasType" : {
+              "node" : {
+                "AstNode" : {
+                  "data" : {
+                    "name" : "FwSizeStoreType",
+                    "typeName" : {
+                      "AstNode" : {
+                        "data" : {
+                          "TypeNameInt" : {
+                            "name" : {
+                              "U16" : {
+                                
+                              }
+                            }
+                          }
+                        },
+                        "id" : 7
+                      }
+                    },
+                    "isDictionaryDef" : false
+                  },
+                  "id" : 8
+                }
+              }
+            }
+          },
+          [
+          ]
+        ],
+        [
+          [
+          ],
+          {
+            "DefConstant" : {
+              "node" : {
+                "AstNode" : {
+                  "data" : {
+                    "name" : "FW_FIXED_LENGTH_STRING_SIZE",
+                    "value" : {
+                      "AstNode" : {
+                        "data" : {
+                          "ExprLiteralInt" : {
+                            "value" : "256"
+                          }
+                        },
+                        "id" : 9
+                      }
+                    },
+                    "isDictionaryDef" : false
+                  },
+                  "id" : 10
+                }
+              }
+            }
+          },
+          [
+          ]
+        ],
+        [
+          [
             "An interface for illustrating importing special and general ports",
             "into a component."
           ],
@@ -140,7 +202,7 @@
                                     "queueFull" : "None"
                                   }
                                 },
-                                "id" : 7
+                                "id" : 11
                               }
                             }
                           }
@@ -169,7 +231,7 @@
                                     "queueFull" : "None"
                                   }
                                 },
-                                "id" : 8
+                                "id" : 12
                               }
                             }
                           }
@@ -198,7 +260,7 @@
                                     "queueFull" : "None"
                                   }
                                 },
-                                "id" : 11
+                                "id" : 15
                               }
                             }
                           }
@@ -208,7 +270,7 @@
                       ]
                     ]
                   },
-                  "id" : 12
+                  "id" : 16
                 }
               }
             }
@@ -250,7 +312,7 @@
                                               "name" : "General"
                                             }
                                           },
-                                          "id" : 20
+                                          "id" : 24
                                         }
                                       }
                                     },
@@ -258,7 +320,7 @@
                                     "queueFull" : "None"
                                   }
                                 },
-                                "id" : 21
+                                "id" : 25
                               }
                             }
                           }
@@ -268,7 +330,7 @@
                       ]
                     ]
                   },
-                  "id" : 22
+                  "id" : 26
                 }
               }
             }
@@ -306,11 +368,11 @@
                                           "name" : "ICmd"
                                         }
                                       },
-                                      "id" : 24
+                                      "id" : 28
                                     }
                                   }
                                 },
-                                "id" : 25
+                                "id" : 29
                               }
                             }
                           }
@@ -333,11 +395,11 @@
                                           "name" : "IPort"
                                         }
                                       },
-                                      "id" : 27
+                                      "id" : 31
                                     }
                                   }
                                 },
-                                "id" : 28
+                                "id" : 32
                               }
                             }
                           }
@@ -371,13 +433,13 @@
                                             "value" : "10"
                                           }
                                         },
-                                        "id" : 29
+                                        "id" : 33
                                       }
                                     }
                                   },
                                   "queueFull" : "None"
                                 },
-                                "id" : 30
+                                "id" : 34
                               }
                             }
                           }
@@ -424,11 +486,11 @@
                                                     }
                                                   }
                                                 },
-                                                "id" : 31
+                                                "id" : 35
                                               }
                                             }
                                           },
-                                          "id" : 32
+                                          "id" : 36
                                         }
                                       },
                                       [
@@ -457,11 +519,11 @@
                                                     }
                                                   }
                                                 },
-                                                "id" : 37
+                                                "id" : 41
                                               }
                                             }
                                           },
-                                          "id" : 38
+                                          "id" : 42
                                         }
                                       },
                                       [
@@ -477,13 +539,13 @@
                                             "value" : "20"
                                           }
                                         },
-                                        "id" : 39
+                                        "id" : 43
                                       }
                                     }
                                   },
                                   "queueFull" : "None"
                                 },
-                                "id" : 40
+                                "id" : 44
                               }
                             }
                           }
@@ -526,11 +588,11 @@
                                                     "size" : "None"
                                                   }
                                                 },
-                                                "id" : 65
+                                                "id" : 69
                                               }
                                             }
                                           },
-                                          "id" : 66
+                                          "id" : 70
                                         }
                                       },
                                       [
@@ -545,7 +607,7 @@
                                             "value" : "0x10"
                                           }
                                         },
-                                        "id" : 67
+                                        "id" : 71
                                       }
                                     }
                                   },
@@ -557,7 +619,7 @@
                                             "value" : "30"
                                           }
                                         },
-                                        "id" : 68
+                                        "id" : 72
                                       }
                                     }
                                   },
@@ -569,12 +631,12 @@
                                             
                                           }
                                         },
-                                        "id" : 69
+                                        "id" : 73
                                       }
                                     }
                                   }
                                 },
-                                "id" : 70
+                                "id" : 74
                               }
                             }
                           }
@@ -584,7 +646,7 @@
                       ]
                     ]
                   },
-                  "id" : 71
+                  "id" : 75
                 }
               }
             }

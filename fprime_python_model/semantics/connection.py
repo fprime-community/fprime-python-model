@@ -22,6 +22,7 @@ class Endpoint:
     loc: Location
     port: PortInstanceIdentifier
     port_number: Optional[int] = None
+    topology_port: Optional["Endpoint"] = None
 
     def __str__(self):
         """
@@ -34,6 +35,10 @@ class Endpoint:
             return f"{str(self.port)}[{self.port_number}]"
         else:
             return f"{str(self.port)}"
+
+    # TODO
+    def get_underlying_endpoint(self):
+        pass
 
 
 @dataclass

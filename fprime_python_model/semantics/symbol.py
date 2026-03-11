@@ -4,14 +4,29 @@ from fprime_python_model.fpp_ast import fpp_ast
 from fprime_python_model.fpp_ast.fpp_ast_node import AstNode
 
 
+# A data structure that represents a definition
 class Symbol(SymbolInterface):
 
     def is_dictionary_def(self):
         return False
 
 
+# A type symbol
+class TypeSymbol(Symbol):
+
+    def is_dictionary_def(self):
+        return super().is_dictionary_def()
+
+
+# A port interface instance symbol
+class InterfaceInstanceSymbol(Symbol):
+
+    def is_dictionary_def(self):
+        return super().is_dictionary_def()
+
+
 @dataclass
-class AbsTypeSymbol(Symbol):
+class AbsTypeSymbol(TypeSymbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefAbsType]]
 
     def get_node_id(self):
@@ -22,7 +37,7 @@ class AbsTypeSymbol(Symbol):
 
 
 @dataclass
-class AliasTypeSymbol(Symbol):
+class AliasTypeSymbol(TypeSymbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefAliasType]]
 
     def get_node_id(self):
@@ -36,7 +51,7 @@ class AliasTypeSymbol(Symbol):
 
 
 @dataclass
-class ArraySymbol(Symbol):
+class ArraySymbol(TypeSymbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefArray]]
 
     def get_node_id(self):
@@ -61,7 +76,7 @@ class ComponentSymbol(Symbol):
 
 
 @dataclass
-class ComponentInstanceSymbol(Symbol):
+class ComponentInstanceSymbol(InterfaceInstanceSymbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefComponentInstance]]
 
     def get_node_id(self):
@@ -86,7 +101,7 @@ class ConstantSymbol(Symbol):
 
 
 @dataclass
-class EnumSymbol(Symbol):
+class EnumSymbol(TypeSymbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefEnum]]
 
     def get_node_id(self):
@@ -155,7 +170,7 @@ class StateMachineSymbol(Symbol):
 
 
 @dataclass
-class StructSymbol(Symbol):
+class StructSymbol(TypeSymbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefStruct]]
 
     def get_node_id(self):
@@ -169,7 +184,7 @@ class StructSymbol(Symbol):
 
 
 @dataclass
-class TopologySymbol(Symbol):
+class TopologySymbol(InterfaceInstanceSymbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefTopology]]
 
     def get_node_id(self):

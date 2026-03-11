@@ -23,7 +23,7 @@ topology Simple1 {
   instance c1
 
   @ This specifier says that instance c2 is part of the topology
-  private instance c2
+  instance c2
 
   @ This code specifies a connection graph C1
   connections C1 {
@@ -40,7 +40,7 @@ topology Simple1 {
 @ Another simple topology
 topology Simple2 {
 
-  import Simple1
+  instance Simple1
 
   @ This specifier says that instance c3 is part of the topology
   instance c3
@@ -63,6 +63,6 @@ topology Simple2 {
 @ A third Simple Topology
 topology Simple3 {
 
-  import Simple2
+  instance Simple2
 
 }

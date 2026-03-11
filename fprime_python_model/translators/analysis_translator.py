@@ -163,6 +163,7 @@ from fprime_python_model.semantics.transition import (
     InternalTransition,
     GuardedTransition,
 )
+from fprime_python_model.semantics.framework_definitions import FrameworkDefinitions
 
 RT = TypeVar("RT")
 
@@ -1456,6 +1457,9 @@ class AnalysisTranslator:
             out_dict[AstId(id)] = self.translate_state_machine(inner_dict)
         return out_dict
 
+    def translate_framework_definitions(self, d: Dict) -> FrameworkDefinitions:
+        return FrameworkDefinitions()
+
     def translate_analysis_json(self) -> Analysis:
         if not os.path.exists(self.analysis_json_file):
             raise FileNotFoundError(f'File "{self.analysis_json_file}" not found')
@@ -1504,4 +1508,7 @@ class AnalysisTranslator:
                 state_machine_map=self.translate_state_machine_map(
                     self.require_type(data.get("stateMachineMap"), dict)
                 ),
+                # framework_definitions=self.translate_framework_definitions(
+                #     self.require_type(data.get("frameworkDefinitions"), dict)
+                # )
             )
