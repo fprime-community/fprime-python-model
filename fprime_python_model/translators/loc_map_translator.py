@@ -8,14 +8,16 @@ from pathlib import Path
 
 def translate_including_loc(d: dict) -> Optional[Location]:
     if "Some" in d:
-        return Location(
-            Path(d["Some"]["file"]),
-            d["Some"]["pos"],
-            translate_including_loc(d["Some"]["includingLoc"]),
-        )
+        return translate_loc(d["Some"])
     else:
         return None
 
+def translate_loc(d: dict) -> Location:
+    return Location(
+        Path(d["file"]),
+        d["pos"],
+        translate_including_loc(d["includingLoc"]),
+    )
 
 def translate_location_map_json(file: str) -> dict[AstId, Location]:
     loc_map: dict[AstId, Location] = dict()
@@ -25,11 +27,7 @@ def translate_location_map_json(file: str) -> dict[AstId, Location]:
         data: Dict[str, dict] = json.load(f)
         for k, v in data["locationMap"].items():
             try:
-                loc_map[int(k)] = Location(
-                    Path(v["file"]),
-                    v["pos"],
-                    translate_including_loc(v["includingLoc"]),
-                )
+                loc_map[int(k)] = translate_loc(v)
             except KeyError as e:
                 raise KeyError(f"Location map for ID {k} is missing required field {e}")
     return loc_map
