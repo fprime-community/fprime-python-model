@@ -3,12 +3,12 @@ from typing import List
 
 
 class NameGroup(Enum):
-    COMPONENT_INSTANCE = "component instance"
+    PORT_INTERFACE_INSTANCE = "component instance or topology"
     COMPONENT = "component"
     PORT = "port"
     STATE_MACHINE = "state machine"
     TOPOLOGY = "topology"
-    INTERFACE = "interface"
+    PORT_INTERFACE = "interface"
     TYPE = "type"
     VALUE = "constant"
 
@@ -17,12 +17,11 @@ class NameGroup(Enum):
 
 
 name_groups: List[NameGroup] = [
-    NameGroup.COMPONENT_INSTANCE,
     NameGroup.COMPONENT,
     NameGroup.PORT,
     NameGroup.STATE_MACHINE,
-    NameGroup.TOPOLOGY,
-    NameGroup.INTERFACE,
+    NameGroup.PORT_INTERFACE_INSTANCE,
+    NameGroup.PORT_INTERFACE,
     NameGroup.TYPE,
     NameGroup.VALUE,
 ]

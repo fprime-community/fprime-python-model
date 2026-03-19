@@ -1,5 +1,5 @@
 {
-  "fppVersion" : "v3.1.1a4-339-gcf148f982",
+  "fppVersion" : "v3.1.1a4-447-gf40109a8b",
   "analysis" : {
     "componentInstanceMap" : {
       
@@ -307,6 +307,24 @@
             }
           },
           "default" : "None"
+        }
+      },
+      "270" : {
+        "AliasType" : {
+          "node" : {
+            "astNodeId" : 1
+          },
+          "aliasType" : {
+            "Int" : {
+              "PrimitiveInt" : {
+                "kind" : {
+                  "U16" : {
+                    
+                  }
+                }
+              }
+            }
+          }
         }
       },
       "264" : {

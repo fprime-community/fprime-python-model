@@ -1,5 +1,5 @@
 {
-  "fppVersion" : "v3.1.1a4-339-gcf148f982",
+  "fppVersion" : "v3.1.1a4-447-gf40109a8b",
   "locationMap" : {
     "0" : {
       "file" : "[ local path prefix ]/compiler/tools/fpp-to-json/test/patternedConnections.fpp",

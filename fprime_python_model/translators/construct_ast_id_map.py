@@ -268,6 +268,12 @@ class ConstructAstMap(AstVisitor):
     ) -> Out:
         self.add_node_to_map(a_node)
 
+    def expr_size_of_node(
+        self, _in: In, node: AstNode[fpp_ast.ExprSizeOf], e: fpp_ast.ExprSizeOf
+    ) -> Out:
+        self.add_node_to_map(node)
+        self.add_node_to_map(e.type_name)
+
     def expr_struct_node(
         self, _in: In, a_node: AstNode[fpp_ast.Expr], e: fpp_ast.ExprStruct
     ) -> Out:
@@ -295,7 +301,7 @@ class ConstructAstMap(AstVisitor):
             self.add_node_to_map(data.queue_full)
 
     def spec_comp_instance_annotated_node(
-        self, _in: In, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecCompInstance]]
+        self, _in: In, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecInstance]]
     ) -> Out:
         self.add_annotated_node_to_map(a_node)
         self.qual_ident_node(a_node[1].data.instance)
@@ -352,6 +358,12 @@ class ConstructAstMap(AstVisitor):
     ) -> Out:
         self.add_annotated_node_to_map(a_node)
         self.transition_expr_node(a_node[1].data.transition)
+
+    def spec_instance_annotated_node(
+        self, _in: In, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecInstance]]
+    ) -> Out:
+        self.add_annotated_node_to_map(a_node)
+        self.add_node_to_map(a_node[1].data.instance)
 
     def spec_internal_port_annotated_node(
         self, _in: In, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecInternalPort]]
@@ -602,7 +614,7 @@ class ConstructAstMap(AstVisitor):
     ) -> Out:
         pii = node.data
         self.add_node_to_map(node)
-        self.qual_ident_node(pii.component_instance)
+        self.qual_ident_node(pii.interface_instance)
         self.add_node_to_map(pii.port_name)
 
     def connection(self, connection: fpp_ast.Connection) -> Out:

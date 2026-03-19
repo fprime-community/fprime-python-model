@@ -78,7 +78,9 @@ class Component:
     """
 
     a_node: fpp_ast.Annotated[AstNode[fpp_ast.DefComponent]]
-    port_interface: PortInterface = field(default=lambda: PortInterface("component"))
+    port_interface: PortInterface = field(
+        default_factory=lambda: PortInterface("component")
+    )
     command_map: Dict[CommandOpcode, Command] = field(default_factory=dict)
     tlm_channel_map: Dict[TlmChannelId, TlmChannel] = field(default_factory=dict)
     tlm_channel_name_map: Dict[UnqualifiedName, TlmChannel] = field(

@@ -531,6 +531,7 @@ class DefTopology:
 
     name: Ident
     members: List["TopologyMember"]
+    implements: List[AstNode[QualIdent]]
 
 
 ##########################
@@ -1006,6 +1007,11 @@ class StateMachineMemberNode(ABC):
 
 
 @dataclass
+class StateMachineMemberDefAbsType(StateMachineMemberNode):
+    node: AstNode[DefAbsType]
+
+
+@dataclass
 class StateMachineMemberDefAction(StateMachineMemberNode):
     """
     Action state machine member
@@ -1018,6 +1024,16 @@ class StateMachineMemberDefAction(StateMachineMemberNode):
 
 
 @dataclass
+class StateMachineMemberDefAliasType(StateMachineMemberNode):
+    node: AstNode[DefAliasType]
+
+
+@dataclass
+class StateMachineMemberDefArray(StateMachineMemberNode):
+    node: AstNode[DefArray]
+
+
+@dataclass
 class StateMachineMemberDefChoice(StateMachineMemberNode):
     """
     Choice state machine member
@@ -1027,6 +1043,16 @@ class StateMachineMemberDefChoice(StateMachineMemberNode):
     """
 
     node: AstNode["DefChoice"]
+
+
+@dataclass
+class StateMachineMemberDefConstant(StateMachineMemberNode):
+    node: AstNode[DefConstant]
+
+
+@dataclass
+class StateMachineMemberDefEnum(StateMachineMemberNode):
+    node: AstNode[DefEnum]
 
 
 @dataclass
@@ -1063,6 +1089,16 @@ class StateMachineMemberDefState(StateMachineMemberNode):
     """
 
     node: AstNode["DefState"]
+
+
+@dataclass
+class StateMachineMemberDefStruct(StateMachineMemberNode):
+    node: AstNode[DefStruct]
+
+
+@dataclass
+class StateMachineMemberSpecInclude(StateMachineMemberNode):
+    node: AstNode["SpecInclude"]
 
 
 @dataclass
@@ -1312,6 +1348,11 @@ class ExprParen(Expr):
 
 
 @dataclass
+class ExprSizeOf(Expr):
+    type_name: AstNode["TypeName"]
+
+
+@dataclass
 class ExprStruct(Expr):
     """
     Struct expression
@@ -1360,15 +1401,15 @@ class TopologyMember:
 
 
 @dataclass
-class TopologyMemberSpecCompInstance(TopologyMemberNode):
+class TopologyMemberSpecInstance(TopologyMemberNode):
     """
     Component instance topology member
 
-    :param node: Component instance specifier AST node
-    :type node: AstNode[SpecCompInstance]
+    :param node: Instance specifier AST node
+    :type node: AstNode[SpecInstance]
     """
 
-    node: AstNode["SpecCompInstance"]
+    node: AstNode["SpecInstance"]
 
 
 @dataclass
@@ -1408,15 +1449,15 @@ class TopologyMemberSpecTlmPacketSet(TopologyMemberNode):
 
 
 @dataclass
-class TopologyMemberSpecTopImport(TopologyMemberNode):
+class TopologyMemberSpecTopPort(TopologyMemberNode):
     """
     Topology import topology member
 
     :param node: Topology import specifier AST node
-    :type node: AstNode[SpecTopImport]
+    :type node: AstNode[SpecTopPort]
     """
 
-    node: AstNode["SpecImport"]
+    node: AstNode["SpecTopPort"]
 
 
 #################################
@@ -1613,17 +1654,14 @@ class SpecCommandKind(Enum):
 
 
 @dataclass
-class SpecCompInstance:
+class SpecInstance:
     """
     Component instance specifier
 
-    :param visibility: Component instance visibility
-    :type visibility: Visibility
     :param instance: Component instance AST node
     :type instance: AstNode[QualIdent]
     """
 
-    visibility: "Visibility"
     instance: AstNode[QualIdent]
 
 
@@ -1873,21 +1911,19 @@ class SpecLocKind(Enum):
 
     Attributes:
         COMPONENT
-        COMPONENT_INSTANCE
+        INSTANCE
         CONSTANT
         PORT
         STATE_MACHINE
-        TOPOLOGY
         TYPE
         INTERFACE
     """
 
     COMPONENT = "component"
-    COMPONENT_INSTANCE = "instance"
+    INSTANCE = "instance"
     CONSTANT = "constant"
     PORT = "port"
     STATE_MACHINE = "state machine"
-    TOPOLOGY = "topology"
     TYPE = "type"
     INTERFACE = "interface"
 
@@ -2198,6 +2234,12 @@ class SpecTlmPacketSet:
 
 
 @dataclass
+class SpecTopPort:
+    name: Ident
+    underlying_port: AstNode["PortInstanceIdentifier"]
+
+
+@dataclass
 class SpecImport:
     """
     Import specifier
@@ -2403,22 +2445,6 @@ class Unop(Enum):
         return self.value
 
 
-class Visibility(Enum):
-    """
-    Represents visbility
-
-    Attributes:
-        PRIVATE
-        PUBLIC
-    """
-
-    PRIVATE = "private"
-    PUBLIC = "public"
-
-    def __str__(self):
-        return self.value
-
-
 @dataclass
 class FormalParam:
     """
@@ -2472,13 +2498,13 @@ class PortInstanceIdentifier:
     """
     Port instance identifier
 
-    :param component_instance: Component instance AST node
-    :type component_instance: AstNode[QualIdent]
+    :param interface_instance: Interface instance AST node
+    :type interface_instance: AstNode[QualIdent]
     :param port_name: Port name AST node
     :type port_name: AstNode[Ident]
     """
 
-    component_instance: AstNode[QualIdent]
+    interface_instance: AstNode[QualIdent]
     port_name: AstNode[Ident]
 
 

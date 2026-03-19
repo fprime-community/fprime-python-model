@@ -1,5 +1,5 @@
 {
-  "fppVersion" : "v3.1.1a4-339-gcf148f982",
+  "fppVersion" : "v3.1.1a4-447-gf40109a8b",
   "ast" : [
     {
       "members" : [
@@ -748,11 +748,35 @@
                             "e1" : {
                               "AstNode" : {
                                 "data" : {
-                                  "ExprLiteralInt" : {
-                                    "value" : "1"
+                                  "ExprBinop" : {
+                                    "e1" : {
+                                      "AstNode" : {
+                                        "data" : {
+                                          "ExprLiteralInt" : {
+                                            "value" : "1"
+                                          }
+                                        },
+                                        "id" : 60
+                                      }
+                                    },
+                                    "op" : {
+                                      "Add" : {
+                                        
+                                      }
+                                    },
+                                    "e2" : {
+                                      "AstNode" : {
+                                        "data" : {
+                                          "ExprLiteralInt" : {
+                                            "value" : "2"
+                                          }
+                                        },
+                                        "id" : 61
+                                      }
+                                    }
                                   }
                                 },
-                                "id" : 60
+                                "id" : 64
                               }
                             },
                             "op" : {
@@ -763,21 +787,34 @@
                             "e2" : {
                               "AstNode" : {
                                 "data" : {
-                                  "ExprLiteralInt" : {
-                                    "value" : "2"
+                                  "ExprSizeOf" : {
+                                    "typeName" : {
+                                      "AstNode" : {
+                                        "data" : {
+                                          "TypeNameInt" : {
+                                            "name" : {
+                                              "U32" : {
+                                                
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "id" : 62
+                                      }
+                                    }
                                   }
                                 },
-                                "id" : 61
+                                "id" : 63
                               }
                             }
                           }
                         },
-                        "id" : 62
+                        "id" : 65
                       }
                     },
                     "isDictionaryDef" : false
                   },
-                  "id" : 63
+                  "id" : 66
                 }
               }
             }
@@ -805,17 +842,17 @@
                                     "value" : "1"
                                   }
                                 },
-                                "id" : 64
+                                "id" : 67
                               }
                             }
                           }
                         },
-                        "id" : 65
+                        "id" : 68
                       }
                     },
                     "isDictionaryDef" : false
                   },
-                  "id" : 66
+                  "id" : 69
                 }
               }
             }
@@ -843,12 +880,12 @@
                             }
                           }
                         },
-                        "id" : 67
+                        "id" : 70
                       }
                     },
                     "isDictionaryDef" : false
                   },
-                  "id" : 68
+                  "id" : 71
                 }
               }
             }
@@ -876,12 +913,12 @@
                             }
                           }
                         },
-                        "id" : 69
+                        "id" : 72
                       }
                     },
                     "isDictionaryDef" : false
                   },
-                  "id" : 70
+                  "id" : 73
                 }
               }
             }
@@ -907,12 +944,12 @@
                             "value" : "0"
                           }
                         },
-                        "id" : 73
+                        "id" : 76
                       }
                     },
                     "isDictionaryDef" : false
                   },
-                  "id" : 74
+                  "id" : 77
                 }
               }
             }
@@ -920,6 +957,44 @@
           [
             "This is a post annotation.",
             "It also has two lines."
+          ]
+        ],
+        [
+          [
+          ],
+          {
+            "DefConstant" : {
+              "node" : {
+                "AstNode" : {
+                  "data" : {
+                    "name" : "t",
+                    "value" : {
+                      "AstNode" : {
+                        "data" : {
+                          "ExprSizeOf" : {
+                            "typeName" : {
+                              "AstNode" : {
+                                "data" : {
+                                  "TypeNameBool" : {
+                                    
+                                  }
+                                },
+                                "id" : 78
+                              }
+                            }
+                          }
+                        },
+                        "id" : 79
+                      }
+                    },
+                    "isDictionaryDef" : false
+                  },
+                  "id" : 80
+                }
+              }
+            }
+          },
+          [
           ]
         ]
       ]

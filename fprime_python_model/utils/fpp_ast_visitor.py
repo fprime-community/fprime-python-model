@@ -172,6 +172,11 @@ class AstVisitor(ABC, Generic[In, Out]):
     ) -> Out:
         return self.default(_in)
 
+    def expr_size_of_node(
+        self, _in: In, node: AstNode[fpp_ast.Expr], e: fpp_ast.ExprSizeOf
+    ) -> Out:
+        return self.default(_in)
+
     def expr_struct_node(
         self, _in: In, node: AstNode[fpp_ast.Expr], e: fpp_ast.ExprStruct
     ) -> Out:
@@ -187,8 +192,8 @@ class AstVisitor(ABC, Generic[In, Out]):
     ) -> Out:
         return self.default(_in)
 
-    def spec_comp_instance_annotated_node(
-        self, _in: In, node: fpp_ast.Annotated[AstNode[fpp_ast.SpecCompInstance]]
+    def spec_instance_annotated_node(
+        self, _in: In, node: fpp_ast.Annotated[AstNode[fpp_ast.SpecInstance]]
     ) -> Out:
         return self.default(_in)
 
@@ -406,6 +411,8 @@ class AstVisitor(ABC, Generic[In, Out]):
                 return self.expr_literal_string_node(_in, node, expr)
             case fpp_ast.ExprParen():
                 return self.expr_paren_node(_in, node, expr)
+            case fpp_ast.ExprSizeOf():
+                return self.expr_size_of_node(_in, node, expr)
             case fpp_ast.ExprStruct():
                 return self.expr_struct_node(_in, node, expr)
             case fpp_ast.ExprUnop():
@@ -458,16 +465,30 @@ class AstVisitor(ABC, Generic[In, Out]):
     ) -> Out:
         pre, node, post = member.node
         match node:
+            case fpp_ast.StateMachineMemberDefAbsType():
+                return self.def_abs_type_annotated_node(_in, (pre, node.node, post))
             case fpp_ast.StateMachineMemberDefAction():
                 return self.def_action_annotated_node(_in, (pre, node.node, post))
-            case fpp_ast.StateMachineMemberDefGuard():
-                return self.def_guard_annotated_node(_in, (pre, node.node, post))
+            case fpp_ast.StateMachineMemberDefAliasType():
+                return self.def_alias_type_annotated_node(_in, (pre, node.node, post))
+            case fpp_ast.StateMachineMemberDefArray():
+                return self.def_array_annotated_node(_in, (pre, node.node, post))
             case fpp_ast.StateMachineMemberDefChoice():
                 return self.def_choice_annotated_node(_in, (pre, node.node, post))
+            case fpp_ast.StateMachineMemberDefConstant():
+                return self.def_constant_annotated_node(_in, (pre, node.node, post))
+            case fpp_ast.StateMachineMemberDefEnum():
+                return self.def_enum_annotated_node(_in, (pre, node.node, post))
+            case fpp_ast.StateMachineMemberDefGuard():
+                return self.def_guard_annotated_node(_in, (pre, node.node, post))
             case fpp_ast.StateMachineMemberDefSignal():
                 return self.def_signal_annotated_node(_in, (pre, node.node, post))
             case fpp_ast.StateMachineMemberDefState():
                 return self.def_state_annotated_node(_in, (pre, node.node, post))
+            case fpp_ast.StateMachineMemberDefStruct():
+                return self.def_struct_annotated_node(_in, (pre, node.node, post))
+            case fpp_ast.StateMachineMemberSpecInclude():
+                return self.spec_include_annotated_node(_in, (pre, node.node, post))
             case fpp_ast.StateMachineMemberSpecInitialTransition():
                 return self.spec_initial_transition_annotated_node(
                     _in, (pre, node.node, post)
@@ -514,10 +535,8 @@ class AstVisitor(ABC, Generic[In, Out]):
         pre, node, post = member.node
 
         match node:
-            case fpp_ast.TopologyMemberSpecCompInstance():
-                return self.spec_comp_instance_annotated_node(
-                    _in, (pre, node.node, post)
-                )
+            case fpp_ast.TopologyMemberSpecInstance():
+                return self.spec_instance_annotated_node(_in, (pre, node.node, post))
             case fpp_ast.TopologyMemberSpecConnectionGraph():
                 return self.spec_connection_graph_annotated_node(
                     _in, (pre, node.node, post)

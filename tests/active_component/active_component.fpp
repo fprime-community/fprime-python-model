@@ -39,6 +39,12 @@ module M {
     @ State machine S2
     state machine S2 {
 
+      enum State: U8 {
+        @ The uninitialized state
+        __FPRIME_UNINITIALIZED
+        IDLE
+      }
+
       initial enter IDLE
 
       state IDLE

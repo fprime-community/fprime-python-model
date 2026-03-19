@@ -1,5 +1,5 @@
 {
-  "fppVersion" : "v3.1.1a4-339-gcf148f982",
+  "fppVersion" : "v3.1.1a4-447-gf40109a8b",
   "analysis" : {
     "componentInstanceMap" : {
       "67" : {
@@ -742,13 +742,8 @@
         "instanceMap" : [
           [
             {
-              "InterfaceComponentInstance" : {
-                "qualifiedName" : {
-                  "qualifier" : [
-                  ],
-                  "base" : "i"
-                },
-                "unqualifiedName" : "i"
+              "ComponentInstance" : {
+                "astNodeId" : 67
               }
             },
             {
@@ -792,13 +787,8 @@
         "unconnectedPortSet" : [
           {
             "interfaceInstance" : {
-              "InterfaceComponentInstance" : {
-                "qualifiedName" : {
-                  "qualifier" : [
-                  ],
-                  "base" : "i"
-                },
-                "unqualifiedName" : "i"
+              "ComponentInstance" : {
+                "astNodeId" : 67
               }
             },
             "portInstance" : {
@@ -832,13 +822,8 @@
           },
           {
             "interfaceInstance" : {
-              "InterfaceComponentInstance" : {
-                "qualifiedName" : {
-                  "qualifier" : [
-                  ],
-                  "base" : "i"
-                },
-                "unqualifiedName" : "i"
+              "ComponentInstance" : {
+                "astNodeId" : 67
               }
             },
             "portInstance" : {

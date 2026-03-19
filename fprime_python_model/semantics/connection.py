@@ -4,6 +4,11 @@ from fprime_python_model.fpp_ast.fpp_locations import Location
 from fprime_python_model.semantics.port_instance_identifier import (
     PortInstanceIdentifier,
 )
+from fprime_python_model.semantics.interface_instance import (
+    InterfaceComponentInstance,
+    InterfaceTopology,
+)
+from fprime_python_model.utils.error import InternalError
 
 
 @dataclass
@@ -36,9 +41,24 @@ class Endpoint:
         else:
             return f"{str(self.port)}"
 
-    # TODO
-    def get_underlying_endpoint(self):
-        pass
+    # Get underlying endpoint by stripping off topology port aliases
+    def get_underlying_endpoint(self) -> "Endpoint":
+        if isinstance(self.port.interface_instance, InterfaceComponentInstance):
+            return self
+        elif isinstance(self.port.interface_instance, InterfaceTopology):
+            new_endpoint = Endpoint(
+                loc=self.loc,
+                port=self.port.interface_instance.top.port_map[
+                    self.port.port_instance.get_unqualified_name()
+                ][0],
+                port_number=self.port_number,
+                topology_port=self,
+            )
+            return new_endpoint.get_underlying_endpoint()
+        else:
+            raise InternalError(
+                "expected InterfaceComponentInstance or InterfaceTopology"
+            )
 
 
 @dataclass

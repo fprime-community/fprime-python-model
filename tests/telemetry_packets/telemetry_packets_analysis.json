@@ -1,5 +1,5 @@
 {
-  "fppVersion" : "v3.1.1a4-339-gcf148f982",
+  "fppVersion" : "v3.1.1a4-447-gf40109a8b",
   "analysis" : {
     "componentInstanceMap" : {
       "24" : {
@@ -419,13 +419,8 @@
         "instanceMap" : [
           [
             {
-              "InterfaceComponentInstance" : {
-                "qualifiedName" : {
-                  "qualifier" : [
-                  ],
-                  "base" : "c1"
-                },
-                "unqualifiedName" : "c1"
+              "ComponentInstance" : {
+                "astNodeId" : 24
               }
             },
             {
@@ -436,13 +431,8 @@
           ],
           [
             {
-              "InterfaceComponentInstance" : {
-                "qualifiedName" : {
-                  "qualifier" : [
-                  ],
-                  "base" : "c2"
-                },
-                "unqualifiedName" : "c2"
+              "ComponentInstance" : {
+                "astNodeId" : 28
               }
             },
             {
@@ -486,13 +476,8 @@
         "unconnectedPortSet" : [
           {
             "interfaceInstance" : {
-              "InterfaceComponentInstance" : {
-                "qualifiedName" : {
-                  "qualifier" : [
-                  ],
-                  "base" : "c1"
-                },
-                "unqualifiedName" : "c1"
+              "ComponentInstance" : {
+                "astNodeId" : 24
               }
             },
             "portInstance" : {
@@ -535,13 +520,8 @@
           },
           {
             "interfaceInstance" : {
-              "InterfaceComponentInstance" : {
-                "qualifiedName" : {
-                  "qualifier" : [
-                  ],
-                  "base" : "c2"
-                },
-                "unqualifiedName" : "c2"
+              "ComponentInstance" : {
+                "astNodeId" : 28
               }
             },
             "portInstance" : {
@@ -575,13 +555,8 @@
           },
           {
             "interfaceInstance" : {
-              "InterfaceComponentInstance" : {
-                "qualifiedName" : {
-                  "qualifier" : [
-                  ],
-                  "base" : "c1"
-                },
-                "unqualifiedName" : "c1"
+              "ComponentInstance" : {
+                "astNodeId" : 24
               }
             },
             "portInstance" : {
@@ -624,13 +599,8 @@
           },
           {
             "interfaceInstance" : {
-              "InterfaceComponentInstance" : {
-                "qualifiedName" : {
-                  "qualifier" : [
-                  ],
-                  "base" : "c2"
-                },
-                "unqualifiedName" : "c2"
+              "ComponentInstance" : {
+                "astNodeId" : 28
               }
             },
             "portInstance" : {
@@ -673,13 +643,8 @@
           },
           {
             "interfaceInstance" : {
-              "InterfaceComponentInstance" : {
-                "qualifiedName" : {
-                  "qualifier" : [
-                  ],
-                  "base" : "c2"
-                },
-                "unqualifiedName" : "c2"
+              "ComponentInstance" : {
+                "astNodeId" : 28
               }
             },
             "portInstance" : {
@@ -713,13 +678,8 @@
           },
           {
             "interfaceInstance" : {
-              "InterfaceComponentInstance" : {
-                "qualifiedName" : {
-                  "qualifier" : [
-                  ],
-                  "base" : "c2"
-                },
-                "unqualifiedName" : "c2"
+              "ComponentInstance" : {
+                "astNodeId" : 28
               }
             },
             "portInstance" : {
@@ -762,13 +722,8 @@
           },
           {
             "interfaceInstance" : {
-              "InterfaceComponentInstance" : {
-                "qualifiedName" : {
-                  "qualifier" : [
-                  ],
-                  "base" : "c1"
-                },
-                "unqualifiedName" : "c1"
+              "ComponentInstance" : {
+                "astNodeId" : 24
               }
             },
             "portInstance" : {
@@ -802,13 +757,8 @@
           },
           {
             "interfaceInstance" : {
-              "InterfaceComponentInstance" : {
-                "qualifiedName" : {
-                  "qualifier" : [
-                  ],
-                  "base" : "c1"
-                },
-                "unqualifiedName" : "c1"
+              "ComponentInstance" : {
+                "astNodeId" : 24
               }
             },
             "portInstance" : {

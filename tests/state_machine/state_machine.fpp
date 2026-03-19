@@ -5,6 +5,15 @@ constant FW_FIXED_LENGTH_STRING_SIZE = 256
 @ State machine M
 state machine M {
 
+  enum State: U8 {
+    @ The uninitialized state
+    __FPRIME_UNINITIALIZED
+    @ State S1
+    S1
+    @ State S3
+    S2_S3
+  }
+
   array A = [3] U32
 
   constant c = 0

@@ -164,6 +164,12 @@ from fprime_python_model.semantics.transition import (
     GuardedTransition,
 )
 from fprime_python_model.semantics.framework_definitions import FrameworkDefinitions
+from fprime_python_model.semantics.interface_instance import (
+    InterfaceInstance,
+    InterfaceComponentInstance,
+    InterfaceTopology,
+)
+from fprime_python_model.semantics.port_interface import PortInterface
 
 RT = TypeVar("RT")
 
@@ -189,6 +195,7 @@ class AnalysisTranslator:
 
         self.component_map: Dict[AstId, Component] = dict()
         self.component_instance_map: Dict[AstId, ComponentInstance] = dict()
+        self.topology_map: Dict[AstId, Topology] = dict()
 
     def get_annotated_ast_node_by_id(
         self, node_id: AstId
@@ -354,8 +361,8 @@ class AnalysisTranslator:
 
     def translate_name_group(self, ng: str) -> NameGroup:
         match ng:
-            case "ComponentInstance":
-                return NameGroup.COMPONENT_INSTANCE
+            case "PortInterfaceInstance":
+                return NameGroup.PORT_INTERFACE_INSTANCE
             case "Component":
                 return NameGroup.COMPONENT
             case "Port":
@@ -364,8 +371,8 @@ class AnalysisTranslator:
                 return NameGroup.STATE_MACHINE
             case "Topology":
                 return NameGroup.TOPOLOGY
-            case "Interface":
-                return NameGroup.INTERFACE
+            case "PortInterface":
+                return NameGroup.PORT_INTERFACE
             case "Type":
                 return NameGroup.TYPE
             case "Value":
@@ -953,13 +960,20 @@ class AnalysisTranslator:
                 )
             )
         return out_list
+    
+    def translate_port_interface(self, d: Dict[str, dict]) -> PortInterface:
+        return PortInterface(
+            d["instanceType"],
+            self.translate_port_map(d["portMap"]),
+            self.translate_spec_port_map(d["specialPortMap"])
+        )
 
     def translate_component(self, d: Dict[str, dict]) -> Component:
         a_node = self.get_annotated_ast_node_by_id(int(d["aNode"]["astNodeId"]))
         return Component(
             a_node=a_node,
-            port_map=self.translate_port_map(d["portMap"]),
-            special_port_map=self.translate_spec_port_map(d["specialPortMap"]),
+            port_interface=self.translate_port_interface(d["portInterface"]),
+            # special_port_map=self.translate_spec_port_map(d["specialPortMap"]),
             command_map=self.translate_command_map(d["commandMap"]),
             tlm_channel_map=self.translate_tlm_channel_map(d["tlmChannelMap"]),
             tlm_channel_name_map=self.translate_tlm_channel_name_map(
@@ -980,29 +994,34 @@ class AnalysisTranslator:
             record_map=self.translate_record_map(d["recordMap"]),
         )
 
-    def translate_direct_import_map(self, d: Dict) -> Dict[AstId, Location]:
+    def translate_direct(self, d: Dict) -> Dict[AstId, Location]:
         out_dict: Dict[AstId, Location] = dict()
         for k, v in d.items():
             out_dict[AstId(k)] = Location(Path(v["file"]), v["pos"], v["includingLoc"])
         return out_dict
 
+    def translate_interface_instance(self, d: Dict) -> Dict[InterfaceInstance, Location]:
+        if "ComponentInstance" in d:
+            return InterfaceComponentInstance(self.component_instance_map[int(d["ComponentInstance"]["astNodeId"])])
+        elif "Topology" in d:
+            return InterfaceTopology(self.topology_map[int(d["Topology"]["astNodeId"])])
+        else:
+            raise InternalError("Encountered invalid interface instance.")
+
     def translate_instance_map(
         self, l: list
-    ) -> Dict[ComponentInstance, Tuple[fpp_ast.Visibility, Location]]:
-        out_dict: Dict[ComponentInstance, Tuple[fpp_ast.Visibility, Location]] = dict()
+    ) -> Dict[InterfaceInstance, Location]:
+        out_dict: Dict[InterfaceInstance, Location] = dict()
         for i in l:
-            location_json = i[1][1]
-            ci = self.component_instance_map[i[0]["aNode"]["astNodeId"]]
-            visibility = fpp_ast.Visibility.PRIVATE
-            if "Public" in i[1][0]:
-                visibility = fpp_ast.Visibility.PUBLIC
+            location_json = i[1]
+            interface_inst = self.translate_interface_instance(i[0])
             location = Location(
                 Path(location_json["file"]),
                 location_json["pos"],
                 location_json["includingLoc"],
             )
 
-            out_dict[ci] = (visibility, location)
+            out_dict[interface_inst] = location
         return out_dict
 
     def translate_connection_pattern(self, d: Dict) -> ConnectionPattern:
@@ -1054,9 +1073,7 @@ class AnalysisTranslator:
 
     def translate_port_instance_identifier(self, d: Dict) -> PortInstanceIdentifier:
         return PortInstanceIdentifier(
-            component_instance=self.component_instance_map[
-                d["componentInstance"]["aNode"]["astNodeId"]
-            ],
+            interface_instance=self.translate_interface_instance(d["interfaceInstance"]),
             port_instance=self.translate_port_instance(d["portInstance"]),
         )
 
@@ -1067,6 +1084,7 @@ class AnalysisTranslator:
             ),
             port=self.translate_port_instance_identifier(d["port"]),
             port_number=self.translate_optional(d["portNumber"], int),
+            topology_port=None # TODO
         )
 
     def translate_connection(self, d: Dict) -> Connection:
@@ -1084,52 +1102,54 @@ class AnalysisTranslator:
             out_dict[UnqualifiedName(k)] = [self.translate_connection(c) for c in v]
         return out_dict
 
-    def translate_input_output_connection_map(
-        self, l: List
-    ) -> Dict[PortInstanceIdentifier, Set[Connection]]:
-        out_dict: Dict[PortInstanceIdentifier, Set[Connection]] = dict()
-        for i in l:
-            connections = set()
-            for c in i[1]:
-                connections.add(self.translate_connection(c))
-            out_dict[self.translate_port_instance_identifier(i[0])] = connections
-        return out_dict
+    # def translate_input_output_connection_map(
+    #     self, l: List
+    # ) -> Dict[PortInstanceIdentifier, Set[Connection]]:
+    #     out_dict: Dict[PortInstanceIdentifier, Set[Connection]] = dict()
+    #     for i in l:
+    #         connections = set()
+    #         for c in i[1]:
+    #             connections.add(self.translate_connection(c))
+    #         out_dict[self.translate_port_instance_identifier(i[0])] = connections
+    #     return out_dict
 
-    def translate_port_number_map(self, l: List) -> Dict[Connection, int]:
-        out_dict: Dict[Connection, int] = dict()
-        for i in l:
-            out_dict[self.translate_connection(i[0])] = i[1]
-        return out_dict
+    # def translate_port_number_map(self, l: List) -> Dict[Connection, int]:
+    #     out_dict: Dict[Connection, int] = dict()
+    #     for i in l:
+    #         out_dict[self.translate_connection(i[0])] = i[1]
+    #     return out_dict
 
-    def translate_unconnected_port_set(self, l: List) -> Set[PortInstanceIdentifier]:
-        out_set: Set[PortInstanceIdentifier] = set()
-        for pii in l:
-            out_set.add(self.translate_port_instance_identifier(pii))
-        return out_set
+    # def translate_unconnected_port_set(self, l: List) -> Set[PortInstanceIdentifier]:
+    #     out_set: Set[PortInstanceIdentifier] = set()
+    #     for pii in l:
+    #         out_set.add(self.translate_port_instance_identifier(pii))
+    #     return out_set
 
     def translate_topology(self, d: Dict) -> Topology:
         a_node = self.get_annotated_ast_node_by_id(int(d["aNode"]["astNodeId"]))
         return Topology(
             a_node=a_node,
-            direct_import_map=self.translate_direct_import_map(d["directImportMap"]),
+            qualified_name=self.translate_qualified_name(d["qualifiedName"]),
+            direct_topologies=self.translate_direct(d["directTopologies"]),
+            direct_component_instances=self.translate_direct(d["directComponentInstances"]),
             transitive_import_set=set(
                 [AstId(i["node"]["astNodeId"]) for i in d["transitiveImportSet"]]
             ),
-            instance_map=self.translate_instance_map(d["instanceMap"]),
+            # instance_map=self.translate_instance_map(d["instanceMap"]),
             pattern_map=self.translate_pattern_map(d["patternMap"]),
             connection_map=self.translate_connection_map(d["connectionMap"]),
-            local_connection_map=self.translate_connection_map(d["localConnectionMap"]),
-            output_connection_map=self.translate_input_output_connection_map(
-                d["outputConnectionMap"]
-            ),
-            input_connection_map=self.translate_input_output_connection_map(
-                d["inputConnectionMap"]
-            ),
-            from_port_number_map=self.translate_port_number_map(d["fromPortNumberMap"]),
-            to_port_number_map=self.translate_port_number_map(d["toPortNumberMap"]),
-            unconnected_port_set=self.translate_unconnected_port_set(
-                d["unconnectedPortSet"]
-            ),
+            # local_connection_map=self.translate_connection_map(d["localConnectionMap"]),
+            # output_connection_map=self.translate_input_output_connection_map(
+            #     d["outputConnectionMap"]
+            # ),
+            # input_connection_map=self.translate_input_output_connection_map(
+            #     d["inputConnectionMap"]
+            # ),
+            # from_port_number_map=self.translate_port_number_map(d["fromPortNumberMap"]),
+            # to_port_number_map=self.translate_port_number_map(d["toPortNumberMap"]),
+            # unconnected_port_set=self.translate_unconnected_port_set(
+            #     d["unconnectedPortSet"]
+            # ),
         )
 
     def translate_init_specifier_map(
@@ -1163,8 +1183,8 @@ class AnalysisTranslator:
         a_node = self.get_annotated_ast_node_by_id(int(d["aNode"]["astNodeId"]))
         return Interface(
             a_node=a_node,
-            port_map=self.translate_port_map(d["portMap"]),
-            special_port_map=self.translate_spec_port_map(d["specialPortMap"]),
+            import_map=dict(),  # self.translate_port_map(d["portMap"]), TODO
+            # special_port_map=self.translate_spec_port_map(d["specialPortMap"]),
         )
 
     def translate_state_machine_name_group(self, ng: str) -> StateMachineNameGroup:
@@ -1472,6 +1492,9 @@ class AnalysisTranslator:
             self.component_instance_map = self.translate_component_instance_map(
                 self.require_type(data.get("componentInstanceMap"), dict)
             )
+            self.topology_map = self.translate_topology_map(
+                self.require_type(data.get("topologyMap"), dict)
+            )
             return Analysis(
                 input_file_set=self.translate_file_set(
                     self.require_type(data.get("inputFileSet"), list)
@@ -1499,9 +1522,7 @@ class AnalysisTranslator:
                 ),
                 component_map=self.component_map,
                 component_instance_map=self.component_instance_map,
-                topology_map=self.translate_topology_map(
-                    self.require_type(data.get("topologyMap"), dict)
-                ),
+                topology_map=self.topology_map,
                 interface_map=self.translate_interface_map(
                     self.require_type(data.get("interfaceMap"), dict)
                 ),
