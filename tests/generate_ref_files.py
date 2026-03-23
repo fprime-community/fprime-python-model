@@ -27,6 +27,7 @@ test_name_map: Dict[str, str] = {
     "telemetry": "telemetry",
     "telemetry_packets": "telemetryPackets",
     "topology": "simpleTopology",
+    "topology_ports": "topologyPorts",
     "types": "types",
 }
 

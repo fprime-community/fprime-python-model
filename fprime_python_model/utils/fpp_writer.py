@@ -511,16 +511,41 @@ class FppWriter(AstVisitor, LineUtils):
     ):
         _, node, _ = a_node
         data = node.data
-        return Lines(
-            [self.line(f"topology {self.ident(data.name)} " + "{"), blank()]
-            + list(
+
+        implements_clause = (
+            [n.data for n in data.implements] if data.implements else None
+        )
+
+        header = Lines(
+            [
+                self.line(
+                    f"topology {self.ident(data.name)} "
+                    + ("implements" if implements_clause else "{")
+                )
+            ]
+        )
+
+        header = header.join_opt_with_break(
+            implements_clause,
+            "",
+            lambda q: Lines([line for item in q for line in self.qual_ident(item)]),
+        )
+
+        if implements_clause:
+            middle = Lines([self.line("{"), blank()])
+        else:
+            middle = Lines([blank()])
+
+        members = Lines(
+            list(
                 map(
                     self.indent_in,
                     self.blank_separated(self.topology_member, data.members),
                 )
             )
-            + [blank(), self.line("}")]
         )
+
+        return header + middle + members + Lines([blank(), self.line("}")])
 
     def expr_array_node(self, _in, node, e):
         return Lines(
@@ -556,9 +581,11 @@ class FppWriter(AstVisitor, LineUtils):
 
     def expr_paren_node(self, _in, node, e):
         return Lines(add_prefix_and_suffix("(", self.expr_node(e.e).lines, ")"))
-    
+
     def expr_size_of_node(self, _in, node, e):
-        return Lines(add_prefix_and_suffix("sizeof(", self.type_name_node(e.type_name), ")"))
+        return Lines(
+            add_prefix_and_suffix("sizeof(", self.type_name_node(e.type_name), ")")
+        )
 
     def expr_struct_node(self, _in, node, e):
         struct_lines = []

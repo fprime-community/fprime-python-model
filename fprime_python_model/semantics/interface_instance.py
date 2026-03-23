@@ -32,7 +32,7 @@ class InterfaceInstance(ABC):
 
     def get_port_instance(self, name: AstNode[fpp_ast.Ident]) -> PortInstance:
         return self.get_interface().get_port_instance(name, self.get_unqualified_name())
-    
+
     def __hash__(self):
         return hash(self.get_qualified_name())
 
@@ -49,7 +49,7 @@ class InterfaceComponentInstance(InterfaceInstance):
 
     def get_interface(self) -> PortInterface:
         return self.ci.get_interface()
-    
+
     def __hash__(self):
         return super().__hash__()
 

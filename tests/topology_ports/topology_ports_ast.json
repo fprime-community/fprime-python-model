@@ -1,0 +1,484 @@
+{
+  "fppVersion" : "v3.1.1a4-447-gf40109a8b",
+  "ast" : [
+    {
+      "members" : [
+        [
+          [
+          ],
+          {
+            "DefPort" : {
+              "node" : {
+                "AstNode" : {
+                  "data" : {
+                    "name" : "P",
+                    "params" : [
+                    ],
+                    "returnType" : "None"
+                  },
+                  "id" : 0
+                }
+              }
+            }
+          },
+          [
+          ]
+        ],
+        [
+          [
+          ],
+          {
+            "DefInterface" : {
+              "node" : {
+                "AstNode" : {
+                  "data" : {
+                    "name" : "I",
+                    "members" : [
+                    ]
+                  },
+                  "id" : 1
+                }
+              }
+            }
+          },
+          [
+          ]
+        ],
+        [
+          [
+          ],
+          {
+            "DefComponent" : {
+              "node" : {
+                "AstNode" : {
+                  "data" : {
+                    "kind" : {
+                      "Passive" : {
+                        
+                      }
+                    },
+                    "name" : "C",
+                    "members" : [
+                      [
+                        [
+                        ],
+                        {
+                          "SpecPortInstance" : {
+                            "node" : {
+                              "AstNode" : {
+                                "data" : {
+                                  "General" : {
+                                    "kind" : {
+                                      "SyncInput" : {
+                                        
+                                      }
+                                    },
+                                    "name" : "pIn",
+                                    "size" : "None",
+                                    "port" : {
+                                      "Some" : {
+                                        "AstNode" : {
+                                          "data" : {
+                                            "Unqualified" : {
+                                              "name" : "P"
+                                            }
+                                          },
+                                          "id" : 3
+                                        }
+                                      }
+                                    },
+                                    "priority" : "None",
+                                    "queueFull" : "None"
+                                  }
+                                },
+                                "id" : 4
+                              }
+                            }
+                          }
+                        },
+                        [
+                        ]
+                      ],
+                      [
+                        [
+                        ],
+                        {
+                          "SpecPortInstance" : {
+                            "node" : {
+                              "AstNode" : {
+                                "data" : {
+                                  "General" : {
+                                    "kind" : {
+                                      "Output" : {
+                                        
+                                      }
+                                    },
+                                    "name" : "pOut",
+                                    "size" : "None",
+                                    "port" : {
+                                      "Some" : {
+                                        "AstNode" : {
+                                          "data" : {
+                                            "Unqualified" : {
+                                              "name" : "P"
+                                            }
+                                          },
+                                          "id" : 12
+                                        }
+                                      }
+                                    },
+                                    "priority" : "None",
+                                    "queueFull" : "None"
+                                  }
+                                },
+                                "id" : 13
+                              }
+                            }
+                          }
+                        },
+                        [
+                        ]
+                      ]
+                    ]
+                  },
+                  "id" : 14
+                }
+              }
+            }
+          },
+          [
+          ]
+        ],
+        [
+          [
+          ],
+          {
+            "DefComponentInstance" : {
+              "node" : {
+                "AstNode" : {
+                  "data" : {
+                    "name" : "c1",
+                    "component" : {
+                      "AstNode" : {
+                        "data" : {
+                          "Unqualified" : {
+                            "name" : "C"
+                          }
+                        },
+                        "id" : 16
+                      }
+                    },
+                    "baseId" : {
+                      "AstNode" : {
+                        "data" : {
+                          "ExprLiteralInt" : {
+                            "value" : "0x100"
+                          }
+                        },
+                        "id" : 17
+                      }
+                    },
+                    "implType" : "None",
+                    "file" : "None",
+                    "queueSize" : "None",
+                    "stackSize" : "None",
+                    "priority" : "None",
+                    "cpu" : "None",
+                    "initSpecs" : [
+                    ]
+                  },
+                  "id" : 18
+                }
+              }
+            }
+          },
+          [
+          ]
+        ],
+        [
+          [
+          ],
+          {
+            "DefComponentInstance" : {
+              "node" : {
+                "AstNode" : {
+                  "data" : {
+                    "name" : "c2",
+                    "component" : {
+                      "AstNode" : {
+                        "data" : {
+                          "Unqualified" : {
+                            "name" : "C"
+                          }
+                        },
+                        "id" : 20
+                      }
+                    },
+                    "baseId" : {
+                      "AstNode" : {
+                        "data" : {
+                          "ExprLiteralInt" : {
+                            "value" : "0x200"
+                          }
+                        },
+                        "id" : 21
+                      }
+                    },
+                    "implType" : "None",
+                    "file" : "None",
+                    "queueSize" : "None",
+                    "stackSize" : "None",
+                    "priority" : "None",
+                    "cpu" : "None",
+                    "initSpecs" : [
+                    ]
+                  },
+                  "id" : 22
+                }
+              }
+            }
+          },
+          [
+          ]
+        ],
+        [
+          [
+            "A simple topology"
+          ],
+          {
+            "DefTopology" : {
+              "node" : {
+                "AstNode" : {
+                  "data" : {
+                    "name" : "TopPorts",
+                    "members" : [
+                      [
+                        [
+                          "This specifier says that instance c1 is part of the topology"
+                        ],
+                        {
+                          "SpecInstance" : {
+                            "node" : {
+                              "AstNode" : {
+                                "data" : {
+                                  "instance" : {
+                                    "AstNode" : {
+                                      "data" : {
+                                        "Unqualified" : {
+                                          "name" : "c1"
+                                        }
+                                      },
+                                      "id" : 26
+                                    }
+                                  }
+                                },
+                                "id" : 27
+                              }
+                            }
+                          }
+                        },
+                        [
+                        ]
+                      ],
+                      [
+                        [
+                          "This specifier says that instance c2 is part of the topology"
+                        ],
+                        {
+                          "SpecInstance" : {
+                            "node" : {
+                              "AstNode" : {
+                                "data" : {
+                                  "instance" : {
+                                    "AstNode" : {
+                                      "data" : {
+                                        "Unqualified" : {
+                                          "name" : "c2"
+                                        }
+                                      },
+                                      "id" : 29
+                                    }
+                                  }
+                                },
+                                "id" : 30
+                              }
+                            }
+                          }
+                        },
+                        [
+                        ]
+                      ],
+                      [
+                        [
+                          "This code specifies a connection graph C1"
+                        ],
+                        {
+                          "SpecConnectionGraph" : {
+                            "node" : {
+                              "AstNode" : {
+                                "data" : {
+                                  "Direct" : {
+                                    "name" : "C1",
+                                    "connections" : [
+                                      {
+                                        "isUnmatched" : false,
+                                        "fromPort" : {
+                                          "AstNode" : {
+                                            "data" : {
+                                              "interfaceInstance" : {
+                                                "AstNode" : {
+                                                  "data" : {
+                                                    "Unqualified" : {
+                                                      "name" : "c1"
+                                                    }
+                                                  },
+                                                  "id" : 33
+                                                }
+                                              },
+                                              "portName" : {
+                                                "AstNode" : {
+                                                  "data" : "pOut",
+                                                  "id" : 32
+                                                }
+                                              }
+                                            },
+                                            "id" : 34
+                                          }
+                                        },
+                                        "fromIndex" : "None",
+                                        "toPort" : {
+                                          "AstNode" : {
+                                            "data" : {
+                                              "interfaceInstance" : {
+                                                "AstNode" : {
+                                                  "data" : {
+                                                    "Unqualified" : {
+                                                      "name" : "c2"
+                                                    }
+                                                  },
+                                                  "id" : 37
+                                                }
+                                              },
+                                              "portName" : {
+                                                "AstNode" : {
+                                                  "data" : "pIn",
+                                                  "id" : 36
+                                                }
+                                              }
+                                            },
+                                            "id" : 38
+                                          }
+                                        },
+                                        "toIndex" : "None"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "id" : 39
+                              }
+                            }
+                          }
+                        },
+                        [
+                        ]
+                      ],
+                      [
+                        [
+                          "This code specifies a connection graph C2"
+                        ],
+                        {
+                          "SpecConnectionGraph" : {
+                            "node" : {
+                              "AstNode" : {
+                                "data" : {
+                                  "Direct" : {
+                                    "name" : "C2",
+                                    "connections" : [
+                                      {
+                                        "isUnmatched" : false,
+                                        "fromPort" : {
+                                          "AstNode" : {
+                                            "data" : {
+                                              "interfaceInstance" : {
+                                                "AstNode" : {
+                                                  "data" : {
+                                                    "Unqualified" : {
+                                                      "name" : "c2"
+                                                    }
+                                                  },
+                                                  "id" : 60
+                                                }
+                                              },
+                                              "portName" : {
+                                                "AstNode" : {
+                                                  "data" : "pOut",
+                                                  "id" : 59
+                                                }
+                                              }
+                                            },
+                                            "id" : 61
+                                          }
+                                        },
+                                        "fromIndex" : "None",
+                                        "toPort" : {
+                                          "AstNode" : {
+                                            "data" : {
+                                              "interfaceInstance" : {
+                                                "AstNode" : {
+                                                  "data" : {
+                                                    "Unqualified" : {
+                                                      "name" : "c1"
+                                                    }
+                                                  },
+                                                  "id" : 64
+                                                }
+                                              },
+                                              "portName" : {
+                                                "AstNode" : {
+                                                  "data" : "pIn",
+                                                  "id" : 63
+                                                }
+                                              }
+                                            },
+                                            "id" : 65
+                                          }
+                                        },
+                                        "toIndex" : "None"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "id" : 66
+                              }
+                            }
+                          }
+                        },
+                        [
+                        ]
+                      ]
+                    ],
+                    "implements" : [
+                      {
+                        "AstNode" : {
+                          "data" : {
+                            "Unqualified" : {
+                              "name" : "I"
+                            }
+                          },
+                          "id" : 24
+                        }
+                      }
+                    ]
+                  },
+                  "id" : 67
+                }
+              }
+            }
+          },
+          [
+          ]
+        ]
+      ]
+    }
+  ]
+}
