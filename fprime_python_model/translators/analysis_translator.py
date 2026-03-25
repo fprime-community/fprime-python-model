@@ -1000,12 +1000,12 @@ class AnalysisTranslator:
     def translate_interface_instance(
         self, d: Dict
     ) -> Dict[InterfaceInstance, Location]:
-        if "ComponentInstance" in d:
+        if "InterfaceComponentInstance" in d:
             return InterfaceComponentInstance(
-                self.component_instance_map[int(d["ComponentInstance"]["astNodeId"])]
+                self.component_instance_map[int(d["InterfaceComponentInstance"]["astNodeId"])]
             )
-        elif "Topology" in d:
-            return InterfaceTopology(self.topology_map[int(d["Topology"]["astNodeId"])])
+        elif "InterfaceTopology" in d:
+            return InterfaceTopology(self.topology_map[int(d["InterfaceTopology"]["astNodeId"])])
         else:
             raise InternalError("Encountered invalid interface instance.")
 

@@ -1,5 +1,5 @@
 {
-  "fppVersion" : "v3.1.1a4-447-gf40109a8b",
+  "fppVersion" : "v3.1.1a4-448-gbb72402e1",
   "analysis" : {
     "componentInstanceMap" : {
       "18" : {
@@ -227,7 +227,7 @@
         "instanceMap" : [
           [
             {
-              "ComponentInstance" : {
+              "InterfaceComponentInstance" : {
                 "astNodeId" : 18
               }
             },
@@ -239,7 +239,7 @@
           ],
           [
             {
-              "ComponentInstance" : {
+              "InterfaceComponentInstance" : {
                 "astNodeId" : 22
               }
             },
@@ -278,7 +278,7 @@
                 },
                 "port" : {
                   "interfaceInstance" : {
-                    "ComponentInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 18
                     }
                   },
@@ -331,7 +331,7 @@
                 },
                 "port" : {
                   "interfaceInstance" : {
-                    "ComponentInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 22
                     }
                   },
@@ -389,7 +389,7 @@
                 },
                 "port" : {
                   "interfaceInstance" : {
-                    "ComponentInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 22
                     }
                   },
@@ -442,7 +442,7 @@
                 },
                 "port" : {
                   "interfaceInstance" : {
-                    "ComponentInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 18
                     }
                   },
@@ -502,7 +502,7 @@
                 },
                 "port" : {
                   "interfaceInstance" : {
-                    "ComponentInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 18
                     }
                   },
@@ -555,7 +555,7 @@
                 },
                 "port" : {
                   "interfaceInstance" : {
-                    "ComponentInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 22
                     }
                   },
@@ -613,7 +613,7 @@
                 },
                 "port" : {
                   "interfaceInstance" : {
-                    "ComponentInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 22
                     }
                   },
@@ -666,7 +666,7 @@
                 },
                 "port" : {
                   "interfaceInstance" : {
-                    "ComponentInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 18
                     }
                   },
@@ -719,7 +719,7 @@
           [
             {
               "interfaceInstance" : {
-                "ComponentInstance" : {
+                "InterfaceComponentInstance" : {
                   "astNodeId" : 18
                 }
               },
@@ -771,7 +771,7 @@
                   },
                   "port" : {
                     "interfaceInstance" : {
-                      "ComponentInstance" : {
+                      "InterfaceComponentInstance" : {
                         "astNodeId" : 18
                       }
                     },
@@ -824,7 +824,7 @@
                   },
                   "port" : {
                     "interfaceInstance" : {
-                      "ComponentInstance" : {
+                      "InterfaceComponentInstance" : {
                         "astNodeId" : 22
                       }
                     },
@@ -876,7 +876,7 @@
           [
             {
               "interfaceInstance" : {
-                "ComponentInstance" : {
+                "InterfaceComponentInstance" : {
                   "astNodeId" : 22
                 }
               },
@@ -928,7 +928,7 @@
                   },
                   "port" : {
                     "interfaceInstance" : {
-                      "ComponentInstance" : {
+                      "InterfaceComponentInstance" : {
                         "astNodeId" : 22
                       }
                     },
@@ -981,7 +981,7 @@
                   },
                   "port" : {
                     "interfaceInstance" : {
-                      "ComponentInstance" : {
+                      "InterfaceComponentInstance" : {
                         "astNodeId" : 18
                       }
                     },
@@ -1035,7 +1035,7 @@
           [
             {
               "interfaceInstance" : {
-                "ComponentInstance" : {
+                "InterfaceComponentInstance" : {
                   "astNodeId" : 22
                 }
               },
@@ -1087,7 +1087,7 @@
                   },
                   "port" : {
                     "interfaceInstance" : {
-                      "ComponentInstance" : {
+                      "InterfaceComponentInstance" : {
                         "astNodeId" : 18
                       }
                     },
@@ -1140,7 +1140,7 @@
                   },
                   "port" : {
                     "interfaceInstance" : {
-                      "ComponentInstance" : {
+                      "InterfaceComponentInstance" : {
                         "astNodeId" : 22
                       }
                     },
@@ -1192,7 +1192,7 @@
           [
             {
               "interfaceInstance" : {
-                "ComponentInstance" : {
+                "InterfaceComponentInstance" : {
                   "astNodeId" : 18
                 }
               },
@@ -1244,7 +1244,7 @@
                   },
                   "port" : {
                     "interfaceInstance" : {
-                      "ComponentInstance" : {
+                      "InterfaceComponentInstance" : {
                         "astNodeId" : 22
                       }
                     },
@@ -1297,7 +1297,7 @@
                   },
                   "port" : {
                     "interfaceInstance" : {
-                      "ComponentInstance" : {
+                      "InterfaceComponentInstance" : {
                         "astNodeId" : 18
                       }
                     },
@@ -1358,7 +1358,7 @@
                 },
                 "port" : {
                   "interfaceInstance" : {
-                    "ComponentInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 18
                     }
                   },
@@ -1411,7 +1411,7 @@
                 },
                 "port" : {
                   "interfaceInstance" : {
-                    "ComponentInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 22
                     }
                   },
@@ -1470,7 +1470,7 @@
                 },
                 "port" : {
                   "interfaceInstance" : {
-                    "ComponentInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 22
                     }
                   },
@@ -1523,7 +1523,7 @@
                 },
                 "port" : {
                   "interfaceInstance" : {
-                    "ComponentInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 18
                     }
                   },
@@ -1584,7 +1584,7 @@
                 },
                 "port" : {
                   "interfaceInstance" : {
-                    "ComponentInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 22
                     }
                   },
@@ -1637,7 +1637,7 @@
                 },
                 "port" : {
                   "interfaceInstance" : {
-                    "ComponentInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 18
                     }
                   },
@@ -1696,7 +1696,7 @@
                 },
                 "port" : {
                   "interfaceInstance" : {
-                    "ComponentInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 18
                     }
                   },
@@ -1749,7 +1749,7 @@
                 },
                 "port" : {
                   "interfaceInstance" : {
-                    "ComponentInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 22
                     }
                   },

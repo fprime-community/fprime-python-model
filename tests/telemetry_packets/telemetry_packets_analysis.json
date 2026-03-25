@@ -1,5 +1,5 @@
 {
-  "fppVersion" : "v3.1.1a4-447-gf40109a8b",
+  "fppVersion" : "v3.1.1a4-448-gbb72402e1",
   "analysis" : {
     "componentInstanceMap" : {
       "24" : {
@@ -419,7 +419,7 @@
         "instanceMap" : [
           [
             {
-              "ComponentInstance" : {
+              "InterfaceComponentInstance" : {
                 "astNodeId" : 24
               }
             },
@@ -431,7 +431,7 @@
           ],
           [
             {
-              "ComponentInstance" : {
+              "InterfaceComponentInstance" : {
                 "astNodeId" : 28
               }
             },
@@ -476,7 +476,7 @@
         "unconnectedPortSet" : [
           {
             "interfaceInstance" : {
-              "ComponentInstance" : {
+              "InterfaceComponentInstance" : {
                 "astNodeId" : 24
               }
             },
@@ -520,7 +520,7 @@
           },
           {
             "interfaceInstance" : {
-              "ComponentInstance" : {
+              "InterfaceComponentInstance" : {
                 "astNodeId" : 28
               }
             },
@@ -555,7 +555,7 @@
           },
           {
             "interfaceInstance" : {
-              "ComponentInstance" : {
+              "InterfaceComponentInstance" : {
                 "astNodeId" : 24
               }
             },
@@ -599,7 +599,7 @@
           },
           {
             "interfaceInstance" : {
-              "ComponentInstance" : {
+              "InterfaceComponentInstance" : {
                 "astNodeId" : 28
               }
             },
@@ -643,7 +643,7 @@
           },
           {
             "interfaceInstance" : {
-              "ComponentInstance" : {
+              "InterfaceComponentInstance" : {
                 "astNodeId" : 28
               }
             },
@@ -678,7 +678,7 @@
           },
           {
             "interfaceInstance" : {
-              "ComponentInstance" : {
+              "InterfaceComponentInstance" : {
                 "astNodeId" : 28
               }
             },
@@ -722,7 +722,7 @@
           },
           {
             "interfaceInstance" : {
-              "ComponentInstance" : {
+              "InterfaceComponentInstance" : {
                 "astNodeId" : 24
               }
             },
@@ -757,7 +757,7 @@
           },
           {
             "interfaceInstance" : {
-              "ComponentInstance" : {
+              "InterfaceComponentInstance" : {
                 "astNodeId" : 24
               }
             },

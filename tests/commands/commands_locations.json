@@ -1,5 +1,5 @@
 {
-  "fppVersion" : "v3.1.1a4-447-gf40109a8b",
+  "fppVersion" : "v3.1.1a4-448-gbb72402e1",
   "locationMap" : {
     "0" : {
       "file" : "[ local path prefix ]/compiler/tools/fpp-to-json/test/commands.fpp",

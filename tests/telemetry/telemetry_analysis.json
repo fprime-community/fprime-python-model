@@ -1,5 +1,5 @@
 {
-  "fppVersion" : "v3.1.1a4-447-gf40109a8b",
+  "fppVersion" : "v3.1.1a4-448-gbb72402e1",
   "analysis" : {
     "componentInstanceMap" : {
       "67" : {
@@ -742,7 +742,7 @@
         "instanceMap" : [
           [
             {
-              "ComponentInstance" : {
+              "InterfaceComponentInstance" : {
                 "astNodeId" : 67
               }
             },
@@ -787,7 +787,7 @@
         "unconnectedPortSet" : [
           {
             "interfaceInstance" : {
-              "ComponentInstance" : {
+              "InterfaceComponentInstance" : {
                 "astNodeId" : 67
               }
             },
@@ -822,7 +822,7 @@
           },
           {
             "interfaceInstance" : {
-              "ComponentInstance" : {
+              "InterfaceComponentInstance" : {
                 "astNodeId" : 67
               }
             },
