@@ -98,9 +98,11 @@ class Component:
     container_map: Dict[ContainerId, Container] = field(default_factory=dict)
     record_map: Dict[RecordId, Record] = field(default_factory=dict)
 
+    @property
     def port_map(self) -> Dict[UnqualifiedName, PortInstance]:
         return self.port_interface.port_map
 
+    @property
     def special_port_map(self) -> Dict[fpp_ast.SpecialKind, SpecialPortInstance]:
         return self.port_interface.special_port_map
 
