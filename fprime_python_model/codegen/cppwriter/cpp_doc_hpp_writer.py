@@ -4,16 +4,35 @@ from __future__ import annotations
 from typing import List, Optional
 
 from fprime_python_model.codegen.cppwriter.cpp_doc import (
-    CppDoc, Class, Constructor, Destructor, Function, FunctionParam,
-    FinalQualifier, SVQualifier, ConstQualifier, ExplicitQualifier, VirtualQualifier,
-    ClassMemberLines, MemberLines
+    CppDoc,
+    Class,
+    Constructor,
+    Destructor,
+    Function,
+    FunctionParam,
+    FinalQualifier,
+    SVQualifier,
+    ConstQualifier,
+    ExplicitQualifier,
+    VirtualQualifier,
+    ClassMemberLines,
+    MemberLines,
 )
 from fprime_python_model.codegen.cppwriter.cpp_doc_writer import (
-    CppDocWriter, Input, cpp_doc_writer_utils
+    CppDocWriter,
+    Input,
+    cpp_doc_writer_utils,
 )
 from fprime_python_model.codegen.cppwriter.cpp_doc_cpp_writer import cpp_doc_cpp_writer
 from fprime_python_model.utils.line_utils import (
-    Line, Lines, LinesOutput, blank, join_lists, IndentMode, add_suffix, add_prefix
+    Line,
+    Lines,
+    LinesOutput,
+    blank,
+    join_lists,
+    IndentMode,
+    add_suffix,
+    add_prefix,
 )
 
 
@@ -72,11 +91,17 @@ class CppDocHppWriter(CppDocWriter):
             return self.lines(f"{prefix}({self.param_string(params[0])})")
         else:
             head, *tail = reversed(params)
-            params_lines_list = [self.param_lines(head)] + [self.param_lines_comma(p) for p in tail]
-            params_lines = [line for part in reversed(params_lines_list) for line in part]
-            return [self.line(f"{prefix}(")] + \
-                   [line.indent_in(2 * self.indent_increment) for line in params_lines] + \
-                   [self.line(")")]
+            params_lines_list = [self.param_lines(head)] + [
+                self.param_lines_comma(p) for p in tail
+            ]
+            params_lines = [
+                line for part in reversed(params_lines_list) for line in part
+            ]
+            return (
+                [self.line(f"{prefix}(")]
+                + [line.indent_in(2 * self.indent_increment) for line in params_lines]
+                + [self.line(")")]
+            )
 
     def visit_class(self, input_val: Input, c: Class) -> List[Line]:
         """Visit a class"""
@@ -94,7 +119,7 @@ class CppDocHppWriter(CppDocWriter):
             open_lines = [
                 self.line(f"{class_name} :"),
                 self.indent_in(self.line(c.superclass_decls)),
-                self.line("{")
+                self.line("{"),
             ]
         else:
             open_lines = self.lines(f"{class_name} {{")
@@ -105,7 +130,7 @@ class CppDocHppWriter(CppDocWriter):
             hpp_file=input_val.hpp_file,
             default_cpp_file_name=input_val.default_cpp_file_name,
             output_cpp_file_name_opt=input_val.output_cpp_file_name_opt,
-            class_name_list=new_class_name_list
+            class_name_list=new_class_name_list,
         )
 
         body_lines = []
@@ -118,7 +143,9 @@ class CppDocHppWriter(CppDocWriter):
 
         return comment_lines + open_lines + body_lines + close_lines
 
-    def visit_constructor(self, input_val: Input, constructor: Constructor) -> List[Line]:
+    def visit_constructor(
+        self, input_val: Input, constructor: Constructor
+    ) -> List[Line]:
         """Visit a constructor"""
         unqualified_class_name = input_val.get_enclosing_class_unqualified()
         lines1 = cpp_doc_writer_utils.write_doxygen_comment_opt(constructor.comment)
@@ -133,7 +160,9 @@ class CppDocHppWriter(CppDocWriter):
 
         return lines1 + lines2
 
-    def visit_cpp_doc(self, cpp_doc: CppDoc, cpp_file_name_base_opt: Optional[str] = None) -> List[Line]:
+    def visit_cpp_doc(
+        self, cpp_doc: CppDoc, cpp_file_name_base_opt: Optional[str] = None
+    ) -> List[Line]:
         """Visit a CppDoc"""
         hpp_file = cpp_doc.hpp_file
         cpp_file_name = cpp_doc.cpp_file_name
@@ -142,11 +171,13 @@ class CppDocHppWriter(CppDocWriter):
         ext = hpp_file.name.split(".")[-1]
 
         result = []
-        result.extend(cpp_doc_writer_utils.write_banner(
-            cpp_doc,
-            input_val.hpp_file.name,
-            f"{ext} file for {cpp_doc.description}"
-        ))
+        result.extend(
+            cpp_doc_writer_utils.write_banner(
+                cpp_doc,
+                input_val.hpp_file.name,
+                f"{ext} file for {cpp_doc.description}",
+            )
+        )
         result.extend(self.open_include_guard(hpp_file.include_guard))
 
         for member in cpp_doc.members:
@@ -213,7 +244,9 @@ class CppDocHppWriter(CppDocWriter):
             case _:
                 terminator = self.lines(";")
 
-        signature_lines = join_lists(IndentMode.NO_INDENT, with_qualifiers, "", terminator)
+        signature_lines = join_lists(
+            IndentMode.NO_INDENT, with_qualifiers, "", terminator
+        )
         return comment_lines + signature_lines
 
     def visit_lines(self, input_val: Input, lines: Lines) -> List[Line]:

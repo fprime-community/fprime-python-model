@@ -18,9 +18,7 @@ class Interface:
     # The AST node defining the interface
     a_node: fpp_ast.Annotated[AstNode[fpp_ast.DefInterface]]
     # The imported interfaces
-    import_map: Dict[InterfaceSymbol, Tuple[AstId, Location]] = field(
-        default_factory=dict
-    )
+    import_map: Dict[AstId, Tuple[AstId, Location]] = field(default_factory=dict)
     # The port interface of the component
     port_interface: PortInterface = field(
         default_factory=lambda: PortInterface("interface")

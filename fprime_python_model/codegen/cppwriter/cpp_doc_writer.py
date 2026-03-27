@@ -13,10 +13,13 @@ from fprime_python_model.utils.line_utils import Line, LineUtils, join, blank
 @dataclass
 class Input:
     """Input context for CppDocWriter"""
+
     hpp_file: HppFile
     default_cpp_file_name: str
     output_cpp_file_name_opt: Optional[str] = None
-    class_name_list: List[str] = field(default_factory=list)  # List of enclosing class names, backwards
+    class_name_list: List[str] = field(
+        default_factory=list
+    )  # List of enclosing class names, backwards
 
     def get_enclosing_class_qualified(self) -> str:
         """Get the enclosing class name, including any qualifier"""
@@ -28,7 +31,11 @@ class Input:
 
     def get_output_cpp_file_name(self) -> str:
         """Get the output cpp file name"""
-        return self.output_cpp_file_name_opt if self.output_cpp_file_name_opt else self.default_cpp_file_name
+        return (
+            self.output_cpp_file_name_opt
+            if self.output_cpp_file_name_opt
+            else self.default_cpp_file_name
+        )
 
 
 class CppDocWriter(CppDocVisitor[Input, List[Line]], LineUtils):
@@ -42,7 +49,9 @@ class CppDocWriter(CppDocVisitor[Input, List[Line]], LineUtils):
         return []
 
     @abstractmethod
-    def visit_cpp_doc(self, cpp_doc: CppDoc, cpp_file_name_base_opt: Optional[str] = None) -> List[Line]:
+    def visit_cpp_doc(
+        self, cpp_doc: CppDoc, cpp_file_name_base_opt: Optional[str] = None
+    ) -> List[Line]:
         """Visit a CppDoc"""
         raise NotImplementedError
 
@@ -66,7 +75,9 @@ class CppDocWriterUtils(LineUtils):
 
     def write_banner_comment(self, comment: str) -> List[Line]:
         """Write a banner comment"""
-        banner = self.line("// ----------------------------------------------------------------------")
+        banner = self.line(
+            "// ----------------------------------------------------------------------"
+        )
         return [blank(), banner] + self.write_comment_body(comment) + [banner]
 
     def write_comment(self, comment: str) -> List[Line]:
@@ -96,7 +107,9 @@ class CppDocWriterUtils(LineUtils):
 
     def write_doxygen_comment(self, comment: str) -> List[Line]:
         """Write a Doxygen comment"""
-        return [blank()] + [self.add_comment_prefix("//!", line) for line in self.lines(comment)]
+        return [blank()] + [
+            self.add_comment_prefix("//!", line) for line in self.lines(comment)
+        ]
 
     def write_doxygen_post_comment(self, comment: str) -> List[Line]:
         """Write a Doxygen post comment"""
@@ -113,7 +126,9 @@ class CppDocWriterUtils(LineUtils):
         else:
             return line
 
-    def write_banner(self, cpp_doc: CppDoc, file_name: str, generic_description: str) -> List[Line]:
+    def write_banner(
+        self, cpp_doc: CppDoc, file_name: str, generic_description: str
+    ) -> List[Line]:
         """Write a header banner"""
         file_banner = cpp_doc.get_file_banner()
         title = file_banner.get_title(file_name)

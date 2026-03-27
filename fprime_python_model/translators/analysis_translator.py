@@ -173,6 +173,7 @@ from fprime_python_model.semantics.interface_instance import (
 )
 from fprime_python_model.semantics.port_interface import PortInterface
 from fprime_python_model.semantics.topology_port import TopologyPort
+from fprime_python_model.translators.loc_map_translator import translate_loc
 
 RT = TypeVar("RT")
 
@@ -1197,11 +1198,19 @@ class AnalysisTranslator:
             init_specifier_map=self.translate_init_specifier_map(d["initSpecifierMap"]),
         )
 
+    def translate_import_map(
+        self, d: Dict[str, dict]
+    ) -> Dict[AstId, Tuple[AstId, Location]]:
+        out_dict: Dict[AstId, Tuple[AstId, Location]] = dict()
+        for id, tup in d.items():
+            out_dict[AstId(id)] = (AstId(tup[0]), translate_loc(tup[1]))
+        return out_dict
+
     def translate_interface(self, d: Dict[str, dict]) -> Interface:
         a_node = self.get_annotated_ast_node_by_id(int(d["aNode"]["astNodeId"]))
         return Interface(
             a_node=a_node,
-            import_map=dict(),  # TODO
+            import_map=self.translate_import_map(d["importMap"]),
             port_interface=self.translate_port_interface(d["portInterface"]),
         )
 

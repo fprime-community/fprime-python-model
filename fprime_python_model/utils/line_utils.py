@@ -13,9 +13,10 @@ class IndentMode(Enum):
 
 class LinesOutput(Enum):
     """Where to output lines (for code generation contexts)"""
-    BOTH = "Both"    # Output to both files
-    CPP = "Cpp"      # Output only to .cpp
-    HPP = "Hpp"      # Output only to .hpp
+
+    BOTH = "Both"  # Output to both files
+    CPP = "Cpp"  # Output only to .cpp
+    HPP = "Hpp"  # Output only to .hpp
 
 
 @dataclass(frozen=True)
