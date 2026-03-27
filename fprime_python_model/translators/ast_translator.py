@@ -1019,7 +1019,9 @@ class AstTranslator:
                         AstNode.create_with_id(
                             fpp_ast.SpecTopPort(
                                 fpp_ast.Ident(data["name"]),
-                                self.translate_port_instance_identifier(data["underlyingPort"])
+                                self.translate_port_instance_identifier(
+                                    data["underlyingPort"]
+                                ),
                             ),
                             id,
                         )

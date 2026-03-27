@@ -18,6 +18,7 @@ from fprime_python_model.semantics.interface_instance import (
 from fprime_python_model.semantics.port_interface import PortInterface
 from fprime_python_model.semantics.topology_port import TopologyPort
 
+
 @dataclass
 class Topology:
     a_node: fpp_ast.Annotated[AstNode[fpp_ast.DefTopology]]
@@ -26,9 +27,7 @@ class Topology:
     direct_component_instances: Dict[AstId, Location] = field(default_factory=dict)
     transitive_import_set: Set[AstId] = field(default_factory=set)
     instance_map: Dict[InterfaceInstance, Location] = field(default_factory=dict)
-    port_map: Dict[UnqualifiedName, TopologyPort] = field(
-        default_factory=dict
-    )
+    port_map: Dict[UnqualifiedName, TopologyPort] = field(default_factory=dict)
     port_interface: PortInterface = field(
         default_factory=lambda: PortInterface("topology")
     )

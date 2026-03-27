@@ -209,7 +209,7 @@ class TopologyPortInstance(PortInstance):
     @override
     def get_unqualified_name(self) -> UnqualifiedName:
         return self.a_node[1].data.name
-    
+
     @override
     def get_import_node_ids(self):
         return []

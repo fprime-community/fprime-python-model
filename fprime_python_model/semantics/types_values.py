@@ -4,7 +4,14 @@ from enum import Enum
 from fprime_python_model.utils.error import InternalError
 from fprime_python_model.fpp_ast.fpp_ast_node import AstNode, AstId
 from fprime_python_model.fpp_ast import fpp_ast
-from fprime_python_model.semantics.symbol import TypeSymbol, AbsTypeSymbol, AliasTypeSymbol, ArraySymbol, EnumSymbol, StructSymbol
+from fprime_python_model.semantics.symbol import (
+    TypeSymbol,
+    AbsTypeSymbol,
+    AliasTypeSymbol,
+    ArraySymbol,
+    EnumSymbol,
+    StructSymbol,
+)
 from dataclasses import dataclass
 from fprime_python_model.semantics.format import Format
 import math
@@ -26,11 +33,11 @@ class Type(ABC):
         """Get the definition node identifier, if any"""
         symbol: Optional[TypeSymbol] = self.get_def_symbol()
         return symbol.get_node_id() if symbol is not None else None
-    
+
     def get_def_symbol(self) -> Optional[TypeSymbol]:
         """Get the definition symbol, if any"""
         return None
-    
+
     def get_underlying_type(self) -> "Type":
         """Get the underlying type"""
         return self
@@ -238,7 +245,7 @@ class AbsType(Type):
 
     def get_def_node_id(self):
         return self.node[1]._id
-    
+
     def get_def_symbol(self):
         return AbsTypeSymbol(self.node)
 
@@ -258,7 +265,7 @@ class AliasType(Type):
 
     def get_def_node_id(self):
         return self.node[1]._id
-    
+
     def get_def_symbol(self):
         return AliasTypeSymbol(self.node)
 
@@ -298,7 +305,7 @@ class ArrayType(Type):
 
     def get_def_node_id(self) -> Optional[AstId]:
         return self.node[1]._id
-    
+
     def get_def_symbol(self):
         return ArraySymbol(self.node)
 
@@ -328,7 +335,7 @@ class EnumType(Type):
 
     def get_def_node_id(self) -> Optional[AstId]:
         return self.node[1]._id
-    
+
     def get_def_symbol(self):
         return EnumSymbol(self.node)
 
@@ -370,7 +377,7 @@ class StructType(Type):
 
     def get_def_node_id(self) -> Optional[AstId]:
         return self.node[1]._id
-    
+
     def get_def_symbol(self):
         return StructSymbol(self.node)
 

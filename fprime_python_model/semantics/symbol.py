@@ -9,11 +9,11 @@ class Symbol(SymbolInterface):
 
     def is_dictionary_def(self):
         return False
-    
+
     @staticmethod
     def construct(node: fpp_ast.Annotated[AstNode]) -> "Symbol":
-        """ Construct a typed symbol from an AST node
-        
+        """Construct a typed symbol from an AST node
+
         This is a helper function that inspects the type of the AST node and then constructs the appropriate Symbol
         instance based on that type.
 
