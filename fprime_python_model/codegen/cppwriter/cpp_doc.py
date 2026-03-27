@@ -233,7 +233,5 @@ class Type:
         return self.cpp_type if self.cpp_type  else self.hpp_type
 
 
-if __name__ == "__main__":
-    print("basic check")
     
     
