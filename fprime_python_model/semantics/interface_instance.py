@@ -55,7 +55,7 @@ class InterfaceComponentInstance(InterfaceInstance):
 
 
 @dataclass
-class InterfaceTopology:
+class InterfaceTopology(InterfaceInstance):
     top: "Topology"
 
     def get_qualified_name(self) -> QualifiedName:

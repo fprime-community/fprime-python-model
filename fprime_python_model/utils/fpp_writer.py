@@ -584,7 +584,9 @@ class FppWriter(AstVisitor, LineUtils):
 
     def expr_size_of_node(self, _in, node, e):
         return Lines(
-            add_prefix_and_suffix("sizeof(", self.type_name_node(e.type_name), ")")
+            add_prefix_and_suffix(
+                "sizeof(", self.type_name_node(e.type_name).lines, ")"
+            )
         )
 
     def expr_struct_node(self, _in, node, e):

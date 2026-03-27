@@ -269,7 +269,7 @@ class ConstructAstMap(AstVisitor):
         self.add_node_to_map(a_node)
 
     def expr_size_of_node(
-        self, _in: In, node: AstNode[fpp_ast.ExprSizeOf], e: fpp_ast.ExprSizeOf
+        self, _in: In, node: AstNode[fpp_ast.Expr], e: fpp_ast.ExprSizeOf
     ) -> Out:
         self.add_node_to_map(node)
         self.add_node_to_map(e.type_name)

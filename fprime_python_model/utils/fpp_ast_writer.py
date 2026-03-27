@@ -811,13 +811,17 @@ class AstWriter(AstVisitor, LineUtils):
         return lines_out
 
     @override
-    def spec_top_import_annotated_node(
-        self, in_, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecImport]]
+    def spec_top_port_annotated_node(
+        self, in_, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecTopPort]]
     ):
         _, node, _ = a_node
         data = node.data
-        return self.lines("spec top import") + [
-            self.indent_in(line) for line in self.qual_ident(data.sym.data)
+
+        lines_to_ident = self.ident(data.name) + self.port_instance_identifier(
+            data.underlying_port.data
+        )
+        return self.lines("spec top port") + [
+            self.indent_in(line) for line in lines_to_ident
         ]
 
     @override

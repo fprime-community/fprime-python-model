@@ -986,7 +986,7 @@ class AnalysisTranslator:
 
     def translate_port_interface(self, d: Dict[str, dict]) -> PortInterface:
         return PortInterface(
-            d["instanceType"],
+            str(d["instanceType"]),
             self.translate_port_map(d["portMap"]),
             self.translate_spec_port_map(d["specialPortMap"]),
         )
@@ -1022,9 +1022,7 @@ class AnalysisTranslator:
             out_dict[AstId(k)] = Location(Path(v["file"]), v["pos"], v["includingLoc"])
         return out_dict
 
-    def translate_interface_instance(
-        self, d: Dict
-    ) -> Dict[InterfaceInstance, Location]:
+    def translate_interface_instance(self, d: Dict) -> InterfaceInstance:
         if "InterfaceComponentInstance" in d:
             return InterfaceComponentInstance(
                 self.component_instance_map[
@@ -1481,8 +1479,8 @@ class AnalysisTranslator:
 
     def finalize_topology_map_translation(self, data: Dict[str, dict]):
         for top_id, d in data.items():
-            top_id = AstId(top_id)
-            top = self.topology_map[top_id]
+            top_ast_id: AstId = AstId(top_id)
+            top = self.topology_map[top_ast_id]
             top.direct_topologies = self.translate_direct(d["directTopologies"])
             top.direct_component_instances = self.translate_direct(
                 d["directComponentInstances"]
@@ -1499,11 +1497,11 @@ class AnalysisTranslator:
             top.local_connection_map = self.translate_connection_map(
                 d["localConnectionMap"]
             )
-            top.output_connection_map = (
-                self.translate_input_output_connection_map(d["outputConnectionMap"]),
+            top.output_connection_map = self.translate_input_output_connection_map(
+                d["outputConnectionMap"]
             )
-            top.input_connection_map = (
-                self.translate_input_output_connection_map(d["inputConnectionMap"]),
+            top.input_connection_map = self.translate_input_output_connection_map(
+                d["inputConnectionMap"]
             )
             top.from_port_number_map = self.translate_port_number_map(
                 d["fromPortNumberMap"]
@@ -1530,16 +1528,21 @@ class AnalysisTranslator:
     def translate_framework_definitions(self, d: Dict) -> FrameworkDefinitions:
         framework_constants: Dict[str, ConstantSymbol] = dict()
         for const_name, node in d["constantMap"].items():
-            framework_constants[const_name] = self.translate_symbol(
-                "Constant", node["node"]["astNodeId"]
+            framework_constants[const_name] = self.require_type(
+                self.translate_symbol("Constant", node["node"]["astNodeId"]),
+                ConstantSymbol,
             )
 
         framework_types: Dict[str, TypeSymbol] = dict()
         for type_name, t in d["typeMap"].items():
             ty = next(iter(t))
-            framework_types[type_name] = self.translate_symbol(
-                ty, t[ty]["node"]["astNodeId"]
-            )
+            sym = self.translate_symbol(ty, t[ty]["node"]["astNodeId"])
+            if not isinstance(sym, TypeSymbol):
+                raise InternalError(
+                    "Expected type FrameworkDefinition symbol to be a TypeSymbol"
+                )
+
+            framework_types[type_name] = sym
         return FrameworkDefinitions(framework_constants, framework_types)
 
     def translate_analysis_json(self) -> Analysis:
