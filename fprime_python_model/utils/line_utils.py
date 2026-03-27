@@ -11,6 +11,13 @@ class IndentMode(Enum):
     NO_INDENT = "NoIndent"
 
 
+class LinesOutput(Enum):
+    """Where to output lines (for code generation contexts)"""
+    BOTH = "Both"    # Output to both files
+    CPP = "Cpp"      # Output only to .cpp
+    HPP = "Hpp"      # Output only to .hpp
+
+
 @dataclass(frozen=True)
 class Indentation:
     value: int = 0
@@ -19,7 +26,7 @@ class Indentation:
         return Indentation(self.value + n)
 
     def indent_out(self, n: int) -> Indentation:
-        return Indentation(max(self.value - n, 0))
+        return Indentation(self.value - n)
 
     def __str__(self) -> str:
         return " " * self.value
@@ -49,6 +56,8 @@ class Line:
 @dataclass
 class Lines:
     lines: List[Line]
+    output: LinesOutput = LinesOutput.HPP  # Default: output to .hpp
+    cpp_file_name_base_opt: Optional[str] = None  # Optional: specify which .cpp file
 
     def __iter__(self):
         return iter(self.lines)
