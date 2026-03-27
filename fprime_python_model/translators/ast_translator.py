@@ -1015,7 +1015,15 @@ class AstTranslator:
                         )
                     )
                 case "SpecTopPort":
-                    raise NotSupportedInFppToJsonException(m_key)
+                    member = fpp_ast.TopologyMemberSpecTopPort(
+                        AstNode.create_with_id(
+                            fpp_ast.SpecTopPort(
+                                fpp_ast.Ident(data["name"]),
+                                self.translate_port_instance_identifier(data["underlyingPort"])
+                            ),
+                            id,
+                        )
+                    )
                 case "SpecInclude":
                     raise NotSupportedInFppToJsonException(m_key)
                 case _:

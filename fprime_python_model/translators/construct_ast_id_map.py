@@ -508,12 +508,12 @@ class ConstructAstMap(AstVisitor):
         for o in data.omitted:
             self.tlm_channel_identifier(o)
 
-    def spec_top_import_annotated_node(
-        self, _in: In, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecImport]]
+    def spec_top_port_annotated_node(
+        self, _in: In, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecTopPort]]
     ) -> Out:
         data = a_node[1].data
         self.add_annotated_node_to_map(a_node)
-        self.qual_ident_node(data.sym)
+        self.add_node_to_map(data.underlying_port)
 
     def spec_interface_import_annotated_node(
         self, _in: In, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecImport]]

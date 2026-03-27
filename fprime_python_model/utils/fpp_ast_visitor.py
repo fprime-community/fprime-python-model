@@ -294,8 +294,8 @@ class AstVisitor(ABC, Generic[In, Out]):
     ) -> Out:
         return self.default(_in)
 
-    def spec_top_import_annotated_node(
-        self, _in: In, node: fpp_ast.Annotated[AstNode[fpp_ast.SpecImport]]
+    def spec_top_port_annotated_node(
+        self, _in: In, node: fpp_ast.Annotated[AstNode[fpp_ast.SpecTopPort]]
     ) -> Out:
         return self.default(_in)
 
@@ -547,8 +547,8 @@ class AstVisitor(ABC, Generic[In, Out]):
                 return self.spec_tlm_packet_set_annotated_node(
                     _in, (pre, node.node, post)
                 )
-            case fpp_ast.TopologyMemberSpecTopImport():
-                return self.spec_top_import_annotated_node(_in, (pre, node.node, post))
+            case fpp_ast.TopologyMemberSpecTopPort():
+                return self.spec_top_port_annotated_node(_in, (pre, node.node, post))
             case _:
                 return self.default(_in)
 

@@ -50,7 +50,7 @@ class Endpoint:
                 loc=self.loc,
                 port=self.port.interface_instance.top.port_map[
                     self.port.port_instance.get_unqualified_name()
-                ][0],
+                ].pii,
                 port_number=self.port_number,
                 topology_port=self,
             )
