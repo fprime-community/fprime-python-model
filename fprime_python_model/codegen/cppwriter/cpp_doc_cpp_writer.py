@@ -4,14 +4,30 @@ from __future__ import annotations
 from typing import List, Optional, Callable
 
 from fprime_python_model.codegen.cppwriter.cpp_doc import (
-    CppDoc, Class, Constructor, Destructor, Function, FunctionParam,
-    SVQualifier, ConstQualifier, Namespace
+    CppDoc,
+    Class,
+    Constructor,
+    Destructor,
+    Function,
+    FunctionParam,
+    SVQualifier,
+    ConstQualifier,
+    Namespace,
 )
 from fprime_python_model.codegen.cppwriter.cpp_doc_writer import (
-    CppDocWriter, Input, cpp_doc_writer_utils
+    CppDocWriter,
+    Input,
+    cpp_doc_writer_utils,
 )
 from fprime_python_model.utils.line_utils import (
-    Line, Lines, LinesOutput, blank, join_lists, IndentMode, add_suffix, add_prefix
+    Line,
+    Lines,
+    LinesOutput,
+    blank,
+    join_lists,
+    IndentMode,
+    add_suffix,
+    add_prefix,
 )
 
 
@@ -48,7 +64,9 @@ class CppDocCppWriter(CppDocWriter):
             tail = reversed_params[1:]
 
             # Build param lines: head without comma, tail with commas, then reverse back
-            param_lines_parts = [self.param_line(head)] + [self.param_line_comma(p) for p in tail]
+            param_lines_parts = [self.param_line(head)] + [
+                self.param_line_comma(p) for p in tail
+            ]
             param_lines = list(reversed(param_lines_parts))
 
             result = [self.line(f"{prefix}(")]
@@ -61,7 +79,7 @@ class CppDocCppWriter(CppDocWriter):
         self,
         input_val: Input,
         selected_cpp_file_name_base_opt: Optional[str],
-        lines_fn: Callable[[], List[Line]]
+        lines_fn: Callable[[], List[Line]],
     ) -> List[Line]:
         """Write lines for the selected C++ file"""
         # Resolve the selected cpp file for the lines
@@ -87,7 +105,7 @@ class CppDocCppWriter(CppDocWriter):
             hpp_file=input_val.hpp_file,
             default_cpp_file_name=input_val.default_cpp_file_name,
             output_cpp_file_name_opt=input_val.output_cpp_file_name_opt,
-            class_name_list=new_class_name_list
+            class_name_list=new_class_name_list,
         )
 
         result = []
@@ -95,8 +113,11 @@ class CppDocCppWriter(CppDocWriter):
             result.extend(self.visit_class_member(in1, member))
         return result
 
-    def visit_constructor(self, input_val: Input, constructor: Constructor) -> List[Line]:
+    def visit_constructor(
+        self, input_val: Input, constructor: Constructor
+    ) -> List[Line]:
         """Visit a constructor"""
+
         def generate_lines():
             unqualified_class_name = input_val.get_enclosing_class_unqualified()
             qualified_class_name = input_val.get_enclosing_class_qualified()
@@ -117,7 +138,10 @@ class CppDocCppWriter(CppDocWriter):
                 tail = reversed_inits[1:]
                 init_list = [head] + [f"{init}," for init in tail]
                 init_list_reversed = list(reversed(init_list))
-                initializer_lines = [self.line(init).indent_in(2 * self.indent_increment) for init in init_list_reversed]
+                initializer_lines = [
+                    self.line(init).indent_in(2 * self.indent_increment)
+                    for init in init_list_reversed
+                ]
             else:
                 initializer_lines = []
 
@@ -125,23 +149,31 @@ class CppDocCppWriter(CppDocWriter):
 
             return [blank()] + name_lines + param_lines + initializer_lines + body_lines
 
-        return self.write_selected_lines(input_val, constructor.cpp_file_name_base_opt, generate_lines)
+        return self.write_selected_lines(
+            input_val, constructor.cpp_file_name_base_opt, generate_lines
+        )
 
-    def visit_cpp_doc(self, cpp_doc: CppDoc, cpp_file_name_base_opt: Optional[str] = None) -> List[Line]:
+    def visit_cpp_doc(
+        self, cpp_doc: CppDoc, cpp_file_name_base_opt: Optional[str] = None
+    ) -> List[Line]:
         """Visit a CppDoc"""
-        cpp_file_name_opt = f"{cpp_file_name_base_opt}.cpp" if cpp_file_name_base_opt else None
+        cpp_file_name_opt = (
+            f"{cpp_file_name_base_opt}.cpp" if cpp_file_name_base_opt else None
+        )
         input_val = Input(
             hpp_file=cpp_doc.hpp_file,
             default_cpp_file_name=cpp_doc.cpp_file_name,
-            output_cpp_file_name_opt=cpp_file_name_opt
+            output_cpp_file_name_opt=cpp_file_name_opt,
         )
 
         result = []
-        result.extend(cpp_doc_writer_utils.write_banner(
-            cpp_doc,
-            input_val.get_output_cpp_file_name(),
-            f"cpp file for {cpp_doc.description}"
-        ))
+        result.extend(
+            cpp_doc_writer_utils.write_banner(
+                cpp_doc,
+                input_val.get_output_cpp_file_name(),
+                f"cpp file for {cpp_doc.description}",
+            )
+        )
 
         for member in cpp_doc.members:
             result.extend(self.visit_member(input_val, member))
@@ -150,6 +182,7 @@ class CppDocCppWriter(CppDocWriter):
 
     def visit_destructor(self, input_val: Input, destructor: Destructor) -> List[Line]:
         """Visit a destructor"""
+
         def generate_lines():
             unqualified_class_name = input_val.get_enclosing_class_unqualified()
             qualified_class_name = input_val.get_enclosing_class_qualified()
@@ -160,13 +193,19 @@ class CppDocCppWriter(CppDocWriter):
 
             return [blank(), start_line1, start_line2] + body_lines
 
-        return self.write_selected_lines(input_val, destructor.cpp_file_name_base_opt, generate_lines)
+        return self.write_selected_lines(
+            input_val, destructor.cpp_file_name_base_opt, generate_lines
+        )
 
     def visit_function(self, input_val: Input, function: Function) -> List[Line]:
         """Visit a function"""
+
         def generate_lines():
             # If the function is pure virtual with no body, don't write implementation
-            if function.sv_qualifier == SVQualifier.PURE_VIRTUAL and len(function.body) == 0:
+            if (
+                function.sv_qualifier == SVQualifier.PURE_VIRTUAL
+                and len(function.body) == 0
+            ):
                 return []
 
             # Otherwise write out the implementation
@@ -181,12 +220,20 @@ class CppDocCppWriter(CppDocWriter):
                     prototype_lines = lines1
 
             # Build start lines with return type
-            ret_type = f"{function.ret_type.get_cpp_type()} " if function.ret_type.get_cpp_type() else ""
+            ret_type = (
+                f"{function.ret_type.get_cpp_type()} "
+                if function.ret_type.get_cpp_type()
+                else ""
+            )
 
             if input_val.class_name_list:
                 # Member function
-                line1 = self.line(f"{ret_type}{input_val.get_enclosing_class_qualified()} ::")
-                start_lines = [line1] + [self.indent_in(line) for line in prototype_lines]
+                line1 = self.line(
+                    f"{ret_type}{input_val.get_enclosing_class_qualified()} ::"
+                )
+                start_lines = [line1] + [
+                    self.indent_in(line) for line in prototype_lines
+                ]
             else:
                 # Standalone function
                 start_lines = add_prefix(ret_type, prototype_lines)
@@ -197,11 +244,15 @@ class CppDocCppWriter(CppDocWriter):
                 content_lines = start_lines + body_lines
             else:
                 # For standalone functions, join with a space
-                content_lines = join_lists(IndentMode.NO_INDENT, start_lines, " ", body_lines)
+                content_lines = join_lists(
+                    IndentMode.NO_INDENT, start_lines, " ", body_lines
+                )
 
             return [blank()] + content_lines
 
-        return self.write_selected_lines(input_val, function.cpp_file_name_base_opt, generate_lines)
+        return self.write_selected_lines(
+            input_val, function.cpp_file_name_base_opt, generate_lines
+        )
 
     def visit_lines(self, input_val: Input, lines: Lines) -> List[Line]:
         """Visit lines"""
@@ -210,7 +261,9 @@ class CppDocCppWriter(CppDocWriter):
                 return []
             case _:
                 # CPP or BOTH - write to cpp
-                return self.write_selected_lines(input_val, lines.cpp_file_name_base_opt, lambda: lines.lines)
+                return self.write_selected_lines(
+                    input_val, lines.cpp_file_name_base_opt, lambda: lines.lines
+                )
 
     def visit_namespace(self, input_val: Input, namespace: Namespace) -> List[Line]:
         """Visit a namespace"""
@@ -224,9 +277,9 @@ class CppDocCppWriter(CppDocWriter):
 
         name = namespace.name
         return (
-            [blank(), self.line(f"namespace {name} {{")] +
-            [self.indent_in(line) for line in output_lines] +
-            [blank(), self.line("}")]
+            [blank(), self.line(f"namespace {name} {{")]
+            + [self.indent_in(line) for line in output_lines]
+            + [blank(), self.line("}")]
         )
 
 

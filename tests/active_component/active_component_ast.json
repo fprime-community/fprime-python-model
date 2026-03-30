@@ -1,5 +1,5 @@
 {
-  "fppVersion" : "v3.1.0a10-54-g11243e778",
+  "fppVersion" : "v3.2.0",
   "ast" : [
     {
       "members" : [
@@ -357,6 +357,75 @@
                                                 "name" : "S2",
                                                 "members" : {
                                                   "Some" : [
+                                                    [
+                                                      [
+                                                      ],
+                                                      {
+                                                        "DefEnum" : {
+                                                          "node" : {
+                                                            "AstNode" : {
+                                                              "data" : {
+                                                                "name" : "State",
+                                                                "typeName" : {
+                                                                  "Some" : {
+                                                                    "AstNode" : {
+                                                                      "data" : {
+                                                                        "TypeNameInt" : {
+                                                                          "name" : {
+                                                                            "U8" : {
+                                                                              
+                                                                            }
+                                                                          }
+                                                                        }
+                                                                      },
+                                                                      "id" : 205
+                                                                    }
+                                                                  }
+                                                                },
+                                                                "constants" : [
+                                                                  [
+                                                                    [
+                                                                      "The uninitialized state"
+                                                                    ],
+                                                                    {
+                                                                      "AstNode" : {
+                                                                        "data" : {
+                                                                          "name" : "__FPRIME_UNINITIALIZED",
+                                                                          "value" : "None"
+                                                                        },
+                                                                        "id" : 203
+                                                                      }
+                                                                    },
+                                                                    [
+                                                                    ]
+                                                                  ],
+                                                                  [
+                                                                    [
+                                                                    ],
+                                                                    {
+                                                                      "AstNode" : {
+                                                                        "data" : {
+                                                                          "name" : "IDLE",
+                                                                          "value" : "None"
+                                                                        },
+                                                                        "id" : 204
+                                                                      }
+                                                                    },
+                                                                    [
+                                                                    ]
+                                                                  ]
+                                                                ],
+                                                                "default" : "None",
+                                                                "isDictionaryDef" : false
+                                                              },
+                                                              "id" : 206
+                                                            }
+                                                          }
+                                                        }
+                                                      },
+                                                      [
+                                                      ]
+                                                    ],
                                                     [
                                                       [
                                                       ],

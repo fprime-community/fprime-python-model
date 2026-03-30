@@ -1,5 +1,5 @@
 {
-  "fppVersion" : "v3.1.0a10-54-g11243e778",
+  "fppVersion" : "v3.2.0",
   "ast" : [
     {
       "members" : [
@@ -329,15 +329,10 @@
                           "This specifier says that instance c1 is part of the topology"
                         ],
                         {
-                          "SpecCompInstance" : {
+                          "SpecInstance" : {
                             "node" : {
                               "AstNode" : {
                                 "data" : {
-                                  "visibility" : {
-                                    "Public" : {
-                                      
-                                    }
-                                  },
                                   "instance" : {
                                     "AstNode" : {
                                       "data" : {
@@ -362,15 +357,10 @@
                           "This specifier says that instance c2 is part of the topology"
                         ],
                         {
-                          "SpecCompInstance" : {
+                          "SpecInstance" : {
                             "node" : {
                               "AstNode" : {
                                 "data" : {
-                                  "visibility" : {
-                                    "Private" : {
-                                      
-                                    }
-                                  },
                                   "instance" : {
                                     "AstNode" : {
                                       "data" : {
@@ -407,7 +397,7 @@
                                         "fromPort" : {
                                           "AstNode" : {
                                             "data" : {
-                                              "componentInstance" : {
+                                              "interfaceInstance" : {
                                                 "AstNode" : {
                                                   "data" : {
                                                     "Unqualified" : {
@@ -431,7 +421,7 @@
                                         "toPort" : {
                                           "AstNode" : {
                                             "data" : {
-                                              "componentInstance" : {
+                                              "interfaceInstance" : {
                                                 "AstNode" : {
                                                   "data" : {
                                                     "Unqualified" : {
@@ -481,7 +471,7 @@
                                         "fromPort" : {
                                           "AstNode" : {
                                             "data" : {
-                                              "componentInstance" : {
+                                              "interfaceInstance" : {
                                                 "AstNode" : {
                                                   "data" : {
                                                     "Unqualified" : {
@@ -505,7 +495,7 @@
                                         "toPort" : {
                                           "AstNode" : {
                                             "data" : {
-                                              "componentInstance" : {
+                                              "interfaceInstance" : {
                                                 "AstNode" : {
                                                   "data" : {
                                                     "Unqualified" : {
@@ -538,6 +528,8 @@
                         [
                         ]
                       ]
+                    ],
+                    "implements" : [
                     ]
                   },
                   "id" : 72
@@ -563,11 +555,11 @@
                         [
                         ],
                         {
-                          "SpecTopImport" : {
+                          "SpecInstance" : {
                             "node" : {
                               "AstNode" : {
                                 "data" : {
-                                  "sym" : {
+                                  "instance" : {
                                     "AstNode" : {
                                       "data" : {
                                         "Unqualified" : {
@@ -591,15 +583,10 @@
                           "This specifier says that instance c3 is part of the topology"
                         ],
                         {
-                          "SpecCompInstance" : {
+                          "SpecInstance" : {
                             "node" : {
                               "AstNode" : {
                                 "data" : {
-                                  "visibility" : {
-                                    "Public" : {
-                                      
-                                    }
-                                  },
                                   "instance" : {
                                     "AstNode" : {
                                       "data" : {
@@ -624,15 +611,10 @@
                           "This specifier says that instance c4 is part of the topology"
                         ],
                         {
-                          "SpecCompInstance" : {
+                          "SpecInstance" : {
                             "node" : {
                               "AstNode" : {
                                 "data" : {
-                                  "visibility" : {
-                                    "Public" : {
-                                      
-                                    }
-                                  },
                                   "instance" : {
                                     "AstNode" : {
                                       "data" : {
@@ -669,7 +651,7 @@
                                         "fromPort" : {
                                           "AstNode" : {
                                             "data" : {
-                                              "componentInstance" : {
+                                              "interfaceInstance" : {
                                                 "AstNode" : {
                                                   "data" : {
                                                     "Unqualified" : {
@@ -693,7 +675,7 @@
                                         "toPort" : {
                                           "AstNode" : {
                                             "data" : {
-                                              "componentInstance" : {
+                                              "interfaceInstance" : {
                                                 "AstNode" : {
                                                   "data" : {
                                                     "Unqualified" : {
@@ -743,7 +725,7 @@
                                         "fromPort" : {
                                           "AstNode" : {
                                             "data" : {
-                                              "componentInstance" : {
+                                              "interfaceInstance" : {
                                                 "AstNode" : {
                                                   "data" : {
                                                     "Unqualified" : {
@@ -767,7 +749,7 @@
                                         "toPort" : {
                                           "AstNode" : {
                                             "data" : {
-                                              "componentInstance" : {
+                                              "interfaceInstance" : {
                                                 "AstNode" : {
                                                   "data" : {
                                                     "Unqualified" : {
@@ -800,6 +782,8 @@
                         [
                         ]
                       ]
+                    ],
+                    "implements" : [
                     ]
                   },
                   "id" : 118
@@ -825,11 +809,11 @@
                         [
                         ],
                         {
-                          "SpecTopImport" : {
+                          "SpecInstance" : {
                             "node" : {
                               "AstNode" : {
                                 "data" : {
-                                  "sym" : {
+                                  "instance" : {
                                     "AstNode" : {
                                       "data" : {
                                         "Unqualified" : {
@@ -848,6 +832,8 @@
                         [
                         ]
                       ]
+                    ],
+                    "implements" : [
                     ]
                   },
                   "id" : 128

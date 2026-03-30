@@ -5,15 +5,28 @@ from abc import ABC, abstractmethod
 from typing import TypeVar, Generic
 
 from fprime_python_model.codegen.cppwriter.cpp_doc import (
-    CppDoc, Class, Constructor, Destructor, Function,
-    Member, MemberClass, MemberLines, MemberFunction, MemberNamespace,
-    ClassMember, ClassMemberClass, ClassMemberConstructor, ClassMemberDestructor,
-    ClassMemberLines, ClassMemberFunction, Namespace
+    CppDoc,
+    Class,
+    Constructor,
+    Destructor,
+    Function,
+    Member,
+    MemberClass,
+    MemberLines,
+    MemberFunction,
+    MemberNamespace,
+    ClassMember,
+    ClassMemberClass,
+    ClassMemberConstructor,
+    ClassMemberDestructor,
+    ClassMemberLines,
+    ClassMemberFunction,
+    Namespace,
 )
 from fprime_python_model.utils.line_utils import Lines
 
-Input = TypeVar('Input')
-Output = TypeVar('Output')
+Input = TypeVar("Input")
+Output = TypeVar("Output")
 
 
 class CppDocVisitor(ABC, Generic[Input, Output]):

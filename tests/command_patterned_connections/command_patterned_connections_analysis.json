@@ -1,5 +1,5 @@
 {
-  "fppVersion" : "v3.1.0a10-54-g11243e778",
+  "fppVersion" : "v3.2.0",
   "analysis" : {
     "componentInstanceMap" : {
       "36" : {
@@ -56,121 +56,124 @@
         "aNode" : {
           "astNodeId" : 26
         },
-        "portMap" : {
-          "cmdRegIn" : {
-            "General" : {
-              "aNode" : {
-                "astNodeId" : 9
-              },
-              "specifier" : {
-                "kind" : {
-                  "SyncInput" : {
-                    
-                  }
+        "portInterface" : {
+          "instanceType" : "component",
+          "portMap" : {
+            "cmdRegIn" : {
+              "General" : {
+                "aNode" : {
+                  "astNodeId" : 9
                 },
-                "name" : "cmdRegIn",
-                "size" : "None",
-                "port" : {
-                  "Some" : {
-                    "astNodeId" : 8
-                  }
+                "specifier" : {
+                  "kind" : {
+                    "SyncInput" : {
+                      
+                    }
+                  },
+                  "name" : "cmdRegIn",
+                  "size" : "None",
+                  "port" : {
+                    "Some" : {
+                      "astNodeId" : 8
+                    }
+                  },
+                  "priority" : "None",
+                  "queueFull" : "None"
                 },
-                "priority" : "None",
-                "queueFull" : "None"
-              },
-              "kind" : "SyncInput",
-              "size" : 1,
-              "ty" : {
-                "DefPort" : {
-                  "symbol" : {
-                    "Port" : {
-                      "nodeId" : 1,
-                      "unqualifiedName" : "CmdReg"
+                "kind" : "SyncInput",
+                "size" : 1,
+                "ty" : {
+                  "DefPort" : {
+                    "symbol" : {
+                      "Port" : {
+                        "nodeId" : 1,
+                        "unqualifiedName" : "CmdReg"
+                      }
                     }
                   }
-                }
-              },
-              "importNodeIds" : [
-              ]
+                },
+                "importNodeIds" : [
+                ]
+              }
+            },
+            "cmdOut" : {
+              "General" : {
+                "aNode" : {
+                  "astNodeId" : 13
+                },
+                "specifier" : {
+                  "kind" : {
+                    "Output" : {
+                      
+                    }
+                  },
+                  "name" : "cmdOut",
+                  "size" : "None",
+                  "port" : {
+                    "Some" : {
+                      "astNodeId" : 12
+                    }
+                  },
+                  "priority" : "None",
+                  "queueFull" : "None"
+                },
+                "kind" : "Output",
+                "size" : 1,
+                "ty" : {
+                  "DefPort" : {
+                    "symbol" : {
+                      "Port" : {
+                        "nodeId" : 0,
+                        "unqualifiedName" : "Cmd"
+                      }
+                    }
+                  }
+                },
+                "importNodeIds" : [
+                ]
+              }
+            },
+            "cmdResponseIn" : {
+              "General" : {
+                "aNode" : {
+                  "astNodeId" : 25
+                },
+                "specifier" : {
+                  "kind" : {
+                    "SyncInput" : {
+                      
+                    }
+                  },
+                  "name" : "cmdResponseIn",
+                  "size" : "None",
+                  "port" : {
+                    "Some" : {
+                      "astNodeId" : 24
+                    }
+                  },
+                  "priority" : "None",
+                  "queueFull" : "None"
+                },
+                "kind" : "SyncInput",
+                "size" : 1,
+                "ty" : {
+                  "DefPort" : {
+                    "symbol" : {
+                      "Port" : {
+                        "nodeId" : 4,
+                        "unqualifiedName" : "CmdResponse"
+                      }
+                    }
+                  }
+                },
+                "importNodeIds" : [
+                ]
+              }
             }
           },
-          "cmdOut" : {
-            "General" : {
-              "aNode" : {
-                "astNodeId" : 13
-              },
-              "specifier" : {
-                "kind" : {
-                  "Output" : {
-                    
-                  }
-                },
-                "name" : "cmdOut",
-                "size" : "None",
-                "port" : {
-                  "Some" : {
-                    "astNodeId" : 12
-                  }
-                },
-                "priority" : "None",
-                "queueFull" : "None"
-              },
-              "kind" : "Output",
-              "size" : 1,
-              "ty" : {
-                "DefPort" : {
-                  "symbol" : {
-                    "Port" : {
-                      "nodeId" : 0,
-                      "unqualifiedName" : "Cmd"
-                    }
-                  }
-                }
-              },
-              "importNodeIds" : [
-              ]
-            }
-          },
-          "cmdResponseIn" : {
-            "General" : {
-              "aNode" : {
-                "astNodeId" : 25
-              },
-              "specifier" : {
-                "kind" : {
-                  "SyncInput" : {
-                    
-                  }
-                },
-                "name" : "cmdResponseIn",
-                "size" : "None",
-                "port" : {
-                  "Some" : {
-                    "astNodeId" : 24
-                  }
-                },
-                "priority" : "None",
-                "queueFull" : "None"
-              },
-              "kind" : "SyncInput",
-              "size" : 1,
-              "ty" : {
-                "DefPort" : {
-                  "symbol" : {
-                    "Port" : {
-                      "nodeId" : 4,
-                      "unqualifiedName" : "CmdResponse"
-                    }
-                  }
-                }
-              },
-              "importNodeIds" : [
-              ]
-            }
+          "specialPortMap" : {
+            
           }
-        },
-        "specialPortMap" : {
-          
         },
         "commandMap" : {
           
@@ -211,9 +214,96 @@
         "aNode" : {
           "astNodeId" : 32
         },
-        "portMap" : {
-          "cmdRegOut" : {
-            "Special" : {
+        "portInterface" : {
+          "instanceType" : "component",
+          "portMap" : {
+            "cmdRegOut" : {
+              "Special" : {
+                "aNode" : {
+                  "astNodeId" : 27
+                },
+                "specifier" : {
+                  "inputKind" : "None",
+                  "kind" : {
+                    "CommandReg" : {
+                      
+                    }
+                  },
+                  "name" : "cmdRegOut",
+                  "priority" : "None",
+                  "queueFull" : "None"
+                },
+                "symbol" : {
+                  "Port" : {
+                    "nodeId" : 1,
+                    "unqualifiedName" : "CmdReg"
+                  }
+                },
+                "priority" : "None",
+                "queueFull" : "None",
+                "importNodeIds" : [
+                ]
+              }
+            },
+            "cmdIn" : {
+              "Special" : {
+                "aNode" : {
+                  "astNodeId" : 28
+                },
+                "specifier" : {
+                  "inputKind" : "None",
+                  "kind" : {
+                    "CommandRecv" : {
+                      
+                    }
+                  },
+                  "name" : "cmdIn",
+                  "priority" : "None",
+                  "queueFull" : "None"
+                },
+                "symbol" : {
+                  "Port" : {
+                    "nodeId" : 0,
+                    "unqualifiedName" : "Cmd"
+                  }
+                },
+                "priority" : "None",
+                "queueFull" : "None",
+                "importNodeIds" : [
+                ]
+              }
+            },
+            "cmdResponseOut" : {
+              "Special" : {
+                "aNode" : {
+                  "astNodeId" : 31
+                },
+                "specifier" : {
+                  "inputKind" : "None",
+                  "kind" : {
+                    "CommandResp" : {
+                      
+                    }
+                  },
+                  "name" : "cmdResponseOut",
+                  "priority" : "None",
+                  "queueFull" : "None"
+                },
+                "symbol" : {
+                  "Port" : {
+                    "nodeId" : 4,
+                    "unqualifiedName" : "CmdResponse"
+                  }
+                },
+                "priority" : "None",
+                "queueFull" : "None",
+                "importNodeIds" : [
+                ]
+              }
+            }
+          },
+          "specialPortMap" : {
+            "command reg" : {
               "aNode" : {
                 "astNodeId" : 27
               },
@@ -238,10 +328,8 @@
               "queueFull" : "None",
               "importNodeIds" : [
               ]
-            }
-          },
-          "cmdIn" : {
-            "Special" : {
+            },
+            "command recv" : {
               "aNode" : {
                 "astNodeId" : 28
               },
@@ -266,10 +354,8 @@
               "queueFull" : "None",
               "importNodeIds" : [
               ]
-            }
-          },
-          "cmdResponseOut" : {
-            "Special" : {
+            },
+            "command resp" : {
               "aNode" : {
                 "astNodeId" : 31
               },
@@ -295,86 +381,6 @@
               "importNodeIds" : [
               ]
             }
-          }
-        },
-        "specialPortMap" : {
-          "command reg" : {
-            "aNode" : {
-              "astNodeId" : 27
-            },
-            "specifier" : {
-              "inputKind" : "None",
-              "kind" : {
-                "CommandReg" : {
-                  
-                }
-              },
-              "name" : "cmdRegOut",
-              "priority" : "None",
-              "queueFull" : "None"
-            },
-            "symbol" : {
-              "Port" : {
-                "nodeId" : 1,
-                "unqualifiedName" : "CmdReg"
-              }
-            },
-            "priority" : "None",
-            "queueFull" : "None",
-            "importNodeIds" : [
-            ]
-          },
-          "command recv" : {
-            "aNode" : {
-              "astNodeId" : 28
-            },
-            "specifier" : {
-              "inputKind" : "None",
-              "kind" : {
-                "CommandRecv" : {
-                  
-                }
-              },
-              "name" : "cmdIn",
-              "priority" : "None",
-              "queueFull" : "None"
-            },
-            "symbol" : {
-              "Port" : {
-                "nodeId" : 0,
-                "unqualifiedName" : "Cmd"
-              }
-            },
-            "priority" : "None",
-            "queueFull" : "None",
-            "importNodeIds" : [
-            ]
-          },
-          "command resp" : {
-            "aNode" : {
-              "astNodeId" : 31
-            },
-            "specifier" : {
-              "inputKind" : "None",
-              "kind" : {
-                "CommandResp" : {
-                  
-                }
-              },
-              "name" : "cmdResponseOut",
-              "priority" : "None",
-              "queueFull" : "None"
-            },
-            "symbol" : {
-              "Port" : {
-                "nodeId" : 4,
-                "unqualifiedName" : "CmdResponse"
-              }
-            },
-            "priority" : "None",
-            "queueFull" : "None",
-            "importNodeIds" : [
-            ]
           }
         },
         "commandMap" : {
@@ -411,6 +417,14 @@
           
         },
         "defaultRecordId" : 0
+      }
+    },
+    "frameworkDefinitions" : {
+      "constantMap" : {
+        
+      },
+      "typeMap" : {
+        
       }
     },
     "includedFileSet" : [
@@ -509,32 +523,6 @@
       },
       "107" : {
         "map" : {
-          "ComponentInstance" : {
-            "map" : {
-              "commands" : {
-                "ComponentInstance" : {
-                  "nodeId" : 36,
-                  "unqualifiedName" : "commands"
-                }
-              },
-              "c" : {
-                "ComponentInstance" : {
-                  "nodeId" : 40,
-                  "unqualifiedName" : "c"
-                }
-              }
-            }
-          },
-          "Topology" : {
-            "map" : {
-              "T" : {
-                "Topology" : {
-                  "nodeId" : 106,
-                  "unqualifiedName" : "T"
-                }
-              }
-            }
-          },
           "StateMachine" : {
             "map" : {
               "Commands" : {
@@ -547,6 +535,28 @@
                 "Component" : {
                   "nodeId" : 32,
                   "unqualifiedName" : "C"
+                }
+              }
+            }
+          },
+          "PortInterfaceInstance" : {
+            "map" : {
+              "commands" : {
+                "ComponentInstance" : {
+                  "nodeId" : 36,
+                  "unqualifiedName" : "commands"
+                }
+              },
+              "c" : {
+                "ComponentInstance" : {
+                  "nodeId" : 40,
+                  "unqualifiedName" : "c"
+                }
+              },
+              "T" : {
+                "Topology" : {
+                  "nodeId" : 106,
+                  "unqualifiedName" : "T"
                 }
               }
             }
@@ -607,89 +617,69 @@
         "aNode" : {
           "astNodeId" : 106
         },
-        "directImportMap" : {
+        "qualifiedName" : {
+          "qualifier" : [
+            "M"
+          ],
+          "base" : "T"
+        },
+        "directTopologies" : {
           
+        },
+        "directComponentInstances" : {
+          "36" : {
+            "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+            "pos" : "20.5",
+            "includingLoc" : "None"
+          },
+          "40" : {
+            "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+            "pos" : "21.5",
+            "includingLoc" : "None"
+          }
         },
         "transitiveImportSet" : [
         ],
         "instanceMap" : [
           [
             {
-              "aNode" : {
+              "InterfaceComponentInstance" : {
                 "astNodeId" : 36
-              },
-              "qualifiedName" : {
-                "qualifier" : [
-                  "M"
-                ],
-                "base" : "commands"
-              },
-              "component" : {
-                "astNodeId" : 26
-              },
-              "baseId" : 256,
-              "maxId" : 255,
-              "file" : "None",
-              "queueSize" : "None",
-              "stackSize" : "None",
-              "priority" : "None",
-              "cpu" : "None",
-              "initSpecifierMap" : {
-                
               }
             },
-            [
-              {
-                "Public" : {
-                  
-                }
-              },
-              {
-                "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
-                "pos" : "20.5",
-                "includingLoc" : "None"
-              }
-            ]
+            {
+              "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+              "pos" : "20.5",
+              "includingLoc" : "None"
+            }
           ],
           [
             {
-              "aNode" : {
+              "InterfaceComponentInstance" : {
                 "astNodeId" : 40
-              },
-              "qualifiedName" : {
-                "qualifier" : [
-                  "M"
-                ],
-                "base" : "c"
-              },
-              "component" : {
-                "astNodeId" : 32
-              },
-              "baseId" : 256,
-              "maxId" : 255,
-              "file" : "None",
-              "queueSize" : "None",
-              "stackSize" : "None",
-              "priority" : "None",
-              "cpu" : "None",
-              "initSpecifierMap" : {
-                
               }
             },
-            [
-              {
-                "Public" : {
-                  
-                }
-              },
-              {
-                "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
-                "pos" : "21.5",
-                "includingLoc" : "None"
-              }
-            ]
+            {
+              "file" : "[ local path prefix ]/compiler/tools/fpp-check/test/connection_pattern/command_ok.fpp",
+              "pos" : "21.5",
+              "includingLoc" : "None"
+            }
           ]
         ],
+        "ports" : [
+        ],
+        "portMap" : {
+          
+        },
+        "portInterface" : {
+          "instanceType" : "topology",
+          "portMap" : {
+            
+          },
+          "specialPortMap" : {
+            
+          }
+        },
         "patternMap" : {
           "Command" : {
             "aNode" : {
@@ -786,28 +776,9 @@
                   "includingLoc" : "None"
                 },
                 "port" : {
-                  "componentInstance" : {
-                    "aNode" : {
+                  "interfaceInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 40
-                    },
-                    "qualifiedName" : {
-                      "qualifier" : [
-                        "M"
-                      ],
-                      "base" : "c"
-                    },
-                    "component" : {
-                      "astNodeId" : 32
-                    },
-                    "baseId" : 256,
-                    "maxId" : 255,
-                    "file" : "None",
-                    "queueSize" : "None",
-                    "stackSize" : "None",
-                    "priority" : "None",
-                    "cpu" : "None",
-                    "initSpecifierMap" : {
-                      
                     }
                   },
                   "portInstance" : {
@@ -839,7 +810,8 @@
                     }
                   }
                 },
-                "portNumber" : "None"
+                "portNumber" : "None",
+                "topologyPort" : "None"
               },
               "to" : {
                 "loc" : {
@@ -848,28 +820,9 @@
                   "includingLoc" : "None"
                 },
                 "port" : {
-                  "componentInstance" : {
-                    "aNode" : {
+                  "interfaceInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 36
-                    },
-                    "qualifiedName" : {
-                      "qualifier" : [
-                        "M"
-                      ],
-                      "base" : "commands"
-                    },
-                    "component" : {
-                      "astNodeId" : 26
-                    },
-                    "baseId" : 256,
-                    "maxId" : 255,
-                    "file" : "None",
-                    "queueSize" : "None",
-                    "stackSize" : "None",
-                    "priority" : "None",
-                    "cpu" : "None",
-                    "initSpecifierMap" : {
-                      
                     }
                   },
                   "portInstance" : {
@@ -910,7 +863,8 @@
                     }
                   }
                 },
-                "portNumber" : "None"
+                "portNumber" : "None",
+                "topologyPort" : "None"
               },
               "isUnmatched" : false
             }
@@ -924,28 +878,9 @@
                   "includingLoc" : "None"
                 },
                 "port" : {
-                  "componentInstance" : {
-                    "aNode" : {
+                  "interfaceInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 36
-                    },
-                    "qualifiedName" : {
-                      "qualifier" : [
-                        "M"
-                      ],
-                      "base" : "commands"
-                    },
-                    "component" : {
-                      "astNodeId" : 26
-                    },
-                    "baseId" : 256,
-                    "maxId" : 255,
-                    "file" : "None",
-                    "queueSize" : "None",
-                    "stackSize" : "None",
-                    "priority" : "None",
-                    "cpu" : "None",
-                    "initSpecifierMap" : {
-                      
                     }
                   },
                   "portInstance" : {
@@ -986,7 +921,8 @@
                     }
                   }
                 },
-                "portNumber" : "None"
+                "portNumber" : "None",
+                "topologyPort" : "None"
               },
               "to" : {
                 "loc" : {
@@ -995,28 +931,9 @@
                   "includingLoc" : "None"
                 },
                 "port" : {
-                  "componentInstance" : {
-                    "aNode" : {
+                  "interfaceInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 40
-                    },
-                    "qualifiedName" : {
-                      "qualifier" : [
-                        "M"
-                      ],
-                      "base" : "c"
-                    },
-                    "component" : {
-                      "astNodeId" : 32
-                    },
-                    "baseId" : 256,
-                    "maxId" : 255,
-                    "file" : "None",
-                    "queueSize" : "None",
-                    "stackSize" : "None",
-                    "priority" : "None",
-                    "cpu" : "None",
-                    "initSpecifierMap" : {
-                      
                     }
                   },
                   "portInstance" : {
@@ -1048,7 +965,8 @@
                     }
                   }
                 },
-                "portNumber" : "None"
+                "portNumber" : "None",
+                "topologyPort" : "None"
               },
               "isUnmatched" : false
             }
@@ -1062,28 +980,9 @@
                   "includingLoc" : "None"
                 },
                 "port" : {
-                  "componentInstance" : {
-                    "aNode" : {
+                  "interfaceInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 40
-                    },
-                    "qualifiedName" : {
-                      "qualifier" : [
-                        "M"
-                      ],
-                      "base" : "c"
-                    },
-                    "component" : {
-                      "astNodeId" : 32
-                    },
-                    "baseId" : 256,
-                    "maxId" : 255,
-                    "file" : "None",
-                    "queueSize" : "None",
-                    "stackSize" : "None",
-                    "priority" : "None",
-                    "cpu" : "None",
-                    "initSpecifierMap" : {
-                      
                     }
                   },
                   "portInstance" : {
@@ -1115,7 +1014,8 @@
                     }
                   }
                 },
-                "portNumber" : "None"
+                "portNumber" : "None",
+                "topologyPort" : "None"
               },
               "to" : {
                 "loc" : {
@@ -1124,28 +1024,9 @@
                   "includingLoc" : "None"
                 },
                 "port" : {
-                  "componentInstance" : {
-                    "aNode" : {
+                  "interfaceInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 36
-                    },
-                    "qualifiedName" : {
-                      "qualifier" : [
-                        "M"
-                      ],
-                      "base" : "commands"
-                    },
-                    "component" : {
-                      "astNodeId" : 26
-                    },
-                    "baseId" : 256,
-                    "maxId" : 255,
-                    "file" : "None",
-                    "queueSize" : "None",
-                    "stackSize" : "None",
-                    "priority" : "None",
-                    "cpu" : "None",
-                    "initSpecifierMap" : {
-                      
                     }
                   },
                   "portInstance" : {
@@ -1186,7 +1067,8 @@
                     }
                   }
                 },
-                "portNumber" : "None"
+                "portNumber" : "None",
+                "topologyPort" : "None"
               },
               "isUnmatched" : false
             }
@@ -1202,28 +1084,9 @@
                   "includingLoc" : "None"
                 },
                 "port" : {
-                  "componentInstance" : {
-                    "aNode" : {
+                  "interfaceInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 40
-                    },
-                    "qualifiedName" : {
-                      "qualifier" : [
-                        "M"
-                      ],
-                      "base" : "c"
-                    },
-                    "component" : {
-                      "astNodeId" : 32
-                    },
-                    "baseId" : 256,
-                    "maxId" : 255,
-                    "file" : "None",
-                    "queueSize" : "None",
-                    "stackSize" : "None",
-                    "priority" : "None",
-                    "cpu" : "None",
-                    "initSpecifierMap" : {
-                      
                     }
                   },
                   "portInstance" : {
@@ -1255,7 +1118,8 @@
                     }
                   }
                 },
-                "portNumber" : "None"
+                "portNumber" : "None",
+                "topologyPort" : "None"
               },
               "to" : {
                 "loc" : {
@@ -1264,28 +1128,9 @@
                   "includingLoc" : "None"
                 },
                 "port" : {
-                  "componentInstance" : {
-                    "aNode" : {
+                  "interfaceInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 36
-                    },
-                    "qualifiedName" : {
-                      "qualifier" : [
-                        "M"
-                      ],
-                      "base" : "commands"
-                    },
-                    "component" : {
-                      "astNodeId" : 26
-                    },
-                    "baseId" : 256,
-                    "maxId" : 255,
-                    "file" : "None",
-                    "queueSize" : "None",
-                    "stackSize" : "None",
-                    "priority" : "None",
-                    "cpu" : "None",
-                    "initSpecifierMap" : {
-                      
                     }
                   },
                   "portInstance" : {
@@ -1326,7 +1171,8 @@
                     }
                   }
                 },
-                "portNumber" : "None"
+                "portNumber" : "None",
+                "topologyPort" : "None"
               },
               "isUnmatched" : false
             }
@@ -1340,28 +1186,9 @@
                   "includingLoc" : "None"
                 },
                 "port" : {
-                  "componentInstance" : {
-                    "aNode" : {
+                  "interfaceInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 36
-                    },
-                    "qualifiedName" : {
-                      "qualifier" : [
-                        "M"
-                      ],
-                      "base" : "commands"
-                    },
-                    "component" : {
-                      "astNodeId" : 26
-                    },
-                    "baseId" : 256,
-                    "maxId" : 255,
-                    "file" : "None",
-                    "queueSize" : "None",
-                    "stackSize" : "None",
-                    "priority" : "None",
-                    "cpu" : "None",
-                    "initSpecifierMap" : {
-                      
                     }
                   },
                   "portInstance" : {
@@ -1402,7 +1229,8 @@
                     }
                   }
                 },
-                "portNumber" : "None"
+                "portNumber" : "None",
+                "topologyPort" : "None"
               },
               "to" : {
                 "loc" : {
@@ -1411,28 +1239,9 @@
                   "includingLoc" : "None"
                 },
                 "port" : {
-                  "componentInstance" : {
-                    "aNode" : {
+                  "interfaceInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 40
-                    },
-                    "qualifiedName" : {
-                      "qualifier" : [
-                        "M"
-                      ],
-                      "base" : "c"
-                    },
-                    "component" : {
-                      "astNodeId" : 32
-                    },
-                    "baseId" : 256,
-                    "maxId" : 255,
-                    "file" : "None",
-                    "queueSize" : "None",
-                    "stackSize" : "None",
-                    "priority" : "None",
-                    "cpu" : "None",
-                    "initSpecifierMap" : {
-                      
                     }
                   },
                   "portInstance" : {
@@ -1464,7 +1273,8 @@
                     }
                   }
                 },
-                "portNumber" : "None"
+                "portNumber" : "None",
+                "topologyPort" : "None"
               },
               "isUnmatched" : false
             }
@@ -1478,28 +1288,9 @@
                   "includingLoc" : "None"
                 },
                 "port" : {
-                  "componentInstance" : {
-                    "aNode" : {
+                  "interfaceInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 40
-                    },
-                    "qualifiedName" : {
-                      "qualifier" : [
-                        "M"
-                      ],
-                      "base" : "c"
-                    },
-                    "component" : {
-                      "astNodeId" : 32
-                    },
-                    "baseId" : 256,
-                    "maxId" : 255,
-                    "file" : "None",
-                    "queueSize" : "None",
-                    "stackSize" : "None",
-                    "priority" : "None",
-                    "cpu" : "None",
-                    "initSpecifierMap" : {
-                      
                     }
                   },
                   "portInstance" : {
@@ -1531,7 +1322,8 @@
                     }
                   }
                 },
-                "portNumber" : "None"
+                "portNumber" : "None",
+                "topologyPort" : "None"
               },
               "to" : {
                 "loc" : {
@@ -1540,28 +1332,9 @@
                   "includingLoc" : "None"
                 },
                 "port" : {
-                  "componentInstance" : {
-                    "aNode" : {
+                  "interfaceInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 36
-                    },
-                    "qualifiedName" : {
-                      "qualifier" : [
-                        "M"
-                      ],
-                      "base" : "commands"
-                    },
-                    "component" : {
-                      "astNodeId" : 26
-                    },
-                    "baseId" : 256,
-                    "maxId" : 255,
-                    "file" : "None",
-                    "queueSize" : "None",
-                    "stackSize" : "None",
-                    "priority" : "None",
-                    "cpu" : "None",
-                    "initSpecifierMap" : {
-                      
                     }
                   },
                   "portInstance" : {
@@ -1602,7 +1375,8 @@
                     }
                   }
                 },
-                "portNumber" : "None"
+                "portNumber" : "None",
+                "topologyPort" : "None"
               },
               "isUnmatched" : false
             }
@@ -1611,28 +1385,9 @@
         "outputConnectionMap" : [
           [
             {
-              "componentInstance" : {
-                "aNode" : {
+              "interfaceInstance" : {
+                "InterfaceComponentInstance" : {
                   "astNodeId" : 40
-                },
-                "qualifiedName" : {
-                  "qualifier" : [
-                    "M"
-                  ],
-                  "base" : "c"
-                },
-                "component" : {
-                  "astNodeId" : 32
-                },
-                "baseId" : 256,
-                "maxId" : 255,
-                "file" : "None",
-                "queueSize" : "None",
-                "stackSize" : "None",
-                "priority" : "None",
-                "cpu" : "None",
-                "initSpecifierMap" : {
-                  
                 }
               },
               "portInstance" : {
@@ -1673,28 +1428,9 @@
                     "includingLoc" : "None"
                   },
                   "port" : {
-                    "componentInstance" : {
-                      "aNode" : {
+                    "interfaceInstance" : {
+                      "InterfaceComponentInstance" : {
                         "astNodeId" : 40
-                      },
-                      "qualifiedName" : {
-                        "qualifier" : [
-                          "M"
-                        ],
-                        "base" : "c"
-                      },
-                      "component" : {
-                        "astNodeId" : 32
-                      },
-                      "baseId" : 256,
-                      "maxId" : 255,
-                      "file" : "None",
-                      "queueSize" : "None",
-                      "stackSize" : "None",
-                      "priority" : "None",
-                      "cpu" : "None",
-                      "initSpecifierMap" : {
-                        
                       }
                     },
                     "portInstance" : {
@@ -1726,7 +1462,8 @@
                       }
                     }
                   },
-                  "portNumber" : "None"
+                  "portNumber" : "None",
+                  "topologyPort" : "None"
                 },
                 "to" : {
                   "loc" : {
@@ -1735,28 +1472,9 @@
                     "includingLoc" : "None"
                   },
                   "port" : {
-                    "componentInstance" : {
-                      "aNode" : {
+                    "interfaceInstance" : {
+                      "InterfaceComponentInstance" : {
                         "astNodeId" : 36
-                      },
-                      "qualifiedName" : {
-                        "qualifier" : [
-                          "M"
-                        ],
-                        "base" : "commands"
-                      },
-                      "component" : {
-                        "astNodeId" : 26
-                      },
-                      "baseId" : 256,
-                      "maxId" : 255,
-                      "file" : "None",
-                      "queueSize" : "None",
-                      "stackSize" : "None",
-                      "priority" : "None",
-                      "cpu" : "None",
-                      "initSpecifierMap" : {
-                        
                       }
                     },
                     "portInstance" : {
@@ -1797,7 +1515,8 @@
                       }
                     }
                   },
-                  "portNumber" : "None"
+                  "portNumber" : "None",
+                  "topologyPort" : "None"
                 },
                 "isUnmatched" : false
               }
@@ -1805,28 +1524,9 @@
           ],
           [
             {
-              "componentInstance" : {
-                "aNode" : {
+              "interfaceInstance" : {
+                "InterfaceComponentInstance" : {
                   "astNodeId" : 36
-                },
-                "qualifiedName" : {
-                  "qualifier" : [
-                    "M"
-                  ],
-                  "base" : "commands"
-                },
-                "component" : {
-                  "astNodeId" : 26
-                },
-                "baseId" : 256,
-                "maxId" : 255,
-                "file" : "None",
-                "queueSize" : "None",
-                "stackSize" : "None",
-                "priority" : "None",
-                "cpu" : "None",
-                "initSpecifierMap" : {
-                  
                 }
               },
               "portInstance" : {
@@ -1876,28 +1576,9 @@
                     "includingLoc" : "None"
                   },
                   "port" : {
-                    "componentInstance" : {
-                      "aNode" : {
+                    "interfaceInstance" : {
+                      "InterfaceComponentInstance" : {
                         "astNodeId" : 36
-                      },
-                      "qualifiedName" : {
-                        "qualifier" : [
-                          "M"
-                        ],
-                        "base" : "commands"
-                      },
-                      "component" : {
-                        "astNodeId" : 26
-                      },
-                      "baseId" : 256,
-                      "maxId" : 255,
-                      "file" : "None",
-                      "queueSize" : "None",
-                      "stackSize" : "None",
-                      "priority" : "None",
-                      "cpu" : "None",
-                      "initSpecifierMap" : {
-                        
                       }
                     },
                     "portInstance" : {
@@ -1938,7 +1619,8 @@
                       }
                     }
                   },
-                  "portNumber" : "None"
+                  "portNumber" : "None",
+                  "topologyPort" : "None"
                 },
                 "to" : {
                   "loc" : {
@@ -1947,28 +1629,9 @@
                     "includingLoc" : "None"
                   },
                   "port" : {
-                    "componentInstance" : {
-                      "aNode" : {
+                    "interfaceInstance" : {
+                      "InterfaceComponentInstance" : {
                         "astNodeId" : 40
-                      },
-                      "qualifiedName" : {
-                        "qualifier" : [
-                          "M"
-                        ],
-                        "base" : "c"
-                      },
-                      "component" : {
-                        "astNodeId" : 32
-                      },
-                      "baseId" : 256,
-                      "maxId" : 255,
-                      "file" : "None",
-                      "queueSize" : "None",
-                      "stackSize" : "None",
-                      "priority" : "None",
-                      "cpu" : "None",
-                      "initSpecifierMap" : {
-                        
                       }
                     },
                     "portInstance" : {
@@ -2000,7 +1663,8 @@
                       }
                     }
                   },
-                  "portNumber" : "None"
+                  "portNumber" : "None",
+                  "topologyPort" : "None"
                 },
                 "isUnmatched" : false
               }
@@ -2008,28 +1672,9 @@
           ],
           [
             {
-              "componentInstance" : {
-                "aNode" : {
+              "interfaceInstance" : {
+                "InterfaceComponentInstance" : {
                   "astNodeId" : 40
-                },
-                "qualifiedName" : {
-                  "qualifier" : [
-                    "M"
-                  ],
-                  "base" : "c"
-                },
-                "component" : {
-                  "astNodeId" : 32
-                },
-                "baseId" : 256,
-                "maxId" : 255,
-                "file" : "None",
-                "queueSize" : "None",
-                "stackSize" : "None",
-                "priority" : "None",
-                "cpu" : "None",
-                "initSpecifierMap" : {
-                  
                 }
               },
               "portInstance" : {
@@ -2070,28 +1715,9 @@
                     "includingLoc" : "None"
                   },
                   "port" : {
-                    "componentInstance" : {
-                      "aNode" : {
+                    "interfaceInstance" : {
+                      "InterfaceComponentInstance" : {
                         "astNodeId" : 40
-                      },
-                      "qualifiedName" : {
-                        "qualifier" : [
-                          "M"
-                        ],
-                        "base" : "c"
-                      },
-                      "component" : {
-                        "astNodeId" : 32
-                      },
-                      "baseId" : 256,
-                      "maxId" : 255,
-                      "file" : "None",
-                      "queueSize" : "None",
-                      "stackSize" : "None",
-                      "priority" : "None",
-                      "cpu" : "None",
-                      "initSpecifierMap" : {
-                        
                       }
                     },
                     "portInstance" : {
@@ -2123,7 +1749,8 @@
                       }
                     }
                   },
-                  "portNumber" : "None"
+                  "portNumber" : "None",
+                  "topologyPort" : "None"
                 },
                 "to" : {
                   "loc" : {
@@ -2132,28 +1759,9 @@
                     "includingLoc" : "None"
                   },
                   "port" : {
-                    "componentInstance" : {
-                      "aNode" : {
+                    "interfaceInstance" : {
+                      "InterfaceComponentInstance" : {
                         "astNodeId" : 36
-                      },
-                      "qualifiedName" : {
-                        "qualifier" : [
-                          "M"
-                        ],
-                        "base" : "commands"
-                      },
-                      "component" : {
-                        "astNodeId" : 26
-                      },
-                      "baseId" : 256,
-                      "maxId" : 255,
-                      "file" : "None",
-                      "queueSize" : "None",
-                      "stackSize" : "None",
-                      "priority" : "None",
-                      "cpu" : "None",
-                      "initSpecifierMap" : {
-                        
                       }
                     },
                     "portInstance" : {
@@ -2194,7 +1802,8 @@
                       }
                     }
                   },
-                  "portNumber" : "None"
+                  "portNumber" : "None",
+                  "topologyPort" : "None"
                 },
                 "isUnmatched" : false
               }
@@ -2204,28 +1813,9 @@
         "inputConnectionMap" : [
           [
             {
-              "componentInstance" : {
-                "aNode" : {
+              "interfaceInstance" : {
+                "InterfaceComponentInstance" : {
                   "astNodeId" : 36
-                },
-                "qualifiedName" : {
-                  "qualifier" : [
-                    "M"
-                  ],
-                  "base" : "commands"
-                },
-                "component" : {
-                  "astNodeId" : 26
-                },
-                "baseId" : 256,
-                "maxId" : 255,
-                "file" : "None",
-                "queueSize" : "None",
-                "stackSize" : "None",
-                "priority" : "None",
-                "cpu" : "None",
-                "initSpecifierMap" : {
-                  
                 }
               },
               "portInstance" : {
@@ -2275,28 +1865,9 @@
                     "includingLoc" : "None"
                   },
                   "port" : {
-                    "componentInstance" : {
-                      "aNode" : {
+                    "interfaceInstance" : {
+                      "InterfaceComponentInstance" : {
                         "astNodeId" : 40
-                      },
-                      "qualifiedName" : {
-                        "qualifier" : [
-                          "M"
-                        ],
-                        "base" : "c"
-                      },
-                      "component" : {
-                        "astNodeId" : 32
-                      },
-                      "baseId" : 256,
-                      "maxId" : 255,
-                      "file" : "None",
-                      "queueSize" : "None",
-                      "stackSize" : "None",
-                      "priority" : "None",
-                      "cpu" : "None",
-                      "initSpecifierMap" : {
-                        
                       }
                     },
                     "portInstance" : {
@@ -2328,7 +1899,8 @@
                       }
                     }
                   },
-                  "portNumber" : "None"
+                  "portNumber" : "None",
+                  "topologyPort" : "None"
                 },
                 "to" : {
                   "loc" : {
@@ -2337,28 +1909,9 @@
                     "includingLoc" : "None"
                   },
                   "port" : {
-                    "componentInstance" : {
-                      "aNode" : {
+                    "interfaceInstance" : {
+                      "InterfaceComponentInstance" : {
                         "astNodeId" : 36
-                      },
-                      "qualifiedName" : {
-                        "qualifier" : [
-                          "M"
-                        ],
-                        "base" : "commands"
-                      },
-                      "component" : {
-                        "astNodeId" : 26
-                      },
-                      "baseId" : 256,
-                      "maxId" : 255,
-                      "file" : "None",
-                      "queueSize" : "None",
-                      "stackSize" : "None",
-                      "priority" : "None",
-                      "cpu" : "None",
-                      "initSpecifierMap" : {
-                        
                       }
                     },
                     "portInstance" : {
@@ -2399,7 +1952,8 @@
                       }
                     }
                   },
-                  "portNumber" : "None"
+                  "portNumber" : "None",
+                  "topologyPort" : "None"
                 },
                 "isUnmatched" : false
               }
@@ -2407,28 +1961,9 @@
           ],
           [
             {
-              "componentInstance" : {
-                "aNode" : {
+              "interfaceInstance" : {
+                "InterfaceComponentInstance" : {
                   "astNodeId" : 40
-                },
-                "qualifiedName" : {
-                  "qualifier" : [
-                    "M"
-                  ],
-                  "base" : "c"
-                },
-                "component" : {
-                  "astNodeId" : 32
-                },
-                "baseId" : 256,
-                "maxId" : 255,
-                "file" : "None",
-                "queueSize" : "None",
-                "stackSize" : "None",
-                "priority" : "None",
-                "cpu" : "None",
-                "initSpecifierMap" : {
-                  
                 }
               },
               "portInstance" : {
@@ -2469,28 +2004,9 @@
                     "includingLoc" : "None"
                   },
                   "port" : {
-                    "componentInstance" : {
-                      "aNode" : {
+                    "interfaceInstance" : {
+                      "InterfaceComponentInstance" : {
                         "astNodeId" : 36
-                      },
-                      "qualifiedName" : {
-                        "qualifier" : [
-                          "M"
-                        ],
-                        "base" : "commands"
-                      },
-                      "component" : {
-                        "astNodeId" : 26
-                      },
-                      "baseId" : 256,
-                      "maxId" : 255,
-                      "file" : "None",
-                      "queueSize" : "None",
-                      "stackSize" : "None",
-                      "priority" : "None",
-                      "cpu" : "None",
-                      "initSpecifierMap" : {
-                        
                       }
                     },
                     "portInstance" : {
@@ -2531,7 +2047,8 @@
                       }
                     }
                   },
-                  "portNumber" : "None"
+                  "portNumber" : "None",
+                  "topologyPort" : "None"
                 },
                 "to" : {
                   "loc" : {
@@ -2540,28 +2057,9 @@
                     "includingLoc" : "None"
                   },
                   "port" : {
-                    "componentInstance" : {
-                      "aNode" : {
+                    "interfaceInstance" : {
+                      "InterfaceComponentInstance" : {
                         "astNodeId" : 40
-                      },
-                      "qualifiedName" : {
-                        "qualifier" : [
-                          "M"
-                        ],
-                        "base" : "c"
-                      },
-                      "component" : {
-                        "astNodeId" : 32
-                      },
-                      "baseId" : 256,
-                      "maxId" : 255,
-                      "file" : "None",
-                      "queueSize" : "None",
-                      "stackSize" : "None",
-                      "priority" : "None",
-                      "cpu" : "None",
-                      "initSpecifierMap" : {
-                        
                       }
                     },
                     "portInstance" : {
@@ -2593,7 +2091,8 @@
                       }
                     }
                   },
-                  "portNumber" : "None"
+                  "portNumber" : "None",
+                  "topologyPort" : "None"
                 },
                 "isUnmatched" : false
               }
@@ -2601,28 +2100,9 @@
           ],
           [
             {
-              "componentInstance" : {
-                "aNode" : {
+              "interfaceInstance" : {
+                "InterfaceComponentInstance" : {
                   "astNodeId" : 36
-                },
-                "qualifiedName" : {
-                  "qualifier" : [
-                    "M"
-                  ],
-                  "base" : "commands"
-                },
-                "component" : {
-                  "astNodeId" : 26
-                },
-                "baseId" : 256,
-                "maxId" : 255,
-                "file" : "None",
-                "queueSize" : "None",
-                "stackSize" : "None",
-                "priority" : "None",
-                "cpu" : "None",
-                "initSpecifierMap" : {
-                  
                 }
               },
               "portInstance" : {
@@ -2672,28 +2152,9 @@
                     "includingLoc" : "None"
                   },
                   "port" : {
-                    "componentInstance" : {
-                      "aNode" : {
+                    "interfaceInstance" : {
+                      "InterfaceComponentInstance" : {
                         "astNodeId" : 40
-                      },
-                      "qualifiedName" : {
-                        "qualifier" : [
-                          "M"
-                        ],
-                        "base" : "c"
-                      },
-                      "component" : {
-                        "astNodeId" : 32
-                      },
-                      "baseId" : 256,
-                      "maxId" : 255,
-                      "file" : "None",
-                      "queueSize" : "None",
-                      "stackSize" : "None",
-                      "priority" : "None",
-                      "cpu" : "None",
-                      "initSpecifierMap" : {
-                        
                       }
                     },
                     "portInstance" : {
@@ -2725,7 +2186,8 @@
                       }
                     }
                   },
-                  "portNumber" : "None"
+                  "portNumber" : "None",
+                  "topologyPort" : "None"
                 },
                 "to" : {
                   "loc" : {
@@ -2734,28 +2196,9 @@
                     "includingLoc" : "None"
                   },
                   "port" : {
-                    "componentInstance" : {
-                      "aNode" : {
+                    "interfaceInstance" : {
+                      "InterfaceComponentInstance" : {
                         "astNodeId" : 36
-                      },
-                      "qualifiedName" : {
-                        "qualifier" : [
-                          "M"
-                        ],
-                        "base" : "commands"
-                      },
-                      "component" : {
-                        "astNodeId" : 26
-                      },
-                      "baseId" : 256,
-                      "maxId" : 255,
-                      "file" : "None",
-                      "queueSize" : "None",
-                      "stackSize" : "None",
-                      "priority" : "None",
-                      "cpu" : "None",
-                      "initSpecifierMap" : {
-                        
                       }
                     },
                     "portInstance" : {
@@ -2796,7 +2239,8 @@
                       }
                     }
                   },
-                  "portNumber" : "None"
+                  "portNumber" : "None",
+                  "topologyPort" : "None"
                 },
                 "isUnmatched" : false
               }
@@ -2813,28 +2257,9 @@
                   "includingLoc" : "None"
                 },
                 "port" : {
-                  "componentInstance" : {
-                    "aNode" : {
+                  "interfaceInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 36
-                    },
-                    "qualifiedName" : {
-                      "qualifier" : [
-                        "M"
-                      ],
-                      "base" : "commands"
-                    },
-                    "component" : {
-                      "astNodeId" : 26
-                    },
-                    "baseId" : 256,
-                    "maxId" : 255,
-                    "file" : "None",
-                    "queueSize" : "None",
-                    "stackSize" : "None",
-                    "priority" : "None",
-                    "cpu" : "None",
-                    "initSpecifierMap" : {
-                      
                     }
                   },
                   "portInstance" : {
@@ -2875,7 +2300,8 @@
                     }
                   }
                 },
-                "portNumber" : "None"
+                "portNumber" : "None",
+                "topologyPort" : "None"
               },
               "to" : {
                 "loc" : {
@@ -2884,28 +2310,9 @@
                   "includingLoc" : "None"
                 },
                 "port" : {
-                  "componentInstance" : {
-                    "aNode" : {
+                  "interfaceInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 40
-                    },
-                    "qualifiedName" : {
-                      "qualifier" : [
-                        "M"
-                      ],
-                      "base" : "c"
-                    },
-                    "component" : {
-                      "astNodeId" : 32
-                    },
-                    "baseId" : 256,
-                    "maxId" : 255,
-                    "file" : "None",
-                    "queueSize" : "None",
-                    "stackSize" : "None",
-                    "priority" : "None",
-                    "cpu" : "None",
-                    "initSpecifierMap" : {
-                      
                     }
                   },
                   "portInstance" : {
@@ -2937,7 +2344,8 @@
                     }
                   }
                 },
-                "portNumber" : "None"
+                "portNumber" : "None",
+                "topologyPort" : "None"
               },
               "isUnmatched" : false
             },
@@ -2952,28 +2360,9 @@
                   "includingLoc" : "None"
                 },
                 "port" : {
-                  "componentInstance" : {
-                    "aNode" : {
+                  "interfaceInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 40
-                    },
-                    "qualifiedName" : {
-                      "qualifier" : [
-                        "M"
-                      ],
-                      "base" : "c"
-                    },
-                    "component" : {
-                      "astNodeId" : 32
-                    },
-                    "baseId" : 256,
-                    "maxId" : 255,
-                    "file" : "None",
-                    "queueSize" : "None",
-                    "stackSize" : "None",
-                    "priority" : "None",
-                    "cpu" : "None",
-                    "initSpecifierMap" : {
-                      
                     }
                   },
                   "portInstance" : {
@@ -3005,7 +2394,8 @@
                     }
                   }
                 },
-                "portNumber" : "None"
+                "portNumber" : "None",
+                "topologyPort" : "None"
               },
               "to" : {
                 "loc" : {
@@ -3014,28 +2404,9 @@
                   "includingLoc" : "None"
                 },
                 "port" : {
-                  "componentInstance" : {
-                    "aNode" : {
+                  "interfaceInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 36
-                    },
-                    "qualifiedName" : {
-                      "qualifier" : [
-                        "M"
-                      ],
-                      "base" : "commands"
-                    },
-                    "component" : {
-                      "astNodeId" : 26
-                    },
-                    "baseId" : 256,
-                    "maxId" : 255,
-                    "file" : "None",
-                    "queueSize" : "None",
-                    "stackSize" : "None",
-                    "priority" : "None",
-                    "cpu" : "None",
-                    "initSpecifierMap" : {
-                      
                     }
                   },
                   "portInstance" : {
@@ -3076,7 +2447,8 @@
                     }
                   }
                 },
-                "portNumber" : "None"
+                "portNumber" : "None",
+                "topologyPort" : "None"
               },
               "isUnmatched" : false
             },
@@ -3091,28 +2463,9 @@
                   "includingLoc" : "None"
                 },
                 "port" : {
-                  "componentInstance" : {
-                    "aNode" : {
+                  "interfaceInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 40
-                    },
-                    "qualifiedName" : {
-                      "qualifier" : [
-                        "M"
-                      ],
-                      "base" : "c"
-                    },
-                    "component" : {
-                      "astNodeId" : 32
-                    },
-                    "baseId" : 256,
-                    "maxId" : 255,
-                    "file" : "None",
-                    "queueSize" : "None",
-                    "stackSize" : "None",
-                    "priority" : "None",
-                    "cpu" : "None",
-                    "initSpecifierMap" : {
-                      
                     }
                   },
                   "portInstance" : {
@@ -3144,7 +2497,8 @@
                     }
                   }
                 },
-                "portNumber" : "None"
+                "portNumber" : "None",
+                "topologyPort" : "None"
               },
               "to" : {
                 "loc" : {
@@ -3153,28 +2507,9 @@
                   "includingLoc" : "None"
                 },
                 "port" : {
-                  "componentInstance" : {
-                    "aNode" : {
+                  "interfaceInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 36
-                    },
-                    "qualifiedName" : {
-                      "qualifier" : [
-                        "M"
-                      ],
-                      "base" : "commands"
-                    },
-                    "component" : {
-                      "astNodeId" : 26
-                    },
-                    "baseId" : 256,
-                    "maxId" : 255,
-                    "file" : "None",
-                    "queueSize" : "None",
-                    "stackSize" : "None",
-                    "priority" : "None",
-                    "cpu" : "None",
-                    "initSpecifierMap" : {
-                      
                     }
                   },
                   "portInstance" : {
@@ -3215,7 +2550,8 @@
                     }
                   }
                 },
-                "portNumber" : "None"
+                "portNumber" : "None",
+                "topologyPort" : "None"
               },
               "isUnmatched" : false
             },
@@ -3232,28 +2568,9 @@
                   "includingLoc" : "None"
                 },
                 "port" : {
-                  "componentInstance" : {
-                    "aNode" : {
+                  "interfaceInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 40
-                    },
-                    "qualifiedName" : {
-                      "qualifier" : [
-                        "M"
-                      ],
-                      "base" : "c"
-                    },
-                    "component" : {
-                      "astNodeId" : 32
-                    },
-                    "baseId" : 256,
-                    "maxId" : 255,
-                    "file" : "None",
-                    "queueSize" : "None",
-                    "stackSize" : "None",
-                    "priority" : "None",
-                    "cpu" : "None",
-                    "initSpecifierMap" : {
-                      
                     }
                   },
                   "portInstance" : {
@@ -3285,7 +2602,8 @@
                     }
                   }
                 },
-                "portNumber" : "None"
+                "portNumber" : "None",
+                "topologyPort" : "None"
               },
               "to" : {
                 "loc" : {
@@ -3294,28 +2612,9 @@
                   "includingLoc" : "None"
                 },
                 "port" : {
-                  "componentInstance" : {
-                    "aNode" : {
+                  "interfaceInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 36
-                    },
-                    "qualifiedName" : {
-                      "qualifier" : [
-                        "M"
-                      ],
-                      "base" : "commands"
-                    },
-                    "component" : {
-                      "astNodeId" : 26
-                    },
-                    "baseId" : 256,
-                    "maxId" : 255,
-                    "file" : "None",
-                    "queueSize" : "None",
-                    "stackSize" : "None",
-                    "priority" : "None",
-                    "cpu" : "None",
-                    "initSpecifierMap" : {
-                      
                     }
                   },
                   "portInstance" : {
@@ -3356,7 +2655,8 @@
                     }
                   }
                 },
-                "portNumber" : "None"
+                "portNumber" : "None",
+                "topologyPort" : "None"
               },
               "isUnmatched" : false
             },
@@ -3371,28 +2671,9 @@
                   "includingLoc" : "None"
                 },
                 "port" : {
-                  "componentInstance" : {
-                    "aNode" : {
+                  "interfaceInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 40
-                    },
-                    "qualifiedName" : {
-                      "qualifier" : [
-                        "M"
-                      ],
-                      "base" : "c"
-                    },
-                    "component" : {
-                      "astNodeId" : 32
-                    },
-                    "baseId" : 256,
-                    "maxId" : 255,
-                    "file" : "None",
-                    "queueSize" : "None",
-                    "stackSize" : "None",
-                    "priority" : "None",
-                    "cpu" : "None",
-                    "initSpecifierMap" : {
-                      
                     }
                   },
                   "portInstance" : {
@@ -3424,7 +2705,8 @@
                     }
                   }
                 },
-                "portNumber" : "None"
+                "portNumber" : "None",
+                "topologyPort" : "None"
               },
               "to" : {
                 "loc" : {
@@ -3433,28 +2715,9 @@
                   "includingLoc" : "None"
                 },
                 "port" : {
-                  "componentInstance" : {
-                    "aNode" : {
+                  "interfaceInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 36
-                    },
-                    "qualifiedName" : {
-                      "qualifier" : [
-                        "M"
-                      ],
-                      "base" : "commands"
-                    },
-                    "component" : {
-                      "astNodeId" : 26
-                    },
-                    "baseId" : 256,
-                    "maxId" : 255,
-                    "file" : "None",
-                    "queueSize" : "None",
-                    "stackSize" : "None",
-                    "priority" : "None",
-                    "cpu" : "None",
-                    "initSpecifierMap" : {
-                      
                     }
                   },
                   "portInstance" : {
@@ -3495,7 +2758,8 @@
                     }
                   }
                 },
-                "portNumber" : "None"
+                "portNumber" : "None",
+                "topologyPort" : "None"
               },
               "isUnmatched" : false
             },
@@ -3510,28 +2774,9 @@
                   "includingLoc" : "None"
                 },
                 "port" : {
-                  "componentInstance" : {
-                    "aNode" : {
+                  "interfaceInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 36
-                    },
-                    "qualifiedName" : {
-                      "qualifier" : [
-                        "M"
-                      ],
-                      "base" : "commands"
-                    },
-                    "component" : {
-                      "astNodeId" : 26
-                    },
-                    "baseId" : 256,
-                    "maxId" : 255,
-                    "file" : "None",
-                    "queueSize" : "None",
-                    "stackSize" : "None",
-                    "priority" : "None",
-                    "cpu" : "None",
-                    "initSpecifierMap" : {
-                      
                     }
                   },
                   "portInstance" : {
@@ -3572,7 +2817,8 @@
                     }
                   }
                 },
-                "portNumber" : "None"
+                "portNumber" : "None",
+                "topologyPort" : "None"
               },
               "to" : {
                 "loc" : {
@@ -3581,28 +2827,9 @@
                   "includingLoc" : "None"
                 },
                 "port" : {
-                  "componentInstance" : {
-                    "aNode" : {
+                  "interfaceInstance" : {
+                    "InterfaceComponentInstance" : {
                       "astNodeId" : 40
-                    },
-                    "qualifiedName" : {
-                      "qualifier" : [
-                        "M"
-                      ],
-                      "base" : "c"
-                    },
-                    "component" : {
-                      "astNodeId" : 32
-                    },
-                    "baseId" : 256,
-                    "maxId" : 255,
-                    "file" : "None",
-                    "queueSize" : "None",
-                    "stackSize" : "None",
-                    "priority" : "None",
-                    "cpu" : "None",
-                    "initSpecifierMap" : {
-                      
                     }
                   },
                   "portInstance" : {
@@ -3634,7 +2861,8 @@
                     }
                   }
                 },
-                "portNumber" : "None"
+                "portNumber" : "None",
+                "topologyPort" : "None"
               },
               "isUnmatched" : false
             },

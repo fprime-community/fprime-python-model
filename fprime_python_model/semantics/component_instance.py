@@ -3,6 +3,7 @@ from fprime_python_model.fpp_ast.fpp_ast_node import AstNode
 from fprime_python_model.semantics.name import QualifiedName
 from fprime_python_model.semantics.component import Component
 from fprime_python_model.semantics.init_specifier import InitSpecifier
+from fprime_python_model.semantics.port_interface import PortInterface
 from dataclasses import dataclass, field
 from typing import Optional, Dict
 
@@ -57,6 +58,15 @@ class ComponentInstance:
         """
         return str(self.qualified_name)
 
+    def get_qualified_name(self) -> QualifiedName:
+        """
+        Gets the qualified name of the component instance
+
+        :return: Qualified name of the component instance
+        :rtype: QualifiedName
+        """
+        return self.qualified_name
+
     def get_unqualified_name(self) -> fpp_ast.Ident:
         """
         Gets the unqualified name of the component instance
@@ -65,6 +75,15 @@ class ComponentInstance:
         :rtype: fpp_ast.Ident
         """
         return self.a_node[1].data.name
+
+    def get_interface(self) -> PortInterface:
+        """
+        Gets the port interface of the component
+
+        :return: PortInterface of the component
+        :rtype: PortInterface
+        """
+        return self.component.port_interface
 
     def __hash__(self):
         """

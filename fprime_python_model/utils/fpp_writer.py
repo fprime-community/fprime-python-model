@@ -102,7 +102,7 @@ class FppWriter(AstVisitor, LineUtils):
         )
 
     def port_instance_id(self, pii: fpp_ast.PortInstanceIdentifier) -> Out:
-        return self.qual_ident(pii.component_instance.data).add_suffix(
+        return self.qual_ident(pii.interface_instance.data).add_suffix(
             f".{self.ident(pii.port_name.data)}"
         )
 
@@ -511,16 +511,41 @@ class FppWriter(AstVisitor, LineUtils):
     ):
         _, node, _ = a_node
         data = node.data
-        return Lines(
-            [self.line(f"topology {self.ident(data.name)} " + "{"), blank()]
-            + list(
+
+        implements_clause = (
+            [n.data for n in data.implements] if data.implements else None
+        )
+
+        header = Lines(
+            [
+                self.line(
+                    f"topology {self.ident(data.name)} "
+                    + ("implements" if implements_clause else "{")
+                )
+            ]
+        )
+
+        header = header.join_opt_with_break(
+            implements_clause,
+            "",
+            lambda q: Lines([line for item in q for line in self.qual_ident(item)]),
+        )
+
+        if implements_clause:
+            middle = Lines([self.line("{"), blank()])
+        else:
+            middle = Lines([blank()])
+
+        members = Lines(
+            list(
                 map(
                     self.indent_in,
                     self.blank_separated(self.topology_member, data.members),
                 )
             )
-            + [blank(), self.line("}")]
         )
+
+        return header + middle + members + Lines([blank(), self.line("}")])
 
     def expr_array_node(self, _in, node, e):
         return Lines(
@@ -556,6 +581,13 @@ class FppWriter(AstVisitor, LineUtils):
 
     def expr_paren_node(self, _in, node, e):
         return Lines(add_prefix_and_suffix("(", self.expr_node(e.e).lines, ")"))
+
+    def expr_size_of_node(self, _in, node, e):
+        return Lines(
+            add_prefix_and_suffix(
+                "sizeof(", self.type_name_node(e.type_name).lines, ")"
+            )
+        )
 
     def expr_struct_node(self, _in, node, e):
         struct_lines = []
@@ -593,13 +625,12 @@ class FppWriter(AstVisitor, LineUtils):
         )
 
     def spec_comp_instance_annotated_node(
-        self, _in, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecCompInstance]]
+        self, _in, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecInstance]]
     ):
         _, node, _ = a_node
         data = node.data
-        visibility = "" if data.visibility == fpp_ast.Visibility.PUBLIC else "private "
-        return Lines(self.lines(visibility)).join(
-            "instance ", self.qual_ident(data.instance.data)
+        return Lines(self.lines("instance")).join(
+            " ", self.qual_ident(data.instance.data)
         )
 
     def spec_connection_graph_annotated_node(
@@ -671,6 +702,15 @@ class FppWriter(AstVisitor, LineUtils):
         _, node, _ = a_node
         data = node.data
         return Lines(self.lines("include")).join(" ", self.string(data.file.data))
+
+    def spec_instance_annotated_node(
+        self, _in: In, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecInstance]]
+    ) -> Out:
+        _, node, _ = a_node
+        data = node.data
+        return Lines(self.lines("instance")).join(
+            " ", self.qual_ident(data.instance.data)
+        )
 
     def spec_initial_transition_annotated_node(
         self, _in, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecInitialTransition]]

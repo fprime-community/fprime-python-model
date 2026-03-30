@@ -1,5 +1,5 @@
 {
-  "fppVersion" : "v3.1.0a10-54-g11243e778",
+  "fppVersion" : "v3.2.0",
   "analysis" : {
     "componentInstanceMap" : {
       
@@ -9,25 +9,28 @@
         "aNode" : {
           "astNodeId" : 43
         },
-        "portMap" : {
-          "pInternal" : {
-            "Internal" : {
-              "aNode" : {
-                "astNodeId" : 42
-              },
-              "priority" : {
-                "Some" : 10
-              },
-              "queueFull" : {
-                "Drop" : {
-                  
+        "portInterface" : {
+          "instanceType" : "component",
+          "portMap" : {
+            "pInternal" : {
+              "Internal" : {
+                "aNode" : {
+                  "astNodeId" : 42
+                },
+                "priority" : {
+                  "Some" : 10
+                },
+                "queueFull" : {
+                  "Drop" : {
+                    
+                  }
                 }
               }
             }
+          },
+          "specialPortMap" : {
+            
           }
-        },
-        "specialPortMap" : {
-          
         },
         "commandMap" : {
           
@@ -63,6 +66,14 @@
           
         },
         "defaultRecordId" : 0
+      }
+    },
+    "frameworkDefinitions" : {
+      "constantMap" : {
+        
+      },
+      "typeMap" : {
+        
       }
     },
     "includedFileSet" : [

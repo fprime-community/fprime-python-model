@@ -5,21 +5,31 @@ from fprime_python_model.fpp_ast.fpp_ast_node import AstNode, AstId
 from fprime_python_model.fpp_ast.fpp_locations import Location
 from fprime_python_model.semantics.component_instance import ComponentInstance
 from fprime_python_model.semantics.connection_pattern import ConnectionPattern
-from fprime_python_model.semantics.name import UnqualifiedName
+from fprime_python_model.semantics.name import UnqualifiedName, QualifiedName
 from fprime_python_model.semantics.connection import Connection
 from fprime_python_model.semantics.port_instance_identifier import (
     PortInstanceIdentifier,
 )
 from fprime_python_model.semantics.port_instance import PortInstance, Direction
+from fprime_python_model.semantics.interface_instance import (
+    InterfaceInstance,
+    InterfaceComponentInstance,
+)
+from fprime_python_model.semantics.port_interface import PortInterface
+from fprime_python_model.semantics.topology_port import TopologyPort
 
 
 @dataclass
 class Topology:
     a_node: fpp_ast.Annotated[AstNode[fpp_ast.DefTopology]]
-    direct_import_map: Dict[AstId, Location] = field(default_factory=dict)
+    qualified_name: QualifiedName
+    direct_topologies: Dict[AstId, Location] = field(default_factory=dict)
+    direct_component_instances: Dict[AstId, Location] = field(default_factory=dict)
     transitive_import_set: Set[AstId] = field(default_factory=set)
-    instance_map: Dict[ComponentInstance, Tuple[fpp_ast.Visibility, Location]] = field(
-        default_factory=dict
+    instance_map: Dict[InterfaceInstance, Location] = field(default_factory=dict)
+    port_map: Dict[UnqualifiedName, TopologyPort] = field(default_factory=dict)
+    port_interface: PortInterface = field(
+        default_factory=lambda: PortInterface("topology")
     )
     pattern_map: Dict[fpp_ast.PatternKind, ConnectionPattern] = field(
         default_factory=dict
@@ -90,3 +100,13 @@ class Topology:
             if pn is not None:
                 out_set.add(pn)
         return out_set
+
+    def get_qualified_name(self) -> QualifiedName:
+        return self.qualified_name
+
+    def component_instance_map(self) -> Dict[ComponentInstance, Location]:
+        out_dict: Dict[ComponentInstance, Location] = dict()
+        for inst, loc in self.instance_map.items():
+            if isinstance(inst, InterfaceComponentInstance):
+                out_dict[inst.ci] = loc
+        return out_dict

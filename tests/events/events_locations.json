@@ -1,5 +1,5 @@
 {
-  "fppVersion" : "v3.1.0a10-54-g11243e778",
+  "fppVersion" : "v3.2.0",
   "locationMap" : {
     "0" : {
       "file" : "[ local path prefix ]/compiler/tools/fpp-to-json/test/events.fpp",

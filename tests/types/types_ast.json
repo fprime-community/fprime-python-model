@@ -1,8 +1,70 @@
 {
-  "fppVersion" : "v3.1.0a10-54-g11243e778",
+  "fppVersion" : "v3.2.0",
   "ast" : [
     {
       "members" : [
+        [
+          [
+          ],
+          {
+            "DefAliasType" : {
+              "node" : {
+                "AstNode" : {
+                  "data" : {
+                    "name" : "FwSizeStoreType",
+                    "typeName" : {
+                      "AstNode" : {
+                        "data" : {
+                          "TypeNameInt" : {
+                            "name" : {
+                              "U16" : {
+                                
+                              }
+                            }
+                          }
+                        },
+                        "id" : 0
+                      }
+                    },
+                    "isDictionaryDef" : false
+                  },
+                  "id" : 1
+                }
+              }
+            }
+          },
+          [
+          ]
+        ],
+        [
+          [
+          ],
+          {
+            "DefConstant" : {
+              "node" : {
+                "AstNode" : {
+                  "data" : {
+                    "name" : "FW_FIXED_LENGTH_STRING_SIZE",
+                    "value" : {
+                      "AstNode" : {
+                        "data" : {
+                          "ExprLiteralInt" : {
+                            "value" : "256"
+                          }
+                        },
+                        "id" : 2
+                      }
+                    },
+                    "isDictionaryDef" : false
+                  },
+                  "id" : 3
+                }
+              }
+            }
+          },
+          [
+          ]
+        ],
         [
           [
           ],
@@ -19,12 +81,12 @@
                             "value" : "3"
                           }
                         },
-                        "id" : 0
+                        "id" : 4
                       }
                     },
                     "isDictionaryDef" : true
                   },
-                  "id" : 1
+                  "id" : 5
                 }
               }
             }
@@ -48,7 +110,7 @@
                             "value" : "numElements"
                           }
                         },
-                        "id" : 2
+                        "id" : 6
                       }
                     },
                     "eltType" : {
@@ -63,13 +125,13 @@
                                       "value" : "40"
                                     }
                                   },
-                                  "id" : 3
+                                  "id" : 7
                                 }
                               }
                             }
                           }
                         },
-                        "id" : 4
+                        "id" : 8
                       }
                     },
                     "default" : {
@@ -85,7 +147,7 @@
                                         "value" : "1"
                                       }
                                     },
-                                    "id" : 5
+                                    "id" : 9
                                   }
                                 },
                                 {
@@ -95,7 +157,7 @@
                                         "value" : "2"
                                       }
                                     },
-                                    "id" : 6
+                                    "id" : 10
                                   }
                                 },
                                 {
@@ -105,13 +167,13 @@
                                         "value" : "3"
                                       }
                                     },
-                                    "id" : 7
+                                    "id" : 11
                                   }
                                 }
                               ]
                             }
                           },
-                          "id" : 8
+                          "id" : 12
                         }
                       }
                     },
@@ -119,13 +181,13 @@
                       "Some" : {
                         "AstNode" : {
                           "data" : "{} RPM",
-                          "id" : 9
+                          "id" : 13
                         }
                       }
                     },
                     "isDictionaryDef" : false
                   },
-                  "id" : 10
+                  "id" : 14
                 }
               }
             }
@@ -149,7 +211,7 @@
                             "value" : "3"
                           }
                         },
-                        "id" : 11
+                        "id" : 15
                       }
                     },
                     "eltType" : {
@@ -163,19 +225,19 @@
                                     "name" : "A"
                                   }
                                 },
-                                "id" : 13
+                                "id" : 17
                               }
                             }
                           }
                         },
-                        "id" : 14
+                        "id" : 18
                       }
                     },
                     "default" : "None",
                     "format" : "None",
                     "isDictionaryDef" : false
                   },
-                  "id" : 15
+                  "id" : 19
                 }
               }
             }
@@ -214,12 +276,12 @@
                                       }
                                     }
                                   },
-                                  "id" : 27
+                                  "id" : 31
                                 }
                               },
                               "format" : "None"
                             },
-                            "id" : 28
+                            "id" : 32
                           }
                         },
                         [
@@ -242,12 +304,12 @@
                                       "size" : "None"
                                     }
                                   },
-                                  "id" : 31
+                                  "id" : 35
                                 }
                               },
                               "format" : "None"
                             },
-                            "id" : 32
+                            "id" : 36
                           }
                         },
                         [
@@ -258,7 +320,7 @@
                     "default" : "None",
                     "isDictionaryDef" : false
                   },
-                  "id" : 33
+                  "id" : 37
                 }
               }
             }
@@ -292,11 +354,11 @@
                                             "value" : "1"
                                           }
                                         },
-                                        "id" : 34
+                                        "id" : 38
                                       }
                                     }
                                   },
-                                  "id" : 35
+                                  "id" : 39
                                 }
                               },
                               {
@@ -310,22 +372,22 @@
                                             "value" : "abc"
                                           }
                                         },
-                                        "id" : 36
+                                        "id" : 40
                                       }
                                     }
                                   },
-                                  "id" : 37
+                                  "id" : 41
                                 }
                               }
                             ]
                           }
                         },
-                        "id" : 38
+                        "id" : 42
                       }
                     },
                     "isDictionaryDef" : false
                   },
-                  "id" : 39
+                  "id" : 43
                 }
               }
             }
@@ -362,12 +424,12 @@
                                       }
                                     }
                                   },
-                                  "id" : 40
+                                  "id" : 44
                                 }
                               },
                               "format" : "None"
                             },
-                            "id" : 41
+                            "id" : 45
                           }
                         },
                         [
@@ -388,12 +450,12 @@
                                       "size" : "None"
                                     }
                                   },
-                                  "id" : 46
+                                  "id" : 50
                                 }
                               },
                               "format" : "None"
                             },
-                            "id" : 47
+                            "id" : 51
                           }
                         },
                         [
@@ -408,13 +470,13 @@
                               "value" : "s"
                             }
                           },
-                          "id" : 48
+                          "id" : 52
                         }
                       }
                     },
                     "isDictionaryDef" : false
                   },
-                  "id" : 49
+                  "id" : 53
                 }
               }
             }
@@ -451,12 +513,12 @@
                                       }
                                     }
                                   },
-                                  "id" : 50
+                                  "id" : 54
                                 }
                               },
                               "format" : "None"
                             },
-                            "id" : 51
+                            "id" : 55
                           }
                         },
                         [
@@ -477,12 +539,12 @@
                                       "size" : "None"
                                     }
                                   },
-                                  "id" : 56
+                                  "id" : 60
                                 }
                               },
                               "format" : "None"
                             },
-                            "id" : 57
+                            "id" : 61
                           }
                         },
                         [
@@ -497,13 +559,13 @@
                               "value" : "s"
                             }
                           },
-                          "id" : 58
+                          "id" : 62
                         }
                       }
                     },
                     "isDictionaryDef" : false
                   },
-                  "id" : 59
+                  "id" : 63
                 }
               }
             }
@@ -521,7 +583,7 @@
                   "data" : {
                     "name" : "T"
                   },
-                  "id" : 60
+                  "id" : 64
                 }
               }
             }
@@ -545,7 +607,7 @@
                             "value" : "3"
                           }
                         },
-                        "id" : 61
+                        "id" : 65
                       }
                     },
                     "eltType" : {
@@ -559,19 +621,19 @@
                                     "name" : "T"
                                   }
                                 },
-                                "id" : 63
+                                "id" : 67
                               }
                             }
                           }
                         },
-                        "id" : 64
+                        "id" : 68
                       }
                     },
                     "default" : "None",
                     "format" : "None",
                     "isDictionaryDef" : false
                   },
-                  "id" : 65
+                  "id" : 69
                 }
               }
             }
@@ -608,17 +670,17 @@
                                               "name" : "SignalType"
                                             }
                                           },
-                                          "id" : 67
+                                          "id" : 71
                                         }
                                       }
                                     }
                                   },
-                                  "id" : 68
+                                  "id" : 72
                                 }
                               },
                               "format" : "None"
                             },
-                            "id" : 69
+                            "id" : 73
                           }
                         },
                         [
@@ -643,17 +705,17 @@
                                               "name" : "SignalSet"
                                             }
                                           },
-                                          "id" : 71
+                                          "id" : 75
                                         }
                                       }
                                     }
                                   },
-                                  "id" : 72
+                                  "id" : 76
                                 }
                               },
                               "format" : "None"
                             },
-                            "id" : 73
+                            "id" : 77
                           }
                         },
                         [
@@ -678,17 +740,17 @@
                                               "name" : "SignalPairSet"
                                             }
                                           },
-                                          "id" : 83
+                                          "id" : 87
                                         }
                                       }
                                     }
                                   },
-                                  "id" : 84
+                                  "id" : 88
                                 }
                               },
                               "format" : "None"
                             },
-                            "id" : 85
+                            "id" : 89
                           }
                         },
                         [
@@ -698,7 +760,7 @@
                     "default" : "None",
                     "isDictionaryDef" : true
                   },
-                  "id" : 86
+                  "id" : 90
                 }
               }
             }
@@ -735,19 +797,19 @@
                                       }
                                     }
                                   },
-                                  "id" : 87
+                                  "id" : 91
                                 }
                               },
                               "format" : {
                                 "Some" : {
                                   "AstNode" : {
                                     "data" : "{f}",
-                                    "id" : 88
+                                    "id" : 92
                                   }
                                 }
                               }
                             },
-                            "id" : 89
+                            "id" : 93
                           }
                         },
                         [
@@ -772,19 +834,19 @@
                                       }
                                     }
                                   },
-                                  "id" : 96
+                                  "id" : 100
                                 }
                               },
                               "format" : {
                                 "Some" : {
                                   "AstNode" : {
                                     "data" : "{f}",
-                                    "id" : 97
+                                    "id" : 101
                                   }
                                 }
                               }
                             },
-                            "id" : 98
+                            "id" : 102
                           }
                         },
                         [
@@ -794,7 +856,7 @@
                     "default" : "None",
                     "isDictionaryDef" : false
                   },
-                  "id" : 99
+                  "id" : 103
                 }
               }
             }
@@ -818,7 +880,7 @@
                             "value" : "4"
                           }
                         },
-                        "id" : 100
+                        "id" : 104
                       }
                     },
                     "eltType" : {
@@ -832,19 +894,19 @@
                                     "name" : "SignalPair"
                                   }
                                 },
-                                "id" : 102
+                                "id" : 106
                               }
                             }
                           }
                         },
-                        "id" : 103
+                        "id" : 107
                       }
                     },
                     "default" : "None",
                     "format" : "None",
                     "isDictionaryDef" : false
                   },
-                  "id" : 104
+                  "id" : 108
                 }
               }
             }
@@ -868,7 +930,7 @@
                             "value" : "4"
                           }
                         },
-                        "id" : 105
+                        "id" : 109
                       }
                     },
                     "eltType" : {
@@ -882,7 +944,7 @@
                             }
                           }
                         },
-                        "id" : 106
+                        "id" : 110
                       }
                     },
                     "default" : "None",
@@ -890,13 +952,13 @@
                       "Some" : {
                         "AstNode" : {
                           "data" : "{f}",
-                          "id" : 107
+                          "id" : 111
                         }
                       }
                     },
                     "isDictionaryDef" : true
                   },
-                  "id" : 108
+                  "id" : 112
                 }
               }
             }
@@ -924,7 +986,7 @@
                               "name" : "TRIANGLE",
                               "value" : "None"
                             },
-                            "id" : 109
+                            "id" : 113
                           }
                         },
                         [
@@ -939,7 +1001,7 @@
                               "name" : "SQUARE",
                               "value" : "None"
                             },
-                            "id" : 110
+                            "id" : 114
                           }
                         },
                         [
@@ -954,7 +1016,7 @@
                               "name" : "SINE",
                               "value" : "None"
                             },
-                            "id" : 111
+                            "id" : 115
                           }
                         },
                         [
@@ -969,7 +1031,7 @@
                               "name" : "NOISE",
                               "value" : "None"
                             },
-                            "id" : 114
+                            "id" : 118
                           }
                         },
                         [
@@ -979,7 +1041,7 @@
                     "default" : "None",
                     "isDictionaryDef" : true
                   },
-                  "id" : 115
+                  "id" : 119
                 }
               }
             }
@@ -1007,12 +1069,12 @@
                             }
                           }
                         },
-                        "id" : 116
+                        "id" : 120
                       }
                     },
                     "isDictionaryDef" : true
                   },
-                  "id" : 117
+                  "id" : 121
                 }
               }
             }
@@ -1040,12 +1102,12 @@
                             }
                           }
                         },
-                        "id" : 118
+                        "id" : 122
                       }
                     },
                     "isDictionaryDef" : false
                   },
-                  "id" : 119
+                  "id" : 123
                 }
               }
             }

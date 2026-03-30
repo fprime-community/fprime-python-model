@@ -102,16 +102,14 @@ def translate_spec_tlm_channel_update(d: dict) -> fpp_ast.SpecTlmChannelUpdate:
 def translate_spec_loc_kind(d: dict) -> fpp_ast.SpecLocKind:
     if "Component" in d:
         return fpp_ast.SpecLocKind.COMPONENT
-    elif "ComponentInstance" in d:
-        return fpp_ast.SpecLocKind.COMPONENT_INSTANCE
+    elif "Instance" in d:
+        return fpp_ast.SpecLocKind.INSTANCE
     elif "Constant" in d:
         return fpp_ast.SpecLocKind.CONSTANT
     elif "Port" in d:
         return fpp_ast.SpecLocKind.PORT
     elif "StateMachine" in d:
         return fpp_ast.SpecLocKind.STATE_MACHINE
-    elif "Topology" in d:
-        return fpp_ast.SpecLocKind.TOPOLOGY
     elif "Type" in d:
         return fpp_ast.SpecLocKind.TYPE
     elif "Interface" in d:
@@ -269,6 +267,13 @@ class AstTranslator:
             return AstNode.create_with_id(
                 fpp_ast.ExprParen(
                     self.translate_expr(data["ExprParen"]["e"]),
+                ),
+                id,
+            )
+        elif "ExprSizeOf" in data:
+            return AstNode.create_with_id(
+                fpp_ast.ExprSizeOf(
+                    self.translate_type_name(data["ExprSizeOf"]["typeName"]),
                 ),
                 id,
             )
@@ -769,7 +774,7 @@ class AstTranslator:
         data, id = self.read_ast_node(d)
         return AstNode.create_with_id(
             fpp_ast.PortInstanceIdentifier(
-                self.translate_qual_ident(data["componentInstance"]),
+                self.translate_qual_ident(data["interfaceInstance"]),
                 self.translate_ident(data["portName"]),
             ),
             id,
@@ -934,14 +939,11 @@ class AstTranslator:
             data: dict = m_dict[m_key]["node"]["AstNode"]["data"]
             member: Optional[fpp_ast.TopologyMemberNode] = None
             match m_key:
-                case "SpecCompInstance":
-                    visibility = fpp_ast.Visibility.PRIVATE
-                    if "Public" in data["visibility"]:
-                        visibility = fpp_ast.Visibility.PUBLIC
-                    member = fpp_ast.TopologyMemberSpecCompInstance(
+                case "SpecInstance":
+                    member = fpp_ast.TopologyMemberSpecInstance(
                         AstNode.create_with_id(
-                            fpp_ast.SpecCompInstance(
-                                visibility, self.translate_qual_ident(data["instance"])
+                            fpp_ast.SpecInstance(
+                                self.translate_qual_ident(data["instance"])
                             ),
                             id,
                         )
@@ -1003,10 +1005,24 @@ class AstTranslator:
                             id,
                         )
                     )
-                case "SpecTopImport":
-                    member = fpp_ast.TopologyMemberSpecTopImport(
+                case "SpecInstance":
+                    member = fpp_ast.TopologyMemberSpecInstance(
                         AstNode.create_with_id(
-                            fpp_ast.SpecImport(self.translate_qual_ident(data["sym"])),
+                            fpp_ast.SpecInstance(
+                                self.translate_qual_ident(data["instance"])
+                            ),
+                            id,
+                        )
+                    )
+                case "SpecTopPort":
+                    member = fpp_ast.TopologyMemberSpecTopPort(
+                        AstNode.create_with_id(
+                            fpp_ast.SpecTopPort(
+                                fpp_ast.Ident(data["name"]),
+                                self.translate_port_instance_identifier(
+                                    data["underlyingPort"]
+                                ),
+                            ),
                             id,
                         )
                     )
@@ -1143,6 +1159,10 @@ class AstTranslator:
                             fpp_ast.DefTopology(
                                 data["name"],
                                 self.translate_topology_members(data["members"]),
+                                [
+                                    self.translate_qual_ident(n)
+                                    for n in data["implements"]
+                                ],
                             ),
                             id,
                         )
@@ -1177,6 +1197,10 @@ class AstTranslator:
                     data, id = self.read_ast_node(v["node"])
                     member: Optional[fpp_ast.StateMachineMemberNode] = None
                     match k:
+                        case "DefAbsType":
+                            member = fpp_ast.StateMachineMemberDefAbsType(
+                                self.translate_def_abs_type(data, id)
+                            )
                         case "DefAction":
                             member = fpp_ast.StateMachineMemberDefAction(
                                 AstNode.create_with_id(
@@ -1188,6 +1212,14 @@ class AstTranslator:
                                     ),
                                     id,
                                 )
+                            )
+                        case "DefAliasType":
+                            member = fpp_ast.StateMachineMemberDefAliasType(
+                                self.translate_def_alias_type(data, id)
+                            )
+                        case "DefArray":
+                            member = fpp_ast.StateMachineMemberDefArray(
+                                self.translate_def_array(data, id)
                             )
                         case "DefChoice":
                             member = fpp_ast.StateMachineMemberDefChoice(
@@ -1204,6 +1236,14 @@ class AstTranslator:
                                     ),
                                     id,
                                 )
+                            )
+                        case "DefConstant":
+                            member = fpp_ast.StateMachineMemberDefConstant(
+                                self.translate_def_constant(data, id)
+                            )
+                        case "DefEnum":
+                            member = fpp_ast.StateMachineMemberDefEnum(
+                                self.translate_def_enum(data, id)
                             )
                         case "DefGuard":
                             member = fpp_ast.StateMachineMemberDefGuard(
@@ -1235,6 +1275,19 @@ class AstTranslator:
                                     fpp_ast.DefState(
                                         data["name"],
                                         self.translate_state_members(data["members"]),
+                                    ),
+                                    id,
+                                )
+                            )
+                        case "DefStruct":
+                            member = fpp_ast.StateMachineMemberDefStruct(
+                                self.translate_def_struct(data, id)
+                            )
+                        case "SpecInclude":
+                            member = fpp_ast.StateMachineMemberSpecInclude(
+                                AstNode.create_with_id(
+                                    fpp_ast.SpecInclude(
+                                        self.translate_string(data["file"])
                                     ),
                                     id,
                                 )
