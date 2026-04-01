@@ -34,3 +34,6 @@ class TlmPacketSet:
         for tlm_packet in self.packet_map.values():
             out_set |= set(tlm_packet.member_id_list)
         return out_set
+
+    def get_node(self) -> AstNode[fpp_ast.SpecTlmPacketSet]:
+        return self.a_node[1]

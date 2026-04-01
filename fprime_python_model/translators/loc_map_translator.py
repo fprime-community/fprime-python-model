@@ -12,12 +12,6 @@ def translate_including_loc(d: dict) -> Optional[Location]:
     else:
         return None
 
-def translate_loc(d: dict) -> Location:
-    return Location(
-        Path(d["file"]),
-        d["pos"],
-        translate_including_loc(d["includingLoc"]),
-    )
 
 def translate_loc(d: dict) -> Location:
     return Location(
