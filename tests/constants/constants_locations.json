@@ -1,5 +1,5 @@
 {
-  "fppVersion" : "v3.1.0a10-54-g11243e778",
+  "fppVersion" : "v3.2.0",
   "locationMap" : {
     "0" : {
       "file" : "[ local path prefix ]/compiler/tools/fpp-to-json/test/constants.fpp",
@@ -313,67 +313,97 @@
     },
     "62" : {
       "file" : "[ local path prefix ]/compiler/tools/fpp-to-json/test/constants.fpp",
-      "pos" : "22.16",
+      "pos" : "22.29",
       "includingLoc" : "None"
     },
     "63" : {
       "file" : "[ local path prefix ]/compiler/tools/fpp-to-json/test/constants.fpp",
-      "pos" : "22.1",
+      "pos" : "22.22",
       "includingLoc" : "None"
     },
     "64" : {
       "file" : "[ local path prefix ]/compiler/tools/fpp-to-json/test/constants.fpp",
-      "pos" : "23.15",
+      "pos" : "22.16",
       "includingLoc" : "None"
     },
     "65" : {
       "file" : "[ local path prefix ]/compiler/tools/fpp-to-json/test/constants.fpp",
-      "pos" : "23.14",
+      "pos" : "22.20",
       "includingLoc" : "None"
     },
     "66" : {
       "file" : "[ local path prefix ]/compiler/tools/fpp-to-json/test/constants.fpp",
-      "pos" : "23.1",
+      "pos" : "22.1",
       "includingLoc" : "None"
     },
     "67" : {
       "file" : "[ local path prefix ]/compiler/tools/fpp-to-json/test/constants.fpp",
-      "pos" : "25.14",
+      "pos" : "23.15",
       "includingLoc" : "None"
     },
     "68" : {
       "file" : "[ local path prefix ]/compiler/tools/fpp-to-json/test/constants.fpp",
-      "pos" : "25.1",
+      "pos" : "23.14",
       "includingLoc" : "None"
     },
     "69" : {
       "file" : "[ local path prefix ]/compiler/tools/fpp-to-json/test/constants.fpp",
-      "pos" : "26.14",
+      "pos" : "23.1",
       "includingLoc" : "None"
     },
     "70" : {
       "file" : "[ local path prefix ]/compiler/tools/fpp-to-json/test/constants.fpp",
-      "pos" : "26.1",
+      "pos" : "25.14",
       "includingLoc" : "None"
     },
     "71" : {
       "file" : "[ local path prefix ]/compiler/tools/fpp-to-json/test/constants.fpp",
-      "pos" : "30.14",
+      "pos" : "25.1",
       "includingLoc" : "None"
     },
     "72" : {
       "file" : "[ local path prefix ]/compiler/tools/fpp-to-json/test/constants.fpp",
-      "pos" : "30.1",
+      "pos" : "26.14",
       "includingLoc" : "None"
     },
     "73" : {
       "file" : "[ local path prefix ]/compiler/tools/fpp-to-json/test/constants.fpp",
-      "pos" : "30.14",
+      "pos" : "26.1",
       "includingLoc" : "None"
     },
     "74" : {
       "file" : "[ local path prefix ]/compiler/tools/fpp-to-json/test/constants.fpp",
+      "pos" : "30.14",
+      "includingLoc" : "None"
+    },
+    "75" : {
+      "file" : "[ local path prefix ]/compiler/tools/fpp-to-json/test/constants.fpp",
       "pos" : "30.1",
+      "includingLoc" : "None"
+    },
+    "76" : {
+      "file" : "[ local path prefix ]/compiler/tools/fpp-to-json/test/constants.fpp",
+      "pos" : "30.14",
+      "includingLoc" : "None"
+    },
+    "77" : {
+      "file" : "[ local path prefix ]/compiler/tools/fpp-to-json/test/constants.fpp",
+      "pos" : "30.1",
+      "includingLoc" : "None"
+    },
+    "78" : {
+      "file" : "[ local path prefix ]/compiler/tools/fpp-to-json/test/constants.fpp",
+      "pos" : "33.21",
+      "includingLoc" : "None"
+    },
+    "79" : {
+      "file" : "[ local path prefix ]/compiler/tools/fpp-to-json/test/constants.fpp",
+      "pos" : "33.14",
+      "includingLoc" : "None"
+    },
+    "80" : {
+      "file" : "[ local path prefix ]/compiler/tools/fpp-to-json/test/constants.fpp",
+      "pos" : "33.1",
       "includingLoc" : "None"
     }
   }

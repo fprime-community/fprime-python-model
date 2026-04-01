@@ -1,11 +1,19 @@
 {
-  "fppVersion" : "v3.1.0a10-54-g11243e778",
+  "fppVersion" : "v3.2.0",
   "analysis" : {
     "componentInstanceMap" : {
       
     },
     "componentMap" : {
       
+    },
+    "frameworkDefinitions" : {
+      "constantMap" : {
+        
+      },
+      "typeMap" : {
+        
+      }
     },
     "includedFileSet" : [
     ],
@@ -31,9 +39,11 @@
           }
         }
       },
-      "5" : {
-        "String" : {
-          "size" : "None"
+      "80" : {
+        "Int" : {
+          "Integer" : {
+            
+          }
         }
       },
       "42" : {
@@ -99,8 +109,8 @@
         }
       },
       "67" : {
-        "Primitive" : {
-          "Boolean" : {
+        "Int" : {
+          "Integer" : {
             
           }
         }
@@ -158,8 +168,15 @@
         }
       },
       "73" : {
-        "Int" : {
-          "Integer" : {
+        "Primitive" : {
+          "Boolean" : {
+            
+          }
+        }
+      },
+      "78" : {
+        "Primitive" : {
+          "Boolean" : {
             
           }
         }
@@ -194,14 +211,25 @@
       },
       "62" : {
         "Int" : {
-          "Integer" : {
-            
+          "PrimitiveInt" : {
+            "kind" : {
+              "U32" : {
+                
+              }
+            }
           }
         }
       },
       "4" : {
         "String" : {
           "size" : "None"
+        }
+      },
+      "77" : {
+        "Int" : {
+          "Integer" : {
+            
+          }
         }
       },
       "40" : {
@@ -327,8 +355,8 @@
         }
       },
       "68" : {
-        "Primitive" : {
-          "Boolean" : {
+        "Int" : {
+          "Integer" : {
             
           }
         }
@@ -373,6 +401,25 @@
       "16" : {
         "Int" : {
           "Integer" : {
+            
+          }
+        }
+      },
+      "79" : {
+        "Int" : {
+          "Integer" : {
+            
+          }
+        }
+      },
+      "5" : {
+        "String" : {
+          "size" : "None"
+        }
+      },
+      "72" : {
+        "Primitive" : {
+          "Boolean" : {
             
           }
         }
@@ -426,6 +473,13 @@
           }
         }
       },
+      "76" : {
+        "Int" : {
+          "Integer" : {
+            
+          }
+        }
+      },
       "54" : {
         "Int" : {
           "Integer" : {
@@ -443,6 +497,13 @@
       "65" : {
         "Int" : {
           "Integer" : {
+            
+          }
+        }
+      },
+      "71" : {
+        "Primitive" : {
+          "Boolean" : {
             
           }
         }
@@ -581,8 +642,8 @@
         }
       },
       "69" : {
-        "Primitive" : {
-          "Boolean" : {
+        "Int" : {
+          "Integer" : {
             
           }
         }
@@ -705,13 +766,6 @@
             
           }
         }
-      },
-      "74" : {
-        "Int" : {
-          "Integer" : {
-            
-          }
-        }
       }
     },
     "useDefMap" : {
@@ -740,9 +794,9 @@
           "value" : 1
         }
       },
-      "5" : {
-        "String" : {
-          "value" : "This is a string."
+      "80" : {
+        "Integer" : {
+          "value" : 1
         }
       },
       "42" : {
@@ -811,8 +865,8 @@
         }
       },
       "67" : {
-        "Boolean" : {
-          "value" : true
+        "Integer" : {
+          "value" : 1
         }
       },
       "12" : {
@@ -827,7 +881,7 @@
       },
       "66" : {
         "Integer" : {
-          "value" : 1
+          "value" : 7
         }
       },
       "51" : {
@@ -874,8 +928,8 @@
         }
       },
       "73" : {
-        "Integer" : {
-          "value" : 0
+        "Boolean" : {
+          "value" : false
         }
       },
       "19" : {
@@ -921,14 +975,14 @@
           ]
         }
       },
-      "62" : {
-        "Integer" : {
-          "value" : 3
-        }
-      },
       "4" : {
         "String" : {
           "value" : "This is a string."
+        }
+      },
+      "77" : {
+        "Integer" : {
+          "value" : 0
         }
       },
       "40" : {
@@ -1064,8 +1118,8 @@
         }
       },
       "68" : {
-        "Boolean" : {
-          "value" : true
+        "Integer" : {
+          "value" : 1
         }
       },
       "61" : {
@@ -1112,6 +1166,21 @@
       "16" : {
         "Integer" : {
           "value" : 2
+        }
+      },
+      "79" : {
+        "Integer" : {
+          "value" : 1
+        }
+      },
+      "5" : {
+        "String" : {
+          "value" : "This is a string."
+        }
+      },
+      "72" : {
+        "Boolean" : {
+          "value" : false
         }
       },
       "10" : {
@@ -1183,6 +1252,11 @@
           ]
         }
       },
+      "76" : {
+        "Integer" : {
+          "value" : 0
+        }
+      },
       "54" : {
         "Integer" : {
           "value" : 1
@@ -1195,7 +1269,12 @@
       },
       "65" : {
         "Integer" : {
-          "value" : 1
+          "value" : 7
+        }
+      },
+      "71" : {
+        "Boolean" : {
+          "value" : true
         }
       },
       "57" : {
@@ -1324,8 +1403,8 @@
         }
       },
       "69" : {
-        "Boolean" : {
-          "value" : false
+        "Integer" : {
+          "value" : 1
         }
       },
       "58" : {
@@ -1335,7 +1414,7 @@
       },
       "64" : {
         "Integer" : {
-          "value" : 1
+          "value" : 3
         }
       },
       "53" : {
@@ -1404,7 +1483,7 @@
       },
       "70" : {
         "Boolean" : {
-          "value" : false
+          "value" : true
         }
       },
       "30" : {
@@ -1442,17 +1521,12 @@
       },
       "63" : {
         "Integer" : {
-          "value" : 3
+          "value" : 4
         }
       },
       "3" : {
         "Integer" : {
           "value" : 43981
-        }
-      },
-      "74" : {
-        "Integer" : {
-          "value" : 0
         }
       }
     },

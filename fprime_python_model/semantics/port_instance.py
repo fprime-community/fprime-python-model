@@ -1,11 +1,28 @@
 from abc import ABC, abstractmethod
 from enum import Enum
 from dataclasses import dataclass, field
-from typing import List, Optional, Tuple
+from typing import List, Optional, Tuple, override
 from fprime_python_model.fpp_ast.fpp_ast_node import AstNode, AstId
 from fprime_python_model.semantics.symbol import PortSymbol
 from fprime_python_model.fpp_ast import fpp_ast
 from fprime_python_model.semantics.name import UnqualifiedName
+
+
+# An FPP port instance signature
+@dataclass
+class PortInstanceSignature:
+    pi: "PortInstance"
+
+    @override
+    def __eq__(self, other):
+        if isinstance(other, PortInstanceSignature):
+            return (
+                other.pi.get_direction() == self.pi.get_direction()
+                and other.pi.get_array_size() == self.pi.get_array_size()
+                and other.pi.get_type() == self.pi.get_type()
+                and other.pi.get_unqualified_name() == self.pi.get_unqualified_name()
+            )
+        return False
 
 
 class Direction(Enum):
@@ -105,7 +122,7 @@ class GeneralPortInstance(PortInstance):
             case _:
                 return Direction.INPUT
 
-    def get_array_size(self):
+    def get_array_size(self) -> int:
         return self.size
 
     def get_type(self) -> Optional[PortInstanceType]:
@@ -166,3 +183,37 @@ class InternalPortInstance(PortInstance):
 
     def get_import_node_ids(self):
         return []
+
+
+@dataclass
+class TopologyPortInstance(PortInstance):
+    a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecTopPort]]
+    underlying_port: PortInstance
+
+    @override
+    def get_direction(self) -> Optional[Direction]:
+        return self.underlying_port.get_direction()
+
+    @override
+    def get_array_size(self) -> int:
+        return self.underlying_port.get_array_size()
+
+    @override
+    def get_node(self) -> AstNode:
+        return self.a_node[1]
+
+    @override
+    def get_type(self) -> Optional[PortInstanceType]:
+        return self.underlying_port.get_type()
+
+    @override
+    def get_unqualified_name(self) -> UnqualifiedName:
+        return self.a_node[1].data.name
+
+    @override
+    def get_import_node_ids(self):
+        return []
+
+    @override
+    def __str__(self):
+        return f"{str(self.get_unqualified_name())} -> {str(self.underlying_port)}"

@@ -1,5 +1,5 @@
 {
-  "fppVersion" : "v3.1.0a10-54-g11243e778",
+  "fppVersion" : "v3.2.0",
   "ast" : [
     {
       "members" : [
@@ -1174,15 +1174,10 @@
                         [
                         ],
                         {
-                          "SpecCompInstance" : {
+                          "SpecInstance" : {
                             "node" : {
                               "AstNode" : {
                                 "data" : {
-                                  "visibility" : {
-                                    "Public" : {
-                                      
-                                    }
-                                  },
                                   "instance" : {
                                     "AstNode" : {
                                       "data" : {
@@ -1206,15 +1201,10 @@
                         [
                         ],
                         {
-                          "SpecCompInstance" : {
+                          "SpecInstance" : {
                             "node" : {
                               "AstNode" : {
                                 "data" : {
-                                  "visibility" : {
-                                    "Public" : {
-                                      
-                                    }
-                                  },
                                   "instance" : {
                                     "AstNode" : {
                                       "data" : {
@@ -1238,15 +1228,10 @@
                         [
                         ],
                         {
-                          "SpecCompInstance" : {
+                          "SpecInstance" : {
                             "node" : {
                               "AstNode" : {
                                 "data" : {
-                                  "visibility" : {
-                                    "Public" : {
-                                      
-                                    }
-                                  },
                                   "instance" : {
                                     "AstNode" : {
                                       "data" : {
@@ -1270,15 +1255,10 @@
                         [
                         ],
                         {
-                          "SpecCompInstance" : {
+                          "SpecInstance" : {
                             "node" : {
                               "AstNode" : {
                                 "data" : {
-                                  "visibility" : {
-                                    "Public" : {
-                                      
-                                    }
-                                  },
                                   "instance" : {
                                     "AstNode" : {
                                       "data" : {
@@ -1302,15 +1282,10 @@
                         [
                         ],
                         {
-                          "SpecCompInstance" : {
+                          "SpecInstance" : {
                             "node" : {
                               "AstNode" : {
                                 "data" : {
-                                  "visibility" : {
-                                    "Public" : {
-                                      
-                                    }
-                                  },
                                   "instance" : {
                                     "AstNode" : {
                                       "data" : {
@@ -1334,15 +1309,10 @@
                         [
                         ],
                         {
-                          "SpecCompInstance" : {
+                          "SpecInstance" : {
                             "node" : {
                               "AstNode" : {
                                 "data" : {
-                                  "visibility" : {
-                                    "Public" : {
-                                      
-                                    }
-                                  },
                                   "instance" : {
                                     "AstNode" : {
                                       "data" : {
@@ -1366,15 +1336,10 @@
                         [
                         ],
                         {
-                          "SpecCompInstance" : {
+                          "SpecInstance" : {
                             "node" : {
                               "AstNode" : {
                                 "data" : {
-                                  "visibility" : {
-                                    "Public" : {
-                                      
-                                    }
-                                  },
                                   "instance" : {
                                     "AstNode" : {
                                       "data" : {
@@ -1646,6 +1611,8 @@
                         [
                         ]
                       ]
+                    ],
+                    "implements" : [
                     ]
                   },
                   "id" : 285

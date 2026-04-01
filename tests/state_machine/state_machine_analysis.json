@@ -1,11 +1,29 @@
 {
-  "fppVersion" : "v3.1.0a10-54-g11243e778",
+  "fppVersion" : "v3.2.0",
   "analysis" : {
     "componentInstanceMap" : {
       
     },
     "componentMap" : {
       
+    },
+    "frameworkDefinitions" : {
+      "constantMap" : {
+        "FW_FIXED_LENGTH_STRING_SIZE" : {
+          "node" : {
+            "astNodeId" : 3
+          }
+        }
+      },
+      "typeMap" : {
+        "FwSizeStoreType" : {
+          "AliasType" : {
+            "node" : {
+              "astNodeId" : 1
+            }
+          }
+        }
+      }
     },
     "includedFileSet" : [
     ],
@@ -15,27 +33,210 @@
     "locationSpecifierMap" : [
     ],
     "parentSymbolMap" : {
-      
+      "8" : {
+        "StateMachine" : {
+          "nodeId" : 264,
+          "unqualifiedName" : "M"
+        }
+      },
+      "265" : {
+        "Enum" : {
+          "nodeId" : 269,
+          "unqualifiedName" : "State"
+        }
+      },
+      "13" : {
+        "Enum" : {
+          "nodeId" : 15,
+          "unqualifiedName" : "E"
+        }
+      },
+      "10" : {
+        "Enum" : {
+          "nodeId" : 15,
+          "unqualifiedName" : "E"
+        }
+      },
+      "6" : {
+        "StateMachine" : {
+          "nodeId" : 264,
+          "unqualifiedName" : "M"
+        }
+      },
+      "267" : {
+        "Enum" : {
+          "nodeId" : 269,
+          "unqualifiedName" : "State"
+        }
+      },
+      "30" : {
+        "StateMachine" : {
+          "nodeId" : 264,
+          "unqualifiedName" : "M"
+        }
+      },
+      "28" : {
+        "StateMachine" : {
+          "nodeId" : 264,
+          "unqualifiedName" : "M"
+        }
+      },
+      "15" : {
+        "StateMachine" : {
+          "nodeId" : 264,
+          "unqualifiedName" : "M"
+        }
+      },
+      "269" : {
+        "StateMachine" : {
+          "nodeId" : 264,
+          "unqualifiedName" : "M"
+        }
+      },
+      "9" : {
+        "Enum" : {
+          "nodeId" : 15,
+          "unqualifiedName" : "E"
+        }
+      },
+      "27" : {
+        "StateMachine" : {
+          "nodeId" : 264,
+          "unqualifiedName" : "M"
+        }
+      },
+      "266" : {
+        "Enum" : {
+          "nodeId" : 269,
+          "unqualifiedName" : "State"
+        }
+      }
     },
     "symbolScopeMap" : {
-      
-    },
-    "topologyMap" : {
-      
-    },
-    "typeMap" : {
-      "3" : {
-        "Int" : {
-          "PrimitiveInt" : {
-            "kind" : {
-              "U32" : {
-                
+      "269" : {
+        "map" : {
+          "Value" : {
+            "map" : {
+              "__FPRIME_UNINITIALIZED" : {
+                "EnumConstant" : {
+                  "nodeId" : 265,
+                  "unqualifiedName" : "__FPRIME_UNINITIALIZED"
+                }
+              },
+              "S1" : {
+                "EnumConstant" : {
+                  "nodeId" : 266,
+                  "unqualifiedName" : "S1"
+                }
+              },
+              "S2_S3" : {
+                "EnumConstant" : {
+                  "nodeId" : 267,
+                  "unqualifiedName" : "S2_S3"
+                }
               }
             }
           }
         }
       },
-      "6" : {
+      "15" : {
+        "map" : {
+          "Value" : {
+            "map" : {
+              "X" : {
+                "EnumConstant" : {
+                  "nodeId" : 9,
+                  "unqualifiedName" : "X"
+                }
+              },
+              "Y" : {
+                "EnumConstant" : {
+                  "nodeId" : 10,
+                  "unqualifiedName" : "Y"
+                }
+              },
+              "Z" : {
+                "EnumConstant" : {
+                  "nodeId" : 13,
+                  "unqualifiedName" : "Z"
+                }
+              }
+            }
+          }
+        }
+      },
+      "264" : {
+        "map" : {
+          "Type" : {
+            "map" : {
+              "T" : {
+                "AbsType" : {
+                  "nodeId" : 28,
+                  "unqualifiedName" : "T"
+                }
+              },
+              "A" : {
+                "Array" : {
+                  "nodeId" : 6,
+                  "unqualifiedName" : "A"
+                }
+              },
+              "State" : {
+                "Enum" : {
+                  "nodeId" : 269,
+                  "unqualifiedName" : "State"
+                }
+              },
+              "S" : {
+                "Struct" : {
+                  "nodeId" : 27,
+                  "unqualifiedName" : "S"
+                }
+              },
+              "E" : {
+                "Enum" : {
+                  "nodeId" : 15,
+                  "unqualifiedName" : "E"
+                }
+              },
+              "X" : {
+                "AliasType" : {
+                  "nodeId" : 30,
+                  "unqualifiedName" : "X"
+                }
+              }
+            }
+          },
+          "Value" : {
+            "map" : {
+              "State" : {
+                "Enum" : {
+                  "nodeId" : 269,
+                  "unqualifiedName" : "State"
+                }
+              },
+              "c" : {
+                "Constant" : {
+                  "nodeId" : 8,
+                  "unqualifiedName" : "c"
+                }
+              },
+              "E" : {
+                "Enum" : {
+                  "nodeId" : 15,
+                  "unqualifiedName" : "E"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "topologyMap" : {
+      
+    },
+    "typeMap" : {
+      "34" : {
         "Int" : {
           "PrimitiveInt" : {
             "kind" : {
@@ -48,6 +249,20 @@
       },
       "8" : {
         "Int" : {
+          "Integer" : {
+            
+          }
+        }
+      },
+      "4" : {
+        "Int" : {
+          "Integer" : {
+            
+          }
+        }
+      },
+      "37" : {
+        "Int" : {
           "PrimitiveInt" : {
             "kind" : {
               "U32" : {
@@ -56,49 +271,826 @@
             }
           }
         }
+      },
+      "13" : {
+        "Enum" : {
+          "node" : {
+            "astNodeId" : 15
+          },
+          "repType" : {
+            "kind" : {
+              "I32" : {
+                
+              }
+            }
+          },
+          "default" : "None"
+        }
+      },
+      "16" : {
+        "Int" : {
+          "Integer" : {
+            
+          }
+        }
+      },
+      "10" : {
+        "Enum" : {
+          "node" : {
+            "astNodeId" : 15
+          },
+          "repType" : {
+            "kind" : {
+              "I32" : {
+                
+              }
+            }
+          },
+          "default" : "None"
+        }
+      },
+      "270" : {
+        "AliasType" : {
+          "node" : {
+            "astNodeId" : 1
+          },
+          "aliasType" : {
+            "Int" : {
+              "PrimitiveInt" : {
+                "kind" : {
+                  "U16" : {
+                    
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "264" : {
+        "Enum" : {
+          "node" : {
+            "astNodeId" : 269
+          },
+          "repType" : {
+            "kind" : {
+              "U8" : {
+                
+              }
+            }
+          },
+          "default" : "None"
+        }
+      },
+      "29" : {
+        "Int" : {
+          "PrimitiveInt" : {
+            "kind" : {
+              "U32" : {
+                
+              }
+            }
+          }
+        }
+      },
+      "3" : {
+        "Int" : {
+          "Integer" : {
+            
+          }
+        }
+      },
+      "28" : {
+        "AbsType" : {
+          "node" : {
+            "astNodeId" : 28
+          }
+        }
+      },
+      "19" : {
+        "Primitive" : {
+          "Float" : {
+            "kind" : {
+              "F32" : {
+                
+              }
+            }
+          }
+        }
+      },
+      "265" : {
+        "Enum" : {
+          "node" : {
+            "astNodeId" : 269
+          },
+          "repType" : {
+            "kind" : {
+              "U8" : {
+                
+              }
+            }
+          },
+          "default" : "None"
+        }
+      },
+      "15" : {
+        "Enum" : {
+          "node" : {
+            "astNodeId" : 15
+          },
+          "repType" : {
+            "kind" : {
+              "I32" : {
+                
+              }
+            }
+          },
+          "default" : {
+            "Some" : {
+              "value" : [
+                "X",
+                0
+              ],
+              "t" : {
+                "node" : {
+                  "astNodeId" : 15
+                },
+                "repType" : {
+                  "kind" : {
+                    "I32" : {
+                      
+                    }
+                  }
+                },
+                "default" : "None"
+              }
+            }
+          }
+        }
+      },
+      "269" : {
+        "Enum" : {
+          "node" : {
+            "astNodeId" : 269
+          },
+          "repType" : {
+            "kind" : {
+              "U8" : {
+                
+              }
+            }
+          },
+          "default" : {
+            "Some" : {
+              "value" : [
+                "__FPRIME_UNINITIALIZED",
+                0
+              ],
+              "t" : {
+                "node" : {
+                  "astNodeId" : 269
+                },
+                "repType" : {
+                  "kind" : {
+                    "U8" : {
+                      
+                    }
+                  }
+                },
+                "default" : "None"
+              }
+            }
+          }
+        }
+      },
+      "9" : {
+        "Enum" : {
+          "node" : {
+            "astNodeId" : 15
+          },
+          "repType" : {
+            "kind" : {
+              "I32" : {
+                
+              }
+            }
+          },
+          "default" : "None"
+        }
+      },
+      "5" : {
+        "Int" : {
+          "PrimitiveInt" : {
+            "kind" : {
+              "U32" : {
+                
+              }
+            }
+          }
+        }
+      },
+      "268" : {
+        "Int" : {
+          "PrimitiveInt" : {
+            "kind" : {
+              "U8" : {
+                
+              }
+            }
+          }
+        }
+      },
+      "6" : {
+        "Array" : {
+          "node" : {
+            "astNodeId" : 6
+          },
+          "anonArray" : {
+            "size" : {
+              "Some" : 3
+            },
+            "eltType" : {
+              "Int" : {
+                "PrimitiveInt" : {
+                  "kind" : {
+                    "U32" : {
+                      
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default" : {
+            "Some" : {
+              "anonArray" : {
+                "elements" : [
+                  {
+                    "PrimitiveInt" : {
+                      "value" : 0,
+                      "kind" : {
+                        "U32" : {
+                          
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "PrimitiveInt" : {
+                      "value" : 0,
+                      "kind" : {
+                        "U32" : {
+                          
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "PrimitiveInt" : {
+                      "value" : 0,
+                      "kind" : {
+                        "U32" : {
+                          
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "t" : {
+                "node" : {
+                  "astNodeId" : 6
+                },
+                "anonArray" : {
+                  "size" : {
+                    "Some" : 3
+                  },
+                  "eltType" : {
+                    "Int" : {
+                      "PrimitiveInt" : {
+                        "kind" : {
+                          "U32" : {
+                            
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "default" : "None",
+                "format" : "None"
+              }
+            }
+          },
+          "format" : "None"
+        }
+      },
+      "1" : {
+        "AliasType" : {
+          "node" : {
+            "astNodeId" : 1
+          },
+          "aliasType" : {
+            "Int" : {
+              "PrimitiveInt" : {
+                "kind" : {
+                  "U16" : {
+                    
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "39" : {
+        "Int" : {
+          "PrimitiveInt" : {
+            "kind" : {
+              "U32" : {
+                
+              }
+            }
+          }
+        }
+      },
+      "17" : {
+        "Int" : {
+          "PrimitiveInt" : {
+            "kind" : {
+              "U32" : {
+                
+              }
+            }
+          }
+        }
+      },
+      "267" : {
+        "Enum" : {
+          "node" : {
+            "astNodeId" : 269
+          },
+          "repType" : {
+            "kind" : {
+              "U8" : {
+                
+              }
+            }
+          },
+          "default" : "None"
+        }
+      },
+      "25" : {
+        "String" : {
+          "size" : "None"
+        }
+      },
+      "14" : {
+        "Enum" : {
+          "node" : {
+            "astNodeId" : 15
+          },
+          "repType" : {
+            "kind" : {
+              "I32" : {
+                
+              }
+            }
+          },
+          "default" : "None"
+        }
+      },
+      "0" : {
+        "Int" : {
+          "PrimitiveInt" : {
+            "kind" : {
+              "U16" : {
+                
+              }
+            }
+          }
+        }
+      },
+      "27" : {
+        "Struct" : {
+          "node" : {
+            "astNodeId" : 27
+          },
+          "anonStruct" : {
+            "members" : {
+              "x" : {
+                "Int" : {
+                  "PrimitiveInt" : {
+                    "kind" : {
+                      "U32" : {
+                        
+                      }
+                    }
+                  }
+                }
+              },
+              "y" : {
+                "Primitive" : {
+                  "Float" : {
+                    "kind" : {
+                      "F32" : {
+                        
+                      }
+                    }
+                  }
+                }
+              },
+              "z" : {
+                "String" : {
+                  "size" : "None"
+                }
+              }
+            }
+          },
+          "default" : {
+            "Some" : {
+              "anonStruct" : {
+                "members" : {
+                  "x" : {
+                    "PrimitiveInt" : {
+                      "value" : 0,
+                      "kind" : {
+                        "U32" : {
+                          
+                        }
+                      }
+                    }
+                  },
+                  "y" : {
+                    "Float" : {
+                      "value" : 0.0,
+                      "kind" : {
+                        "F32" : {
+                          
+                        }
+                      }
+                    }
+                  },
+                  "z" : {
+                    "String" : {
+                      "value" : ""
+                    }
+                  }
+                }
+              },
+              "t" : {
+                "node" : {
+                  "astNodeId" : 27
+                },
+                "anonStruct" : {
+                  "members" : {
+                    "x" : {
+                      "Int" : {
+                        "PrimitiveInt" : {
+                          "kind" : {
+                            "U32" : {
+                              
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "y" : {
+                      "Primitive" : {
+                        "Float" : {
+                          "kind" : {
+                            "F32" : {
+                              
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "z" : {
+                      "String" : {
+                        "size" : "None"
+                      }
+                    }
+                  }
+                },
+                "default" : "None",
+                "sizes" : {
+                  
+                },
+                "formats" : {
+                  
+                }
+              }
+            }
+          },
+          "sizes" : {
+            "x" : 3
+          },
+          "formats" : {
+            
+          }
+        }
+      },
+      "266" : {
+        "Enum" : {
+          "node" : {
+            "astNodeId" : 269
+          },
+          "repType" : {
+            "kind" : {
+              "U8" : {
+                
+              }
+            }
+          },
+          "default" : "None"
+        }
+      },
+      "2" : {
+        "Int" : {
+          "Integer" : {
+            
+          }
+        }
+      },
+      "271" : {
+        "Int" : {
+          "Integer" : {
+            
+          }
+        }
+      },
+      "30" : {
+        "AliasType" : {
+          "node" : {
+            "astNodeId" : 30
+          },
+          "aliasType" : {
+            "Int" : {
+              "PrimitiveInt" : {
+                "kind" : {
+                  "U32" : {
+                    
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "7" : {
+        "Int" : {
+          "Integer" : {
+            
+          }
+        }
       }
     },
     "useDefMap" : {
-      
+      "264" : {
+        "Enum" : {
+          "nodeId" : 269,
+          "unqualifiedName" : "State"
+        }
+      },
+      "14" : {
+        "EnumConstant" : {
+          "nodeId" : 9,
+          "unqualifiedName" : "X"
+        }
+      },
+      "271" : {
+        "Constant" : {
+          "nodeId" : 3,
+          "unqualifiedName" : "FW_FIXED_LENGTH_STRING_SIZE"
+        }
+      },
+      "270" : {
+        "AliasType" : {
+          "nodeId" : 1,
+          "unqualifiedName" : "FwSizeStoreType"
+        }
+      }
     },
     "valueMap" : {
-      
+      "8" : {
+        "Integer" : {
+          "value" : 0
+        }
+      },
+      "265" : {
+        "EnumConstant" : {
+          "value" : [
+            "__FPRIME_UNINITIALIZED",
+            0
+          ],
+          "t" : {
+            "node" : {
+              "astNodeId" : 269
+            },
+            "repType" : {
+              "kind" : {
+                "U8" : {
+                  
+                }
+              }
+            },
+            "default" : "None"
+          }
+        }
+      },
+      "4" : {
+        "Integer" : {
+          "value" : 3
+        }
+      },
+      "9" : {
+        "EnumConstant" : {
+          "value" : [
+            "X",
+            0
+          ],
+          "t" : {
+            "node" : {
+              "astNodeId" : 15
+            },
+            "repType" : {
+              "kind" : {
+                "I32" : {
+                  
+                }
+              }
+            },
+            "default" : "None"
+          }
+        }
+      },
+      "13" : {
+        "EnumConstant" : {
+          "value" : [
+            "Z",
+            2
+          ],
+          "t" : {
+            "node" : {
+              "astNodeId" : 15
+            },
+            "repType" : {
+              "kind" : {
+                "I32" : {
+                  
+                }
+              }
+            },
+            "default" : "None"
+          }
+        }
+      },
+      "16" : {
+        "Integer" : {
+          "value" : 3
+        }
+      },
+      "10" : {
+        "EnumConstant" : {
+          "value" : [
+            "Y",
+            1
+          ],
+          "t" : {
+            "node" : {
+              "astNodeId" : 15
+            },
+            "repType" : {
+              "kind" : {
+                "I32" : {
+                  
+                }
+              }
+            },
+            "default" : "None"
+          }
+        }
+      },
+      "266" : {
+        "EnumConstant" : {
+          "value" : [
+            "S1",
+            1
+          ],
+          "t" : {
+            "node" : {
+              "astNodeId" : 269
+            },
+            "repType" : {
+              "kind" : {
+                "U8" : {
+                  
+                }
+              }
+            },
+            "default" : "None"
+          }
+        }
+      },
+      "7" : {
+        "Integer" : {
+          "value" : 0
+        }
+      },
+      "3" : {
+        "Integer" : {
+          "value" : 256
+        }
+      },
+      "267" : {
+        "EnumConstant" : {
+          "value" : [
+            "S2_S3",
+            2
+          ],
+          "t" : {
+            "node" : {
+              "astNodeId" : 269
+            },
+            "repType" : {
+              "kind" : {
+                "U8" : {
+                  
+                }
+              }
+            },
+            "default" : "None"
+          }
+        }
+      },
+      "14" : {
+        "EnumConstant" : {
+          "value" : [
+            "X",
+            0
+          ],
+          "t" : {
+            "node" : {
+              "astNodeId" : 15
+            },
+            "repType" : {
+              "kind" : {
+                "I32" : {
+                  
+                }
+              }
+            },
+            "default" : "None"
+          }
+        }
+      },
+      "2" : {
+        "Integer" : {
+          "value" : 256
+        }
+      },
+      "271" : {
+        "Integer" : {
+          "value" : 256
+        }
+      }
     },
     "stateMachineMap" : {
-      "233" : {
+      "264" : {
         "aNode" : {
-          "astNodeId" : 233
+          "astNodeId" : 264
         },
         "sma" : {
           "symbol" : {
             "node" : {
-              "astNodeId" : 233
+              "astNodeId" : 264
             }
           },
           "symbolScopeMap" : {
-            "28" : {
+            "59" : {
               "map" : {
                 
               }
             },
-            "190" : {
+            "221" : {
               "map" : {
                 
               }
             },
-            "232" : {
+            "263" : {
               "map" : {
                 "State" : {
                   "map" : {
                     "C" : {
                       "Choice" : {
-                        "nodeId" : 189,
+                        "nodeId" : 220,
                         "unqualifiedName" : "C"
                       }
                     },
                     "S3" : {
                       "State" : {
-                        "nodeId" : 190,
+                        "nodeId" : 221,
                         "unqualifiedName" : "S3"
                       }
                     }
@@ -108,226 +1100,226 @@
             }
           },
           "useDefMap" : {
-            "216" : {
-              "Guard" : {
-                "nodeId" : 5,
-                "unqualifiedName" : "g1"
-              }
-            },
-            "201" : {
+            "205" : {
               "State" : {
-                "nodeId" : 28,
-                "unqualifiedName" : "S1"
-              }
-            },
-            "174" : {
-              "State" : {
-                "nodeId" : 190,
+                "nodeId" : 221,
                 "unqualifiedName" : "S3"
               }
             },
-            "192" : {
-              "Guard" : {
-                "nodeId" : 5,
-                "unqualifiedName" : "g1"
+            "224" : {
+              "Action" : {
+                "nodeId" : 31,
+                "unqualifiedName" : "a1"
+              }
+            },
+            "46" : {
+              "Action" : {
+                "nodeId" : 31,
+                "unqualifiedName" : "a1"
+              }
+            },
+            "209" : {
+              "Action" : {
+                "nodeId" : 31,
+                "unqualifiedName" : "a1"
               }
             },
             "199" : {
+              "Action" : {
+                "nodeId" : 31,
+                "unqualifiedName" : "a1"
+              }
+            },
+            "241" : {
+              "Signal" : {
+                "nodeId" : 43,
+                "unqualifiedName" : "s4"
+              }
+            },
+            "208" : {
               "Guard" : {
-                "nodeId" : 5,
+                "nodeId" : 36,
                 "unqualifiedName" : "g1"
               }
             },
-            "228" : {
-              "Signal" : {
-                "nodeId" : 14,
-                "unqualifiedName" : "s6"
+            "230" : {
+              "Guard" : {
+                "nodeId" : 36,
+                "unqualifiedName" : "g1"
               }
             },
-            "185" : {
-              "State" : {
-                "nodeId" : 232,
-                "unqualifiedName" : "S2"
-              }
-            },
-            "184" : {
+            "210" : {
               "Action" : {
-                "nodeId" : 2,
-                "unqualifiedName" : "a3"
+                "nodeId" : 32,
+                "unqualifiedName" : "a2"
               }
             },
-            "195" : {
+            "238" : {
+              "State" : {
+                "nodeId" : 59,
+                "unqualifiedName" : "S1"
+              }
+            },
+            "222" : {
+              "Signal" : {
+                "nodeId" : 40,
+                "unqualifiedName" : "s1"
+              }
+            },
+            "226" : {
               "Choice" : {
-                "nodeId" : 189,
+                "nodeId" : 220,
                 "unqualifiedName" : "C"
               }
             },
-            "207" : {
-              "State" : {
-                "nodeId" : 28,
-                "unqualifiedName" : "S1"
-              }
-            },
-            "172" : {
-              "Action" : {
-                "nodeId" : 1,
-                "unqualifiedName" : "a2"
-              }
-            },
-            "205" : {
+            "223" : {
               "Guard" : {
-                "nodeId" : 5,
+                "nodeId" : 36,
                 "unqualifiedName" : "g1"
               }
             },
-            "169" : {
+            "216" : {
+              "State" : {
+                "nodeId" : 263,
+                "unqualifiedName" : "S2"
+              }
+            },
+            "51" : {
+              "Guard" : {
+                "nodeId" : 36,
+                "unqualifiedName" : "g1"
+              }
+            },
+            "236" : {
+              "Guard" : {
+                "nodeId" : 36,
+                "unqualifiedName" : "g1"
+              }
+            },
+            "197" : {
               "Action" : {
-                "nodeId" : 1,
+                "nodeId" : 32,
                 "unqualifiedName" : "a2"
               }
             },
-            "193" : {
-              "Action" : {
-                "nodeId" : 0,
-                "unqualifiedName" : "a1"
-              }
-            },
-            "15" : {
-              "Action" : {
-                "nodeId" : 0,
-                "unqualifiedName" : "a1"
-              }
-            },
-            "181" : {
+            "56" : {
               "State" : {
-                "nodeId" : 28,
-                "unqualifiedName" : "S1"
-              }
-            },
-            "22" : {
-              "State" : {
-                "nodeId" : 28,
-                "unqualifiedName" : "S1"
+                "nodeId" : 263,
+                "unqualifiedName" : "S2"
               }
             },
             "212" : {
               "State" : {
-                "nodeId" : 28,
+                "nodeId" : 59,
                 "unqualifiedName" : "S1"
               }
             },
-            "166" : {
+            "196" : {
               "Action" : {
-                "nodeId" : 1,
-                "unqualifiedName" : "a2"
+                "nodeId" : 31,
+                "unqualifiedName" : "a1"
               }
             },
-            "177" : {
-              "Guard" : {
-                "nodeId" : 5,
-                "unqualifiedName" : "g1"
-              }
-            },
-            "17" : {
+            "48" : {
               "Choice" : {
-                "nodeId" : 27,
+                "nodeId" : 58,
                 "unqualifiedName" : "C"
               }
             },
-            "25" : {
+            "259" : {
+              "Signal" : {
+                "nodeId" : 45,
+                "unqualifiedName" : "s6"
+              }
+            },
+            "202" : {
+              "Action" : {
+                "nodeId" : 31,
+                "unqualifiedName" : "a1"
+              }
+            },
+            "214" : {
+              "Action" : {
+                "nodeId" : 32,
+                "unqualifiedName" : "a2"
+              }
+            },
+            "53" : {
               "State" : {
-                "nodeId" : 232,
-                "unqualifiedName" : "S2"
+                "nodeId" : 59,
+                "unqualifiedName" : "S1"
               }
             },
-            "230" : {
+            "203" : {
               "Action" : {
-                "nodeId" : 0,
+                "nodeId" : 32,
+                "unqualifiedName" : "a2"
+              }
+            },
+            "249" : {
+              "Action" : {
+                "nodeId" : 31,
                 "unqualifiedName" : "a1"
               }
             },
-            "191" : {
+            "246" : {
               "Signal" : {
-                "nodeId" : 9,
-                "unqualifiedName" : "s1"
-              }
-            },
-            "20" : {
-              "Guard" : {
-                "nodeId" : 5,
-                "unqualifiedName" : "g1"
-              }
-            },
-            "178" : {
-              "Action" : {
-                "nodeId" : 0,
-                "unqualifiedName" : "a1"
-              }
-            },
-            "210" : {
-              "Signal" : {
-                "nodeId" : 12,
-                "unqualifiedName" : "s4"
-              }
-            },
-            "198" : {
-              "Signal" : {
-                "nodeId" : 10,
-                "unqualifiedName" : "s2"
-              }
-            },
-            "187" : {
-              "State" : {
-                "nodeId" : 190,
-                "unqualifiedName" : "S3"
-              }
-            },
-            "171" : {
-              "Action" : {
-                "nodeId" : 0,
-                "unqualifiedName" : "a1"
-              }
-            },
-            "165" : {
-              "Action" : {
-                "nodeId" : 0,
-                "unqualifiedName" : "a1"
-              }
-            },
-            "215" : {
-              "Signal" : {
-                "nodeId" : 13,
+                "nodeId" : 44,
                 "unqualifiedName" : "s5"
               }
             },
-            "183" : {
-              "Action" : {
-                "nodeId" : 1,
-                "unqualifiedName" : "a2"
+            "235" : {
+              "Signal" : {
+                "nodeId" : 42,
+                "unqualifiedName" : "s3"
               }
             },
-            "179" : {
+            "261" : {
               "Action" : {
-                "nodeId" : 1,
-                "unqualifiedName" : "a2"
+                "nodeId" : 31,
+                "unqualifiedName" : "a1"
+              }
+            },
+            "247" : {
+              "Guard" : {
+                "nodeId" : 36,
+                "unqualifiedName" : "g1"
+              }
+            },
+            "215" : {
+              "Action" : {
+                "nodeId" : 33,
+                "unqualifiedName" : "a3"
               }
             },
             "218" : {
-              "Action" : {
-                "nodeId" : 0,
-                "unqualifiedName" : "a1"
+              "State" : {
+                "nodeId" : 221,
+                "unqualifiedName" : "S3"
               }
             },
-            "168" : {
-              "Action" : {
-                "nodeId" : 0,
-                "unqualifiedName" : "a1"
+            "232" : {
+              "State" : {
+                "nodeId" : 59,
+                "unqualifiedName" : "S1"
               }
             },
-            "204" : {
+            "243" : {
+              "State" : {
+                "nodeId" : 59,
+                "unqualifiedName" : "S1"
+              }
+            },
+            "229" : {
               "Signal" : {
-                "nodeId" : 11,
-                "unqualifiedName" : "s3"
+                "nodeId" : 41,
+                "unqualifiedName" : "s2"
+              }
+            },
+            "200" : {
+              "Action" : {
+                "nodeId" : 32,
+                "unqualifiedName" : "a2"
               }
             }
           },
@@ -338,7 +1330,7 @@
                   "Choice" : {
                     "symbol" : {
                       "node" : {
-                        "astNodeId" : 27
+                        "astNodeId" : 58
                       }
                     }
                   }
@@ -346,25 +1338,25 @@
               }
             },
             "arcMap" : {
-              "190" : [
+              "221" : [
               ],
-              "232" : [
+              "58" : [
                 {
-                  "State" : {
-                    "startState" : {
+                  "Choice" : {
+                    "startChoice" : {
                       "node" : {
-                        "astNodeId" : 232
+                        "astNodeId" : 58
                       }
                     },
                     "aNode" : {
-                      "astNodeId" : 214
+                      "astNodeId" : 54
                     },
                     "endNode" : {
                       "soc" : {
                         "State" : {
                           "symbol" : {
                             "node" : {
-                              "astNodeId" : 28
+                              "astNodeId" : 59
                             }
                           }
                         }
@@ -373,67 +1365,96 @@
                   }
                 },
                 {
-                  "State" : {
-                    "startState" : {
+                  "Choice" : {
+                    "startChoice" : {
                       "node" : {
-                        "astNodeId" : 232
+                        "astNodeId" : 58
                       }
                     },
                     "aNode" : {
-                      "astNodeId" : 197
+                      "astNodeId" : 57
+                    },
+                    "endNode" : {
+                      "soc" : {
+                        "State" : {
+                          "symbol" : {
+                            "node" : {
+                              "astNodeId" : 263
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "220" : [
+                {
+                  "Choice" : {
+                    "startChoice" : {
+                      "node" : {
+                        "astNodeId" : 220
+                      }
+                    },
+                    "aNode" : {
+                      "astNodeId" : 213
+                    },
+                    "endNode" : {
+                      "soc" : {
+                        "State" : {
+                          "symbol" : {
+                            "node" : {
+                              "astNodeId" : 59
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "Choice" : {
+                    "startChoice" : {
+                      "node" : {
+                        "astNodeId" : 220
+                      }
+                    },
+                    "aNode" : {
+                      "astNodeId" : 219
+                    },
+                    "endNode" : {
+                      "soc" : {
+                        "State" : {
+                          "symbol" : {
+                            "node" : {
+                              "astNodeId" : 221
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "59" : [
+              ],
+              "263" : [
+                {
+                  "State" : {
+                    "startState" : {
+                      "node" : {
+                        "astNodeId" : 263
+                      }
+                    },
+                    "aNode" : {
+                      "astNodeId" : 228
                     },
                     "endNode" : {
                       "soc" : {
                         "Choice" : {
                           "symbol" : {
                             "node" : {
-                              "astNodeId" : 189
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                {
-                  "State" : {
-                    "startState" : {
-                      "node" : {
-                        "astNodeId" : 232
-                      }
-                    },
-                    "aNode" : {
-                      "astNodeId" : 203
-                    },
-                    "endNode" : {
-                      "soc" : {
-                        "State" : {
-                          "symbol" : {
-                            "node" : {
-                              "astNodeId" : 28
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                {
-                  "State" : {
-                    "startState" : {
-                      "node" : {
-                        "astNodeId" : 232
-                      }
-                    },
-                    "aNode" : {
-                      "astNodeId" : 209
-                    },
-                    "endNode" : {
-                      "soc" : {
-                        "State" : {
-                          "symbol" : {
-                            "node" : {
-                              "astNodeId" : 28
+                              "astNodeId" : 220
                             }
                           }
                         }
@@ -445,45 +1466,18 @@
                   "Initial" : {
                     "startState" : {
                       "node" : {
-                        "astNodeId" : 232
+                        "astNodeId" : 263
                       }
                     },
                     "aNode" : {
-                      "astNodeId" : 176
+                      "astNodeId" : 207
                     },
                     "endNode" : {
                       "soc" : {
                         "State" : {
                           "symbol" : {
                             "node" : {
-                              "astNodeId" : 190
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              ],
-              "28" : [
-              ],
-              "189" : [
-                {
-                  "Choice" : {
-                    "startChoice" : {
-                      "node" : {
-                        "astNodeId" : 189
-                      }
-                    },
-                    "aNode" : {
-                      "astNodeId" : 182
-                    },
-                    "endNode" : {
-                      "soc" : {
-                        "State" : {
-                          "symbol" : {
-                            "node" : {
-                              "astNodeId" : 28
+                              "astNodeId" : 221
                             }
                           }
                         }
@@ -492,46 +1486,21 @@
                   }
                 },
                 {
-                  "Choice" : {
-                    "startChoice" : {
+                  "State" : {
+                    "startState" : {
                       "node" : {
-                        "astNodeId" : 189
+                        "astNodeId" : 263
                       }
                     },
                     "aNode" : {
-                      "astNodeId" : 188
+                      "astNodeId" : 245
                     },
                     "endNode" : {
                       "soc" : {
                         "State" : {
                           "symbol" : {
                             "node" : {
-                              "astNodeId" : 190
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              ],
-              "27" : [
-                {
-                  "Choice" : {
-                    "startChoice" : {
-                      "node" : {
-                        "astNodeId" : 27
-                      }
-                    },
-                    "aNode" : {
-                      "astNodeId" : 23
-                    },
-                    "endNode" : {
-                      "soc" : {
-                        "State" : {
-                          "symbol" : {
-                            "node" : {
-                              "astNodeId" : 28
+                              "astNodeId" : 59
                             }
                           }
                         }
@@ -540,21 +1509,44 @@
                   }
                 },
                 {
-                  "Choice" : {
-                    "startChoice" : {
+                  "State" : {
+                    "startState" : {
                       "node" : {
-                        "astNodeId" : 27
+                        "astNodeId" : 263
                       }
                     },
                     "aNode" : {
-                      "astNodeId" : 26
+                      "astNodeId" : 234
                     },
                     "endNode" : {
                       "soc" : {
                         "State" : {
                           "symbol" : {
                             "node" : {
-                              "astNodeId" : 232
+                              "astNodeId" : 59
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "State" : {
+                    "startState" : {
+                      "node" : {
+                        "astNodeId" : 263
+                      }
+                    },
+                    "aNode" : {
+                      "astNodeId" : 240
+                    },
+                    "endNode" : {
+                      "soc" : {
+                        "State" : {
+                          "symbol" : {
+                            "node" : {
+                              "astNodeId" : 59
                             }
                           }
                         }
@@ -572,7 +1564,7 @@
                   "Choice" : {
                     "symbol" : {
                       "node" : {
-                        "astNodeId" : 27
+                        "astNodeId" : 58
                       }
                     }
                   }
@@ -580,23 +1572,23 @@
               }
             },
             "arcMap" : {
-              "190" : [
+              "221" : [
                 {
                   "Choice" : {
                     "startChoice" : {
                       "node" : {
-                        "astNodeId" : 189
+                        "astNodeId" : 220
                       }
                     },
                     "aNode" : {
-                      "astNodeId" : 188
+                      "astNodeId" : 219
                     },
                     "endNode" : {
                       "soc" : {
                         "State" : {
                           "symbol" : {
                             "node" : {
-                              "astNodeId" : 190
+                              "astNodeId" : 221
                             }
                           }
                         }
@@ -608,18 +1600,18 @@
                   "Initial" : {
                     "startState" : {
                       "node" : {
-                        "astNodeId" : 232
+                        "astNodeId" : 263
                       }
                     },
                     "aNode" : {
-                      "astNodeId" : 176
+                      "astNodeId" : 207
                     },
                     "endNode" : {
                       "soc" : {
                         "State" : {
                           "symbol" : {
                             "node" : {
-                              "astNodeId" : 190
+                              "astNodeId" : 221
                             }
                           }
                         }
@@ -628,165 +1620,25 @@
                   }
                 }
               ],
-              "232" : [
-                {
-                  "Choice" : {
-                    "startChoice" : {
-                      "node" : {
-                        "astNodeId" : 27
-                      }
-                    },
-                    "aNode" : {
-                      "astNodeId" : 26
-                    },
-                    "endNode" : {
-                      "soc" : {
-                        "State" : {
-                          "symbol" : {
-                            "node" : {
-                              "astNodeId" : 232
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
+              "58" : [
               ],
-              "28" : [
+              "220" : [
                 {
                   "State" : {
                     "startState" : {
                       "node" : {
-                        "astNodeId" : 232
+                        "astNodeId" : 263
                       }
                     },
                     "aNode" : {
-                      "astNodeId" : 214
-                    },
-                    "endNode" : {
-                      "soc" : {
-                        "State" : {
-                          "symbol" : {
-                            "node" : {
-                              "astNodeId" : 28
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                {
-                  "Choice" : {
-                    "startChoice" : {
-                      "node" : {
-                        "astNodeId" : 27
-                      }
-                    },
-                    "aNode" : {
-                      "astNodeId" : 23
-                    },
-                    "endNode" : {
-                      "soc" : {
-                        "State" : {
-                          "symbol" : {
-                            "node" : {
-                              "astNodeId" : 28
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                {
-                  "State" : {
-                    "startState" : {
-                      "node" : {
-                        "astNodeId" : 232
-                      }
-                    },
-                    "aNode" : {
-                      "astNodeId" : 203
-                    },
-                    "endNode" : {
-                      "soc" : {
-                        "State" : {
-                          "symbol" : {
-                            "node" : {
-                              "astNodeId" : 28
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                {
-                  "State" : {
-                    "startState" : {
-                      "node" : {
-                        "astNodeId" : 232
-                      }
-                    },
-                    "aNode" : {
-                      "astNodeId" : 209
-                    },
-                    "endNode" : {
-                      "soc" : {
-                        "State" : {
-                          "symbol" : {
-                            "node" : {
-                              "astNodeId" : 28
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                {
-                  "Choice" : {
-                    "startChoice" : {
-                      "node" : {
-                        "astNodeId" : 189
-                      }
-                    },
-                    "aNode" : {
-                      "astNodeId" : 182
-                    },
-                    "endNode" : {
-                      "soc" : {
-                        "State" : {
-                          "symbol" : {
-                            "node" : {
-                              "astNodeId" : 28
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              ],
-              "189" : [
-                {
-                  "State" : {
-                    "startState" : {
-                      "node" : {
-                        "astNodeId" : 232
-                      }
-                    },
-                    "aNode" : {
-                      "astNodeId" : 197
+                      "astNodeId" : 228
                     },
                     "endNode" : {
                       "soc" : {
                         "Choice" : {
                           "symbol" : {
                             "node" : {
-                              "astNodeId" : 189
+                              "astNodeId" : 220
                             }
                           }
                         }
@@ -795,14 +1647,154 @@
                   }
                 }
               ],
-              "27" : [
+              "59" : [
+                {
+                  "Choice" : {
+                    "startChoice" : {
+                      "node" : {
+                        "astNodeId" : 220
+                      }
+                    },
+                    "aNode" : {
+                      "astNodeId" : 213
+                    },
+                    "endNode" : {
+                      "soc" : {
+                        "State" : {
+                          "symbol" : {
+                            "node" : {
+                              "astNodeId" : 59
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "State" : {
+                    "startState" : {
+                      "node" : {
+                        "astNodeId" : 263
+                      }
+                    },
+                    "aNode" : {
+                      "astNodeId" : 245
+                    },
+                    "endNode" : {
+                      "soc" : {
+                        "State" : {
+                          "symbol" : {
+                            "node" : {
+                              "astNodeId" : 59
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "State" : {
+                    "startState" : {
+                      "node" : {
+                        "astNodeId" : 263
+                      }
+                    },
+                    "aNode" : {
+                      "astNodeId" : 234
+                    },
+                    "endNode" : {
+                      "soc" : {
+                        "State" : {
+                          "symbol" : {
+                            "node" : {
+                              "astNodeId" : 59
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "Choice" : {
+                    "startChoice" : {
+                      "node" : {
+                        "astNodeId" : 58
+                      }
+                    },
+                    "aNode" : {
+                      "astNodeId" : 54
+                    },
+                    "endNode" : {
+                      "soc" : {
+                        "State" : {
+                          "symbol" : {
+                            "node" : {
+                              "astNodeId" : 59
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "State" : {
+                    "startState" : {
+                      "node" : {
+                        "astNodeId" : 263
+                      }
+                    },
+                    "aNode" : {
+                      "astNodeId" : 240
+                    },
+                    "endNode" : {
+                      "soc" : {
+                        "State" : {
+                          "symbol" : {
+                            "node" : {
+                              "astNodeId" : 59
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "263" : [
+                {
+                  "Choice" : {
+                    "startChoice" : {
+                      "node" : {
+                        "astNodeId" : 58
+                      }
+                    },
+                    "aNode" : {
+                      "astNodeId" : 57
+                    },
+                    "endNode" : {
+                      "soc" : {
+                        "State" : {
+                          "symbol" : {
+                            "node" : {
+                              "astNodeId" : 263
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
               ]
             }
           },
           "typeOptionMap" : {
-            "170" : "None",
-            "19" : "None",
-            "197" : {
+            "201" : "None",
+            "50" : "None",
+            "228" : {
               "Some" : {
                 "Int" : {
                   "PrimitiveInt" : {
@@ -815,14 +1807,11 @@
                 }
               }
             },
-            "209" : "None",
-            "231" : "None",
-            "219" : "None",
-            "214" : "None",
-            "203" : "None",
-            "167" : "None",
-            "176" : "None",
-            "189" : {
+            "234" : "None",
+            "245" : "None",
+            "58" : "None",
+            "198" : "None",
+            "220" : {
               "Some" : {
                 "Int" : {
                   "PrimitiveInt" : {
@@ -835,54 +1824,21 @@
                 }
               }
             },
-            "27" : "None"
+            "262" : "None",
+            "250" : "None",
+            "207" : "None",
+            "240" : "None"
           },
           "flattenedStateTransitionMap" : {
-            "12" : {
-              "190" : {
+            "45" : {
+              "221" : {
                 "guardOpt" : "None",
-                "transition" : {
-                  "External" : {
-                    "actions" : [
-                      {
-                        "node" : {
-                          "astNodeId" : 0
-                        }
-                      },
-                      {
-                        "node" : {
-                          "astNodeId" : 1
-                        }
-                      }
-                    ],
-                    "target" : {
-                      "State" : {
-                        "symbol" : {
-                          "node" : {
-                            "astNodeId" : 28
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            },
-            "13" : {
-              "190" : {
-                "guardOpt" : {
-                  "Some" : {
-                    "node" : {
-                      "astNodeId" : 5
-                    }
-                  }
-                },
                 "transition" : {
                   "Internal" : {
                     "actions" : [
                       {
                         "node" : {
-                          "astNodeId" : 0
+                          "astNodeId" : 31
                         }
                       }
                     ]
@@ -890,12 +1846,12 @@
                 }
               }
             },
-            "10" : {
-              "190" : {
+            "40" : {
+              "221" : {
                 "guardOpt" : {
                   "Some" : {
                     "node" : {
-                      "astNodeId" : 5
+                      "astNodeId" : 36
                     }
                   }
                 },
@@ -904,95 +1860,7 @@
                     "actions" : [
                       {
                         "node" : {
-                          "astNodeId" : 0
-                        }
-                      },
-                      {
-                        "node" : {
-                          "astNodeId" : 1
-                        }
-                      }
-                    ],
-                    "target" : {
-                      "State" : {
-                        "symbol" : {
-                          "node" : {
-                            "astNodeId" : 28
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            },
-            "14" : {
-              "190" : {
-                "guardOpt" : "None",
-                "transition" : {
-                  "Internal" : {
-                    "actions" : [
-                      {
-                        "node" : {
-                          "astNodeId" : 0
-                        }
-                      }
-                    ]
-                  }
-                }
-              }
-            },
-            "11" : {
-              "190" : {
-                "guardOpt" : {
-                  "Some" : {
-                    "node" : {
-                      "astNodeId" : 5
-                    }
-                  }
-                },
-                "transition" : {
-                  "External" : {
-                    "actions" : [
-                      {
-                        "node" : {
-                          "astNodeId" : 0
-                        }
-                      },
-                      {
-                        "node" : {
-                          "astNodeId" : 1
-                        }
-                      }
-                    ],
-                    "target" : {
-                      "State" : {
-                        "symbol" : {
-                          "node" : {
-                            "astNodeId" : 28
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            },
-            "9" : {
-              "190" : {
-                "guardOpt" : {
-                  "Some" : {
-                    "node" : {
-                      "astNodeId" : 5
-                    }
-                  }
-                },
-                "transition" : {
-                  "External" : {
-                    "actions" : [
-                      {
-                        "node" : {
-                          "astNodeId" : 0
+                          "astNodeId" : 31
                         }
                       }
                     ],
@@ -1000,7 +1868,131 @@
                       "Choice" : {
                         "symbol" : {
                           "node" : {
-                            "astNodeId" : 189
+                            "astNodeId" : 220
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "44" : {
+              "221" : {
+                "guardOpt" : {
+                  "Some" : {
+                    "node" : {
+                      "astNodeId" : 36
+                    }
+                  }
+                },
+                "transition" : {
+                  "Internal" : {
+                    "actions" : [
+                      {
+                        "node" : {
+                          "astNodeId" : 31
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "43" : {
+              "221" : {
+                "guardOpt" : "None",
+                "transition" : {
+                  "External" : {
+                    "actions" : [
+                      {
+                        "node" : {
+                          "astNodeId" : 31
+                        }
+                      },
+                      {
+                        "node" : {
+                          "astNodeId" : 32
+                        }
+                      }
+                    ],
+                    "target" : {
+                      "State" : {
+                        "symbol" : {
+                          "node" : {
+                            "astNodeId" : 59
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "42" : {
+              "221" : {
+                "guardOpt" : {
+                  "Some" : {
+                    "node" : {
+                      "astNodeId" : 36
+                    }
+                  }
+                },
+                "transition" : {
+                  "External" : {
+                    "actions" : [
+                      {
+                        "node" : {
+                          "astNodeId" : 31
+                        }
+                      },
+                      {
+                        "node" : {
+                          "astNodeId" : 32
+                        }
+                      }
+                    ],
+                    "target" : {
+                      "State" : {
+                        "symbol" : {
+                          "node" : {
+                            "astNodeId" : 59
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "41" : {
+              "221" : {
+                "guardOpt" : {
+                  "Some" : {
+                    "node" : {
+                      "astNodeId" : 36
+                    }
+                  }
+                },
+                "transition" : {
+                  "External" : {
+                    "actions" : [
+                      {
+                        "node" : {
+                          "astNodeId" : 31
+                        }
+                      },
+                      {
+                        "node" : {
+                          "astNodeId" : 32
+                        }
+                      }
+                    ],
+                    "target" : {
+                      "State" : {
+                        "symbol" : {
+                          "node" : {
+                            "astNodeId" : 59
                           }
                         }
                       }
@@ -1011,7 +2003,7 @@
             }
           },
           "flattenedChoiceTransitionMap" : {
-            "23" : {
+            "54" : {
               "External" : {
                 "actions" : [
                 ],
@@ -1019,14 +2011,14 @@
                   "State" : {
                     "symbol" : {
                       "node" : {
-                        "astNodeId" : 28
+                        "astNodeId" : 59
                       }
                     }
                   }
                 }
               }
             },
-            "26" : {
+            "57" : {
               "External" : {
                 "actions" : [
                 ],
@@ -1034,34 +2026,34 @@
                   "State" : {
                     "symbol" : {
                       "node" : {
-                        "astNodeId" : 232
+                        "astNodeId" : 263
                       }
                     }
                   }
                 }
               }
             },
-            "182" : {
+            "213" : {
               "External" : {
                 "actions" : [
                   {
                     "node" : {
-                      "astNodeId" : 0
+                      "astNodeId" : 31
                     }
                   },
                   {
                     "node" : {
-                      "astNodeId" : 1
+                      "astNodeId" : 32
                     }
                   },
                   {
                     "node" : {
-                      "astNodeId" : 0
+                      "astNodeId" : 31
                     }
                   },
                   {
                     "node" : {
-                      "astNodeId" : 1
+                      "astNodeId" : 32
                     }
                   }
                 ],
@@ -1069,24 +2061,24 @@
                   "State" : {
                     "symbol" : {
                       "node" : {
-                        "astNodeId" : 28
+                        "astNodeId" : 59
                       }
                     }
                   }
                 }
               }
             },
-            "188" : {
+            "219" : {
               "External" : {
                 "actions" : [
                   {
                     "node" : {
-                      "astNodeId" : 1
+                      "astNodeId" : 32
                     }
                   },
                   {
                     "node" : {
-                      "astNodeId" : 2
+                      "astNodeId" : 33
                     }
                   }
                 ],
@@ -1094,7 +2086,7 @@
                   "State" : {
                     "symbol" : {
                       "node" : {
-                        "astNodeId" : 190
+                        "astNodeId" : 221
                       }
                     }
                   }

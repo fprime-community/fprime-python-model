@@ -1,5 +1,5 @@
 {
-  "fppVersion" : "v3.1.0a10-54-g11243e778",
+  "fppVersion" : "v3.2.0",
   "analysis" : {
     "componentInstanceMap" : {
       "67" : {
@@ -31,9 +31,68 @@
         "aNode" : {
           "astNodeId" : 58
         },
-        "portMap" : {
-          "tlmOut" : {
-            "Special" : {
+        "portInterface" : {
+          "instanceType" : "component",
+          "portMap" : {
+            "tlmOut" : {
+              "Special" : {
+                "aNode" : {
+                  "astNodeId" : 0
+                },
+                "specifier" : {
+                  "inputKind" : "None",
+                  "kind" : {
+                    "Telemetry" : {
+                      
+                    }
+                  },
+                  "name" : "tlmOut",
+                  "priority" : "None",
+                  "queueFull" : "None"
+                },
+                "symbol" : {
+                  "Port" : {
+                    "nodeId" : 59,
+                    "unqualifiedName" : "Tlm"
+                  }
+                },
+                "priority" : "None",
+                "queueFull" : "None",
+                "importNodeIds" : [
+                ]
+              }
+            },
+            "timeGetOut" : {
+              "Special" : {
+                "aNode" : {
+                  "astNodeId" : 1
+                },
+                "specifier" : {
+                  "inputKind" : "None",
+                  "kind" : {
+                    "TimeGet" : {
+                      
+                    }
+                  },
+                  "name" : "timeGetOut",
+                  "priority" : "None",
+                  "queueFull" : "None"
+                },
+                "symbol" : {
+                  "Port" : {
+                    "nodeId" : 62,
+                    "unqualifiedName" : "Time"
+                  }
+                },
+                "priority" : "None",
+                "queueFull" : "None",
+                "importNodeIds" : [
+                ]
+              }
+            }
+          },
+          "specialPortMap" : {
+            "telemetry" : {
               "aNode" : {
                 "astNodeId" : 0
               },
@@ -58,10 +117,8 @@
               "queueFull" : "None",
               "importNodeIds" : [
               ]
-            }
-          },
-          "timeGetOut" : {
-            "Special" : {
+            },
+            "time get" : {
               "aNode" : {
                 "astNodeId" : 1
               },
@@ -87,60 +144,6 @@
               "importNodeIds" : [
               ]
             }
-          }
-        },
-        "specialPortMap" : {
-          "telemetry" : {
-            "aNode" : {
-              "astNodeId" : 0
-            },
-            "specifier" : {
-              "inputKind" : "None",
-              "kind" : {
-                "Telemetry" : {
-                  
-                }
-              },
-              "name" : "tlmOut",
-              "priority" : "None",
-              "queueFull" : "None"
-            },
-            "symbol" : {
-              "Port" : {
-                "nodeId" : 59,
-                "unqualifiedName" : "Tlm"
-              }
-            },
-            "priority" : "None",
-            "queueFull" : "None",
-            "importNodeIds" : [
-            ]
-          },
-          "time get" : {
-            "aNode" : {
-              "astNodeId" : 1
-            },
-            "specifier" : {
-              "inputKind" : "None",
-              "kind" : {
-                "TimeGet" : {
-                  
-                }
-              },
-              "name" : "timeGetOut",
-              "priority" : "None",
-              "queueFull" : "None"
-            },
-            "symbol" : {
-              "Port" : {
-                "nodeId" : 62,
-                "unqualifiedName" : "Time"
-              }
-            },
-            "priority" : "None",
-            "queueFull" : "None",
-            "importNodeIds" : [
-            ]
           }
         },
         "commandMap" : {
@@ -637,6 +640,14 @@
         "defaultRecordId" : 0
       }
     },
+    "frameworkDefinitions" : {
+      "constantMap" : {
+        
+      },
+      "typeMap" : {
+        
+      }
+    },
     "includedFileSet" : [
     ],
     "inputFileSet" : [
@@ -692,7 +703,7 @@
       },
       "98" : {
         "map" : {
-          "Topology" : {
+          "PortInterfaceInstance" : {
             "map" : {
               "T" : {
                 "Topology" : {
@@ -710,50 +721,52 @@
         "aNode" : {
           "astNodeId" : 97
         },
-        "directImportMap" : {
+        "qualifiedName" : {
+          "qualifier" : [
+            "M"
+          ],
+          "base" : "T"
+        },
+        "directTopologies" : {
           
+        },
+        "directComponentInstances" : {
+          "67" : {
+            "file" : "[ local path prefix ]/compiler/tools/fpp-to-json/test/telemetry.fpp",
+            "pos" : "47.9",
+            "includingLoc" : "None"
+          }
         },
         "transitiveImportSet" : [
         ],
         "instanceMap" : [
           [
             {
-              "aNode" : {
+              "InterfaceComponentInstance" : {
                 "astNodeId" : 67
-              },
-              "qualifiedName" : {
-                "qualifier" : [
-                ],
-                "base" : "i"
-              },
-              "component" : {
-                "astNodeId" : 58
-              },
-              "baseId" : 18944,
-              "maxId" : 18961,
-              "file" : "None",
-              "queueSize" : "None",
-              "stackSize" : "None",
-              "priority" : "None",
-              "cpu" : "None",
-              "initSpecifierMap" : {
-                
               }
             },
-            [
-              {
-                "Public" : {
-                  
-                }
-              },
-              {
-                "file" : "[ local path prefix ]/compiler/tools/fpp-to-json/test/telemetry.fpp",
-                "pos" : "47.9",
-                "includingLoc" : "None"
-              }
-            ]
+            {
+              "file" : "[ local path prefix ]/compiler/tools/fpp-to-json/test/telemetry.fpp",
+              "pos" : "47.9",
+              "includingLoc" : "None"
+            }
           ]
         ],
+        "ports" : [
+        ],
+        "portMap" : {
+          
+        },
+        "portInterface" : {
+          "instanceType" : "topology",
+          "portMap" : {
+            
+          },
+          "specialPortMap" : {
+            
+          }
+        },
         "patternMap" : {
           
         },
@@ -773,27 +786,9 @@
         ],
         "unconnectedPortSet" : [
           {
-            "componentInstance" : {
-              "aNode" : {
+            "interfaceInstance" : {
+              "InterfaceComponentInstance" : {
                 "astNodeId" : 67
-              },
-              "qualifiedName" : {
-                "qualifier" : [
-                ],
-                "base" : "i"
-              },
-              "component" : {
-                "astNodeId" : 58
-              },
-              "baseId" : 18944,
-              "maxId" : 18961,
-              "file" : "None",
-              "queueSize" : "None",
-              "stackSize" : "None",
-              "priority" : "None",
-              "cpu" : "None",
-              "initSpecifierMap" : {
-                
               }
             },
             "portInstance" : {
@@ -826,27 +821,9 @@
             }
           },
           {
-            "componentInstance" : {
-              "aNode" : {
+            "interfaceInstance" : {
+              "InterfaceComponentInstance" : {
                 "astNodeId" : 67
-              },
-              "qualifiedName" : {
-                "qualifier" : [
-                ],
-                "base" : "i"
-              },
-              "component" : {
-                "astNodeId" : 58
-              },
-              "baseId" : 18944,
-              "maxId" : 18961,
-              "file" : "None",
-              "queueSize" : "None",
-              "stackSize" : "None",
-              "priority" : "None",
-              "cpu" : "None",
-              "initSpecifierMap" : {
-                
               }
             },
             "portInstance" : {

@@ -1,7 +1,7 @@
 from fprime_python_model.model import FprimePythonModel
 from fprime_python_model.utils.fpp_writer import FppWriter
 from fprime_python_model.utils.line_utils import Lines
-from generate_ref_files import test_name_map, additional_tests
+from tests.generate_ref_files import test_name_map, additional_tests
 from typing import List
 import subprocess
 import os

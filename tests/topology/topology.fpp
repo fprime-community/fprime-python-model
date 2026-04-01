@@ -1,5 +1,10 @@
 port P
 
+interface I {
+
+
+}
+
 passive component C {
 
   sync input port pIn: P

@@ -1,6 +1,6 @@
 from packaging.version import Version
 
-MIN_FPP_VERSION = Version("3.1.0a10")
+MIN_FPP_VERSION = Version("3.2.0")
 
 
 def check_version(to_check: str, msg: str) -> None:

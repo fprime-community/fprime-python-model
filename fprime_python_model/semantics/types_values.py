@@ -4,6 +4,14 @@ from enum import Enum
 from fprime_python_model.utils.error import InternalError
 from fprime_python_model.fpp_ast.fpp_ast_node import AstNode, AstId
 from fprime_python_model.fpp_ast import fpp_ast
+from fprime_python_model.semantics.symbol import (
+    TypeSymbol,
+    AbsTypeSymbol,
+    AliasTypeSymbol,
+    ArraySymbol,
+    EnumSymbol,
+    StructSymbol,
+)
 from dataclasses import dataclass
 from fprime_python_model.semantics.format import Format
 import math
@@ -23,6 +31,11 @@ class Type(ABC):
 
     def get_def_node_id(self) -> Optional[AstId]:
         """Get the definition node identifier, if any"""
+        symbol: Optional[TypeSymbol] = self.get_def_symbol()
+        return symbol.get_node_id() if symbol is not None else None
+
+    def get_def_symbol(self) -> Optional[TypeSymbol]:
+        """Get the definition symbol, if any"""
         return None
 
     def get_underlying_type(self) -> "Type":
@@ -233,6 +246,9 @@ class AbsType(Type):
     def get_def_node_id(self):
         return self.node[1]._id
 
+    def get_def_symbol(self):
+        return AbsTypeSymbol(self.node)
+
     def __str__(self):
         return str(self.node[1].data.name)
 
@@ -249,6 +265,9 @@ class AliasType(Type):
 
     def get_def_node_id(self):
         return self.node[1]._id
+
+    def get_def_symbol(self):
+        return AliasTypeSymbol(self.node)
 
     def __str__(self):
         return str(self.node[1].data.name)
@@ -287,6 +306,9 @@ class ArrayType(Type):
     def get_def_node_id(self) -> Optional[AstId]:
         return self.node[1]._id
 
+    def get_def_symbol(self):
+        return ArraySymbol(self.node)
+
     def has_numeric_members(self) -> bool:
         return self.anon_array.has_numeric_members()
 
@@ -313,6 +335,9 @@ class EnumType(Type):
 
     def get_def_node_id(self) -> Optional[AstId]:
         return self.node[1]._id
+
+    def get_def_symbol(self):
+        return EnumSymbol(self.node)
 
     def is_convertible_to_numeric(self) -> bool:
         return True
@@ -352,6 +377,9 @@ class StructType(Type):
 
     def get_def_node_id(self) -> Optional[AstId]:
         return self.node[1]._id
+
+    def get_def_symbol(self):
+        return StructSymbol(self.node)
 
     def has_numeric_members(self) -> bool:
         return self.anon_struct.has_numeric_members()

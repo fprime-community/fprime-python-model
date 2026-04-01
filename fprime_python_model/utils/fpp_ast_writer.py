@@ -363,6 +363,12 @@ class AstWriter(AstVisitor, LineUtils):
         return result + [self.indent_in(line) for line in concat_list]
 
     @override
+    def expr_size_of_node(
+        self, _in: In, node: AstNode[fpp_ast.Expr], e: fpp_ast.ExprSizeOf
+    ):
+        return self.lines("expr sizeof") + self.type_name_node(e.type_name)
+
+    @override
     def expr_struct_node(
         self, _in: In, node: AstNode[fpp_ast.Expr], e: fpp_ast.ExprStruct
     ):
@@ -396,16 +402,17 @@ class AstWriter(AstVisitor, LineUtils):
         return result + [self.indent_in(line) for line in concat_list]
 
     @override
-    def spec_comp_instance_annotated_node(
-        self, _in: In, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecCompInstance]]
+    def spec_instance_annotated_node(
+        self, _in: In, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecInstance]]
     ):
         _, node, _ = a_node
         data = node.data
-        result = self.lines("spec comp instance")
-        concat_list = self.lines(self.visibility(data.visibility)) + self.qual_ident(
-            data.instance.data
+        return join_lists(
+            IndentMode.INDENT,
+            self.lines("instance"),
+            "",
+            self.qual_ident(data.instance.data),
         )
-        return result + list(map(self.indent_in, concat_list))
 
     @override
     def spec_connection_graph_annotated_node(
@@ -804,13 +811,17 @@ class AstWriter(AstVisitor, LineUtils):
         return lines_out
 
     @override
-    def spec_top_import_annotated_node(
-        self, in_, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecImport]]
+    def spec_top_port_annotated_node(
+        self, in_, a_node: fpp_ast.Annotated[AstNode[fpp_ast.SpecTopPort]]
     ):
         _, node, _ = a_node
         data = node.data
-        return self.lines("spec top import") + [
-            self.indent_in(line) for line in self.qual_ident(data.sym.data)
+
+        lines_to_ident = self.ident(data.name) + self.port_instance_identifier(
+            data.underlying_port.data
+        )
+        return self.lines("spec top port") + [
+            self.indent_in(line) for line in lines_to_ident
         ]
 
     @override
@@ -1019,7 +1030,7 @@ class AstWriter(AstVisitor, LineUtils):
         return inner
 
     def port_instance_identifier(self, pii: fpp_ast.PortInstanceIdentifier) -> Out:
-        qid = fpp_ast.Qualified(pii.component_instance, pii.port_name)
+        qid = fpp_ast.Qualified(pii.interface_instance, pii.port_name)
         return self.qual_ident(qid)
 
     def tlm_channel_identifier(self, tci: fpp_ast.TlmChannelIdentifier) -> Out:
@@ -1075,9 +1086,6 @@ class AstWriter(AstVisitor, LineUtils):
             lambda n: self.match_type_name_node((), n)
         )
         return self.add_prefix("type name", func)(node)
-
-    def visibility(self, v: fpp_ast.Visibility) -> str:
-        return str(v)
 
     def flatten(self, list_of_lists: List[List]) -> List:
         result = []

@@ -1,5 +1,5 @@
 {
-  "fppVersion" : "v3.1.0a10-54-g11243e778",
+  "fppVersion" : "v3.2.0",
   "ast" : [
     {
       "members" : [
@@ -17,6 +17,26 @@
                     "returnType" : "None"
                   },
                   "id" : 0
+                }
+              }
+            }
+          },
+          [
+          ]
+        ],
+        [
+          [
+          ],
+          {
+            "DefInterface" : {
+              "node" : {
+                "AstNode" : {
+                  "data" : {
+                    "name" : "I",
+                    "members" : [
+                    ]
+                  },
+                  "id" : 1
                 }
               }
             }
@@ -63,7 +83,7 @@
                                               "name" : "P"
                                             }
                                           },
-                                          "id" : 2
+                                          "id" : 3
                                         }
                                       }
                                     },
@@ -71,7 +91,7 @@
                                     "queueFull" : "None"
                                   }
                                 },
-                                "id" : 3
+                                "id" : 4
                               }
                             }
                           }
@@ -103,7 +123,7 @@
                                               "name" : "P"
                                             }
                                           },
-                                          "id" : 11
+                                          "id" : 12
                                         }
                                       }
                                     },
@@ -111,7 +131,7 @@
                                     "queueFull" : "None"
                                   }
                                 },
-                                "id" : 12
+                                "id" : 13
                               }
                             }
                           }
@@ -121,7 +141,7 @@
                       ]
                     ]
                   },
-                  "id" : 13
+                  "id" : 14
                 }
               }
             }
@@ -145,7 +165,7 @@
                             "name" : "C"
                           }
                         },
-                        "id" : 15
+                        "id" : 16
                       }
                     },
                     "baseId" : {
@@ -155,7 +175,7 @@
                             "value" : "0x100"
                           }
                         },
-                        "id" : 16
+                        "id" : 17
                       }
                     },
                     "implType" : "None",
@@ -167,7 +187,7 @@
                     "initSpecs" : [
                     ]
                   },
-                  "id" : 17
+                  "id" : 18
                 }
               }
             }
@@ -191,7 +211,7 @@
                             "name" : "C"
                           }
                         },
-                        "id" : 19
+                        "id" : 20
                       }
                     },
                     "baseId" : {
@@ -201,7 +221,7 @@
                             "value" : "0x200"
                           }
                         },
-                        "id" : 20
+                        "id" : 21
                       }
                     },
                     "implType" : "None",
@@ -213,7 +233,7 @@
                     "initSpecs" : [
                     ]
                   },
-                  "id" : 21
+                  "id" : 22
                 }
               }
             }
@@ -237,15 +257,10 @@
                           "This specifier says that instance c1 is part of the topology"
                         ],
                         {
-                          "SpecCompInstance" : {
+                          "SpecInstance" : {
                             "node" : {
                               "AstNode" : {
                                 "data" : {
-                                  "visibility" : {
-                                    "Public" : {
-                                      
-                                    }
-                                  },
                                   "instance" : {
                                     "AstNode" : {
                                       "data" : {
@@ -253,11 +268,11 @@
                                           "name" : "c1"
                                         }
                                       },
-                                      "id" : 23
+                                      "id" : 24
                                     }
                                   }
                                 },
-                                "id" : 24
+                                "id" : 25
                               }
                             }
                           }
@@ -270,15 +285,10 @@
                           "This specifier says that instance c2 is part of the topology"
                         ],
                         {
-                          "SpecCompInstance" : {
+                          "SpecInstance" : {
                             "node" : {
                               "AstNode" : {
                                 "data" : {
-                                  "visibility" : {
-                                    "Public" : {
-                                      
-                                    }
-                                  },
                                   "instance" : {
                                     "AstNode" : {
                                       "data" : {
@@ -286,11 +296,11 @@
                                           "name" : "c2"
                                         }
                                       },
-                                      "id" : 26
+                                      "id" : 27
                                     }
                                   }
                                 },
-                                "id" : 27
+                                "id" : 28
                               }
                             }
                           }
@@ -315,48 +325,48 @@
                                         "fromPort" : {
                                           "AstNode" : {
                                             "data" : {
-                                              "componentInstance" : {
+                                              "interfaceInstance" : {
                                                 "AstNode" : {
                                                   "data" : {
                                                     "Unqualified" : {
                                                       "name" : "c1"
                                                     }
                                                   },
-                                                  "id" : 30
+                                                  "id" : 31
                                                 }
                                               },
                                               "portName" : {
                                                 "AstNode" : {
                                                   "data" : "pOut",
-                                                  "id" : 29
+                                                  "id" : 30
                                                 }
                                               }
                                             },
-                                            "id" : 31
+                                            "id" : 32
                                           }
                                         },
                                         "fromIndex" : "None",
                                         "toPort" : {
                                           "AstNode" : {
                                             "data" : {
-                                              "componentInstance" : {
+                                              "interfaceInstance" : {
                                                 "AstNode" : {
                                                   "data" : {
                                                     "Unqualified" : {
                                                       "name" : "c2"
                                                     }
                                                   },
-                                                  "id" : 34
+                                                  "id" : 35
                                                 }
                                               },
                                               "portName" : {
                                                 "AstNode" : {
                                                   "data" : "pIn",
-                                                  "id" : 33
+                                                  "id" : 34
                                                 }
                                               }
                                             },
-                                            "id" : 35
+                                            "id" : 36
                                           }
                                         },
                                         "toIndex" : "None"
@@ -364,7 +374,7 @@
                                     ]
                                   }
                                 },
-                                "id" : 36
+                                "id" : 37
                               }
                             }
                           }
@@ -389,48 +399,48 @@
                                         "fromPort" : {
                                           "AstNode" : {
                                             "data" : {
-                                              "componentInstance" : {
+                                              "interfaceInstance" : {
                                                 "AstNode" : {
                                                   "data" : {
                                                     "Unqualified" : {
                                                       "name" : "c2"
                                                     }
                                                   },
-                                                  "id" : 57
+                                                  "id" : 58
                                                 }
                                               },
                                               "portName" : {
                                                 "AstNode" : {
                                                   "data" : "pOut",
-                                                  "id" : 56
+                                                  "id" : 57
                                                 }
                                               }
                                             },
-                                            "id" : 58
+                                            "id" : 59
                                           }
                                         },
                                         "fromIndex" : "None",
                                         "toPort" : {
                                           "AstNode" : {
                                             "data" : {
-                                              "componentInstance" : {
+                                              "interfaceInstance" : {
                                                 "AstNode" : {
                                                   "data" : {
                                                     "Unqualified" : {
                                                       "name" : "c1"
                                                     }
                                                   },
-                                                  "id" : 61
+                                                  "id" : 62
                                                 }
                                               },
                                               "portName" : {
                                                 "AstNode" : {
                                                   "data" : "pIn",
-                                                  "id" : 60
+                                                  "id" : 61
                                                 }
                                               }
                                             },
-                                            "id" : 62
+                                            "id" : 63
                                           }
                                         },
                                         "toIndex" : "None"
@@ -438,7 +448,7 @@
                                     ]
                                   }
                                 },
-                                "id" : 63
+                                "id" : 64
                               }
                             }
                           }
@@ -446,9 +456,11 @@
                         [
                         ]
                       ]
+                    ],
+                    "implements" : [
                     ]
                   },
-                  "id" : 64
+                  "id" : 65
                 }
               }
             }

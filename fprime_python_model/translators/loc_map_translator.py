@@ -19,6 +19,14 @@ def translate_loc(d: dict) -> Location:
         translate_including_loc(d["includingLoc"]),
     )
 
+def translate_loc(d: dict) -> Location:
+    return Location(
+        Path(d["file"]),
+        d["pos"],
+        translate_including_loc(d["includingLoc"]),
+    )
+
+
 def translate_location_map_json(file: str) -> dict[AstId, Location]:
     loc_map: dict[AstId, Location] = dict()
     if not os.path.exists(file):
