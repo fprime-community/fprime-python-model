@@ -79,6 +79,7 @@ from fprime_python_model.semantics.component import Component, PortMatching
 from fprime_python_model.semantics.component_instance import ComponentInstance
 from fprime_python_model.semantics.init_specifier import InitSpecifier
 from fprime_python_model.semantics.command import (
+    CommandOpcode,
     Command,
     CommandParam,
     CommandNonParam,
@@ -174,6 +175,17 @@ from fprime_python_model.semantics.interface_instance import (
 from fprime_python_model.semantics.port_interface import PortInterface
 from fprime_python_model.semantics.topology_port import TopologyPort
 from fprime_python_model.translators.loc_map_translator import translate_loc
+from fprime_python_model.semantics.dictionary import (
+    Dictionary,
+    DictionaryCommandEntry,
+    DictionaryEventEntry,
+    DictionaryParamEntry,
+    DictionaryContainerEntry,
+    DictionaryRecordEntry,
+    DictionaryTlmChannelEntry,
+)
+from fprime_python_model.semantics.tlm_packet_set import TlmPacketSet
+from fprime_python_model.semantics.tlm_packet import TlmPacket
 
 RT = TypeVar("RT")
 
@@ -1554,6 +1566,128 @@ class AnalysisTranslator:
             framework_types[type_name] = sym
         return FrameworkDefinitions(framework_constants, framework_types)
 
+    def translate_tlm_location_map(self, d: Dict) -> Dict[TlmChannelId, Location]:
+        out_dict: Dict[TlmChannelId, Location] = dict()
+        for id, loc in d.items():
+            out_dict[TlmChannelId(id)] = translate_loc(loc)
+        return out_dict
+
+    def translate_tlm_packet_map(self, d: Dict) -> Dict[AstId, TlmPacket]:
+        out_dict: Dict[AstId, TlmPacket] = dict()
+        for id, tlm_packet in d.items():
+            a_node = self.get_annotated_ast_node_by_id(tlm_packet["aNode"]["astNodeId"])
+            out_dict[AstId(id)] = TlmPacket(
+                a_node,
+                int(tlm_packet["group"]),
+                tlm_packet["memberIdList"],
+                self.translate_tlm_location_map(tlm_packet["memberLocationMap"]),
+            )
+        return out_dict
+
+    def translate_tlm_packet_set_map(
+        self, d: Dict
+    ) -> Dict[UnqualifiedName, TlmPacketSet]:
+        out_dict: Dict[UnqualifiedName, TlmPacketSet] = dict()
+        for unqual_name, tlm_packet_set in d.items():
+            a_node = self.get_annotated_ast_node_by_id(
+                tlm_packet_set["aNode"]["astNodeId"]
+            )
+            out_dict[UnqualifiedName(unqual_name)] = TlmPacketSet(
+                a_node,
+                self.translate_tlm_packet_map(tlm_packet_set["packetMap"]),
+                int(tlm_packet_set["defaultPacketId"]),
+                tlm_packet_set["omittedIdSet"],
+                self.translate_tlm_location_map(tlm_packet_set["omittedLocationMap"]),
+            )
+        return out_dict
+
+    def translate_command_entry_map(
+        self, d: Dict
+    ) -> Dict[CommandOpcode, DictionaryCommandEntry]:
+        out_dict: Dict[CommandOpcode, DictionaryCommandEntry] = dict()
+        for id, entry in d.items():
+            out_dict[CommandOpcode(id)] = DictionaryCommandEntry(
+                self.translate_component_instance(entry["instance"]),
+                self.translate_command(entry["command"]),
+            )
+        return out_dict
+
+    def translate_tlm_channel_entry_map(
+        self, d: Dict
+    ) -> Dict[TlmChannelId, DictionaryTlmChannelEntry]:
+        out_dict: Dict[TlmChannelId, DictionaryTlmChannelEntry] = dict()
+        for id, entry in d.items():
+            out_dict[TlmChannelId(id)] = DictionaryTlmChannelEntry(
+                self.translate_component_instance(entry["instance"]),
+                self.translate_tlm_channel(entry["tlmChannel"]),
+            )
+        return out_dict
+
+    def translate_event_entry_map(self, d: Dict) -> Dict[EventId, DictionaryEventEntry]:
+        out_dict: Dict[EventId, DictionaryEventEntry] = dict()
+        for id, entry in d.items():
+            out_dict[EventId(id)] = DictionaryEventEntry(
+                self.translate_component_instance(entry["instance"]),
+                self.translate_event(entry["event"]),
+            )
+        return out_dict
+
+    def translate_param_entry_map(self, d: Dict) -> Dict[ParamId, DictionaryParamEntry]:
+        out_dict: Dict[ParamId, DictionaryParamEntry] = dict()
+        for id, entry in d.items():
+            out_dict[ParamId(id)] = DictionaryParamEntry(
+                self.translate_component_instance(entry["instance"]),
+                self.translate_param(entry["param"]),
+            )
+        return out_dict
+
+    def translate_record_entry_map(
+        self, d: Dict
+    ) -> Dict[RecordId, DictionaryRecordEntry]:
+        out_dict: Dict[RecordId, DictionaryRecordEntry] = dict()
+        for id, entry in d.items():
+            out_dict[RecordId(id)] = DictionaryRecordEntry(
+                self.translate_component_instance(entry["instance"]),
+                self.translate_record(entry["record"]),
+            )
+        return out_dict
+
+    def translate_container_entry_map(
+        self, d: Dict
+    ) -> Dict[ContainerId, DictionaryContainerEntry]:
+        out_dict: Dict[ContainerId, DictionaryContainerEntry] = dict()
+        for id, entry in d.items():
+            out_dict[ContainerId(id)] = DictionaryContainerEntry(
+                self.translate_component_instance(entry["instance"]),
+                self.translate_container(entry["container"]),
+            )
+        return out_dict
+
+    def translate_dictionary(self, d: Dict) -> Dictionary:
+        return Dictionary(
+            used_symbol_set={
+                self.translate_symbol("Topology", s["Topology"]["nodeId"])
+                for s in d["usedSymbolSet"]
+            },
+            command_entry_map=self.translate_command_entry_map(d["commandEntryMap"]),
+            tlm_channel_entry_map=self.translate_tlm_channel_entry_map(
+                d["tlmChannelEntryMap"]
+            ),
+            event_entry_map=self.translate_event_entry_map(d["eventEntryMap"]),
+            param_entry_map=self.translate_param_entry_map(d["paramEntryMap"]),
+            record_entry_map=self.translate_record_entry_map(d["recordEntryMap"]),
+            container_entry_map=self.translate_container_entry_map(
+                d["containerEntryMap"]
+            ),
+            tlm_packet_set_map=self.translate_tlm_packet_set_map(d["tlmPacketSetMap"]),
+        )
+
+    def translate_dictionary_map(self, d: Dict) -> Dict[AstId, Dictionary]:
+        out_dict: Dict[AstId, Dictionary] = dict()
+        for top_id, dictionary in d.items():
+            out_dict[AstId(top_id)] = self.translate_dictionary(dictionary)
+        return out_dict
+
     def translate_analysis_json(self) -> Analysis:
         if not os.path.exists(self.analysis_json_file):
             raise FileNotFoundError(f'File "{self.analysis_json_file}" not found')
@@ -1612,5 +1746,8 @@ class AnalysisTranslator:
                 ),
                 framework_definitions=self.translate_framework_definitions(
                     self.require_type(data.get("frameworkDefinitions"), dict)
+                ),
+                dictionary_map=self.translate_dictionary_map(
+                    self.require_type(data.get("dictionaryMap"), dict)
                 ),
             )
