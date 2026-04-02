@@ -80,10 +80,6 @@ class Dictionary:
     tlm_channel_entry_map: Dict[TlmChannelId, DictionaryTlmChannelEntry] = field(
         default_factory=dict
     )
-    # The reverse telemetry channel map (for packet construction)
-    reverse_tlm_channel_entry_map: Dict[DictionaryTlmChannelEntry, TlmChannelId] = (
-        field(default_factory=dict)
-    )
     # The map from global IDs to event entries
     event_entry_map: Dict[EventId, DictionaryEventEntry] = field(default_factory=dict)
     # The map from global IDs to parameter entries
