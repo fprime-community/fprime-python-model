@@ -1820,10 +1820,10 @@
       }
     },
     "useDefMap" : {
-      "12" : {
-        "Port" : {
-          "nodeId" : 0,
-          "unqualifiedName" : "P"
+      "60" : {
+        "ComponentInstance" : {
+          "nodeId" : 22,
+          "unqualifiedName" : "c2"
         }
       },
       "33" : {
@@ -1832,16 +1832,46 @@
           "unqualifiedName" : "c1"
         }
       },
-      "60" : {
-        "ComponentInstance" : {
-          "nodeId" : 22,
-          "unqualifiedName" : "c2"
-        }
-      },
       "64" : {
         "ComponentInstance" : {
           "nodeId" : 18,
           "unqualifiedName" : "c1"
+        }
+      },
+      "12" : {
+        "Port" : {
+          "nodeId" : 0,
+          "unqualifiedName" : "P"
+        }
+      },
+      "3" : {
+        "Port" : {
+          "nodeId" : 0,
+          "unqualifiedName" : "P"
+        }
+      },
+      "16" : {
+        "Component" : {
+          "nodeId" : 14,
+          "unqualifiedName" : "C"
+        }
+      },
+      "26" : {
+        "ComponentInstance" : {
+          "nodeId" : 18,
+          "unqualifiedName" : "c1"
+        }
+      },
+      "24" : {
+        "Interface" : {
+          "nodeId" : 1,
+          "unqualifiedName" : "I"
+        }
+      },
+      "37" : {
+        "ComponentInstance" : {
+          "nodeId" : 22,
+          "unqualifiedName" : "c2"
         }
       },
       "20" : {
@@ -1854,36 +1884,6 @@
         "ComponentInstance" : {
           "nodeId" : 22,
           "unqualifiedName" : "c2"
-        }
-      },
-      "3" : {
-        "Port" : {
-          "nodeId" : 0,
-          "unqualifiedName" : "P"
-        }
-      },
-      "26" : {
-        "ComponentInstance" : {
-          "nodeId" : 18,
-          "unqualifiedName" : "c1"
-        }
-      },
-      "37" : {
-        "ComponentInstance" : {
-          "nodeId" : 22,
-          "unqualifiedName" : "c2"
-        }
-      },
-      "24" : {
-        "Interface" : {
-          "nodeId" : 1,
-          "unqualifiedName" : "I"
-        }
-      },
-      "16" : {
-        "Component" : {
-          "nodeId" : 14,
-          "unqualifiedName" : "C"
         }
       }
     },

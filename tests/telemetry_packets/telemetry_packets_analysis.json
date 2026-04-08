@@ -794,7 +794,7 @@
       }
     },
     "typeMap" : {
-      "23" : {
+      "101" : {
         "Int" : {
           "Integer" : {
             
@@ -826,7 +826,7 @@
           }
         }
       },
-      "101" : {
+      "23" : {
         "Int" : {
           "Integer" : {
             
@@ -835,10 +835,10 @@
       }
     },
     "useDefMap" : {
-      "12" : {
+      "10" : {
         "Port" : {
-          "nodeId" : 0,
-          "unqualifiedName" : "Tlm"
+          "nodeId" : 5,
+          "unqualifiedName" : "P"
         }
       },
       "110" : {
@@ -853,28 +853,10 @@
           "unqualifiedName" : "c2"
         }
       },
-      "22" : {
-        "Component" : {
-          "nodeId" : 20,
-          "unqualifiedName" : "C"
-        }
-      },
-      "26" : {
-        "Component" : {
-          "nodeId" : 20,
-          "unqualifiedName" : "C"
-        }
-      },
       "13" : {
         "Port" : {
           "nodeId" : 3,
           "unqualifiedName" : "Time"
-        }
-      },
-      "10" : {
-        "Port" : {
-          "nodeId" : 5,
-          "unqualifiedName" : "P"
         }
       },
       "105" : {
@@ -883,16 +865,34 @@
           "unqualifiedName" : "c1"
         }
       },
-      "30" : {
-        "ComponentInstance" : {
-          "nodeId" : 24,
-          "unqualifiedName" : "c1"
+      "22" : {
+        "Component" : {
+          "nodeId" : 20,
+          "unqualifiedName" : "C"
+        }
+      },
+      "12" : {
+        "Port" : {
+          "nodeId" : 0,
+          "unqualifiedName" : "Tlm"
         }
       },
       "7" : {
         "Port" : {
           "nodeId" : 5,
           "unqualifiedName" : "P"
+        }
+      },
+      "26" : {
+        "Component" : {
+          "nodeId" : 20,
+          "unqualifiedName" : "C"
+        }
+      },
+      "30" : {
+        "ComponentInstance" : {
+          "nodeId" : 24,
+          "unqualifiedName" : "c1"
         }
       }
     },

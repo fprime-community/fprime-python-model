@@ -299,12 +299,6 @@
       }
     },
     "useDefMap" : {
-      "8" : {
-        "Module" : {
-          "nodeId" : 25,
-          "unqualifiedName" : "Svc"
-        }
-      },
       "5" : {
         "Port" : {
           "nodeId" : 24,
@@ -330,6 +324,12 @@
         }
       },
       "3" : {
+        "Module" : {
+          "nodeId" : 25,
+          "unqualifiedName" : "Svc"
+        }
+      },
+      "8" : {
         "Module" : {
           "nodeId" : 25,
           "unqualifiedName" : "Svc"

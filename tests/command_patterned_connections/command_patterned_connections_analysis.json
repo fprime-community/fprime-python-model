@@ -435,13 +435,25 @@
     "locationSpecifierMap" : [
     ],
     "parentSymbolMap" : {
-      "26" : {
+      "0" : {
+        "Module" : {
+          "nodeId" : 5,
+          "unqualifiedName" : "Fw"
+        }
+      },
+      "4" : {
+        "Module" : {
+          "nodeId" : 5,
+          "unqualifiedName" : "Fw"
+        }
+      },
+      "32" : {
         "Module" : {
           "nodeId" : 107,
           "unqualifiedName" : "M"
         }
       },
-      "32" : {
+      "26" : {
         "Module" : {
           "nodeId" : 107,
           "unqualifiedName" : "M"
@@ -453,13 +465,7 @@
           "unqualifiedName" : "M"
         }
       },
-      "0" : {
-        "Module" : {
-          "nodeId" : 5,
-          "unqualifiedName" : "Fw"
-        }
-      },
-      "4" : {
+      "1" : {
         "Module" : {
           "nodeId" : 5,
           "unqualifiedName" : "Fw"
@@ -475,12 +481,6 @@
         "Module" : {
           "nodeId" : 107,
           "unqualifiedName" : "M"
-        }
-      },
-      "1" : {
-        "Module" : {
-          "nodeId" : 5,
-          "unqualifiedName" : "Fw"
         }
       }
     },
@@ -2890,25 +2890,7 @@
       }
     },
     "useDefMap" : {
-      "34" : {
-        "Component" : {
-          "nodeId" : 26,
-          "unqualifiedName" : "Commands"
-        }
-      },
-      "8" : {
-        "Port" : {
-          "nodeId" : 1,
-          "unqualifiedName" : "CmdReg"
-        }
-      },
-      "104" : {
-        "ComponentInstance" : {
-          "nodeId" : 40,
-          "unqualifiedName" : "c"
-        }
-      },
-      "22" : {
+      "10" : {
         "Module" : {
           "nodeId" : 5,
           "unqualifiedName" : "Fw"
@@ -2920,13 +2902,61 @@
           "unqualifiedName" : "CmdResponse"
         }
       },
-      "10" : {
+      "89" : {
+        "ComponentInstance" : {
+          "nodeId" : 40,
+          "unqualifiedName" : "c"
+        }
+      },
+      "34" : {
+        "Component" : {
+          "nodeId" : 26,
+          "unqualifiedName" : "Commands"
+        }
+      },
+      "31" : {
+        "Port" : {
+          "nodeId" : 4,
+          "unqualifiedName" : "CmdResponse"
+        }
+      },
+      "104" : {
+        "ComponentInstance" : {
+          "nodeId" : 40,
+          "unqualifiedName" : "c"
+        }
+      },
+      "8" : {
+        "Port" : {
+          "nodeId" : 1,
+          "unqualifiedName" : "CmdReg"
+        }
+      },
+      "6" : {
         "Module" : {
           "nodeId" : 5,
           "unqualifiedName" : "Fw"
         }
       },
-      "6" : {
+      "102" : {
+        "ComponentInstance" : {
+          "nodeId" : 36,
+          "unqualifiedName" : "commands"
+        }
+      },
+      "28" : {
+        "Port" : {
+          "nodeId" : 0,
+          "unqualifiedName" : "Cmd"
+        }
+      },
+      "38" : {
+        "Component" : {
+          "nodeId" : 32,
+          "unqualifiedName" : "C"
+        }
+      },
+      "22" : {
         "Module" : {
           "nodeId" : 5,
           "unqualifiedName" : "Fw"
@@ -2938,46 +2968,16 @@
           "unqualifiedName" : "CmdReg"
         }
       },
-      "28" : {
-        "Port" : {
-          "nodeId" : 0,
-          "unqualifiedName" : "Cmd"
-        }
-      },
       "12" : {
         "Port" : {
           "nodeId" : 0,
           "unqualifiedName" : "Cmd"
         }
       },
-      "89" : {
-        "ComponentInstance" : {
-          "nodeId" : 40,
-          "unqualifiedName" : "c"
-        }
-      },
-      "102" : {
-        "ComponentInstance" : {
-          "nodeId" : 36,
-          "unqualifiedName" : "commands"
-        }
-      },
-      "31" : {
-        "Port" : {
-          "nodeId" : 4,
-          "unqualifiedName" : "CmdResponse"
-        }
-      },
       "86" : {
         "ComponentInstance" : {
           "nodeId" : 36,
           "unqualifiedName" : "commands"
-        }
-      },
-      "38" : {
-        "Component" : {
-          "nodeId" : 32,
-          "unqualifiedName" : "C"
         }
       }
     },
