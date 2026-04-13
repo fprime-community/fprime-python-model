@@ -5,7 +5,7 @@ from pathlib import Path
 
 @dataclass
 class Location:
-    path: Path
+    file: Path
     pos: str
     including_loc: Optional["Location"]
 
