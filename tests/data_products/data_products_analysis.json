@@ -12,34 +12,6 @@
         "portInterface" : {
           "instanceType" : "component",
           "portMap" : {
-            "productRequestOut" : {
-              "Special" : {
-                "aNode" : {
-                  "astNodeId" : 7
-                },
-                "specifier" : {
-                  "inputKind" : "None",
-                  "kind" : {
-                    "ProductRequest" : {
-                      
-                    }
-                  },
-                  "name" : "productRequestOut",
-                  "priority" : "None",
-                  "queueFull" : "None"
-                },
-                "symbol" : {
-                  "Port" : {
-                    "nodeId" : 0,
-                    "unqualifiedName" : "DpRequest"
-                  }
-                },
-                "priority" : "None",
-                "queueFull" : "None",
-                "importNodeIds" : [
-                ]
-              }
-            },
             "productRecvIn" : {
               "Special" : {
                 "aNode" : {
@@ -76,6 +48,34 @@
                     }
                   }
                 },
+                "importNodeIds" : [
+                ]
+              }
+            },
+            "productRequestOut" : {
+              "Special" : {
+                "aNode" : {
+                  "astNodeId" : 7
+                },
+                "specifier" : {
+                  "inputKind" : "None",
+                  "kind" : {
+                    "ProductRequest" : {
+                      
+                    }
+                  },
+                  "name" : "productRequestOut",
+                  "priority" : "None",
+                  "queueFull" : "None"
+                },
+                "symbol" : {
+                  "Port" : {
+                    "nodeId" : 0,
+                    "unqualifiedName" : "DpRequest"
+                  }
+                },
+                "priority" : "None",
+                "queueFull" : "None",
                 "importNodeIds" : [
                 ]
               }
@@ -138,32 +138,6 @@
             }
           },
           "specialPortMap" : {
-            "product request" : {
-              "aNode" : {
-                "astNodeId" : 7
-              },
-              "specifier" : {
-                "inputKind" : "None",
-                "kind" : {
-                  "ProductRequest" : {
-                    
-                  }
-                },
-                "name" : "productRequestOut",
-                "priority" : "None",
-                "queueFull" : "None"
-              },
-              "symbol" : {
-                "Port" : {
-                  "nodeId" : 0,
-                  "unqualifiedName" : "DpRequest"
-                }
-              },
-              "priority" : "None",
-              "queueFull" : "None",
-              "importNodeIds" : [
-              ]
-            },
             "product recv" : {
               "aNode" : {
                 "astNodeId" : 8
@@ -199,6 +173,32 @@
                   }
                 }
               },
+              "importNodeIds" : [
+              ]
+            },
+            "product request" : {
+              "aNode" : {
+                "astNodeId" : 7
+              },
+              "specifier" : {
+                "inputKind" : "None",
+                "kind" : {
+                  "ProductRequest" : {
+                    
+                  }
+                },
+                "name" : "productRequestOut",
+                "priority" : "None",
+                "queueFull" : "None"
+              },
+              "symbol" : {
+                "Port" : {
+                  "nodeId" : 0,
+                  "unqualifiedName" : "DpRequest"
+                }
+              },
+              "priority" : "None",
+              "queueFull" : "None",
               "importNodeIds" : [
               ]
             },
@@ -428,18 +428,21 @@
       
     },
     "typeMap" : {
-      "25" : {
+      "12" : {
         "Int" : {
-          "PrimitiveInt" : {
-            "kind" : {
-              "U32" : {
-                
-              }
-            }
+          "Integer" : {
+            
           }
         }
       },
       "14" : {
+        "Int" : {
+          "Integer" : {
+            
+          }
+        }
+      },
+      "15" : {
         "Int" : {
           "Integer" : {
             
@@ -457,21 +460,18 @@
           }
         }
       },
-      "12" : {
+      "25" : {
         "Int" : {
-          "Integer" : {
-            
+          "PrimitiveInt" : {
+            "kind" : {
+              "U32" : {
+                
+              }
+            }
           }
         }
       },
       "26" : {
-        "Int" : {
-          "Integer" : {
-            
-          }
-        }
-      },
-      "15" : {
         "Int" : {
           "Integer" : {
             

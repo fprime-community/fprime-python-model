@@ -1820,31 +1820,13 @@
       }
     },
     "useDefMap" : {
-      "60" : {
-        "ComponentInstance" : {
-          "nodeId" : 22,
-          "unqualifiedName" : "c2"
-        }
-      },
-      "33" : {
-        "ComponentInstance" : {
-          "nodeId" : 18,
-          "unqualifiedName" : "c1"
-        }
-      },
-      "64" : {
-        "ComponentInstance" : {
-          "nodeId" : 18,
-          "unqualifiedName" : "c1"
-        }
-      },
-      "12" : {
+      "3" : {
         "Port" : {
           "nodeId" : 0,
           "unqualifiedName" : "P"
         }
       },
-      "3" : {
+      "12" : {
         "Port" : {
           "nodeId" : 0,
           "unqualifiedName" : "P"
@@ -1856,10 +1838,10 @@
           "unqualifiedName" : "C"
         }
       },
-      "26" : {
-        "ComponentInstance" : {
-          "nodeId" : 18,
-          "unqualifiedName" : "c1"
+      "20" : {
+        "Component" : {
+          "nodeId" : 14,
+          "unqualifiedName" : "C"
         }
       },
       "24" : {
@@ -1868,22 +1850,40 @@
           "unqualifiedName" : "I"
         }
       },
-      "37" : {
+      "26" : {
         "ComponentInstance" : {
-          "nodeId" : 22,
-          "unqualifiedName" : "c2"
-        }
-      },
-      "20" : {
-        "Component" : {
-          "nodeId" : 14,
-          "unqualifiedName" : "C"
+          "nodeId" : 18,
+          "unqualifiedName" : "c1"
         }
       },
       "29" : {
         "ComponentInstance" : {
           "nodeId" : 22,
           "unqualifiedName" : "c2"
+        }
+      },
+      "33" : {
+        "ComponentInstance" : {
+          "nodeId" : 18,
+          "unqualifiedName" : "c1"
+        }
+      },
+      "37" : {
+        "ComponentInstance" : {
+          "nodeId" : 22,
+          "unqualifiedName" : "c2"
+        }
+      },
+      "60" : {
+        "ComponentInstance" : {
+          "nodeId" : 22,
+          "unqualifiedName" : "c2"
+        }
+      },
+      "64" : {
+        "ComponentInstance" : {
+          "nodeId" : 18,
+          "unqualifiedName" : "c1"
         }
       }
     },
