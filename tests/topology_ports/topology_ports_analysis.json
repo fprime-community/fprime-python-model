@@ -1820,16 +1820,58 @@
       }
     },
     "useDefMap" : {
+      "3" : {
+        "Port" : {
+          "nodeId" : 0,
+          "unqualifiedName" : "P"
+        }
+      },
       "12" : {
         "Port" : {
           "nodeId" : 0,
           "unqualifiedName" : "P"
         }
       },
+      "16" : {
+        "Component" : {
+          "nodeId" : 14,
+          "unqualifiedName" : "C"
+        }
+      },
+      "20" : {
+        "Component" : {
+          "nodeId" : 14,
+          "unqualifiedName" : "C"
+        }
+      },
+      "24" : {
+        "Interface" : {
+          "nodeId" : 1,
+          "unqualifiedName" : "I"
+        }
+      },
+      "26" : {
+        "ComponentInstance" : {
+          "nodeId" : 18,
+          "unqualifiedName" : "c1"
+        }
+      },
+      "29" : {
+        "ComponentInstance" : {
+          "nodeId" : 22,
+          "unqualifiedName" : "c2"
+        }
+      },
       "33" : {
         "ComponentInstance" : {
           "nodeId" : 18,
           "unqualifiedName" : "c1"
+        }
+      },
+      "37" : {
+        "ComponentInstance" : {
+          "nodeId" : 22,
+          "unqualifiedName" : "c2"
         }
       },
       "60" : {
@@ -1842,48 +1884,6 @@
         "ComponentInstance" : {
           "nodeId" : 18,
           "unqualifiedName" : "c1"
-        }
-      },
-      "20" : {
-        "Component" : {
-          "nodeId" : 14,
-          "unqualifiedName" : "C"
-        }
-      },
-      "29" : {
-        "ComponentInstance" : {
-          "nodeId" : 22,
-          "unqualifiedName" : "c2"
-        }
-      },
-      "3" : {
-        "Port" : {
-          "nodeId" : 0,
-          "unqualifiedName" : "P"
-        }
-      },
-      "26" : {
-        "ComponentInstance" : {
-          "nodeId" : 18,
-          "unqualifiedName" : "c1"
-        }
-      },
-      "37" : {
-        "ComponentInstance" : {
-          "nodeId" : 22,
-          "unqualifiedName" : "c2"
-        }
-      },
-      "24" : {
-        "Interface" : {
-          "nodeId" : 1,
-          "unqualifiedName" : "I"
-        }
-      },
-      "16" : {
-        "Component" : {
-          "nodeId" : 14,
-          "unqualifiedName" : "C"
         }
       }
     },
@@ -1920,6 +1920,33 @@
           "specialPortMap" : {
             
           }
+        }
+      }
+    },
+    "dictionaryMap" : {
+      "67" : {
+        "usedSymbolSet" : [
+        ],
+        "commandEntryMap" : {
+          
+        },
+        "tlmChannelEntryMap" : {
+          
+        },
+        "eventEntryMap" : {
+          
+        },
+        "paramEntryMap" : {
+          
+        },
+        "recordEntryMap" : {
+          
+        },
+        "containerEntryMap" : {
+          
+        },
+        "tlmPacketSetMap" : {
+          
         }
       }
     }
