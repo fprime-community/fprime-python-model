@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
-from typing import List, TypeAlias, Optional, Tuple, override, TypeVar
+from typing import List, TypeAlias, Optional, Tuple, TypeVar
+from typing_extensions import override
 from dataclasses import dataclass
 from enum import Enum
 from fprime_python_model.fpp_ast.fpp_ast_node import AstNode
@@ -8,7 +9,7 @@ from fprime_python_model.utils.error import InternalError
 T = TypeVar("T")
 Annotated: TypeAlias = Tuple[List[str], T, List[str]]
 Ident: TypeAlias = str
-type FormalParamList = List[Annotated[AstNode["FormalParam"]]]
+FormalParamList: TypeAlias = List[Annotated[AstNode["FormalParam"]]]
 TUMember: TypeAlias = "ModuleMember"
 
 

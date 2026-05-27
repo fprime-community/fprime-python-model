@@ -1,4 +1,5 @@
-from typing import List, Tuple, TypeVar, override, Callable, TypeAlias
+from typing import List, Tuple, TypeVar, Callable, TypeAlias
+from typing_extensions import override
 from fprime_python_model.fpp_ast import fpp_ast
 from fprime_python_model.fpp_ast.fpp_ast_node import AstNode
 from fprime_python_model.utils.fpp_ast_visitor import AstVisitor, In

@@ -7,7 +7,8 @@ from fprime_python_model.semantics.state import get_substates
 from fprime_python_model.utils.error import InternalError
 from fprime_python_model.utils.fpp_ast_visitor import AstVisitor
 from enum import Enum
-from typing import Set, TypeAlias, override, List
+from typing import Set, TypeAlias, List
+from typing_extensions import override
 
 
 class StateMachineKind(Enum):

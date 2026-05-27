@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
-from typing import Optional, override, TypeAlias
+from typing import Optional, TypeAlias
+from typing_extensions import override
 from fprime_python_model.fpp_ast.fpp_ast_node import AstNode
 from fprime_python_model.fpp_ast import fpp_ast
 
