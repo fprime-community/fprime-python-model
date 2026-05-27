@@ -1,5 +1,12 @@
+import sys
 from typing import List, Tuple, TypeVar, Callable, TypeAlias
-from typing_extensions import override
+# typing.override was added in Python 3.12. On older versions we fall back to a
+# no-op decorator so the codebase stays compatible with Python 3.10+.
+if sys.version_info >= (3, 12):
+    from typing import override
+else:
+    def override(func):  # type: ignore[no-redef]
+        return func
 from fprime_python_model.fpp_ast import fpp_ast
 from fprime_python_model.fpp_ast.fpp_ast_node import AstNode
 from fprime_python_model.utils.fpp_ast_visitor import AstVisitor, In

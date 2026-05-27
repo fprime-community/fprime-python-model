@@ -31,8 +31,7 @@ dependencies = [
   "fprime-fpp>=3.2.0",
   "mypy==1.17.1",
   "packaging",
-  "pytest",
-  "typing_extensions>=4.4"
+  "pytest"
 ]
 
 [project.urls]

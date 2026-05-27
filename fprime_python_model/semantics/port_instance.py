@@ -1,8 +1,15 @@
 from abc import ABC, abstractmethod
 from enum import Enum
 from dataclasses import dataclass, field
+import sys
 from typing import List, Optional, Tuple
-from typing_extensions import override
+# typing.override was added in Python 3.12. On older versions we fall back to a
+# no-op decorator so the codebase stays compatible with Python 3.10+.
+if sys.version_info >= (3, 12):
+    from typing import override
+else:
+    def override(func):  # type: ignore[no-redef]
+        return func
 from fprime_python_model.fpp_ast.fpp_ast_node import AstNode, AstId
 from fprime_python_model.semantics.symbol import PortSymbol
 from fprime_python_model.fpp_ast import fpp_ast
