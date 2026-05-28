@@ -1,6 +1,14 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
-from typing import Optional, override, TypeAlias
+import sys
+from typing import Optional, TypeAlias
+# typing.override was added in Python 3.12. On older versions we fall back to a
+# no-op decorator so the codebase stays compatible with Python 3.10+.
+if sys.version_info >= (3, 12):
+    from typing import override
+else:
+    def override(func):  # type: ignore[no-redef]
+        return func
 from fprime_python_model.fpp_ast.fpp_ast_node import AstNode
 from fprime_python_model.fpp_ast import fpp_ast
 
