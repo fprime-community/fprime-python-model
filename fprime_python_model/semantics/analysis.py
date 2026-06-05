@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 from typing import Optional, Set, List, Dict, Tuple
-from fprime_python_model.fpp_ast.fpp_ast_node import AstId
+from fprime_python_model.fpp_ast.fpp_ast_node import AstId, AstNode
 from fprime_python_model.fpp_ast.fpp_ast import Ident, SpecLocKind, SpecLoc
 from fprime_python_model.semantics.symbol import (
     Symbol,
@@ -58,7 +58,7 @@ class Analysis:
 
     input_file_set: Set[Path] = field(default_factory=set)
     included_file_set: Set[Path] = field(default_factory=set)
-    location_specifier_map: Dict[Tuple[SpecLocKind, QualifiedName], SpecLoc] = field(
+    location_specifier_map: Dict[Tuple[SpecLocKind, QualifiedName], AstNode[SpecLoc]] = field(
         default_factory=dict
     )
     parent_symbol_map: Dict[AstId, Symbol] = field(default_factory=dict)
