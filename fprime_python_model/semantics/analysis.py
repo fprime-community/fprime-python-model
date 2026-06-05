@@ -15,6 +15,7 @@ from fprime_python_model.semantics.topology import Topology
 from fprime_python_model.semantics.state_machine import StateMachine
 from fprime_python_model.semantics.interface import Interface
 from fprime_python_model.semantics.framework_definitions import FrameworkDefinitions
+from fprime_python_model.semantics.dictionary import Dictionary
 from pathlib import Path
 
 
@@ -51,6 +52,8 @@ class Analysis:
     :type state_machine_map: Dict[AstId, StateMachine]
     :param framework_definitions: The framework definitions present in the model
     :type framework_definitions: FrameworkDefinitions
+    :param dictionary_map:  The map from topology AST IDs to dictionaries
+    :type dictionary_map: Dict[AstId, Dictionary]
     """
 
     input_file_set: Set[Path] = field(default_factory=set)
@@ -71,6 +74,7 @@ class Analysis:
     framework_definitions: FrameworkDefinitions = field(
         default_factory=FrameworkDefinitions
     )
+    dictionary_map: Dict[AstId, Dictionary] = field(default_factory=dict)
 
     def get_qualified_name_from_map(self, s: SymbolInterface) -> QualifiedName:
         """

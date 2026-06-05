@@ -1,0 +1,22 @@
+name: Format Python
+
+on: [push, pull_request]
+
+# NOTE: Formatting is not yet enforced on this repo.
+# To enable, remove the "if: false" line below.
+
+jobs:
+  format:
+    name: Format
+    if: false
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check formatting
+        run: |
+          pip install black==25.1.0
+          black --check --diff ./
