@@ -57,18 +57,12 @@ class Component:
     :type port_interface: PortInterface
     :param command_map: The map from command opcodes to commands
     :type command_map: Dict[CommandOpcode, Command]
-    :param default_opcode: The next default opcode
-    :type default_opcode: int
     :param tlm_channel_map: The map from telemetry channel IDs to channels
     :type tlm_channel_map: Dict[TlmChannelId, TlmChannel]
     :param tlm_channel_name_map: The map from telemetry channel names to channels
     :type tlm_channel_name_map: Dict[UnqualifiedName, TlmChannel]
-    :param default_tlm_channel_id: The next default telemetry channel ID
-    :type default_tlm_channel_id: int
     :param event_map: The map from event IDs to events
     :type event_map: Dict[EventId, Event]
-    :param default_event_id: The next default event ID
-    :type default_event_id: int
     :param param_map: The map from parameter IDs to parameters
     :type param_map: Dict[ParamId, Param]
     :param spec_port_matching_list: The list of port matching specifiers
@@ -77,16 +71,10 @@ class Component:
     :type state_machine_instance_map: Dict[UnqualifiedName, StateMachineInstance]
     :param port_matching_list: The list of port matching constraints
     :type port_matching_list: List[PortMatching]
-    :param default_param_id: The next default parameter ID
-    :type default_param_id: int
     :param container_map: The map from container IDs to containers
     :type container_map: Dict[ContainerId, Container]
-    :param default_container_id: The next default container ID
-    :type default_container_id: int
     :param record_map: The map from record IDs to records
     :type record_map: Dict[RecordId, Record]
-    :param default_record_id: The next default record ID
-    :type default_record_id: int
     """
 
     a_node: fpp_ast.Annotated[AstNode[fpp_ast.DefComponent]]
