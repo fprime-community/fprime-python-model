@@ -77,8 +77,6 @@ class Component:
     :type state_machine_instance_map: Dict[UnqualifiedName, StateMachineInstance]
     :param port_matching_list: The list of port matching constraints
     :type port_matching_list: List[PortMatching]
-    :param default_param_id: The next default parameter ID
-    :type default_param_id: int
     :param container_map: The map from container IDs to containers
     :type container_map: Dict[ContainerId, Container]
     :param default_container_id: The next default container ID
