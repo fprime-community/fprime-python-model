@@ -1010,14 +1010,11 @@ class AnalysisTranslator:
             a_node=a_node,
             port_interface=self.translate_port_interface(d["portInterface"]),
             command_map=self.translate_command_map(d["commandMap"]),
-            default_opcode=int(d["defaultOpcode"]),
             tlm_channel_map=self.translate_tlm_channel_map(d["tlmChannelMap"]),
             tlm_channel_name_map=self.translate_tlm_channel_name_map(
                 d["tlmChannelNameMap"]
             ),
-            default_tlm_channel_id=int(d["defaultTlmChannelId"]),
             event_map=self.translate_event_map(d["eventMap"]),
-            default_event_id=int(d["defaultEventId"]),
             param_map=self.translate_param_map(d["paramMap"]),
             spec_port_matching_list=self.translate_spec_port_matching_list(
                 self.require_type(d["specPortMatchingList"], list)
@@ -1028,11 +1025,8 @@ class AnalysisTranslator:
             port_matching_list=self.translate_port_matching_list(
                 self.require_type(d["portMatchingList"], list)
             ),
-            default_param_id=int(d["defaultParamId"]),
             container_map=self.translate_container_map(d["containerMap"]),
-            default_container_id=int(d["defaultContainerId"]),
             record_map=self.translate_record_map(d["recordMap"]),
-            default_record_id=int(d["defaultRecordId"])
         )
 
     def translate_direct(self, d: Dict) -> Dict[AstId, Location]:
