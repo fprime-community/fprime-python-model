@@ -7,7 +7,15 @@ from fprime_python_model.semantics.state import get_substates
 from fprime_python_model.utils.error import InternalError
 from fprime_python_model.utils.fpp_ast_visitor import AstVisitor
 from enum import Enum
-from typing import Set, TypeAlias, override, List
+import sys
+from typing import Set, TypeAlias, List
+# typing.override was added in Python 3.12. On older versions we fall back to a
+# no-op decorator so the codebase stays compatible with Python 3.10+.
+if sys.version_info >= (3, 12):
+    from typing import override
+else:
+    def override(func):  # type: ignore[no-redef]
+        return func
 
 
 class StateMachineKind(Enum):

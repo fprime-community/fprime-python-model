@@ -1,5 +1,13 @@
 from abc import ABC, abstractmethod
-from typing import List, TypeAlias, Optional, Tuple, override, TypeVar
+import sys
+from typing import List, TypeAlias, Optional, Tuple, TypeVar
+# typing.override was added in Python 3.12. On older versions we fall back to a
+# no-op decorator so the codebase stays compatible with Python 3.10+.
+if sys.version_info >= (3, 12):
+    from typing import override
+else:
+    def override(func):  # type: ignore[no-redef]
+        return func
 from dataclasses import dataclass
 from enum import Enum
 from fprime_python_model.fpp_ast.fpp_ast_node import AstNode
@@ -8,7 +16,7 @@ from fprime_python_model.utils.error import InternalError
 T = TypeVar("T")
 Annotated: TypeAlias = Tuple[List[str], T, List[str]]
 Ident: TypeAlias = str
-type FormalParamList = List[Annotated[AstNode["FormalParam"]]]
+FormalParamList: TypeAlias = List[Annotated[AstNode["FormalParam"]]]
 TUMember: TypeAlias = "ModuleMember"
 
 
