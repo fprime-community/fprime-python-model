@@ -88,9 +88,9 @@ def create_json_ref_files(
     test_name: str,
     input_file: Optional[str] = None,
 ):
-    fpp_to_json_cmd: List[str] = [str(fpp_to_json), fpp_ref_model]
+    fpp_to_json_cmd: List[str] = [str(fpp_to_json), "-f", fpp_ref_model]
     if input_file:
-        fpp_to_json_cmd = [str(fpp_to_json), fpp_ref_model, input_file]
+        fpp_to_json_cmd = [str(fpp_to_json), "-f", fpp_ref_model, input_file]
     # Run fpp-to-json on reference model and save output to test case directory
     result = subprocess.run(fpp_to_json_cmd)
     if result.returncode != 0:
