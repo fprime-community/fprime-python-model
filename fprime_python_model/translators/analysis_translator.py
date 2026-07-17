@@ -1665,9 +1665,12 @@ class AnalysisTranslator:
 
     def translate_dictionary(self, d: Dict) -> Dictionary:
         return Dictionary(
+            # Newer fpp versions include symbols of every kind (Enum, Port,
+            # etc.) in usedSymbolSet; only Topology symbols are retained here
             used_symbol_set={
                 self.translate_symbol("Topology", s["Topology"]["nodeId"])
                 for s in d["usedSymbolSet"]
+                if "Topology" in s
             },
             command_entry_map=self.translate_command_entry_map(d["commandEntryMap"]),
             tlm_channel_entry_map=self.translate_tlm_channel_entry_map(
