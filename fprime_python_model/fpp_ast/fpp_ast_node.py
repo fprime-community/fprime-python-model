@@ -1,5 +1,6 @@
 from dataclasses import dataclass, fields
 from typing import Generic, TypeVar, ClassVar, TypeAlias
+from typing_extensions import dataclass_transform
 
 T = TypeVar("T")
 AstId: TypeAlias = int
@@ -12,6 +13,7 @@ def _freeze(value):
     return value
 
 
+@dataclass_transform(frozen_default=True)
 def ast_dataclass(cls):
     """Frozen dataclass whose list-valued fields are converted to tuples on construction
 
