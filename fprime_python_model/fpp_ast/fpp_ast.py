@@ -8,9 +8,9 @@ if sys.version_info >= (3, 12):
 else:
     def override(func):  # type: ignore[no-redef]
         return func
-from dataclasses import dataclass
+
 from enum import Enum
-from fprime_python_model.fpp_ast.fpp_ast_node import AstNode
+from fprime_python_model.fpp_ast.fpp_ast_node import AstNode, ast_dataclass
 from fprime_python_model.utils.error import InternalError
 
 T = TypeVar("T")
@@ -20,7 +20,7 @@ FormalParamList: TypeAlias = List[Annotated[AstNode["FormalParam"]]]
 TUMember: TypeAlias = "ModuleMember"
 
 
-@dataclass
+@ast_dataclass
 class TransUnit:
     """
     Translation unit consisting of translation unit members
@@ -83,7 +83,7 @@ class QualIdent(ABC):
         pass
 
 
-@dataclass(eq=True)
+@ast_dataclass
 class Unqualified(QualIdent):
     """An unqualified identifier
 
@@ -97,11 +97,8 @@ class Unqualified(QualIdent):
     def to_ident_list(self):
         return [self.name]
 
-    def __hash__(self):
-        return hash(self.name)
 
-
-@dataclass
+@ast_dataclass
 class Qualified(QualIdent):
     """
     A qualified identifier
@@ -191,7 +188,7 @@ def name(node_list: NodeList) -> AstNode[Ident]:
 ##########################
 
 
-@dataclass
+@ast_dataclass
 class DefAbsType:
     """
     Abstract type definition
@@ -203,7 +200,7 @@ class DefAbsType:
     name: Ident
 
 
-@dataclass
+@ast_dataclass
 class DefAliasType:
     """
     Aliased type definition
@@ -221,7 +218,7 @@ class DefAliasType:
     is_dictionary_def: bool
 
 
-@dataclass
+@ast_dataclass
 class DefArray:
     """
     Array definition
@@ -248,7 +245,7 @@ class DefArray:
     is_dictionary_def: bool
 
 
-@dataclass
+@ast_dataclass
 class DefComponent:
     """
     Component definition
@@ -266,7 +263,7 @@ class DefComponent:
     members: List["ComponentMember"]
 
 
-@dataclass
+@ast_dataclass
 class DefComponentInstance:
     """
     Component instance definition
@@ -304,7 +301,7 @@ class DefComponentInstance:
     init_specs: List[Annotated[AstNode["SpecInit"]]]
 
 
-@dataclass
+@ast_dataclass
 class DefConstant:
     """
     Constant definition
@@ -322,7 +319,7 @@ class DefConstant:
     is_dictionary_def: bool
 
 
-@dataclass
+@ast_dataclass
 class DefEnum:
     """
     Enum definition
@@ -346,7 +343,7 @@ class DefEnum:
     is_dictionary_def: bool
 
 
-@dataclass
+@ast_dataclass
 class DefEnumConstant:
     """
     Enum constant definition
@@ -361,7 +358,7 @@ class DefEnumConstant:
     value: Optional[AstNode["Expr"]]
 
 
-@dataclass
+@ast_dataclass
 class DefModule:
     """
     Module definition
@@ -376,7 +373,7 @@ class DefModule:
     members: List["ModuleMember"]
 
 
-@dataclass
+@ast_dataclass
 class DefPort:
     """
     Port definition
@@ -394,7 +391,7 @@ class DefPort:
     return_type: Optional[AstNode["TypeName"]]
 
 
-@dataclass
+@ast_dataclass
 class DefStateMachine:
     """
     State machine definition
@@ -409,7 +406,7 @@ class DefStateMachine:
     members: Optional[List["StateMachineMember"]]
 
 
-@dataclass
+@ast_dataclass
 class DefAction:
     """
     Action definition
@@ -424,7 +421,7 @@ class DefAction:
     type_name: Optional[AstNode["TypeName"]]
 
 
-@dataclass
+@ast_dataclass
 class DefChoice:
     """
     Choice definition
@@ -445,7 +442,7 @@ class DefChoice:
     else_transition: AstNode["TransitionExpr"]
 
 
-@dataclass
+@ast_dataclass
 class DefGuard:
     """
     Guard definition
@@ -460,7 +457,7 @@ class DefGuard:
     type_name: Optional[AstNode["TypeName"]]
 
 
-@dataclass
+@ast_dataclass
 class DefSignal:
     """
     Signal definition
@@ -475,7 +472,7 @@ class DefSignal:
     type_name: Optional[AstNode["TypeName"]]
 
 
-@dataclass
+@ast_dataclass
 class DefState:
     """
     State definition
@@ -490,7 +487,7 @@ class DefState:
     members: List["StateMember"]
 
 
-@dataclass
+@ast_dataclass
 class DefInterface:
     """
     Interface definition
@@ -505,7 +502,7 @@ class DefInterface:
     members: List["InterfaceMember"]
 
 
-@dataclass
+@ast_dataclass
 class DefStruct:
     """
     Struct definition
@@ -526,7 +523,7 @@ class DefStruct:
     is_dictionary_def: bool
 
 
-@dataclass
+@ast_dataclass
 class DefTopology:
     """
     Topology defintion
@@ -551,7 +548,7 @@ class ComponentMemberNode(ABC):
     pass
 
 
-@dataclass
+@ast_dataclass
 class ComponentMember:
     """
     Component member with annotated component member node
@@ -563,7 +560,7 @@ class ComponentMember:
     node: Annotated[ComponentMemberNode]
 
 
-@dataclass
+@ast_dataclass
 class ComponentMemberDefAbsType(ComponentMemberNode):
     """
     Abstract type component member
@@ -575,7 +572,7 @@ class ComponentMemberDefAbsType(ComponentMemberNode):
     node: AstNode[DefAbsType]
 
 
-@dataclass
+@ast_dataclass
 class ComponentMemberDefAliasType(ComponentMemberNode):
     """
     Alias type component member
@@ -587,7 +584,7 @@ class ComponentMemberDefAliasType(ComponentMemberNode):
     node: AstNode[DefAliasType]
 
 
-@dataclass
+@ast_dataclass
 class ComponentMemberDefArray(ComponentMemberNode):
     """
     Array component member
@@ -599,7 +596,7 @@ class ComponentMemberDefArray(ComponentMemberNode):
     node: AstNode[DefArray]
 
 
-@dataclass
+@ast_dataclass
 class ComponentMemberDefConstant(ComponentMemberNode):
     """
     Constant component member
@@ -611,7 +608,7 @@ class ComponentMemberDefConstant(ComponentMemberNode):
     node: AstNode[DefConstant]
 
 
-@dataclass
+@ast_dataclass
 class ComponentMemberDefEnum(ComponentMemberNode):
     """
     Enum component member
@@ -623,7 +620,7 @@ class ComponentMemberDefEnum(ComponentMemberNode):
     node: AstNode[DefEnum]
 
 
-@dataclass
+@ast_dataclass
 class ComponentMemberDefStateMachine(ComponentMemberNode):
     """
     State machine component member
@@ -635,7 +632,7 @@ class ComponentMemberDefStateMachine(ComponentMemberNode):
     node: AstNode[DefStateMachine]
 
 
-@dataclass
+@ast_dataclass
 class ComponentMemberDefStruct(ComponentMemberNode):
     """
     Struct component member
@@ -647,7 +644,7 @@ class ComponentMemberDefStruct(ComponentMemberNode):
     node: AstNode[DefStruct]
 
 
-@dataclass
+@ast_dataclass
 class ComponentMemberSpecCommand(ComponentMemberNode):
     """
     Command component member
@@ -659,7 +656,7 @@ class ComponentMemberSpecCommand(ComponentMemberNode):
     node: AstNode["SpecCommand"]
 
 
-@dataclass
+@ast_dataclass
 class ComponentMemberSpecContainer(ComponentMemberNode):
     """
     Container component member
@@ -671,7 +668,7 @@ class ComponentMemberSpecContainer(ComponentMemberNode):
     node: AstNode["SpecContainer"]
 
 
-@dataclass
+@ast_dataclass
 class ComponentMemberSpecEvent(ComponentMemberNode):
     """
     Event component member
@@ -683,7 +680,7 @@ class ComponentMemberSpecEvent(ComponentMemberNode):
     node: AstNode["SpecEvent"]
 
 
-@dataclass
+@ast_dataclass
 class ComponentMemberSpecInclude(ComponentMemberNode):
     """
     Include specifier component member
@@ -695,7 +692,7 @@ class ComponentMemberSpecInclude(ComponentMemberNode):
     node: AstNode["SpecInclude"]
 
 
-@dataclass
+@ast_dataclass
 class ComponentMemberSpecInternalPort(ComponentMemberNode):
     """
     Internal port specifier component member
@@ -707,7 +704,7 @@ class ComponentMemberSpecInternalPort(ComponentMemberNode):
     node: AstNode["SpecInternalPort"]
 
 
-@dataclass
+@ast_dataclass
 class ComponentMemberSpecParam(ComponentMemberNode):
     """
     Param component member
@@ -719,7 +716,7 @@ class ComponentMemberSpecParam(ComponentMemberNode):
     node: AstNode["SpecParam"]
 
 
-@dataclass
+@ast_dataclass
 class ComponentMemberSpecPortInstance(ComponentMemberNode):
     """
     Port instance component member
@@ -731,7 +728,7 @@ class ComponentMemberSpecPortInstance(ComponentMemberNode):
     node: AstNode["SpecPortInstance"]
 
 
-@dataclass
+@ast_dataclass
 class ComponentMemberSpecPortMatching(ComponentMemberNode):
     """
     Port matching component member
@@ -743,7 +740,7 @@ class ComponentMemberSpecPortMatching(ComponentMemberNode):
     node: AstNode["SpecPortMatching"]
 
 
-@dataclass
+@ast_dataclass
 class ComponentMemberSpecRecord(ComponentMemberNode):
     """
     Record component member
@@ -755,7 +752,7 @@ class ComponentMemberSpecRecord(ComponentMemberNode):
     node: AstNode["SpecRecord"]
 
 
-@dataclass
+@ast_dataclass
 class ComponentMemberSpecStateMachineInstance(ComponentMemberNode):
     """
     State machine instance component member
@@ -767,7 +764,7 @@ class ComponentMemberSpecStateMachineInstance(ComponentMemberNode):
     node: AstNode["SpecStateMachineInstance"]
 
 
-@dataclass
+@ast_dataclass
 class ComponentMemberSpecTlmChannel(ComponentMemberNode):
     """
     Telemetry channel component member
@@ -779,7 +776,7 @@ class ComponentMemberSpecTlmChannel(ComponentMemberNode):
     node: AstNode["SpecTlmChannel"]
 
 
-@dataclass
+@ast_dataclass
 class ComponentMemberSpecImportInterface(ComponentMemberNode):
     """
     Import specifier component member
@@ -800,7 +797,7 @@ class ModuleMemberNode(ABC):
     pass
 
 
-@dataclass
+@ast_dataclass
 class ModuleMember:
     """
     Module member with annotated module member node
@@ -813,7 +810,7 @@ class ModuleMember:
     node: Annotated[ModuleMemberNode]
 
 
-@dataclass
+@ast_dataclass
 class ModuleMemberDefAbsType(ModuleMemberNode):
     """
     Abstract type module member
@@ -825,7 +822,7 @@ class ModuleMemberDefAbsType(ModuleMemberNode):
     node: AstNode[DefAbsType]
 
 
-@dataclass
+@ast_dataclass
 class ModuleMemberDefAliasType(ModuleMemberNode):
     """
     Alias type module member
@@ -837,7 +834,7 @@ class ModuleMemberDefAliasType(ModuleMemberNode):
     node: AstNode[DefAliasType]
 
 
-@dataclass
+@ast_dataclass
 class ModuleMemberDefArray(ModuleMemberNode):
     """
     Array module member
@@ -849,7 +846,7 @@ class ModuleMemberDefArray(ModuleMemberNode):
     node: AstNode[DefArray]
 
 
-@dataclass
+@ast_dataclass
 class ModuleMemberDefComponent(ModuleMemberNode):
     """
     Component module member
@@ -861,7 +858,7 @@ class ModuleMemberDefComponent(ModuleMemberNode):
     node: AstNode[DefComponent]
 
 
-@dataclass
+@ast_dataclass
 class ModuleMemberDefComponentInstance(ModuleMemberNode):
     """
     Component instance module member
@@ -873,7 +870,7 @@ class ModuleMemberDefComponentInstance(ModuleMemberNode):
     node: AstNode[DefComponentInstance]
 
 
-@dataclass
+@ast_dataclass
 class ModuleMemberDefConstant(ModuleMemberNode):
     """
     Constant module member
@@ -885,7 +882,7 @@ class ModuleMemberDefConstant(ModuleMemberNode):
     node: AstNode[DefConstant]
 
 
-@dataclass
+@ast_dataclass
 class ModuleMemberDefEnum(ModuleMemberNode):
     """
     Enum module member
@@ -897,7 +894,7 @@ class ModuleMemberDefEnum(ModuleMemberNode):
     node: AstNode[DefEnum]
 
 
-@dataclass
+@ast_dataclass
 class ModuleMemberDefInterface(ModuleMemberNode):
     """
     Interface module member
@@ -909,7 +906,7 @@ class ModuleMemberDefInterface(ModuleMemberNode):
     node: AstNode["DefInterface"]
 
 
-@dataclass
+@ast_dataclass
 class ModuleMemberDefModule(ModuleMemberNode):
     """
     Module module member
@@ -921,7 +918,7 @@ class ModuleMemberDefModule(ModuleMemberNode):
     node: AstNode[DefModule]
 
 
-@dataclass
+@ast_dataclass
 class ModuleMemberDefPort(ModuleMemberNode):
     """
     Port module member
@@ -933,7 +930,7 @@ class ModuleMemberDefPort(ModuleMemberNode):
     node: AstNode["DefPort"]
 
 
-@dataclass
+@ast_dataclass
 class ModuleMemberDefStateMachine(ModuleMemberNode):
     """
     State machine module member
@@ -945,7 +942,7 @@ class ModuleMemberDefStateMachine(ModuleMemberNode):
     node: AstNode["DefStateMachine"]
 
 
-@dataclass
+@ast_dataclass
 class ModuleMemberDefStruct(ModuleMemberNode):
     """
     Struct module member
@@ -957,7 +954,7 @@ class ModuleMemberDefStruct(ModuleMemberNode):
     node: AstNode["DefStruct"]
 
 
-@dataclass
+@ast_dataclass
 class ModuleMemberDefTopology(ModuleMemberNode):
     """
     Topology module member
@@ -969,7 +966,7 @@ class ModuleMemberDefTopology(ModuleMemberNode):
     node: AstNode["DefTopology"]
 
 
-@dataclass
+@ast_dataclass
 class ModuleMemberSpecInclude(ModuleMemberNode):
     """
     Include specifier module member
@@ -981,7 +978,7 @@ class ModuleMemberSpecInclude(ModuleMemberNode):
     node: AstNode["SpecInclude"]
 
 
-@dataclass
+@ast_dataclass
 class ModuleMemberSpecLoc(ModuleMemberNode):
     """
     Location specifier module member
@@ -998,7 +995,7 @@ class ModuleMemberSpecLoc(ModuleMemberNode):
 ##########################
 
 
-@dataclass
+@ast_dataclass
 class StateMachineMember:
     """
     State machine member with annotated state machine member member node
@@ -1014,12 +1011,12 @@ class StateMachineMemberNode(ABC):
     pass
 
 
-@dataclass
+@ast_dataclass
 class StateMachineMemberDefAbsType(StateMachineMemberNode):
     node: AstNode[DefAbsType]
 
 
-@dataclass
+@ast_dataclass
 class StateMachineMemberDefAction(StateMachineMemberNode):
     """
     Action state machine member
@@ -1031,17 +1028,17 @@ class StateMachineMemberDefAction(StateMachineMemberNode):
     node: AstNode["DefAction"]
 
 
-@dataclass
+@ast_dataclass
 class StateMachineMemberDefAliasType(StateMachineMemberNode):
     node: AstNode[DefAliasType]
 
 
-@dataclass
+@ast_dataclass
 class StateMachineMemberDefArray(StateMachineMemberNode):
     node: AstNode[DefArray]
 
 
-@dataclass
+@ast_dataclass
 class StateMachineMemberDefChoice(StateMachineMemberNode):
     """
     Choice state machine member
@@ -1053,17 +1050,17 @@ class StateMachineMemberDefChoice(StateMachineMemberNode):
     node: AstNode["DefChoice"]
 
 
-@dataclass
+@ast_dataclass
 class StateMachineMemberDefConstant(StateMachineMemberNode):
     node: AstNode[DefConstant]
 
 
-@dataclass
+@ast_dataclass
 class StateMachineMemberDefEnum(StateMachineMemberNode):
     node: AstNode[DefEnum]
 
 
-@dataclass
+@ast_dataclass
 class StateMachineMemberDefGuard(StateMachineMemberNode):
     """
     Guard state machine member
@@ -1075,7 +1072,7 @@ class StateMachineMemberDefGuard(StateMachineMemberNode):
     node: AstNode["DefGuard"]
 
 
-@dataclass
+@ast_dataclass
 class StateMachineMemberDefSignal(StateMachineMemberNode):
     """
     Signal state machine member
@@ -1087,7 +1084,7 @@ class StateMachineMemberDefSignal(StateMachineMemberNode):
     node: AstNode["DefSignal"]
 
 
-@dataclass
+@ast_dataclass
 class StateMachineMemberDefState(StateMachineMemberNode):
     """
     State state machine member
@@ -1099,17 +1096,17 @@ class StateMachineMemberDefState(StateMachineMemberNode):
     node: AstNode["DefState"]
 
 
-@dataclass
+@ast_dataclass
 class StateMachineMemberDefStruct(StateMachineMemberNode):
     node: AstNode[DefStruct]
 
 
-@dataclass
+@ast_dataclass
 class StateMachineMemberSpecInclude(StateMachineMemberNode):
     node: AstNode["SpecInclude"]
 
 
-@dataclass
+@ast_dataclass
 class StateMachineMemberSpecInitialTransition(StateMachineMemberNode):
     """
     Initial transition state machine member
@@ -1126,7 +1123,7 @@ class StateMachineMemberSpecInitialTransition(StateMachineMemberNode):
 ##########################
 
 
-@dataclass
+@ast_dataclass
 class StateMember:
     """
     State member with annotated state member node
@@ -1142,7 +1139,7 @@ class StateMemberNode(ABC):
     pass
 
 
-@dataclass
+@ast_dataclass
 class StateMemberDefChoice(StateMemberNode):
     """
     Choice state member
@@ -1154,7 +1151,7 @@ class StateMemberDefChoice(StateMemberNode):
     node: AstNode[DefChoice]
 
 
-@dataclass
+@ast_dataclass
 class StateMemberDefState(StateMemberNode):
     """
     State state member
@@ -1166,7 +1163,7 @@ class StateMemberDefState(StateMemberNode):
     node: AstNode[DefState]
 
 
-@dataclass
+@ast_dataclass
 class StateMemberSpecStateEntry(StateMemberNode):
     """
     State entry state member
@@ -1178,7 +1175,7 @@ class StateMemberSpecStateEntry(StateMemberNode):
     node: AstNode["SpecStateEntry"]
 
 
-@dataclass
+@ast_dataclass
 class StateMemberSpecStateExit(StateMemberNode):
     """
     State exit state member
@@ -1190,7 +1187,7 @@ class StateMemberSpecStateExit(StateMemberNode):
     node: AstNode["SpecStateExit"]
 
 
-@dataclass
+@ast_dataclass
 class StateMemberSpecInitialTransition(StateMemberNode):
     """
     Initial state state member
@@ -1202,7 +1199,7 @@ class StateMemberSpecInitialTransition(StateMemberNode):
     node: AstNode["SpecInitialTransition"]
 
 
-@dataclass
+@ast_dataclass
 class StateMemberSpecStateTransition(StateMemberNode):
     """
     Transition state member
@@ -1223,7 +1220,7 @@ class Expr(ABC):
     pass
 
 
-@dataclass
+@ast_dataclass
 class ExprArray(Expr):
     """
     Array expression
@@ -1235,7 +1232,7 @@ class ExprArray(Expr):
     elts: List[AstNode[Expr]]
 
 
-@dataclass
+@ast_dataclass
 class ExprArraySubscript(Expr):
     """
     Array expression
@@ -1250,7 +1247,7 @@ class ExprArraySubscript(Expr):
     e2: AstNode[Expr]
 
 
-@dataclass
+@ast_dataclass
 class ExprBinop(Expr):
     """
     Binary operation expression
@@ -1268,7 +1265,7 @@ class ExprBinop(Expr):
     e2: AstNode[Expr]
 
 
-@dataclass
+@ast_dataclass
 class ExprDot(Expr):
     """
     Dot expression
@@ -1283,7 +1280,7 @@ class ExprDot(Expr):
     id: AstNode[Ident]
 
 
-@dataclass
+@ast_dataclass
 class ExprIdent(Expr):
     """
     Ident expression
@@ -1295,7 +1292,7 @@ class ExprIdent(Expr):
     value: Ident
 
 
-@dataclass
+@ast_dataclass
 class ExprLiteralBool(Expr):
     """
     Literal Boolean expression
@@ -1307,7 +1304,7 @@ class ExprLiteralBool(Expr):
     value: "LiteralBool"
 
 
-@dataclass
+@ast_dataclass
 class ExprLiteralInt(Expr):
     """
     Literal integer expression
@@ -1319,7 +1316,7 @@ class ExprLiteralInt(Expr):
     value: str
 
 
-@dataclass
+@ast_dataclass
 class ExprLiteralFloat(Expr):
     """
     Literal float expression
@@ -1331,7 +1328,7 @@ class ExprLiteralFloat(Expr):
     value: str
 
 
-@dataclass
+@ast_dataclass
 class ExprLiteralString(Expr):
     """
     Literal string expression
@@ -1343,7 +1340,7 @@ class ExprLiteralString(Expr):
     value: str
 
 
-@dataclass
+@ast_dataclass
 class ExprParen(Expr):
     """
     Parenthesis expression
@@ -1355,12 +1352,12 @@ class ExprParen(Expr):
     e: AstNode[Expr]
 
 
-@dataclass
+@ast_dataclass
 class ExprSizeOf(Expr):
     type_name: AstNode["TypeName"]
 
 
-@dataclass
+@ast_dataclass
 class ExprStruct(Expr):
     """
     Struct expression
@@ -1372,7 +1369,7 @@ class ExprStruct(Expr):
     members: List[AstNode["StructMember"]]
 
 
-@dataclass
+@ast_dataclass
 class ExprUnop(Expr):
     """
     Unary operation expression
@@ -1396,7 +1393,7 @@ class TopologyMemberNode(ABC):
     pass
 
 
-@dataclass
+@ast_dataclass
 class TopologyMember:
     """
     Topology member with anotated topology member node
@@ -1408,7 +1405,7 @@ class TopologyMember:
     node: Annotated[TopologyMemberNode]
 
 
-@dataclass
+@ast_dataclass
 class TopologyMemberSpecInstance(TopologyMemberNode):
     """
     Component instance topology member
@@ -1420,7 +1417,7 @@ class TopologyMemberSpecInstance(TopologyMemberNode):
     node: AstNode["SpecInstance"]
 
 
-@dataclass
+@ast_dataclass
 class TopologyMemberSpecConnectionGraph(TopologyMemberNode):
     """
     Connection graph topology member
@@ -1432,7 +1429,7 @@ class TopologyMemberSpecConnectionGraph(TopologyMemberNode):
     node: AstNode["SpecConnectionGraph"]
 
 
-@dataclass
+@ast_dataclass
 class TopologyMemberSpecInclude(TopologyMemberNode):
     """
     Include specifier topology member
@@ -1444,7 +1441,7 @@ class TopologyMemberSpecInclude(TopologyMemberNode):
     node: AstNode["SpecInclude"]
 
 
-@dataclass
+@ast_dataclass
 class TopologyMemberSpecTlmPacketSet(TopologyMemberNode):
     """
     Telemetry packet set topology member
@@ -1456,7 +1453,7 @@ class TopologyMemberSpecTlmPacketSet(TopologyMemberNode):
     node: AstNode["SpecTlmPacketSet"]
 
 
-@dataclass
+@ast_dataclass
 class TopologyMemberSpecTopPort(TopologyMemberNode):
     """
     Topology import topology member
@@ -1477,7 +1474,7 @@ class TlmPacketSetMemberNode(ABC):
     pass
 
 
-@dataclass
+@ast_dataclass
 class TlmPacketSetMember:
     """
     Telemetry packet set member with annotated telemetry packet set member node
@@ -1489,7 +1486,7 @@ class TlmPacketSetMember:
     node: Annotated[TlmPacketSetMemberNode]
 
 
-@dataclass
+@ast_dataclass
 class TlmPacketSetMemberSpecInclude(TlmPacketSetMemberNode):
     """
     Include specifier telemetry packet set member
@@ -1501,7 +1498,7 @@ class TlmPacketSetMemberSpecInclude(TlmPacketSetMemberNode):
     node: AstNode["SpecInclude"]
 
 
-@dataclass
+@ast_dataclass
 class TlmPacketSetMemberSpecTlmPacket(TlmPacketSetMemberNode):
     """
     Telemetry packet telemetry packet set member
@@ -1518,7 +1515,7 @@ class TlmPacketSetMemberSpecTlmPacket(TlmPacketSetMemberNode):
 ############################
 
 
-@dataclass
+@ast_dataclass
 class InterfaceMember:
     """
     Interface member with annotated interface member node
@@ -1534,7 +1531,7 @@ class InterfaceMemberNode(ABC):
     pass
 
 
-@dataclass
+@ast_dataclass
 class InterfaceMemberSpecPortInstance(InterfaceMemberNode):
     """
     Port instance interface member
@@ -1546,7 +1543,7 @@ class InterfaceMemberSpecPortInstance(InterfaceMemberNode):
     node: AstNode["SpecPortInstance"]
 
 
-@dataclass
+@ast_dataclass
 class InterfaceMemberSpecImportInterface(InterfaceMemberNode):
     """
     Interface import interface member
@@ -1567,7 +1564,7 @@ class TlmPacketMember(ABC):
     pass
 
 
-@dataclass
+@ast_dataclass
 class TlmPacketMemberSpecInclude(TlmPacketMember):
     """
     Include specifier telemetry packet member
@@ -1579,7 +1576,7 @@ class TlmPacketMemberSpecInclude(TlmPacketMember):
     node: AstNode["SpecInclude"]
 
 
-@dataclass
+@ast_dataclass
 class TlmPacketMemberTlmChannelIdentifier(TlmPacketMember):
     """
     Telemetry channel identifier telemetry packet member
@@ -1616,7 +1613,7 @@ class QueueFull(Enum):
         return self.value
 
 
-@dataclass
+@ast_dataclass
 class SpecCommand:
     """
     Command specifier
@@ -1661,7 +1658,7 @@ class SpecCommandKind(Enum):
         return self.value
 
 
-@dataclass
+@ast_dataclass
 class SpecInstance:
     """
     Component instance specifier
@@ -1677,7 +1674,7 @@ class SpecConnectionGraph(ABC):
     pass
 
 
-@dataclass
+@ast_dataclass
 class Direct(SpecConnectionGraph):
     """
     Direction connection graph specifier
@@ -1718,7 +1715,7 @@ class PatternKind(Enum):
         return self.value
 
 
-@dataclass
+@ast_dataclass
 class Pattern(SpecConnectionGraph):
     """
     Pattern connection graph specifier
@@ -1736,7 +1733,7 @@ class Pattern(SpecConnectionGraph):
     targets: List[AstNode[QualIdent]]
 
 
-@dataclass
+@ast_dataclass
 class Connection:
     """
     Connection
@@ -1760,7 +1757,7 @@ class Connection:
     to_index: Optional[AstNode[Expr]]
 
 
-@dataclass
+@ast_dataclass
 class SpecContainer:
     """
     Container specifier
@@ -1778,7 +1775,7 @@ class SpecContainer:
     default_priority: Optional[AstNode[Expr]]
 
 
-@dataclass
+@ast_dataclass
 class EventThrottle:
     """
     Event throttle
@@ -1793,7 +1790,7 @@ class EventThrottle:
     every: Optional[AstNode[Expr]]
 
 
-@dataclass
+@ast_dataclass
 class SpecEvent:
     """
     Event specifier
@@ -1845,7 +1842,7 @@ class SpecEventSeverity(Enum):
         return self.value
 
 
-@dataclass
+@ast_dataclass
 class SpecInclude:
     """
     Include specifier
@@ -1857,7 +1854,7 @@ class SpecInclude:
     file: AstNode[str]
 
 
-@dataclass
+@ast_dataclass
 class SpecInit:
     """
     Init specifier
@@ -1871,7 +1868,7 @@ class SpecInit:
     code: str
 
 
-@dataclass
+@ast_dataclass
 class SpecInternalPort:
     """
     Internal port specifier
@@ -1892,7 +1889,7 @@ class SpecInternalPort:
     queue_full: Optional[QueueFull]
 
 
-@dataclass
+@ast_dataclass
 class SpecLoc:
     """
     Location specifier
@@ -1939,7 +1936,7 @@ class SpecLocKind(Enum):
         return self.value
 
 
-@dataclass
+@ast_dataclass
 class SpecParam:
     """
     Parameter specifier
@@ -1973,7 +1970,7 @@ class SpecPortInstance(ABC):
     pass
 
 
-@dataclass
+@ast_dataclass
 class GeneralPortInstance(SpecPortInstance):
     """
     General port instance specifier
@@ -2000,7 +1997,7 @@ class GeneralPortInstance(SpecPortInstance):
     queue_full: Optional[AstNode[QueueFull]]
 
 
-@dataclass
+@ast_dataclass
 class SpecialPortInstance(SpecPortInstance):
     """
     Special port instance specifier
@@ -2100,7 +2097,7 @@ class SpecialKind(Enum):
         return self.value
 
 
-@dataclass
+@ast_dataclass
 class SpecPortMatching:
     """
     Port matching specifier
@@ -2115,7 +2112,7 @@ class SpecPortMatching:
     port2: AstNode[Ident]
 
 
-@dataclass
+@ast_dataclass
 class SpecRecord:
     """
     Record specifier
@@ -2136,7 +2133,7 @@ class SpecRecord:
     id: Optional[AstNode[Expr]]
 
 
-@dataclass
+@ast_dataclass
 class SpecStateMachineInstance:
     """
     State machine instance specifier
@@ -2157,7 +2154,7 @@ class SpecStateMachineInstance:
     queue_full: Optional[QueueFull]
 
 
-@dataclass
+@ast_dataclass
 class SpecTlmChannel:
     """
     Telemetry channel specifier
@@ -2203,7 +2200,7 @@ class SpecTlmChannelUpdate(Enum):
         return self.value
 
 
-@dataclass
+@ast_dataclass
 class SpecTlmPacket:
     """
     Telemetry packet specifier
@@ -2223,7 +2220,7 @@ class SpecTlmPacket:
     members: List["TlmPacketMember"]
 
 
-@dataclass
+@ast_dataclass
 class SpecTlmPacketSet:
     """
     Telemetry packet set specifier
@@ -2241,13 +2238,13 @@ class SpecTlmPacketSet:
     omitted: List[AstNode["TlmChannelIdentifier"]]
 
 
-@dataclass
+@ast_dataclass
 class SpecTopPort:
     name: Ident
     underlying_port: AstNode["PortInstanceIdentifier"]
 
 
-@dataclass
+@ast_dataclass
 class SpecImport:
     """
     Import specifier
@@ -2259,7 +2256,7 @@ class SpecImport:
     sym: AstNode[QualIdent]
 
 
-@dataclass
+@ast_dataclass
 class SpecInitialTransition:
     """
     Initial transition specifier
@@ -2271,7 +2268,7 @@ class SpecInitialTransition:
     transition: AstNode["TransitionExpr"]
 
 
-@dataclass
+@ast_dataclass
 class SpecStateEntry:
     """
     State entry specifier
@@ -2283,7 +2280,7 @@ class SpecStateEntry:
     actions: List[AstNode[Ident]]
 
 
-@dataclass
+@ast_dataclass
 class SpecStateExit:
     """
     State exit specifier
@@ -2295,7 +2292,7 @@ class SpecStateExit:
     actions: List[AstNode[Ident]]
 
 
-@dataclass
+@ast_dataclass
 class SpecStateTransition:
     """
     State transition specifier
@@ -2381,7 +2378,7 @@ class TypeName(ABC):
     pass
 
 
-@dataclass
+@ast_dataclass
 class TypeNameFloat(TypeName):
     """
     Float type name
@@ -2393,7 +2390,7 @@ class TypeNameFloat(TypeName):
     name: TypeFloat
 
 
-@dataclass
+@ast_dataclass
 class TypeNameInt(TypeName):
     """
     Integer type name
@@ -2405,7 +2402,7 @@ class TypeNameInt(TypeName):
     name: TypeInt
 
 
-@dataclass
+@ast_dataclass
 class TypeNameQualIdent(TypeName):
     """
     Qualified identifier type name
@@ -2417,7 +2414,7 @@ class TypeNameQualIdent(TypeName):
     name: AstNode[QualIdent]
 
 
-@dataclass
+@ast_dataclass
 class TypeNameBool(TypeName):
     """
     Boolean type name
@@ -2426,7 +2423,7 @@ class TypeNameBool(TypeName):
     pass
 
 
-@dataclass
+@ast_dataclass
 class TypeNameString(TypeName):
     """
     String type name
@@ -2453,7 +2450,7 @@ class Unop(Enum):
         return self.value
 
 
-@dataclass
+@ast_dataclass
 class FormalParam:
     """
     Formal parameter
@@ -2501,7 +2498,7 @@ class LiteralBool(Enum):
         return self.value
 
 
-@dataclass
+@ast_dataclass
 class PortInstanceIdentifier:
     """
     Port instance identifier
@@ -2516,7 +2513,7 @@ class PortInstanceIdentifier:
     port_name: AstNode[Ident]
 
 
-@dataclass
+@ast_dataclass
 class TransitionExpr:
     """
     Transition expression
@@ -2539,7 +2536,7 @@ class TransitionOrDo(ABC):
     pass
 
 
-@dataclass
+@ast_dataclass
 class Transition(TransitionOrDo):
     """
     Transition within transition specifier
@@ -2551,7 +2548,7 @@ class Transition(TransitionOrDo):
     transition: AstNode[TransitionExpr]
 
 
-@dataclass
+@ast_dataclass
 class Do(TransitionOrDo):
     """
     Do within transition specifier
@@ -2563,7 +2560,7 @@ class Do(TransitionOrDo):
     actions: List[AstNode[Ident]]
 
 
-@dataclass
+@ast_dataclass
 class StructMember:
     """
     Struct member
@@ -2578,7 +2575,7 @@ class StructMember:
     value: AstNode[Expr]
 
 
-@dataclass
+@ast_dataclass
 class StructTypeMember:
     """
     Struct type member
@@ -2599,7 +2596,7 @@ class StructTypeMember:
     format: Optional[AstNode[str]]
 
 
-@dataclass
+@ast_dataclass
 class TlmChannelIdentifier:
     """
     Telemetry channel identifier

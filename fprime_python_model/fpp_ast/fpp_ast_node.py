@@ -1,8 +1,31 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, fields
 from typing import Generic, TypeVar, ClassVar, TypeAlias
 
 T = TypeVar("T")
 AstId: TypeAlias = int
+
+
+def _freeze(value):
+    """Recursively convert lists (and list contents of tuples) to tuples"""
+    if isinstance(value, (list, tuple)):
+        return tuple(_freeze(item) for item in value)
+    return value
+
+
+def ast_dataclass(cls):
+    """Frozen dataclass whose list-valued fields are converted to tuples on construction
+
+    AST nodes are immutable value types: freezing them (and tuple-izing their sequence
+    fields) makes them hashable as packets of values, so they may be stored in sets and
+    used as dictionary keys with value semantics.
+    """
+
+    def __post_init__(self):
+        for field in fields(self):
+            object.__setattr__(self, field.name, _freeze(getattr(self, field.name)))
+
+    cls.__post_init__ = __post_init__
+    return dataclass(frozen=True)(cls)
 
 
 @dataclass(frozen=True)
