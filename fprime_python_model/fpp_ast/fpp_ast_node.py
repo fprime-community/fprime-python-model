@@ -1,6 +1,5 @@
 from dataclasses import dataclass, fields
 from typing import Generic, TypeVar, ClassVar, TypeAlias
-from typing_extensions import dataclass_transform
 
 T = TypeVar("T")
 AstId: TypeAlias = int
@@ -13,21 +12,18 @@ def _freeze(value):
     return value
 
 
-@dataclass_transform(frozen_default=True)
-def ast_dataclass(cls):
-    """Frozen dataclass whose list-valued fields are converted to tuples on construction
+class FrozenAstData:
+    """Mixin for frozen AST dataclasses that converts list-valued fields to tuples
 
     AST nodes are immutable value types: freezing them (and tuple-izing their sequence
     fields) makes them hashable as packets of values, so they may be stored in sets and
-    used as dictionary keys with value semantics.
+    used as dictionary keys with value semantics. Dataclasses inheriting this mixin must
+    be declared with `@dataclass(frozen=True)`.
     """
 
     def __post_init__(self):
         for field in fields(self):
             object.__setattr__(self, field.name, _freeze(getattr(self, field.name)))
-
-    cls.__post_init__ = __post_init__
-    return dataclass(frozen=True)(cls)
 
 
 @dataclass(frozen=True)
