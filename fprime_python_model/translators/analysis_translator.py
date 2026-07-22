@@ -1666,8 +1666,9 @@ class AnalysisTranslator:
     def translate_dictionary(self, d: Dict) -> Dictionary:
         return Dictionary(
             used_symbol_set={
-                self.translate_symbol("Topology", s["Topology"]["nodeId"])
+                self.translate_symbol(symbol_type, s[symbol_type]["nodeId"])
                 for s in d["usedSymbolSet"]
+                for symbol_type in (next(iter(s)),)
             },
             command_entry_map=self.translate_command_entry_map(d["commandEntryMap"]),
             tlm_channel_entry_map=self.translate_tlm_channel_entry_map(

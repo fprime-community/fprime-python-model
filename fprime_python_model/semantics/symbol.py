@@ -69,7 +69,7 @@ class InterfaceInstanceSymbol(Symbol):
         return super().is_dictionary_def()
 
 
-@dataclass
+@dataclass(frozen=True)
 class AbsTypeSymbol(TypeSymbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefAbsType]]
 
@@ -80,7 +80,7 @@ class AbsTypeSymbol(TypeSymbol):
         return self.node[1].data.name
 
 
-@dataclass
+@dataclass(frozen=True)
 class AliasTypeSymbol(TypeSymbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefAliasType]]
 
@@ -94,7 +94,7 @@ class AliasTypeSymbol(TypeSymbol):
         return self.node[1].data.is_dictionary_def
 
 
-@dataclass
+@dataclass(frozen=True)
 class ArraySymbol(TypeSymbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefArray]]
 
@@ -108,7 +108,7 @@ class ArraySymbol(TypeSymbol):
         return self.node[1].data.is_dictionary_def
 
 
-@dataclass
+@dataclass(frozen=True)
 class ComponentSymbol(Symbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefComponent]]
 
@@ -119,7 +119,7 @@ class ComponentSymbol(Symbol):
         return self.node[1].data.name
 
 
-@dataclass
+@dataclass(frozen=True)
 class ComponentInstanceSymbol(InterfaceInstanceSymbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefComponentInstance]]
 
@@ -130,7 +130,7 @@ class ComponentInstanceSymbol(InterfaceInstanceSymbol):
         return self.node[1].data.name
 
 
-@dataclass
+@dataclass(frozen=True)
 class ConstantSymbol(Symbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefConstant]]
 
@@ -144,7 +144,7 @@ class ConstantSymbol(Symbol):
         return self.node[1].data.is_dictionary_def
 
 
-@dataclass
+@dataclass(frozen=True)
 class EnumSymbol(TypeSymbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefEnum]]
 
@@ -158,7 +158,7 @@ class EnumSymbol(TypeSymbol):
         return self.node[1].data.is_dictionary_def
 
 
-@dataclass
+@dataclass(frozen=True)
 class EnumConstantSymbol(Symbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefEnumConstant]]
 
@@ -169,7 +169,7 @@ class EnumConstantSymbol(Symbol):
         return self.node[1].data.name
 
 
-@dataclass
+@dataclass(frozen=True)
 class InterfaceSymbol(Symbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefInterface]]
 
@@ -180,7 +180,7 @@ class InterfaceSymbol(Symbol):
         return self.node[1].data.name
 
 
-@dataclass
+@dataclass(frozen=True)
 class ModuleSymbol(Symbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefModule]]
 
@@ -191,7 +191,7 @@ class ModuleSymbol(Symbol):
         return self.node[1].data.name
 
 
-@dataclass
+@dataclass(frozen=True)
 class PortSymbol(Symbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefPort]]
 
@@ -202,7 +202,7 @@ class PortSymbol(Symbol):
         return self.node[1].data.name
 
 
-@dataclass
+@dataclass(frozen=True)
 class StateMachineSymbol(Symbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefStateMachine]]
 
@@ -213,7 +213,7 @@ class StateMachineSymbol(Symbol):
         return self.node[1].data.name
 
 
-@dataclass
+@dataclass(frozen=True)
 class StructSymbol(TypeSymbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefStruct]]
 
@@ -227,7 +227,7 @@ class StructSymbol(TypeSymbol):
         return self.node[1].data.is_dictionary_def
 
 
-@dataclass
+@dataclass(frozen=True)
 class TopologySymbol(InterfaceInstanceSymbol):
     node: fpp_ast.Annotated[AstNode[fpp_ast.DefTopology]]
 
