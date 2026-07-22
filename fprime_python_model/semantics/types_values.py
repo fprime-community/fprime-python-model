@@ -12,11 +12,12 @@ from fprime_python_model.semantics.symbol import (
     EnumSymbol,
     StructSymbol,
 )
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from fprime_python_model.semantics.format import Format
 import math
 
 
+@dataclass
 class Type(ABC):
     """An FPP Type"""
 
@@ -99,6 +100,7 @@ class PrimitiveIntKind(Enum):
     U64 = "U64"
 
 
+@dataclass
 class IntType(Type):
     """Integer types"""
 
@@ -106,6 +108,7 @@ class IntType(Type):
         return True
 
 
+@dataclass
 class PrimitiveType(Type):
     """Primitive types"""
 
@@ -120,8 +123,7 @@ class PrimitiveType(Type):
 class PrimitiveIntType(PrimitiveType, IntType):
     """Primitive integer types"""
 
-    def __init__(self, kind: PrimitiveIntKind):
-        self.kind = kind
+    kind: PrimitiveIntKind
 
     def get_default_value(self) -> Optional["PrimitiveIntValue"]:
         return PrimitiveIntValue(0, self.kind)
@@ -166,8 +168,7 @@ class FloatKind(Enum):
 
 @dataclass
 class FloatType(PrimitiveType):
-    def __init__(self, kind: FloatKind):
-        self.kind = kind
+    kind: FloatKind
 
     def get_default_value(self):
         return FloatValue(0, self.kind)
@@ -210,8 +211,7 @@ class BooleanType(PrimitiveType):
 
 @dataclass
 class StringType(Type):
-    def __init__(self, size: Optional[AstNode[fpp_ast.Expr]] = None):
-        self.size = size
+    size: Optional[AstNode[fpp_ast.Expr]] = None
 
     def get_default_value(self):
         return StringValue("")
@@ -237,8 +237,7 @@ class IntegerType(IntType):
 
 @dataclass
 class AbsType(Type):
-    def __init__(self, node: fpp_ast.Annotated[AstNode[fpp_ast.DefAbsType]]):
-        self.node = node
+    node: fpp_ast.Annotated[AstNode[fpp_ast.DefAbsType]]
 
     def get_default_value(self):
         return AbsTypeValue(self)
@@ -252,13 +251,10 @@ class AbsType(Type):
     def __str__(self):
         return str(self.node[1].data.name)
 
-
+@dataclass
 class AliasType(Type):
-    def __init__(
-        self, node: fpp_ast.Annotated[AstNode[fpp_ast.DefAliasType]], alias_type: Type
-    ):
-        self.node = node
-        self.alias_type = alias_type
+    node: fpp_ast.Annotated[AstNode[fpp_ast.DefAliasType]]
+    alias_type: Type
 
     def get_default_value(self):
         return self.alias_type.get_default_value()
@@ -282,18 +278,12 @@ class AliasType(Type):
         return self.alias_type.get_underlying_type()
 
 
+@dataclass
 class ArrayType(Type):
-    def __init__(
-        self,
-        node: fpp_ast.Annotated[AstNode[fpp_ast.DefArray]],
-        anon_array: "AnonArrayType",
-        default: Optional["ArrayValue"] = None,
-        format: Optional[Format] = None,
-    ):
-        self.node = node
-        self.anon_array = anon_array
-        self.default = default
-        self.format = format
+    node: fpp_ast.Annotated[AstNode[fpp_ast.DefArray]]
+    anon_array: "AnonArrayType"
+    default: Optional["ArrayValue"] = None
+    format: Optional[Format] = None
 
     __match_args__ = ("node", "anon_array", "default", "format")
 
@@ -319,16 +309,11 @@ class ArrayType(Type):
         return f"array {self.node[1].data.name}"
 
 
+@dataclass
 class EnumType(Type):
-    def __init__(
-        self,
-        node: fpp_ast.Annotated[AstNode[fpp_ast.DefEnum]],
-        rep_type: PrimitiveIntType,
-        default: Optional["EnumConstantValue"] = None,
-    ):
-        self.node = node
-        self.rep_type = rep_type
-        self.default = default
+    node: fpp_ast.Annotated[AstNode[fpp_ast.DefEnum]]
+    rep_type: PrimitiveIntType
+    default: Optional["EnumConstantValue"] = None
 
     def get_default_value(self) -> Optional["EnumConstantValue"]:
         return self.default
@@ -355,20 +340,13 @@ class EnumType(Type):
 StructMembersType: TypeAlias = Dict[fpp_ast.Unqualified, Type]
 
 
+@dataclass
 class StructType(Type):
-    def __init__(
-        self,
-        node: fpp_ast.Annotated[AstNode[fpp_ast.DefStruct]],
-        anon_struct: "AnonStructType",
-        default: Optional["StructValue"] = None,
-        sizes: Dict[fpp_ast.Unqualified, int] = dict(),
-        formats: Dict[fpp_ast.Unqualified, Format] = dict(),
-    ):
-        self.node = node
-        self.anon_struct = anon_struct
-        self.default = default
-        self.sizes = sizes if sizes is not None else {}
-        self.formats = formats if formats is not None else {}
+    node: fpp_ast.Annotated[AstNode[fpp_ast.DefStruct]]
+    anon_struct: "AnonStructType"
+    default: Optional["StructValue"] = None
+    sizes: Dict[fpp_ast.Unqualified, int] = field(default_factory=dict)
+    formats: Dict[fpp_ast.Unqualified, Format] = field(default_factory=dict)
 
     __match_args__ = ("node", "anon_struct", "default", "sizes", "formats")
 
@@ -393,10 +371,10 @@ class StructType(Type):
         return f"struct {self.node[1].data.name}"
 
 
+@dataclass
 class AnonArrayType(Type):
-    def __init__(self, size: Optional[int], elt_type: Type):
-        self.size = size
-        self.elt_type = elt_type
+    size: Optional[int]
+    elt_type: Type
 
     __match_args__ = ("size", "elt_type")
 
@@ -423,9 +401,9 @@ class AnonArrayType(Type):
             return f"array of {self.elt_type}"
 
 
+@dataclass
 class AnonStructType(Type):
-    def __init__(self, members: StructMembersType):
-        self.members: StructMembersType = members
+    members: StructMembersType
 
     __match_args__ = "members"
 
@@ -451,6 +429,7 @@ class AnonStructType(Type):
 T = TypeVar("T")
 
 
+@dataclass
 class Value(ABC):
     def __init__(self):
         pass
@@ -496,10 +475,10 @@ class Value(ABC):
         pass
 
 
+@dataclass
 class PrimitiveIntValue(Value):
-    def __init__(self, value: int, kind: PrimitiveIntKind):
-        self.value = value
-        self.kind = kind
+    value: int
+    kind: PrimitiveIntKind
 
     def get_type(self) -> "Type":
         return PrimitiveIntType(self.kind)
@@ -514,9 +493,9 @@ class PrimitiveIntValue(Value):
         return PrimitiveIntValue(-self.value, self.kind)
 
 
+@dataclass
 class IntegerValue(Value):
-    def __init__(self, value: int):
-        self.value = value
+    value: int
 
     def fits_in_u64_width(self) -> bool:
         u64_bound = 1 << 64
@@ -535,11 +514,10 @@ class IntegerValue(Value):
         return IntegerValue(-self.value)
 
 
+@dataclass
 class FloatValue(Value):
-
-    def __init__(self, value: float, kind: FloatKind):
-        self.value = value
-        self.kind = kind
+    value: float
+    kind: FloatKind
 
     def is_zero(self) -> bool:
         return math.fabs(self.value) <= 0
@@ -554,9 +532,9 @@ class FloatValue(Value):
         return FloatValue(-self.value, self.kind)
 
 
+@dataclass
 class BooleanValue(Value):
-    def __init__(self, value: bool):
-        self.value = value
+    value: bool
 
     def get_type(self) -> "Type":
         return BooleanType()
@@ -565,9 +543,9 @@ class BooleanValue(Value):
         return str(self.value)
 
 
+@dataclass
 class StringValue(Value):
-    def __init__(self, value: str):
-        self.value = value
+    value: str
 
     def get_type(self) -> "Type":
         return StringType(None)
@@ -576,9 +554,9 @@ class StringValue(Value):
         return f'"{self.value}"'
 
 
+@dataclass
 class AnonArrayValue(Value):
-    def __init__(self, elements: List[Value]):
-        self.elements = elements
+    elements: List[Value]
 
     def get_type(self) -> "Type":
         size = len(self.elements)
@@ -589,9 +567,9 @@ class AnonArrayValue(Value):
         return "[ " + ", ".join(str(e) for e in self.elements) + " ]"
 
 
+@dataclass
 class AbsTypeValue(Value):
-    def __init__(self, t: AbsType):
-        self.t = t
+    t: AbsType
 
     def get_type(self) -> AbsType:
         return self.t
@@ -600,10 +578,10 @@ class AbsTypeValue(Value):
         return f"value of type {self.t}"
 
 
+@dataclass
 class ArrayValue(Value):
-    def __init__(self, anon_array: AnonArrayValue, t: ArrayType):
-        self.anon_array = anon_array
-        self.t = t
+    anon_array: AnonArrayValue
+    t: ArrayType
 
     def get_type(self) -> ArrayType:
         return self.t
@@ -612,10 +590,10 @@ class ArrayValue(Value):
         return f"{self.anon_array}: {self.t.node[1].data.name}"
 
 
+@dataclass
 class EnumConstantValue(Value):
-    def __init__(self, value: Tuple[fpp_ast.Unqualified, int], t: EnumType):
-        self.value = value
-        self.t = t
+    value: Tuple[fpp_ast.Unqualified, int]
+    t: EnumType
 
     def get_type(self) -> "EnumType":
         return self.t
@@ -627,9 +605,9 @@ class EnumConstantValue(Value):
 StructMembersValue: TypeAlias = Dict[fpp_ast.Unqualified, Value]
 
 
+@dataclass
 class AnonStructValue(Value):
-    def __init__(self, members: StructMembersValue):
-        self.members = members
+    members: StructMembersValue
 
     def get_type(self) -> AnonStructType:
         type_members: Dict[fpp_ast.Unqualified, Type] = dict()
@@ -645,28 +623,19 @@ class AnonStructValue(Value):
             return "{ " + ", ".join(member_strs) + " }"
 
 
+@dataclass
 class StructValue(Value):
-    def __init__(self, anon_struct: AnonStructValue, t: StructType):
-        self.anon_struct = anon_struct
-        self.t = t
+    anon_struct: AnonStructValue
+    t: StructType
 
     def get_type(self) -> StructType:
         return self.t
 
     def __str__(self) -> str:
-        type_name = (
-            getattr(self.t.node[1].data, "name", "unknown")
-            if hasattr(self.t, "node")
-            else "unknown"
-        )
-        return f"{str(self.anon_struct)}: {type_name}"
+        return f"{str(self.anon_struct)}: {self.t.node[1].data.name}"
 
 
+@dataclass
 class Binop(Generic[T]):
-    def __init__(
-        self,
-        int_op: Callable[[int, int], int],
-        double_op: Callable[[float, float], float],
-    ):
-        self.int_op = int_op
-        self.double_op = double_op
+    int_op: Callable[[int, int], int]
+    double_op: Callable[[float, float], float]

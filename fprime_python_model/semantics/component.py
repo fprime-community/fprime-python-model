@@ -71,7 +71,7 @@ class Component:
     :type state_machine_instance_map: Dict[UnqualifiedName, StateMachineInstance]
     :param port_matching_list: The list of port matching constraints
     :type port_matching_list: List[PortMatching]
-    :param constainer_map: The map from container IDs to containers
+    :param container_map: The map from container IDs to containers
     :type container_map: Dict[ContainerId, Container]
     :param record_map: The map from record IDs to records
     :type record_map: Dict[RecordId, Record]

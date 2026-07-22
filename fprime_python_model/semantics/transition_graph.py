@@ -65,7 +65,7 @@ class InitialArc(Arc):
 
     def show_transition(self, loc: Location) -> str:
         end_name = self.end_node.soc.get_name()
-        return f"{self.show_kind()} at {str(loc.path)}:{loc.pos} to {end_name}"
+        return f"{self.show_kind()} at {str(loc.file)}:{loc.pos} to {end_name}"
 
     def __hash__(self):
         return hash(
@@ -97,7 +97,7 @@ class StateArc(Arc):
 
     def show_transition(self, loc: Location) -> str:
         end_name = self.end_node.soc.get_name()
-        return f"{self.show_kind()} at {str(loc.path)}:{loc.pos} to {end_name}"
+        return f"{self.show_kind()} at {str(loc.file)}:{loc.pos} to {end_name}"
 
     def __hash__(self):
         return hash(
@@ -129,7 +129,7 @@ class ChoiceArc(Arc):
 
     def show_transition(self, loc: Location) -> str:
         end_name = self.end_node.soc.get_name()
-        return f"{self.show_kind()} at {str(loc.path)}:{loc.pos} to {end_name}"
+        return f"{self.show_kind()} at {str(loc.file)}:{loc.pos} to {end_name}"
 
     def __hash__(self):
         return hash(

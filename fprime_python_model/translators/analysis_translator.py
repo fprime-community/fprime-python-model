@@ -240,8 +240,8 @@ class AnalysisTranslator:
 
     def translate_location_specifier_map(
         self, l: List[Tuple[Tuple, Dict]]
-    ) -> Dict[Tuple[fpp_ast.SpecLocKind, QualifiedName], fpp_ast.SpecLoc]:
-        out_dict: Dict[Tuple[fpp_ast.SpecLocKind, QualifiedName], fpp_ast.SpecLoc] = (
+    ) -> Dict[Tuple[fpp_ast.SpecLocKind, QualifiedName], AstNode[fpp_ast.SpecLoc]]:
+        out_dict: Dict[Tuple[fpp_ast.SpecLocKind, QualifiedName], AstNode[fpp_ast.SpecLoc]] = (
             dict()
         )
         for ls in l:
@@ -250,7 +250,7 @@ class AnalysisTranslator:
             spec_loc_kind = translate_spec_loc_kind(kind_json)
             spec_loc_qualified_name = self.translate_qualified_name(qual_name_json)
             spec_loc_a_node = self.get_annotated_ast_node_by_id(ls[1]["astNodeId"])
-            out_dict[(spec_loc_kind, spec_loc_qualified_name)] = spec_loc_a_node[1].data
+            out_dict[(spec_loc_kind, spec_loc_qualified_name)] = spec_loc_a_node[1]
         return out_dict
 
     def translate_symbol(self, symbol_type: str, node_id: AstId) -> Symbol:
