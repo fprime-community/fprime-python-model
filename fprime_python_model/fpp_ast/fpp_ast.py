@@ -8,9 +8,10 @@ if sys.version_info >= (3, 12):
 else:
     def override(func):  # type: ignore[no-redef]
         return func
-from dataclasses import dataclass
+
 from enum import Enum
-from fprime_python_model.fpp_ast.fpp_ast_node import AstNode
+from dataclasses import dataclass
+from fprime_python_model.fpp_ast.fpp_ast_node import AstNode, FrozenAstData
 from fprime_python_model.utils.error import InternalError
 
 T = TypeVar("T")
@@ -20,8 +21,8 @@ FormalParamList: TypeAlias = List[Annotated[AstNode["FormalParam"]]]
 TUMember: TypeAlias = "ModuleMember"
 
 
-@dataclass
-class TransUnit:
+@dataclass(frozen=True)
+class TransUnit(FrozenAstData):
     """
     Translation unit consisting of translation unit members
 
@@ -83,8 +84,8 @@ class QualIdent(ABC):
         pass
 
 
-@dataclass(eq=True)
-class Unqualified(QualIdent):
+@dataclass(frozen=True)
+class Unqualified(QualIdent, FrozenAstData):
     """An unqualified identifier
 
     :param name: Unqualified identifier name
@@ -97,12 +98,9 @@ class Unqualified(QualIdent):
     def to_ident_list(self):
         return [self.name]
 
-    def __hash__(self):
-        return hash(self.name)
 
-
-@dataclass
-class Qualified(QualIdent):
+@dataclass(frozen=True)
+class Qualified(QualIdent, FrozenAstData):
     """
     A qualified identifier
 
@@ -191,8 +189,8 @@ def name(node_list: NodeList) -> AstNode[Ident]:
 ##########################
 
 
-@dataclass
-class DefAbsType:
+@dataclass(frozen=True)
+class DefAbsType(FrozenAstData):
     """
     Abstract type definition
 
@@ -203,8 +201,8 @@ class DefAbsType:
     name: Ident
 
 
-@dataclass
-class DefAliasType:
+@dataclass(frozen=True)
+class DefAliasType(FrozenAstData):
     """
     Aliased type definition
 
@@ -221,8 +219,8 @@ class DefAliasType:
     is_dictionary_def: bool
 
 
-@dataclass
-class DefArray:
+@dataclass(frozen=True)
+class DefArray(FrozenAstData):
     """
     Array definition
 
@@ -248,8 +246,8 @@ class DefArray:
     is_dictionary_def: bool
 
 
-@dataclass
-class DefComponent:
+@dataclass(frozen=True)
+class DefComponent(FrozenAstData):
     """
     Component definition
 
@@ -266,8 +264,8 @@ class DefComponent:
     members: List["ComponentMember"]
 
 
-@dataclass
-class DefComponentInstance:
+@dataclass(frozen=True)
+class DefComponentInstance(FrozenAstData):
     """
     Component instance definition
 
@@ -304,8 +302,8 @@ class DefComponentInstance:
     init_specs: List[Annotated[AstNode["SpecInit"]]]
 
 
-@dataclass
-class DefConstant:
+@dataclass(frozen=True)
+class DefConstant(FrozenAstData):
     """
     Constant definition
 
@@ -322,8 +320,8 @@ class DefConstant:
     is_dictionary_def: bool
 
 
-@dataclass
-class DefEnum:
+@dataclass(frozen=True)
+class DefEnum(FrozenAstData):
     """
     Enum definition
 
@@ -346,8 +344,8 @@ class DefEnum:
     is_dictionary_def: bool
 
 
-@dataclass
-class DefEnumConstant:
+@dataclass(frozen=True)
+class DefEnumConstant(FrozenAstData):
     """
     Enum constant definition
 
@@ -361,8 +359,8 @@ class DefEnumConstant:
     value: Optional[AstNode["Expr"]]
 
 
-@dataclass
-class DefModule:
+@dataclass(frozen=True)
+class DefModule(FrozenAstData):
     """
     Module definition
 
@@ -376,8 +374,8 @@ class DefModule:
     members: List["ModuleMember"]
 
 
-@dataclass
-class DefPort:
+@dataclass(frozen=True)
+class DefPort(FrozenAstData):
     """
     Port definition
 
@@ -394,8 +392,8 @@ class DefPort:
     return_type: Optional[AstNode["TypeName"]]
 
 
-@dataclass
-class DefStateMachine:
+@dataclass(frozen=True)
+class DefStateMachine(FrozenAstData):
     """
     State machine definition
 
@@ -409,8 +407,8 @@ class DefStateMachine:
     members: Optional[List["StateMachineMember"]]
 
 
-@dataclass
-class DefAction:
+@dataclass(frozen=True)
+class DefAction(FrozenAstData):
     """
     Action definition
 
@@ -424,8 +422,8 @@ class DefAction:
     type_name: Optional[AstNode["TypeName"]]
 
 
-@dataclass
-class DefChoice:
+@dataclass(frozen=True)
+class DefChoice(FrozenAstData):
     """
     Choice definition
 
@@ -445,8 +443,8 @@ class DefChoice:
     else_transition: AstNode["TransitionExpr"]
 
 
-@dataclass
-class DefGuard:
+@dataclass(frozen=True)
+class DefGuard(FrozenAstData):
     """
     Guard definition
 
@@ -460,8 +458,8 @@ class DefGuard:
     type_name: Optional[AstNode["TypeName"]]
 
 
-@dataclass
-class DefSignal:
+@dataclass(frozen=True)
+class DefSignal(FrozenAstData):
     """
     Signal definition
 
@@ -475,8 +473,8 @@ class DefSignal:
     type_name: Optional[AstNode["TypeName"]]
 
 
-@dataclass
-class DefState:
+@dataclass(frozen=True)
+class DefState(FrozenAstData):
     """
     State definition
 
@@ -490,8 +488,8 @@ class DefState:
     members: List["StateMember"]
 
 
-@dataclass
-class DefInterface:
+@dataclass(frozen=True)
+class DefInterface(FrozenAstData):
     """
     Interface definition
 
@@ -505,8 +503,8 @@ class DefInterface:
     members: List["InterfaceMember"]
 
 
-@dataclass
-class DefStruct:
+@dataclass(frozen=True)
+class DefStruct(FrozenAstData):
     """
     Struct definition
 
@@ -526,8 +524,8 @@ class DefStruct:
     is_dictionary_def: bool
 
 
-@dataclass
-class DefTopology:
+@dataclass(frozen=True)
+class DefTopology(FrozenAstData):
     """
     Topology defintion
 
@@ -551,8 +549,8 @@ class ComponentMemberNode(ABC):
     pass
 
 
-@dataclass
-class ComponentMember:
+@dataclass(frozen=True)
+class ComponentMember(FrozenAstData):
     """
     Component member with annotated component member node
 
@@ -563,8 +561,8 @@ class ComponentMember:
     node: Annotated[ComponentMemberNode]
 
 
-@dataclass
-class ComponentMemberDefAbsType(ComponentMemberNode):
+@dataclass(frozen=True)
+class ComponentMemberDefAbsType(ComponentMemberNode, FrozenAstData):
     """
     Abstract type component member
 
@@ -575,8 +573,8 @@ class ComponentMemberDefAbsType(ComponentMemberNode):
     node: AstNode[DefAbsType]
 
 
-@dataclass
-class ComponentMemberDefAliasType(ComponentMemberNode):
+@dataclass(frozen=True)
+class ComponentMemberDefAliasType(ComponentMemberNode, FrozenAstData):
     """
     Alias type component member
 
@@ -587,8 +585,8 @@ class ComponentMemberDefAliasType(ComponentMemberNode):
     node: AstNode[DefAliasType]
 
 
-@dataclass
-class ComponentMemberDefArray(ComponentMemberNode):
+@dataclass(frozen=True)
+class ComponentMemberDefArray(ComponentMemberNode, FrozenAstData):
     """
     Array component member
 
@@ -599,8 +597,8 @@ class ComponentMemberDefArray(ComponentMemberNode):
     node: AstNode[DefArray]
 
 
-@dataclass
-class ComponentMemberDefConstant(ComponentMemberNode):
+@dataclass(frozen=True)
+class ComponentMemberDefConstant(ComponentMemberNode, FrozenAstData):
     """
     Constant component member
 
@@ -611,8 +609,8 @@ class ComponentMemberDefConstant(ComponentMemberNode):
     node: AstNode[DefConstant]
 
 
-@dataclass
-class ComponentMemberDefEnum(ComponentMemberNode):
+@dataclass(frozen=True)
+class ComponentMemberDefEnum(ComponentMemberNode, FrozenAstData):
     """
     Enum component member
 
@@ -623,8 +621,8 @@ class ComponentMemberDefEnum(ComponentMemberNode):
     node: AstNode[DefEnum]
 
 
-@dataclass
-class ComponentMemberDefStateMachine(ComponentMemberNode):
+@dataclass(frozen=True)
+class ComponentMemberDefStateMachine(ComponentMemberNode, FrozenAstData):
     """
     State machine component member
 
@@ -635,8 +633,8 @@ class ComponentMemberDefStateMachine(ComponentMemberNode):
     node: AstNode[DefStateMachine]
 
 
-@dataclass
-class ComponentMemberDefStruct(ComponentMemberNode):
+@dataclass(frozen=True)
+class ComponentMemberDefStruct(ComponentMemberNode, FrozenAstData):
     """
     Struct component member
 
@@ -647,8 +645,8 @@ class ComponentMemberDefStruct(ComponentMemberNode):
     node: AstNode[DefStruct]
 
 
-@dataclass
-class ComponentMemberSpecCommand(ComponentMemberNode):
+@dataclass(frozen=True)
+class ComponentMemberSpecCommand(ComponentMemberNode, FrozenAstData):
     """
     Command component member
 
@@ -659,8 +657,8 @@ class ComponentMemberSpecCommand(ComponentMemberNode):
     node: AstNode["SpecCommand"]
 
 
-@dataclass
-class ComponentMemberSpecContainer(ComponentMemberNode):
+@dataclass(frozen=True)
+class ComponentMemberSpecContainer(ComponentMemberNode, FrozenAstData):
     """
     Container component member
 
@@ -671,8 +669,8 @@ class ComponentMemberSpecContainer(ComponentMemberNode):
     node: AstNode["SpecContainer"]
 
 
-@dataclass
-class ComponentMemberSpecEvent(ComponentMemberNode):
+@dataclass(frozen=True)
+class ComponentMemberSpecEvent(ComponentMemberNode, FrozenAstData):
     """
     Event component member
 
@@ -683,8 +681,8 @@ class ComponentMemberSpecEvent(ComponentMemberNode):
     node: AstNode["SpecEvent"]
 
 
-@dataclass
-class ComponentMemberSpecInclude(ComponentMemberNode):
+@dataclass(frozen=True)
+class ComponentMemberSpecInclude(ComponentMemberNode, FrozenAstData):
     """
     Include specifier component member
 
@@ -695,8 +693,8 @@ class ComponentMemberSpecInclude(ComponentMemberNode):
     node: AstNode["SpecInclude"]
 
 
-@dataclass
-class ComponentMemberSpecInternalPort(ComponentMemberNode):
+@dataclass(frozen=True)
+class ComponentMemberSpecInternalPort(ComponentMemberNode, FrozenAstData):
     """
     Internal port specifier component member
 
@@ -707,8 +705,8 @@ class ComponentMemberSpecInternalPort(ComponentMemberNode):
     node: AstNode["SpecInternalPort"]
 
 
-@dataclass
-class ComponentMemberSpecParam(ComponentMemberNode):
+@dataclass(frozen=True)
+class ComponentMemberSpecParam(ComponentMemberNode, FrozenAstData):
     """
     Param component member
 
@@ -719,8 +717,8 @@ class ComponentMemberSpecParam(ComponentMemberNode):
     node: AstNode["SpecParam"]
 
 
-@dataclass
-class ComponentMemberSpecPortInstance(ComponentMemberNode):
+@dataclass(frozen=True)
+class ComponentMemberSpecPortInstance(ComponentMemberNode, FrozenAstData):
     """
     Port instance component member
 
@@ -731,8 +729,8 @@ class ComponentMemberSpecPortInstance(ComponentMemberNode):
     node: AstNode["SpecPortInstance"]
 
 
-@dataclass
-class ComponentMemberSpecPortMatching(ComponentMemberNode):
+@dataclass(frozen=True)
+class ComponentMemberSpecPortMatching(ComponentMemberNode, FrozenAstData):
     """
     Port matching component member
 
@@ -743,8 +741,8 @@ class ComponentMemberSpecPortMatching(ComponentMemberNode):
     node: AstNode["SpecPortMatching"]
 
 
-@dataclass
-class ComponentMemberSpecRecord(ComponentMemberNode):
+@dataclass(frozen=True)
+class ComponentMemberSpecRecord(ComponentMemberNode, FrozenAstData):
     """
     Record component member
 
@@ -755,8 +753,8 @@ class ComponentMemberSpecRecord(ComponentMemberNode):
     node: AstNode["SpecRecord"]
 
 
-@dataclass
-class ComponentMemberSpecStateMachineInstance(ComponentMemberNode):
+@dataclass(frozen=True)
+class ComponentMemberSpecStateMachineInstance(ComponentMemberNode, FrozenAstData):
     """
     State machine instance component member
 
@@ -767,8 +765,8 @@ class ComponentMemberSpecStateMachineInstance(ComponentMemberNode):
     node: AstNode["SpecStateMachineInstance"]
 
 
-@dataclass
-class ComponentMemberSpecTlmChannel(ComponentMemberNode):
+@dataclass(frozen=True)
+class ComponentMemberSpecTlmChannel(ComponentMemberNode, FrozenAstData):
     """
     Telemetry channel component member
 
@@ -779,8 +777,8 @@ class ComponentMemberSpecTlmChannel(ComponentMemberNode):
     node: AstNode["SpecTlmChannel"]
 
 
-@dataclass
-class ComponentMemberSpecImportInterface(ComponentMemberNode):
+@dataclass(frozen=True)
+class ComponentMemberSpecImportInterface(ComponentMemberNode, FrozenAstData):
     """
     Import specifier component member
 
@@ -800,8 +798,8 @@ class ModuleMemberNode(ABC):
     pass
 
 
-@dataclass
-class ModuleMember:
+@dataclass(frozen=True)
+class ModuleMember(FrozenAstData):
     """
     Module member with annotated module member node
 
@@ -813,8 +811,8 @@ class ModuleMember:
     node: Annotated[ModuleMemberNode]
 
 
-@dataclass
-class ModuleMemberDefAbsType(ModuleMemberNode):
+@dataclass(frozen=True)
+class ModuleMemberDefAbsType(ModuleMemberNode, FrozenAstData):
     """
     Abstract type module member
 
@@ -825,8 +823,8 @@ class ModuleMemberDefAbsType(ModuleMemberNode):
     node: AstNode[DefAbsType]
 
 
-@dataclass
-class ModuleMemberDefAliasType(ModuleMemberNode):
+@dataclass(frozen=True)
+class ModuleMemberDefAliasType(ModuleMemberNode, FrozenAstData):
     """
     Alias type module member
 
@@ -837,8 +835,8 @@ class ModuleMemberDefAliasType(ModuleMemberNode):
     node: AstNode[DefAliasType]
 
 
-@dataclass
-class ModuleMemberDefArray(ModuleMemberNode):
+@dataclass(frozen=True)
+class ModuleMemberDefArray(ModuleMemberNode, FrozenAstData):
     """
     Array module member
 
@@ -849,8 +847,8 @@ class ModuleMemberDefArray(ModuleMemberNode):
     node: AstNode[DefArray]
 
 
-@dataclass
-class ModuleMemberDefComponent(ModuleMemberNode):
+@dataclass(frozen=True)
+class ModuleMemberDefComponent(ModuleMemberNode, FrozenAstData):
     """
     Component module member
 
@@ -861,8 +859,8 @@ class ModuleMemberDefComponent(ModuleMemberNode):
     node: AstNode[DefComponent]
 
 
-@dataclass
-class ModuleMemberDefComponentInstance(ModuleMemberNode):
+@dataclass(frozen=True)
+class ModuleMemberDefComponentInstance(ModuleMemberNode, FrozenAstData):
     """
     Component instance module member
 
@@ -873,8 +871,8 @@ class ModuleMemberDefComponentInstance(ModuleMemberNode):
     node: AstNode[DefComponentInstance]
 
 
-@dataclass
-class ModuleMemberDefConstant(ModuleMemberNode):
+@dataclass(frozen=True)
+class ModuleMemberDefConstant(ModuleMemberNode, FrozenAstData):
     """
     Constant module member
 
@@ -885,8 +883,8 @@ class ModuleMemberDefConstant(ModuleMemberNode):
     node: AstNode[DefConstant]
 
 
-@dataclass
-class ModuleMemberDefEnum(ModuleMemberNode):
+@dataclass(frozen=True)
+class ModuleMemberDefEnum(ModuleMemberNode, FrozenAstData):
     """
     Enum module member
 
@@ -897,8 +895,8 @@ class ModuleMemberDefEnum(ModuleMemberNode):
     node: AstNode[DefEnum]
 
 
-@dataclass
-class ModuleMemberDefInterface(ModuleMemberNode):
+@dataclass(frozen=True)
+class ModuleMemberDefInterface(ModuleMemberNode, FrozenAstData):
     """
     Interface module member
 
@@ -909,8 +907,8 @@ class ModuleMemberDefInterface(ModuleMemberNode):
     node: AstNode["DefInterface"]
 
 
-@dataclass
-class ModuleMemberDefModule(ModuleMemberNode):
+@dataclass(frozen=True)
+class ModuleMemberDefModule(ModuleMemberNode, FrozenAstData):
     """
     Module module member
 
@@ -921,8 +919,8 @@ class ModuleMemberDefModule(ModuleMemberNode):
     node: AstNode[DefModule]
 
 
-@dataclass
-class ModuleMemberDefPort(ModuleMemberNode):
+@dataclass(frozen=True)
+class ModuleMemberDefPort(ModuleMemberNode, FrozenAstData):
     """
     Port module member
 
@@ -933,8 +931,8 @@ class ModuleMemberDefPort(ModuleMemberNode):
     node: AstNode["DefPort"]
 
 
-@dataclass
-class ModuleMemberDefStateMachine(ModuleMemberNode):
+@dataclass(frozen=True)
+class ModuleMemberDefStateMachine(ModuleMemberNode, FrozenAstData):
     """
     State machine module member
 
@@ -945,8 +943,8 @@ class ModuleMemberDefStateMachine(ModuleMemberNode):
     node: AstNode["DefStateMachine"]
 
 
-@dataclass
-class ModuleMemberDefStruct(ModuleMemberNode):
+@dataclass(frozen=True)
+class ModuleMemberDefStruct(ModuleMemberNode, FrozenAstData):
     """
     Struct module member
 
@@ -957,8 +955,8 @@ class ModuleMemberDefStruct(ModuleMemberNode):
     node: AstNode["DefStruct"]
 
 
-@dataclass
-class ModuleMemberDefTopology(ModuleMemberNode):
+@dataclass(frozen=True)
+class ModuleMemberDefTopology(ModuleMemberNode, FrozenAstData):
     """
     Topology module member
 
@@ -969,8 +967,8 @@ class ModuleMemberDefTopology(ModuleMemberNode):
     node: AstNode["DefTopology"]
 
 
-@dataclass
-class ModuleMemberSpecInclude(ModuleMemberNode):
+@dataclass(frozen=True)
+class ModuleMemberSpecInclude(ModuleMemberNode, FrozenAstData):
     """
     Include specifier module member
 
@@ -981,8 +979,8 @@ class ModuleMemberSpecInclude(ModuleMemberNode):
     node: AstNode["SpecInclude"]
 
 
-@dataclass
-class ModuleMemberSpecLoc(ModuleMemberNode):
+@dataclass(frozen=True)
+class ModuleMemberSpecLoc(ModuleMemberNode, FrozenAstData):
     """
     Location specifier module member
 
@@ -998,8 +996,8 @@ class ModuleMemberSpecLoc(ModuleMemberNode):
 ##########################
 
 
-@dataclass
-class StateMachineMember:
+@dataclass(frozen=True)
+class StateMachineMember(FrozenAstData):
     """
     State machine member with annotated state machine member member node
 
@@ -1014,13 +1012,13 @@ class StateMachineMemberNode(ABC):
     pass
 
 
-@dataclass
-class StateMachineMemberDefAbsType(StateMachineMemberNode):
+@dataclass(frozen=True)
+class StateMachineMemberDefAbsType(StateMachineMemberNode, FrozenAstData):
     node: AstNode[DefAbsType]
 
 
-@dataclass
-class StateMachineMemberDefAction(StateMachineMemberNode):
+@dataclass(frozen=True)
+class StateMachineMemberDefAction(StateMachineMemberNode, FrozenAstData):
     """
     Action state machine member
 
@@ -1031,18 +1029,18 @@ class StateMachineMemberDefAction(StateMachineMemberNode):
     node: AstNode["DefAction"]
 
 
-@dataclass
-class StateMachineMemberDefAliasType(StateMachineMemberNode):
+@dataclass(frozen=True)
+class StateMachineMemberDefAliasType(StateMachineMemberNode, FrozenAstData):
     node: AstNode[DefAliasType]
 
 
-@dataclass
-class StateMachineMemberDefArray(StateMachineMemberNode):
+@dataclass(frozen=True)
+class StateMachineMemberDefArray(StateMachineMemberNode, FrozenAstData):
     node: AstNode[DefArray]
 
 
-@dataclass
-class StateMachineMemberDefChoice(StateMachineMemberNode):
+@dataclass(frozen=True)
+class StateMachineMemberDefChoice(StateMachineMemberNode, FrozenAstData):
     """
     Choice state machine member
 
@@ -1053,18 +1051,18 @@ class StateMachineMemberDefChoice(StateMachineMemberNode):
     node: AstNode["DefChoice"]
 
 
-@dataclass
-class StateMachineMemberDefConstant(StateMachineMemberNode):
+@dataclass(frozen=True)
+class StateMachineMemberDefConstant(StateMachineMemberNode, FrozenAstData):
     node: AstNode[DefConstant]
 
 
-@dataclass
-class StateMachineMemberDefEnum(StateMachineMemberNode):
+@dataclass(frozen=True)
+class StateMachineMemberDefEnum(StateMachineMemberNode, FrozenAstData):
     node: AstNode[DefEnum]
 
 
-@dataclass
-class StateMachineMemberDefGuard(StateMachineMemberNode):
+@dataclass(frozen=True)
+class StateMachineMemberDefGuard(StateMachineMemberNode, FrozenAstData):
     """
     Guard state machine member
 
@@ -1075,8 +1073,8 @@ class StateMachineMemberDefGuard(StateMachineMemberNode):
     node: AstNode["DefGuard"]
 
 
-@dataclass
-class StateMachineMemberDefSignal(StateMachineMemberNode):
+@dataclass(frozen=True)
+class StateMachineMemberDefSignal(StateMachineMemberNode, FrozenAstData):
     """
     Signal state machine member
 
@@ -1087,8 +1085,8 @@ class StateMachineMemberDefSignal(StateMachineMemberNode):
     node: AstNode["DefSignal"]
 
 
-@dataclass
-class StateMachineMemberDefState(StateMachineMemberNode):
+@dataclass(frozen=True)
+class StateMachineMemberDefState(StateMachineMemberNode, FrozenAstData):
     """
     State state machine member
 
@@ -1099,18 +1097,18 @@ class StateMachineMemberDefState(StateMachineMemberNode):
     node: AstNode["DefState"]
 
 
-@dataclass
-class StateMachineMemberDefStruct(StateMachineMemberNode):
+@dataclass(frozen=True)
+class StateMachineMemberDefStruct(StateMachineMemberNode, FrozenAstData):
     node: AstNode[DefStruct]
 
 
-@dataclass
-class StateMachineMemberSpecInclude(StateMachineMemberNode):
+@dataclass(frozen=True)
+class StateMachineMemberSpecInclude(StateMachineMemberNode, FrozenAstData):
     node: AstNode["SpecInclude"]
 
 
-@dataclass
-class StateMachineMemberSpecInitialTransition(StateMachineMemberNode):
+@dataclass(frozen=True)
+class StateMachineMemberSpecInitialTransition(StateMachineMemberNode, FrozenAstData):
     """
     Initial transition state machine member
 
@@ -1126,8 +1124,8 @@ class StateMachineMemberSpecInitialTransition(StateMachineMemberNode):
 ##########################
 
 
-@dataclass
-class StateMember:
+@dataclass(frozen=True)
+class StateMember(FrozenAstData):
     """
     State member with annotated state member node
 
@@ -1142,8 +1140,8 @@ class StateMemberNode(ABC):
     pass
 
 
-@dataclass
-class StateMemberDefChoice(StateMemberNode):
+@dataclass(frozen=True)
+class StateMemberDefChoice(StateMemberNode, FrozenAstData):
     """
     Choice state member
 
@@ -1154,8 +1152,8 @@ class StateMemberDefChoice(StateMemberNode):
     node: AstNode[DefChoice]
 
 
-@dataclass
-class StateMemberDefState(StateMemberNode):
+@dataclass(frozen=True)
+class StateMemberDefState(StateMemberNode, FrozenAstData):
     """
     State state member
 
@@ -1166,8 +1164,8 @@ class StateMemberDefState(StateMemberNode):
     node: AstNode[DefState]
 
 
-@dataclass
-class StateMemberSpecStateEntry(StateMemberNode):
+@dataclass(frozen=True)
+class StateMemberSpecStateEntry(StateMemberNode, FrozenAstData):
     """
     State entry state member
 
@@ -1178,8 +1176,8 @@ class StateMemberSpecStateEntry(StateMemberNode):
     node: AstNode["SpecStateEntry"]
 
 
-@dataclass
-class StateMemberSpecStateExit(StateMemberNode):
+@dataclass(frozen=True)
+class StateMemberSpecStateExit(StateMemberNode, FrozenAstData):
     """
     State exit state member
 
@@ -1190,8 +1188,8 @@ class StateMemberSpecStateExit(StateMemberNode):
     node: AstNode["SpecStateExit"]
 
 
-@dataclass
-class StateMemberSpecInitialTransition(StateMemberNode):
+@dataclass(frozen=True)
+class StateMemberSpecInitialTransition(StateMemberNode, FrozenAstData):
     """
     Initial state state member
 
@@ -1202,8 +1200,8 @@ class StateMemberSpecInitialTransition(StateMemberNode):
     node: AstNode["SpecInitialTransition"]
 
 
-@dataclass
-class StateMemberSpecStateTransition(StateMemberNode):
+@dataclass(frozen=True)
+class StateMemberSpecStateTransition(StateMemberNode, FrozenAstData):
     """
     Transition state member
 
@@ -1223,8 +1221,8 @@ class Expr(ABC):
     pass
 
 
-@dataclass
-class ExprArray(Expr):
+@dataclass(frozen=True)
+class ExprArray(Expr, FrozenAstData):
     """
     Array expression
 
@@ -1235,8 +1233,8 @@ class ExprArray(Expr):
     elts: List[AstNode[Expr]]
 
 
-@dataclass
-class ExprArraySubscript(Expr):
+@dataclass(frozen=True)
+class ExprArraySubscript(Expr, FrozenAstData):
     """
     Array expression
 
@@ -1250,8 +1248,8 @@ class ExprArraySubscript(Expr):
     e2: AstNode[Expr]
 
 
-@dataclass
-class ExprBinop(Expr):
+@dataclass(frozen=True)
+class ExprBinop(Expr, FrozenAstData):
     """
     Binary operation expression
 
@@ -1268,8 +1266,8 @@ class ExprBinop(Expr):
     e2: AstNode[Expr]
 
 
-@dataclass
-class ExprDot(Expr):
+@dataclass(frozen=True)
+class ExprDot(Expr, FrozenAstData):
     """
     Dot expression
 
@@ -1283,8 +1281,8 @@ class ExprDot(Expr):
     id: AstNode[Ident]
 
 
-@dataclass
-class ExprIdent(Expr):
+@dataclass(frozen=True)
+class ExprIdent(Expr, FrozenAstData):
     """
     Ident expression
 
@@ -1295,8 +1293,8 @@ class ExprIdent(Expr):
     value: Ident
 
 
-@dataclass
-class ExprLiteralBool(Expr):
+@dataclass(frozen=True)
+class ExprLiteralBool(Expr, FrozenAstData):
     """
     Literal Boolean expression
 
@@ -1307,8 +1305,8 @@ class ExprLiteralBool(Expr):
     value: "LiteralBool"
 
 
-@dataclass
-class ExprLiteralInt(Expr):
+@dataclass(frozen=True)
+class ExprLiteralInt(Expr, FrozenAstData):
     """
     Literal integer expression
 
@@ -1319,8 +1317,8 @@ class ExprLiteralInt(Expr):
     value: str
 
 
-@dataclass
-class ExprLiteralFloat(Expr):
+@dataclass(frozen=True)
+class ExprLiteralFloat(Expr, FrozenAstData):
     """
     Literal float expression
 
@@ -1331,8 +1329,8 @@ class ExprLiteralFloat(Expr):
     value: str
 
 
-@dataclass
-class ExprLiteralString(Expr):
+@dataclass(frozen=True)
+class ExprLiteralString(Expr, FrozenAstData):
     """
     Literal string expression
 
@@ -1343,8 +1341,8 @@ class ExprLiteralString(Expr):
     value: str
 
 
-@dataclass
-class ExprParen(Expr):
+@dataclass(frozen=True)
+class ExprParen(Expr, FrozenAstData):
     """
     Parenthesis expression
 
@@ -1355,13 +1353,13 @@ class ExprParen(Expr):
     e: AstNode[Expr]
 
 
-@dataclass
-class ExprSizeOf(Expr):
+@dataclass(frozen=True)
+class ExprSizeOf(Expr, FrozenAstData):
     type_name: AstNode["TypeName"]
 
 
-@dataclass
-class ExprStruct(Expr):
+@dataclass(frozen=True)
+class ExprStruct(Expr, FrozenAstData):
     """
     Struct expression
 
@@ -1372,8 +1370,8 @@ class ExprStruct(Expr):
     members: List[AstNode["StructMember"]]
 
 
-@dataclass
-class ExprUnop(Expr):
+@dataclass(frozen=True)
+class ExprUnop(Expr, FrozenAstData):
     """
     Unary operation expression
 
@@ -1396,8 +1394,8 @@ class TopologyMemberNode(ABC):
     pass
 
 
-@dataclass
-class TopologyMember:
+@dataclass(frozen=True)
+class TopologyMember(FrozenAstData):
     """
     Topology member with anotated topology member node
 
@@ -1408,8 +1406,8 @@ class TopologyMember:
     node: Annotated[TopologyMemberNode]
 
 
-@dataclass
-class TopologyMemberSpecInstance(TopologyMemberNode):
+@dataclass(frozen=True)
+class TopologyMemberSpecInstance(TopologyMemberNode, FrozenAstData):
     """
     Component instance topology member
 
@@ -1420,8 +1418,8 @@ class TopologyMemberSpecInstance(TopologyMemberNode):
     node: AstNode["SpecInstance"]
 
 
-@dataclass
-class TopologyMemberSpecConnectionGraph(TopologyMemberNode):
+@dataclass(frozen=True)
+class TopologyMemberSpecConnectionGraph(TopologyMemberNode, FrozenAstData):
     """
     Connection graph topology member
 
@@ -1432,8 +1430,8 @@ class TopologyMemberSpecConnectionGraph(TopologyMemberNode):
     node: AstNode["SpecConnectionGraph"]
 
 
-@dataclass
-class TopologyMemberSpecInclude(TopologyMemberNode):
+@dataclass(frozen=True)
+class TopologyMemberSpecInclude(TopologyMemberNode, FrozenAstData):
     """
     Include specifier topology member
 
@@ -1444,8 +1442,8 @@ class TopologyMemberSpecInclude(TopologyMemberNode):
     node: AstNode["SpecInclude"]
 
 
-@dataclass
-class TopologyMemberSpecTlmPacketSet(TopologyMemberNode):
+@dataclass(frozen=True)
+class TopologyMemberSpecTlmPacketSet(TopologyMemberNode, FrozenAstData):
     """
     Telemetry packet set topology member
 
@@ -1456,8 +1454,8 @@ class TopologyMemberSpecTlmPacketSet(TopologyMemberNode):
     node: AstNode["SpecTlmPacketSet"]
 
 
-@dataclass
-class TopologyMemberSpecTopPort(TopologyMemberNode):
+@dataclass(frozen=True)
+class TopologyMemberSpecTopPort(TopologyMemberNode, FrozenAstData):
     """
     Topology import topology member
 
@@ -1477,8 +1475,8 @@ class TlmPacketSetMemberNode(ABC):
     pass
 
 
-@dataclass
-class TlmPacketSetMember:
+@dataclass(frozen=True)
+class TlmPacketSetMember(FrozenAstData):
     """
     Telemetry packet set member with annotated telemetry packet set member node
 
@@ -1489,8 +1487,8 @@ class TlmPacketSetMember:
     node: Annotated[TlmPacketSetMemberNode]
 
 
-@dataclass
-class TlmPacketSetMemberSpecInclude(TlmPacketSetMemberNode):
+@dataclass(frozen=True)
+class TlmPacketSetMemberSpecInclude(TlmPacketSetMemberNode, FrozenAstData):
     """
     Include specifier telemetry packet set member
 
@@ -1501,8 +1499,8 @@ class TlmPacketSetMemberSpecInclude(TlmPacketSetMemberNode):
     node: AstNode["SpecInclude"]
 
 
-@dataclass
-class TlmPacketSetMemberSpecTlmPacket(TlmPacketSetMemberNode):
+@dataclass(frozen=True)
+class TlmPacketSetMemberSpecTlmPacket(TlmPacketSetMemberNode, FrozenAstData):
     """
     Telemetry packet telemetry packet set member
 
@@ -1518,8 +1516,8 @@ class TlmPacketSetMemberSpecTlmPacket(TlmPacketSetMemberNode):
 ############################
 
 
-@dataclass
-class InterfaceMember:
+@dataclass(frozen=True)
+class InterfaceMember(FrozenAstData):
     """
     Interface member with annotated interface member node
 
@@ -1534,8 +1532,8 @@ class InterfaceMemberNode(ABC):
     pass
 
 
-@dataclass
-class InterfaceMemberSpecPortInstance(InterfaceMemberNode):
+@dataclass(frozen=True)
+class InterfaceMemberSpecPortInstance(InterfaceMemberNode, FrozenAstData):
     """
     Port instance interface member
 
@@ -1546,8 +1544,8 @@ class InterfaceMemberSpecPortInstance(InterfaceMemberNode):
     node: AstNode["SpecPortInstance"]
 
 
-@dataclass
-class InterfaceMemberSpecImportInterface(InterfaceMemberNode):
+@dataclass(frozen=True)
+class InterfaceMemberSpecImportInterface(InterfaceMemberNode, FrozenAstData):
     """
     Interface import interface member
 
@@ -1567,8 +1565,8 @@ class TlmPacketMember(ABC):
     pass
 
 
-@dataclass
-class TlmPacketMemberSpecInclude(TlmPacketMember):
+@dataclass(frozen=True)
+class TlmPacketMemberSpecInclude(TlmPacketMember, FrozenAstData):
     """
     Include specifier telemetry packet member
 
@@ -1579,8 +1577,8 @@ class TlmPacketMemberSpecInclude(TlmPacketMember):
     node: AstNode["SpecInclude"]
 
 
-@dataclass
-class TlmPacketMemberTlmChannelIdentifier(TlmPacketMember):
+@dataclass(frozen=True)
+class TlmPacketMemberTlmChannelIdentifier(TlmPacketMember, FrozenAstData):
     """
     Telemetry channel identifier telemetry packet member
 
@@ -1616,8 +1614,8 @@ class QueueFull(Enum):
         return self.value
 
 
-@dataclass
-class SpecCommand:
+@dataclass(frozen=True)
+class SpecCommand(FrozenAstData):
     """
     Command specifier
 
@@ -1661,8 +1659,8 @@ class SpecCommandKind(Enum):
         return self.value
 
 
-@dataclass
-class SpecInstance:
+@dataclass(frozen=True)
+class SpecInstance(FrozenAstData):
     """
     Component instance specifier
 
@@ -1677,8 +1675,8 @@ class SpecConnectionGraph(ABC):
     pass
 
 
-@dataclass
-class Direct(SpecConnectionGraph):
+@dataclass(frozen=True)
+class Direct(SpecConnectionGraph, FrozenAstData):
     """
     Direction connection graph specifier
 
@@ -1718,8 +1716,8 @@ class PatternKind(Enum):
         return self.value
 
 
-@dataclass
-class Pattern(SpecConnectionGraph):
+@dataclass(frozen=True)
+class Pattern(SpecConnectionGraph, FrozenAstData):
     """
     Pattern connection graph specifier
 
@@ -1736,8 +1734,8 @@ class Pattern(SpecConnectionGraph):
     targets: List[AstNode[QualIdent]]
 
 
-@dataclass
-class Connection:
+@dataclass(frozen=True)
+class Connection(FrozenAstData):
     """
     Connection
 
@@ -1760,8 +1758,8 @@ class Connection:
     to_index: Optional[AstNode[Expr]]
 
 
-@dataclass
-class SpecContainer:
+@dataclass(frozen=True)
+class SpecContainer(FrozenAstData):
     """
     Container specifier
 
@@ -1778,8 +1776,8 @@ class SpecContainer:
     default_priority: Optional[AstNode[Expr]]
 
 
-@dataclass
-class EventThrottle:
+@dataclass(frozen=True)
+class EventThrottle(FrozenAstData):
     """
     Event throttle
 
@@ -1793,8 +1791,8 @@ class EventThrottle:
     every: Optional[AstNode[Expr]]
 
 
-@dataclass
-class SpecEvent:
+@dataclass(frozen=True)
+class SpecEvent(FrozenAstData):
     """
     Event specifier
 
@@ -1845,8 +1843,8 @@ class SpecEventSeverity(Enum):
         return self.value
 
 
-@dataclass
-class SpecInclude:
+@dataclass(frozen=True)
+class SpecInclude(FrozenAstData):
     """
     Include specifier
 
@@ -1857,8 +1855,8 @@ class SpecInclude:
     file: AstNode[str]
 
 
-@dataclass
-class SpecInit:
+@dataclass(frozen=True)
+class SpecInit(FrozenAstData):
     """
     Init specifier
 
@@ -1871,8 +1869,8 @@ class SpecInit:
     code: str
 
 
-@dataclass
-class SpecInternalPort:
+@dataclass(frozen=True)
+class SpecInternalPort(FrozenAstData):
     """
     Internal port specifier
 
@@ -1892,8 +1890,8 @@ class SpecInternalPort:
     queue_full: Optional[QueueFull]
 
 
-@dataclass
-class SpecLoc:
+@dataclass(frozen=True)
+class SpecLoc(FrozenAstData):
     """
     Location specifier
 
@@ -1939,8 +1937,8 @@ class SpecLocKind(Enum):
         return self.value
 
 
-@dataclass
-class SpecParam:
+@dataclass(frozen=True)
+class SpecParam(FrozenAstData):
     """
     Parameter specifier
 
@@ -1973,8 +1971,8 @@ class SpecPortInstance(ABC):
     pass
 
 
-@dataclass
-class GeneralPortInstance(SpecPortInstance):
+@dataclass(frozen=True)
+class GeneralPortInstance(SpecPortInstance, FrozenAstData):
     """
     General port instance specifier
 
@@ -2000,8 +1998,8 @@ class GeneralPortInstance(SpecPortInstance):
     queue_full: Optional[AstNode[QueueFull]]
 
 
-@dataclass
-class SpecialPortInstance(SpecPortInstance):
+@dataclass(frozen=True)
+class SpecialPortInstance(SpecPortInstance, FrozenAstData):
     """
     Special port instance specifier
 
@@ -2100,8 +2098,8 @@ class SpecialKind(Enum):
         return self.value
 
 
-@dataclass
-class SpecPortMatching:
+@dataclass(frozen=True)
+class SpecPortMatching(FrozenAstData):
     """
     Port matching specifier
 
@@ -2115,8 +2113,8 @@ class SpecPortMatching:
     port2: AstNode[Ident]
 
 
-@dataclass
-class SpecRecord:
+@dataclass(frozen=True)
+class SpecRecord(FrozenAstData):
     """
     Record specifier
 
@@ -2136,8 +2134,8 @@ class SpecRecord:
     id: Optional[AstNode[Expr]]
 
 
-@dataclass
-class SpecStateMachineInstance:
+@dataclass(frozen=True)
+class SpecStateMachineInstance(FrozenAstData):
     """
     State machine instance specifier
 
@@ -2157,8 +2155,8 @@ class SpecStateMachineInstance:
     queue_full: Optional[QueueFull]
 
 
-@dataclass
-class SpecTlmChannel:
+@dataclass(frozen=True)
+class SpecTlmChannel(FrozenAstData):
     """
     Telemetry channel specifier
 
@@ -2203,8 +2201,8 @@ class SpecTlmChannelUpdate(Enum):
         return self.value
 
 
-@dataclass
-class SpecTlmPacket:
+@dataclass(frozen=True)
+class SpecTlmPacket(FrozenAstData):
     """
     Telemetry packet specifier
 
@@ -2223,8 +2221,8 @@ class SpecTlmPacket:
     members: List["TlmPacketMember"]
 
 
-@dataclass
-class SpecTlmPacketSet:
+@dataclass(frozen=True)
+class SpecTlmPacketSet(FrozenAstData):
     """
     Telemetry packet set specifier
 
@@ -2241,14 +2239,14 @@ class SpecTlmPacketSet:
     omitted: List[AstNode["TlmChannelIdentifier"]]
 
 
-@dataclass
-class SpecTopPort:
+@dataclass(frozen=True)
+class SpecTopPort(FrozenAstData):
     name: Ident
     underlying_port: AstNode["PortInstanceIdentifier"]
 
 
-@dataclass
-class SpecImport:
+@dataclass(frozen=True)
+class SpecImport(FrozenAstData):
     """
     Import specifier
 
@@ -2259,8 +2257,8 @@ class SpecImport:
     sym: AstNode[QualIdent]
 
 
-@dataclass
-class SpecInitialTransition:
+@dataclass(frozen=True)
+class SpecInitialTransition(FrozenAstData):
     """
     Initial transition specifier
 
@@ -2271,8 +2269,8 @@ class SpecInitialTransition:
     transition: AstNode["TransitionExpr"]
 
 
-@dataclass
-class SpecStateEntry:
+@dataclass(frozen=True)
+class SpecStateEntry(FrozenAstData):
     """
     State entry specifier
 
@@ -2283,8 +2281,8 @@ class SpecStateEntry:
     actions: List[AstNode[Ident]]
 
 
-@dataclass
-class SpecStateExit:
+@dataclass(frozen=True)
+class SpecStateExit(FrozenAstData):
     """
     State exit specifier
 
@@ -2295,8 +2293,8 @@ class SpecStateExit:
     actions: List[AstNode[Ident]]
 
 
-@dataclass
-class SpecStateTransition:
+@dataclass(frozen=True)
+class SpecStateTransition(FrozenAstData):
     """
     State transition specifier
 
@@ -2381,8 +2379,8 @@ class TypeName(ABC):
     pass
 
 
-@dataclass
-class TypeNameFloat(TypeName):
+@dataclass(frozen=True)
+class TypeNameFloat(TypeName, FrozenAstData):
     """
     Float type name
 
@@ -2393,8 +2391,8 @@ class TypeNameFloat(TypeName):
     name: TypeFloat
 
 
-@dataclass
-class TypeNameInt(TypeName):
+@dataclass(frozen=True)
+class TypeNameInt(TypeName, FrozenAstData):
     """
     Integer type name
 
@@ -2405,8 +2403,8 @@ class TypeNameInt(TypeName):
     name: TypeInt
 
 
-@dataclass
-class TypeNameQualIdent(TypeName):
+@dataclass(frozen=True)
+class TypeNameQualIdent(TypeName, FrozenAstData):
     """
     Qualified identifier type name
 
@@ -2417,8 +2415,8 @@ class TypeNameQualIdent(TypeName):
     name: AstNode[QualIdent]
 
 
-@dataclass
-class TypeNameBool(TypeName):
+@dataclass(frozen=True)
+class TypeNameBool(TypeName, FrozenAstData):
     """
     Boolean type name
     """
@@ -2426,8 +2424,8 @@ class TypeNameBool(TypeName):
     pass
 
 
-@dataclass
-class TypeNameString(TypeName):
+@dataclass(frozen=True)
+class TypeNameString(TypeName, FrozenAstData):
     """
     String type name
 
@@ -2453,8 +2451,8 @@ class Unop(Enum):
         return self.value
 
 
-@dataclass
-class FormalParam:
+@dataclass(frozen=True)
+class FormalParam(FrozenAstData):
     """
     Formal parameter
 
@@ -2501,8 +2499,8 @@ class LiteralBool(Enum):
         return self.value
 
 
-@dataclass
-class PortInstanceIdentifier:
+@dataclass(frozen=True)
+class PortInstanceIdentifier(FrozenAstData):
     """
     Port instance identifier
 
@@ -2516,8 +2514,8 @@ class PortInstanceIdentifier:
     port_name: AstNode[Ident]
 
 
-@dataclass
-class TransitionExpr:
+@dataclass(frozen=True)
+class TransitionExpr(FrozenAstData):
     """
     Transition expression
 
@@ -2539,8 +2537,8 @@ class TransitionOrDo(ABC):
     pass
 
 
-@dataclass
-class Transition(TransitionOrDo):
+@dataclass(frozen=True)
+class Transition(TransitionOrDo, FrozenAstData):
     """
     Transition within transition specifier
 
@@ -2551,8 +2549,8 @@ class Transition(TransitionOrDo):
     transition: AstNode[TransitionExpr]
 
 
-@dataclass
-class Do(TransitionOrDo):
+@dataclass(frozen=True)
+class Do(TransitionOrDo, FrozenAstData):
     """
     Do within transition specifier
 
@@ -2563,8 +2561,8 @@ class Do(TransitionOrDo):
     actions: List[AstNode[Ident]]
 
 
-@dataclass
-class StructMember:
+@dataclass(frozen=True)
+class StructMember(FrozenAstData):
     """
     Struct member
 
@@ -2578,8 +2576,8 @@ class StructMember:
     value: AstNode[Expr]
 
 
-@dataclass
-class StructTypeMember:
+@dataclass(frozen=True)
+class StructTypeMember(FrozenAstData):
     """
     Struct type member
 
@@ -2599,8 +2597,8 @@ class StructTypeMember:
     format: Optional[AstNode[str]]
 
 
-@dataclass
-class TlmChannelIdentifier:
+@dataclass(frozen=True)
+class TlmChannelIdentifier(FrozenAstData):
     """
     Telemetry channel identifier
 
