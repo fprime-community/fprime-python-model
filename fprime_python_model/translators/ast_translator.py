@@ -1157,6 +1157,7 @@ class AstTranslator:
                     member = fpp_ast.ModuleMemberDefTopology(
                         AstNode.create_with_id(
                             fpp_ast.DefTopology(
+                                data["isDeployment"],
                                 data["name"],
                                 self.translate_topology_members(data["members"]),
                                 [

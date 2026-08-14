@@ -535,6 +535,7 @@ class DefTopology(FrozenAstData):
     :type members: List[TopologyMember]
     """
 
+    isDeployment: bool
     name: Ident
     members: List["TopologyMember"]
     implements: List[AstNode[QualIdent]]

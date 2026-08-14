@@ -512,6 +512,10 @@ class FppWriter(AstVisitor, LineUtils):
         _, node, _ = a_node
         data = node.data
 
+        if data.isDeployment:
+            topology = "deployment topology"
+        else:
+            topology = "topology"
         implements_clause = (
             [n.data for n in data.implements] if data.implements else None
         )
@@ -519,7 +523,7 @@ class FppWriter(AstVisitor, LineUtils):
         header = Lines(
             [
                 self.line(
-                    f"topology {self.ident(data.name)} "
+                    f"{topology} {self.ident(data.name)} "
                     + ("implements" if implements_clause else "{")
                 )
             ]

@@ -61,7 +61,7 @@ topology Simple2 {
 }
 
 @ A third Simple Topology
-topology Simple3 {
+deployment topology Simple3 {
 
   instance Simple2
 
