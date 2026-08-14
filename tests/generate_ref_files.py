@@ -40,7 +40,7 @@ additional_tests: Dict[str, Tuple[str, Optional[str]]] = {
         "compiler/tools/fpp-to-json/test/fprime/defs.fpp",
     ),
     "location_specifier": (
-        "compiler/tools/fpp-depend/test/dictionary_no_top.fpp",
+        "compiler/tools/fpp-depend/test/dictionary_no_deployment_top.fpp",
         None,
     ),
     "command_patterned_connections": (

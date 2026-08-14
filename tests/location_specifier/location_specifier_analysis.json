@@ -1,5 +1,5 @@
 {
-  "fppVersion" : "v3.2.0",
+  "fppVersion" : "v3.3.0a16-110-g291b338cc",
   "analysis" : {
     "componentInstanceMap" : {
       
@@ -18,7 +18,7 @@
     "includedFileSet" : [
     ],
     "inputFileSet" : [
-      "[ local path prefix ]/compiler/tools/fpp-depend/test/dictionary_no_top.fpp"
+      "[ local path prefix ]/compiler/tools/fpp-depend/test/dictionary_no_deployment_top.fpp"
     ],
     "locationSpecifierMap" : [
       [
@@ -63,7 +63,59 @@
       
     },
     "topologyMap" : {
-      
+      "8" : {
+        "aNode" : {
+          "astNodeId" : 8
+        },
+        "qualifiedName" : {
+          "qualifier" : [
+          ],
+          "base" : "T"
+        },
+        "directTopologies" : {
+          
+        },
+        "directComponentInstances" : {
+          
+        },
+        "transitiveImportSet" : [
+        ],
+        "instanceMap" : [
+        ],
+        "ports" : [
+        ],
+        "portMap" : {
+          
+        },
+        "portInterface" : {
+          "instanceType" : "topology",
+          "portMap" : {
+            
+          },
+          "specialPortMap" : {
+            
+          }
+        },
+        "patternMap" : {
+          
+        },
+        "connectionMap" : {
+          
+        },
+        "localConnectionMap" : {
+          
+        },
+        "outputConnectionMap" : [
+        ],
+        "inputConnectionMap" : [
+        ],
+        "fromPortNumberMap" : [
+        ],
+        "toPortNumberMap" : [
+        ],
+        "unconnectedPortSet" : [
+        ]
+      }
     },
     "typeMap" : {
       
