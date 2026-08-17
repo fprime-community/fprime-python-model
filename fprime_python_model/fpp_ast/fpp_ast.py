@@ -525,6 +525,21 @@ class DefStruct(FrozenAstData):
 
 
 @dataclass(frozen=True)
+class DefSystem(FrozenAstData):
+    """
+    System definition
+
+    :param name: Name of the system
+    :type name: Ident
+    :param topology: Deployment topology implementing the system
+    :type topology: AstNode[QualIdent]
+    """
+
+    name: Ident
+    topology: AstNode[QualIdent]
+
+
+@dataclass(frozen=True)
 class DefTopology(FrozenAstData):
     """
     Topology defintion
@@ -954,6 +969,18 @@ class ModuleMemberDefStruct(ModuleMemberNode, FrozenAstData):
     """
 
     node: AstNode["DefStruct"]
+
+
+@dataclass(frozen=True)
+class ModuleMemberDefSystem(ModuleMemberNode, FrozenAstData):
+    """
+    System module member
+
+    :param node: System definition AST node
+    :type node: AstNode[DefSystem]
+    """
+
+    node: AstNode["DefSystem"]
 
 
 @dataclass(frozen=True)

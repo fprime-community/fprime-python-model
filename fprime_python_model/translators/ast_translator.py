@@ -1153,6 +1153,16 @@ class AstTranslator:
                     member = fpp_ast.ModuleMemberDefStruct(
                         self.translate_def_struct(data, id)
                     )
+                case "DefSystem":
+                    member = fpp_ast.ModuleMemberDefSystem(
+                        AstNode.create_with_id(
+                            fpp_ast.DefSystem(
+                                data["name"],
+                                self.translate_qual_ident(data["topology"]),
+                            ),
+                            id,
+                        )
+                    )
                 case "DefTopology":
                     member = fpp_ast.ModuleMemberDefTopology(
                         AstNode.create_with_id(

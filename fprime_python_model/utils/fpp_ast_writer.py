@@ -282,6 +282,17 @@ class AstWriter(AstVisitor, LineUtils):
         return result + [self.indent_in(line) for line in concat_list]
 
     @override
+    def def_system_annotated_node(
+        self, _in: In, a_node: fpp_ast.Annotated[AstNode[fpp_ast.DefSystem]]
+    ):
+        _, node, _ = a_node
+        data = node.data
+        return self.lines("def system") + [
+            self.indent_in(line)
+            for line in self.ident(data.name) + self.qual_ident(data.topology.data)
+        ]
+
+    @override
     def def_topology_annotated_node(
         self, _in: In, a_node: fpp_ast.Annotated[AstNode[fpp_ast.DefTopology]]
     ):

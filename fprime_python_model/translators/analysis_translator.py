@@ -22,6 +22,7 @@ from fprime_python_model.semantics.symbol import (
     EnumConstantSymbol,
     EnumSymbol,
     StructSymbol,
+    SystemSymbol,
     TopologySymbol,
     InterfaceSymbol,
     ArraySymbol,
@@ -282,6 +283,8 @@ class AnalysisTranslator:
                 return StateMachineSymbol(a_node)
             case "Struct":
                 return StructSymbol(a_node)
+            case "System":
+                return SystemSymbol(a_node)
             case "Topology":
                 return TopologySymbol(a_node)
             case _:
@@ -339,6 +342,8 @@ class AnalysisTranslator:
                 return "StateMachine"
             case fpp_ast.DefStruct():
                 return "Struct"
+            case fpp_ast.DefSystem():
+                return "System"
             case fpp_ast.DefTopology():
                 return "Topology"
             case _:
@@ -385,6 +390,8 @@ class AnalysisTranslator:
                 return NameGroup.PORT
             case "StateMachine":
                 return NameGroup.STATE_MACHINE
+            case "System":
+                return NameGroup.SYSTEM
             case "Topology":
                 return NameGroup.TOPOLOGY
             case "PortInterface":

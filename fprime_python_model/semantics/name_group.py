@@ -7,6 +7,7 @@ class NameGroup(Enum):
     COMPONENT = "component"
     PORT = "port"
     STATE_MACHINE = "state machine"
+    SYSTEM = "system"
     TOPOLOGY = "topology"
     PORT_INTERFACE = "interface"
     TYPE = "type"
@@ -22,6 +23,7 @@ name_groups: List[NameGroup] = [
     NameGroup.STATE_MACHINE,
     NameGroup.PORT_INTERFACE_INSTANCE,
     NameGroup.PORT_INTERFACE,
+    NameGroup.SYSTEM,
     NameGroup.TYPE,
     NameGroup.VALUE,
 ]

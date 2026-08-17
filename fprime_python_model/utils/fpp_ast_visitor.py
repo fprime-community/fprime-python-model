@@ -117,6 +117,11 @@ class AstVisitor(ABC, Generic[In, Out]):
     ) -> Out:
         return self.default(_in)
 
+    def def_system_annotated_node(
+        self, _in: In, node: fpp_ast.Annotated[AstNode[fpp_ast.DefSystem]]
+    ) -> Out:
+        return self.default(_in)
+
     def def_topology_annotated_node(
         self, _in: In, node: fpp_ast.Annotated[AstNode[fpp_ast.DefTopology]]
     ) -> Out:
@@ -451,6 +456,8 @@ class AstVisitor(ABC, Generic[In, Out]):
                 )
             case fpp_ast.ModuleMemberDefStruct():
                 return self.def_struct_annotated_node(_in, (pre, node.node, post))
+            case fpp_ast.ModuleMemberDefSystem():
+                return self.def_system_annotated_node(_in, (pre, node.node, post))
             case fpp_ast.ModuleMemberDefTopology():
                 return self.def_topology_annotated_node(_in, (pre, node.node, post))
             case fpp_ast.ModuleMemberSpecInclude():
