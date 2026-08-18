@@ -506,6 +506,20 @@ class FppWriter(AstVisitor, LineUtils):
             .join_opt(data.default, " default ", self.expr_node)
         )
 
+    def def_system_annotated_node(
+        self, _in, a_node: fpp_ast.Annotated[AstNode[fpp_ast.DefSystem]]
+    ):
+        _, node, _ = a_node
+        data = node.data
+        return Lines(
+            [
+                self.line(
+                    f"system {self.ident(data.name)}: "
+                    + self.qual_ident_string(data.topology.data)
+                )
+            ]
+        )
+
     def def_topology_annotated_node(
         self, _in, a_node: fpp_ast.Annotated[AstNode[fpp_ast.DefTopology]]
     ):

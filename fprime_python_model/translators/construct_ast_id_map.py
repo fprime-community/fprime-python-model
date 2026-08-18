@@ -194,6 +194,13 @@ class ConstructAstMap(AstVisitor):
         if data.default:
             self.expr_node(data.default)
 
+    def def_system_annotated_node(
+        self, _in: In, a_node: fpp_ast.Annotated[AstNode[fpp_ast.DefSystem]]
+    ) -> Out:
+        _, node, _ = a_node
+        self.add_annotated_node_to_map(a_node)
+        self.qual_ident_node(node.data.topology)
+
     def def_topology_annotated_node(
         self, _in: In, a_node: fpp_ast.Annotated[AstNode[fpp_ast.DefTopology]]
     ) -> Out:

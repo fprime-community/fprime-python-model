@@ -49,6 +49,8 @@ class Symbol(SymbolInterface):
             return StateMachineSymbol(node)
         elif node_type == fpp_ast.DefStruct:
             return StructSymbol(node)
+        elif node_type == fpp_ast.DefSystem:
+            return SystemSymbol(node)
         elif node_type == fpp_ast.DefTopology:
             return TopologySymbol(node)
         else:
@@ -225,6 +227,17 @@ class StructSymbol(TypeSymbol):
 
     def is_dictionary_def(self):
         return self.node[1].data.is_dictionary_def
+
+
+@dataclass(frozen=True)
+class SystemSymbol(Symbol):
+    node: fpp_ast.Annotated[AstNode[fpp_ast.DefSystem]]
+
+    def get_node_id(self):
+        return self.node[1]._id
+
+    def get_unqualified_name(self):
+        return self.node[1].data.name
 
 
 @dataclass(frozen=True)
