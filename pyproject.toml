@@ -28,7 +28,7 @@ classifiers = [
 ]
 
 dependencies = [
-  "fprime-fpp>=3.2.0",
+  "fprime-fpp>=3.3.0",
   "mypy==1.17.1",
   "packaging",
   "pytest"
