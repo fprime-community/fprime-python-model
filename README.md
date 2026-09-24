@@ -1,7 +1,7 @@
 >[!WARNING]
 > This repository is deprecated. Please read the [MIGRATION](./MIGRATION.md) guide for information on how to migrate to the latest supported [FPP Python API](https://github.com/fprime-community/fpp-tools/tree/master/fpp_python).
 >
-> The final support version will be F Prime 4.4.0 (fpp 3.4.0).
+> The final supported version will be F Prime 4.4.0 (fpp 3.4.0).
 
 # F Prime Python Model
 
