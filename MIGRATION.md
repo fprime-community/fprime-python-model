@@ -624,7 +624,7 @@ and its own.
 Two things to get right. `fpp.DiagnosticError` takes a `Diagnostic`, not a string — a
 bare string constructs without complaint and then fails with a `TypeError` the moment
 any handler touches `.diagnostic`. And `render(color=…)` defaults to `False` for a
-reason: under CMake and Ninja your stdout is always a pipe, so gate colour on
+reason: under CMake and Ninja your stdout is always a pipe, so gate color on
 `isatty()` rather than hardcoding `color=True`.
 
 ---
