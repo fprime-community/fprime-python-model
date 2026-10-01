@@ -72,12 +72,12 @@ floats will change your build output under you:
 
 ```
 # requirements.txt
-fprime-fpp-python==3.3.24
+fprime-fpp-python==3.4.0
 fprime-cpp-codegen==0.2.0
-fprime-fpp-query==3.3.24
+fprime-fpp-query==3.4.0
 ```
 
-`fprime-fpp-python`'s version tracks the FPP language version it implements (`3.3.x`),
+`fprime-fpp-python`'s version tracks the FPP language version it implements (`3.4.x`),
 so pinning it pins the grammar and the semantics your autocoder was written against.
 It ships as an `abi3` wheel usable on CPython ≥ 3.10, with `py.typed` and a complete
 `fpp/__init__.pyi`. `fprime-cpp-codegen` is pure Python, also ≥ 3.10, with no runtime
@@ -197,7 +197,7 @@ of a traceback; see [Diagnostics](#diagnostics).
 `Analysis` keeps the same flat-bag-of-maps shape, but **the entity maps are now keyed
 by `Symbol`, not by `AstId`**:
 
-| Before (`Dict[AstId, T]`) | After (`dict[Symbol, T]`) |
+| Before (`Dict[AstId, T]`) | After (`dict[Symbol.Variant, T]`) |
 | --- | --- |
 | `analysis.component_map` | `analysis.component_map` |
 | `analysis.component_instance_map` | `analysis.component_instance_map` |
@@ -220,13 +220,14 @@ for component in model.analysis.component_map.values():
     ...
 
 # But lookup by name no longer needs a hand-rolled qualified-name walk.
-symbol = model.lookup("Ref.Producer")          # -> Symbol | None
+symbol = model.lookup("Ref.Producer")          # -> Symbol.Variant | None
 component = model.analysis.component_map[symbol]
 ```
 
 `lookup` takes an optional `kind=` because a qualified name is not unique — `Fw.Time`
 is both a type and a port in F Prime's own `Time.fpp`. Pass the `Symbol` subclass you
-want, or use `lookup_all` and decide yourself.
+want — e.g. `model.lookup("Fw.Time", kind=fpp.Symbol.Port)` — or use `lookup_all` and
+decide yourself.
 
 > **`Analysis.get_component` and friends resolve a *use site*, not a definition.**
 > `get_component`, `get_component_instance`, `get_topology`, `get_interface`,
@@ -238,6 +239,25 @@ want, or use `lookup_all` and decide yourself.
 > its entity, use `model.lookup(...)` or `component_map[symbol]`.
 
 ### AST nodes, annotations and locations
+
+> **AST node classes live in `fpp.ast`, not top-level `fpp`.** Every node kind —
+> `DefComponent`, `Expr`, `Ident`, `TypeName`, `Connection` (the AST node, not the
+> resolved topology edge), and the closed `*Kind` enums (`ComponentKind`,
+> `EventSeverity`, `QueueFull`, `IntegerKind`, …) — lives in the `fpp.ast`
+> submodule. `import fpp.ast as ast`, or reach for `fpp.ast.DefComponent` directly,
+> everywhere this guide writes a node class. Only the containers around nodes and
+> the semantic layer stay at the top level: `Model`, `SyntaxTree`, `TransUnit`,
+> `AstVisitor`, `Analysis`, `Symbol`, `Type`, `Value`, `Component`, `Topology`, and
+> friends.
+>
+> Two syntax-level unions that this guide does not otherwise cover follow the same
+> nested-class shape described in
+> [Symbols, types and values](#symbols-types-and-values): `Expr.kind` returns
+> `fpp.ast.ExprKind.Variant`, whose members are nested (`ExprKind.Binop`,
+> `ExprKind.Ident`, …); `TypeName.kind` returns `fpp.ast.TypeNameKind.Variant`
+> (`TypeNameKind.Bool`, `.Floating`, `.Integer`, `.QualIdent`, `.String`); and
+> `SpecStateTransition.transition_or_do` returns `fpp.ast.TransitionOrDo.Variant`
+> (`TransitionOrDo.Transition`, `TransitionOrDo.Do`).
 
 This is the largest change in day-to-day feel. The old AST wrapped every node:
 
@@ -261,7 +281,7 @@ and the location all on the node:
 | `model.get_location(node)` → `Location` | `node.location` → `Loc` |
 | — | `node.span` → `Span`, which is what `Diagnostic(span=…)` takes |
 | — | `node.in_source`, `node.children` |
-| `isinstance(node.data, fpp_ast.DefComponent)` | `isinstance(node, fpp.DefComponent)` |
+| `isinstance(node.data, fpp_ast.DefComponent)` | `isinstance(node, fpp.ast.DefComponent)` |
 
 > **`Loc` and `Span` line/column numbers are 0-indexed.** `Loc` has `uri`, `line`,
 > `column`, `end_line`, `end_column` and `display`; `Span` has the same getters plus
@@ -284,8 +304,6 @@ annotated while an `Expr` simply had no tuple around it.
 The Rust compiler instead treats an annotation the way it treats a location — as context
 keyed by the node, not as a field of the node's struct. That keeps the AST structs
 simpler and removes the need to mark every annotatable node in the grammar definition.
-The Python bindings expose it that way too: `fpp.AstNode` is the base class of every node
-kind, and it carries `pre_annotation` and `post_annotation` directly.
 
 The practical mapping is:
 
@@ -300,6 +318,9 @@ special-casing annotatable nodes, and it is the same trade already made for loca
 which every node has whether or not anyone asks for one. In exchange,
 `node.pre_annotation` is always a valid thing to ask, so a visitor never has to know
 which kinds are annotatable before reading an annotation off one.
+
+The Python bindings expose it that way too: `fpp.ast.AstNode` is the base class of
+every node kind, and it carries `pre_annotation` and `post_annotation` directly.
 
 Annotation lines arrive with the `@` or `@<` sigil stripped and the line trimmed, one
 list element per line — which is what makes the annotation-driven autocoder pattern
@@ -325,9 +346,9 @@ references, and the three universal resolvers live on every AST node:
 
 | Before | After |
 | --- | --- |
-| `analysis.use_def_map[node.get_id()]` | `node.definition` → `Optional[Symbol]` |
-| `analysis.type_map[node.get_id()]` | `node.resolved_type` → `Optional[Type]` |
-| `analysis.value_map[node.get_id()]` | `node.resolved_value` → `Optional[Value]` (then `.value` for the payload) |
+| `analysis.use_def_map[node.get_id()]` | `node.definition` → `Optional[Symbol.Variant]` |
+| `analysis.type_map[node.get_id()]` | `node.resolved_type` → `Optional[Type.Variant]` |
+| `analysis.value_map[node.get_id()]` | `node.resolved_value` → `Optional[Value.Variant]` (then `.value` for the payload) |
 | `analysis.get_qualified_name_from_map(Symbol.construct(c.a_node))` | `component.symbol.qualified_name` |
 | `instance.ci.component` | `instance.component` |
 
@@ -409,66 +430,107 @@ package needed those maps hoisted to analysis level by hand.
 
 ### Symbols, types and values
 
-Symbol classes moved from a `*Symbol` suffix to a `Symbol*` prefix, and the type
-symbols picked up the `Type` suffix the corresponding `Type` classes already had:
+Symbol classes dropped the `*Symbol` suffix in favor of a `Symbol` base class with
+every concrete kind nested under it: `Symbol` is the base class, and a concrete kind
+is spelled `Symbol.AbsType`, `Symbol.Component`, and so on — never a sibling class
+with a `Symbol` prefix or suffix. The union of every concrete kind is spelled
+`Symbol.Variant`; a bare `Symbol` is the base class, right for an `isinstance` check
+or a `lookup(kind=...)` argument that should match any subclass. The same
+base-class-plus-nested-`.Variant` shape applies to every other closed union
+described below and in [Topologies and connections](#topologies-and-connections) —
+`Type`, `Value`, `InterfaceInstance`, and the rest.
 
 | Before | After |
 | --- | --- |
-| `Symbol` / `SymbolInterface` (bases) | `SymbolBase`; `Symbol` is the union of the concrete classes |
-| `AbsTypeSymbol` | `SymbolAbsType` |
-| `AliasTypeSymbol` | `SymbolAliasType` |
-| `ArraySymbol` | `SymbolArrayType` |
-| `StructSymbol` | `SymbolStructType` |
-| `EnumSymbol` | `SymbolEnumType` |
-| `EnumConstantSymbol` | `SymbolEnumConstant` |
-| `ConstantSymbol` | `SymbolConstant` |
-| `PortSymbol` | `SymbolPort` |
-| `ModuleSymbol` | `SymbolModule` |
-| `SystemSymbol` | `SymbolSystem` |
-| `ComponentSymbol` | `SymbolComponent` |
-| `ComponentInstanceSymbol` | `SymbolComponentInstance` |
-| `InterfaceSymbol` | `SymbolInterface` |
-| `StateMachineSymbol` | `SymbolStateMachine` |
-| `TopologySymbol` | `SymbolTopology` |
-| `TypeSymbol`, `InterfaceInstanceSymbol` (intermediate bases) | no counterpart — use `SymbolBase` |
+| `Symbol` / `SymbolInterface` (bases) | `Symbol` is the base class; `Symbol.Variant` is the union of its concrete nested classes |
+| `AbsTypeSymbol` | `Symbol.AbsType` |
+| `AliasTypeSymbol` | `Symbol.AliasType` |
+| `ArraySymbol` | `Symbol.ArrayType` |
+| `StructSymbol` | `Symbol.StructType` |
+| `EnumSymbol` | `Symbol.EnumType` |
+| `EnumConstantSymbol` | `Symbol.EnumConstant` |
+| `ConstantSymbol` | `Symbol.Constant` |
+| `PortSymbol` | `Symbol.Port` |
+| `ModuleSymbol` | `Symbol.Module` |
+| `SystemSymbol` | `Symbol.System` |
+| `ComponentSymbol` | `Symbol.Component` |
+| `ComponentInstanceSymbol` | `Symbol.ComponentInstance` |
+| `InterfaceSymbol` | `Symbol.Interface` |
+| `StateMachineSymbol` | `Symbol.StateMachine` |
+| `TopologySymbol` | `Symbol.Topology` |
+| `TypeSymbol`, `InterfaceInstanceSymbol` (intermediate bases) | no counterpart — use `Symbol` |
 | `symbol.get_node_id()` | `symbol.node_id` |
 | `analysis.get_qualified_name_from_map(symbol)` | `symbol.qualified_name`, or `analysis.get_qualified_name(symbol)` |
 | — | `symbol.unqualified_name`, `symbol.parent`, `symbol.is_dictionary_def` |
 
-Semantic types are closed unions — narrow with `isinstance` or `match`, never a string
-tag:
+Semantic types are closed unions too — narrow with `isinstance` or `match`, never a
+string tag:
 
 ```python
 match a_type:
-    case fpp.StringType():
+    case fpp.Type.String():
         ...
-    case fpp.StructType() as s:
+    case fpp.Type.Struct() as s:
         for name, member in s.anon_struct.members:      # declaration order
             ...
-    case fpp.ArrayType() as a:
+    case fpp.Type.Array() as a:
         elt = a.anon_array.elt_type
-    case fpp.AliasType() as a:
+    case fpp.Type.Alias() as a:
         underlying = a.alias_type
-    case fpp.PrimitiveIntType() as i:
-        i.value == fpp.IntegerKind.U32
+    case fpp.Type.PrimitiveInt() as i:
+        i.value == fpp.ast.IntegerKind.U32
 ```
 
 | Before | After |
 | --- | --- |
-| `types_values.Type` and friends | `fpp.Type` and its subclasses, same names |
+| `PrimitiveIntType` | `Type.PrimitiveInt` |
+| `FloatType` | `Type.Float` |
+| `StringType` | `Type.String` |
+| `BooleanType` | `Type.Boolean` |
+| `IntegerType` | `Type.Integer` |
+| `AbsType` | `Type.Abs` |
+| `AliasType` | `Type.Alias` |
+| `ArrayType` | `Type.Array` |
+| `AnonArrayType` | `Type.AnonArray` |
+| `EnumType` | `Type.Enum` |
+| `StructType` | `Type.Struct` |
+| `AnonStructType` | `Type.AnonStruct` |
+| `types_values.Type` and friends | `Type` is the base class; `Type.Variant` is the union of the rows above |
+
+| Before | After |
+| --- | --- |
 | `ty.get_underlying_type()` | `ty.underlying_type` |
 | `alias.alias_type` | `alias.alias_type` (one hop; `underlying_type` resolves the chain) |
 | `ty.get_def_symbol()` | `ty.def_symbol` |
 | `ty.is_numeric()`, `ty.is_displayable()`, … | `ty.is_numeric`, `ty.is_displayable`, … (properties) |
-| `ty.kind.name` for an int kind | `ty.value` → `fpp.IntegerKind`, with `.name` |
-| `AnonStructType.members` as a name-keyed mapping | an ordered `list[tuple[str, Type]]`, plus `get_member(name)` / `has_member(name)` |
+| `ty.kind.name` for an int kind | `ty.value` → `fpp.ast.IntegerKind`, with `.name` |
+| `AnonStructType.members` as a name-keyed mapping | `Type.AnonStruct.members` → an ordered `list[tuple[str, Type.Variant]]`, plus `get_member(name)` / `has_member(name)` |
 | — | `ty.serialized_size`, `ty.identical(other)` |
+
+`Value` follows the identical shape: `PrimitiveIntegerValue` → `Value.PrimitiveInteger`,
+`AbsTypeValue` → `Value.AbsType`, `IntegerValue` → `Value.Integer`, `FloatValue` →
+`Value.Float`, `BooleanValue` → `Value.Boolean`, `StringValue` → `Value.String`,
+`EnumConstantValue` → `Value.EnumConstant`, `AnonArrayValue` → `Value.AnonArray`,
+`ArrayValue` → `Value.Array`, `AnonStructValue` → `Value.AnonStruct`, `StructValue` →
+`Value.Struct`, and the old `ValueBase` is gone — `Value` is the base class, and
+`Value.Variant` is the union. `resolved_value.value` still reaches the plain Python
+payload the same way it always did.
 
 `Type` does define `__eq__` and `__hash__`, but not by structural shape: two separately
 declared types of identical shape (`struct A { x: U32 }` versus `struct B { x: U32 }`)
 are never equal. Compare named types through `def_symbol`, as the compiler does, or use
 `ty.identical(other)`. Primitives are the exception — `U32 == U32` is `True` wherever
 the two came from.
+
+Several other closed unions follow the same base-class-plus-nested-`.Variant` shape —
+`Command` (`Command.NonParam`, `Command.Param`), `PortInstance` (`.General`,
+`.Special`, `.Internal`, `.Topology`), `InterfaceInstance` (`.Component`,
+`.Topology`; see [Topologies and connections](#topologies-and-connections), where it
+is used directly), and the lower-level state-machine graph types
+(`StateMachineSymbol`, `StateMachineTypedElement`, `StateOrChoice`, `Transition`,
+`TransitionGraphArc`). This guide does not otherwise walk through them, but if your
+autocoder reaches into that part of the model, `fpp/__init__.pyi` spells out every
+nested class.
 
 ### Topologies and connections
 
@@ -477,7 +539,7 @@ accessors and two return types:
 
 | Before | After |
 | --- | --- |
-| `topology.a_node` | `topology.node` → `DefTopology` |
+| `topology.a_node` | `topology.node` → `ast.DefTopology` |
 | `topology.get_name()` | `topology.name` |
 | `topology.get_unqualified_name()` | `topology.unqualified_name` |
 | `topology.get_qualified_name()` | `topology.qualified_name` |
@@ -499,14 +561,14 @@ The pieces an autocoder reaches for:
 ```python
 topology.name                      # "Top"
 topology.qualified_name            # "Ref.Top"
-topology.node                      # DefTopology
-topology.symbol                    # Symbol, the key into the Analysis maps
+topology.node                      # ast.DefTopology
+topology.symbol                    # Symbol.Variant, the key into the Analysis maps
 
-topology.component_instance_map    # dict[ComponentInterfaceInstance, Span]
-topology.instance_map              # dict[InterfaceInstance, Span]
+topology.component_instance_map    # dict[InterfaceInstance.Component, Span]
+topology.instance_map              # dict[InterfaceInstance.Variant, Span]
 topology.port_map                  # dict[str, TopologyPort]
 topology.port_interface            # PortInterface
-topology.pattern_map               # dict[ConnectionPatternKind, ConnectionPattern]
+topology.pattern_map               # dict[ast.ConnectionPatternKind, ConnectionPattern]
 topology.unconnected_port_set      # list[PortInstanceIdentifier]
 
 topology.get_connections_from(pii)     # list[Connection]
@@ -517,10 +579,10 @@ topology.get_port_number(port_instance, connection)   # Optional[int]
 ```
 
 > **`component_instance_map` is keyed by the entity.** It is
-> `dict[ComponentInterfaceInstance, Span]` — the instance is the *key*. So
+> `dict[InterfaceInstance.Component, Span]` — the instance is the *key*. So
 > `for ci in topology.component_instance_map:` yields instances, where every `Analysis`
-> *entity* map is `dict[Symbol, Entity]` and needs `.values()`. This one asymmetry
-> catches everybody once.
+> *entity* map is `dict[Symbol.Variant, Entity]` and needs `.values()`. This one
+> asymmetry catches everybody once.
 
 Walking the graph:
 
@@ -533,7 +595,7 @@ for connection in topology.get_connections_from(pii):
     source_port = connection.from_.underlying_endpoint.port.port_instance
     index = topology.get_port_number(source_port, connection)
     destination = connection.to.underlying_endpoint.port.interface_instance
-    assert isinstance(destination, fpp.ComponentInterfaceInstance)   # unflattened
+    assert isinstance(destination, fpp.InterfaceInstance.Component)   # unflattened
     print(f"dataOut[{index}] -> {destination.qualified_name} "
           f"base_id=0x{destination.base_id:x}")
 ```
@@ -545,8 +607,8 @@ for connection in topology.get_connections_from(pii):
 > `connection.from_.port_number` is `None` while `get_port_number` returns `0`. Always
 > use `get_port_number`, and treat its `None` as a hard error rather than a zero.
 
-`ComponentInterfaceInstance` resolves the placement attributes of its
-`DefComponentInstance`. **`base_id` and `max_id` are always `int`, never `None`** — when
+`InterfaceInstance.Component` resolves the placement attributes of its
+`ast.DefComponentInstance`. **`base_id` and `max_id` are always `int`, never `None`** — when
 the source declares no `base id` they are `0` and `-1`, so test
 `instance.node.base_id is not None` if you need to know whether one was written.
 `queue_size`, `stack_size`, `priority` and `cpu` are `Optional[int]`, and `file` is
@@ -664,7 +726,7 @@ if __name__ == "__main__":
         sys.exit(1)
 ```
 
-The compiler raises this too — `ComponentInterfaceInstance.get_port_instance_identifier`
+The compiler raises this too — `InterfaceInstance.Component.get_port_instance_identifier`
 on a name that is not a port, for instance — so the same handler covers your findings
 and its own.
 
@@ -972,7 +1034,7 @@ def write_filenames(options, suffix: str) -> int:
 
     class Topologies(fpp.AstVisitor):
         def __init__(self) -> None:
-            self.found: list[fpp.DefTopology] = []
+            self.found: list[fpp.ast.DefTopology] = []
 
         def generic_visit(self, node):
             pass                              # shallow by default
@@ -1204,7 +1266,7 @@ GENERATED_SUFFIX = f"{GENERATED_STEM}.cpp"
 ANNOTATION = "static-report"
 
 
-def output_for(directory: str, node: fpp.DefTopology, suffix: str) -> Path:
+def output_for(directory: str, node: fpp.ast.DefTopology, suffix: str) -> Path:
     return Path(directory) / f"{node.name}{suffix}"
 
 
@@ -1219,7 +1281,7 @@ def annotated_components(
 
 def single_instance(
     topology: fpp.Topology, component: fpp.Component
-) -> "fpp.ComponentInterfaceInstance | None":
+) -> "fpp.InterfaceInstance.Component | None":
     """The one instance of `component` in `topology`, or None."""
     instances = [ci for ci in topology.component_instance_map
                  if ci.component is not None
@@ -1282,7 +1344,7 @@ def emit(
                                 "unresolved port number",
                                 span=connection.from_.loc))
                         destination = connection.to.underlying_endpoint.port.interface_instance
-                        assert isinstance(destination, fpp.ComponentInterfaceInstance)
+                        assert isinstance(destination, fpp.InterfaceInstance.Component)
                         with switch.case(f"0x{destination.base_id:x}",
                                          braces=False) as arm:
                             arm.comment(destination.qualified_name)
@@ -1415,24 +1477,27 @@ cheap to test directly.
 
 ## Known gaps
 
-Two things about the new bindings are worth designing around. Both are present in 3.3.24.
+Two things about the new bindings are worth designing around. Both are present in 3.4.0.
 
 **The implicit `State` enum is indistinguishable from a hand-written definition.**
-`analyze` synthesizes the implicit state enum, inserting a `DefEnum` named `State` into
-every `DefStateMachine` that has a body, with a `__FPRIME_UNINITIALIZED` constant and the
+`analyze` synthesizes the implicit state enum, inserting an `ast.DefEnum` named `State`
+into every `ast.DefStateMachine` that has a body, with a `__FPRIME_UNINITIALIZED`
+constant and the
 state machine's own start location. That is the right model — and the enum *is* properly
 qualified, so `SM.A.State` and `SM.B.State` are distinct symbols and there is no name
 collision in the model.
 
 What is missing is a marker. `in_source` is `True`, the location points at real source,
 and nothing on the node says the transform added it, so a traversal that emits one
-artifact per `DefEnum` emits one for a definition the user never wrote. Two consequences:
+artifact per `ast.DefEnum` emits one for a definition the user never wrote. Two
+consequences:
 
 - If you name output files from the **qualified** name, or from a stem prefixed by the
   enclosing state machine, you get what F Prime's own autocoder produces —
   `A_StateEnumAc.hpp`, `B_StateEnumAc.hpp`. `fpp-query`'s default stem rule already
-  prefixes by enclosing component and state machine, so a `DefEnum` group gets this
-  right with no extra work.
+  prefixes by enclosing component and state machine, so a `DefEnum` group (the rules
+  file spells the Rust/FPP node kind name, not the Python `ast.DefEnum` class) gets
+  this right with no extra work.
 - If you name them from the **unqualified** `node.name`, every state machine in a module
   gives you `State` and the files collide. Prefix the stem with the enclosing state
   machine's name. If your generator has no business inside a state machine at all,
@@ -1446,7 +1511,7 @@ but the `bool` spelling was not — `BooleanType.__str__` returned `"bool"` ther
 audit any `str(ty)` you apply to a boolean.
 
 For anything you emit, do not use `str` at all. Branch on the concrete class —
-`StringType`, `BooleanType`, `PrimitiveIntType`, `FloatType`, then
+`Type.String`, `Type.Boolean`, `Type.PrimitiveInt`, `Type.Float`, then
 `ty.def_symbol.qualified_name` for everything named. That is about a dozen lines, and a
 code generator has to own its *target-language* spelling anyway.
 
@@ -1488,28 +1553,38 @@ From the old package, with no replacement and none planned:
    imports=…)`, and add the `model.diagnostics` / `model.has_errors` reporting block.
 4. Rewrite `AstVisitor` subclasses as `fpp.AstVisitor` subclasses: `visit_DefX`,
    state on `self`, `super()` to descend.
-5. Replace `annotated[0]` / `annotated[1]` / `annotated[2]` with `node.pre_annotation`
+5. Import AST node classes from `fpp.ast`, not `fpp` — `fpp.DefComponent` →
+   `fpp.ast.DefComponent`, and likewise for every `Def*`, `Spec*`, `Expr`, `Ident`,
+   `TypeName`, `Qualified` and the closed `*Kind` enums (`ComponentKind`,
+   `EventSeverity`, `QueueFull`, `IntegerKind`, …). `isinstance` checks and type
+   annotations against these move the same way.
+6. Replace `annotated[0]` / `annotated[1]` / `annotated[2]` with `node.pre_annotation`
    / the node / `node.post_annotation`; `node.data.x` with `node.x`;
    `model.get_location(node)` with `node.location` or `node.span` — and remember the
    line/column fields are 0-indexed, so switch user-facing output to `.display`.
-6. Replace `AstId` map lookups with `node.definition` / `node.resolved_type` /
+7. Replace `AstId` map lookups with `node.definition` / `node.resolved_type` /
    `node.resolved_value`, and `get_qualified_name_from_map(...)` with
-   `symbol.qualified_name`. Re-key the entity maps from `AstId` to `Symbol`, and rename
-   the symbol classes from `*Symbol` to `Symbol*`.
-7. Audit `Topology` use: `a_node`→`node`, `get_name()`→`name`,
+   `symbol.qualified_name`. Re-key the entity maps from `AstId` to `Symbol`, and
+   rename the symbol classes from `*Symbol` to the nested `Symbol.*` spelling
+   (`AbsTypeSymbol` → `Symbol.AbsType`, `ComponentSymbol` → `Symbol.Component`,
+   etc.) — and do the same for `Type` and `Value` (`StringType` → `Type.String`,
+   `BooleanValue` → `Value.Boolean`, …; see
+   [Symbols, types and values](#symbols-types-and-values)).
+8. Audit `Topology` use: `a_node`→`node`, `get_name()`→`name`,
    `component_instance_map()`→ an attribute, and the connection getters returning a
    `list` rather than a `Set`.
-8. Port the C++ writer to `CppDocBuilder`. Set `strict=True`. Audit every
+9. Port the C++ writer to `CppDocBuilder`. Set `strict=True`. Audit every
    model-derived string for margin stripping and add `margin=None`.
-9. Move the configure-time filename answer to a `fpp-query` rules file, and have the
-   build-time generator read its suffixes from the same file.
-10. Turn every `assert` and bare exception on a model condition into a
+10. Move the configure-time filename answer to a `fpp-query` rules file, and have the
+    build-time generator read its suffixes from the same file.
+11. Turn every `assert` and bare exception on a model condition into a
     `fpp.DiagnosticError` carrying a `fpp.Diagnostic` with a span.
-11. Write a test per generated artifact using `fpp.analyze(source=…)` fixtures, plus one
+12. Write a test per generated artifact using `fpp.analyze(source=…)` fixtures, plus one
     that the configure-time file list matches what the build-time half writes.
-12. Run `mypy --strict`. Both packages ship complete stubs, and the strict job is what
-    catches the renames this guide lists.
+13. Run `mypy --strict`. Both packages ship complete stubs, and the strict job is what
+    catches the renames this guide lists, including every nested-class and `fpp.ast`
+    rename in steps 5 and 7.
 
-`fpp/__init__.pyi` is the reference for everything not covered here — every class,
-getter and return type — and the docstrings carry the contracts: `help(fpp.analyze)`,
-`help(fpp.Model)`, `help(fpp.AstVisitor)`.
+`fpp/__init__.pyi` and `fpp/ast.pyi` are the reference for everything not covered
+here — every class, getter and return type — and the docstrings carry the
+contracts: `help(fpp.analyze)`, `help(fpp.Model)`, `help(fpp.AstVisitor)`.
