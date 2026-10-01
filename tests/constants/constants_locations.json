@@ -1,5 +1,5 @@
 {
-  "fppVersion" : "v3.3.0",
+  "fppVersion" : "v3.4.0",
   "locationMap" : {
     "0" : {
       "file" : "[ local path prefix ]/compiler/tools/fpp-to-json/test/constants.fpp",

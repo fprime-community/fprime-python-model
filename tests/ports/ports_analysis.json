@@ -1,5 +1,5 @@
 {
-  "fppVersion" : "v3.3.0",
+  "fppVersion" : "v3.4.0",
   "analysis" : {
     "componentInstanceMap" : {
       "92" : {
@@ -411,6 +411,8 @@
         "connectionMap" : {
           
         },
+        "unmatchedConnectionSet" : [
+        ],
         "localConnectionMap" : {
           
         },
