@@ -47,7 +47,7 @@ shape are the AST node wrapper, cross-references, and the visitor.
   - [The C++ writer](#the-c-writer)
     - [Mechanical renames](#mechanical-renames)
     - [New capabilities worth adopting](#new-capabilities-worth-adopting)
-    - [Behaviour changes to check for](#behaviour-changes-to-check-for)
+    - [Behavior changes to check for](#behavior-changes-to-check-for)
   - [Autocoders: the two phases](#autocoders-the-two-phases)
     - [Configure time with `fpp-query`](#configure-time-with-fpp-query)
     - [Configure time in Python](#configure-time-in-python)
@@ -99,7 +99,8 @@ Delete every trace of the old artifacts. In particular:
 ```cmake
 # Delete this. It adds an `fpp_to_json` target to the `info-cache` sub-build (between
 # `fpp_depend` and `module_info`), which the main configure builds on every run;
-# `fpp-to-json` — a JVM launch — then re-runs for every module whose FPP closure changed.
+# `fpp-to-json` — a JVM launch — then re-runs for every module whose FPP dependencies
+# changed.
 set(FPRIME_ENABLE_JSON_MODEL_GENERATION ON)
 ```
 
@@ -160,10 +161,20 @@ resolved, and no `imports=` parameter because nothing at that depth reads anothe
 translation unit. It is what the configure-time half of an autocoder wants; see
 [Configure time in Python](#configure-time-in-python).
 
-**Diagnostics are now yours to report.** The old package raised Python exceptions out
-of its translators. `analyze` collects compiler diagnostics into `model.diagnostics`
-and tells you whether any were errors. Print them and exit non-zero; never let a
-`fpp.DiagnosticError` reach the user as a traceback.
+**Checking for errors is now mandatory.** The old package raised a Python exception out
+of its translators, so a broken model stopped you whether you handled it or not.
+`analyze` does not raise: it collects the compiler's diagnostics into
+`model.diagnostics` and returns a `Model` regardless. That `Model` is still queryable
+after an error — `lookup` works, the maps are populated — so a caller that does not test
+`model.has_errors` will quietly generate code from a model the compiler rejected.
+
+So every entry point needs the three lines above: render each diagnostic to **stderr**,
+and exit **non-zero** if `model.has_errors`. Do not print diagnostics to stdout (that is
+where a tool's real output goes, and under CMake it is captured), and do not exit zero
+after reporting an error — a build that reports errors and then succeeds is far harder to
+diagnose than one that stops. Wrap the entry point in a `fpp.DiagnosticError` handler
+too, so a failed lookup deep in your generator prints a compiler-style diagnostic instead
+of a traceback; see [Diagnostics](#diagnostics).
 
 ---
 
@@ -258,6 +269,37 @@ and the location all on the node:
 > 1-indexed `file:line:col` string a compiler prints. Use `display` (or `span.display`)
 > for anything a human reads, and add 1 yourself if you need the numbers separately.
 > Every node has a location; none of this is `Optional`.
+
+#### Annotations are node context, not a wrapper
+
+The `Annotated[...]` tuple is gone, and it is worth being precise about what replaced it,
+because this is a real departure from both the Scala implementation and the old Python
+model.
+
+In the Scala implementation, and in `fprime-python-model` after it, only the node kinds
+the grammar permits annotations on were wrapped: `Annotated[T]` was a
+`(pre, node, post)` tuple, and a `DefConstant` you reached through such a tuple was
+annotated while an `Expr` simply had no tuple around it.
+
+The Rust compiler instead treats an annotation the way it treats a location — as context
+keyed by the node, not as a field of the node's struct. That keeps the AST structs
+simpler and removes the need to mark every annotatable node in the grammar definition.
+The Python bindings expose it that way too: `fpp.AstNode` is the base class of every node
+kind, and it carries `pre_annotation` and `post_annotation` directly.
+
+The practical mapping is:
+
+| In the old model | In the new model |
+| --- | --- |
+| an annotated node, reached through an `Annotated[...]` tuple | the node itself; `node.pre_annotation` / `node.post_annotation` hold the lines |
+| an unannotated node, with no tuple around it | the same node, with both lists empty |
+
+So the lists exist on every node, and on a node kind the grammar allows no annotation
+on — an `Expr`, a `TypeName` — they are always empty. That is the cost of not
+special-casing annotatable nodes, and it is the same trade already made for locations,
+which every node has whether or not anyone asks for one. In exchange,
+`node.pre_annotation` is always a valid thing to ask, so a visitor never has to know
+which kinds are annotatable before reading an annotation off one.
 
 Annotation lines arrive with the `@` or `@<` sigil stripped and the line trimmed, one
 list element per line — which is what makes the annotation-driven autocoder pattern
@@ -440,12 +482,17 @@ accessors and two return types:
 | `topology.get_unqualified_name()` | `topology.unqualified_name` |
 | `topology.get_qualified_name()` | `topology.qualified_name` |
 | `topology.component_instance_map()` (a **method**) | `topology.component_instance_map` (an attribute) |
-| `get_connections_from/to/at/between(...)` → `Set[Connection]` | → `list[Connection]`, in a deterministic order |
+| `get_connections_from/to/at/between(...)` → `Set[Connection]` | → `list[Connection]`, in connection order |
 | `topology.unconnected_port_set` → `Set` | → `list[PortInstanceIdentifier]` |
 | — | `topology.symbol` |
 
-The `Set` → `list` change is a break for code that did set arithmetic on the result, and
-a quiet improvement for code that sorted it to stabilise generated output.
+The `Set` → `list` change is a lowering, not a reordering. Internally these are still
+ordered sets, compared by the same rule the Scala implementation uses — the `from`
+endpoint, then the `to` endpoint, then the source location of the `from` endpoint — which
+is the order that governs automatic port-number assignment. Python has no ordered-set
+type to expose them as, so each is handed back as a `list` already in that order. Code
+that did set arithmetic on the result has to change; code that sorted the result to
+stabilize its output no longer needs to.
 
 The pieces an autocoder reaches for:
 
@@ -729,7 +776,7 @@ the submodule of the same name.
   `default`, automatic `break`) / `if_directive`. All context managers; the statement
   methods (`line`, `lines`, `add`, `blank`, `raw`, `extend`) return the `Body` and chain.
 - **`Variable` and `enum` builders.** Class data members and namespace-scope constants,
-  with the writers deciding where the initialiser goes.
+  with the writers deciding where the initializer goes.
 - **File output.** `doc.write(directory, formatter=…)` creates the directory, renders
   everything before writing anything, and leaves byte-identical files alone so their
   mtime does not cascade a rebuild. `doc.files()` returns `{name: text}`.
@@ -742,7 +789,7 @@ the submodule of the same name.
 - **`ClangFormat`**, optional and off by default. It discards the F Prime autocoder's
   own layout, so do not enable it on output you diff against `fpp-to-cpp` references.
 
-### Behaviour changes to check for
+### Behavior changes to check for
 
 - **Margin stripping is stricter, and that is a bug fix.** The old `lines()` cut at
   *any* `|` anywhere in the line, so `lines("x = a | b;")` yielded `" b;"`. The new
@@ -758,7 +805,7 @@ the submodule of the same name.
 
 - `lines("a\nb\n")` yields 2 lines now, 3 before. `render()` appends a trailing
   newline where `str(Lines)` did not.
-- `left_align_directive` now only moves lines matching a recognised preprocessor
+- `left_align_directive` now only moves lines matching a recognized preprocessor
   directive, so a `#` inside a string literal keeps its indentation.
 - `Context.class_names` is **outermost-first**; `Input.class_name_list` was
   innermost-first. A ported writer subclass must flip its indexing.
@@ -904,9 +951,9 @@ Two things the query and your generator must agree on:
 - **Configure must re-run when the rules change.** Add the rules file to
   `CMAKE_CONFIGURE_DEPENDS`, or the declared output list goes stale.
 
-`fpp_info` can be dropped from the configure-time half — it computes the import closure
-and the generated-file list, and a syntax-only query needs neither. It is still worth
-calling for the build-time command, where `FILE_DEPENDENCIES` and
+`fpp_info` can be dropped from the configure-time half — it computes the module's
+dependencies and its generated-file list, and a syntax-only query needs neither. It is
+still worth calling for the build-time command, where `FILE_DEPENDENCIES` and
 `MODULE_DEPENDENCIES` come from; note it spawns nothing, reading the `fpp-depend` cache
 the `info-cache` sub-build already wrote. `fpp_autocoder_variables` is what builds
 `FPP_IMPORT_FLAGS`, which the query ignores — but it is also the only thing that
@@ -971,7 +1018,7 @@ like this costs about 49 ms, of which:
 `fpp.parse` is 0.05 ms for one file and 0.9 ms for eighteen; the shallow visit is
 0.06 ms. Importing the extension is about 2.6 ms warm — emphatically not a JVM-style
 penalty. Everything expensive is fixed per-process cost that no Python-side
-optimisation can remove, because the cost *is* the process.
+optimization can remove, because the cost *is* the process.
 
 CMake calls it once per module per registered autocoder, serially, through
 `execute_process` — there is no configure-time parallelism, unlike the build-time
@@ -988,8 +1035,9 @@ If you do keep the Python path, two things help and neither is optional:
   pays for it.
 - **Do not reach for the analysis.** `fpp.analyze` over the same 18 files is 1.1 ms
   versus `parse`'s 0.9 ms, so the difference is noise next to startup — but `analyze`
-  needs the `-i` closure, which drags `fpp_info` and the `fpp_depend` cache into the
-  configure-time path and makes the command line O(closure) per module.
+  needs the `-i` dependencies, which drags `fpp_info` and the `fpp_depend` cache into
+  the configure-time path and makes the command line grow with the dependency count of
+  every module.
 
 ### Build time
 
@@ -1081,7 +1129,7 @@ function(static_report_setup_autocode MODULE_NAME AC_INPUT_FILES)
     endif()
     set(AUTOCODER_GENERATED_BUILD_SOURCES "${GENERATED_CPP}" PARENT_SCOPE)
 
-    # Only the build-time half needs the import closure.
+    # Only the build-time half needs the module's dependencies.
     fpp_info("${MODULE_NAME}" "${AC_INPUT_FILES}")
     fpp_autocoder_variables("${FPP_IMPORTS}")
     # If the generated code includes another module's headers, hand them over:
@@ -1288,34 +1336,44 @@ in `cmake/autocoder/`.
 
 ## Tools outside the build
 
-An analysis tool that is not a build step had the hardest dependency on the old
-pipeline: it had to make the build produce JSON, then find it. Both problems disappear,
-but one thing still has to come from the build — the import closure. A component's
-`.fpp` almost never analyzes alone.
+An analysis tool that is not a build step had the hardest job under the old pipeline: it
+had to make the build emit JSON, then go find it. Both of those problems disappear. One
+remains, and it is not new — you still have to tell the compiler where to find the
+definitions your files use.
 
-Three options, in increasing fidelity:
+A `.fpp` file is rarely a complete model on its own. It uses definitions that live in
+other files, and analyzing it needs those files too. The set of files a given file needs
+is its **dependencies**, and the tool that computes them is `fpp-depend`; the FPP User's
+Guide covers this in
+[Computing Dependencies](https://nasa.github.io/fpp/fpp-users-guide.html#Specifying-Models-as-Files_Computing-Dependencies).
+`fpp.analyze`'s `imports=` argument is where those dependencies go — it is the same set
+`fpp-to-cpp -i` takes.
 
-1. **Pass the whole project.** `fpp.analyze(every_fpp_file)` needs no closure at all,
-   because nothing is missing. Fine for a whole-project sweep, and the simplest thing
-   that works.
-2. **Read the closure the build already computed.** Each module's build directory holds
-   `fpp-cache/stdout.txt`, one absolute path per line, written by the `fpp_depend`
-   sub-build — exactly what `-i` receives:
+Two ways to get them:
+
+1. **Read the dependencies the build already computed.** Each module's build directory
+   holds `fpp-cache/stdout.txt`: the module's transitive dependencies, one absolute path
+   per line, written by the `fpp_depend` sub-build during configure.
 
    ```python
-   closure = (module_build_dir / "fpp-cache" / "stdout.txt").read_text().split()
-   model = fpp.analyze(module_sources, imports=closure)
+   dependencies = (module_build_dir / "fpp-cache" / "stdout.txt").read_text().split()
+   model = fpp.analyze(module_sources, imports=dependencies)
    ```
 
-   The same directory holds `direct.txt`, `include.txt`, `framework.txt`,
-   `generated.txt` and `unittest.txt` if you want a narrower set. This requires a
-   configured build tree, but no JSON and no extra CMake option.
-3. **Run `fpp-depend` yourself**, if you have no build tree.
+   The same directory holds `direct.txt` (direct dependencies only), `include.txt`,
+   `framework.txt`, `generated.txt` and `unittest.txt` if you want a narrower set. This
+   needs a configured build tree, but no JSON and no extra CMake option.
 
-To find each module's build directory, the CMake File API codemodel
-(`.cmake/api/v1/query/codemodel-v2`, then each target's `paths.build`) is the supported
-way; it is the same offset the old JSON was delivered to, so an existing tool's locator
-carries over unchanged.
+2. **Run `fpp-depend` yourself**, if you have no build tree. You pass it the files you
+   want to analyze plus a superset of the location specifiers for the definitions they
+   use, and it writes the dependencies to standard output — see
+   [Running fpp-depend](https://nasa.github.io/fpp/fpp-users-guide.html#Specifying-Models-as-Files_Computing-Dependencies_Running-fpp-depend).
+   Feed that output straight into `imports=`.
+
+To find each module's build directory for the first option, use the CMake File API
+codemodel (`.cmake/api/v1/query/codemodel-v2`, then each target's `paths.build`). It is
+the same directory the old JSON was delivered to, so an existing tool's locator carries
+over unchanged.
 
 ---
 
@@ -1357,24 +1415,40 @@ cheap to test directly.
 
 ## Known gaps
 
-Two things reproduce on `fprime-fpp-python` 3.3.21 and are worth designing around.
+Two things about the new bindings are worth designing around. Both are present in 3.3.24.
 
-**A synthesized `State` enum appears inside every state machine, unmarked.** `analyze`
-inserts a `DefEnum` named `State` into every `DefStateMachine` that has a body, with
-the state machine's own source location and a `__FPRIME_UNINITIALIZED` constant.
-`AstVisitor` descends into it, so a traversal that generates one artifact per enum
-generates one for a definition nobody wrote — and two state machines in one module both
-synthesize a `State`, so their outputs collide. F Prime's own autocoder names it
-`<Machine>_State`. Nothing on the node says it was synthesized. Prune it by overriding
-`visit_DefStateMachine` and not calling `super()`.
+**The implicit `State` enum is indistinguishable from a hand-written definition.**
+`analyze` synthesizes the implicit state enum, inserting a `DefEnum` named `State` into
+every `DefStateMachine` that has a body, with a `__FPRIME_UNINITIALIZED` constant and the
+state machine's own start location. That is the right model — and the enum *is* properly
+qualified, so `SM.A.State` and `SM.B.State` are distinct symbols and there is no name
+collision in the model.
 
-**`Type` renders a name, not the FPP spelling.** `str(a_type)` gives `'boolean'` where
-FPP — and the old package's `BooleanType.__str__` — wrote `bool`, so audit every
-`str(ty)` on a boolean. It also drops the size from `string size 12` and gives a named
-type unqualified, both of which the old package did too. Spelling a type still means
-branching on its concrete class — string, bool, `PrimitiveIntType`, `FloatType`, then
-`def_symbol.qualified_name` for everything named. That is a dozen lines, and a
-generator has to own the *C++* mapping anyway.
+What is missing is a marker. `in_source` is `True`, the location points at real source,
+and nothing on the node says the transform added it, so a traversal that emits one
+artifact per `DefEnum` emits one for a definition the user never wrote. Two consequences:
+
+- If you name output files from the **qualified** name, or from a stem prefixed by the
+  enclosing state machine, you get what F Prime's own autocoder produces —
+  `A_StateEnumAc.hpp`, `B_StateEnumAc.hpp`. `fpp-query`'s default stem rule already
+  prefixes by enclosing component and state machine, so a `DefEnum` group gets this
+  right with no extra work.
+- If you name them from the **unqualified** `node.name`, every state machine in a module
+  gives you `State` and the files collide. Prefix the stem with the enclosing state
+  machine's name. If your generator has no business inside a state machine at all,
+  override `visit_DefStateMachine` and do not call `super()` — that prunes the whole
+  subtree, signals and states included, not just the synthesized enum.
+
+**`str(a_type)` is a name, not an FPP type expression.** It gives `'boolean'` where FPP
+writes `bool`; it drops the size from `string size 12`; and it gives a named type
+unqualified (`Outer`, not `Ref.Outer`). The last two were also true of the old package,
+but the `bool` spelling was not — `BooleanType.__str__` returned `"bool"` there — so
+audit any `str(ty)` you apply to a boolean.
+
+For anything you emit, do not use `str` at all. Branch on the concrete class —
+`StringType`, `BooleanType`, `PrimitiveIntType`, `FloatType`, then
+`ty.def_symbol.qualified_name` for everything named. That is about a dozen lines, and a
+code generator has to own its *target-language* spelling anyway.
 
 From the old package, with no replacement and none planned:
 
@@ -1382,9 +1456,12 @@ From the old package, with no replacement and none planned:
   Rust compiler. If you had an out-of-build tool reading `fpp-analysis.json`, it now
   links the compiler in-process instead — which is strictly better, but it is a
   rewrite, not a shim. See [Tools outside the build](#tools-outside-the-build).
-- **`FprimePythonModel` itself.** There is no compatibility layer. The old
-  `Annotated[...]` tuples, `AstId` maps and `ast_id_map` indirection do not survive,
-  because the whole point is that cross-references are now real object references.
+- **`FprimePythonModel` itself.** There is no compatibility layer. Two pieces of its
+  shape are gone, for two unrelated reasons: the `AstId` maps and the `ast_id_map`
+  indirection, because cross-references are now real object references; and the
+  `Annotated[...]` tuples, because the Rust compiler attaches annotations to a node as
+  context rather than wrapping the node — see
+  [AST nodes, annotations and locations](#ast-nodes-annotations-and-locations).
 - **`utils/fpp_writer.py`** (`FppWriter`, printing FPP source back out). Not part of
   the bindings; use `fpp-format` for formatted FPP.
 - **`utils/fpp_ast_writer.py`** (`AstWriter`, the AST debug dump). No replacement —
