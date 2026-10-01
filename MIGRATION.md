@@ -38,6 +38,7 @@ shape are the AST node wrapper, cross-references, and the visitor.
   - [API map](#api-map)
     - [Model and analysis](#model-and-analysis)
     - [AST nodes, annotations and locations](#ast-nodes-annotations-and-locations)
+      - [Annotations are node context, not a wrapper](#annotations-are-node-context-not-a-wrapper)
     - [Cross-references](#cross-references)
     - [Visitors](#visitors)
     - [Symbols, types and values](#symbols-types-and-values)
@@ -507,30 +508,32 @@ match a_type:
 | `AnonStructType.members` as a name-keyed mapping | `Type.AnonStruct.members` → an ordered `list[tuple[str, Type.Variant]]`, plus `get_member(name)` / `has_member(name)` |
 | — | `ty.serialized_size`, `ty.identical(other)` |
 
-`Value` follows the identical shape: `PrimitiveIntegerValue` → `Value.PrimitiveInteger`,
-`AbsTypeValue` → `Value.AbsType`, `IntegerValue` → `Value.Integer`, `FloatValue` →
-`Value.Float`, `BooleanValue` → `Value.Boolean`, `StringValue` → `Value.String`,
-`EnumConstantValue` → `Value.EnumConstant`, `AnonArrayValue` → `Value.AnonArray`,
-`ArrayValue` → `Value.Array`, `AnonStructValue` → `Value.AnonStruct`, `StructValue` →
-`Value.Struct`, and the old `ValueBase` is gone — `Value` is the base class, and
-`Value.Variant` is the union. `resolved_value.value` still reaches the plain Python
-payload the same way it always did.
+`Value` follows the identical shape — `Value` is the base class, and `Value.Variant`
+is the union of its concrete nested classes:
+
+| Before | After |
+| --- | --- |
+| `PrimitiveIntegerValue` | `Value.PrimitiveInteger` |
+| `AbsTypeValue` | `Value.AbsType` |
+| `IntegerValue` | `Value.Integer` |
+| `FloatValue` | `Value.Float` |
+| `BooleanValue` | `Value.Boolean` |
+| `StringValue` | `Value.String` |
+| `EnumConstantValue` | `Value.EnumConstant` |
+| `AnonArrayValue` | `Value.AnonArray` |
+| `ArrayValue` | `Value.Array` |
+| `AnonStructValue` | `Value.AnonStruct` |
+| `StructValue` | `Value.Struct` |
+| `ValueBase` | gone — use `Value` |
+
+`resolved_value.value` still reaches the plain Python payload the same way it always
+did.
 
 `Type` does define `__eq__` and `__hash__`, but not by structural shape: two separately
 declared types of identical shape (`struct A { x: U32 }` versus `struct B { x: U32 }`)
 are never equal. Compare named types through `def_symbol`, as the compiler does, or use
 `ty.identical(other)`. Primitives are the exception — `U32 == U32` is `True` wherever
 the two came from.
-
-Several other closed unions follow the same base-class-plus-nested-`.Variant` shape —
-`Command` (`Command.NonParam`, `Command.Param`), `PortInstance` (`.General`,
-`.Special`, `.Internal`, `.Topology`), `InterfaceInstance` (`.Component`,
-`.Topology`; see [Topologies and connections](#topologies-and-connections), where it
-is used directly), and the lower-level state-machine graph types
-(`StateMachineSymbol`, `StateMachineTypedElement`, `StateOrChoice`, `Transition`,
-`TransitionGraphArc`). This guide does not otherwise walk through them, but if your
-autocoder reaches into that part of the model, `fpp/__init__.pyi` spells out every
-nested class.
 
 ### Topologies and connections
 
@@ -606,25 +609,6 @@ for connection in topology.get_connections_from(pii):
 > assigned. For `producer.dataOut -> consumerA.dataIn` with no index,
 > `connection.from_.port_number` is `None` while `get_port_number` returns `0`. Always
 > use `get_port_number`, and treat its `None` as a hard error rather than a zero.
-
-`InterfaceInstance.Component` resolves the placement attributes of its
-`ast.DefComponentInstance`. **`base_id` and `max_id` are always `int`, never `None`** — when
-the source declares no `base id` they are `0` and `-1`, so test
-`instance.node.base_id is not None` if you need to know whether one was written.
-`queue_size`, `stack_size`, `priority` and `cpu` are `Optional[int]`, and `file` is
-`Optional[str]`. Also `init_specifier_map`, `component`, `interface`, `qualified_name`
-and `unqualified_name`.
-
-`Component` exposes `command_map` (keyed by opcode), `tlm_channel_map`,
-`tlm_channel_name_map`, `event_map`, `param_map`, `record_map`, `container_map`,
-`state_machine_instance_map`, `port_map` (keyed by name), `special_port_map`,
-`port_interface`, `port_matching_list`, `max_id`, the `has_commands` / `has_events` /
-`has_telemetry` / `has_parameters` / `has_data_products` /
-`has_state_machine_instances` flags, and the ID bases — `default_opcode` for commands,
-plus `default_tlm_channel_id`, `default_event_id`, `default_param_id`,
-`default_container_id` and `default_record_id`. These maps iterate in key order now
-rather than in the insertion order the old dicts used, so output that depended on
-declaration order will reorder once.
 
 ### Dictionaries
 
@@ -859,11 +843,11 @@ the submodule of the same name.
   For text derived from your model — an FPP annotation used as a doc comment, a C++
   expression whose continuation starts with `|` — say `margin=None` explicitly:
 
-  ```python
-  doc.lines(expression, margin=None)      # no stripping
-  body.line(expression)                   # one line, never stripped
-  cls.function("f", comment=lines(text, margin=None))
-  ```
+```python
+doc.lines(expression, margin=None)      # no stripping
+body.line(expression)                   # one line, never stripped
+cls.function("f", comment=lines(text, margin=None))
+```
 
 - `lines("a\nb\n")` yields 2 lines now, 3 before. `render()` appends a trailing
   newline where `str(Lines)` did not.
@@ -1492,17 +1476,17 @@ and nothing on the node says the transform added it, so a traversal that emits o
 artifact per `ast.DefEnum` emits one for a definition the user never wrote. Two
 consequences:
 
-- If you name output files from the **qualified** name, or from a stem prefixed by the
-  enclosing state machine, you get what F Prime's own autocoder produces —
-  `A_StateEnumAc.hpp`, `B_StateEnumAc.hpp`. `fpp-query`'s default stem rule already
-  prefixes by enclosing component and state machine, so a `DefEnum` group (the rules
-  file spells the Rust/FPP node kind name, not the Python `ast.DefEnum` class) gets
-  this right with no extra work.
-- If you name them from the **unqualified** `node.name`, every state machine in a module
-  gives you `State` and the files collide. Prefix the stem with the enclosing state
-  machine's name. If your generator has no business inside a state machine at all,
-  override `visit_DefStateMachine` and do not call `super()` — that prunes the whole
-  subtree, signals and states included, not just the synthesized enum.
+Naming output files from the **qualified** name, or from a stem prefixed by the
+enclosing state machine, gets you what F Prime's own autocoder produces —
+`A_StateEnumAc.hpp`, `B_StateEnumAc.hpp`. `fpp-query`'s default stem rule already
+prefixes by enclosing component and state machine, so a `DefEnum` group (the rules
+file spells the Rust/FPP node kind name, not the Python `ast.DefEnum` class) gets this
+right with no extra work. Naming them from the **unqualified** `node.name` instead
+means every state machine in a module gives you `State` and the files collide, so
+prefix the stem with the enclosing state machine's name yourself. If your generator
+has no business inside a state machine at all, override `visit_DefStateMachine` and do
+not call `super()` — that prunes the whole subtree, signals and states included, not
+just the synthesized enum.
 
 **`str(a_type)` is a name, not an FPP type expression.** It gives `'boolean'` where FPP
 writes `bool`; it drops the size from `string size 12`; and it gives a named type
