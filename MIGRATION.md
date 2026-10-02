@@ -1461,7 +1461,7 @@ cheap to test directly.
 
 ## Known gaps
 
-Two things about the new bindings are worth designing around. Both are present in 3.4.0.
+Two things about the new bindings are worth noting.
 
 **The implicit `State` enum is indistinguishable from a hand-written definition.**
 `analyze` synthesizes the implicit state enum, inserting an `ast.DefEnum` named `State`
